@@ -3,6 +3,7 @@ import mkdirp from "mkdirp";
 import { join } from "path";
 import prompts from "prompts";
 import prettier from "prettier";
+import kleur from "kleur";
 
 import indexT from "./templates/index";
 import componentT from "./templates/component";
@@ -33,6 +34,10 @@ async function main() {
   );
 
   const baseDir = join("src", "components", response.name);
+
+  console.log("");
+  console.log(`  ${kleur.white().bold("Writing files…")}`);
+  console.log("");
 
   await mkdirp(baseDir);
   await write(join(baseDir, `index.ts`), indexT(response));
@@ -66,7 +71,8 @@ async function main() {
       folders
         .filter(x => x !== "toc.timvir")
         .sort()
-        .join("\n") + "\n"
+        .join("\n") + "\n",
+      true
     );
   })();
 
@@ -80,15 +86,29 @@ async function main() {
       prettier.format(`export default ${JSON.stringify(toc)} as const`, {
         parser: "typescript",
         printWidth: Infinity
-      })
+      }),
+      true
     );
   })();
 }
 
 main();
 
-async function write(path: string, content: string) {
-  await fs.promises.writeFile(path, content);
+async function write(path: string, content: string, force: boolean = false) {
+  const ps = kleur.gray("".padEnd(Math.max(0, 50 - path.length), "."));
+
+  if (force) {
+    console.log(`  - ${path}${ps} ${kleur.red("update")}`);
+    await fs.promises.writeFile(path, content);
+  } else {
+    try {
+      await fs.promises.stat(path);
+      console.log(`  - ${path}${ps} ${kleur.gray("skip")}`);
+    } catch (err) {
+      console.log(`  - ${path}${ps} ${kleur.green("write")}`);
+      await fs.promises.writeFile(path, content);
+    }
+  }
 }
 
 interface TOCE {
