@@ -17,8 +17,9 @@ export default [
       commonjs(),
       terser(),
       babel({
+        configFile: false,
         extensions,
-        presets: ["@babel/preset-typescript"]
+        presets: [["@babel/preset-typescript"], ["@babel/preset-env", { targets: { node: "12" } }]]
       })
     ],
     external: [
