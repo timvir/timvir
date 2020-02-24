@@ -80,6 +80,7 @@ async function main() {
    * Scan all the toc.timvir files and combine them into the toc.ts module.
    */
   await (async () => {
+    await mkdirp(join("src", "docs"));
     const toc = await buildTableOfContents("/docs", join("src", "pages", "docs"));
     await write(
       join("src", "docs", "toc.ts"),

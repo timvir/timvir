@@ -10,7 +10,7 @@ export default [
     input: "src/cli/index.ts",
     output: {
       file: "packages/cli/index.js",
-      format: "esm"
+      format: "commonjs"
     },
     plugins: [
       resolve({ extensions }),
