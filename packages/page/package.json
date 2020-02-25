@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "name": "@timvir/page",
+  "version": "0.0.2",
+  "sideEffects": false,
+  "types": "packages/page/index.d.ts",
+  "peerDependencies": {
+    "react": "*",
+    "@mdx-js/react": "*"
+  }
+}
