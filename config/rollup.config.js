@@ -54,7 +54,7 @@ export default [
       babel({
         configFile: false,
         extensions,
-        presets: [["@babel/preset-typescript"], ["@babel/preset-react"]],
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
         plugins: [["babel-plugin-macros"]]
       }),
       linaria(),
