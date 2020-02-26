@@ -1,8 +1,10 @@
-import * as React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { css, cx } from "linaria";
 import { styled } from "linaria/react";
 import Link from "next/link";
+import * as React from "react";
+import { Section } from "./internal";
+import { Node } from "./types";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -14,7 +16,7 @@ const Component = "div";
  */
 interface Props extends React.ComponentProps<typeof Component> {
   location: { pathname: string };
-  toc: any[];
+  toc: Node[];
   Link: typeof Link;
 }
 
@@ -189,64 +191,3 @@ const Search = () => (
     </label>
   </div>
 );
-
-const Section = ({ location, label, path, Link, children = [] }: any) => {
-  const [active, setActive] = React.useState<boolean>(path ? location.pathname.startsWith(path) : true);
-
-  React.useEffect(() => {
-    if (path && location.pathname.startsWith(path)) {
-      setActive(true);
-    }
-  }, [path, location.pathname]);
-
-  return (
-    <section
-      className={css`
-        & > div:before {
-          opacity: 0;
-          color: #2bbc8a;
-          content: "›";
-          position: relative;
-          left: 2px;
-          transition: all 0.16s;
-        }
-
-        & > div:hover:before,
-        & > div[data-active="true"]:before {
-          opacity: 1;
-          left: 0;
-        }
-        & > div > a {
-          display: inline-block;
-          margin-left: 0.5ch;
-          color: #383838;
-          font-size: 0.8rem;
-          line-height: 1.725;
-          background: none;
-          color: inherit;
-          text-decoration: none;
-          width: 100%;
-        }
-        & > div:hover a {
-          color: #2bbc8a;
-        }
-        & > & {
-          padding: 0 0 0 2ch;
-        }
-      `}
-    >
-      <div data-active={location.pathname === path}>
-        {path ? (
-          <Link href={path}>
-            <a>{label}</a>
-          </Link>
-        ) : (
-          <a href="#" onClick={() => setActive(x => !x)}>
-            {label}
-          </a>
-        )}
-      </div>
-      {active && children.map((c, i) => <Section key={i} location={location} Link={Link} {...c} />)}
-    </section>
-  );
-};
