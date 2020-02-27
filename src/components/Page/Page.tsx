@@ -4,6 +4,7 @@ import { styled } from "linaria/react";
 import Link from "next/link";
 import * as React from "react";
 import { Section } from "./internal";
+import { grid, noLayout } from "./layout";
 import { Node } from "./types";
 
 /**
@@ -26,11 +27,8 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
       {...props}
       className={cx(
         className,
+        grid,
         css`
-          display: grid;
-          grid-template-columns: 1fr minmax(min-content, 48rem) 1fr;
-          grid-gap: 24px;
-
           font-family: "Menlo", "Meslo LG", monospace;
           font-feature-settings: "liga", "kern";
           text-rendering: optimizelegibility;
@@ -40,12 +38,13 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
         `
       )}
     >
-      <div>
-        <aside
+      <aside className={noLayout}>
+        <div
           className={css`
             padding-top: 50px;
             position: sticky;
             top: 0;
+            height: 0;
             padding-left: 24px;
           `}
         >
@@ -56,12 +55,10 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
               <Section key={i} location={location} Link={Link} {...c} />
             ))}
           </nav>
-        </aside>
-      </div>
+        </div>
+      </aside>
 
-      <main>
-        <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-      </main>
+      <MDXProvider components={mdxComponents}>{children}</MDXProvider>
     </Component>
   );
 }

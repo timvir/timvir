@@ -8,3 +8,17 @@ import { Page } from "..";
 The `<Page>` component establishes the page layout (sidebar, center), and wraps the content in a `<MDXProvider>` so
 that the page MDX elements are correctly styled.
 
+The layout is currently based on CSS grid with three columns:
+
+ * A center column for the main content. It has a maximum width that is suited for regular text.
+ * The two remaining columns have equal width and are placed on the left and right side of the center column.
+
+All children are by default placed in the center column. In order to place an element into different columns, import one of the predefined class namess from the `@timvir/page` package and apply them to your element:
+
+```
+import { fullWidth } from "@timvir/page"
+
+<div className={fullWidth}>
+  This element will span across all columns.
+</div>
+```
