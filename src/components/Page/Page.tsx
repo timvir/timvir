@@ -6,6 +6,7 @@ import * as React from "react";
 import { Sidebar } from "./internal";
 import { grid } from "./layout";
 import { Node } from "./types";
+import Highlight, { defaultProps } from "prism-react-renderer";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -111,5 +112,30 @@ const mdxComponents = {
     &:hover {
       background-image: linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a);
     }
-  `
+  `,
+  code: props => {
+    return (
+      <Highlight {...defaultProps} code={props.children.trim()} language="jsx">
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre
+            className={cx(
+              className,
+              css`
+                padding: 16px 24px;
+              `
+            )}
+            style={style}
+          >
+            {tokens.map((line, i) => (
+              <div {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
+    );
+  }
 };
