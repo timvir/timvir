@@ -5,11 +5,10 @@ export const noLayout = css``;
 export const grid = css`
   display: grid;
 
-  margin: 0 16px;
-  grid-template-columns: [le lc] 1fr [rc re];
+  grid-template-columns: [le] 0 [lc] 1fr [rc] 0 [re];
+  grid-column-gap: 16px;
 
   @media (min-width: 60rem) {
-    margin: 0;
     grid-template-columns: [le] 1fr [lc] minmax(min-content, 48rem) [rc] 1fr [re];
     grid-column-gap: 24px;
   }
