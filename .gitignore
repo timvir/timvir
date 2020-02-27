@@ -1,6 +1,7 @@
 /node_modules/
 /.next/
 /.linaria-cache/
+/public/images/
 
 /packages/cli/index.js
 

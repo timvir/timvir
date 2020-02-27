@@ -16,11 +16,13 @@ export default [
       },
       { label: "Frobulator", path: "/docs/components/Frobulator" },
       { label: "Header", path: "/docs/components/Header" },
+      { label: "Image", path: "/docs/components/Image" },
       { label: "Layout", path: "/docs/components/Layout" },
       { label: "Page", path: "/docs/components/Page" },
       { label: "Test", path: "/docs/components/Test" },
       { label: "TextField", path: "/docs/components/TextField" },
       { label: "Wrapper", path: "/docs/components/Wrapper" },
+      { label: "X", path: "/docs/components/X" }
     ]
   },
   { label: "About", path: "/docs/about" }

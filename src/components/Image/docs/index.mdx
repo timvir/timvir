@@ -1,0 +1,20 @@
+import Layout from "../../../docs/layout";
+export default Layout
+
+import { Image } from "..";
+import { importImage } from "@zhif/macro"
+
+# Image
+
+The `<Image>` displays an image 🤔. Use it together with the "@zhif/macro" package.
+
+```
+import { Image } from "@timvir/components"
+import { importImage } from "@zhif/macro"
+
+<Image {...importImage("../path/to/image.png")} />
+```
+
+## Example
+
+<Image {...importImage("../../../../assets/khachik-simonian-nXOB-wh4Oyc-unsplash.jpg")} />
