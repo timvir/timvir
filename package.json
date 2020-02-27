@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
     "@babel/generator": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
