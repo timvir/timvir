@@ -3,8 +3,8 @@ import { css, cx } from "linaria";
 import { styled } from "linaria/react";
 import Link from "next/link";
 import * as React from "react";
-import { Section } from "./internal";
-import { grid, noLayout } from "./layout";
+import { Sidebar } from "./internal";
+import { grid } from "./layout";
 import { Node } from "./types";
 
 /**
@@ -38,26 +38,7 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
         `
       )}
     >
-      <aside className={noLayout}>
-        <div
-          className={css`
-            padding-top: 50px;
-            position: sticky;
-            top: 0;
-            height: 0;
-            padding-left: 24px;
-          `}
-        >
-          <Search />
-
-          <nav>
-            {toc.map((c, i) => (
-              <Section key={i} location={location} Link={Link} {...c} />
-            ))}
-          </nav>
-        </div>
-      </aside>
-
+      <Sidebar location={location} toc={toc} Link={Link} />
       <MDXProvider components={mdxComponents}>{children}</MDXProvider>
     </Component>
   );
@@ -132,59 +113,3 @@ const mdxComponents = {
     }
   `
 };
-
-const Search = () => (
-  <div
-    className={css`
-      position: relative;
-      margin: 0 0 1.5rem 1.2ch;
-      z-index: 1;
-      max-width: 280px;
-    `}
-  >
-    <label
-      className={css`
-        width: 100%;
-        display: inline-flex;
-        align-items: center;
-        transition: border 0.2s ease;
-        border-radius: 2px;
-        background: hsla(0, 0%, 0%, 0.075);
-        font-family: "Menlo", "Meslo LG", monospace;
-      `}
-    >
-      <input
-        type="text"
-        placeholder="Search or jump to…"
-        className={css`
-          width: 100%;
-          height: 100%;
-          font-size: 0.8rem;
-          border: none;
-          outline: 0;
-          padding-right: 1rem;
-          -moz-appearance: none;
-          -webkit-appearance: none;
-          background: none;
-          font-family: "Menlo", "Meslo LG", monospace;
-          padding: 10px 1.2ch;
-        `}
-      />
-      <span
-        className={css`
-          flex-shrink: 0;
-          display: block;
-          color: rgba(0, 0, 0, 0.3);
-          padding: 4px 5px;
-          border: 1px solid currentColor;
-          border-radius: 3px;
-          font-size: 0.8rem;
-          line-height: 1;
-          margin-right: 8px;
-        `}
-      >
-        /
-      </span>
-    </label>
-  </div>
-);
