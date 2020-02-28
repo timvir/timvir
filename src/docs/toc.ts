@@ -1,4 +1,5 @@
 export default [
+  { label: "Home", path: "/docs" },
   {
     label: "Components",
     children: [
