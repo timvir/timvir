@@ -12,24 +12,31 @@ const Component = "figure";
 interface Props extends React.ComponentProps<typeof Component> {
   source?: React.ReactNode;
   caption?: React.ReactNode;
+
+  /**
+   * How much the component should extend out of its original box.
+   *
+   * @default 0
+   */
+  bleed?: number;
 }
 
-function Exhibit({ title, source, caption, children, style, ...props }: Props, ref: any /* FIXME */) {
+function Exhibit({ title, source, caption, bleed = 0, children, style, ...props }: Props, ref: any /* FIXME */) {
   return (
     <Component
       ref={ref}
       style={{
-        ...style,
-        margin: "24px 0 36px"
+        margin: 0,
+        ...style
       }}
       {...props}
     >
       {title && mdx("h3", {}, title)}
       <div
         style={{
-          margin: "0 -24px",
-          padding: 24,
-          borderRadius: 4,
+          margin: `0 -${bleed}px`,
+          padding: bleed,
+          border: bleed !== 0 && `1px solid #EFEFEF`,
           background:
             "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=)"
         }}
@@ -40,8 +47,8 @@ function Exhibit({ title, source, caption, children, style, ...props }: Props, r
         <pre
           style={{
             background: "#F8F8F8",
-            margin: "0 -24px",
-            padding: "16px 24px 16px",
+            margin: `0 -${bleed}px`,
+            padding: `16px ${bleed}px 16px`,
             borderTop: "1px solid grey",
             fontSize: ".9rem",
             borderRadius: "0 0 4px 4px"
