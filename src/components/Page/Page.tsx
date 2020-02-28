@@ -101,6 +101,27 @@ const mdxComponents = {
       font-size: 1.1rem;
     }
   `,
+  h4: styled.h3`
+    position: relative;
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: #383838;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-size: 0.9rem;
+
+    &::before {
+      position: absolute;
+      top: -3px;
+      left: -1rem;
+      color: #2bbc8a;
+      content: "#";
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  `,
   a: styled.a`
     color: #383838;
     text-decoration: none;
