@@ -1,12 +1,17 @@
 import { MDXProvider } from "@mdx-js/react";
 import { css, cx } from "linaria";
-import { styled } from "linaria/react";
 import Link from "next/link";
+import Highlight, { defaultProps } from "prism-react-renderer";
 import * as React from "react";
-import { Sidebar } from "./internal";
+import { configure, GlobalHotKeys } from "react-hotkeys";
+import { Search, Sidebar } from "./internal";
 import { grid } from "./layout";
 import { Node } from "./types";
-import Highlight, { defaultProps } from "prism-react-renderer";
+import { styled } from "linaria/react";
+
+configure({
+  ignoreTags: ["select"]
+});
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -23,25 +28,48 @@ interface Props extends React.ComponentProps<typeof Component> {
 }
 
 function Page({ location, toc, Link, children, className, ...props }: Props, ref: any /* FIXME */) {
+  const [search, setSearch] = React.useState(false);
+
+  const keyMap = {
+    SEARCH: "command+p",
+    ESC: "escape"
+  };
+
+  const handlers = {
+    SEARCH: ev => {
+      ev.preventDefault();
+      setSearch(x => !x);
+    },
+    ESC: () => {
+      setSearch(false);
+    }
+  };
+
   return (
-    <Component
-      {...props}
-      className={cx(
-        className,
-        grid,
-        css`
-          font-family: "Menlo", "Meslo LG", monospace;
-          font-feature-settings: "liga", "kern";
-          text-rendering: optimizelegibility;
-          font-size: 14px;
-          line-height: 1.725;
-          color: #383838;
-        `
-      )}
-    >
-      <Sidebar location={location} toc={toc} Link={Link} />
-      <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-    </Component>
+    <>
+      <GlobalHotKeys keyMap={keyMap} handlers={handlers} />
+
+      <Component
+        {...props}
+        className={cx(
+          className,
+          grid,
+          css`
+            font-family: "Menlo", "Meslo LG", monospace;
+            font-feature-settings: "liga", "kern";
+            text-rendering: optimizelegibility;
+            font-size: 14px;
+            line-height: 1.725;
+            color: #383838;
+          `
+        )}
+      >
+        <Sidebar location={location} toc={toc} Link={Link} />
+        <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+      </Component>
+
+      {search && <Search toc={toc} />}
+    </>
   );
 }
 
