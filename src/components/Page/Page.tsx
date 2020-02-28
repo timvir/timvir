@@ -162,6 +162,17 @@ const mdxComponents = {
       background-image: linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a);
     }
   `,
+  blockquote: styled.blockquote`
+    margin-left: 0;
+    font-size: 1.1rem;
+
+    & > *:first-child {
+      margin-top: 0;
+    }
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+  `,
   code: props => {
     return (
       <Highlight {...defaultProps} code={props.children.trim()} language="jsx">
