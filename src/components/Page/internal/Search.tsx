@@ -1,10 +1,12 @@
-import * as React from "react";
-import { css } from "linaria";
-import { Node } from "../types";
-import fuzzaldrin from "fuzzaldrin-plus";
-import Link from "next/link";
 import { useCombobox } from "downshift";
+import fuzzaldrin from "fuzzaldrin-plus";
+import { css } from "linaria";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import * as React from "react";
+import { SearchBoxInput } from "../../SearchBoxInput";
+import { SearchBoxListItem } from "../../SearchBoxListItem";
+import { Node } from "../types";
 
 interface Props {
   toc: Node[];
@@ -124,63 +126,7 @@ function Search({ toc }: Props) {
               max-height: 80vh;
             `}
           >
-            <div
-              className={css`
-                display: flex;
-                align-items: center;
-                border: none;
-                padding: 0px 16px;
-                width: 100%;
-                background: transparent;
-                font-size: 18px;
-                line-height: inherit;
-                height: 52px;
-                flex-grow: 0;
-                flex-shrink: 0;
-                z-index: 1;
-                box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
-              `}
-            >
-              <svg
-                viewBox="0 0 17 17"
-                className={css`
-                  width: 18px;
-                  height: 18px;
-                  display: block;
-                  fill: rgba(55, 53, 47, 0.4);
-                  flex-shrink: 0;
-                  backface-visibility: hidden;
-                  margin-right: 10px;
-                  flex-grow: 0;
-                `}
-              >
-                <path d="M6.78027 13.6729C8.24805 13.6729 9.60156 13.1982 10.709 12.4072L14.875 16.5732C15.0684 16.7666 15.3232 16.8633 15.5957 16.8633C16.167 16.8633 16.5713 16.4238 16.5713 15.8613C16.5713 15.5977 16.4834 15.3516 16.29 15.1582L12.1504 11.0098C13.0205 9.86719 13.5391 8.45215 13.5391 6.91406C13.5391 3.19629 10.498 0.155273 6.78027 0.155273C3.0625 0.155273 0.0214844 3.19629 0.0214844 6.91406C0.0214844 10.6318 3.0625 13.6729 6.78027 13.6729ZM6.78027 12.2139C3.87988 12.2139 1.48047 9.81445 1.48047 6.91406C1.48047 4.01367 3.87988 1.61426 6.78027 1.61426C9.68066 1.61426 12.0801 4.01367 12.0801 6.91406C12.0801 9.81445 9.68066 12.2139 6.78027 12.2139Z"></path>
-              </svg>
-              <input
-                autoFocus
-                {...getInputProps()}
-                className={css`
-                  font-size: inherit;
-                  line-height: inherit;
-                  border: none;
-                  background: none;
-                  width: 100%;
-                  display: block;
-                  resize: none;
-                  padding: 0px;
-                  min-width: 0px;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-
-                  color: #383838;
-
-                  &:focus {
-                    outline: 0;
-                  }
-                `}
-              />
-            </div>
+            <SearchBoxInput {...getInputProps()} />
             <main
               {...getMenuProps()}
               className={css`
@@ -191,32 +137,25 @@ function Search({ toc }: Props) {
             >
               {items.map((item, index) => (
                 <Link href={item.path}>
-                  <div
-                    role="button"
-                    className={css`
-                      display: flex;
-                      align-items: center;
-                      line-height: 120%;
-                      width: 100%;
-                      user-select: none;
-                      min-height: 36px;
-                      font-size: 14px;
-                      padding-top: 8px;
-                      padding-bottom: 8px;
-                      padding-left: 14px;
-                      cursor: pointer;
-
-                      &:hover {
-                        background: rgba(0, 0, 0, 0.05);
-                      }
-                    `}
+                  <SearchBoxListItem
+                    {...getItemProps({ item, index })}
+                    icon={
+                      <svg x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16">
+                        <g fill="none" stroke="#444" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit={10}>
+                          <path data-color="color-2" d="M4.5 11.5L11.5 11.5" />
+                          <path data-color="color-2" d="M4.5 8.5L11.5 8.5" />
+                          <path data-color="color-2" d="M4.5 5.5L6.5 5.5" />
+                          <path d="M9.5 0.5L1.5 0.5 1.5 15.5 14.5 15.5 14.5 5.5z" />
+                          <path d="M9.5 0.5L9.5 5.5 14.5 5.5" />
+                        </g>
+                      </svg>
+                    }
+                    label={<Highlight string={item.path} query={value} />}
+                    context="Page"
                     style={{
                       background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined
                     }}
-                    {...getItemProps({ item, index })}
-                  >
-                    <Highlight string={item.path} query={value} />
-                  </div>
+                  />
                 </Link>
               ))}
             </main>
