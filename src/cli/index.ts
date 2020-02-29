@@ -95,7 +95,8 @@ async function main() {
 
 main();
 
-async function write(path: string, content: string, force: boolean = false) {
+async function write(path: string, content0: string, force: boolean = false) {
+  const content = content0.trim() + "\n";
   const ps = kleur.gray("".padEnd(Math.max(0, 50 - path.length), "."));
 
   if (force) {
