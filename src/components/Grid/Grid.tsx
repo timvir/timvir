@@ -10,12 +10,12 @@ const Component = "div";
  */
 interface Props extends React.ComponentProps<typeof Component> {}
 
-function Grid({ children, ...props }: Props, ref: any /* FIXME */) {
+function Grid({ children, style, ...props }: Props, ref: any /* FIXME */) {
   return (
     <Component
       ref={ref}
       {...props}
-      style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gridGap: 24 }}
+      style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gridGap: 24, ...style }}
     >
       {children}
     </Component>

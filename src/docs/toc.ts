@@ -1,5 +1,6 @@
 export default [
   { label: "Home", path: "/docs" },
+  { label: "Icons", path: "/docs/icons" },
   {
     label: "Components",
     children: [
@@ -15,6 +16,7 @@ export default [
       { label: "Frobulator", path: "/docs/components/Frobulator" },
       { label: "Grid", path: "/docs/components/Grid" },
       { label: "Header", path: "/docs/components/Header" },
+      { label: "Icon", path: "/docs/components/Icon" },
       { label: "Image", path: "/docs/components/Image" },
       { label: "Layout", path: "/docs/components/Layout" },
       { label: "Page", path: "/docs/components/Page" },
