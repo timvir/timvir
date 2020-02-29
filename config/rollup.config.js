@@ -36,13 +36,13 @@ export default [
   },
 
   /*
-   * @timvir/page
+   * @timvir/core
    */
   {
-    input: "src/packages/page/index.ts",
+    input: "src/packages/core/index.ts",
     output: [
       {
-        file: "packages/page/index.js",
+        file: "packages/core/index.js",
         format: "cjs"
       }
     ],
@@ -58,12 +58,14 @@ export default [
         plugins: [["babel-plugin-macros"]]
       }),
       linaria(),
-      css({ output: "packages/page/styles.css" })
+      css({ output: "packages/core/styles.css" })
     ],
     external: [
       "linaria/react",
-      ...Object.keys(require("../packages/page/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/page/package.json").peerDependencies || {})
+      "next/link",
+      "next/router",
+      ...Object.keys(require("../packages/core/package.json").dependencies || {}),
+      ...Object.keys(require("../packages/core/package.json").peerDependencies || {})
     ]
   }
 ];

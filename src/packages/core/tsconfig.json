@@ -5,7 +5,7 @@
     "moduleResolution": "node",
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "outDir": "../../../packages/page",
+    "outDir": "../../../packages/core",
     "declaration": true,
     "emitDeclarationOnly": true
   },

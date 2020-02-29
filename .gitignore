@@ -1,5 +1,7 @@
 .DS_store
 
+.npmrc
+
 /node_modules/
 /.next/
 /.linaria-cache/
@@ -7,5 +9,5 @@
 
 /packages/cli/index.js
 
-/packages/page/*
-!/packages/page/package.json
+/packages/core/*
+!/packages/core/package.json

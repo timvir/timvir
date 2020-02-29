@@ -1,0 +1,22 @@
+{
+  "name": "@timvir/core",
+  "version": "0.0.1",
+  "sideEffects": false,
+  "types": "packages/core/index.d.ts",
+  "peerDependencies": {
+    "@mdx-js/react": "*",
+    "downshift": "*",
+    "linaria": "*",
+    "next": "*",
+    "react-hotkeys": "*",
+    "react": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:timvir/timvir.git",
+    "directory": "packages/core"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
