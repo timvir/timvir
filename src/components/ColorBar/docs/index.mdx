@@ -8,6 +8,38 @@ import { Exhibit } from "../../Exhibit";
 
 A `ColorBar` is a horizontal arrangement of swatches.
 
-<ColorBar
-  values={["#D6CCFF", "#C8BCF5", "#BAACEB", "#AC9CE1", "#9E8CD7", "#907DCD", "#826EC3", "#745FBA", "#6550B0", "#5642A6"]}
-/>
+<Exhibit bleed={24}>
+  <ColorBar
+    values={["#D6CCFF", "#C8BCF5", "#BAACEB", "#AC9CE1", "#9E8CD7", "#907DCD", "#826EC3", "#745FBA", "#6550B0", "#5642A6"]}
+  />
+</Exhibit>
+
+Grayscale
+
+<Exhibit bleed={24}>
+  <ColorBar
+    values={["#FFFFFF", "#FAFAFA", "#F2F2F2", "#EEEEEE", "#DDDDDD", "#BBBBBB", "#9D9D9D", "#727272", "#333333", "#111111"]}
+  />
+</Exhibit>
+
+The ColorBar works comfortably with as few as two colors and as many as 20
+
+<Exhibit bleed={24} caption="Two colors in a ColorBar">
+  <ColorBar
+    values={["#FFE4A0", "#A67908"]}
+  />
+</Exhibit>
+
+<Exhibit bleed={24} caption="20 colors in a ColorBar">
+  <ColorBar
+    values={["#FFE4A0", "#FBDE98", "#F6D891", "#F2D28A", "#EDCC82", "#E8C77B", "#E4C173", "#DFBB6C", "#DBB565", "#D6B05D", "#D1AA56", "#CDA54F", "#C89F47", "#C39940", "#BE9438", "#BA8E30", "#B58928", "#B0841F", "#AB7E15", "#A67908"]}
+  />
+</Exhibit>
+
+Wrap a `<ColorBar>` in a `<Exhibit>` to add a caption to it. The caption can even include links!
+
+<Exhibit caption={<a href="https://hihayk.github.io/scale/#2/7/50/90/0/0/0/-0/1190D7/17/144/215">https://hihayk.github.io/scale/#2/7/50/90/0/0/0/-0/1190D7/17/144/215</a>}>
+  <ColorBar
+    values={["#E7F4FB", "#C9E6F6", "#AAD7F1", "#8BC9EC", "#6DBBE6", "#4EADE1", "#309EDC", "#1190D7", "#0D6CA1", "#09486C"]}
+  />
+</Exhibit>
