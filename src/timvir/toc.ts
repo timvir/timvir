@@ -1,5 +1,6 @@
 export default [
   { label: "Home", path: "/" },
+  { label: "Commands", path: "/commands" },
   {
     label: "Components",
     children: [

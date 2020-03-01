@@ -1,4 +1,5 @@
 import fs from "fs";
+import kleur from "kleur";
 import mkdirp from "mkdirp";
 import { join } from "path";
 import prettier from "prettier";
@@ -8,6 +9,10 @@ import { write } from "../stdlib";
  * Scan all the toc.timvir files and combine them into the toc.ts module.
  */
 export default async function() {
+  console.log("");
+  console.log(`  ${kleur.white().bold("Writing files…")}`);
+  console.log("");
+
   await mkdirp(join("src", "timvir"));
   const toc = await buildTableOfContents("/", join("src", "pages"));
   await write(

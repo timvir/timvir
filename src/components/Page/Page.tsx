@@ -174,8 +174,10 @@ const mdxComponents = {
     }
   `,
   code: props => {
+    const [, language = "markdown"] = (props.className || "").match(/^language-(.*)$/) || [];
+
     return (
-      <Highlight {...defaultProps} code={props.children.trim()} language="jsx">
+      <Highlight {...defaultProps} code={props.children.trim()} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
             className={cx(

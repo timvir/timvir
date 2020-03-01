@@ -3,7 +3,7 @@ import kleur from "kleur";
 
 export async function write(path: string, content0: string, force: boolean = false) {
   const content = content0.trim() + "\n";
-  const ps = kleur.gray("".padEnd(Math.max(0, 50 - path.length), "."));
+  const ps = kleur.gray("".padEnd(Math.max(0, 70 - path.length), "."));
 
   if (force) {
     console.log(`  - ${path} ${ps} ${kleur.red("update")}`);

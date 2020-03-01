@@ -1,0 +1,48 @@
+import Layout from "../../timvir/layout";
+export default Layout
+
+# Commands
+
+Timvir comes with a command line tool that eases creation of new React components, pages, and other general
+maintenance of the files used by the timvir integration.
+
+
+ - [component](#component) – Generate a new React component
+ - [toc](#toc) – Update the table of contents file
+
+Run the commands with `npx @timvir/cli <command>`.
+
+## component
+
+This command will ask you a few questions about what component you want to create, and will then generate
+a few files inside the `src/components/` folder. It will also update the table of contents such that the
+new component appears in the navigation tree.
+
+```bash
+$ npx @timvir/cli component
+✔ What's the name of your component? … TextField
+✔ What is the underlying DOM element (eg. div, span, input etc) … div
+
+  Writing files…
+
+  - src/components/TextField/index.ts ..................................... skip
+  - src/components/TextField/TextField.tsx ................................ skip
+  - src/components/TextField/docs/index.mdx ............................... skip
+  - src/components/TextField/samples/basic.tsx ............................ skip
+  - src/pages/docs/components/TextField/index.tsx ......................... skip
+  - src/pages/docs/components/TextField/samples/basic.tsx ................. skip
+  - src/pages/docs/components/toc.timvir .................................. update
+  - src/timvir/toc.ts ..................................................... update
+```
+
+## toc
+
+Use this command after you manually edit the `toc.timvir` files to regenerate the table of contents JavaScript module (`src/timvir/toc.ts`).
+
+```bash
+$ npx @timvir/cli toc
+
+  Writing files…
+
+  - src/timvir/toc.ts ..................................................... update
+``
