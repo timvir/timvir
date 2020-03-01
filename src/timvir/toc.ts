@@ -23,6 +23,7 @@ export default [
       { label: "SearchBox", path: "/docs/components/SearchBox" },
       { label: "SearchBoxInput", path: "/docs/components/SearchBoxInput" },
       { label: "SearchBoxListItem", path: "/docs/components/SearchBoxListItem" },
+      { label: "Swatch", path: "/docs/components/Swatch" },
       { label: "Test", path: "/docs/components/Test" },
       { label: "TextField", path: "/docs/components/TextField" },
       { label: "Wrapper", path: "/docs/components/Wrapper" },

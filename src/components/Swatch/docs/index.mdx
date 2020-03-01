@@ -1,0 +1,22 @@
+import Wrapper from "../../../timvir/wrapper";
+export default Wrapper
+
+import { Swatch } from "..";
+import { Exhibit } from "../../Exhibit";
+import { Grid } from "../../Grid";
+
+# Swatch
+
+<Exhibit bleed={24}>
+  <Swatch value="#FF00FF" name="Magenta" />
+</Exhibit>
+
+## In a Grid
+
+<Grid>
+  <Swatch value="#0E5A8A" contrastValue="#FFFFFF" name="@blue1" />
+  <Swatch value="#106BA3" contrastValue="#FFFFFF" name="@blue2" />
+  <Swatch value="#137CBD" contrastValue="#FFFFFF" name="@blue3" />
+  <Swatch value="#2B95D6" contrastValue="#000000" name="@blue4" />
+  <Swatch value="#48AFF0" contrastValue="#000000" name="@blue5" />
+</Grid>
