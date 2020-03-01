@@ -4,6 +4,7 @@ export default [
   {
     label: "Components",
     children: [
+      { label: "ColorBar", path: "/docs/components/ColorBar" },
       { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples", children: [{ label: "Basic", path: "/docs/components/Exhibit/samples/basic" }] }] },
       {
         label: "Footer",
