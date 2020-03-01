@@ -7,13 +7,21 @@ import { Grid } from "../../Grid";
 
 # Swatch
 
-<Exhibit bleed={24}>
-  <Swatch value="#FF00FF" name="Magenta" />
+<Exhibit caption="Plain color" style={{ marginBottom: 24 }}>
+  <Swatch value="#FF00FF" />
+</Exhibit>
+
+<Exhibit caption="Give the color a meaningful name" style={{ marginBottom: 24 }}>
+  <Swatch value="#FF00FF" name="Primary" />
+</Exhibit>
+
+<Exhibit caption="Add a note about its ancenstry (how or where from it was derived)" style={{ marginBottom: 24 }}>
+  <Swatch value="#FF00FF" name="Primary" ancestry="Red 700" />
 </Exhibit>
 
 ## In a Grid
 
-<Grid>
+<Grid style={{ gridGap: 6 }}>
   <Swatch value="#0E5A8A" contrastValue="#FFFFFF" name="@blue1" />
   <Swatch value="#106BA3" contrastValue="#FFFFFF" name="@blue2" />
   <Swatch value="#137CBD" contrastValue="#FFFFFF" name="@blue3" />

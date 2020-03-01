@@ -20,18 +20,21 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
   contrastValue?: string;
 
   name?: string;
+
+  ancestry?: string;
 }
 
-function Swatch({ value, contrastValue, name, ...props }: Props, ref: any /* FIXME */) {
+function Swatch({ value, contrastValue, name, ancestry, ...props }: Props, ref: any /* FIXME */) {
   const [label, setLabel] = React.useState(name);
 
   return (
     <Component
+      role="button"
       ref={ref}
       {...props}
+      style={{ height: ancestry ? 48 : 36 }}
       className={css`
         position: relative;
-        height: 36px;
         width: 100%;
 
         & > div {
@@ -46,6 +49,7 @@ function Swatch({ value, contrastValue, name, ...props }: Props, ref: any /* FIX
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
             0 8px 24px rgba(16, 22, 26, 0.2);
           padding: 0px 16px;
+          z-index: 2;
         }
 
         &:active > div {
@@ -55,6 +59,7 @@ function Swatch({ value, contrastValue, name, ...props }: Props, ref: any /* FIX
           left: -2px;
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
           padding: 0px 14px;
+          z-index: 2;
         }
       `}
       onClick={() => {
@@ -68,8 +73,8 @@ function Swatch({ value, contrastValue, name, ...props }: Props, ref: any /* FIX
       <div
         className={css`
           display: flex;
-          justify-content: space-between;
-          align-items: center;
+          flex-direction: column;
+          justify-content: center;
           position: absolute;
           top: 0;
           right: 0;
@@ -81,8 +86,29 @@ function Swatch({ value, contrastValue, name, ...props }: Props, ref: any /* FIX
         `}
         style={{ background: value, color: contrastValue }}
       >
-        <div>{label}</div>
-        {label === name && <div>{value}</div>}
+        <div
+          className={css`
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            line-height: 1;
+          `}
+        >
+          {label && <div>{label}</div>}
+          {label === name && <div>{value}</div>}
+        </div>
+        {ancestry && (
+          <div
+            className={css`
+              padding-top: 6px;
+              opacity: 0.5;
+              font-size: 0.8em;
+              line-height: 1;
+            `}
+          >
+            {ancestry}
+          </div>
+        )}
       </div>
     </Component>
   );
