@@ -45,6 +45,7 @@ function Swatch({ value, contrastValue, name, ...props }: Props, ref: any /* FIX
           left: -4px;
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
             0 8px 24px rgba(16, 22, 26, 0.2);
+          padding: 0px 16px;
         }
 
         &:active > div {
@@ -53,6 +54,7 @@ function Swatch({ value, contrastValue, name, ...props }: Props, ref: any /* FIX
           bottom: -2px;
           left: -2px;
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
+          padding: 0px 14px;
         }
       `}
       onClick={() => {
