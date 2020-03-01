@@ -9,7 +9,15 @@ interface Props extends Node {
 }
 
 const Section = ({ location, Link, label, path, children = [] }: Props) => {
-  const [active, setActive] = React.useState<boolean>(path ? location.pathname.startsWith(path) : true);
+  const [active, setActive] = React.useState<boolean>(() => {
+    if (path) {
+      return location.pathname.startsWith(path);
+    } else if (children.length > 0) {
+      return children.some(({ path }) => path && location.pathname.startsWith(path))
+    } else {
+      return false
+    }
+  });
 
   React.useEffect(() => {
     if (path && location.pathname.startsWith(path)) {
