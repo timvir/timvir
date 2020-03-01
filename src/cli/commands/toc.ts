@@ -8,10 +8,10 @@ import { write } from "../stdlib";
  * Scan all the toc.timvir files and combine them into the toc.ts module.
  */
 export default async function() {
-  await mkdirp(join("src", "docs"));
+  await mkdirp(join("src", "timvir"));
   const toc = await buildTableOfContents("/docs", join("src", "pages", "docs"));
   await write(
-    join("src", "docs", "toc.ts"),
+    join("src", "timvir", "toc.ts"),
     prettier.format(`export default ${JSON.stringify(toc)} as const`, {
       parser: "typescript",
       printWidth: Infinity
