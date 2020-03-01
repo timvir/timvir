@@ -61,6 +61,7 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
             font-size: 14px;
             line-height: 1.725;
             color: #383838;
+            overflow-x: hidden;
           `
         )}
       >
