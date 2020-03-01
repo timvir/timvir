@@ -152,7 +152,7 @@ const mdxComponents = {
     }
   `,
   a: styled.a`
-    color: #383838;
+    color: currentColor;
     text-decoration: none;
     background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
     background-position: bottom;

@@ -17,6 +17,7 @@ function Sidebar({ location, toc, Link }: Props) {
       className={cx(
         noLayout,
         css`
+          color: #383838;
           position: sticky;
           top: 0;
         `
