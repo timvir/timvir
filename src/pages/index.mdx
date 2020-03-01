@@ -1,25 +1,4 @@
-import { Page } from "../packages/core"
-import Link from "next/link"
-import { useRouter } from "next/router"
-
-export default props => (
-  <Page
-    location={useRouter()}
-    Link={Link}
-    toc={
-      [
-        {
-          label: "Home",
-          path: "/"
-        },
-        {
-          label: "Documentation",
-          path: "/docs"
-        }
-      ]
-    }
-    {...props}
-  />
-)
+import Layout from "../timvir/layout";
+export default Layout
 
 # WELCOME

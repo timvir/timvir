@@ -9,7 +9,7 @@ import { write } from "../stdlib";
  */
 export default async function() {
   await mkdirp(join("src", "timvir"));
-  const toc = await buildTableOfContents("/docs", join("src", "pages", "docs"));
+  const toc = await buildTableOfContents("/", join("src", "pages"));
   await write(
     join("src", "timvir", "toc.ts"),
     prettier.format(`export default ${JSON.stringify(toc)} as const`, {
@@ -75,14 +75,14 @@ async function buildTableOfContents(prefix: string, folder: string): Promise<Arr
         continue;
       }
 
-      const path = line.flags.includes("F") ? undefined : `${prefix}${line.path === "." ? "" : `/${line.path}`}`;
+      const path = line.flags.includes("F") ? undefined : join(prefix, `${line.path === "." ? "" : `${line.path}`}`);
 
       const children =
         line.path === "."
           ? undefined
           : await (async () => {
               const children = await buildTableOfContents(
-                `${prefix}${line.path === "." ? "" : `/${line.path}`}`,
+                join(prefix, `${line.path === "." ? "" : `${line.path}`}`),
                 join(folder, line.path)
               );
               return children.length === 0 ? undefined : children;

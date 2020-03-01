@@ -1,6 +1,5 @@
 export default [
-  { label: "Home", path: "/docs" },
-  { label: "Icons", path: "/docs/icons" },
+  { label: "Home", path: "/" },
   {
     label: "Components",
     children: [
