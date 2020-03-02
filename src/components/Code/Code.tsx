@@ -11,7 +11,16 @@ const Component = "pre";
  * TODO: Document Me!
  */
 interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
+  /**
+   * The code that should be highlighted.
+   */
   children: string;
+
+  /**
+   * Language in which the code is.
+   *
+   * @default "markup"
+   */
   language?: Language;
 }
 
