@@ -41,6 +41,7 @@ function ColorBook({ chapters, selectedChapter, onSelectChapter, ...props }: Pro
         >
           {values.map(value => (
             <div
+              key={value}
               style={{ background: value }}
               className={css`
                 height: 40px;
