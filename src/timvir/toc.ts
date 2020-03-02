@@ -7,14 +7,7 @@ export default [
       { label: "ColorBar", path: "/docs/components/ColorBar" },
       { label: "ColorBook", path: "/docs/components/ColorBook" },
       { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples", children: [{ label: "Basic", path: "/docs/components/Exhibit/samples/basic" }] }] },
-      {
-        label: "Footer",
-        path: "/docs/components/Footer",
-        children: [
-          { label: "API", path: "/docs/components/Footer/api" },
-          { label: "Samples", path: "/docs/components/Footer/samples" }
-        ]
-      },
+      { label: "Footer", path: "/docs/components/Footer" },
       { label: "Frobulator", path: "/docs/components/Frobulator" },
       { label: "Grid", path: "/docs/components/Grid" },
       { label: "Header", path: "/docs/components/Header" },
