@@ -5,6 +5,7 @@ export const noLayout = css``;
 export const grid = css`
   display: grid;
 
+  grid-auto-rows: min-content;
   grid-template-columns: [le] 0 [lc] 1fr [rc] 0 [re];
   grid-column-gap: 16px;
 
