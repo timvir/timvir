@@ -4,7 +4,7 @@ export default [
   {
     label: "Components",
     children: [
-      { label: "Code", path: "/docs/components/Code" },
+      { label: "Code", path: "/docs/components/Code", children: [{ label: "API", path: "/docs/components/Code/api" }] },
       { label: "ColorBar", path: "/docs/components/ColorBar" },
       { label: "ColorBook", path: "/docs/components/ColorBook" },
       { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples", children: [{ label: "Basic", path: "/docs/components/Exhibit/samples/basic" }] }] },

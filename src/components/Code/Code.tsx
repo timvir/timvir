@@ -1,3 +1,7 @@
+/**
+ * This is documentation for the Code component.
+ */
+
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import * as React from "react";
 import { css, cx } from "linaria";
