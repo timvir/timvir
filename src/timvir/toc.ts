@@ -5,7 +5,7 @@ export default [
     label: "Components",
     children: [
       { label: "Code", path: "/docs/components/Code", children: [{ label: "API", path: "/docs/components/Code/api" }] },
-      { label: "ColorBar", path: "/docs/components/ColorBar" },
+      { label: "ColorBar", path: "/docs/components/ColorBar", children: [{ label: "API", path: "/docs/components/ColorBar/api" }] },
       { label: "ColorBook", path: "/docs/components/ColorBook" },
       { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples", children: [{ label: "Basic", path: "/docs/components/Exhibit/samples/basic" }] }] },
       { label: "Grid", path: "/docs/components/Grid" },
@@ -15,7 +15,7 @@ export default [
       { label: "SearchBox", path: "/docs/components/SearchBox" },
       { label: "SearchBoxInput", path: "/docs/components/SearchBoxInput" },
       { label: "SearchBoxListItem", path: "/docs/components/SearchBoxListItem" },
-      { label: "Swatch", path: "/docs/components/Swatch" }
+      { label: "Swatch", path: "/docs/components/Swatch", children: [{ label: "API", path: "/docs/components/Swatch/api" }] }
     ]
   }
 ] as const;
