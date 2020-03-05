@@ -25,7 +25,8 @@ export default [
       babel({
         configFile: false,
         extensions,
-        presets: [["@babel/preset-typescript"], ["@babel/preset-env", { targets: { node: "12" } }]]
+        presets: [["@babel/preset-typescript"], ["@babel/preset-env", { targets: { node: "12" } }]],
+        plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]]
       })
     ],
     external: [
@@ -55,7 +56,11 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
-        plugins: [["babel-plugin-macros"]]
+        plugins: [
+          ["babel-plugin-macros"],
+          ["@babel/plugin-proposal-optional-chaining"],
+          ["@babel/plugin-proposal-nullish-coalescing-operator"]
+        ]
       }),
       linaria(),
       css({ output: "packages/core/styles.css" })
