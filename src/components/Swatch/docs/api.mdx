@@ -3,20 +3,32 @@ export default Wrapper
 
 # API
 
-The underlying DOM element which is rendered by this component.
+<table style={{ textAlign: "left" }}>
+  <tbody>
+    <tr>
+      <th style={{ width: "10%" }}>Root:</th>
+      <td>{`<div>`}</td>
+     </tr>
+     <tr>
+      <th>Ref:</th>
+      <td>Forward <span style={{ color: "rgb(153, 153, 153)" }}>(HTMLDivElement)</span></td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Props
 
 <div style={{ marginTop: 16, display: "grid", gridGap: 24 }}>
   <div>
     <div style={{ marginLeft: -18 }}><svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 16 16" style={{ position: "relative", top: 0, display: "inline-block", marginRight: 8 }}><g transform="translate(0, 0)"><circle cx="8" cy="8" r="8" fill="#444444"></circle></g></svg><span style={{ fontWeight: "bold" }}>value:</span> string</div>
-    <div style={{ marginLeft: 16 }}>The CSS Color value of the swatch. Any CSS color definition is accepted.</div>
-    <div style={{ marginLeft: 16, marginTop: 8, color: "rgb(153, 153, 153)", fontSize: "0.8rem"  }}>Example: <span style={{ fontWeight: "bold" }}>"#FFFFFF"</span></div>
+    <div style={{ marginLeft: 0 }}>The CSS Color value of the swatch. Any CSS color definition is accepted.</div>
+    <div style={{ marginLeft: 0, marginTop: 8, color: "rgb(153, 153, 153)", fontSize: "0.8rem"  }}>Example: <span style={{ fontWeight: "bold" }}>"#FFFFFF"</span></div>
   </div>
   <div>
     <div style={{ marginLeft: -18 }}><svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 16 16" style={{ position: "relative", top: 0, display: "inline-block", marginRight: 8 }}><g transform="translate(0, 0)"><circle cx="8" cy="8" r="7.5" fill="none" stroke="#444444" strokeLinecap="round" strokeLinejoin="round" data-cap="butt"></circle></g></svg>
   <span style={{ fontWeight: "bold" }}>contrastValue:</span> string</div>
-    <div style={{ marginLeft: 16 }}>Color of the text that is rendered on top of the swatch. Should be chosen
+    <div style={{ marginLeft: 0 }}>Color of the text that is rendered on top of the swatch. Should be chosen
 such that it provides enough contrast. If not provided then the normal text
 color from the page will be inherited.</div>
 
@@ -24,15 +36,15 @@ color from the page will be inherited.</div>
   <div>
     <div style={{ marginLeft: -18 }}><svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 16 16" style={{ position: "relative", top: 0, display: "inline-block", marginRight: 8 }}><g transform="translate(0, 0)"><circle cx="8" cy="8" r="7.5" fill="none" stroke="#444444" strokeLinecap="round" strokeLinejoin="round" data-cap="butt"></circle></g></svg>
   <span style={{ fontWeight: "bold" }}>name:</span> string</div>
-    <div style={{ marginLeft: 16 }}>Name of the swatch.</div>
+    <div style={{ marginLeft: 0 }}>Name of the swatch.</div>
 
   </div>
   <div>
     <div style={{ marginLeft: -18 }}><svg x="0px" y="0px" width="10px" height="10px" viewBox="0 0 16 16" style={{ position: "relative", top: 0, display: "inline-block", marginRight: 8 }}><g transform="translate(0, 0)"><circle cx="8" cy="8" r="7.5" fill="none" stroke="#444444" strokeLinecap="round" strokeLinejoin="round" data-cap="butt"></circle></g></svg>
   <span style={{ fontWeight: "bold" }}>ancestry:</span> string</div>
-    <div style={{ marginLeft: 16 }}>Use this as a short reference where or how the color was derived. If it is an
+    <div style={{ marginLeft: 0 }}>Use this as a short reference where or how the color was derived. If it is an
 primordial color (not derived from any color palette or other algorithm), then
 leave it empty.</div>
-    <div style={{ marginLeft: 16, marginTop: 8, color: "rgb(153, 153, 153)", fontSize: "0.8rem"  }}>Example: <span style={{ fontWeight: "bold" }}>"Blue 500"</span></div>
+    <div style={{ marginLeft: 0, marginTop: 8, color: "rgb(153, 153, 153)", fontSize: "0.8rem"  }}>Example: <span style={{ fontWeight: "bold" }}>"Blue 500"</span></div>
   </div>
 </div>
