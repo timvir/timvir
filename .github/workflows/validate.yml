@@ -1,13 +1,15 @@
-on: push
 name: Validate
+
+on: push
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@v1
-      with:
-        node-version: "12.x"
-    - run: npm install
-    - run: ./node_modules/.bin/tsc --build
-    - run: ./node_modules/.bin/rollup -c config/rollup.config.js
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: npm install
+      - run: ./node_modules/.bin/tsc --build
+      - run: ./node_modules/.bin/rollup -c config/rollup.config.js

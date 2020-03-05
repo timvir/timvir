@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+git tag --points-at HEAD | while read tag; do
+  re="^release/([a-z-]+)@v(.+)$"
+  if [[ $tag =~ $re ]]; then
+    PACKAGE=${BASH_REMATCH[1]}
+    VERSION=${BASH_REMATCH[2]}
+
+    echo Publish ${BASH_REMATCH[1]}@${BASH_REMATCH[2]}
+
+    cat "packages/$PACKAGE/package.json" | jq --arg version "$VERSION" '.version = $version' > tmp;
+    mv tmp "packages/$PACKAGE/package.json"
+
+    npm publish "packages/$PACKAGE" --access public
+  fi
+done
