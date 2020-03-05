@@ -6,18 +6,18 @@ import * as React from "react";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "{{= it.Component }}";
+const Root = "{{= it.Root }}";
 
 /**
  * TODO: Document Me!
  */
-interface Props extends React.ComponentPropsWithoutRef<typeof Component> {}
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {}
 
 function {{= it.name }}({ ...props }: Props, ref: any /* FIXME */) {
   return (
-    <Component ref={ref} {...props}>
+    <Root ref={ref} {...props}>
       {{= it.name }}
-    </Component>
+    </Root>
   );
 }
 

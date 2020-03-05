@@ -21,7 +21,7 @@ export default async function() {
       },
       {
         type: "text",
-        name: "Component",
+        name: "Root",
         message: "What is the underlying DOM element (eg. div, span, input etc)",
         initial: "div"
       }
