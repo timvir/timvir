@@ -1,6 +1,6 @@
 {
   "name": "@timvir/core",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "sideEffects": false,
   "types": "packages/core/index.d.ts",
   "peerDependencies": {
