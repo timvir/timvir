@@ -9,7 +9,7 @@ import { SearchBoxListItem } from "../../SearchBoxListItem";
 import { Node } from "../types";
 
 interface Props {
-  toc: Node[];
+  toc: ReadonlyArray<Node>;
 }
 
 function flatten(n: Node): Array<{ label: string; path: string }> {

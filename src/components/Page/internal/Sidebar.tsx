@@ -7,7 +7,7 @@ import Section from "./Section";
 
 interface Props {
   location: { pathname: string };
-  toc: Node[];
+  toc: ReadonlyArray<Node>;
   Link: typeof Link;
 }
 
