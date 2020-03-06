@@ -2,6 +2,14 @@ export default [
   { label: "Home", path: "/" },
   { label: "Commands", path: "/commands" },
   {
+    label: "Packages",
+    children: [
+      { label: "@timvir/cli", path: "/packages/cli" },
+      { label: "@timvir/core", path: "/packages/core" },
+      { label: "@timvir/blocks", path: "/packages/blocks" }
+    ]
+  },
+  {
     label: "Components",
     children: [
       { label: "Code", path: "/docs/components/Code", children: [{ label: "API", path: "/docs/components/Code/api" }] },
