@@ -8,7 +8,7 @@
     "@babel/generator": "^7.8.6",
     "@babel/preset-env": "^7.8.4",
     "@babel/template": "^7.8.3",
-    "@material-ui/core": "^4.9.3",
+    "@material-ui/core": "^4.9.5",
     "@mdx-js/loader": "^1.5.7",
     "@next/mdx": "^9.2.2",
     "@rollup/plugin-commonjs": "^11.0.2",
