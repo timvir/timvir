@@ -1,3 +1,6 @@
+import { template } from "../cli/template";
+
+export default template(`
 import Wrapper from "../../../timvir/wrapper";
 export default Wrapper;
 
@@ -5,14 +8,14 @@ export default Wrapper;
 
 <div style={ { display: "grid", gridTemplateColumns: "min-content 1fr" } }>
   <div style={ { fontWeight: "bold", marginRight: 16 } }>Root:</div>
-  <div>{`<div>`}</div>
+  <div>{\`<div>\`}</div>
   <div style={ { fontWeight: "bold", marginRight: 16 } }>Ref:</div>
   <div>Forward <span style={ { color: "rgb(153, 153, 153)" } }>(HTMLDivElement)</span></div>
 </div>
 
 ## Props
 
-<Props {...{"fields":[{"name":"children","type":{"optional":false,"name":"string","module":""},"comment":{"shortText":"The code that should be highlighted."}},{"name":"language","type":{"optional":true,"name":"Language","module":""},"def":"\"markup\"","comment":{"shortText":"Language in which the code is."}}]}} />
+<Props {...{{= it.Props}}} />
 
 export const required = (
   <svg
@@ -59,11 +62,11 @@ export const Props = ({ fields }) => (
       <div key={name}>
         <div style={ { marginLeft: -18 } }>
           {type.optional ? optional : required}
-          <span style={ { fontWeight: "bold" } }>{name}</span>{`: `}
+          <span style={ { fontWeight: "bold" } }>{name}</span>{\`: \`}
           <span>{type.name}</span>
           {def && (
             <>
-             {` = `}<span style={ { fontWeight: "bold" } }>{def}</span>
+             {\` = \`}<span style={ { fontWeight: "bold" } }>{def}</span>
             </>
           )}
         </div>
@@ -77,3 +80,5 @@ export const Props = ({ fields }) => (
     ))}
   </div>
 )
+
+`);

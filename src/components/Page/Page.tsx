@@ -22,7 +22,7 @@ const Component = "div";
  */
 interface Props extends React.ComponentProps<typeof Component> {
   location: { pathname: string };
-  toc: Node[];
+  toc: ReadonlyArray<Node>;
   Link: typeof Link;
 }
 

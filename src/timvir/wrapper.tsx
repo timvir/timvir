@@ -4,4 +4,8 @@ import * as React from "react";
 import { Page } from "../packages/core";
 import toc from "./toc";
 
-export default props => <Page location={useRouter()} Link={Link} toc={toc} {...props} />;
+export default ({ children }) => (
+  <Page location={useRouter()} Link={Link} toc={toc}>
+    {children}
+  </Page>
+);

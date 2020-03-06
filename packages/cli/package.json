@@ -5,6 +5,7 @@
     "timvir": "./bin"
   },
   "dependencies": {
-    "prettier": "*"
+    "prettier": "*",
+    "typescript": "*"
   }
 }
