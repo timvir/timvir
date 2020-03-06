@@ -12,6 +12,11 @@ program
   .action(cmd.component);
 
 program
+  .command("link")
+  .description("link component documentation and samples")
+  .action(cmd.link);
+
+program
   .command("toc")
   .description("generate table-of-contents")
   .action(cmd.toc);
