@@ -11,3 +11,6 @@
 
 /packages/core/*
 !/packages/core/package.json
+
+/packages/blocks/*
+!/packages/blocks/package.json

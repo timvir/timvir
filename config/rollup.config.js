@@ -79,5 +79,46 @@ export default [
       ...Object.keys(require("../packages/core/package.json").dependencies || {}),
       ...Object.keys(require("../packages/core/package.json").peerDependencies || {})
     ]
+  },
+
+  /*
+   * @timvir/blocks
+   */
+  {
+    input: "src/packages/blocks/index.ts",
+    output: [
+      {
+        file: "packages/blocks/index.js",
+        format: "cjs"
+      }
+    ],
+    plugins: [
+      resolve({ mainFields: "main", extensions }),
+      commonjs({
+        namedExports: {
+          "linaria/react": ["styled"]
+        }
+      }),
+      replace({ "process.env.NODE_ENV": `"production"` }),
+      terser(),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+        plugins: [
+          ["babel-plugin-macros"],
+          ["@babel/plugin-proposal-optional-chaining"],
+          ["@babel/plugin-proposal-nullish-coalescing-operator"]
+        ]
+      }),
+      linaria(),
+      css({ output: "packages/blocks/styles.css" })
+    ],
+    external: [
+      "next/link",
+      "next/router",
+      ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
+      ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {})
+    ]
   }
 ];

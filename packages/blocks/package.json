@@ -1,0 +1,16 @@
+{
+  "name": "@timvir/blocks",
+  "version": "0.0.0",
+  "sideEffects": false,
+  "types": "packages/blocks/index.d.ts",
+  "peerDependencies": {
+    "@mdx-js/react": "*",
+    "prism-react-renderer": "*",
+    "react": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:timvir/timvir.git",
+    "directory": "packages/blocks"
+  }
+}

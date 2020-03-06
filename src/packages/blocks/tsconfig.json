@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "strict": false,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "../../../packages/blocks",
+    "declaration": true,
+    "emitDeclarationOnly": true
+  },
+  "include": ["index.ts", "./*/index.ts"]
+}
