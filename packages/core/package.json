@@ -6,7 +6,6 @@
   "peerDependencies": {
     "@mdx-js/react": "*",
     "downshift": "*",
-    "linaria": "*",
     "next": "*",
     "react-hotkeys": "*",
     "react": "*"

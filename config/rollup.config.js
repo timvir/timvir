@@ -52,8 +52,12 @@ export default [
       }
     ],
     plugins: [
-      resolve({ extensions }),
-      commonjs(),
+      resolve({ mainFields: "main", extensions }),
+      commonjs({
+        namedExports: {
+          "linaria/react": ["styled"]
+        }
+      }),
       replace({ "process.env.NODE_ENV": `"production"` }),
       terser(),
       babel({
@@ -70,7 +74,6 @@ export default [
       css({ output: "packages/core/styles.css" })
     ],
     external: [
-      "linaria/react",
       "next/link",
       "next/router",
       ...Object.keys(require("../packages/core/package.json").dependencies || {}),
