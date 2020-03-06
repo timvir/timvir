@@ -1,8 +1,7 @@
 import fs from "fs";
 import kleur from "kleur";
 import mkdirp from "mkdirp";
-import { join, dirname, basename } from "path";
-import prettier from "prettier";
+import { basename, dirname, join } from "path";
 import { write } from "../stdlib";
 
 /**
@@ -17,10 +16,9 @@ export default async function() {
   for (const component of components) {
     const docs = await fs.promises.readdir(join("src", "components", component, "docs"));
     for (const file of docs) {
-      link(
-        join("..", "..", "..", "..", "components", component, "docs", file),
-        join("src", "pages", "docs", "components", component, file)
-      );
+      const path = join("src", "pages", "docs", "components", component, basename(file, ".mdx") + ".tsx");
+      await mkdirp(dirname(path));
+      write(path, `export { default } from "../../../../components/${component}/docs/${file}";\n`, true);
     }
 
     const samples = await fs.promises.readdir(join("src", "components", component, "samples"));
@@ -33,22 +31,5 @@ export default async function() {
         true
       );
     }
-  }
-}
-
-async function link(target: string, path: string) {
-  const ps = kleur.gray("".padEnd(Math.max(0, 70 - path.length), "."));
-
-  try {
-    const p = await fs.promises.readlink(path);
-    if (p !== target) {
-      await fs.promises.unlink(path);
-      throw new Error("write");
-    }
-  } catch (err) {
-    console.log(`  - ${path} ${ps} ${kleur.green("link")}`);
-
-    await mkdirp(dirname(path));
-    await fs.promises.symlink(target, path, "file");
   }
 }
