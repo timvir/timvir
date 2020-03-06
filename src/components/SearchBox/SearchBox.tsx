@@ -13,9 +13,6 @@ import { SearchBoxListItem } from "../SearchBoxListItem";
  */
 const Component = "div";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentProps<typeof Component> {
   toc: Node[];
 }

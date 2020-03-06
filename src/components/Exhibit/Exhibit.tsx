@@ -6,9 +6,6 @@ import { mdx } from "@mdx-js/react";
  */
 const Component = "figure";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentProps<typeof Component> {
   source?: React.ReactNode;
   caption?: React.ReactNode;

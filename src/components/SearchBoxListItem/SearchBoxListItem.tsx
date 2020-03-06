@@ -6,9 +6,6 @@ import { css } from "linaria";
  */
 const Component = "div";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentProps<typeof Component> {
   icon?: React.ReactNode;
   label: React.ReactNode;

@@ -6,9 +6,6 @@ import { css, cx } from "linaria";
  */
 const Component = "div";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
   chapters: Array<{ values: Array<string> }>;
   selectedChapter?: number;

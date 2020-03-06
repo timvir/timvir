@@ -6,9 +6,6 @@ import { css } from "linaria";
  */
 const Component = "div";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
   /**
    * The CSS Color value of the swatch. Any CSS color definition is accepted.

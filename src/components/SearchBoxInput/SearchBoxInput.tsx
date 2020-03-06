@@ -6,9 +6,6 @@ import React from "react";
  */
 const Component = "div";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentProps<typeof Component> {
   value?: string;
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;

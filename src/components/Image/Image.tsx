@@ -5,9 +5,6 @@ import React from "react";
  */
 const Component = "picture";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentProps<typeof Component> {
   metadata: { width: number; height: number };
   img: { src: string };

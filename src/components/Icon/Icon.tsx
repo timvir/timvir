@@ -9,9 +9,6 @@ import { Descriptor, Size } from "./types";
  */
 const Component = "div";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentProps<typeof Component> {
   allSizes: Size[];
   descriptor: Descriptor;

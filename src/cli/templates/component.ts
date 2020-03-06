@@ -8,9 +8,6 @@ import React from "react";
  */
 const Root = "{{= it.Root }}";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {}
 
 function {{= it.name }}({ ...props }: Props, ref: any /* FIXME */) {

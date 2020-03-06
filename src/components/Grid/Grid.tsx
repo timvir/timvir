@@ -5,9 +5,6 @@ import React from "react";
  */
 const Component = "div";
 
-/**
- * TODO: Document Me!
- */
 interface Props extends React.ComponentProps<typeof Component> {}
 
 function Grid({ children, style, ...props }: Props, ref: any /* FIXME */) {
