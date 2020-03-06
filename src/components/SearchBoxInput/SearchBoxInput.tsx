@@ -1,5 +1,5 @@
 import { css } from "linaria";
-import * as React from "react";
+import React from "react";
 
 /**
  * The underlying DOM element which is rendered by this component.

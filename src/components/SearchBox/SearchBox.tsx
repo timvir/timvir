@@ -3,7 +3,7 @@ import fuzzaldrin from "fuzzaldrin-plus";
 import { css } from "linaria";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import * as React from "react";
+import React from "react";
 import { Node } from "../Page";
 import { SearchBoxInput } from "../SearchBoxInput";
 import { SearchBoxListItem } from "../SearchBoxListItem";

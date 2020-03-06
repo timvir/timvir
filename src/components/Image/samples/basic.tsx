@@ -1,5 +1,5 @@
 
-import * as React from "react";
+import React from "react";
 import { Image } from "..";
 import { importImage } from "@zhif/macro"
 

@@ -1,7 +1,7 @@
 import { template } from "../template";
 
 export default template(`
-import * as React from "react";
+import React from "react";
 import { {{= it.name }} } from "..";
 
 export default () => (

@@ -1,6 +1,6 @@
 import { css } from "linaria";
 import Link from "next/link";
-import * as React from "react";
+import React from "react";
 import { Node } from "../types";
 
 interface Props extends Node {

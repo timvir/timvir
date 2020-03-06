@@ -1,6 +1,6 @@
 import { css, cx } from "linaria";
 import Link from "next/link";
-import * as React from "react";
+import React from "react";
 import { noLayout } from "../layout";
 import { Node } from "../types";
 import Section from "./Section";

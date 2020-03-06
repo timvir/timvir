@@ -1,6 +1,6 @@
 import { css } from "linaria";
 import { styled } from "linaria/react";
-import * as React from "react";
+import React from "react";
 
 const Component = styled.div<any>`
   display: flex;

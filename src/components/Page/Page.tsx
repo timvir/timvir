@@ -1,7 +1,7 @@
 import { MDXProvider } from "@mdx-js/react";
 import { css, cx } from "linaria";
 import Link from "next/link";
-import * as React from "react";
+import React from "react";
 import { configure, GlobalHotKeys } from "react-hotkeys";
 import * as mdxComponents from "./components";
 import { Search, Sidebar } from "./internal";

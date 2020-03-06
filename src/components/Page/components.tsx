@@ -1,5 +1,5 @@
 import { styled } from "linaria/react";
-import * as React from "react";
+import React from "react";
 import { Code } from "../Code";
 
 export const h1 = styled.h1`

@@ -1,5 +1,5 @@
 import { css } from "linaria";
-import * as React from "react";
+import React from "react";
 import Measure, { MeasuredComponentProps } from "react-measure";
 import { Canvas } from "./internal";
 import { Descriptor, Size } from "./types";

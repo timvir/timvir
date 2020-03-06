@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import * as React from "react";
+import React from "react";
 import { Page } from "../packages/core";
 import toc from "./toc";
 
