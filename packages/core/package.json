@@ -15,8 +15,5 @@
     "type": "git",
     "url": "ssh://git@github.com:timvir/timvir.git",
     "directory": "packages/core"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   }
 }
