@@ -15,10 +15,10 @@ function Sidebar({ location, toc, Link }: Props) {
   return (
     <aside
       className={cx(
-        noLayout,
         css`
-          position: sticky;
+          position: fixed;
           top: 0;
+          left: 0;
         `
       )}
     >
@@ -31,7 +31,7 @@ function Sidebar({ location, toc, Link }: Props) {
 
           @media (min-width: 60rem) {
             display: block;
-            min-width: 20rem;
+            width: 240px;
           }
         `}
       >

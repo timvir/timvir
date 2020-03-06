@@ -6,6 +6,7 @@ export default ({ Component, pageProps }) => (
       body {
         margin: 0;
         box-sizing: border-box;
+        overscroll-behavior: none;
       }
 
       *,

@@ -15,12 +15,9 @@ configure({
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "div";
+const Root = "div";
 
-/**
- * TODO: Document Me!
- */
-interface Props extends React.ComponentProps<typeof Component> {
+interface Props extends React.ComponentProps<typeof Root> {
   location: { pathname: string };
   toc: ReadonlyArray<Node>;
   Link: typeof Link;
@@ -48,26 +45,50 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
     <>
       <GlobalHotKeys keyMap={keyMap} handlers={handlers} />
 
-      <Component
+      <Root
         {...props}
         className={cx(
           className,
-          grid,
           css`
             font-family: "Menlo", "Meslo LG", monospace;
             font-feature-settings: "liga", "kern";
             text-rendering: optimizelegibility;
             font-size: 14px;
             line-height: 1.725;
-            color: #383838;
+            color: rgba(0, 0, 0, 0.85);
             overflow-x: hidden;
             min-height: 100vh;
+
+            display: grid;
+            grid-template-columns: [l] 0 [m] 1fr [r];
+
+            @media (min-width: 60rem) {
+              grid-template-columns: [l] 300px [m] 1fr [r];
+            }
           `
         )}
       >
-        <Sidebar location={location} toc={toc} Link={Link} />
-        <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-      </Component>
+        <div
+          className={css`
+            background: rgba(43, 188, 138, 0.16);
+            border-right: 1px solid rgba(43, 188, 138, 0.1);
+            grid-column: l / m;
+          `}
+        >
+          <Sidebar location={location} toc={toc} Link={Link} />
+        </div>
+
+        <div
+          className={cx(
+            grid,
+            css`
+              grid-column: m / r;
+            `
+          )}
+        >
+          <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+        </div>
+      </Root>
 
       {search && <Search toc={toc} />}
     </>
