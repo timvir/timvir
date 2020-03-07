@@ -15,6 +15,7 @@ export default [
       { label: "Code", path: "/docs/components/Code", children: [{ label: "API", path: "/docs/components/Code/api" }] },
       { label: "ColorBar", path: "/docs/components/ColorBar", children: [{ label: "API", path: "/docs/components/ColorBar/api" }] },
       { label: "ColorBook", path: "/docs/components/ColorBook" },
+      { label: "Cover", path: "/docs/components/Cover", children: [{ label: "API", path: "/docs/components/Cover/api" }] },
       { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples", children: [{ label: "Basic", path: "/docs/components/Exhibit/samples/basic" }] }] },
       { label: "Grid", path: "/docs/components/Grid" },
       { label: "Icon", path: "/docs/components/Icon" },
