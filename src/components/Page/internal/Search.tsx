@@ -1,15 +1,16 @@
 import { useCombobox } from "downshift";
 import fuzzaldrin from "fuzzaldrin-plus";
 import { css } from "linaria";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 import { SearchBoxInput } from "../../SearchBoxInput";
 import { SearchBoxListItem } from "../../SearchBoxListItem";
 import { Node } from "../types";
+import Link from "next/link";
 
 interface Props {
+  location: { pathname: string; push: (path: string) => void };
   toc: ReadonlyArray<Node>;
+  Link: typeof Link;
 }
 
 function flatten(n: Node): Array<{ label: string; path: string }> {
@@ -26,9 +27,7 @@ function flatten(n: Node): Array<{ label: string; path: string }> {
   return ret;
 }
 
-function Search({ toc }: Props) {
-  const router = useRouter();
-
+function Search({ location, toc, Link }: Props) {
   const [value, setValue] = React.useState("");
 
   const preparedQuery = fuzzaldrin.prepareQuery(value);
@@ -53,7 +52,7 @@ function Search({ toc }: Props) {
     },
     onSelectedItemChange: ({ selectedItem }) => {
       if (selectedItem) {
-        router.push(selectedItem.path);
+        location.push(selectedItem.path);
       }
       closeMenu();
     }

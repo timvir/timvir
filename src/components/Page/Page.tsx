@@ -18,7 +18,7 @@ configure({
 const Root = "div";
 
 interface Props extends React.ComponentProps<typeof Root> {
-  location: { pathname: string };
+  location: { pathname: string; push: (path: string) => void };
   toc: ReadonlyArray<Node>;
   Link: typeof Link;
 }
@@ -90,7 +90,7 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
         </div>
       </Root>
 
-      {search && <Search toc={toc} />}
+      {search && <Search location={location} toc={toc} Link={Link} />}
     </>
   );
 }
