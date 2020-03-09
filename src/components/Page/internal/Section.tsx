@@ -28,12 +28,17 @@ const Section = ({ location, Link, label, path, children = [] }: Props) => {
   return (
     <section
       className={css`
+        & > div {
+          display: flex;
+          align-items: center;
+        }
         & > div:before {
           opacity: 0;
           color: #2bbc8a;
           content: "›";
-          position: relative;
-          left: 2px;
+          height: 1.1rem;
+          font-size: 1rem;
+          line-height: 1rem;
           transition: all 0.16s;
         }
 
