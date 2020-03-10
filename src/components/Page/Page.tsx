@@ -56,7 +56,6 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
             font-size: 14px;
             line-height: 1.725;
             color: rgba(0, 0, 0, 0.85);
-            overflow-x: hidden;
             min-height: 100vh;
 
             display: grid;
