@@ -10,7 +10,7 @@ export const grid = css`
   grid-column-gap: 16px;
 
   @media (min-width: 60rem) {
-    grid-template-columns: [le] 1fr [lc] minmax(min-content, 48rem) [rc] 1fr [re];
+    grid-template-columns: [le] 1fr [lc] minmax(0, 48rem) [rc] 1fr [re];
     grid-column-gap: 24px;
   }
 
