@@ -58,7 +58,7 @@ export const h3 = styled.h3`
   }
 `;
 
-export const h4 = styled.h3`
+export const h4 = styled.h4`
   position: relative;
   display: block;
   margin-top: 2rem;
@@ -103,6 +103,15 @@ export const blockquote = styled.blockquote`
   & > *:last-child {
     margin-bottom: 0;
   }
+`;
+
+export const hr = styled.hr`
+  display: block;
+  border: none;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  opacity: .25;
 `;
 
 export const code = props => {

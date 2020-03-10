@@ -1,5 +1,6 @@
 export default [
   { label: "Home", path: "/" },
+  { label: "Documetation", path: "/docs/getting-started" },
   { label: "Commands", path: "/commands" },
   {
     label: "Packages",
