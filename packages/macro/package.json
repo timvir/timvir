@@ -1,0 +1,10 @@
+{
+  "name": "@timvir/macro",
+  "version": "0.0.0",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:timvir/timvir.git",
+    "directory": "packages/macro"
+  }
+}

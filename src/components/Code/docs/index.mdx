@@ -1,6 +1,8 @@
 import Wrapper from "../../../timvir/wrapper";
 export default Wrapper
 
+import { Sample } from "../../../../packages/macro";
+
 import { Code } from "..";
 import { Exhibit } from "../../Exhibit";
 
@@ -9,6 +11,21 @@ import { Exhibit } from "../../Exhibit";
 The `<Code>` component provides syntax highlighting for code blocks.
 
 <Exhibit bleed={24}>
+  <Code language="jsx">
+    <Sample as="source" component=".." variant="basic" />
+  </Code>
+</Exhibit>
+
+And this is how that code looks when rendered:
+
+<Exhibit bleed={24}>
+  <Sample component=".." variant="basic" />
+</Exhibit>
+
+The default language is "markdown", but you can specify any of the languages
+which are supported by [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer).
+
+<Exhibit bleed={24} caption="Language: javascript">
   <Code language="javascript">
     const answer = 42;
   </Code>
