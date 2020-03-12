@@ -1,9 +1,9 @@
 import Wrapper from "../../timvir/wrapper";
-export default Wrapper
+export default Wrapper;
 
 # Component Samples
 
-A *Component Sample* is a standalone JavaScript module (ESM), with a default export that is a React component.
+A _Component Sample_ is a standalone JavaScript module (ESM), with a default export that is a React component.
 
 ```
 import React from "react";
@@ -13,19 +13,19 @@ export default () => <div>This is a Component Sample</div>
 
 The Component Sample Module can be used in the following ways:
 
- * As a standalone page, to show the Component Sample without any context or explanation around it.
- * Loaded into an `<Exhibit>` in a documentation page, to illustrate how the component looks in various states.
- * Rendered as source code into a documentation page, to provide examples how to use the component.
- * Used as a semi-realistic placeholder in your application.
- * When made available as a standalone page, that page can be loaded in an iframe to illustrate responsive behaviour.
+- As a standalone page, to show the Component Sample without any context or explanation around it.
+- Loaded into an `<Exhibit>` in a documentation page, to illustrate how the component looks in various states.
+- Rendered as source code into a documentation page, to provide examples how to use the component.
+- Used as a semi-realistic placeholder in your application.
+- When made available as a standalone page, that page can be loaded in an iframe to illustrate responsive behaviour.
 
 At the very least it's useful to have at least one sample. In fact, the Timvir CLI tool generates a `basic` sample
 when you create a new component. Besides the basic sample, consider other samples such as:
 
- * **minimal**: To illustrate the minimal amount of props that need to be provided.
- * **empty**: To show how the component looks in the empty state (ie. a list with zero items)
- * **loading** or **error**: Loading / error states for components which load data from a remote source.
- * **anatomy**: To visually illustrate the individual parts that the component is made out of.
+- **minimal**: To illustrate the minimal amount of props that need to be provided.
+- **empty**: To show how the component looks in the empty state (ie. a list with zero items)
+- **loading** or **error**: Loading / error states for components which load data from a remote source.
+- **anatomy**: To visually illustrate the individual parts that the component is made out of.
 
 ## Parametrized Samples
 
