@@ -31,9 +31,10 @@ function Exhibit({ title, source, caption, bleed = 0, children, style, ...props 
       {title && mdx("h3", {}, title)}
       <div
         style={{
+          borderRadius: "inherit",
           margin: `0 -${bleed}px`,
           padding: bleed,
-          border: bleed !== 0 && `1px solid #EFEFEF`,
+          border: bleed !== 0 ? `1px solid #EFEFEF` : "none",
           background:
             "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=)"
         }}
