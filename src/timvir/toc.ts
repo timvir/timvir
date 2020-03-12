@@ -7,6 +7,7 @@ export default [
     children: [
       { label: "@timvir/cli", path: "/packages/cli" },
       { label: "@timvir/core", path: "/packages/core" },
+      { label: "@timvir/macro", path: "/packages/macro" },
       { label: "@timvir/blocks", path: "/packages/blocks" }
     ]
   },

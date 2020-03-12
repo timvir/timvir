@@ -1,3 +1,4 @@
 cli @timvir/cli
 core @timvir/core
+macro @timvir/macro
 blocks @timvir/blocks
