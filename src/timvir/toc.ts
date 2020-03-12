@@ -27,5 +27,6 @@ export default [
       { label: "SearchBoxListItem", path: "/docs/components/SearchBoxListItem" },
       { label: "Swatch", path: "/docs/components/Swatch", children: [{ label: "API", path: "/docs/components/Swatch/api" }] }
     ]
-  }
+  },
+  { label: "Concepts", children: [{ label: "Component Sample", path: "/concepts/component-sample" }] }
 ] as const;
