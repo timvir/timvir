@@ -13,9 +13,15 @@ module.exports = createMacro(({ references, babel, state }) => {
       const attrs = referencePath.parent.attributes;
       const { filename } = referencePath.hub.file.opts;
 
+      const component = findAttrValue(attrs, "component") || "..";
+      const variant = findAttrValue(attrs, "variant");
+
       const as = findAttrValue(attrs, "as") || "component";
-      const component = attrs.find(matchAttr("component")).value.value;
-      const variant = attrs.find(matchAttr("variant")).value.value;
+      const props = findAttrExpression(attrs, "props") || t.objectExpression([]);
+
+      const otherAttributes = attrs.filter(
+        ({ name }) => name.type === "JSXIdentifier" && !(name.name in { component: 1, variant: 1, as: 1, props: 1 })
+      );
 
       /*
        * The module which holds the sample.
@@ -36,7 +42,12 @@ module.exports = createMacro(({ references, babel, state }) => {
           );
 
           referencePath.parentPath.parentPath.replaceWith(
-            t.jsxElement(t.jsxOpeningElement(t.jsxIdentifier(name), [], true), null, [], true)
+            t.jsxElement(
+              t.jsxOpeningElement(t.jsxIdentifier(name), [...otherAttributes, t.jsxSpreadAttribute(props)], true),
+              null,
+              [],
+              true
+            )
           );
         },
         source: () => {
@@ -72,4 +83,9 @@ const matchAttr = n => ({ name }) => name.type === "JSXIdentifier" && name.name 
 const findAttrValue = (attrs, n) => {
   const attr = attrs.find(matchAttr(n));
   return attr ? attr.value.value : undefined;
+};
+
+const findAttrExpression = (attrs, n) => {
+  const attr = attrs.find(matchAttr(n));
+  return attr ? attr.value.expression : undefined;
 };
