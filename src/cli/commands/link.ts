@@ -3,6 +3,7 @@ import kleur from "kleur";
 import mkdirp from "mkdirp";
 import { basename, dirname, join } from "path";
 import { write } from "../stdlib";
+import { template } from "../template";
 
 /**
  * Scan all the toc.timvir files and combine them into the toc.ts module.
@@ -18,7 +19,7 @@ export default async function() {
     for (const file of docs) {
       const path = join("src", "pages", "docs", "components", component, basename(file, ".mdx") + ".tsx");
       await mkdirp(dirname(path));
-      write(path, `export { default } from "../../../../components/${component}/docs/${file}";\n`, true);
+      write(path, tmpl({ component, file }).trim() + "\n", true);
     }
 
     const samples = await fs.promises.readdir(join("src", "components", component, "samples"));
@@ -33,3 +34,15 @@ export default async function() {
     }
   }
 }
+
+const tmpl = template(`
+import React from "react";
+import Wrapper from "../../../../timvir/wrapper";
+import Content from "../../../../components/{{= it.component }}/docs/{{= it.file }}";
+
+export default () => (
+  <Wrapper>
+    <Content />
+  </Wrapper>
+)
+`);

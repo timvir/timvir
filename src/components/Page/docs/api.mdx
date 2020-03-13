@@ -1,6 +1,3 @@
-import Wrapper from "../../../timvir/wrapper";
-export default Wrapper;
-
 # API
 
 <div style={ { display: "grid", gridTemplateColumns: "min-content 1fr" } }>
@@ -12,7 +9,7 @@ export default Wrapper;
 
 ## Props
 
-<Props {...{"fields":[{"name":"location","type":{"optional":false,"name":"{ pathname: string; }","module":""},"comment":{"shortText":""}},{"name":"toc","type":{"optional":false,"name":"readonly Node[]","module":""},"comment":{"shortText":""}},{"name":"Link","type":{"optional":false,"name":"typeof Link","module":""},"comment":{"shortText":""}}]}} />
+<Props {...{"fields":[{"name":"location","type":{"optional":false,"name":"{ pathname: string; push: (path: string) => void; }","module":""},"comment":{"shortText":""}},{"name":"toc","type":{"optional":false,"name":"readonly Node[]","module":""},"comment":{"shortText":""}},{"name":"Link","type":{"optional":false,"name":"typeof Link","module":""},"comment":{"shortText":""}}]}} />
 
 export const required = (
   <svg
