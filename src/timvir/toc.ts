@@ -23,6 +23,7 @@ export default [
       { label: "Grid", path: "/docs/components/Grid" },
       { label: "Icon", path: "/docs/components/Icon" },
       { label: "Image", path: "/docs/components/Image" },
+      { label: "Message", path: "/docs/components/Message", children: [{ label: "API", path: "/docs/components/Message/api" }] },
       { label: "Page", path: "/docs/components/Page" },
       { label: "SearchBox", path: "/docs/components/SearchBox" },
       { label: "SearchBoxInput", path: "/docs/components/SearchBoxInput" },
