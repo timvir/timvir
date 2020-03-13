@@ -31,6 +31,7 @@ function Exhibit({ title, source, caption, bleed = 0, children, style, ...props 
       {title && mdx("h3", {}, title)}
       <div
         style={{
+          display: "flow-root",
           borderRadius: "inherit",
           margin: `0 -${bleed}px`,
           padding: bleed,
