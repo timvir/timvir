@@ -3,6 +3,7 @@
  */
 
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import theme from "prism-react-renderer/themes/github";
 import React from "react";
 import { css, cx } from "linaria";
 
@@ -27,7 +28,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 
 function Code({ children, language, ...props }: Props, ref: any /* FIXME */) {
   return (
-    <Highlight {...defaultProps} code={children.trim()} language={language ?? "markup"}>
+    <Highlight {...defaultProps} code={children.trim()} language={language ?? "markup"} theme={theme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Root
           ref={ref}
