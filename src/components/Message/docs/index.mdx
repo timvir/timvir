@@ -1,8 +1,23 @@
 import { Sample } from "../../../../packages/macro"
 import { Exhibit } from "../../Exhibit";
+import { Grid } from "../../Grid";
 
 # Message
 
-<Exhibit bleed={24} source=<Sample variant="basic" as="source" />>
+<Exhibit bleed={8} source=<Sample variant="basic" as="source" />>
   <Sample variant="basic" />
 </Exhibit>
+
+## Variants
+
+<Grid>
+ <Exhibit bleed={8} caption="info">
+    <Sample variant="basic" props={{ variant: "info" }} />
+  </Exhibit>
+  <Exhibit bleed={8} caption="warning">
+    <Sample variant="basic" props={{ variant: "warning" }} />
+  </Exhibit>
+  <Exhibit bleed={8} caption="alert">
+    <Sample variant="basic" props={{ variant: "alert" }} />
+  </Exhibit>
+</Grid>

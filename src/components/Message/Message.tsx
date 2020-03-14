@@ -6,9 +6,11 @@ import { cx, css } from "linaria";
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {}
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+  variant?: "info" | "warning" | "alert";
+}
 
-function Message({ className, children, ...props }: Props, ref: any /* FIXME */) {
+function Message({ variant, className, children, ...props }: Props, ref: any /* FIXME */) {
   return (
     <Root
       ref={ref}
@@ -19,8 +21,9 @@ function Message({ className, children, ...props }: Props, ref: any /* FIXME */)
           background: var(--c-p-0);
           border-radius: 3px;
           padding: 16px 24px 16px 24px;
-          box-shadow: inset 0 0 0 1px var(--c-p-2);
-        `
+          box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2);
+        `,
+        variantStyles[variant]
       )}
       {...props}
     >
@@ -30,3 +33,15 @@ function Message({ className, children, ...props }: Props, ref: any /* FIXME */)
 }
 
 export default React.forwardRef(Message);
+
+const variantStyles = {
+  info: css`
+    background: #f0f2fc;
+  `,
+  warning: css`
+    background: #fcf9f0;
+  `,
+  alert: css`
+    background: #fcf0f0;
+  `
+} as const;
