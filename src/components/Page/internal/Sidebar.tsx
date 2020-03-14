@@ -59,7 +59,7 @@ const Search = () => (
     <div
       role="button"
       className={css`
-        color: #383838;
+        color: var(--c-text);
         font-size: 0.8rem;
         line-height: 1.725;
         cursor: pointer;
@@ -68,7 +68,7 @@ const Search = () => (
         align-items: center;
 
         &:hover {
-          color: #2bbc8a;
+          color: var(--c-p-4);
         }
 
         & > svg {

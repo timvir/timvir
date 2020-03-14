@@ -50,7 +50,7 @@ function Icon({ allSizes, descriptor, ...props }: Props, ref: any /* FIXME */) {
               &:hover .${classNames.name} {
                 opacity: 1;
                 top: 0px;
-                color: #383838;
+                color: var(--c-text);
               }
             `}
             ref={measureRef}

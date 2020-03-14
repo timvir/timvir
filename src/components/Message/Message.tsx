@@ -16,10 +16,10 @@ function Message({ className, children, ...props }: Props, ref: any /* FIXME */)
         className,
         css`
           position: relative;
-          background: #f4fbf8;
+          background: var(--c-p-0);
           border-radius: 3px;
           padding: 16px 24px 16px 24px;
-          box-shadow: inset 0 0 0 1px #2bbc8a88;
+          box-shadow: inset 0 0 0 1px var(--c-p-2);
         `
       )}
       {...props}

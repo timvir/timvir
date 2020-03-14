@@ -75,7 +75,7 @@ function Search({ location, toc, Link }: Props) {
         text-rendering: optimizelegibility;
         font-size: 14px;
         line-height: 1.725;
-        color: #383838;
+        color: var(--c-text);
       `}
     >
       <div

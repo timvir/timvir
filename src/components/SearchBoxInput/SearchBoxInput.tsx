@@ -65,7 +65,7 @@ function SearchBoxInput({ value, onChange, ...props }: Props, ref: any /* FIXME 
           overflow: hidden;
           text-overflow: ellipsis;
 
-          color: #383838;
+          color: var(--c-text);
 
           &:focus {
             outline: 0;

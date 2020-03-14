@@ -64,12 +64,23 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
             @media (min-width: 60rem) {
               grid-template-columns: [l] 300px [m] 1fr [r];
             }
+
+            --c-p-0: #F0FCF6;
+            --c-p-1: #D1F6E4;
+            --c-p-2: #A0DBC1;
+            --c-p-3: #61C19F;
+            --c-p-4: #38A585;
+            --c-p-5: #1B896B;
+
+            --c-gray-8: #303030;
+
+            --c-text: var(--c-gray-8);
           `
         )}
       >
         <div
           className={css`
-            background: rgba(43, 188, 138, 0.16);
+            background: var(--c-p-0);
             border-right: 1px solid rgba(43, 188, 138, 0.1);
             grid-column: l / m;
           `}

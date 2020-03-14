@@ -34,7 +34,7 @@ const Section = ({ location, Link, label, path, children = [] }: Props) => {
         }
         & > div:before {
           opacity: 0;
-          color: #2bbc8a;
+          color: var(--c-p-4);
           content: "›";
           height: 1.1rem;
           font-size: 1rem;
@@ -50,7 +50,7 @@ const Section = ({ location, Link, label, path, children = [] }: Props) => {
         & > div > a {
           display: inline-block;
           margin-left: 0.5ch;
-          color: #383838;
+          color: var(--c-text);
           font-size: 0.8rem;
           line-height: 1.725;
           background: none;
@@ -59,7 +59,7 @@ const Section = ({ location, Link, label, path, children = [] }: Props) => {
           width: 100%;
         }
         & > div:hover a {
-          color: #2bbc8a;
+          color: var(--c-p-4);
         }
         & > & {
           padding: 0 0 0 2ch;

@@ -6,7 +6,7 @@ export const h1 = styled.h1`
   display: block;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  color: #2bbc8a;
+  color: var(--c-p-4);
   letter-spacing: 0.01em;
   font-weight: 700;
   font-style: normal;
@@ -19,7 +19,7 @@ export const h2 = styled.h2`
   display: block;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
-  color: #383838;
+  color: var(--c-text);
   text-transform: none;
   letter-spacing: normal;
   font-weight: bold;
@@ -29,7 +29,7 @@ export const h2 = styled.h2`
     position: absolute;
     top: -4px;
     left: -1.2rem;
-    color: #2bbc8a;
+    color: var(--c-p-4);
     content: "#";
     font-weight: bold;
     font-size: 1.2rem;
@@ -41,7 +41,7 @@ export const h3 = styled.h3`
   display: block;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
-  color: #383838;
+  color: var(--c-text);
   text-transform: none;
   letter-spacing: normal;
   font-weight: bold;
@@ -51,7 +51,7 @@ export const h3 = styled.h3`
     position: absolute;
     top: -3px;
     left: -1rem;
-    color: #2bbc8a;
+    color: var(--c-p-4);
     content: "#";
     font-weight: bold;
     font-size: 1.1rem;
@@ -63,7 +63,7 @@ export const h4 = styled.h4`
   display: block;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
-  color: #383838;
+  color: var(--c-text);
   text-transform: none;
   letter-spacing: normal;
   font-weight: normal;
@@ -73,7 +73,7 @@ export const h4 = styled.h4`
     position: absolute;
     top: -3px;
     left: -1rem;
-    color: #2bbc8a;
+    color: var(--c-p-4);
     content: "#";
     font-weight: bold;
     font-size: 1.1rem;
