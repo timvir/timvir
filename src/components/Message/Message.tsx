@@ -22,6 +22,17 @@ function Message({ variant, className, children, ...props }: Props, ref: any /* 
           border-radius: 3px;
           padding: 16px 24px 16px 24px;
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2);
+
+          & > *:first-child {
+            margin-top: 0;
+          }
+          & > *:last-child {
+            margin-bottom: 0;
+          }
+
+          & > h3:before {
+            display: none;
+          }
         `,
         variantStyles[variant]
       )}
