@@ -7,23 +7,17 @@ import { Exhibit } from "../../Exhibit";
 
 The `<Code>` component provides syntax highlighting for code blocks.
 
-<Exhibit bleed={24}>
-  <Code language="jsx">
-    <Sample variant="basic" as="source" />
-  </Code>
-</Exhibit>
+<Code language="jsx">
+  <Sample variant="basic" as="source" />
+</Code>
 
 And this is how that code looks when rendered:
 
-<Exhibit bleed={24}>
-  <Sample variant="basic" language="javascript" />
-</Exhibit>
+<Sample variant="basic" language="javascript" />
 
 The default language is "markdown", but you can specify any of the languages
 which are supported by [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer).
 
-<Exhibit bleed={24} caption="Language: javascript">
-  <Code language="javascript">
-    const answer = 42;
-  </Code>
-</Exhibit>
+<Code language="javascript">
+  const answer = 42;
+</Code>

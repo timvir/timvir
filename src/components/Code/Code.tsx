@@ -9,9 +9,9 @@ import { css, cx } from "linaria";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "pre";
+const Root = "pre";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   /**
    * The code that should be highlighted.
    */
@@ -29,27 +29,40 @@ function Code({ children, language, ...props }: Props, ref: any /* FIXME */) {
   return (
     <Highlight {...defaultProps} code={children.trim()} language={language ?? "markup"}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Component
+        <Root
           ref={ref}
           {...props}
           className={cx(
             className,
             css`
               border-radius: 3px;
-              padding: 16px 24px;
               margin: 0;
+              overflow-x: auto;
             `
           )}
           style={style}
         >
-          {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} />
+          <div
+            className={css`
+              display: grid;
+              grid-template-columns: min-content;
+            `}
+          >
+            <div
+              className={css`
+                padding: 16px 24px;
+              `}
+            >
+              {tokens.map((line, i) => (
+                <div {...getLineProps({ line, key: i })}>
+                  {line.map((token, key) => (
+                    <span {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
               ))}
             </div>
-          ))}
-        </Component>
+          </div>
+        </Root>
       )}
     </Highlight>
   );
