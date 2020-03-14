@@ -10,6 +10,8 @@ module.exports = createMacro(({ references, babel, state }) => {
 
   if (references.Sample) {
     references.Sample.forEach(referencePath => {
+      if (referencePath.parent.type === "JSXClosingElement") return;
+
       const attrs = referencePath.parent.attributes;
       const { filename } = referencePath.hub.file.opts;
 
@@ -45,7 +47,7 @@ module.exports = createMacro(({ references, babel, state }) => {
             t.jsxElement(
               t.jsxOpeningElement(t.jsxIdentifier(name), [...otherAttributes, t.jsxSpreadAttribute(props)], true),
               null,
-              [],
+              referencePath.parentPath.parentPath.node.children,
               true
             )
           );
