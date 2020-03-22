@@ -96,7 +96,8 @@ export default [
       resolve({ mainFields: "main", extensions }),
       commonjs({
         namedExports: {
-          "linaria/react": ["styled"]
+          "linaria/react": ["styled"],
+          "react-hotkeys": ["configure", "GlobalHotKeys"]
         }
       }),
       replace({ "process.env.NODE_ENV": `"production"` }),
