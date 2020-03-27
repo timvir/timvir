@@ -37,7 +37,7 @@
     "prettier": "^2.0.2",
     "prism-react-renderer": "^1.0.2",
     "prompts": "^2.3.2",
-    "react": "^16.13.0",
+    "react": "^16.13.1",
     "react-dom": "^16.13.0",
     "react-hotkeys": "^2.0.0",
     "react-measure": "^2.3.0",
