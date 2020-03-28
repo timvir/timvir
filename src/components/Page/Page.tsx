@@ -9,7 +9,7 @@ import { grid } from "./layout";
 import { Node } from "./types";
 
 configure({
-  ignoreTags: ["select"]
+  ignoreTags: ["select"],
 });
 
 /**
@@ -18,8 +18,8 @@ configure({
 const Root = "div";
 
 interface Props extends React.ComponentProps<typeof Root> {
-  location: { pathname: string; push: (path: string) => void };
-  toc: ReadonlyArray<Node>;
+  location: { asPath: string; push: (path: string) => void };
+  toc: readonly Node[];
   Link: typeof Link;
 }
 
@@ -28,17 +28,17 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
 
   const keyMap = {
     SEARCH: "command+p",
-    ESC: "escape"
+    ESC: "escape",
   };
 
   const handlers = {
-    SEARCH: ev => {
+    SEARCH: (ev) => {
       ev.preventDefault();
-      setSearch(x => !x);
+      setSearch((x) => !x);
     },
     ESC: () => {
       setSearch(false);
-    }
+    },
   };
 
   return (
@@ -65,12 +65,12 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
               grid-template-columns: [l] 300px [m] 1fr [r];
             }
 
-            --c-p-0: #F0FCF6;
-            --c-p-1: #D1F6E4;
-            --c-p-2: #A0DBC1;
-            --c-p-3: #61C19F;
-            --c-p-4: #38A585;
-            --c-p-5: #1B896B;
+            --c-p-0: #f0fcf6;
+            --c-p-1: #d1f6e4;
+            --c-p-2: #a0dbc1;
+            --c-p-3: #61c19f;
+            --c-p-4: #38a585;
+            --c-p-5: #1b896b;
 
             --c-gray-8: #303030;
 

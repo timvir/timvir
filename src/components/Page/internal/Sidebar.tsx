@@ -1,13 +1,12 @@
 import { css, cx } from "linaria";
 import Link from "next/link";
 import React from "react";
-import { noLayout } from "../layout";
 import { Node } from "../types";
 import Section from "./Section";
 
 interface Props {
-  location: { pathname: string };
-  toc: ReadonlyArray<Node>;
+  location: { asPath: string };
+  toc: readonly Node[];
   Link: typeof Link;
 }
 

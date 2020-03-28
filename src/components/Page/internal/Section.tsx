@@ -4,26 +4,26 @@ import React from "react";
 import { Node } from "../types";
 
 interface Props extends Node {
-  location: { pathname: string };
+  location: { asPath: string };
   Link: typeof Link;
 }
 
 const Section = ({ location, Link, label, path, children = [] }: Props) => {
   const [active, setActive] = React.useState<boolean>(() => {
     if (path) {
-      return location.pathname.startsWith(path);
+      return location.asPath.startsWith(path);
     } else if (children.length > 0) {
-      return children.some(({ path }) => path && location.pathname.startsWith(path))
+      return children.some(({ path }) => path && location.asPath.startsWith(path));
     } else {
-      return false
+      return false;
     }
   });
 
   React.useEffect(() => {
-    if (path && location.pathname.startsWith(path)) {
+    if (path && location.asPath.startsWith(path)) {
       setActive(true);
     }
-  }, [path, location.pathname]);
+  }, [path, location.asPath]);
 
   return (
     <section
@@ -66,13 +66,13 @@ const Section = ({ location, Link, label, path, children = [] }: Props) => {
         }
       `}
     >
-      <div data-active={location.pathname === path}>
+      <div data-active={location.asPath === path}>
         {path ? (
           <Link href={path}>
             <a>{label}</a>
           </Link>
         ) : (
-          <a href="#" onClick={() => setActive(x => !x)}>
+          <a href="#" onClick={() => setActive((x) => !x)}>
             {label}
           </a>
         )}
