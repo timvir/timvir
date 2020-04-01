@@ -8,8 +8,8 @@ export default [
       { label: "@timvir/cli", path: "/packages/cli" },
       { label: "@timvir/core", path: "/packages/core" },
       { label: "@timvir/macro", path: "/packages/macro" },
-      { label: "@timvir/blocks", path: "/packages/blocks" }
-    ]
+      { label: "@timvir/blocks", path: "/packages/blocks" },
+    ],
   },
   {
     label: "Components",
@@ -19,7 +19,7 @@ export default [
       { label: "ColorBar", path: "/docs/components/ColorBar", children: [{ label: "API", path: "/docs/components/ColorBar/api" }] },
       { label: "ColorBook", path: "/docs/components/ColorBook" },
       { label: "Cover", path: "/docs/components/Cover", children: [{ label: "API", path: "/docs/components/Cover/api" }] },
-      { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples", children: [{ label: "Basic", path: "/docs/components/Exhibit/samples/basic" }] }] },
+      { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples" }] },
       { label: "Grid", path: "/docs/components/Grid" },
       { label: "Icon", path: "/docs/components/Icon" },
       { label: "Image", path: "/docs/components/Image" },
@@ -28,8 +28,8 @@ export default [
       { label: "SearchBox", path: "/docs/components/SearchBox" },
       { label: "SearchBoxInput", path: "/docs/components/SearchBoxInput" },
       { label: "SearchBoxListItem", path: "/docs/components/SearchBoxListItem" },
-      { label: "Swatch", path: "/docs/components/Swatch", children: [{ label: "API", path: "/docs/components/Swatch/api" }] }
-    ]
+      { label: "Swatch", path: "/docs/components/Swatch", children: [{ label: "API", path: "/docs/components/Swatch/api" }] },
+    ],
   },
-  { label: "Concepts", children: [{ label: "Component Sample", path: "/concepts/component-sample" }] }
+  { label: "Concepts", children: [{ label: "Component Sample", path: "/concepts/component-sample" }] },
 ] as const;
