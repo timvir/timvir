@@ -3,7 +3,7 @@ set -euo pipefail
 
 >index.ts
 
-for BLOCK in Code Exhibit Grid Swatch ColorBar; do
+for BLOCK in Code ColorBar Exhibit Grid Message Swatch; do
   mkdir -p $PWD/$BLOCK
   echo "export * from \"../../../components/$BLOCK\";" > $PWD/$BLOCK/index.ts
 
