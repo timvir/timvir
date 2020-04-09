@@ -89,7 +89,7 @@ export default [
     output: [
       {
         file: "packages/blocks/index.js",
-        format: "esm"
+        format: "cjs"
       }
     ],
     plugins: [
