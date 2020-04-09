@@ -29,6 +29,7 @@ export default [
       { label: "SearchBoxInput", path: "/docs/components/SearchBoxInput" },
       { label: "SearchBoxListItem", path: "/docs/components/SearchBoxListItem" },
       { label: "Swatch", path: "/docs/components/Swatch", children: [{ label: "API", path: "/docs/components/Swatch/api" }] },
+      { label: "Viewport", path: "/docs/components/Viewport" },
     ],
   },
   { label: "Concepts", children: [{ label: "Component Sample", path: "/concepts/component-sample" }] },
