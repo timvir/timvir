@@ -1,19 +1,21 @@
 import dynamic from "next/dynamic";
 import React from "react";
-import Wrapper from "../../../../../timvir/wrapper";
+import { theme } from "../../../../../packages/core";
 
 export default ({ component, sample }) => {
   const Component = dynamic(() => import(`../../../../../components/${component}/samples/${sample}`));
 
   return (
-    <Wrapper>
+    <div className={theme}>
       <Component />
-    </Wrapper>
+    </div>
   );
 };
 
 export async function getStaticPaths() {
   const fs = await import("fs");
+  const path = await import("path");
+
   const components = await fs.promises.readdir("src/components");
 
   const paths = [];
@@ -21,7 +23,7 @@ export async function getStaticPaths() {
     try {
       const samples = await fs.promises.readdir(`src/components/${component}/samples`);
       for (const sample of samples) {
-        paths.push({ params: { component, sample } });
+        paths.push({ params: { component, sample: path.basename(sample, path.extname(sample)) } });
       }
     } catch {}
   }

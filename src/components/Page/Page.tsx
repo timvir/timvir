@@ -6,6 +6,7 @@ import { configure, GlobalHotKeys } from "react-hotkeys";
 import * as mdxComponents from "./components";
 import { Search, Sidebar } from "./internal";
 import { grid } from "./layout";
+import { theme } from "./theme";
 import { Node } from "./types";
 
 configure({
@@ -49,13 +50,8 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
         {...props}
         className={cx(
           className,
+          theme,
           css`
-            font-family: "Menlo", "Meslo LG", monospace;
-            font-feature-settings: "liga", "kern";
-            text-rendering: optimizelegibility;
-            font-size: 14px;
-            line-height: 1.725;
-            color: rgba(0, 0, 0, 0.85);
             min-height: 100vh;
 
             display: grid;
@@ -64,17 +60,6 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
             @media (min-width: 60rem) {
               grid-template-columns: [l] 300px [m] 1fr [r];
             }
-
-            --c-p-0: #f0fcf6;
-            --c-p-1: #d1f6e4;
-            --c-p-2: #a0dbc1;
-            --c-p-3: #61c19f;
-            --c-p-4: #38a585;
-            --c-p-5: #1b896b;
-
-            --c-gray-8: #303030;
-
-            --c-text: var(--c-gray-8);
           `
         )}
       >
