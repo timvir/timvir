@@ -89,15 +89,16 @@ export default [
     output: [
       {
         file: "packages/blocks/index.js",
-        format: "cjs"
+        format: "esm"
       }
     ],
     plugins: [
-      resolve({ mainFields: "main", extensions }),
+      resolve({ mainFields: ["module", "main"], extensions }),
       commonjs({
         namedExports: {
+          "node_modules/downshift/node_modules/react-is/index.js": ["isForwardRef"],
           "linaria/react": ["styled"],
-          "react-hotkeys": ["configure", "GlobalHotKeys"]
+          "node_modules/react-hotkeys/index.es.js": ["configure", "GlobalHotKeys"]
         }
       }),
       replace({ "process.env.NODE_ENV": `"production"` }),
