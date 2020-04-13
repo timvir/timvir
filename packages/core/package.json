@@ -5,7 +5,6 @@
   "types": "packages/core/index.d.ts",
   "peerDependencies": {
     "@mdx-js/react": "*",
-    "downshift": "*",
     "react-hotkeys": "*",
     "react": "*"
   },

@@ -1,3 +1,6 @@
+import Wrapper from "../../../timvir/wrapper";
+export default Wrapper;
+
 # API
 
 <div style={ { display: "grid", gridTemplateColumns: "min-content 1fr" } }>
@@ -9,7 +12,7 @@
 
 ## Props
 
-<Props {...{"fields":[{"name":"location","type":{"optional":false,"name":"{ asPath: string; push: (path: string) => void; }","module":""},"comment":{"shortText":""}},{"name":"toc","type":{"optional":false,"name":"readonly Node[]","module":""},"comment":{"shortText":""}},{"name":"Link","type":{"optional":false,"name":"typeof Link","module":""},"comment":{"shortText":""}},{"name":"search","type":{"optional":true,"name":"{ label?: ReactNode; Component: ComponentType<{ open: boolean; }>; }","module":""},"comment":{"shortText":""}}]}} />
+<Props {...{"fields":[{"name":"location","type":{"optional":false,"name":"{ asPath: string; push: (path: string) => void; }","module":""},"comment":{"shortText":""}},{"name":"toc","type":{"optional":false,"name":"readonly Node[]","module":""},"comment":{"shortText":""}},{"name":"Link","type":{"optional":false,"name":"typeof Link","module":""},"comment":{"shortText":""}},{"name":"open","type":{"optional":true,"name":"boolean","module":""},"comment":{"shortText":""}},{"name":"q","type":{"optional":false,"name":"(query: string) => Promise<{ totalCount: number; edges: { node: { path: string; label: string; context?: string; }; }[]; }>","module":""},"comment":{"shortText":""}}]}} />
 
 export const required = (
   <svg

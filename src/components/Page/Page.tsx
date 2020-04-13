@@ -3,8 +3,9 @@ import { css, cx } from "linaria";
 import Link from "next/link";
 import React from "react";
 import { configure, GlobalHotKeys } from "react-hotkeys";
+import { useImmer } from "use-immer";
 import * as mdxComponents from "./components";
-import { Search, Sidebar } from "./internal";
+import { Sidebar } from "./internal";
 import { grid } from "./layout";
 import { theme } from "./theme";
 import { Node } from "./types";
@@ -22,10 +23,19 @@ interface Props extends React.ComponentProps<typeof Root> {
   location: { asPath: string; push: (path: string) => void };
   toc: readonly Node[];
   Link: typeof Link;
+
+  search?: {
+    label?: React.ReactNode;
+    Component: React.ComponentType<{ open: boolean }>;
+  };
 }
 
-function Page({ location, toc, Link, children, className, ...props }: Props, ref: any /* FIXME */) {
-  const [search, setSearch] = React.useState(false);
+function Page({ location, toc, Link, children, className, search, ...props }: Props, ref: any /* FIXME */) {
+  const [state, mutate] = useImmer({
+    search: {
+      open: false,
+    },
+  });
 
   const keyMap = {
     SEARCH: "command+p",
@@ -35,10 +45,14 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
   const handlers = {
     SEARCH: (ev) => {
       ev.preventDefault();
-      setSearch((x) => !x);
+      mutate((draft) => {
+        draft.search.open = !draft.search.open;
+      });
     },
     ESC: () => {
-      setSearch(false);
+      mutate((draft) => {
+        draft.search.open = false;
+      });
     },
   };
 
@@ -47,6 +61,7 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
       <GlobalHotKeys keyMap={keyMap} handlers={handlers} />
 
       <Root
+        ref={ref}
         {...props}
         className={cx(
           className,
@@ -70,7 +85,19 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
             grid-column: l / m;
           `}
         >
-          <Sidebar location={location} toc={toc} Link={Link} />
+          <Sidebar
+            location={location}
+            toc={toc}
+            Link={Link}
+            search={{
+              open: () => {
+                mutate((draft) => {
+                  draft.search.open = true;
+                });
+              },
+              ...search,
+            }}
+          />
         </div>
 
         <div
@@ -85,7 +112,7 @@ function Page({ location, toc, Link, children, className, ...props }: Props, ref
         </div>
       </Root>
 
-      {search && <Search location={location} toc={toc} Link={Link} />}
+      {search && <search.Component {...state.search} />}
     </>
   );
 }

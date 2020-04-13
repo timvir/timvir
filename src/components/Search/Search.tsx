@@ -1,82 +1,94 @@
 import { useCombobox } from "downshift";
 import fuzzaldrin from "fuzzaldrin-plus";
-import { css } from "linaria";
-import React from "react";
-import { SearchBoxInput } from "../../SearchBoxInput";
-import { SearchBoxListItem } from "../../SearchBoxListItem";
-import { Node } from "../types";
+import { css, cx } from "linaria";
 import Link from "next/link";
+import React from "react";
+import { Node } from "../Page/types";
+import { SearchBoxInput } from "../SearchBoxInput";
+import { SearchBoxListItem } from "../SearchBoxListItem";
+import { Highlight } from "./internal";
 
-interface Props {
+/**
+ * The underlying DOM element which is rendered by this component.
+ */
+const Root = "div";
+
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   location: { asPath: string; push: (path: string) => void };
   toc: readonly Node[];
   Link: typeof Link;
+
+  open?: boolean;
+
+  q: (
+    query: string
+  ) => Promise<{
+    totalCount: number;
+    edges: Array<{ node: { path: string; label: string; context?: string } }>;
+  }>;
 }
 
-function flatten(n: Node): Array<{ label: string; path: string }> {
-  let ret: Array<{ label: string; path: string }> = [];
-
-  if (n.path) {
-    ret.push({ label: n.label, path: n.path });
-  }
-
-  if (n.children) {
-    ret = [...ret, ...n.children.flatMap(flatten)];
-  }
-
-  return ret;
-}
-
-function Search({ location, toc, Link }: Props) {
+function Search({ location, toc, Link, open, q, className, ...props }: Props, ref: any /* FIXME */) {
   const [value, setValue] = React.useState("");
+  const [result, setResult] = React.useState<
+    | undefined
+    | {
+        totalCount: number;
+        edges: Array<{ node: { path: string; label: string; context?: string } }>;
+      }
+  >(undefined);
 
-  const preparedQuery = fuzzaldrin.prepareQuery(value);
-  const items = toc
-    .flatMap((n) => flatten(n))
-    .map((n) => ({
-      ...n,
-      score: fuzzaldrin.score(n.path, value, {
-        preparedQuery,
-      }),
-    }))
-    .filter((n) => (value ? n.score > 0 : true))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 10);
+  React.useEffect(() => {
+    q(value).then((result) => {
+      setResult(result);
+    });
+  }, [value, q, setResult]);
+
+  const items = result?.edges ?? [];
 
   const { getMenuProps, getInputProps, highlightedIndex, getItemProps, closeMenu } = useCombobox({
     defaultHighlightedIndex: 0,
     items,
-    itemToString: (item) => (item ? item.path : ""),
+    itemToString: (item) => (item ? item.node.label : ""),
     onInputValueChange: ({ inputValue }) => {
       setValue(inputValue);
     },
     onSelectedItemChange: ({ selectedItem }) => {
       if (selectedItem) {
-        location.push(selectedItem.path);
+        location.push(selectedItem.node.path);
       }
       closeMenu();
     },
   });
 
-  return (
-    <div
-      className={css`
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        bottom: 0px;
-        z-index: 999;
-        pointer-events: none;
-        overflow: hidden;
+  if (!open) {
+    return null;
+  }
 
-        font-family: "Menlo", "Meslo LG", monospace;
-        font-feature-settings: "liga", "kern";
-        text-rendering: optimizelegibility;
-        font-size: 14px;
-        line-height: 1.725;
-        color: var(--c-text);
-      `}
+  return (
+    <Root
+      ref={ref}
+      {...props}
+      className={cx(
+        className,
+        css`
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          right: 0px;
+          bottom: 0px;
+          z-index: 999;
+          pointer-events: none;
+          overflow: hidden;
+
+          font-family: "Menlo", "Meslo LG", monospace;
+          font-feature-settings: "liga", "kern";
+          text-rendering: optimizelegibility;
+          font-size: 14px;
+          line-height: 1.725;
+          color: var(--c-text);
+        `
+      )}
     >
       <div
         className={css`
@@ -135,7 +147,7 @@ function Search({ location, toc, Link }: Props) {
               `}
             >
               {items.map((item, index) => (
-                <Link href={item.path}>
+                <Link href={item.node.path}>
                   <SearchBoxListItem
                     {...getItemProps({ item, index })}
                     icon={
@@ -149,8 +161,8 @@ function Search({ location, toc, Link }: Props) {
                         </g>
                       </svg>
                     }
-                    label={<Highlight string={item.path} query={value} />}
-                    context="Page"
+                    label={<Highlight string={item.node.path} query={value} />}
+                    context={item.node.context}
                     style={{
                       background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined,
                     }}
@@ -161,24 +173,51 @@ function Search({ location, toc, Link }: Props) {
           </div>
         </div>
       </div>
-    </div>
+    </Root>
   );
 }
 
-export default Search;
+export default React.forwardRef(Search);
 
-interface HighlightProps {
-  string: string;
-  query: string;
+export function defaultSearch(toc: readonly Node[]) {
+  return {
+    q: async (query: string) => {
+      const preparedQuery = fuzzaldrin.prepareQuery(query);
+      const items = toc
+        .flatMap((n) => flatten(n))
+        .map((n) => ({
+          ...n,
+          score: fuzzaldrin.score(n.path, query, {
+            preparedQuery,
+          }),
+        }))
+        .filter((n) => (query ? n.score > 0 : true))
+        .sort((a, b) => b.score - a.score);
+
+      return {
+        totalCount: items.length,
+        edges: items.slice(0, 10).map((e) => ({
+          node: {
+            path: e.path,
+            label: e.path,
+            context: "Page",
+          },
+        })),
+      };
+    },
+  };
 }
 
-const Highlight = ({ string, query }: HighlightProps) => {
-  const match = fuzzaldrin.wrap(string, query);
-  return (
-    <span
-      dangerouslySetInnerHTML={{
-        __html: match.length === 0 ? string : match,
-      }}
-    />
-  );
-};
+function flatten(n: Node): Array<{ label: string; path: string }> {
+  let ret: Array<{ label: string; path: string }> = [];
+
+  if (n.path) {
+    ret.push({ label: n.label, path: n.path });
+  }
+
+  if (n.children) {
+    ret = [...ret, ...n.children.flatMap(flatten)];
+  }
+
+  return ret;
+}
