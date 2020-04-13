@@ -24,8 +24,21 @@ interface Props extends React.ComponentProps<typeof Root> {
   toc: readonly Node[];
   Link: typeof Link;
 
+  /**
+   * Search Configuration. When provided, then the Search menu will appear in the sidebar.
+   */
   search?: {
+    /**
+     * The label that is used in th sidebar for the search menu.
+     *
+     * @default "Quick Search"
+     */
     label?: React.ReactNode;
+
+    /**
+     * The Search component. It is always rendered in the DOM tree. When the search menu
+     * is activated, then the 'open' prop is set to true.
+     */
     Component: React.ComponentType<{ open: boolean }>;
   };
 }
