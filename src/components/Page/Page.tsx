@@ -1,10 +1,10 @@
-import { MDXProvider } from "@mdx-js/react";
+import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
 import { css, cx } from "linaria";
 import Link from "next/link";
 import React from "react";
 import { configure, GlobalHotKeys } from "react-hotkeys";
 import { useImmer } from "use-immer";
-import * as mdxComponents from "./components";
+import * as mdxComponentsBase from "./components";
 import { Sidebar } from "./internal";
 import { grid } from "./layout";
 import { theme } from "./theme";
@@ -25,6 +25,16 @@ interface Props extends React.ComponentProps<typeof Root> {
   Link: typeof Link;
 
   /**
+   * Overrides the built-in MDX component implementations.
+   *
+   * Timvir only provides styling for Markdown components, no interactivity or customization.
+   * This is done to keep the core small. For example, code blocks do not provide syntax
+   * highlighting. If you want to enable syntax highlighting in code blocks, use the
+   * '<Code>' component from '@timvir/blocks'.
+   */
+  mdxComponents?: MDXProviderComponents;
+
+  /**
    * Search Configuration. When provided, then the Search menu will appear in the sidebar.
    */
   search?: {
@@ -43,7 +53,10 @@ interface Props extends React.ComponentProps<typeof Root> {
   };
 }
 
-function Page({ location, toc, Link, children, className, search, ...props }: Props, ref: any /* FIXME */) {
+function Page(
+  { location, toc, Link, className, search, mdxComponents, children, ...props }: Props,
+  ref: any /* FIXME */
+) {
   const [state, mutate] = useImmer({
     search: {
       open: false,
@@ -121,7 +134,7 @@ function Page({ location, toc, Link, children, className, search, ...props }: Pr
             `
           )}
         >
-          <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+          <MDXProvider components={{ ...mdxComponentsBase, ...mdxComponents }}>{children}</MDXProvider>
         </div>
       </Root>
 

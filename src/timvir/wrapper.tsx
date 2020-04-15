@@ -1,10 +1,12 @@
+import { MDXProviderComponents } from "@mdx-js/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { Code } from "../components/Code";
 import { Search } from "../components/Search";
+import { defaultSearch } from "../components/Search/Search";
 import { Page } from "../packages/core";
 import toc from "./toc";
-import { defaultSearch } from "../components/Search/Search";
 
 const search = {
   Component: (props: { open: boolean }) => (
@@ -12,8 +14,15 @@ const search = {
   ),
 };
 
+const mdxComponents: MDXProviderComponents = {
+  code: (props) => {
+    const [, language = "markdown"] = (props.className || "").match(/^language-(.*)$/) || [];
+    return <Code language={language}>{props.children}</Code>;
+  },
+};
+
 export default ({ children }) => (
-  <Page location={useRouter()} Link={Link} toc={toc} search={search}>
+  <Page location={useRouter()} Link={Link} toc={toc} search={search} mdxComponents={mdxComponents}>
     {children}
   </Page>
 );

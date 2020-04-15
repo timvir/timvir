@@ -9,7 +9,7 @@
 
 ## Props
 
-<Props {...{"fields":[{"name":"location","type":{"optional":false,"name":"{ asPath: string; push: (path: string) => void; }","module":""},"comment":{"shortText":""}},{"name":"toc","type":{"optional":false,"name":"readonly Node[]","module":""},"comment":{"shortText":""}},{"name":"Link","type":{"optional":false,"name":"typeof Link","module":""},"comment":{"shortText":""}},{"name":"search","type":{"optional":true,"name":"{ label?: ReactNode; Component: ComponentType<{ open: boolean; }>; }","module":""},"comment":{"shortText":"Search Configuration.\n\nWhen provided, then the Search menu will appear in the sidebar."}}]}} />
+<Props {...{"fields":[{"name":"location","type":{"optional":false,"name":"{ asPath: string; push: (path: string) => void; }","module":""},"comment":{"shortText":""}},{"name":"toc","type":{"optional":false,"name":"readonly Node[]","module":""},"comment":{"shortText":""}},{"name":"Link","type":{"optional":false,"name":"typeof Link","module":""},"comment":{"shortText":""}},{"name":"mdxComponents","type":{"optional":true,"name":"MDXProviderComponents","module":""},"comment":{"shortText":"Overrides the built-in MDX component implementation.\n\nTimvir only provides styling for Markdown components, no interactivity or customization.\nThis is done to keep the core small. For example, code blocks do not provide syntax\nhighlighting. If you want to enable syntax highlighting in code blocks, use the\n'<Code>' component from '@timvir/blocks'."}},{"name":"search","type":{"optional":true,"name":"{ label?: ReactNode; Component: ComponentType<{ open: boolean; }>; }","module":""},"comment":{"shortText":"Search Configuration. When provided, then the Search menu will appear in the sidebar."}}]}} />
 
 export const required = (
   <svg

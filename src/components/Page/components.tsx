@@ -1,6 +1,4 @@
 import { styled } from "linaria/react";
-import React from "react";
-import { Code } from "../Code";
 
 export const h1 = styled.h1`
   display: block;
@@ -111,10 +109,5 @@ export const hr = styled.hr`
   height: 1px;
   width: 100%;
   background: currentColor;
-  opacity: .25;
+  opacity: 0.25;
 `;
-
-export const code = props => {
-  const [, language = "markdown"] = (props.className || "").match(/^language-(.*)$/) || [];
-  return <Code language={language}>{props.children}</Code>;
-};
