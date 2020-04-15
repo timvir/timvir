@@ -19,7 +19,7 @@ export default [
     input: "src/cli/index.ts",
     output: {
       file: "packages/cli/index.js",
-      format: "commonjs"
+      format: "commonjs",
     },
     plugins: [
       resolve({ extensions }),
@@ -31,16 +31,16 @@ export default [
         presets: [
           ["@babel/preset-typescript"],
           ["@babel/preset-env", { targets: { node: "12" } }],
-          ["@babel/preset-react", { useSpread: true }]
+          ["@babel/preset-react", { useSpread: true }],
         ],
-        plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]]
-      })
+        plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]],
+      }),
     ],
     external: [
       ...require("builtin-modules"),
       ...Object.keys(require("../packages/cli/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/cli/package.json").peerDependencies || {})
-    ]
+      ...Object.keys(require("../packages/cli/package.json").peerDependencies || {}),
+    ],
   },
 
   /*
@@ -51,15 +51,15 @@ export default [
     output: [
       {
         file: "packages/core/index.js",
-        format: "cjs"
-      }
+        format: "cjs",
+      },
     ],
     plugins: [
       resolve({ mainFields: "main", extensions }),
       commonjs({
         namedExports: {
-          "linaria/react": ["styled"]
-        }
+          "linaria/react": ["styled"],
+        },
       }),
       replace({ "process.env.NODE_ENV": `"production"` }),
       terser(),
@@ -70,18 +70,18 @@ export default [
         plugins: [
           ["babel-plugin-macros"],
           ["@babel/plugin-proposal-optional-chaining"],
-          ["@babel/plugin-proposal-nullish-coalescing-operator"]
-        ]
+          ["@babel/plugin-proposal-nullish-coalescing-operator"],
+        ],
       }),
       linaria(),
-      css({ output: "packages/core/styles.css" })
+      css({ output: "packages/core/styles.css" }),
     ],
     external: [
       "next/link",
       "next/router",
       ...Object.keys(require("../packages/core/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/core/package.json").peerDependencies || {})
-    ]
+      ...Object.keys(require("../packages/core/package.json").peerDependencies || {}),
+    ],
   },
 
   /*
@@ -92,8 +92,8 @@ export default [
     output: [
       {
         file: "packages/blocks/index.js",
-        format: "cjs"
-      }
+        format: "cjs",
+      },
     ],
     plugins: [
       resolve({ mainFields: ["module", "main"], extensions }),
@@ -101,8 +101,8 @@ export default [
         namedExports: {
           "node_modules/downshift/node_modules/react-is/index.js": ["isForwardRef"],
           "linaria/react": ["styled"],
-          "node_modules/react-hotkeys/index.es.js": ["configure", "GlobalHotKeys"]
-        }
+          "node_modules/react-hotkeys/index.es.js": ["configure", "GlobalHotKeys"],
+        },
       }),
       replace({ "process.env.NODE_ENV": `"production"` }),
       terser(),
@@ -113,17 +113,17 @@ export default [
         plugins: [
           ["babel-plugin-macros"],
           ["@babel/plugin-proposal-optional-chaining"],
-          ["@babel/plugin-proposal-nullish-coalescing-operator"]
-        ]
+          ["@babel/plugin-proposal-nullish-coalescing-operator"],
+        ],
       }),
       linaria(),
-      css({ output: "packages/blocks/styles.css" })
+      css({ output: "packages/blocks/styles.css" }),
     ],
     external: [
       "next/link",
       "next/router",
       ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {})
-    ]
-  }
+      ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+    ],
+  },
 ];
