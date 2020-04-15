@@ -6,6 +6,9 @@ import babel from "rollup-plugin-babel";
 import css from "rollup-plugin-css-only";
 import { terser } from "rollup-plugin-terser";
 
+import stylis from "stylis";
+stylis.set({ prefix: false });
+
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
 
 export default [
