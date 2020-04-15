@@ -49,23 +49,11 @@ export default async function() {
   await mkdirp(join(baseDir, `samples`));
   await write(join(baseDir, `samples`, `basic.tsx`), sampleT(response));
 
-  await mkdirp(join("src", "pages", "docs", "components", response.name));
-  await write(
-    join("src", "pages", "docs", "components", response.name, "index.tsx"),
-    `export { default } from "../../../../components/${response.name}/docs/index.mdx";`
-  );
-
-  await mkdirp(join("src", "pages", "docs", "components", response.name, "samples"));
-  await write(
-    join("src", "pages", "docs", "components", response.name, "samples", "basic.tsx"),
-    `export { default } from "../../../../../components/${response.name}/samples/basic";`
-  );
-
   /*
    * Generate the TOC for the components folder.
    */
   await (async () => {
-    const folders = await fs.promises.readdir(join("src", "pages", "docs", "components"));
+    const folders = await fs.promises.readdir(join("src", "components"));
     await write(
       join("src", "pages", "docs", "components", "toc.timvir"),
       folders
