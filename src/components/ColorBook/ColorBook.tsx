@@ -4,9 +4,9 @@ import { css, cx } from "linaria";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "div";
+const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   chapters: Array<{ values: Array<string> }>;
   selectedChapter?: number;
   onSelectChapter?: (i: number) => void;
@@ -14,7 +14,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
 
 function ColorBook({ chapters, selectedChapter, onSelectChapter, ...props }: Props, ref: any /* FIXME */) {
   return (
-    <Component
+    <Root
       ref={ref}
       {...props}
       className={css`
@@ -41,7 +41,6 @@ function ColorBook({ chapters, selectedChapter, onSelectChapter, ...props }: Pro
               key={value}
               style={{ background: value }}
               className={css`
-                height: 40px;
                 flex-grow: 1;
 
                 &:first-child {
@@ -55,7 +54,7 @@ function ColorBook({ chapters, selectedChapter, onSelectChapter, ...props }: Pro
           ))}
         </div>
       ))}
-    </Component>
+    </Root>
   );
 }
 
@@ -64,6 +63,11 @@ export default React.forwardRef(ColorBook);
 const chapter = css`
   position: relative;
   cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 200px;
 
   &::before {
     position: absolute;
