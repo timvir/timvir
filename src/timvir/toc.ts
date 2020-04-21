@@ -20,6 +20,7 @@ export default [
       { label: "ColorBook", path: "/docs/components/ColorBook" },
       { label: "Cover", path: "/docs/components/Cover", children: [{ label: "API", path: "/docs/components/Cover/api" }] },
       { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples" }] },
+      { label: "Font", path: "/docs/components/Font" },
       { label: "FontFamilyMatrix", path: "/docs/components/FontFamilyMatrix" },
       { label: "Grid", path: "/docs/components/Grid" },
       { label: "Icon", path: "/docs/components/Icon" },
