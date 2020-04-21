@@ -52,7 +52,7 @@ function Inspector({ values, ...props }: Props, ref: any /* FIXME */) {
         {values.map((value) => (
           <div
             className={css`
-              height: 40px;
+              height: 65px;
 
               &:first-child {
                 border-radius: 3px 0 0 0;
@@ -66,133 +66,54 @@ function Inspector({ values, ...props }: Props, ref: any /* FIXME */) {
         ))}
       </div>
 
-      <div
-        className={css`
-          grid-column: 1 / -1;
-          grid-row: 2 / span 1;
-          background: black;
-          height: 32px;
-        `}
-      />
-      <div
-        className={css`
-          grid-column: 1 / span 1;
-          grid-row: 2 / span 1;
-          color: white;
-          padding-left: 12px;
-          border-right: 2px solid white;
-          height: 32px;
-          display: flex;
-          align-items: center;
-          margin-right: -2px;
-        `}
-      >
-        BLACK
-      </div>
-      <div
-        className={css`
-          grid-column: 2 / span 1;
-          grid-row: 2 / span 1;
-          color: white;
-          display: grid;
-          height: 32px;
-        `}
-        style={{ gridTemplateColumns: `repeat(${values.length}, 1fr)` }}
-      >
-        {values.map((value) => (
-          <div
-            className={css`
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            `}
-          >
-            {op(value, "black")}
-          </div>
-        ))}
-      </div>
-
-      {["#FAFAFA", "#F2F2F2", "#EEEEEE", "#DDDDDD", "#BBBBBB", "#9D9D9D", "#727272", "#333333", "#111111"]
-        .reverse()
-        .map((background, i) => {
-          const color = chroma.contrast(background, "white") > chroma.contrast(background, "black") ? "white" : "black";
-          return (
-            <React.Fragment>
-              <div
-                className={css`
-                  grid-column: 1 / -1;
-                  height: 32px;
-                `}
-                style={{ background, gridRow: `${i + 3} / span 1` }}
-              />
-              <div
-                className={css`
-                  grid-column: 1 / span 1;
-                  padding-left: 12px;
-                  border-right: 2px solid white;
-                  height: 32px;
-                  display: flex;
-                  align-items: center;
-                  margin-right: -2px;
-                `}
-                style={{ gridRow: `${i + 3} / span 1`, color }}
-              >
-                {background}
-              </div>
-              <div
-                className={css`
-                  grid-column: 2 / span 1;
-                  display: grid;
-                  height: 32px;
-                `}
-                style={{ color, gridTemplateColumns: `repeat(${values.length}, 1fr)`, gridRow: `${i + 3} / span 1` }}
-              >
-                {values.map((value) => (
-                  <div
-                    className={css`
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                    `}
-                  >
-                    {chk(value, background)}
-                  </div>
-                ))}
-              </div>
-            </React.Fragment>
-          );
-        })}
-
-      <div
-        className={css`
-          grid-column: 1 / span 1;
-          padding-left: 12px;
-          height: 32px;
-          display: flex;
-          align-items: center;
-        `}
-      >
-        WHITE
-      </div>
-      <div
-        className={css`
-          display: grid;
-          height: 32px;
-        `}
-        style={{ gridTemplateColumns: `repeat(${values.length}, 1fr)` }}
-      >
-        {values.map((value) => (
-          <div
-            className={css`
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            `}
-          >
-            {op(value, "white")}
-          </div>
-        ))}
-      </div>
+      {["#FFFFFF", "#DCDF5A", "#06838F", "#727272", "#333333", "#142F4E", "#000000"].reverse().map((background, i) => {
+        const color = chroma.contrast(background, "white") > chroma.contrast(background, "black") ? "white" : "black";
+        return (
+          <React.Fragment>
+            <div
+              className={css`
+                grid-column: 1 / -1;
+                height: 32px;
+              `}
+              style={{ background, gridRow: `${i + 2} / span 1` }}
+            />
+            <div
+              className={css`
+                grid-column: 1 / span 1;
+                padding-left: 12px;
+                border-right: 2px solid white;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                margin-right: -2px;
+              `}
+              style={{ gridRow: `${i + 2} / span 1`, color }}
+            >
+              {background}
+            </div>
+            <div
+              className={css`
+                grid-column: 2 / span 1;
+                display: grid;
+                height: 32px;
+              `}
+              style={{ color, gridTemplateColumns: `repeat(${values.length}, 1fr)`, gridRow: `${i + 2} / span 1` }}
+            >
+              {values.map((value) => (
+                <div
+                  className={css`
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  `}
+                >
+                  {op(value, background)}
+                </div>
+              ))}
+            </div>
+          </React.Fragment>
+        );
+      })}
     </Root>
   );
 }
@@ -216,14 +137,6 @@ function opacity(contrast: number, background: string, text: string) {
   return `${Math.round(opacity * 100)}%`;
 }
 
-function check(contrast: number, background: string, text: string) {
-  if (chroma.contrast(background, text) < contrast) {
-    return "–";
-  } else {
-    return "OK";
-  }
-}
-
 export function blendColor(c1: string, c2: string, a: number) {
   const [r1, g1, b1] = chroma(c1).rgb();
   const [r2, g2, b2] = chroma(c2).rgb();
@@ -237,17 +150,6 @@ export function blendColor(c1: string, c2: string, a: number) {
 function op(background: string, text: string) {
   const large = opacity(3, background, text);
   const normal = opacity(4.5, background, text);
-
-  if (large === "–" && normal == "–") {
-    return "";
-  } else {
-    return `${large} / ${normal}`;
-  }
-}
-
-function chk(background: string, text: string) {
-  const large = check(3, background, text);
-  const normal = check(4.5, background, text);
 
   if (large === "–" && normal == "–") {
     return "";

@@ -10,9 +10,12 @@ const Root = "div";
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {}
 
 function ColorContrastInspector({ ...props }: Props, ref: any /* FIXME */) {
-  const [selectedChapter, setSelectedChapter] = React.useState<undefined | number>(1);
+  const [selectedChapter, setSelectedChapter] = React.useState<undefined | number>(0);
 
   const chapters = [
+    {
+      values: ["#FFFFFF", "#FAFAFA", "#00B1B2", "#142F4E"],
+    },
     {
       values: ["#FFB3D0", "#EB91AF", "#D56F90", "#BF4B72", "#A82255"],
     },
