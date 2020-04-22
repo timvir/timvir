@@ -1,4 +1,43 @@
+import { css } from "linaria";
 import { styled } from "linaria/react";
+import React from "react";
+
+const anchorize = (children?: React.ReactNode): string => {
+  if (typeof children === "string") {
+    return children
+      .toLowerCase()
+      .replace(/[ _]+/g, "-")
+      .replace(/[!:^*./\\]/g, "");
+  } else {
+    return undefined;
+  }
+};
+
+function Heading(Component: React.ComponentType<React.HTMLAttributes<HTMLHeadingElement>>) {
+  return (props: React.HTMLAttributes<HTMLHeadingElement>) => {
+    const id = anchorize(props.children);
+
+    return (
+      <Component id={id} {...props}>
+        <a
+          className={css`
+            position: absolute;
+            top: -0.1em;
+            left: -1em;
+            color: var(--c-p-4);
+            font-weight: bold;
+            font-size: 1.1em;
+            text-decoration: none;
+          `}
+          href={id && `#${id}`}
+        >
+          #
+        </a>
+        {props.children}
+      </Component>
+    );
+  };
+}
 
 export const h1 = styled.h1`
   display: block;
@@ -12,7 +51,7 @@ export const h1 = styled.h1`
   text-indent: -0.05em;
 `;
 
-export const h2 = styled.h2`
+export const h2 = Heading(styled.h2`
   position: relative;
   display: block;
   margin-top: 2rem;
@@ -22,19 +61,9 @@ export const h2 = styled.h2`
   letter-spacing: normal;
   font-weight: bold;
   font-size: 1rem;
+`);
 
-  &::before {
-    position: absolute;
-    top: -4px;
-    left: -1.2rem;
-    color: var(--c-p-4);
-    content: "#";
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-`;
-
-export const h3 = styled.h3`
+export const h3 = Heading(styled.h3`
   position: relative;
   display: block;
   margin-top: 2rem;
@@ -44,19 +73,9 @@ export const h3 = styled.h3`
   letter-spacing: normal;
   font-weight: bold;
   font-size: 0.9rem;
+`);
 
-  &::before {
-    position: absolute;
-    top: -3px;
-    left: -1rem;
-    color: var(--c-p-4);
-    content: "#";
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-`;
-
-export const h4 = styled.h4`
+export const h4 = Heading(styled.h4`
   position: relative;
   display: block;
   margin-top: 2rem;
@@ -66,17 +85,7 @@ export const h4 = styled.h4`
   letter-spacing: normal;
   font-weight: normal;
   font-size: 0.9rem;
-
-  &::before {
-    position: absolute;
-    top: -3px;
-    left: -1rem;
-    color: var(--c-p-4);
-    content: "#";
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-`;
+`);
 
 export const a = styled.a`
   color: currentColor;
