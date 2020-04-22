@@ -127,20 +127,30 @@ function Inspector({ values, ...props }: Props, ref: any /* FIXME */) {
 export default React.forwardRef(Inspector);
 
 function opacity(contrast: number, background: string, text: string) {
-  let opacity = 0;
-  while (chroma.contrast(background, blendColor(background, text, opacity)) < contrast) {
-    opacity += 0.01;
+  if (chroma.contrast(background, text) < contrast) {
+    return undefined;
+  }
 
-    if (opacity > 1) {
-      return "–";
+  const go = (min: number, max: number) => {
+    if (min > max) {
+      return undefined;
     }
-  }
 
-  if (opacity === 0) {
-    return "–";
-  }
+    if (max - min < 1 / 1e4) {
+      return min;
+    }
 
-  return `${Math.round(opacity * 100)}%`;
+    const mid = (min + max) / 2;
+    const c = chroma.contrast(background, blendColor(background, text, mid));
+
+    if (c >= contrast) {
+      return go(min, mid);
+    } else {
+      return go(mid, max);
+    }
+  };
+
+  return go(0, 1);
 }
 
 export function blendColor(c1: string, c2: string, a: number) {
@@ -157,9 +167,13 @@ function op(background: string, text: string) {
   const large = opacity(3, background, text);
   const normal = opacity(4.5, background, text);
 
-  if (large === "–" && normal == "–") {
+  const fmt = (n: undefined | number) => (n === undefined ? "–" : `${Math.round(n * 100)}%`);
+
+  // console.log(background, text, large, normal)
+
+  if (large === undefined && normal === undefined) {
     return "";
   } else {
-    return `${large} / ${normal}`;
+    return `${fmt(large)} / ${fmt(normal)}`;
   }
 }
