@@ -7,9 +7,9 @@ import { Descriptor, Size } from "./types";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "div";
+const Root = "div";
 
-interface Props extends React.ComponentProps<typeof Component> {
+interface Props extends React.ComponentProps<typeof Root> {
   allSizes: Size[];
   descriptor: Descriptor;
 }
@@ -32,7 +32,7 @@ function Icon({ allSizes, descriptor, ...props }: Props, ref: any /* FIXME */) {
   };
 
   return (
-    <Component ref={ref} {...props}>
+    <Root ref={ref} {...props}>
       <Measure bounds>
         {({ measureRef, contentRect }: MeasuredComponentProps) => (
           <div
@@ -70,7 +70,7 @@ function Icon({ allSizes, descriptor, ...props }: Props, ref: any /* FIXME */) {
           </div>
         )}
       </Measure>
-    </Component>
+    </Root>
   );
 }
 

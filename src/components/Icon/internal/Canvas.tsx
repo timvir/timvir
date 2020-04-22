@@ -1,26 +1,7 @@
 import { css } from "linaria";
-import { styled } from "linaria/react";
 import React from "react";
 
-const Component = styled.div<any>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  transition: box-shadow 0.2s;
-  cursor: pointer;
-
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
-    z-index: 5;
-  }
-
-  &:hover svg:first-of-type rect {
-    opacity: 1;
-  }
-`;
+const Root = "div";
 
 interface Props {
   width: number;
@@ -32,18 +13,39 @@ interface Props {
 
 function Canvas({ width, height, size, ...props }: Props) {
   return (
-    <Component style={{ width, height }}>
+    <Root
+      className={css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        transition: box-shadow 0.2s;
+        cursor: pointer;
+
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+
+        &:hover {
+          box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+          z-index: 5;
+        }
+
+        &:hover svg:first-of-type rect {
+          opacity: 1;
+        }
+      `}
+      style={{ width, height }}
+    >
       <Grid size={size} />
       <div
         style={{
           position: "relative",
           zIndex: 20,
-          fontSize: `${size}px`
+          fontSize: `${size}px`,
         }}
       >
         <props.Component />
       </div>
-    </Component>
+    </Root>
   );
 }
 

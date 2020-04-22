@@ -3,9 +3,9 @@ import React from "react";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "picture";
+const Root = "picture";
 
-interface Props extends React.ComponentProps<typeof Component> {
+interface Props extends React.ComponentProps<typeof Root> {
   metadata: { width: number; height: number };
   img: { src: string };
   sources: Array<{ srcSet: string; type: string }>;
@@ -13,12 +13,12 @@ interface Props extends React.ComponentProps<typeof Component> {
 
 function Image({ metadata, img, sources, ...props }: Props, ref: any /* FIXME */) {
   return (
-    <Component ref={ref} {...props}>
+    <Root ref={ref} {...props}>
       {sources.map((p, i) => (
         <source key={i} {...p} />
       ))}
       <img {...metadata} {...img} style={{ maxWidth: "100%", height: "auto" }} />
-    </Component>
+    </Root>
   );
 }
 

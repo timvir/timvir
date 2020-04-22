@@ -4,9 +4,9 @@ import { css } from "linaria";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "div";
+const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   /**
    * The CSS Color value of the swatch. Any CSS color definition is accepted.
    *
@@ -40,7 +40,7 @@ function Swatch({ value, contrastValue, name, ancestry, ...props }: Props, ref: 
   const [label, setLabel] = React.useState(name);
 
   return (
-    <Component
+    <Root
       role="button"
       ref={ref}
       {...props}
@@ -122,7 +122,7 @@ function Swatch({ value, contrastValue, name, ancestry, ...props }: Props, ref: 
           </div>
         )}
       </div>
-    </Component>
+    </Root>
   );
 }
 

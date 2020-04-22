@@ -4,16 +4,16 @@ import React from "react";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "div";
+const Root = "div";
 
-interface Props extends React.ComponentProps<typeof Component> {
+interface Props extends React.ComponentProps<typeof Root> {
   value?: string;
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function SearchBoxInput({ value, onChange, ...props }: Props, ref: any /* FIXME */) {
   return (
-    <Component
+    <Root
       ref={ref}
       {...props}
       className={css`
@@ -72,7 +72,7 @@ function SearchBoxInput({ value, onChange, ...props }: Props, ref: any /* FIXME 
           }
         `}
       />
-    </Component>
+    </Root>
   );
 }
 

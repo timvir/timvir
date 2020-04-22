@@ -11,9 +11,9 @@ import { SearchBoxListItem } from "../SearchBoxListItem";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "div";
+const Root = "div";
 
-interface Props extends React.ComponentProps<typeof Component> {
+interface Props extends React.ComponentProps<typeof Root> {
   toc: Node[];
 }
 
@@ -51,7 +51,7 @@ function SearchBox({ toc, ...props }: Props, ref: any /* FIXME */) {
   });
 
   return (
-    <Component ref={ref} {...props}>
+    <Root ref={ref} {...props}>
       <SearchBoxInput {...getInputProps()} />
 
       <main
@@ -75,7 +75,7 @@ function SearchBox({ toc, ...props }: Props, ref: any /* FIXME */) {
           </Link>
         ))}
       </main>
-    </Component>
+    </Root>
   );
 }
 

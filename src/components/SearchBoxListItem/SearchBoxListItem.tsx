@@ -4,9 +4,9 @@ import { css } from "linaria";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "div";
+const Root = "div";
 
-interface Props extends React.ComponentProps<typeof Component> {
+interface Props extends React.ComponentProps<typeof Root> {
   icon?: React.ReactNode;
   label: React.ReactNode;
   context?: React.ReactNode;
@@ -14,7 +14,7 @@ interface Props extends React.ComponentProps<typeof Component> {
 
 function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: any /* FIXME */) {
   return (
-    <Component
+    <Root
       role="button"
       ref={ref}
       {...props}
@@ -57,7 +57,7 @@ function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: any /
           </div>
         )}
       </div>
-    </Component>
+    </Root>
   );
 }
 

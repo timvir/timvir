@@ -4,9 +4,9 @@ import { css } from "linaria";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "div";
+const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   /**
    * Array of CSS Color values.
    */
@@ -15,7 +15,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Component> {
 
 function ColorBar({ values, ...props }: Props, ref: any /* FIXME */) {
   return (
-    <Component
+    <Root
       ref={ref}
       {...props}
       className={css`
@@ -54,7 +54,7 @@ function ColorBar({ values, ...props }: Props, ref: any /* FIXME */) {
           style={{ background: value }}
         />
       ))}
-    </Component>
+    </Root>
   );
 }
 

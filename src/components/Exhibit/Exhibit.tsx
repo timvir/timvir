@@ -4,9 +4,9 @@ import { mdx } from "@mdx-js/react";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Component = "figure";
+const Root = "figure";
 
-interface Props extends React.ComponentProps<typeof Component> {
+interface Props extends React.ComponentProps<typeof Root> {
   source?: React.ReactNode;
   caption?: React.ReactNode;
 
@@ -20,7 +20,7 @@ interface Props extends React.ComponentProps<typeof Component> {
 
 function Exhibit({ title, source, caption, bleed = 0, children, style, ...props }: Props, ref: any /* FIXME */) {
   return (
-    <Component
+    <Root
       ref={ref}
       style={{
         margin: 0,
@@ -67,7 +67,7 @@ function Exhibit({ title, source, caption, bleed = 0, children, style, ...props 
           {caption}
         </figcaption>
       )}
-    </Component>
+    </Root>
   );
 }
 
