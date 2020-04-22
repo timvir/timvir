@@ -2,4 +2,12 @@ import { ColorContrastInspector } from "..";
 
 # ColorContrastInspector
 
+The `<ColorContrastInspector>` displays a matrix of foreground and background colors. For each combination,
+the minimum opacity that the foreground color needs to have in order to satisfy a contrast ratio
+(eg. WCAG recommendations for normal and large texts).
+
+The background colors are shown as columns, the foreground colors as rows. The assumption is that you will have
+fewer background colors than foreground colors, as it's easier to expand the matrix downwards. Only up to about
+six background colors are supported.
+
 <ColorContrastInspector />

@@ -21,62 +21,70 @@ function Inspector({ values, ...props }: Props, ref: any /* FIXME */) {
       {...props}
       className={css`
         display: grid;
-        grid-template-columns: 80px 1fr;
         grid-gap: 2px;
         align-items: center;
       `}
+      style={{
+        gridTemplateColumns: `80px repeat(${values.length}, 1fr)`,
+      }}
     >
-      <div></div>
-      <div
+      <div style={{ height: 80 }} />
+
+      {values.map((value, i) => {
+        const color = chroma.contrast(value, "white") > chroma.contrast(value, "black") ? "white" : "black";
+        return (
+          <>
+            <div
+              className={css`
+                align-self: stretch;
+
+                &:first-child {
+                  border-radius: 3px 0 0 0;
+                }
+                &:last-child {
+                  border-radius: 0 3px 0 0;
+                }
+              `}
+              style={{ background: value, gridRow: "1 / 9", gridColumn: `${i + 2} / span 1` }}
+            />
+            <div
+              className={css`
+                justify-self: center;
+              `}
+              style={{ color, gridRow: "1 / span 1", gridColumn: `${i + 2} / span 1` }}
+            >
+              {value}
+            </div>
+          </>
+        );
+      })}
+
+      {/* <div
         className={css`
-          position: relative;
-          display: grid;
-
-          &::before {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            display: block;
-            z-index: 2;
-            border-radius: 3px 3px 0 0;
-            box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.15);
-            content: "";
-            pointer-events: none;
-            user-select: none;
-          }
+          display: block;
+          z-index: 2;
+          border-radius: 3px 3px 0 0;
+          box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.15);
+          content: "";
+          pointer-events: none;
+          user-select: none;
+          align-self: stretch;
         `}
-        style={{ gridTemplateColumns: `repeat(${values.length}, 1fr)` }}
-      >
-        {values.map((value) => (
-          <div
-            className={css`
-              height: 65px;
+        style={{ gridRow: `1 / 9`, gridColumn: "2 / -1" }}
+      /> */}
 
-              &:first-child {
-                border-radius: 3px 0 0 0;
-              }
-              &:last-child {
-                border-radius: 0 3px 0 0;
-              }
-            `}
-            style={{ background: value }}
-          />
-        ))}
-      </div>
-
-      {["#FFFFFF", "#DCDF5A", "#06838F", "#727272", "#333333", "#142F4E", "#000000"].reverse().map((background, i) => {
-        const color = chroma.contrast(background, "white") > chroma.contrast(background, "black") ? "white" : "black";
+      {["#FFFFFF", "#DCDF5A", "#06838F", "#727272", "#333333", "#142F4E", "#000000"].reverse().map((text, i) => {
+        const color = chroma.contrast(text, "white") > chroma.contrast(text, "black") ? "white" : "black";
         return (
           <React.Fragment>
             <div
               className={css`
-                grid-column: 1 / -1;
+                grid-column: 1 / span 1;
                 height: 32px;
               `}
-              style={{ background, gridRow: `${i + 2} / span 1` }}
+              style={{ background: text, gridRow: `${i + 2} / span 1` }}
             />
+
             <div
               className={css`
                 grid-column: 1 / span 1;
@@ -89,28 +97,26 @@ function Inspector({ values, ...props }: Props, ref: any /* FIXME */) {
               `}
               style={{ gridRow: `${i + 2} / span 1`, color }}
             >
-              {background}
+              {text}
             </div>
-            <div
-              className={css`
-                grid-column: 2 / span 1;
-                display: grid;
-                height: 32px;
-              `}
-              style={{ color, gridTemplateColumns: `repeat(${values.length}, 1fr)`, gridRow: `${i + 2} / span 1` }}
-            >
-              {values.map((value) => (
+
+            {values.map((value, j) => {
+              const content = op(value, text);
+              const color = content ? text : undefined;
+
+              return (
                 <div
                   className={css`
                     display: flex;
                     align-items: center;
                     justify-content: center;
                   `}
+                  style={{ color, gridRow: `${i + 2} / span 1`, gridColumn: `${j + 2} / span 1` }}
                 >
-                  {op(value, background)}
+                  {content}
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </React.Fragment>
         );
       })}
