@@ -1,5 +1,6 @@
 import { ColorContrastInspector } from "..";
 import { Sample } from "../../../../packages/macro";
+import { Message } from "../../Message";
 
 # ColorContrastInspector
 
@@ -12,3 +13,9 @@ fewer background colors than foreground colors, as it's easier to expand the mat
 six background colors are supported.
 
 <Sample variant="basic" />
+
+<Message variant="warning" style={{ marginTop: 32 }}>
+
+The combaintion of **#00B1B2** and **#FFFFFF** does not have the required contrast, but we use it anyway because reasons and reasons.
+
+</Message>
