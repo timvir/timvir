@@ -1,5 +1,5 @@
 import chroma from "chroma-js";
-import { css } from "linaria";
+import { css, cx } from "linaria";
 import React from "react";
 import { Cell } from "./internal";
 
@@ -11,9 +11,25 @@ const Root = "div";
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   background: string[];
   foreground: string[];
+
+  whitelist?: Array<[string, string]>;
 }
 
-function ColorContrastInspector({ background, foreground, ...props }: Props, ref: any /* FIXME */) {
+function ColorContrastInspector({ background, foreground, whitelist, ...props }: Props, ref: any /* FIXME */) {
+  const classes = {
+    cell: css`
+      opacity: 0;
+      transition: all 0.2s;
+
+      &:hover {
+        opacity: 1 !important;
+      }
+    `,
+    whitelisted: css`
+      opacity: 1;
+    `,
+  };
+
   return (
     <Root
       ref={ref}
@@ -22,6 +38,10 @@ function ColorContrastInspector({ background, foreground, ...props }: Props, ref
         display: grid;
         grid-gap: 2px;
         align-items: center;
+
+        &:hover .${classes.cell}:not(.${classes.whitelisted}) {
+          opacity: .2;
+        }
       `}
       style={{
         gridTemplateColumns: `80px repeat(${background.length}, 1fr)`,
@@ -86,12 +106,16 @@ function ColorContrastInspector({ background, foreground, ...props }: Props, ref
             </div>
 
             {background.map((value, j) => {
+              const isWhitelisted =
+                whitelist === undefined || !!whitelist.find(([bg, fg]) => bg === value && fg === text);
               return (
                 <Cell
                   key={j}
                   background={value}
                   foreground={text}
+                  isWhitelisted={isWhitelisted}
                   style={{ gridRow: `${i + 2} / span 1`, gridColumn: `${j + 2} / span 1` }}
+                  className={cx(classes.cell, isWhitelisted && classes.whitelisted)}
                 />
               );
             })}

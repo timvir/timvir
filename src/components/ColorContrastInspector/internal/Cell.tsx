@@ -11,9 +11,10 @@ const Root = "div";
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   background: string;
   foreground: string;
+  isWhitelisted: boolean;
 }
 
-function Cell({ background, foreground, className, style, ...props }: Props, ref: any /* FIXME */) {
+function Cell({ background, foreground, isWhitelisted, className, style, ...props }: Props, ref: any /* FIXME */) {
   const large = opacity(3, background, foreground);
   const normal = opacity(4.5, background, foreground);
 
@@ -32,7 +33,9 @@ function Cell({ background, foreground, className, style, ...props }: Props, ref
     const fmt = (n: undefined | number) => (n === undefined ? "" : `${Math.round(n * 100)}%`);
 
     if (large === undefined && normal === undefined) {
-      return null;
+      return isWhitelisted ? (
+        <Icons.X className={classes.icon} size={"1.5em"} style={{ gridRow: 1, gridColumn: "2" }} />
+      ) : null;
     } else {
       return (
         <>
