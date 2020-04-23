@@ -1,1 +1,1 @@
-export { default as Inspector } from "./Inspector";
+export { default as Cell } from './Cell';

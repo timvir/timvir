@@ -1,48 +1,103 @@
+import chroma from "chroma-js";
+import { css } from "linaria";
 import React from "react";
-import { ColorBook } from "../ColorBook";
-import { Inspector } from "./internal";
+import { Cell } from "./internal";
 
 /**
  * The underlying DOM element which is rendered by this component.
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {}
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+  background: string[];
+  foreground: string[];
+}
 
-function ColorContrastInspector({ ...props }: Props, ref: any /* FIXME */) {
-  const [selectedChapter, setSelectedChapter] = React.useState<undefined | number>(0);
-
-  const chapters = [
-    {
-      values: ["#FFFFFF", "#FAFAFA", "#00B1B2", "#142F4E"],
-    },
-    {
-      values: ["#FFB3D0", "#EB91AF", "#D56F90", "#BF4B72", "#A82255"],
-    },
-    {
-      values: ["#E1BAE1", "#BF93BE", "#9D6D9C", "#7C497B", "#5C255C"],
-    },
-    {
-      values: ["#D6CCFF", "#B7A8E8", "#9784D2", "#7763BC", "#5642A6"],
-    },
-    {
-      values: ["#FFB7A5", "#E9947D", "#D17257", "#B85033", "#9E2B0E"],
-    },
-    {
-      values: ["#97F3EB", "#78D5CC", "#58B8AE", "#369C91", "#008075"],
-    },
-    {
-      values: ["#B1ECB5", "#8DCD8F", "#6AAE6A", "#469047", "#1D7324"],
-    },
-  ];
-
+function ColorContrastInspector({ background, foreground, ...props }: Props, ref: any /* FIXME */) {
   return (
-    <Root ref={ref} {...props}>
-      <ColorBook selectedChapter={selectedChapter} onSelectChapter={setSelectedChapter} chapters={chapters} />
+    <Root
+      ref={ref}
+      {...props}
+      className={css`
+        display: grid;
+        grid-gap: 2px;
+        align-items: center;
+      `}
+      style={{
+        gridTemplateColumns: `80px repeat(${background.length}, 1fr)`,
+      }}
+    >
+      <div style={{ height: 80 }} />
 
-      <div style={{ marginTop: 40 }}>
-        <Inspector values={chapters[selectedChapter]?.values || []} />
-      </div>
+      {background.map((value, i) => {
+        const color = chroma.contrast(value, "white") > chroma.contrast(value, "black") ? "white" : "black";
+        return (
+          <>
+            <div
+              className={css`
+                align-self: stretch;
+
+                &:first-child {
+                  border-radius: 3px 0 0 0;
+                }
+                &:last-child {
+                  border-radius: 0 3px 0 0;
+                }
+              `}
+              style={{ background: value, gridRow: "1 / 9", gridColumn: `${i + 2} / span 1` }}
+            />
+            <div
+              className={css`
+                justify-self: center;
+              `}
+              style={{ color, gridRow: "1 / span 1", gridColumn: `${i + 2} / span 1` }}
+            >
+              {value}
+            </div>
+          </>
+        );
+      })}
+
+      {foreground.map((text, i) => {
+        const color = chroma.contrast(text, "white") > chroma.contrast(text, "black") ? "white" : "black";
+        return (
+          <React.Fragment>
+            <div
+              className={css`
+                grid-column: 1 / span 1;
+                height: 32px;
+              `}
+              style={{ background: text, gridRow: `${i + 2} / span 1` }}
+            />
+
+            <div
+              className={css`
+                grid-column: 1 / span 1;
+                padding-left: 12px;
+                border-right: 2px solid white;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                margin-right: -2px;
+              `}
+              style={{ gridRow: `${i + 2} / span 1`, color }}
+            >
+              {text}
+            </div>
+
+            {background.map((value, j) => {
+              return (
+                <Cell
+                  key={j}
+                  background={value}
+                  foreground={text}
+                  style={{ gridRow: `${i + 2} / span 1`, gridColumn: `${j + 2} / span 1` }}
+                />
+              );
+            })}
+          </React.Fragment>
+        );
+      })}
     </Root>
   );
 }
