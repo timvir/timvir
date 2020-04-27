@@ -8,7 +8,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.9.5",
     "@mdx-js/loader": "^1.5.8",
-    "@mdx-js/react": "^1.5.8",
+    "@mdx-js/react": "^1.6.0",
     "@next/mdx": "^9.3.5",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
