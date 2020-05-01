@@ -1,6 +1,6 @@
 import { css, cx } from "linaria";
 import React from "react";
-import { useResizeObserverEntry, useResizeObserver } from "../../hooks/useResizeObserver";
+import { useResizeObserver, useResizeObserverEntry } from "../../hooks/useResizeObserver";
 import { fullWidth } from "../Page";
 import * as pageComponents from "../Page/components";
 
@@ -88,8 +88,8 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
               height={16}
               fill="rgba(0, 0, 0, .1)"
             />
-            <line x1={-width / 2} x2={-width / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
-            <line x1={width / 2} x2={width / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
+            <line x1={-(width ?? 0) / 2} x2={-(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
+            <line x1={(width ?? 0) / 2} x2={(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
             {/* <circle r={5} cx={width / 2} fill="magenta" /> */}
             {/* <circle r={5} cx={-width / 2} fill="magenta" /> */}
           </svg>
