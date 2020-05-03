@@ -7,7 +7,7 @@
 /.linaria-cache/
 /public/images/
 
-/packages/cli/index.js
+/packages/cli/bin.js
 
 /packages/core/*
 !/packages/core/package.json

@@ -5,6 +5,7 @@ import linaria from "linaria/rollup";
 import babel from "rollup-plugin-babel";
 import css from "rollup-plugin-css-only";
 import { terser } from "rollup-plugin-terser";
+import shebang from "rollup-plugin-add-shebang";
 
 import stylis from "stylis";
 stylis.set({ prefix: false });
@@ -18,7 +19,7 @@ export default [
   {
     input: "src/cli/index.ts",
     output: {
-      file: "packages/cli/index.js",
+      file: "packages/cli/bin.js",
       format: "commonjs",
     },
     plugins: [
@@ -35,6 +36,7 @@ export default [
         ],
         plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]],
       }),
+      shebang(),
     ],
     external: [
       ...require("builtin-modules"),

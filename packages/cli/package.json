@@ -2,7 +2,7 @@
   "name": "@timvir/cli",
   "version": "0.0.0",
   "bin": {
-    "timvir": "./bin"
+    "timvir": "./bin.js"
   },
   "dependencies": {
     "prettier": "*",
