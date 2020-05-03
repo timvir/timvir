@@ -2,18 +2,14 @@ import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
 import { css, cx } from "linaria";
 import Link from "next/link";
 import React from "react";
-import { configure, GlobalHotKeys } from "react-hotkeys";
+import { useHotkeys } from "react-hotkeys-hook";
 import { useImmer } from "use-immer";
+import { NavigationFooter } from "../NavigationFooter";
 import * as mdxComponentsBase from "./components";
 import { Sidebar } from "./internal";
-import { grid, fullWidth } from "./layout";
+import { grid } from "./layout";
 import { theme } from "./theme";
 import { Node } from "./types";
-import { NavigationFooter } from "../NavigationFooter";
-
-configure({
-  ignoreTags: ["select"],
-});
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -64,29 +60,30 @@ function Page(
     },
   });
 
-  const keyMap = {
-    SEARCH: "command+p",
-    ESC: "escape",
-  };
-
-  const handlers = {
-    SEARCH: (ev) => {
-      ev.preventDefault();
-      mutate((draft) => {
-        draft.search.open = !draft.search.open;
-      });
+  useHotkeys(
+    "command+p,escape",
+    (ev, handler) => {
+      switch (handler.key) {
+        case "command+p": {
+          ev.preventDefault();
+          mutate((draft) => {
+            draft.search.open = !draft.search.open;
+          });
+          return;
+        }
+        case "escape": {
+          mutate((draft) => {
+            draft.search.open = false;
+          });
+          return;
+        }
+      }
     },
-    ESC: () => {
-      mutate((draft) => {
-        draft.search.open = false;
-      });
-    },
-  };
+    { enableOnTags: ["BODY", "INPUT"] as any }
+  );
 
   return (
     <>
-      <GlobalHotKeys keyMap={keyMap} handlers={handlers} />
-
       <Root
         ref={ref}
         {...props}

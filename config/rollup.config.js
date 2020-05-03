@@ -101,7 +101,6 @@ export default [
         namedExports: {
           "node_modules/downshift/node_modules/react-is/index.js": ["isForwardRef"],
           "linaria/react": ["styled"],
-          "node_modules/react-hotkeys/index.es.js": ["configure", "GlobalHotKeys"],
         },
       }),
       replace({ "process.env.NODE_ENV": `"production"` }),
