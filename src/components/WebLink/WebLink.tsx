@@ -14,7 +14,7 @@ function WebLink({ url, className, ...props }: Props, ref: any /* FIXME */) {
   const [metadata, setMetadata] = React.useState(undefined);
 
   React.useEffect(() => {
-    fetch(`/api/unfurl?url=${encodeURIComponent(url)}`)
+    fetch(`https://timvir.now.sh/api/unfurl?url=${encodeURIComponent(url)}`)
       .then((res) => res.json())
       .then(setMetadata);
   }, [url, setMetadata]);

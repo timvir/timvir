@@ -53,5 +53,8 @@
     "typescript": "^3.8.3",
     "unfurl.js": "^5.1.0",
     "use-immer": "^0.4.0"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5"
   }
 }
