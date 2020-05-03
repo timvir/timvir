@@ -6,9 +6,10 @@ import { configure, GlobalHotKeys } from "react-hotkeys";
 import { useImmer } from "use-immer";
 import * as mdxComponentsBase from "./components";
 import { Sidebar } from "./internal";
-import { grid } from "./layout";
+import { grid, fullWidth } from "./layout";
 import { theme } from "./theme";
 import { Node } from "./types";
+import { NavigationFooter } from "../NavigationFooter";
 
 configure({
   ignoreTags: ["select"],
@@ -127,14 +128,62 @@ function Page(
         </div>
 
         <div
-          className={cx(
-            grid,
-            css`
-              grid-column: m / r;
-            `
-          )}
+          className={css`
+            display: flex;
+            flex-direction: column;
+            grid-column: m / r;
+          `}
         >
-          <MDXProvider components={{ ...mdxComponentsBase, ...mdxComponents }}>{children}</MDXProvider>
+          <div className={grid}>
+            <MDXProvider components={{ ...mdxComponentsBase, ...mdxComponents }}>{children}</MDXProvider>
+          </div>
+
+          {(() => {
+            function flatten(n: Node, parents: Node[]): Array<{ parents: Node[]; label: string; path: string }> {
+              let ret: Array<{ parents: Node[]; label: string; path: string }> = [];
+
+              if (n.path) {
+                ret.push({ parents, label: n.label, path: n.path });
+              }
+
+              if (n.children) {
+                ret = [...ret, ...n.children.flatMap((c) => flatten(c, [...parents, n]))];
+              }
+
+              return ret;
+            }
+
+            const items = toc.flatMap((n) => flatten(n, []));
+
+            const index = items.findIndex((v) => v.path === location.asPath.replace(/#.*/, ""));
+            if (index === -1) {
+              return null;
+            }
+
+            function toLink(index: number) {
+              const item = items[index];
+              if (item === undefined) {
+                return undefined;
+              } else {
+                return {
+                  href: item.path,
+                  label: item.label,
+                  context: item.parents.map((x) => x.label).join(" / "),
+                };
+              }
+            }
+
+            return (
+              <div
+                className={css`
+                  margin-top: auto;
+                  padding-top: 80px;
+                `}
+              >
+                <NavigationFooter Link={Link} prev={toLink(index - 1)} next={toLink(index + 1)} />
+              </div>
+            );
+          })()}
         </div>
       </Root>
 

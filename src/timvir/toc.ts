@@ -1,6 +1,6 @@
 export default [
   { label: "Home", path: "/" },
-  { label: "Documetation", path: "/docs/getting-started" },
+  { label: "Documentation", path: "/docs/getting-started" },
   { label: "Commands", path: "/commands" },
   {
     label: "Packages",
@@ -27,6 +27,7 @@ export default [
       { label: "Icon", path: "/docs/components/Icon" },
       { label: "Image", path: "/docs/components/Image" },
       { label: "Message", path: "/docs/components/Message", children: [{ label: "API", path: "/docs/components/Message/api" }] },
+      { label: "NavigationFooter", path: "/docs/components/NavigationFooter" },
       { label: "Page", path: "/docs/components/Page" },
       { label: "Search", path: "/docs/components/Search" },
       { label: "SearchBox", path: "/docs/components/SearchBox" },
