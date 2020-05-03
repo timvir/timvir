@@ -25,7 +25,7 @@ export default [
     plugins: [
       resolve({ extensions }),
       commonjs(),
-      terser(),
+      // terser(),
       babel({
         configFile: false,
         extensions,
