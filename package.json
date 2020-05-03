@@ -52,9 +52,7 @@
     "sharp": "^0.25.2",
     "typescript": "^3.8.3",
     "unfurl.js": "^5.1.0",
-    "use-immer": "^0.4.0"
-  },
-  "devDependencies": {
+    "use-immer": "^0.4.0",
     "cors": "^2.8.5"
   }
 }
