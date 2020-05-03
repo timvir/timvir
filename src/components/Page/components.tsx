@@ -22,12 +22,18 @@ function Heading(Component: React.ComponentType<React.HTMLAttributes<HTMLHeading
         <a
           className={css`
             position: absolute;
-            top: -0.1em;
-            left: -1em;
+            top: 0em;
+            left: -0.8em;
             color: var(--c-p-4);
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1em;
             text-decoration: none;
+
+            @media (min-width: 48rem) {
+              top: -0.1em;
+              left: -0.9em;
+              font-size: 1.1em;
+            }
           `}
           href={id && `#${id}`}
         >

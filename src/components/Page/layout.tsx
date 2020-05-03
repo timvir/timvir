@@ -5,15 +5,18 @@ export const noLayout = css``;
 export const grid = css`
   display: grid;
 
+  --timvir-page-margin: 16px;
+
   grid-auto-rows: min-content;
-  grid-template-columns: [le] 16px [lex lc] 1fr [rc rex] 16px [re];
+  grid-template-columns: [le] var(--timvir-page-margin) [lex lc] 1fr [rc rex] var(--timvir-page-margin) [re];
 
   @media (min-width: 48rem) {
-    grid-template-columns: [le] 24px [lex] 1fr [lc] minmax(0, 48rem) [rc] 1fr [rex] 24px [re];
+    --timvir-page-margin: 24px;
+    grid-template-columns: [le] var(--timvir-page-margin) [lex] 1fr [lc] minmax(0, 48rem) [rc] 1fr [rex] var(--timvir-page-margin) [re];
   }
 
   @media (min-width: 72rem) {
-    grid-template-columns: [le] 1fr 24px [lex] minmax(0, 12rem) [lc] 48rem [rc] minmax(0, 12rem) [rex] 24px 1fr [re];
+    grid-template-columns: [le] 1fr var(--timvir-page-margin) [lex] minmax(0, 12rem) [lc] 48rem [rc] minmax(0, 12rem) [rex] var(--timvir-page-margin) 1fr [re];
   }
 
   & > *:not(.${noLayout}) {
