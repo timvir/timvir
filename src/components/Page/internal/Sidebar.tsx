@@ -1,5 +1,5 @@
 import { css, cx } from "linaria";
-import Link from "next/link";
+import type Link from "next/link";
 import React from "react";
 import { Node } from "../types";
 import Section from "./Section";

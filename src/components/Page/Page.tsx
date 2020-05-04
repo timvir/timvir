@@ -1,6 +1,6 @@
 import { MDXProvider, MDXProviderComponents } from "@mdx-js/react";
 import { css, cx } from "linaria";
-import Link from "next/link";
+import type Link from "next/link";
 import React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useImmer } from "use-immer";

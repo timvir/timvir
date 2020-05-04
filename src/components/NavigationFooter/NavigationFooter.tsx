@@ -1,5 +1,5 @@
 import { css, cx } from "linaria";
-import Link from "next/link";
+import type Link from "next/link";
 import React from "react";
 
 /**
@@ -105,7 +105,7 @@ function NavigationFooter({ prev, next, Link, className, ...props }: Props, ref:
 
 export default React.forwardRef(NavigationFooter);
 
-const PrimaryLink = ({ children, href }: { href: string; Link: typeof Link; children: React.ReactNode }) => {
+const PrimaryLink = ({ href, Link, children }: { href: string; Link: Props["Link"]; children: React.ReactNode }) => {
   return (
     <Link href={href}>
       <a
