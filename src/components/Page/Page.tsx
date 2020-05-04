@@ -113,14 +113,16 @@ function Page(
             location={location}
             toc={toc}
             Link={Link}
-            search={{
-              open: () => {
-                mutate((draft) => {
-                  draft.search.open = true;
-                });
-              },
-              ...search,
-            }}
+            search={
+              search && {
+                open: () => {
+                  mutate((draft) => {
+                    draft.search.open = true;
+                  });
+                },
+                ...search,
+              }
+            }
           />
         </div>
 
