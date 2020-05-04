@@ -53,6 +53,10 @@ export default [
     output: [
       {
         file: "packages/core/index.js",
+        format: "esm",
+      },
+      {
+        file: "packages/core/index.cjs",
         format: "cjs",
       },
     ],

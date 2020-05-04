@@ -1,8 +1,15 @@
 {
+  "type": "module",
   "name": "@timvir/core",
   "version": "0.0.0",
   "sideEffects": false,
   "types": "packages/core/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "default": "./index.cjs"
+    }
+  },
   "peerDependencies": {
     "@mdx-js/react": "*",
     "react": "*"
