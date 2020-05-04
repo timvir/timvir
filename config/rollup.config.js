@@ -4,7 +4,7 @@ import replace from "@rollup/plugin-replace";
 import linaria from "linaria/rollup";
 import babel from "rollup-plugin-babel";
 import css from "rollup-plugin-css-only";
-import { terser } from "rollup-plugin-terser";
+// import { terser } from "rollup-plugin-terser";
 import shebang from "rollup-plugin-add-shebang";
 
 import stylis from "stylis";
@@ -64,7 +64,7 @@ export default [
         },
       }),
       replace({ "process.env.NODE_ENV": `"production"` }),
-      terser(),
+      // terser(),
       babel({
         configFile: false,
         extensions,
@@ -106,7 +106,7 @@ export default [
         },
       }),
       replace({ "process.env.NODE_ENV": `"production"` }),
-      terser(),
+      // terser(),
       babel({
         configFile: false,
         extensions,
