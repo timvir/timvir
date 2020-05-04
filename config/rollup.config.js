@@ -98,6 +98,10 @@ export default [
     output: [
       {
         file: "packages/blocks/index.js",
+        format: "esm",
+      },
+      {
+        file: "packages/blocks/index.cjs",
         format: "cjs",
       },
     ],

@@ -1,8 +1,15 @@
 {
+  "type": "module",
   "name": "@timvir/blocks",
   "version": "0.0.0",
   "sideEffects": false,
   "types": "packages/blocks/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "default": "./index.cjs"
+    }
+  },
   "peerDependencies": {
     "@mdx-js/react": "*",
     "prism-react-renderer": "*",
