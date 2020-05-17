@@ -1,8 +1,3 @@
-import Wrapper from "../timvir/wrapper";
-export default Wrapper;
-
-# Timvir
-
 ## What is Timvir?
 
 Timvir is a project documentation tool, currently optimized for React + Next.js projects (though nothing ties it inherently to Next.js). In its core, Timvir is a set of React
