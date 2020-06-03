@@ -35,7 +35,10 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
   React.useEffect(() => {
     const onMouseMove = (ev: MouseEvent) => {
       if (lock.current) {
-        setWidth((width) => Math.max(0, width + 2 * ev.movementX * ({ left: -1, right: 1 }[lock.current] ?? 1)));
+        const max = svgROE.contentRect.width - 2 * (56 + 8 + 8);
+        setWidth((width) =>
+          Math.min(max, Math.max(320, width + 2 * ev.movementX * ({ left: -1, right: 1 }[lock.current] ?? 1)))
+        );
       }
     };
 
@@ -52,10 +55,10 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
     };
-  }, []);
+  }, [svgROE]);
 
   const iframeRO = useResizeObserver((entries) => {
-    // console.log('iframeRO', entries)
+    // console.log("iframeRO", entries);
     setHeight(entries[entries.length - 1].contentRect.height);
   });
 
@@ -116,21 +119,20 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
               className={css`
                 border-radius: 3px;
                 display: grid;
-                padding-top: 16px;
-                grid-template-columns: 16px auto 16px;
-                grid-template-rows: auto 16px;
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
+                grid-template-columns: 56px auto 56px;
+                grid-template-rows: 0 auto 0;
+                grid-column-gap: 8px;
               `}
             >
               <div
                 ref={viewportRef}
                 className={css`
                   grid-column: 2 / span 1;
-                  grid-row: 1 / span 1;
+                  grid-row: 2 / span 1;
                   position: relative;
                   flex: 1;
                   height: 100px;
-                  min-height: 10px;
+                  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
                 `}
                 style={{ width, height }}
               >
@@ -139,10 +141,8 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                   frameBorder="0"
                   src={src}
                   onLoad={() => {
-                    if (height === undefined) {
-                      const { height } = iframeRef.current.contentDocument.body.getBoundingClientRect();
-                      setHeight(height);
-                    }
+                    const { height } = iframeRef.current.contentDocument.body.getBoundingClientRect();
+                    setHeight(height);
                   }}
                   className={css`
                     display: block;
@@ -157,11 +157,28 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
               <div
                 className={css`
                   grid-column: 1 / span 1;
-                  grid-row: 1 / span 1;
+                  grid-row: 1 / span 3;
                   cursor: pointer;
 
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  opacity: 0.5;
+                  color: var(--c-text);
+
+                  border-radius: 2px;
+                  transition: all 0.2s cubic-bezier(0.4, 1, 0.75, 0.9);
+
                   &:hover {
-                    background: rgba(0, 0, 0, 0.1);
+                    opacity: 1;
+                    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2),
+                      0 8px 24px rgba(16, 22, 26, 0.2);
+                  }
+
+                  &:active {
+                    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgba(16, 22, 26, 0),
+                      0 1px 1px rgba(16, 22, 26, 0.2);
                   }
                 `}
                 onMouseDown={() => {
@@ -169,15 +186,36 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                   iframeRef.current.style.userSelect = "none";
                   iframeRef.current.style.pointerEvents = "none";
                 }}
-              />
+              >
+                <svg width="56" height="56" viewBox="0 0 56 56">
+                  <path fill="currentColor" d="M27 18h2v20h-2V18zm-6 0h2v20h-2V18zm12 0h2v20h-2V18z" />
+                </svg>
+              </div>
               <div
                 className={css`
                   grid-column: 3 / span 1;
-                  grid-row: 1 / span 1;
+                  grid-row: 1 / span 3;
                   cursor: pointer;
 
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  opacity: 0.5;
+                  color: var(--c-text);
+
+                  border-radius: 2px;
+                  transition: all 0.2s cubic-bezier(0.4, 1, 0.75, 0.9);
+
                   &:hover {
-                    background: rgba(0, 0, 0, 0.1);
+                    opacity: 1;
+                    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2),
+                      0 8px 24px rgba(16, 22, 26, 0.2);
+                  }
+
+                  &:active {
+                    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgba(16, 22, 26, 0),
+                      0 1px 1px rgba(16, 22, 26, 0.2);
                   }
                 `}
                 onMouseDown={() => {
@@ -185,7 +223,11 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                   iframeRef.current.style.userSelect = "none";
                   iframeRef.current.style.pointerEvents = "none";
                 }}
-              />
+              >
+                <svg width="56" height="56" viewBox="0 0 56 56">
+                  <path fill="currentColor" d="M27 18h2v20h-2V18zm-6 0h2v20h-2V18zm12 0h2v20h-2V18z" />
+                </svg>
+              </div>
               {/* <div
                 className={css`
                   grid-column: 2 / span 1;
@@ -202,9 +244,9 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
               style={{
                 fontSize: "0.75rem",
                 color: "#999",
-                marginTop: 6,
+                marginTop: 8,
                 width: 0,
-                marginLeft: 16,
+                marginLeft: 56 + 8,
                 whiteSpace: "nowrap",
               }}
             >
