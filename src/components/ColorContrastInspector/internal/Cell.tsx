@@ -14,20 +14,20 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   isWhitelisted: boolean;
 }
 
+const classes = {
+  icon: css`
+    transition: all 0.2s;
+    opacity: 1;
+  `,
+  opacity: css`
+    transition: all 0.2s;
+    opacity: 0;
+  `,
+};
+
 function Cell({ background, foreground, isWhitelisted, className, style, ...props }: Props, ref: any /* FIXME */) {
   const large = opacity(3, background, foreground);
   const normal = opacity(4.5, background, foreground);
-
-  const classes = {
-    icon: css`
-      transition: all 0.2s;
-      opacity: 1;
-    `,
-    opacity: css`
-      transition: all 0.2s;
-      opacity: 0;
-    `,
-  };
 
   const content = (() => {
     const fmt = (n: undefined | number) => (n === undefined ? "" : `${Math.round(n * 100)}%`);

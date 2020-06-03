@@ -13,6 +13,12 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   info?: React.ReactNode;
 }
 
+const classes = {
+  meta: css`
+    display: flex;
+  `,
+};
+
 function Font({ name, font, info, className, children, ...props }: Props, ref: any /* FIXME */) {
   const [contentRef, setContentRef] = React.useState<null | HTMLDivElement>(null);
   const [fontSizeRef, setFontSizeRef] = React.useState<null | HTMLDivElement>(null);
@@ -34,12 +40,6 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
     }
   }, [contentRef]);
 
-  const classNames = {
-    meta: css`
-      display: flex;
-    `,
-  };
-
   return (
     <Root
       ref={ref}
@@ -48,17 +48,17 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
         css`
           padding: 16px 0;
 
-          & .${classNames.meta} > * {
+          & .${classes.meta} > * {
             opacity: 0.5;
           }
-          &:hover .${classNames.meta} > * {
+          &:hover .${classes.meta} > * {
             opacity: 0.8;
           }
         `
       )}
       {...props}
     >
-      <div className={classNames.meta}>
+      <div className={classes.meta}>
         <div
           ref={setFontSizeRef}
           className={css`
