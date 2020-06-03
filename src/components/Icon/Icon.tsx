@@ -14,23 +14,23 @@ interface Props extends React.ComponentProps<typeof Root> {
   descriptor: Descriptor;
 }
 
-function Icon({ allSizes, descriptor, ...props }: Props, ref: any /* FIXME */) {
-  const classNames = {
-    name: css`
-      margin-top: 6px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 0.75rem;
-      opacity: 0;
-      transition: all 0.16s;
-      z-index: 1;
-      position: relative;
-      top: -6px;
-      color: #999;
-    `
-  };
+const classes = {
+  name: css`
+    margin-top: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: all 0.16s;
+    z-index: 1;
+    position: relative;
+    top: -6px;
+    color: #999;
+  `,
+};
 
+function Icon({ allSizes, descriptor, ...props }: Props, ref: any /* FIXME */) {
   return (
     <Root ref={ref} {...props}>
       <Measure bounds>
@@ -47,7 +47,7 @@ function Icon({ allSizes, descriptor, ...props }: Props, ref: any /* FIXME */) {
                 z-index: 10;
               }
 
-              &:hover .${classNames.name} {
+              &:hover .${classes.name} {
                 opacity: 1;
                 top: 0px;
                 color: var(--c-text);
@@ -66,7 +66,7 @@ function Icon({ allSizes, descriptor, ...props }: Props, ref: any /* FIXME */) {
               </div>
             )}
 
-            <div className={classNames.name}>{descriptor.name}</div>
+            <div className={classes.name}>{descriptor.name}</div>
           </div>
         )}
       </Measure>

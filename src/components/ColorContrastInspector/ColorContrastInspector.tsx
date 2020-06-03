@@ -15,21 +15,21 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   whitelist?: Array<[string, string]>;
 }
 
+const classes = {
+  cell: css`
+    opacity: 0;
+    transition: all 0.2s;
+
+    &:hover {
+      opacity: 1 !important;
+    }
+  `,
+  whitelisted: css`
+    opacity: 1;
+  `,
+};
+
 function ColorContrastInspector({ background, foreground, whitelist, ...props }: Props, ref: any /* FIXME */) {
-  const classes = {
-    cell: css`
-      opacity: 0;
-      transition: all 0.2s;
-
-      &:hover {
-        opacity: 1 !important;
-      }
-    `,
-    whitelisted: css`
-      opacity: 1;
-    `,
-  };
-
   return (
     <Root
       ref={ref}

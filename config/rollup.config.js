@@ -61,12 +61,8 @@ export default [
       },
     ],
     plugins: [
-      resolve({ mainFields: "main", extensions }),
-      commonjs({
-        namedExports: {
-          "linaria/react": ["styled"],
-        },
-      }),
+      resolve({ extensions }),
+      commonjs({}),
       replace({ "process.env.NODE_ENV": `"production"` }),
       // terser(),
       babel({
@@ -106,13 +102,8 @@ export default [
       },
     ],
     plugins: [
-      resolve({ mainFields: ["module", "main"], extensions }),
-      commonjs({
-        namedExports: {
-          "node_modules/downshift/node_modules/react-is/index.js": ["isForwardRef"],
-          "linaria/react": ["styled"],
-        },
-      }),
+      resolve({ extensions }),
+      commonjs({}),
       replace({ "process.env.NODE_ENV": `"production"` }),
       // terser(),
       babel({
