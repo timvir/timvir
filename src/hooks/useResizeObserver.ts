@@ -1,7 +1,7 @@
 import React from "react";
 
 export function useResizeObserver(callback: ResizeObserverCallback) {
-  const [ref] = React.useState(() => ({ ro: new ResizeObserver((...args) => ref.callback(...args)), callback }));
+  const [ref] = React.useState(() => ({ ro: mkResizeObserver((...args) => ref.callback(...args)), callback }));
   ref.callback = callback;
   return ref.ro;
 }
@@ -16,12 +16,12 @@ export function useResizeObserverEntries<T extends Element>() {
   return [useResizeObserverRef<T>(setEntries), entries] as const;
 }
 
-const last = <T>(a: ReadonlyArray<T>): undefined | T => a[a.length - 1];
-
 export function useResizeObserverEntry<T extends Element>() {
   const [ref, entries] = useResizeObserverEntries<T>();
   return [ref, last(entries)] as const;
 }
+
+const last = <T>(a: ReadonlyArray<T>): undefined | T => a[a.length - 1];
 
 interface ResizeObserver {
   observe(target: Element): void;
@@ -47,3 +47,12 @@ declare const ResizeObserver: {
   prototype: ResizeObserver;
   new (callback: ResizeObserverCallback): ResizeObserver;
 };
+
+const nopResizeObserver: ResizeObserver = {
+  observe() {},
+  unobserve() {},
+  disconnect() {},
+};
+
+const mkResizeObserver = (callback: ResizeObserverCallback) =>
+  typeof ResizeObserver === "undefined" ? nopResizeObserver : new ResizeObserver(callback);
