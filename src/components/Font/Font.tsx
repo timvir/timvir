@@ -1,6 +1,7 @@
 import { cx, css } from "linaria";
 import React from "react";
 import * as Icons from "react-feather";
+import * as components from "../Page/components";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -16,6 +17,12 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 const classes = {
   meta: css`
     display: flex;
+    align-items: baseline;
+
+    font-size: 0.9rem;
+    font-weight: bold;
+
+    transition: all 0.2s;
   `,
 };
 
@@ -31,7 +38,7 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
       const intervalId = setInterval(() => {
         if (fontSizeRef) {
           const { fontSize } = computedStyle;
-          fontSizeRef.innerText = `${Math.round(parseInt(fontSize))}px`;
+          fontSizeRef.innerText = `– ${Math.round(parseInt(fontSize))}px`;
         }
       }, 250);
       return () => {
@@ -49,29 +56,30 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
           padding: 16px 0;
 
           & .${classes.meta} > * {
-            opacity: 0.5;
+            opacity: 0.6;
           }
           &:hover .${classes.meta} > * {
-            opacity: 0.8;
+            opacity: 1;
           }
         `
       )}
       {...props}
     >
       <div className={classes.meta}>
+        <components.h3
+          className={css`
+            margin: 0 1ch 0 0;
+          `}
+        >
+          {name}
+        </components.h3>
         <div
           ref={setFontSizeRef}
           className={css`
             text-align: left;
-          `}
-        />
-        <div
-          className={css`
             margin-right: auto;
           `}
-        >
-          {" "}– {name}
-        </div>
+        />
         {info && (
           <div
             className={css`
@@ -92,7 +100,7 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
                 const infoParent = infoRef.parentElement;
 
                 if (infoParent.style.height === "0px") {
-                  infoParent.style.height = window.getComputedStyle(infoRef).height;
+                  infoParent.style.height = `${infoRef.getBoundingClientRect().height}px`;
                   infoParent.style.opacity = "1";
 
                   // contentParent.style.height = "0px";
@@ -110,23 +118,6 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
             <Icons.Info size={"1.1em"} />
           </div>
         )}
-        <div
-          className={css`
-            margin-left: 16px;
-            cursor: pointer;
-            &:hover {
-              color: var(--c-p-4);
-              opacity: 1;
-            }
-
-            & > svg {
-              position: relative;
-              top: 2px;
-            }
-          `}
-        >
-          <Icons.RotateCcw size={"1.1em"} />
-        </div>
       </div>
       <div
         className={css`
@@ -145,7 +136,9 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
             <div
               ref={setInfoRef}
               className={css`
-                padding: 16px 0;
+                padding: 0 0 16px;
+                display: flex;
+                flex-direction: column;
               `}
             >
               {info}

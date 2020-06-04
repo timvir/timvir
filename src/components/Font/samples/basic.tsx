@@ -10,7 +10,7 @@ export default (props: Partial<React.ComponentPropsWithoutRef<typeof Font>>) => 
       info={
         <>
           <p>
-            Heading 1 is used for this and that. Its font size is defined in terms of viewport width, as such it
+            This font is used for this and that. Its size is defined in terms of viewport width, as such it
             automatically scales with the viewport.
           </p>
 
