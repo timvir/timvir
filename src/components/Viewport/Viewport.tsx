@@ -240,24 +240,23 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                 `}
               /> */}
             </div>
-            <figcaption
-              style={{
-                fontSize: "0.75rem",
-                color: "#999",
-                marginTop: 8,
-                width: 0,
-                marginLeft: 56 + 8,
-                whiteSpace: "nowrap",
-              }}
-            >
-              Source:{" "}
-              <pageComponents.a href={src} target="_blank">
-                {src}
-              </pageComponents.a>
-            </figcaption>
           </div>
         </div>
       </Root>
+
+      <figcaption
+        style={{
+          fontSize: "0.75rem",
+          color: "#999",
+          marginTop: 8,
+          whiteSpace: "nowrap",
+        }}
+      >
+        Source:{" "}
+        <pageComponents.a href={src} target="_blank">
+          {src}
+        </pageComponents.a>
+      </figcaption>
     </>
   );
 }
