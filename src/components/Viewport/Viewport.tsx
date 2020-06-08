@@ -35,6 +35,7 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
   React.useEffect(() => {
     const onMouseMove = (ev: MouseEvent) => {
       if (lock.current) {
+        ev.preventDefault();
         const max = svgROE.contentRect.width - 2 * (56 + 8 + 8);
         setWidth((width) =>
           Math.min(max, Math.max(320, width + 2 * ev.movementX * ({ left: -1, right: 1 }[lock.current] ?? 1)))
