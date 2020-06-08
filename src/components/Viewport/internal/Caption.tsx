@@ -14,7 +14,6 @@ function Caption(props: Props) {
       className={css`
         font-size: 0.75rem;
         color: #999;
-        margin-top: 8px;
         white-space: nowrap;
       `}
     >

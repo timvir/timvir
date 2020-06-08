@@ -181,6 +181,31 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
             </div>
           </div>
         </div>
+
+        <div
+          className={css`
+            position: relative;
+          `}
+        >
+          <svg
+            viewBox={`-${(svgROE?.contentRect.width ?? 0) / 2} -20 ${svgROE?.contentRect.width ?? 0} 40`}
+            className={css`
+              width: 100%;
+              display: block;
+              height: 40px;
+            `}
+          >
+            <rect
+              x={-(svgROE?.contentRect.width ?? 0) / 2}
+              y={-8}
+              width={svgROE?.contentRect.width ?? 0}
+              height={16}
+              fill="rgba(0, 0, 0, .1)"
+            />
+            <line x1={-(width ?? 0) / 2} x2={-(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
+            <line x1={(width ?? 0) / 2} x2={(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
+          </svg>
+        </div>
       </Root>
 
       <Caption src={src} />
