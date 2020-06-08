@@ -2,7 +2,7 @@ import { css, cx } from "linaria";
 import React from "react";
 import { useResizeObserver, useResizeObserverEntry } from "../../hooks/useResizeObserver";
 import { fullWidth } from "../Page";
-import * as pageComponents from "../Page/components";
+import { Caption, Handle } from "./internal";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -14,20 +14,30 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
+  /*
+   * The container measures the width of the main column. It is used to initialize
+   * the default width.
+   */
   const [containerRef, containerROE] = useResizeObserverEntry();
+
+  /*
+   * The SVG spans across the full width. It is used to restrict the max width.
+   */
   const [svgRef, svgROE] = useResizeObserverEntry();
-  const [viewportRef, roe] = useResizeObserverEntry();
 
   const [height, setHeight] = React.useState<undefined | number>(undefined);
 
   const [width, setWidth] = React.useState<undefined | number>(undefined);
   React.useEffect(() => {
-    if (containerROE) {
-      if (width === undefined) {
-        setWidth(containerROE.contentRect.width);
+    if (width === undefined && containerROE) {
+      setWidth(containerROE.contentRect.width);
+    } else if (svgROE) {
+      const max = svgROE.contentRect.width - 2 * (56 + 8 + 8);
+      if (width > max) {
+        setWidth(max);
       }
     }
-  }, [containerROE, setWidth, width]);
+  }, [containerROE, svgROE, setWidth, width]);
 
   const lock = React.useRef("");
   const iframeRef = React.useRef<HTMLIFrameElement>();
@@ -59,12 +69,13 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
   }, [svgROE]);
 
   const iframeRO = useResizeObserver((entries) => {
-    // console.log("iframeRO", entries);
     setHeight(entries[entries.length - 1].contentRect.height);
   });
 
   React.useEffect(() => {
-    iframeRO.observe(iframeRef.current.contentDocument.body);
+    if (iframeRef.current.contentDocument.body) {
+      iframeRO.observe(iframeRef.current.contentDocument.body);
+    }
   });
 
   return (
@@ -94,8 +105,6 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
             />
             <line x1={-(width ?? 0) / 2} x2={-(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
             <line x1={(width ?? 0) / 2} x2={(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
-            {/* <circle r={5} cx={width / 2} fill="magenta" /> */}
-            {/* <circle r={5} cx={-width / 2} fill="magenta" /> */}
           </svg>
           <div
             className={css`
@@ -126,7 +135,6 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
               `}
             >
               <div
-                ref={viewportRef}
                 className={css`
                   grid-column: 2 / span 1;
                   grid-row: 2 / span 1;
@@ -134,6 +142,8 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                   flex: 1;
                   height: 100px;
                   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
+                  transition: height 0.16s;
+                  overflow: hidden;
                 `}
                 style={{ width, height }}
               >
@@ -141,8 +151,8 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                   ref={iframeRef}
                   frameBorder="0"
                   src={src}
-                  onLoad={() => {
-                    const { height } = iframeRef.current.contentDocument.body.getBoundingClientRect();
+                  onLoad={(ev) => {
+                    const { height } = ev.currentTarget.contentDocument.body.getBoundingClientRect();
                     setHeight(height);
                   }}
                   className={css`
@@ -150,114 +160,20 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                     position: absolute;
                     top: 0;
                     left: 0;
+                    width: 100%;
+                    height: 100%;
                   `}
-                  style={{ width: roe?.contentRect.width ?? 0, height: roe?.contentRect.height ?? 0 }}
                 />
               </div>
 
-              <div
-                className={css`
-                  grid-column: 1 / span 1;
-                  grid-row: 1 / span 3;
-                  cursor: pointer;
-
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-
-                  opacity: 0.5;
-                  color: var(--c-text);
-
-                  border-radius: 2px;
-                  transition: all 0.2s cubic-bezier(0.4, 1, 0.75, 0.9);
-
-                  &:hover {
-                    opacity: 1;
-                    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2),
-                      0 8px 24px rgba(16, 22, 26, 0.2);
-                  }
-
-                  &:active {
-                    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgba(16, 22, 26, 0),
-                      0 1px 1px rgba(16, 22, 26, 0.2);
-                  }
-                `}
-                onMouseDown={() => {
-                  lock.current = "left";
-                  iframeRef.current.style.userSelect = "none";
-                  iframeRef.current.style.pointerEvents = "none";
-                }}
-              >
-                <svg width="56" height="56" viewBox="0 0 56 56">
-                  <path fill="currentColor" d="M27 18h2v20h-2V18zm-6 0h2v20h-2V18zm12 0h2v20h-2V18z" />
-                </svg>
-              </div>
-              <div
-                className={css`
-                  grid-column: 3 / span 1;
-                  grid-row: 1 / span 3;
-                  cursor: pointer;
-
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-
-                  opacity: 0.5;
-                  color: var(--c-text);
-
-                  border-radius: 2px;
-                  transition: all 0.2s cubic-bezier(0.4, 1, 0.75, 0.9);
-
-                  &:hover {
-                    opacity: 1;
-                    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2),
-                      0 8px 24px rgba(16, 22, 26, 0.2);
-                  }
-
-                  &:active {
-                    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgba(16, 22, 26, 0),
-                      0 1px 1px rgba(16, 22, 26, 0.2);
-                  }
-                `}
-                onMouseDown={() => {
-                  lock.current = "right";
-                  iframeRef.current.style.userSelect = "none";
-                  iframeRef.current.style.pointerEvents = "none";
-                }}
-              >
-                <svg width="56" height="56" viewBox="0 0 56 56">
-                  <path fill="currentColor" d="M27 18h2v20h-2V18zm-6 0h2v20h-2V18zm12 0h2v20h-2V18z" />
-                </svg>
-              </div>
-              {/* <div
-                className={css`
-                  grid-column: 2 / span 1;
-                  grid-row: 2 / span 1;
-                  cursor: pointer;
-
-                  &:hover {
-                    background: rgba(0, 0, 0, 0.1);
-                  }
-                `}
-              /> */}
+              <Handle gridColumn="1" lock={lock} edge="left" iframeRef={iframeRef} />
+              <Handle gridColumn="3" lock={lock} edge="right" iframeRef={iframeRef} />
             </div>
           </div>
         </div>
       </Root>
 
-      <figcaption
-        style={{
-          fontSize: "0.75rem",
-          color: "#999",
-          marginTop: 8,
-          whiteSpace: "nowrap",
-        }}
-      >
-        Source:{" "}
-        <pageComponents.a href={src} target="_blank">
-          {src}
-        </pageComponents.a>
-      </figcaption>
+      <Caption src={src} />
     </>
   );
 }
