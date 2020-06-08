@@ -81,7 +81,17 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
   return (
     <>
       <div ref={containerRef} />
-      <Root ref={ref} {...props} className={cx(className, fullWidth)}>
+      <Root
+        ref={ref}
+        {...props}
+        className={cx(
+          className,
+          fullWidth,
+          css`
+            contain: layout;
+          `
+        )}
+      >
         <div
           ref={svgRef}
           className={css`
