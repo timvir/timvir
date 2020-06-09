@@ -29,8 +29,8 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
 
   const [width, setWidth] = React.useState<undefined | number>(undefined);
   React.useEffect(() => {
-    if (width === undefined && containerROE) {
-      setWidth(containerROE.contentRect.width);
+    if (width === undefined && svgROE) {
+      setWidth(svgROE.contentRect.width);
     } else if (svgROE) {
       const max = svgROE.contentRect.width - 2 * (56 + 8 + 8);
       if (width > max) {
