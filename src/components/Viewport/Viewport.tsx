@@ -2,7 +2,7 @@ import { css, cx } from "linaria";
 import React from "react";
 import { useResizeObserver, useResizeObserverEntry } from "../../hooks/useResizeObserver";
 import { fullWidth } from "../Page";
-import { Caption, Handle } from "./internal";
+import { Caption, Handle, Ruler } from "./internal";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -69,7 +69,9 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
   }, [svgROE]);
 
   const iframeRO = useResizeObserver((entries) => {
-    setHeight(entries[entries.length - 1].contentRect.height);
+    if (height !== undefined) {
+      setHeight(entries[entries.length - 1].contentRect.height);
+    }
   });
 
   React.useEffect(() => {
@@ -98,24 +100,7 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
             position: relative;
           `}
         >
-          <svg
-            viewBox={`-${(svgROE?.contentRect.width ?? 0) / 2} -20 ${svgROE?.contentRect.width ?? 0} 40`}
-            className={css`
-              width: 100%;
-              display: block;
-              height: 40px;
-            `}
-          >
-            <rect
-              x={-(svgROE?.contentRect.width ?? 0) / 2}
-              y={-8}
-              width={svgROE?.contentRect.width ?? 0}
-              height={16}
-              fill="rgba(0, 0, 0, .1)"
-            />
-            <line x1={-(width ?? 0) / 2} x2={-(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
-            <line x1={(width ?? 0) / 2} x2={(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
-          </svg>
+          <Ruler containerWidth={svgROE?.contentRect.width} viewportWidth={width} />
           <div
             className={css`
               position: absolute;
@@ -145,16 +130,42 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
               `}
             >
               <div
-                className={css`
-                  grid-column: 2 / span 1;
-                  grid-row: 2 / span 1;
-                  position: relative;
-                  flex: 1;
-                  height: 100px;
-                  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
-                  transition: height 0.16s;
-                  overflow: hidden;
-                `}
+                className={cx(
+                  css`
+                    grid-column: 2 / span 1;
+                    grid-row: 2 / span 1;
+                    position: relative;
+                    flex: 1;
+                    height: 100px;
+                    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
+                    transition: height 0.16s;
+                    overflow: hidden;
+                  `,
+                  height === undefined &&
+                    css`
+                      animation-duration: 2s;
+                      animation-fill-mode: forwards;
+                      animation-iteration-count: infinite;
+                      animation-name: shimmer;
+                      animation-timing-function: linear;
+                      background-size: 150vw 100px;
+                      background-image: linear-gradient(to right, #fafafa 0%, #f4f4f4 25%, #fafafa 40%);
+                      box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2);
+                      border-radius: 1px;
+
+                      @keyframes shimmer {
+                        0% {
+                          background-position: -60vw 0
+                        }
+                        40% {
+                          background-position: 85vw 0
+                        }
+                        100% {
+                          background-position: 85vw 0
+                        }
+                      }
+                    `
+                )}
                 style={{ width, height }}
               >
                 <iframe
@@ -172,7 +183,12 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                     left: 0;
                     width: 100%;
                     height: 100%;
+                    transition: opacity 0.2s;
                   `}
+                  style={{
+                    opacity: height === undefined ? 0 : 1,
+                    pointerEvents: height === undefined ? "none" : undefined,
+                  }}
                 />
               </div>
 
@@ -182,30 +198,7 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
           </div>
         </div>
 
-        <div
-          className={css`
-            position: relative;
-          `}
-        >
-          <svg
-            viewBox={`-${(svgROE?.contentRect.width ?? 0) / 2} -20 ${svgROE?.contentRect.width ?? 0} 40`}
-            className={css`
-              width: 100%;
-              display: block;
-              height: 40px;
-            `}
-          >
-            <rect
-              x={-(svgROE?.contentRect.width ?? 0) / 2}
-              y={-8}
-              width={svgROE?.contentRect.width ?? 0}
-              height={16}
-              fill="rgba(0, 0, 0, .1)"
-            />
-            <line x1={-(width ?? 0) / 2} x2={-(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
-            <line x1={(width ?? 0) / 2} x2={(width ?? 0) / 2} y1={-8} y2={8} strokeWidth={2} stroke="var(--c-p-4)" />
-          </svg>
-        </div>
+        <Ruler containerWidth={svgROE?.contentRect.width} viewportWidth={width} />
       </Root>
 
       <Caption src={src} />
