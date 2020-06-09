@@ -18,7 +18,7 @@ function Ruler(props: Props) {
         width: 100%;
         display: block;
         height: ${height}px;
-        margin: 12px 0;
+        margin: 8px 0;
       `}
     >
       <rect x={-containerWidth / 2} y={-height / 2} width={containerWidth} height={height} fill="rgba(0, 0, 0, .1)" />
