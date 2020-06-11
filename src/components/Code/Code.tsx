@@ -32,15 +32,27 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
    * to be wider than the center column.
    */
   fullWidth?: boolean;
+
+  /**
+   * The numbering starts at 1, ie. `highlightedLines={[1, 2]}` will highlight
+   * the first two lines.
+   */
+  highlightedLines?: Array<number>;
 }
 
-function Code({ children, language, fullWidth, ...props }: Props, ref: any /* FIXME */) {
+function Code(props: Props, ref: any /* FIXME */) {
+  const { children, language, fullWidth, highlightedLines, ...rest } = props;
+
+  const isHighlightedLine = (() => {
+    return (line: number) => highlightedLines?.includes(line);
+  })();
+
   return (
     <Highlight {...defaultProps} code={children.trim()} language={language ?? "markup"} theme={theme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Root
           ref={ref}
-          {...props}
+          {...rest}
           className={cx(
             className,
             css`
@@ -75,7 +87,7 @@ function Code({ children, language, fullWidth, ...props }: Props, ref: any /* FI
           <div
             className={css`
               display: grid;
-              grid-template-columns: min-content;
+              grid-template-columns: 1fr;
             `}
           >
             <div
@@ -85,17 +97,33 @@ function Code({ children, language, fullWidth, ...props }: Props, ref: any /* FI
                       padding: 16px 24px 16px 0;
                     `
                   : css`
-                      padding: 16px 24px;
+                      padding: 16px 0;
                     `
               )}
             >
-              {tokens.map((line, i) => (
-                <div {...getLineProps({ line, key: i })}>
-                  {line.map((token, key) => (
-                    <span {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
-              ))}
+              {tokens.map((line, i) => {
+                const { className, ...lineProps } = getLineProps({ line, key: i });
+
+                return (
+                  <div
+                    {...lineProps}
+                    className={cx(
+                      className,
+                      css`
+                        padding: 0 24px;
+                      `,
+                      isHighlightedLine(i + 1) &&
+                        css`
+                          background: #fffbdd;
+                        `
+                    )}
+                  >
+                    {line.map((token, key) => (
+                      <span {...getTokenProps({ token, key })} />
+                    ))}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </Root>
