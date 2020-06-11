@@ -26,6 +26,11 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
    */
   language?: Language;
 
+  /**
+   * When set, the code block spans the full width. Note that the text itself
+   * is still aligned with the main column. Use this when you expect the text
+   * to be wider than the center column.
+   */
   fullWidth?: boolean;
 }
 
