@@ -2,10 +2,12 @@
  * This is documentation for the Code component.
  */
 
+import { css, cx } from "linaria";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/github";
 import React from "react";
-import { css, cx } from "linaria";
+import * as Icons from "react-feather";
+import { useImmer } from "use-immer";
 import * as Page from "../Page";
 
 /**
@@ -47,6 +49,11 @@ function Code(props: Props, ref: any /* FIXME */) {
     return (line: number) => highlightedLines?.includes(line);
   })();
 
+  const [state, mutate] = useImmer({
+    mouseOver: false,
+    copiedToClipboard: false,
+  });
+
   return (
     <Highlight {...defaultProps} code={children.trim()} language={language ?? "markup"} theme={theme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -58,6 +65,7 @@ function Code(props: Props, ref: any /* FIXME */) {
             css`
               margin: 0;
               overflow-x: auto;
+              contain: content;
             `,
             fullWidth && Page.fullWidth,
             fullWidth &&
@@ -89,7 +97,92 @@ function Code(props: Props, ref: any /* FIXME */) {
               display: grid;
               grid-template-columns: 1fr;
             `}
+            onMouseEnter={() => {
+              mutate((draft) => {
+                draft.mouseOver = true;
+              });
+            }}
+            onMouseLeave={() => {
+              mutate((draft) => {
+                draft.mouseOver = false;
+                draft.copiedToClipboard = false;
+              });
+            }}
           >
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(children);
+                mutate((draft) => {
+                  draft.copiedToClipboard = true;
+                });
+              }}
+              className={cx(
+                css`
+                  --size: 48px;
+
+                  z-index: 1;
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+
+                  width: var(--size);
+                  height: var(--size);
+
+                  display: flex;
+                  align-items: flex-start;
+                  justify-content: flex-end;
+
+                  outline: none;
+                  border: none;
+                  padding: 6px;
+                  background: transparent;
+
+                  transition: all 0.2s;
+
+                  cursor: pointer;
+
+                  &:hover {
+                    color: white;
+                  }
+                  &:hover svg:first-child {
+                    transform: translate(0, 0);
+                  }
+                  &:active svg:first-child {
+                    transform: translate(2px, -2px);
+                  }
+
+                  pointer-events: none;
+                  opacity: 0;
+                `,
+                state.mouseOver &&
+                  css`
+                    pointer-events: all;
+                    opacity: 1;
+                  `
+              )}
+            >
+              <svg
+                width={48}
+                height={48}
+                viewBox="0 0 48 48"
+                className={css`
+                  position: absolute;
+                  z-index: -1;
+                  top: 0;
+                  right: 0;
+                  path {
+                    fill: var(--c-p-4);
+                  }
+
+                  transition: all 0.2s;
+                  transform: translate(48px, -48px);
+                `}
+              >
+                <path d="M0 0 H48 V48 Z" />
+              </svg>
+              {state.copiedToClipboard ? <Icons.Clipboard size={"16px"} /> : <Icons.Copy size={"16px"} />}
+            </button>
+
             <div
               className={cx(
                 fullWidth
