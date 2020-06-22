@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "sideEffects": false,
   "types": "packages/core/index.d.ts",
+  "main": "./index.cjs",
   "exports": {
     ".": {
       "import": "./index.js",

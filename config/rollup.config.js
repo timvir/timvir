@@ -55,16 +55,11 @@ export default [
         file: "packages/core/index.js",
         format: "esm",
       },
-      {
-        file: "packages/core/index.cjs",
-        format: "cjs",
-      },
     ],
     plugins: [
       resolve({ extensions }),
       // commonjs({}),
       replace({ "process.env.NODE_ENV": `"production"` }),
-      // terser(),
       babel({
         configFile: false,
         extensions,
@@ -85,6 +80,29 @@ export default [
       ...Object.keys(require("../packages/core/package.json").peerDependencies || {}),
     ],
   },
+  {
+    input: "packages/core/index.js",
+    output: [
+      {
+        file: "packages/core/index.cjs",
+        format: "cjs",
+      },
+    ],
+    plugins: [
+      resolve({ extensions }),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-env", { targets: { node: "12" } }]],
+      }),
+    ],
+    external: [
+      "next/link",
+      "next/router",
+      ...Object.keys(require("../packages/core/package.json").dependencies || {}),
+      ...Object.keys(require("../packages/core/package.json").peerDependencies || {}),
+    ],
+  },
 
   /*
    * @timvir/blocks
@@ -96,16 +114,11 @@ export default [
         file: "packages/blocks/index.js",
         format: "esm",
       },
-      {
-        file: "packages/blocks/index.cjs",
-        format: "cjs",
-      },
     ],
     plugins: [
       resolve({ extensions }),
       commonjs({}),
       replace({ "process.env.NODE_ENV": `"production"` }),
-      // terser(),
       babel({
         configFile: false,
         extensions,
@@ -118,6 +131,29 @@ export default [
       }),
       linaria(),
       css({ output: "packages/blocks/styles.css" }),
+    ],
+    external: [
+      "next/link",
+      "next/router",
+      ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
+      ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+    ],
+  },
+  {
+    input: "packages/blocks/index.js",
+    output: [
+      {
+        file: "packages/blocks/index.cjs",
+        format: "cjs",
+      },
+    ],
+    plugins: [
+      resolve({ extensions }),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-env", { targets: { node: "12" } }]],
+      }),
     ],
     external: [
       "next/link",
