@@ -31,6 +31,7 @@ const classes = {
 
 function ColorContrastInspector(props: Props, ref: any /* FIXME */) {
   const { background, foreground, whitelist, className, ...rest } = props;
+
   return (
     <Root
       ref={ref}

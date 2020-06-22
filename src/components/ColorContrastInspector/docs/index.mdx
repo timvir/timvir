@@ -2,6 +2,10 @@ import { ColorContrastInspector } from "..";
 import { Sample } from "../../../../packages/macro";
 import { Message } from "../../Message";
 import { extendedWidth } from "../../Page";
+import { Grid } from "../../Grid";
+import { Exhibit } from "../../Exhibit";
+import { Viewport } from "../../Viewport";
+import { Cell } from "../internal";
 
 # ColorContrastInspector
 
@@ -15,12 +19,47 @@ six background colors are supported.
 
 <Sample variant="basic" />
 
-<Message variant="warning" style={{ marginTop: 32 }}>
+## Reading the matrix
 
-The combaintion of **#00B1B2** and **#FFFFFF** does not have the required contrast, but we use it anyway because reasons and reasons.
+Each cell in this matrix shows either:
+
+ - checkmark: if the contrast is ok
+ - exclamation mark: contrast is sufficient only for large text sizes
+ - cross: contrast too low (if the combination is whitelisted)
+
+<Grid>
+  <Exhibit bleed={8} caption="Small and large text ok">
+    <div style={{ background: "#FFFFFF" }}>
+      <Cell background="#FFFFFF" foreground="#000000" />
+    </div>
+  </Exhibit>
+  <Exhibit bleed={8} caption="Only ok for large text">
+    <div style={{ background: "#FFFFFF" }}>
+      <Cell background="#FFFFFF" foreground="#888888" />
+    </div>
+  </Exhibit>
+  <Exhibit bleed={8} caption="Contrast too low">
+    <div style={{ background: "#FFFFFF" }}>
+      <Cell background="#FFFFFF" foreground="#AAAAAA" isWhitelisted />
+    </div>
+  </Exhibit>
+</Grid>
+
+On hover the cell shows the minimum contrast that is required. A value of 100% means the foreground
+color must be fully opaque.
+
+If you whitelist a combination which doesn't have enough contrast, it's common courtesy to explain why.
+Use for example the `<Message>` component for that:
+
+<Message variant="warning">
+
+The combination of **#00B1B2** and **#FFFFFF** does not have the required contrast, but we use it anyway because reasons and reasons.
 
 </Message>
 
-If you have more than about six background colors, make the component a bit wider, or even full-width.
+## Large number of background colors
 
-<Sample variant="extended" className={extendedWidth} />
+If you have more than about six background colors, make the component extended-width, or even full-width.
+The component is not responsive.
+
+<Viewport src="/docs/components/ColorContrastInspector/samples/extended" />
