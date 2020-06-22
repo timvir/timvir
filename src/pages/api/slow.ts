@@ -5,5 +5,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "text/html");
-  res.end(`<body style="margin:0"><div style="height:200px;background:magenta">`);
+  res.end(`<div style="height:200px;background:magenta">`);
 };

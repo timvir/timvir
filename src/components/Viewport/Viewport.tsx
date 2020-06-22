@@ -82,9 +82,18 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
     }
   });
 
+  /*
+   * The <html> element of the iframe document is the one which we observe and
+   * measure. We do not use <body> because that may have margins around which would
+   * throw off our height observations.
+   *
+   * We hope that nobody intentionally adds margins around the <html> element. By default
+   * it doesn't have.
+   */
+  const html = iframeRef.current?.contentDocument.querySelector("html");
   React.useEffect(() => {
-    if (iframeRef.current.contentDocument.body) {
-      iframeRO.observe(iframeRef.current.contentDocument.body);
+    if (html) {
+      iframeRO.observe(html);
     }
   });
 
@@ -180,8 +189,8 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                   ref={iframeRef}
                   frameBorder="0"
                   src={src}
-                  onLoad={(ev) => {
-                    const { height } = ev.currentTarget.contentDocument.body.getBoundingClientRect();
+                  onLoad={() => {
+                    const { height } = html.getBoundingClientRect();
                     setHeight(height);
                     setMaxHeight(height);
                   }}
