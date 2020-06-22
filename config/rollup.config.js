@@ -62,7 +62,7 @@ export default [
     ],
     plugins: [
       resolve({ extensions }),
-      commonjs({}),
+      // commonjs({}),
       replace({ "process.env.NODE_ENV": `"production"` }),
       // terser(),
       babel({
