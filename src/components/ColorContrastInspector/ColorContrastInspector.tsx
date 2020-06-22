@@ -29,12 +29,15 @@ const classes = {
   `,
 };
 
-function ColorContrastInspector({ background, foreground, whitelist, ...props }: Props, ref: any /* FIXME */) {
+function ColorContrastInspector(props: Props, ref: any /* FIXME */) {
+  const { background, foreground, whitelist, className, ...rest } = props;
   return (
     <Root
       ref={ref}
-      {...props}
-      className={css`
+      {...rest}
+      className={cx(
+        className,
+        css`
         display: grid;
         grid-gap: 2px;
         align-items: center;
@@ -42,7 +45,8 @@ function ColorContrastInspector({ background, foreground, whitelist, ...props }:
         &:hover .${classes.cell}:not(.${classes.whitelisted}) {
           opacity: .2;
         }
-      `}
+      `
+      )}
       style={{
         gridTemplateColumns: `80px repeat(${background.length}, 1fr)`,
       }}

@@ -69,10 +69,10 @@ function Cell({ background, foreground, isWhitelisted, className, style, ...prop
           align-items: center;
           justify-content: center;
 
-          &:hover .${classes.icon} {
+          &:hover ${classes.icon} {
             opacity: 1;
           }
-          &:hover .${classes.opacity} {
+          &:hover ${classes.opacity} {
             opacity: 1;
           }
         `

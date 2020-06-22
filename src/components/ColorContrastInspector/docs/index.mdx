@@ -1,6 +1,7 @@
 import { ColorContrastInspector } from "..";
 import { Sample } from "../../../../packages/macro";
 import { Message } from "../../Message";
+import { extendedWidth } from "../../Page";
 
 # ColorContrastInspector
 
@@ -19,3 +20,7 @@ six background colors are supported.
 The combaintion of **#00B1B2** and **#FFFFFF** does not have the required contrast, but we use it anyway because reasons and reasons.
 
 </Message>
+
+If you have more than about six background colors, make the component a bit wider, or even full-width.
+
+<Sample variant="extended" className={extendedWidth} />

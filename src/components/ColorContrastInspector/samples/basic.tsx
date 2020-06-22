@@ -1,7 +1,9 @@
 import React from "react";
 import { ColorContrastInspector } from "..";
 
-export default (props: Partial<React.ComponentPropsWithoutRef<typeof ColorContrastInspector>>) => {
+type Props = Partial<React.ComponentPropsWithoutRef<typeof ColorContrastInspector>>
+
+export default (props: Props) => {
   return (
     <ColorContrastInspector
       background={["#FFFFFF", "#FAFAFA", "#00B1B2", "#142F4E"]}
