@@ -26,6 +26,7 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
   const [svgRef, svgROE] = useResizeObserverEntry();
 
   const [height, setHeight] = React.useState<undefined | number>(undefined);
+  const [maxHeight, setMaxHeight] = React.useState<undefined | number>(undefined);
 
   const [width, setWidth] = React.useState<undefined | number>(undefined);
   React.useEffect(() => {
@@ -57,6 +58,11 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
       lock.current = "";
       iframeRef.current!.style.userSelect = "";
       iframeRef.current!.style.pointerEvents = "";
+
+      setHeight((height) => {
+        setMaxHeight(height);
+        return height;
+      });
     };
 
     window.addEventListener("mousemove", onMouseMove);
@@ -70,7 +76,9 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
 
   const iframeRO = useResizeObserver((entries) => {
     if (height !== undefined) {
-      setHeight(entries[entries.length - 1].contentRect.height);
+      const height = entries[entries.length - 1].contentRect.height;
+      setHeight(height);
+      setMaxHeight(Math.max(height, maxHeight));
     }
   });
 
@@ -155,13 +163,13 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
 
                       @keyframes shimmer {
                         0% {
-                          background-position: -60vw 0
+                          background-position: -60vw 0;
                         }
                         40% {
-                          background-position: 85vw 0
+                          background-position: 85vw 0;
                         }
                         100% {
-                          background-position: 85vw 0
+                          background-position: 85vw 0;
                         }
                       }
                     `
@@ -175,6 +183,7 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
                   onLoad={(ev) => {
                     const { height } = ev.currentTarget.contentDocument.body.getBoundingClientRect();
                     setHeight(height);
+                    setMaxHeight(height);
                   }}
                   className={css`
                     display: block;
@@ -202,6 +211,8 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
       </Root>
 
       <Caption src={src} />
+
+      <div style={{ height: maxHeight - height || 0, transition: "height 0.16s" }} />
     </>
   );
 }
