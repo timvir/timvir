@@ -1,0 +1,49 @@
+import { css } from "linaria";
+import React from "react";
+import { useResizeObserverEntry } from "../../hooks/useResizeObserver";
+
+/**
+ * The underlying DOM element which is rendered by this component.
+ */
+const Root = "div";
+
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+  url: string;
+}
+
+function Figma({ url, ...props }: Props, ref: any /* FIXME */) {
+  const [roRef, roe] = useResizeObserverEntry();
+
+  return (
+    <Root ref={ref} {...props}>
+      <div
+        ref={roRef}
+        className={css`
+          position: relative;
+
+          &::before {
+            display: block;
+            content: "";
+            padding-top: 75%;
+          }
+        `}
+      >
+        <iframe
+          className={css`
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: opacity 0.2s;
+          `}
+          style={{ height: roe?.contentRect.height || 100 }}
+          frameBorder="0"
+          src={`https://www.figma.com/embed?embed_host=timvir&url=${encodeURIComponent(url)}`}
+        />
+      </div>
+    </Root>
+  );
+}
+
+export default React.forwardRef(Figma);
