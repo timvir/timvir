@@ -39,6 +39,7 @@ function Figma({ url, ...props }: Props, ref: any /* FIXME */) {
           `}
           style={{ height: roe?.contentRect.height || 100 }}
           frameBorder="0"
+          allowFullScreen
           src={`https://www.figma.com/embed?embed_host=timvir&url=${encodeURIComponent(url)}`}
         />
       </div>
