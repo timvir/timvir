@@ -1,4 +1,5 @@
 import { css } from "linaria";
+import * as colors from "../../theme/colors";
 
 export const theme = css`
   font-family: "Menlo", "Meslo LG", monospace;
@@ -8,14 +9,14 @@ export const theme = css`
   line-height: 1.725;
   color: rgba(0, 0, 0, 0.85);
 
-  --c-p-0: #f0fcf6;
-  --c-p-1: #d1f6e4;
-  --c-p-2: #a0dbc1;
-  --c-p-3: #61c19f;
-  --c-p-4: #38a585;
-  --c-p-5: #1b896b;
+  --c-p-0: ${colors.green["50"]};
+  --c-p-1: ${colors.green["100"]};
+  --c-p-2: ${colors.green["200"]};
+  --c-p-3: ${colors.green["300"]};
+  --c-p-4: ${colors.green["400"]};
+  --c-p-5: ${colors.green["500"]};
 
-  --c-gray-8: #303030;
+  --c-gray-8: ${colors.gray["800"]};
 
   --c-text: var(--c-gray-8);
 `;
