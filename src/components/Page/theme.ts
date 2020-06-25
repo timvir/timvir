@@ -7,7 +7,8 @@ export const theme = css`
   text-rendering: optimizelegibility;
   font-size: 14px;
   line-height: 1.725;
-  color: rgba(0, 0, 0, 0.85);
+
+  color: ${colors.text.main};
 
   --c-p-0: ${colors.green["50"]};
   --c-p-1: ${colors.green["100"]};
