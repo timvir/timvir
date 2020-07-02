@@ -6,7 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-env": "^7.10.4",
     "@mdx-js/loader": "^1.6.5",
     "@mdx-js/react": "^1.6.4",
     "@next/mdx": "^9.4.4",
