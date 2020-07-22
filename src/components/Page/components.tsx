@@ -126,3 +126,38 @@ export const hr = styled.hr`
   background: currentColor;
   opacity: 0.25;
 `;
+
+export const table = styled.table`
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  width: 100%;
+  overflow: auto;
+`;
+
+export const thead = styled.thead``;
+
+export const tbody = styled.tbody``;
+
+export const tr = styled.tr`
+  background-color: #fff;
+  border-top: 1px solid var(--c-p-2);
+
+  &:nth-child(2n) {
+    background-color: var(--c-p-0);
+  }
+`;
+
+export const th = styled.th`
+  text-align: ${(props) => props.align || "center"};
+
+  padding: 6px 13px;
+  border: 1px solid var(--c-p-2);
+`;
+
+export const td = styled.td`
+  text-align: ${(props) => props.align || "left"};
+
+  padding: 6px 13px;
+  border: 1px solid var(--c-p-2);
+`;
