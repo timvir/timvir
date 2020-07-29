@@ -22,11 +22,13 @@ const mdxComponents: MDXProviderComponents = {
   },
 };
 
-export default ({ children }) => (
-  <Page location={useRouter()} Link={Link_ as any} toc={toc} search={search} mdxComponents={mdxComponents}>
-    {children}
-  </Page>
-);
+export default function Wrapper({ children }) {
+  return (
+    <Page location={useRouter()} Link={Link_ as any} toc={toc} search={search} mdxComponents={mdxComponents}>
+      {children}
+    </Page>
+  );
+}
 
 const getHref = (to: string) => {
   if (routes[to]) {

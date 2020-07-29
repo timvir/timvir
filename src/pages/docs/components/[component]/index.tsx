@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 import Wrapper from "../../../../timvir/wrapper";
 
-export default ({ component }) => {
+export default function Page({ component }) {
   const Component = dynamic(() => import(`../../../../components/${component}/docs/index.mdx`));
 
   return (

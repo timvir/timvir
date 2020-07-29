@@ -1,8 +1,9 @@
 import React from "react";
 
-export default ({ Component, pageProps }) => (
-  <>
-    <style jsx global>{`
+export default function App({ Component, pageProps }) {
+  return (
+    <>
+      <style jsx global>{`
       body {
         margin: 0;
         box-sizing: border-box;
@@ -16,6 +17,7 @@ export default ({ Component, pageProps }) => (
       }
     `}</style>
 
-    <Component {...pageProps} />
-  </>
-);
+      <Component {...pageProps} />
+    </>
+  );
+}

@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { theme } from "../../../../../packages/core";
 
-export default ({ component, sample }) => {
+export default function Page({ component, sample }) {
   const Component = dynamic(() => import(`../../../../../components/${component}/samples/${sample}.tsx`));
 
   return (

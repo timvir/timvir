@@ -1,7 +1,7 @@
 import React from "react";
 import { ColorBook } from "..";
 
-export default () => {
+export default function Sample() {
   const [selectedChapter, onSelectChapter] = React.useState(0);
 
   return (

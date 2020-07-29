@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { Page, extendedWidth, fullWidth } from "..";
 
-export default () => {
+export default function Sample() {
   return (
     <Page toc={[]} Link={Link} location={useRouter()}>
       <div
