@@ -1,10 +1,12 @@
 import { template } from "../template";
 
 export default template(`
-import React from "react";
+import * as React from "react";
 import { {{= it.name }} } from "..";
 
-export default (props: Partial<React.ComponentPropsWithoutRef<typeof {{= it.name }}>>) => {
+type Props = Partial<React.ComponentPropsWithoutRef<typeof {{= it.name }}>>;
+
+export default function Sample(props: Props) {
   return <{{= it.name }} {...props} />;
 }
 `);
