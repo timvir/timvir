@@ -30,8 +30,6 @@ function NavigationFooter({ prev, next, Link, className, ...props }: Props, ref:
       className={cx(
         className,
         css`
-          margin-top: auto;
-
           padding: 50px 0;
           background: #282c34;
           color: white;
