@@ -2,8 +2,32 @@ import { Viewport } from "../../Viewport";
 
 # Footer
 
-The `<Footer>` element is an optional element which can be placed at the very
-bottom of pages. It contains links (internal or external), as well as the copyright
-notice.
+The *Page Footer* is an optional element which is placed at the very bottom of every page.
+See the [`<Page>` API](/docs/components/Page/api) documentation.
+
+The `<Footer>` component is provided for use in your own implementation of that element. It
+displays links (internal or external) and the copyright notice.
+
+## Usage
+
+In the Wrapper component
+
+```jsx
+import { Page, Footer } from "@timvir/core";
+
+function MyFooter() {
+  return <Footer links={[…]} />
+}
+
+export default function Wrapper({ children }) {
+  return (
+    <Page Footer={MyFooter}>
+      {children}
+    </Page>
+  );
+}
+```
+
+## Sample
 
 <Viewport src="/docs/components/Footer/samples/basic" />
