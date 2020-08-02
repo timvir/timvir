@@ -48,10 +48,15 @@ interface Props extends React.ComponentProps<typeof Root> {
      */
     Component: React.ComponentType<{ open: boolean }>;
   };
+
+  /*
+   * Optional footer which is shown at the bottom of every page.
+   */
+  Footer?: React.ReactType<{}>;
 }
 
 function Page(
-  { location, toc, Link, className, search, mdxComponents, children, ...props }: Props,
+  { location, toc, Link, className, search, mdxComponents, Footer, children, ...props }: Props,
   ref: any /* FIXME */
 ) {
   const [state, mutate] = useImmer({
@@ -183,6 +188,8 @@ function Page(
               </div>
             );
           })()}
+
+          {Footer && <Footer />}
         </div>
       </Root>
 

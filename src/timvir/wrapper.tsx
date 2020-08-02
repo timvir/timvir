@@ -8,6 +8,7 @@ import { defaultSearch } from "../components/Search/Search";
 import { Page } from "../packages/core";
 import toc from "./toc";
 import routes from "./routes";
+import { Footer } from "../components/Footer";
 
 const search = {
   Component: (props: { open: boolean }) => (
@@ -24,7 +25,27 @@ const mdxComponents: MDXProviderComponents = {
 
 export default function Wrapper({ children }) {
   return (
-    <Page location={useRouter()} Link={Link_ as any} toc={toc} search={search} mdxComponents={mdxComponents}>
+    <Page
+      location={useRouter()}
+      Link={Link_ as any}
+      toc={toc}
+      search={search}
+      mdxComponents={mdxComponents}
+      Footer={() => (
+        <Footer
+          links={[
+            {
+              group: "Docs",
+              items: [
+                { label: "Getting Started", href: "/docs/getting-started" },
+                // { label: "Components", href: "/docs/components" },
+              ],
+            },
+            { group: "Community", items: [{ label: "GitHub", href: "https://github.com/timvir/timvir" }] },
+          ]}
+        />
+      )}
+    >
       {children}
     </Page>
   );

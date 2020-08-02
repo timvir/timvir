@@ -24,6 +24,7 @@ export default [
       { label: "Figma", path: "/docs/components/Figma" },
       { label: "Font", path: "/docs/components/Font" },
       { label: "FontFamilyMatrix", path: "/docs/components/FontFamilyMatrix" },
+      { label: "Footer", path: "/docs/components/Footer" },
       { label: "Grid", path: "/docs/components/Grid" },
       { label: "Icon", path: "/docs/components/Icon" },
       { label: "Image", path: "/docs/components/Image" },
