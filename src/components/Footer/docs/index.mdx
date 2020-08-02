@@ -10,18 +10,12 @@ displays links (internal or external) and the copyright notice.
 
 ## Usage
 
-In the Wrapper component
-
 ```jsx
 import { Page, Footer } from "@timvir/core";
 
-function MyFooter() {
-  return <Footer links={[…]} />
-}
-
 export default function Wrapper({ children }) {
   return (
-    <Page Footer={MyFooter}>
+    <Page Footer={() => <Footer links={[…]} />}>
       {children}
     </Page>
   );
