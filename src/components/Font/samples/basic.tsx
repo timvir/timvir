@@ -2,7 +2,9 @@ import React from "react";
 import { Font } from "..";
 import { Code } from "../../Code";
 
-export default (props: Partial<React.ComponentPropsWithoutRef<typeof Font>>) => {
+type Props = Partial<React.ComponentPropsWithoutRef<typeof Font>>;
+
+export default function Sample(props: Props) {
   return (
     <Font
       name="Heading 1"
@@ -25,4 +27,4 @@ line-height: 1.3;`}</Code>
       Lateropulsion
     </Font>
   );
-};
+}

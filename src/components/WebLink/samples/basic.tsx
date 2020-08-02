@@ -1,6 +1,8 @@
 import React from "react";
 import { WebLink } from "..";
 
-export default (props: Partial<React.ComponentPropsWithoutRef<typeof WebLink>>) => {
+type Props = Partial<React.ComponentPropsWithoutRef<typeof WebLink>>;
+
+export default function Sample(props: Props) {
   return <WebLink url="https://github.com" {...props} />;
 }

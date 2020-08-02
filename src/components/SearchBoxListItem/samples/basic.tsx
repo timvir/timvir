@@ -1,7 +1,6 @@
-
 import React from "react";
 import { SearchBoxListItem } from "..";
 
-export default () => (
-  <SearchBoxListItem label="SearchBoxListItem" />
-)
+export default function Sample() {
+  return <SearchBoxListItem label="SearchBoxListItem" />;
+}

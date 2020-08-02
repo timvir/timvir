@@ -1,7 +1,9 @@
 import React from "react";
 import { FontFamilyMatrix } from "..";
 
-export default (props: Partial<React.ComponentPropsWithoutRef<typeof FontFamilyMatrix>>) => {
+type Props = Partial<React.ComponentPropsWithoutRef<typeof FontFamilyMatrix>>;
+
+export default function Sample(props: Props) {
   return (
     <FontFamilyMatrix
       fontFaces={[
@@ -14,4 +16,4 @@ export default (props: Partial<React.ComponentPropsWithoutRef<typeof FontFamilyM
       {...props}
     />
   );
-};
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import { Message } from "..";
 
-export default (props: Partial<React.ComponentPropsWithoutRef<typeof Message>>) => {
+type Props = Partial<React.ComponentPropsWithoutRef<typeof Message>>;
+
+export default function Sample(props: Props) {
   return <Message children={<>The component is a simple container for messages.</>} {...props} />;
-};
+}

@@ -3,7 +3,7 @@ import { Footer } from "..";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof Footer>>;
 
-export default (props: Props) => {
+export default function Sample(props: Props) {
   return (
     <Footer
       links={[
@@ -45,4 +45,4 @@ export default (props: Props) => {
       {...props}
     />
   );
-};
+}

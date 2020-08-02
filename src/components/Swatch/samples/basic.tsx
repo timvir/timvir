@@ -1,6 +1,6 @@
 import React from "react";
 import { Swatch } from "..";
 
-export default () => (
-  <Swatch value="#FF00FF" />
-)
+export default function Sample() {
+  return <Swatch value="#FF00FF" />;
+}

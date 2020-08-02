@@ -3,4 +3,6 @@ import { Cover } from "..";
 
 import { importImage } from "@zhif/macro";
 
-export default () => <Cover {...importImage("../../../../assets/daniel-leone-v7daTKlZzaw-unsplash.jpg")} />;
+export default function Sample() {
+  return <Cover {...importImage("../../../../assets/daniel-leone-v7daTKlZzaw-unsplash.jpg")} />;
+}
