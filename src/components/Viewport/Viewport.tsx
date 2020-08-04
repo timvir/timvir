@@ -10,10 +10,18 @@ import { Caption, Handle, Ruler } from "./internal";
 const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+  /**
+   * URL that should be loaded in the viewport. Can be absolute or relative.
+   */
   src: string;
+
+  /**
+   * TODO: Document
+   */
+  code?: string;
 }
 
-function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
+function Viewport({ src, code, className, ...props }: Props, ref: any /* FIXME */) {
   /*
    * The container measures the width of the main column. It is used to initialize
    * the default width.
@@ -219,7 +227,7 @@ function Viewport({ src, className, ...props }: Props, ref: any /* FIXME */) {
         <Ruler containerWidth={svgROE?.contentRect.width} viewportWidth={width} />
       </Root>
 
-      <Caption src={src} />
+      <Caption src={src} code={code} />
 
       <div style={{ height: maxHeight - height || 0, transition: "height 0.16s" }} />
     </>
