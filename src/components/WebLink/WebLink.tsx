@@ -19,7 +19,7 @@ function WebLink({ url, className, ...props }: Props, ref: any /* FIXME */) {
       .then(setMetadata);
   }, [url, setMetadata]);
 
-  const image = metadata?.open_graph?.images[0]?.url;
+  const image = metadata?.open_graph?.images?.[0]?.url;
 
   return (
     <Root
