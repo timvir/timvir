@@ -21,6 +21,7 @@ export default [
       { label: "ColorContrastInspector", path: "/docs/components/ColorContrastInspector" },
       { label: "Cover", path: "/docs/components/Cover", children: [{ label: "API", path: "/docs/components/Cover/api" }] },
       { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples" }] },
+      { label: "Exhibits", path: "/docs/components/Exhibits" },
       { label: "Figma", path: "/docs/components/Figma" },
       { label: "Font", path: "/docs/components/Font" },
       { label: "FontFamilyMatrix", path: "/docs/components/FontFamilyMatrix" },
