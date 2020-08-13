@@ -1,6 +1,5 @@
 import { css } from "linaria";
 import React from "react";
-import * as pageComponents from "../../Page/components";
 
 interface Props {
   gridColumn: string;

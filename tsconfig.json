@@ -16,7 +16,11 @@
       "dom",
       "dom.iterable",
       "esnext"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@timvir/*": ["src/packages/*"]
+    }
   },
   "exclude": [
     "node_modules"

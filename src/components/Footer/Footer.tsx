@@ -1,6 +1,6 @@
+import { grid } from "@timvir/core";
 import { css, cx } from "linaria";
 import React from "react";
-import { grid } from "../Page/layout";
 
 /**
  * The underlying DOM element which is rendered by this component.

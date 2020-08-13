@@ -1,9 +1,8 @@
+import { mdx } from "@mdx-js/react";
 import { css, cx } from "linaria";
 import React from "react";
 import * as Icons from "react-feather";
 import { Code } from "../../Code";
-import { fullWidth, extendedWidth } from "../../Page";
-import * as pageComponents from "../../Page/components";
 
 interface Props {
   src: string;
@@ -30,9 +29,7 @@ function Caption(props: Props) {
       >
         <div>
           Source:{" "}
-          <pageComponents.a href={src} target="_blank">
-            {src}
-          </pageComponents.a>
+          {mdx("a", { href: src, target: "_blank"}, src)}
         </div>
 
         {code && (

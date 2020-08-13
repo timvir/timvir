@@ -7,7 +7,11 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "../../../packages/core",
     "declaration": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "baseUrl": ".",
+    "paths": {
+      "@timvir/*": ["../*"]
+    }
   },
   "include": ["./index.ts"]
 }

@@ -1,6 +1,6 @@
 import { cx } from "linaria";
 import React from "react";
-import { fullWidth } from "../Page";
+import { fullWidth } from "@timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.

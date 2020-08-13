@@ -8,7 +8,7 @@ import theme from "prism-react-renderer/themes/github";
 import React from "react";
 import * as Icons from "react-feather";
 import { useImmer } from "use-immer";
-import * as Page from "../Page";
+import * as Page from "@timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.

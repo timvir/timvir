@@ -1,7 +1,7 @@
-import { cx, css } from "linaria";
+import { mdx } from "@mdx-js/react";
+import { css, cx } from "linaria";
 import React from "react";
 import * as Icons from "react-feather";
-import * as components from "../Page/components";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -66,13 +66,9 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
       {...props}
     >
       <div className={classes.meta}>
-        <components.h3
-          className={css`
+        {mdx("h3", { className: css`
             margin: 0 1ch 0 0;
-          `}
-        >
-          {name}
-        </components.h3>
+          `}, name)}
         <div
           ref={setFontSizeRef}
           className={css`
