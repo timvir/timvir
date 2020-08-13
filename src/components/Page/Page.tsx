@@ -51,17 +51,16 @@ interface Props extends React.ComponentProps<typeof Root> {
 
   /**
    * Optional footer which is shown at the bottom of every page.
-   * 
+   *
    * You can use any component here, though timvir provides a ready-made component which
    * should fit most use cases ('<Footer>').
    */
   Footer?: React.ReactType<{}>;
 }
 
-function Page(
-  { location, toc, Link, className, search, mdxComponents, Footer, children, ...props }: Props,
-  ref: any /* FIXME */
-) {
+function Page(props: Props, ref: any /* FIXME */) {
+  const { location, toc, Link, className, search, mdxComponents, Footer, children, ...rest } = props;
+
   const [state, mutate] = useImmer({
     search: {
       open: false,
@@ -94,7 +93,7 @@ function Page(
     <>
       <Root
         ref={ref}
-        {...props}
+        {...rest}
         className={cx(
           className,
           theme,
