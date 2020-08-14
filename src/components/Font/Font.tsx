@@ -28,7 +28,7 @@ const classes = {
 
 function Font({ name, font, info, className, children, ...props }: Props, ref: any /* FIXME */) {
   const [contentRef, setContentRef] = React.useState<null | HTMLDivElement>(null);
-  const [fontSizeRef, setFontSizeRef] = React.useState<null | HTMLDivElement>(null);
+  const [fontSizeRef, setFontSizeRef] = React.useState<null | HTMLSpanElement>(null);
   const [infoRef, setInfoRef] = React.useState<null | HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -37,8 +37,10 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
 
       const intervalId = setInterval(() => {
         if (fontSizeRef) {
-          const { fontSize } = computedStyle;
-          fontSizeRef.innerText = `– ${Math.round(parseInt(fontSize))}px`;
+          const innerText = `${name} – ${Math.round(parseInt(computedStyle.fontSize))}px`;
+          if (fontSizeRef.innerText !== innerText) {
+            fontSizeRef.innerText = innerText;
+          }
         }
       }, 250);
 
@@ -46,7 +48,7 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
         clearInterval(intervalId);
       };
     }
-  }, [contentRef]);
+  }, [name, contentRef]);
 
   return (
     <Root
@@ -71,18 +73,11 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
           "h3",
           {
             className: css`
-              margin: 0 1ch 0 0;
+              margin: 0 auto 0 0;
             `,
           },
-          name
+          <span ref={setFontSizeRef}>{name}</span>
         )}
-        <div
-          ref={setFontSizeRef}
-          className={css`
-            text-align: left;
-            margin-right: auto;
-          `}
-        />
         {info && (
           <div
             className={css`
