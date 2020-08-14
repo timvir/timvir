@@ -10,7 +10,7 @@ const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   name: string;
-  font: { style: React.CSSProperties; className?: string };
+  font: { style?: React.CSSProperties; className?: string };
   info?: React.ReactNode;
 }
 
@@ -41,6 +41,7 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
           fontSizeRef.innerText = `– ${Math.round(parseInt(fontSize))}px`;
         }
       }, 250);
+
       return () => {
         clearInterval(intervalId);
       };
@@ -66,9 +67,15 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
       {...props}
     >
       <div className={classes.meta}>
-        {mdx("h3", { className: css`
-            margin: 0 1ch 0 0;
-          `}, name)}
+        {mdx(
+          "h3",
+          {
+            className: css`
+              margin: 0 1ch 0 0;
+            `,
+          },
+          name
+        )}
         <div
           ref={setFontSizeRef}
           className={css`
