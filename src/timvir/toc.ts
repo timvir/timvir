@@ -29,6 +29,7 @@ export default [
       { label: "Grid", path: "/docs/components/Grid" },
       { label: "Icon", path: "/docs/components/Icon" },
       { label: "Image", path: "/docs/components/Image" },
+      { label: "Live", path: "/docs/components/Live" },
       { label: "Message", path: "/docs/components/Message", children: [{ label: "API", path: "/docs/components/Message/api" }] },
       { label: "NavigationFooter", path: "/docs/components/NavigationFooter" },
       { label: "Page", path: "/docs/components/Page" },
