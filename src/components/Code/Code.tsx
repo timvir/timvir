@@ -2,13 +2,15 @@
  * This is documentation for the Code component.
  */
 
+import * as Page from "@timvir/core";
+import { useMailbox } from "@timvir/core";
 import { css, cx } from "linaria";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/github";
 import React from "react";
 import * as Icons from "react-feather";
 import { useImmer } from "use-immer";
-import * as Page from "@timvir/core";
+import { pipe, subscribe } from "wonka";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -42,8 +44,50 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   highlightedLines?: Array<number>;
 }
 
+function useProps<P extends { id?: string }>(props: P) {
+  const mailbox = useMailbox(props.id);
+
+  const [state, mutate] = useImmer({
+    overrides: undefined as undefined | Partial<Props>,
+  });
+
+  React.useEffect(
+    () =>
+      pipe(
+        mailbox,
+        subscribe((value: any) => {
+          if (value.type === "SET") {
+            mutate((draft) => {
+              draft.overrides = value.props;
+            });
+          } else if (value.type === "MERGE") {
+            mutate((draft) => {
+              draft.overrides = { ...draft.overrides, ...value.props };
+            });
+          } else {
+          }
+        })
+      ).unsubscribe,
+    [mailbox, mutate]
+  );
+
+  return [
+    { ...props, ...state.overrides },
+    {
+      hasOverrides: !!state.overrides,
+      reset: () => {
+        mutate((draft) => {
+          draft.overrides = undefined;
+        });
+      },
+    },
+  ] as const;
+}
+
 function Code(props: Props, ref: any /* FIXME */) {
-  const { children, language, fullWidth, highlightedLines, ...rest } = props;
+  const [{ children, language, fullWidth, highlightedLines, ...rest }, { hasOverrides, reset }] = useProps<Props>(
+    props
+  );
 
   const isHighlightedLine = (() => {
     return (line: number) => highlightedLines?.includes(line);
@@ -219,6 +263,7 @@ function Code(props: Props, ref: any /* FIXME */) {
               })}
             </div>
           </div>
+          {hasOverrides && <button onClick={reset}>reset</button>}
         </Root>
       )}
     </Highlight>

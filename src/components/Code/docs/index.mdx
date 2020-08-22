@@ -7,9 +7,11 @@ import { Exhibit } from "../../Exhibit";
 
 The `<Code>` component provides syntax highlighting for code blocks.
 
-<Code language="tsx" highlightedLines={[1, 2]}>
+<Code id="code-1" language="tsx" highlightedLines={[1, 2]}>
   <Sample variant="basic" as="source" />
 </Code>
+
+<Sample variant="test" />
 
 And this is how that code looks when rendered:
 
@@ -18,9 +20,7 @@ And this is how that code looks when rendered:
 The default language is "markdown", but you can specify any of the languages
 which are supported by [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer).
 
-<Code language="javascript">
-  const answer = 42;
-</Code>
+<Code language="javascript">const answer = 42;</Code>
 
 ## Full-width
 
