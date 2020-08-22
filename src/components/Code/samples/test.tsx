@@ -5,21 +5,21 @@ export default function Sample() {
   const context = useContext();
 
   return (
-    <>
+    <div style={{ margin: "20px 0", display: "flex", gap: 10 }}>
       <button
         onClick={() => {
           send(context, "code-1", { type: "MERGE", props: { children: "foo();\nbar();" } });
         }}
       >
-        click me
+        change code
       </button>
       <button
         onClick={() => {
-          send(context, "code-1", { type: "MERGE", props: { highlightedLines: [1] } });
+          send(context, "code-1", { type: "MERGE", props: { highlightedLines: [7] } });
         }}
       >
-        click me
+        change highlighted lines
       </button>
-    </>
+    </div>
   );
 }
