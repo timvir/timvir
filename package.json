@@ -38,7 +38,7 @@
     "globby": "^11.0.1",
     "immer": "^7.0.8",
     "kleur": "^4.1.1",
-    "linaria": "^2.0.0-rc.0",
+    "linaria": "^2.0.0-rc.1",
     "mkdirp": "^1.0.4",
     "next": "^9.5.2",
     "null-loader": "^4.0.0",
