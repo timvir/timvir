@@ -1,8 +1,12 @@
 import * as React from "react";
-import { makeSubject, pipe, scan, Subject, Source, subscribe } from "wonka";
+import { filter, pipe, Source, Subject } from "wonka";
+
+export interface Message {
+  id: string;
+}
 
 interface Value {
-  postOffice: Map<string, Subject<unknown>>;
+  bus: Subject<Message>;
 }
 
 const Context = React.createContext<undefined | Value>(undefined);
@@ -17,21 +21,15 @@ export function useContext(): Value {
   return value!;
 }
 
-export function useMailbox(id: string): Source<unknown> {
-  const { postOffice } = useContext();
+export function useMailbox(id: string): Source<Message> {
+  const { bus } = useContext();
 
-  let subject = postOffice.get(id);
-  if (!subject) {
-    subject = makeSubject();
-    postOffice.set(id, subject);
-  }
-
-  React.useEffect(() => () => postOffice.delete(id), [postOffice, id]);
-
-  return subject.source;
+  return pipe(
+    bus.source,
+    filter((x) => x.id === id)
+  );
 }
 
-export function send(context: Value, id: string, value: unknown) {
-  const { next } = context.postOffice.get(id);
-  next(value);
+export function send<T extends Omit<Message, "id">>(context: Value, id: string, value: T) {
+  context.bus.next({ id, ...value });
 }
