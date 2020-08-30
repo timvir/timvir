@@ -1,0 +1,15 @@
+import Wrapper from "../../../timvir/wrapper";
+export default Wrapper
+
+# Message Bus Interfaces
+
+## dev.timvir.Props
+
+This interface implements functions that allow others to override the props of the target
+component.
+
+```typescript
+interface dev.timvir.Props {
+  merge(value: object): void
+}
+```
