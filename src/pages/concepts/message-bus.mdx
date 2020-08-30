@@ -16,6 +16,8 @@ only those they are interested in.
 
 ## API
 
+### useContext
+
 The wonka [Subject](https://wonka.kitten.sh/api/sources#makesubject) is stored in a React Context.
 To access it use the `useContext()` function from `@timvir/core`.
 
@@ -40,5 +42,37 @@ function Component() {
 
   const [message, setMessage] = React.useState();
   React.useEffect(() => pipe(bus.source, subscribe(setMessage)).unsubscribe, [bus]);
+}
+```
+
+### useProps / send
+
+One common use case is to (temporarily) override the props of another component on the page.
+For this purpose we have the `useProps()` hook and `send()` function.
+
+If a component has an `id` (the standard HTML id attribute, a string), then it can be
+targetted via the `send()` function. The following example instructs the component
+with id `some-component-id` to use `rebeccapurple` instead of the original
+value of the `color` prop.
+
+```typescript
+const context = useContext()
+send(context, "some-component-id", "merge", { color: "rebeccapurple" })
+```
+
+The targetted component can use the `useProps()` hook to merge any overrides into the
+original props.
+
+```typescript
+import * as React from "react";
+import { useProps } from "@timvir/core";
+
+interface Props {
+  color?: string;
+}
+
+function Component(props: Props) {
+  const [{ color, ...rest }, { hasOverrides, reset }] = useProps(props);
+  // color can be either the original value, or "rebeccapurple" when overridden.
 }
 ```
