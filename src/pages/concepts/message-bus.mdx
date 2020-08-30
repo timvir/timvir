@@ -1,0 +1,44 @@
+import Wrapper from "../../timvir/wrapper";
+export default Wrapper;
+
+# Message Bus
+
+Components on each Timvir page have access to a page-wide message bus. This bus provides
+a standardized communication channel so that components can communicate with each
+other. The main purpose is to allow implementing micro-interactions that combine multiple
+components on a page.
+
+The format of the messages is inspired by [D-Bus](dbus.freedesktop.org).
+
+The bus uses [wonka](https://wonka.kitten.sh/) (a streams/observable library) internally. Components
+can subscribe to all messages that are sent to the bus, optionally filter them to receive
+only those they are interested in.
+
+## API
+
+The wonka [Subject](https://wonka.kitten.sh/api/sources#makesubject) is stored in a React Context.
+To access it use the `useContext()` function from `@timvir/core`.
+
+```typescript
+import { useContext } from "@timvir/core";
+
+function Component() {
+  const { bus } = useContext();
+}
+```
+
+Once you have access to the bus, you can subscribe to the messages. The following example
+stores the last message in local React state.
+
+```typescript
+import * as React from "react";
+import { useContext } from "@timvir/core";
+import { pipe, subscribe } from "wonka";
+
+function Component() {
+  const { bus } = useContext();
+
+  const [message, setMessage] = React.useState();
+  React.useEffect(() => pipe(bus.source, subscribe(setMessage)).unsubscribe, [bus]);
+}
+```

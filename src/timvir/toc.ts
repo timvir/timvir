@@ -42,5 +42,11 @@ export default [
       { label: "WebLink", path: "/docs/components/WebLink" },
     ],
   },
-  { label: "Concepts", children: [{ label: "Component Sample", path: "/concepts/component-sample" }] },
+  {
+    label: "Concepts",
+    children: [
+      { label: "Component Sample", path: "/concepts/component-sample" },
+      { label: "Message Bus", path: "/concepts/message-bus" },
+    ],
+  },
 ] as const;
