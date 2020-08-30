@@ -8,8 +8,6 @@ a standardized communication channel so that components can communicate with eac
 other. The main purpose is to allow implementing micro-interactions that combine multiple
 components on a page.
 
-The format of the messages is inspired by [D-Bus](dbus.freedesktop.org).
-
 The bus uses [wonka](https://wonka.kitten.sh/) (a streams/observable library) internally. Components
 can subscribe to all messages that are sent to the bus, optionally filter them to receive
 only those they are interested in.
@@ -56,8 +54,8 @@ with id `some-component-id` to use `rebeccapurple` instead of the original
 value of the `color` prop.
 
 ```typescript
-const context = useContext()
-send(context, "some-component-id", "merge", { color: "rebeccapurple" })
+const context = useContext();
+send(context, "some-component-id", "merge", { color: "rebeccapurple" });
 ```
 
 The targetted component can use the `useProps()` hook to merge any overrides into the
@@ -76,3 +74,24 @@ function Component(props: Props) {
   // color can be either the original value, or "rebeccapurple" when overridden.
 }
 ```
+
+## Message Format
+
+The format of the messages is inspired by [D-Bus](dbus.freedesktop.org). At the moment
+only the "SIGNAL" message type is supported (fire-and-forget messages with no ability
+to reply to them). These map well to what other framework understand as _events_.
+
+Each message includes header fields which allow receivers to filter the messages and
+only process those that they know. The **path** identifies the object the message is
+sent to. In Timvir it's usually some identifier of the component. The **interface**
+and **member** identify the code that should handle the message.
+
+In addition to the header fields, the message carries the message body, which
+is of arbitrary type.
+
+Example:
+
+- **path**: `/dev/timvir/component/some-component-id`
+- **interface**: `dev.timvir.Props`
+- **member**: `merge`
+- **body**: `{ color: "rebeccapurple" }`
