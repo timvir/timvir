@@ -50,7 +50,7 @@
     "react-feather": "^2.0.4",
     "react-hotkeys-hook": "^2.3.0",
     "react-live": "^2.2.2",
-    "react-measure": "^2.3.0",
+    "react-measure": "^2.5.0",
     "rollup": "^2.26.8",
     "rollup-plugin-add-shebang": "^0.3.1",
     "rollup-plugin-babel": "^4.4.0",
