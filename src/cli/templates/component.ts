@@ -10,9 +10,11 @@ const Root = "{{= it.Root }}";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {}
 
-function {{= it.name }}({ ...props }: Props, ref: any /* FIXME */) {
+function {{= it.name }}(props: Props, ref: any /* FIXME */) {
+  const { ...rest } = props;
+
   return (
-    <Root ref={ref} {...props}>
+    <Root ref={ref} {...rest}>
       {{= it.name }}
     </Root>
   );
