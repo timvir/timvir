@@ -35,7 +35,7 @@ function Exhibit({ title, source, caption, bleed = 0, children, className, ...pr
       <div
         className={css`
           display: flow-root;
-          border-radus: inherit;
+          border-radius: inherit;
           background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
         `}
         style={{
