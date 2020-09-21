@@ -1,6 +1,7 @@
 import { css, cx } from "linaria";
 import type Link from "next/link";
 import React from "react";
+import { useImmer } from "use-immer";
 import { Node } from "../types";
 import Section from "./Section";
 
@@ -17,6 +18,19 @@ interface Props {
 }
 
 function Sidebar({ location, toc, Link, search }: Props) {
+  const [state, mutate] = useImmer({
+    shadowVisible: false,
+  });
+
+  const onScroll = (ev: React.SyntheticEvent<HTMLDivElement>) => {
+    const shadowVisible = ev.currentTarget.scrollTop > 2;
+    if (state.shadowVisible !== shadowVisible) {
+      mutate((draft) => {
+        draft.shadowVisible = shadowVisible;
+      });
+    }
+  };
+
   return (
     <aside
       className={cx(
@@ -24,29 +38,60 @@ function Sidebar({ location, toc, Link, search }: Props) {
           position: fixed;
           top: 0;
           left: 0;
+          bottom: 0;
+          width: 0;
+
+          @media (min-width: 60rem) {
+            width: 300px;
+          }
         `
       )}
     >
       <div
         className={css`
           display: none;
-          padding-top: 50px;
           height: 0;
-          padding-left: 24px;
 
           @media (min-width: 60rem) {
-            display: block;
-            width: 240px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
           }
         `}
       >
-        {search && <Search {...search} />}
+        {search && (
+          <div
+            className={cx(
+              css`
+                padding: 24px 24px 24px;
+                flex-shrink: 0;
+                transition: all 0.16s;
+              `,
+              state.shadowVisible &&
+                css`
+                  box-shadow: 0 1px 0 rgba(16, 22, 26, 0.15);
+                `
+            )}
+          >
+            <Search {...search} />
+          </div>
+        )}
 
-        <nav>
-          {toc.map((c, i) => (
-            <Section key={i} location={location} Link={Link} {...c} />
-          ))}
-        </nav>
+        <div
+          className={css`
+            padding: 24px 24px 30px;
+            overflow-y: auto;
+            flex-grow: 1;
+            overscroll-behavior: contain;
+          `}
+          onScroll={onScroll}
+        >
+          <nav>
+            {toc.map((c, i) => (
+              <Section key={i} location={location} Link={Link} {...c} />
+            ))}
+          </nav>
+        </div>
       </div>
     </aside>
   );
@@ -59,7 +104,7 @@ const Search = ({ open, label }: Props["search"]) => {
     <div
       className={css`
         position: relative;
-        margin: 0 0 1.5rem -0.5ch;
+        margin: 0 0 0 -0.5ch;
       `}
     >
       <div
