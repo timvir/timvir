@@ -1,14 +1,16 @@
 import { css, cx } from "linaria";
 import * as React from "react";
-import { Code } from "../Code";
 import * as Icons from "react-feather";
+import { send, useContext } from "../Page/context";
 
 /**
  * The underlying DOM element which is rendered by this component.
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {}
+interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+  codeId: string;
+}
 
 const exhibit = css`
   cursor: pointer;
@@ -20,13 +22,22 @@ interface Selector {
   sticky?: number;
 }
 
-function Exhibits({ children, ...props }: Props, ref: any /* FIXME */) {
+function Exhibits({ codeId, children, ...props }: Props, ref: any /* FIXME */) {
+  const context = useContext();
   const backdrop = React.useRef<HTMLDivElement>();
   const [selector, setSelector] = React.useState<Selector>({});
   const timeout = React.useRef<any>();
-  const [codeRef, setCodeRef] = React.useState<null | HTMLDivElement>(null);
 
   const exhibits: React.ReactElement[] = React.Children.toArray(children).filter(React.isValidElement);
+
+  const { source } = exhibits[selector.hover ?? selector.sticky]?.props ?? {};
+  React.useEffect(() => {
+    if (source) {
+      send(context, codeId, "merge", { children: source });
+    } else {
+      send(context, codeId, "reset", {});
+    }
+  }, [source]);
 
   React.useEffect(() => {
     const index = selector.hover ?? selector.sticky;
@@ -41,18 +52,7 @@ function Exhibits({ children, ...props }: Props, ref: any /* FIXME */) {
     } else {
       backdrop.current!.style.clipPath = "";
     }
-
-    if (codeRef) {
-      const infoParent = codeRef.parentElement;
-      if (index !== undefined) {
-        infoParent.style.height = `${codeRef.getBoundingClientRect().height}px`;
-        infoParent.style.opacity = "1";
-      } else {
-        infoParent.style.height = "0px";
-        infoParent.style.opacity = "0";
-      }
-    }
-  }, [selector, codeRef]);
+  }, [selector]);
 
   return (
     <Root ref={ref} {...props}>
@@ -140,22 +140,6 @@ function Exhibits({ children, ...props }: Props, ref: any /* FIXME */) {
           </div>
         )}
       </div>
-
-      {(selector.hover !== undefined || selector.sticky !== undefined) && (
-        <div
-          className={cx(
-            css`
-              overflow: hidden;
-              transition: height 0.2s, opacity 0.2s 0.1s;
-            `
-          )}
-          style={{ height: 0, opacity: 0 }}
-        >
-          <div ref={setCodeRef}>
-            <Code language="jsx">{exhibits[selector.hover ?? selector.sticky].props.source}</Code>
-          </div>
-        </div>
-      )}
     </Root>
   );
 }

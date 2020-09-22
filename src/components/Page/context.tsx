@@ -2,8 +2,8 @@ import * as React from "react";
 import { useImmer } from "use-immer";
 import { filter, pipe, Source, Subject, subscribe } from "wonka";
 
-export interface Signal<T> {
-  type: "SIGNAL";
+export interface Invoke<T> {
+  type: "INVOKE";
 
   path: string;
   interface: string;
@@ -11,7 +11,7 @@ export interface Signal<T> {
   body: T;
 }
 
-export type Message = Signal<unknown>;
+export type Message = Invoke<unknown>;
 
 interface Value {
   bus: Subject<Message>;
@@ -44,7 +44,7 @@ export function useMailbox(id: string): Source<Message> {
 
 export function send<T>(context: Value, id: string, member: string, body: T) {
   context.bus.next({
-    type: "SIGNAL",
+    type: "INVOKE",
     path: `/dev/timvir/component/${id}`,
     interface: "dev.timvir.Props",
     member,
@@ -72,6 +72,10 @@ export function useProps<P extends { id?: string }>(props: P) {
             } else if (msg.member === "merge") {
               mutate((draft) => {
                 draft.overrides = { ...draft.overrides, ...(msg.body as any) };
+              });
+            } else if (msg.member === "reset") {
+              mutate((draft) => {
+                draft.overrides = undefined;
               });
             }
           }
