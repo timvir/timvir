@@ -19,6 +19,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   Link: typeof Link;
 
   open?: boolean;
+  onClose?: (ev: React.SyntheticEvent<HTMLElement>) => void;
 
   q: (
     query: string
@@ -28,7 +29,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   }>;
 }
 
-function Search({ location, toc, Link, open, q, className, ...props }: Props, ref: any /* FIXME */) {
+function Search(props: Props, ref: any /* FIXME */) {
+  const { location, toc, Link, open, onClose, q, className, ...rest } = props;
+
   const [value, setValue] = React.useState("");
   const [result, setResult] = React.useState<
     | undefined
@@ -68,7 +71,7 @@ function Search({ location, toc, Link, open, q, className, ...props }: Props, re
   return (
     <Root
       ref={ref}
-      {...props}
+      {...rest}
       className={cx(
         className,
         css`
@@ -119,6 +122,7 @@ function Search({ location, toc, Link, open, q, className, ...props }: Props, re
               right: 0px;
               background: rgba(15, 15, 15, 0.6);
             `}
+            onClick={onClose}
           />
 
           <div
@@ -149,7 +153,7 @@ function Search({ location, toc, Link, open, q, className, ...props }: Props, re
               {items.map((item, index) => (
                 <Link href={item.node.path}>
                   <SearchBoxListItem
-                    {...getItemProps({ item, index })}
+                    {...getItemProps({ item, index, onClick: onClose })}
                     icon={
                       <svg x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16">
                         <g fill="none" stroke="#444" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit={10}>

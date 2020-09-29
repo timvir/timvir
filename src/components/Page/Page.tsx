@@ -46,7 +46,10 @@ interface Props extends React.ComponentProps<typeof Root> {
      * The Search component. It is always rendered in the DOM tree. When the search menu
      * is activated, then the 'open' prop is set to true.
      */
-    Component: React.ComponentType<{ open: boolean }>;
+    Component: React.ComponentType<{
+      open: boolean;
+      onClose: (ev: React.SyntheticEvent<HTMLElement>) => void;
+    }>;
   };
 
   /**
@@ -201,7 +204,16 @@ function Page(props: Props, ref: any /* FIXME */) {
         </div>
       </Root>
 
-      {search && <search.Component {...state.search} />}
+      {search && (
+        <search.Component
+          {...state.search}
+          onClose={() => {
+            mutate((draft) => {
+              draft.search.open = false;
+            });
+          }}
+        />
+      )}
     </>
   );
 }

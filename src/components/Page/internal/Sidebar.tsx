@@ -13,7 +13,10 @@ interface Props {
   search?: {
     open: () => void;
     label?: React.ReactNode;
-    Component: React.ComponentType<{ open: boolean }>;
+    Component: React.ComponentType<{
+      open: boolean;
+      onClose: (ev: React.SyntheticEvent<HTMLElement>) => void;
+    }>;
   };
 }
 
