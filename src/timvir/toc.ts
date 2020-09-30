@@ -43,4 +43,5 @@ export default [
     ],
   },
   { label: "Concepts", children: [{ label: "Component Sample", path: "/concepts/component-sample" }] },
+  { label: "Snippets", path: "/snippets" },
 ] as const;
