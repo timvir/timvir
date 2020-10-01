@@ -9,7 +9,7 @@ import { send, useContext } from "../Page/context";
 const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
-  codeId: string;
+  codeId?: string;
 }
 
 const exhibit = css`
@@ -32,12 +32,14 @@ function Exhibits({ codeId, children, ...props }: Props, ref: any /* FIXME */) {
 
   const { source } = exhibits[selector.hover ?? selector.sticky]?.props ?? {};
   React.useEffect(() => {
-    if (source) {
-      send(context, codeId, "merge", { children: source });
-    } else {
-      send(context, codeId, "reset", {});
+    if (codeId) {
+      if (source) {
+        send(context, codeId, "merge", { children: source });
+      } else {
+        send(context, codeId, "reset", {});
+      }
     }
-  }, [source]);
+  }, [codeId, source]);
 
   React.useEffect(() => {
     const index = selector.hover ?? selector.sticky;
