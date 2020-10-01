@@ -9,7 +9,7 @@ module.exports = createMacro(({ references, babel, state }) => {
   const t = babel.types;
 
   if (references.Sample) {
-    references.Sample.forEach(referencePath => {
+    references.Sample.forEach((referencePath) => {
       if (referencePath.parent.type === "JSXClosingElement") return;
 
       const attrs = referencePath.parent.attributes;
@@ -53,11 +53,18 @@ module.exports = createMacro(({ references, babel, state }) => {
           );
         },
         source: () => {
-          const source = fs.readFileSync(module + ".tsx", "utf8");
+          const source = (() => {
+            if (fs.existsSync(module)) {
+              return fs.readFileSync(module, "utf8");
+            } else {
+              return fs.readFileSync(module + ".tsx", "utf8");
+            }
+          })();
+
           referencePath.parentPath.parentPath.replaceWith(
             t.jsxExpressionContainer(t.templateLiteral([t.templateElement({ raw: source, cooked: source })], []))
           );
-        }
+        },
       }[as]());
     });
   }
@@ -69,7 +76,7 @@ const genName = (...buffers) => {
     hash.update(buffer);
   }
   const ret = hash.digest();
-  const alpha = x => {
+  const alpha = (x) => {
     if (x < 26) return x + 65;
     if (x < 52) return x - 26 + 97;
     throw new Error(`alnum: value out of range: ${x}`);
@@ -80,7 +87,7 @@ const genName = (...buffers) => {
   return ret.toString("utf8");
 };
 
-const matchAttr = n => ({ name }) => name.type === "JSXIdentifier" && name.name === n;
+const matchAttr = (n) => ({ name }) => name.type === "JSXIdentifier" && name.name === n;
 
 const findAttrValue = (attrs, n) => {
   const attr = attrs.find(matchAttr(n));

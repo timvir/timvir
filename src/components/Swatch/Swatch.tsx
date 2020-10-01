@@ -1,5 +1,5 @@
+import { css, cx } from "linaria";
 import React from "react";
-import { css } from "linaria";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -36,50 +36,59 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   ancestry?: string;
 }
 
-function Swatch({ value, contrastValue, name, ancestry, ...props }: Props, ref: any /* FIXME */) {
+function Swatch(props: Props, ref: any /* FIXME */) {
+  const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, ...rest } = props;
+
   const [label, setLabel] = React.useState(name);
+  React.useEffect(() => {
+    setLabel(name)
+  }, [name])
 
   return (
     <Root
       role="button"
       ref={ref}
-      {...props}
+      {...rest}
       style={{ height: ancestry ? 48 : 36 }}
-      className={css`
-        position: relative;
-        width: 100%;
+      className={cx(
+        className,
+        css`
+          position: relative;
 
-        & > div {
-          border-radius: 2px;
-        }
+          & > div {
+            border-radius: 2px;
+          }
 
-        &:hover > div {
-          top: -4px;
-          right: -4px;
-          bottom: -4px;
-          left: -4px;
-          box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
-            0 8px 24px rgba(16, 22, 26, 0.2);
-          padding: 0px 16px;
-          z-index: 2;
-        }
+          &:hover > div {
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
+              0 8px 24px rgba(16, 22, 26, 0.2);
+            padding: 0px 16px;
+            z-index: 2;
+          }
 
-        &:active > div {
-          top: -2px;
-          right: -2px;
-          bottom: -2px;
-          left: -2px;
-          box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
-          padding: 0px 14px;
-          z-index: 2;
-        }
-      `}
-      onClick={() => {
+          &:active > div {
+            top: -2px;
+            right: -2px;
+            bottom: -2px;
+            left: -2px;
+            box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
+            padding: 0px 14px;
+            z-index: 2;
+          }
+        `
+      )}
+      onClick={(ev) => {
         navigator.clipboard.writeText(value);
         setLabel("Copied to clipboard");
+        onClick?.(ev);
       }}
-      onMouseLeave={() => {
+      onMouseLeave={(ev) => {
         setLabel(name);
+        onMouseLeave?.(ev);
       }}
     >
       <div

@@ -2,6 +2,7 @@
   "type": "module",
   "name": "@timvir/blocks",
   "version": "0.0.0",
+  "license": "MIT",
   "sideEffects": false,
   "types": "packages/blocks/index.d.ts",
   "main": "./index.cjs",
