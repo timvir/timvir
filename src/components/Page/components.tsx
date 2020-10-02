@@ -161,3 +161,10 @@ export const td = styled.td`
   padding: 6px 13px;
   border: 1px solid var(--c-p-2);
 `;
+
+export const inlineCode = styled.code`
+  border-radius: 2px;
+  padding: 2px 5px;
+  background: var(--c-p-1);
+  box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), inset 0 2px 4px rgba(16, 22, 26, 0.1);
+`;
