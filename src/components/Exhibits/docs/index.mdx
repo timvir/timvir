@@ -1,5 +1,6 @@
 import { Exhibits } from "..";
 import { Exhibit } from "../../Exhibit";
+import { Code } from "../../Code";
 
 # Exhibits
 
@@ -9,7 +10,7 @@ It shows them all in a flex wrap container, and allows you to select one to focu
 The primary use case is to show the same component in multiple variations, and once the user has
 selected the one they are interested in then showing them additional details (eg. source code).
 
-<Exhibits>
+<Exhibits id="exhibits" codeId="code">
   <Exhibit source={`<source 1 />`}>
     <div style={{ background: "magenta", opacity: 0.5, height: 32, width: 80, borderRadius: 16 }} />
   </Exhibit>
@@ -35,3 +36,12 @@ selected the one they are interested in then showing them additional details (eg
     <div style={{ background: "magenta", opacity: 0.5, height: 32, width: 120, borderRadius: 16 }} />
   </Exhibit>
 </Exhibits>
+
+<div style={{ marginTop: 20 }}>
+  <Code id="code">
+    {`
+<div>
+</div>
+`}
+  </Code>
+</div>

@@ -59,6 +59,7 @@
     "sharp": "^0.26.1",
     "typescript": "^4.0.3",
     "unfurl.js": "^5.1.0",
-    "use-immer": "^0.4.1"
+    "use-immer": "^0.4.1",
+    "wonka": "^4.0.14"
   }
 }

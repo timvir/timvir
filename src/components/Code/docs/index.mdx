@@ -5,22 +5,16 @@ import { Exhibit } from "../../Exhibit";
 
 # Code
 
-The `<Code>` component provides syntax highlighting for code blocks.
+The `<Code>` component provides syntax highlighting for code blocks. The code can be for example <Sample variant="toggle" language="javascript">JavaScript</Sample>, <Sample variant="toggle" language="markdown">Markdown</Sample>, <Sample variant="toggle" language="html">HTML</Sample>, or <Sample variant="toggle" language="haskell">Haskell</Sample>.
 
-<Code language="tsx" highlightedLines={[1, 2]}>
+<Code id="code-1" language="tsx">
   <Sample variant="basic" as="source" />
 </Code>
-
-And this is how that code looks when rendered:
-
-<Sample variant="basic" language="javascript" />
 
 The default language is "markdown", but you can specify any of the languages
 which are supported by [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer).
 
-<Code language="javascript">
-  const answer = 42;
-</Code>
+<Code language="javascript">const answer = 42;</Code>
 
 ## Full-width
 

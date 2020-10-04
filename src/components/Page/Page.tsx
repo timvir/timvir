@@ -4,8 +4,10 @@ import type Link from "next/link";
 import React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useImmer } from "use-immer";
+import { makeSubject } from "wonka";
 import { NavigationFooter } from "../NavigationFooter";
 import * as mdxComponentsBase from "./components";
+import { Message, Provider } from "./context";
 import { Sidebar } from "./internal";
 import { grid } from "./layout";
 import { theme } from "./theme";
@@ -70,6 +72,8 @@ function Page(props: Props, ref: any /* FIXME */) {
     },
   });
 
+  const [context] = React.useState(() => ({ bus: makeSubject<Message>() }));
+
   useHotkeys(
     "command+p,escape",
     (ev, handler) => {
@@ -93,7 +97,7 @@ function Page(props: Props, ref: any /* FIXME */) {
   );
 
   return (
-    <>
+    <Provider value={context}>
       <Root
         ref={ref}
         {...rest}
@@ -214,7 +218,7 @@ function Page(props: Props, ref: any /* FIXME */) {
           }}
         />
       )}
-    </>
+    </Provider>
   );
 }
 
