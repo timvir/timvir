@@ -15,7 +15,6 @@ const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   location: { asPath: string; push: (path: string) => void };
-  toc: readonly Node[];
   Link: typeof Link;
 
   open?: boolean;
@@ -30,7 +29,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Search(props: Props, ref: any /* FIXME */) {
-  const { location, toc, Link, open, onClose, q, className, ...rest } = props;
+  const { location, Link, open, onClose, q, className, ...rest } = props;
 
   const [value, setValue] = React.useState("");
   const [result, setResult] = React.useState<

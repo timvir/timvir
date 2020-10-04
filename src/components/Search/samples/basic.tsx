@@ -7,5 +7,5 @@ import { defaultSearch } from "../Search";
 const toc = [];
 
 export default function Sample() {
-  return <Search location={useRouter()} Link={Link} toc={toc} {...defaultSearch(toc)} open={false} />;
-};
+  return <Search location={useRouter()} Link={Link} {...defaultSearch(toc)} open={false} />;
+}

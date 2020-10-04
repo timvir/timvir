@@ -12,7 +12,7 @@ import { Footer } from "../components/Footer";
 
 const search = {
   Component: (props: { open: boolean }) => (
-    <Search location={useRouter()} Link={Link} toc={toc} {...props} {...defaultSearch(toc)} />
+    <Search location={useRouter()} Link={Link} {...props} {...defaultSearch(toc)} />
   ),
 };
 
