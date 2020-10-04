@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "strict": false,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "../../../packages/search",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "baseUrl": ".",
+    "paths": {
+      "@timvir/*": ["../*"]
+    }
+  },
+  "include": ["index.ts"]
+}

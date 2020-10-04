@@ -9,8 +9,11 @@
 
 /packages/cli/bin.js
 
+/packages/blocks/*
+!/packages/blocks/package.json
+
 /packages/core/*
 !/packages/core/package.json
 
-/packages/blocks/*
-!/packages/blocks/package.json
+/packages/search/*
+!/packages/search/package.json

@@ -12,6 +12,11 @@ stylis.set({ prefix: false });
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
 
+/*
+ * The node version which we officially support in the NPM packages.
+ */
+const node = "12";
+
 export default [
   /*
    * @timvir/cli
@@ -31,7 +36,7 @@ export default [
         extensions,
         presets: [
           ["@babel/preset-typescript"],
-          ["@babel/preset-env", { targets: { node: "12" } }],
+          ["@babel/preset-env", { targets: { node } }],
           ["@babel/preset-react", { useSpread: true }],
         ],
         plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]],
@@ -93,7 +98,7 @@ export default [
       babel({
         configFile: false,
         extensions,
-        presets: [["@babel/preset-env", { targets: { node: "12" } }]],
+        presets: [["@babel/preset-env", { targets: { node } }]],
       }),
     ],
     external: [
@@ -152,7 +157,7 @@ export default [
       babel({
         configFile: false,
         extensions,
-        presets: [["@babel/preset-env", { targets: { node: "12" } }]],
+        presets: [["@babel/preset-env", { targets: { node } }]],
       }),
     ],
     external: [
@@ -160,6 +165,65 @@ export default [
       "next/router",
       ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
       ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+    ],
+  },
+
+  /*
+   * @timvir/search
+   */
+  {
+    input: "src/packages/search/index.ts",
+    output: [
+      {
+        file: "packages/search/index.js",
+        format: "esm",
+      },
+    ],
+    plugins: [
+      resolve({ extensions }),
+      // commonjs({}),
+      replace({ "process.env.NODE_ENV": `"production"` }),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+        plugins: [
+          ["babel-plugin-macros"],
+          ["@babel/plugin-proposal-optional-chaining"],
+          ["@babel/plugin-proposal-nullish-coalescing-operator"],
+        ],
+      }),
+      linaria(),
+      css({ output: "packages/search/styles.css" }),
+    ],
+    external: [
+      "next/link",
+      "next/router",
+      ...Object.keys(require("../packages/search/package.json").dependencies || {}),
+      ...Object.keys(require("../packages/search/package.json").peerDependencies || {}),
+    ],
+  },
+  {
+    input: "packages/search/index.js",
+    output: [
+      {
+        file: "packages/search/index.cjs",
+        format: "cjs",
+      },
+    ],
+    plugins: [
+      resolve({ extensions }),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-env", { targets: { node } }]],
+      }),
+    ],
+    external: [
+      "next/link",
+      "next/router",
+      ...Object.keys(require("../packages/search/package.json").dependencies || {}),
+      ...Object.keys(require("../packages/search/package.json").peerDependencies || {}),
     ],
   },
 ];
