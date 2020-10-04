@@ -1,14 +1,15 @@
 export default [
   { label: "Home", path: "/" },
-  { label: "Documentation", path: "/docs/getting-started" },
+  { label: "Documentation", path: "/docs", children: [{ label: "Search", path: "/docs/search" }] },
   { label: "Commands", path: "/commands" },
   {
     label: "Packages",
     children: [
+      { label: "@timvir/blocks", path: "/packages/blocks" },
       { label: "@timvir/cli", path: "/packages/cli" },
       { label: "@timvir/core", path: "/packages/core" },
       { label: "@timvir/macro", path: "/packages/macro" },
-      { label: "@timvir/blocks", path: "/packages/blocks" },
+      { label: "@timvir/search", path: "/packages/search" },
     ],
   },
   {

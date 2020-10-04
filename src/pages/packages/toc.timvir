@@ -1,4 +1,5 @@
+blocks @timvir/blocks
 cli @timvir/cli
 core @timvir/core
 macro @timvir/macro
-blocks @timvir/blocks
+search @timvir/search

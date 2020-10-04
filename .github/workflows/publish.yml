@@ -15,7 +15,7 @@ jobs:
           node-version: "14.x"
           registry-url: "https://registry.npmjs.org"
       - run: npm ci
-      - run: ./node_modules/.bin/tsc --build src/tsconfig.json
+      - run: ./node_modules/.bin/tsc --build tsconfig.build.json
       - run: ./node_modules/.bin/rollup -c config/rollup.config.js
       - run: ./scripts/publish
         env:

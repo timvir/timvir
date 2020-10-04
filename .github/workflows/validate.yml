@@ -12,5 +12,5 @@ jobs:
           node-version: "14.x"
       - run: npm install
       - run: ./node_modules/.bin/tsc --build tsconfig.json
-      - run: ./node_modules/.bin/tsc --build src/tsconfig.json
+      - run: ./node_modules/.bin/tsc --build tsconfig.build.json
       - run: ./node_modules/.bin/rollup -c config/rollup.config.js

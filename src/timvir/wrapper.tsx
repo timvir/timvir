@@ -8,8 +8,8 @@ import React from "react";
 import routes from "./routes";
 import toc from "./toc";
 
-const search = {
-  Component: (props: { open: boolean }) => (
+const search: React.ComponentPropsWithoutRef<typeof Page>['search'] = {
+  Component: (props) => (
     <Search location={useRouter()} Link={Link} {...props} {...defaultSearch(toc)} />
   ),
 };
@@ -35,7 +35,7 @@ export default function Wrapper({ children }) {
             {
               group: "Docs",
               items: [
-                { label: "Getting Started", href: "/docs/getting-started" },
+                { label: "Getting Started", href: "/docs" },
                 // { label: "Components", href: "/docs/components" },
               ],
             },
