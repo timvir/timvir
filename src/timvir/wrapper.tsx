@@ -1,14 +1,12 @@
 import { MDXProviderComponents } from "@mdx-js/react";
+import { Code } from "@timvir/blocks";
+import { Footer, Page } from "@timvir/core";
+import { defaultSearch, Search } from "@timvir/search";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { Code } from "../components/Code";
-import { Search } from "../components/Search";
-import { defaultSearch } from "../components/Search/Search";
-import { Page } from "../packages/core";
-import toc from "./toc";
 import routes from "./routes";
-import { Footer } from "../components/Footer";
+import toc from "./toc";
 
 const search = {
   Component: (props: { open: boolean }) => (
