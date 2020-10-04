@@ -22,7 +22,9 @@ function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: any /
         display: flex;
         padding: 8px 0;
         font-size: 14px;
+        color: var(--c-text);
         cursor: pointer;
+        box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
 
         &:hover {
           background: rgba(0, 0, 0, 0.05);
@@ -36,6 +38,7 @@ function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: any /
           justify-content: center;
           margin-left: 14px;
           width: 18px;
+          height: 24px;
         `}
       >
         {icon}

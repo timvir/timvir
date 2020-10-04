@@ -24,21 +24,21 @@ function SearchBox({ toc, ...props }: Props, ref: any /* FIXME */) {
 
   const preparedQuery = fuzzaldrin.prepareQuery(value);
   const items = toc
-    .flatMap(n => flatten(n))
-    .map(n => ({
+    .flatMap((n) => flatten(n))
+    .map((n) => ({
       ...n,
       score: fuzzaldrin.score(n.path, value, {
-        preparedQuery
-      })
+        preparedQuery,
+      }),
     }))
-    .filter(n => (value ? n.score > 0 : true))
+    .filter((n) => (value ? n.score > 0 : true))
     .sort((a, b) => b.score - a.score)
     .slice(0, 10);
 
   const { getMenuProps, getInputProps, highlightedIndex, getItemProps, closeMenu } = useCombobox({
     defaultHighlightedIndex: 0,
     items,
-    itemToString: item => (item ? item.path : ""),
+    itemToString: (item) => (item ? item.path : ""),
     onInputValueChange: ({ inputValue }) => {
       setValue(inputValue);
     },
@@ -47,7 +47,7 @@ function SearchBox({ toc, ...props }: Props, ref: any /* FIXME */) {
         router.push(selectedItem.path);
       }
       closeMenu();
-    }
+    },
   });
 
   return (
@@ -69,7 +69,7 @@ function SearchBox({ toc, ...props }: Props, ref: any /* FIXME */) {
               label={<Highlight string={item.path} query={value} />}
               context="Page"
               style={{
-                background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined
+                background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined,
               }}
             />
           </Link>
@@ -105,7 +105,7 @@ const Highlight = ({ string, query }: HighlightProps) => {
   return (
     <span
       dangerouslySetInnerHTML={{
-        __html: match.length === 0 ? string : match
+        __html: match.length === 0 ? string : match,
       }}
     />
   );

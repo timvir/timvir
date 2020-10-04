@@ -202,18 +202,18 @@ function Page(props: Props, ref: any /* FIXME */) {
             {Footer && <Footer />}
           </div>
         </div>
-      </Root>
 
-      {search && (
-        <search.Component
-          {...state.search}
-          onClose={() => {
-            mutate((draft) => {
-              draft.search.open = false;
-            });
-          }}
-        />
-      )}
+        {search && (
+          <search.Component
+            {...state.search}
+            onClose={() => {
+              mutate((draft) => {
+                draft.search.open = false;
+              });
+            }}
+          />
+        )}
+      </Root>
     </>
   );
 }

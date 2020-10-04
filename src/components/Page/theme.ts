@@ -19,5 +19,6 @@ export const theme = css`
 
   --c-gray-8: ${colors.gray["800"]};
 
-  --c-text: var(--c-gray-8);
+  --c-text: ${colors.text.main};
+  --c-text-light: ${colors.text.light};
 `;
