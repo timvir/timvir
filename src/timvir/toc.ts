@@ -35,7 +35,6 @@ export default [
       { label: "NavigationFooter", path: "/docs/components/NavigationFooter" },
       { label: "Page", path: "/docs/components/Page" },
       { label: "Search", path: "/docs/components/Search" },
-      { label: "SearchBox", path: "/docs/components/SearchBox" },
       { label: "SearchBoxInput", path: "/docs/components/SearchBoxInput" },
       { label: "SearchBoxListItem", path: "/docs/components/SearchBoxListItem" },
       { label: "Swatch", path: "/docs/components/Swatch", children: [{ label: "API", path: "/docs/components/Swatch/api" }] },
