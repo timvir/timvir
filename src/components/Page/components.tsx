@@ -93,19 +93,6 @@ export const h4 = Heading(styled.h4`
   font-size: 0.9rem;
 `);
 
-export const a = styled.a`
-  color: currentColor;
-  text-decoration: none;
-  background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
-  background-position: bottom;
-  background-size: 100% 6px;
-  background-repeat: repeat-x;
-
-  &:hover {
-    background-image: linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a);
-  }
-`;
-
 export const blockquote = styled.blockquote`
   margin-left: 0;
   font-size: 1.1rem;
@@ -166,5 +153,27 @@ export const inlineCode = styled.code`
   border-radius: 2px;
   padding: 2px 5px;
   background: var(--c-p-1);
-  box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), inset 0 2px 4px rgba(16, 22, 26, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), inset 0 1px 4px rgba(16, 22, 26, 0.1);
+  transition: 0.16s;
+`;
+
+export const a = styled.a`
+  color: currentColor;
+  text-decoration: none;
+  background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
+  background-position: bottom;
+  background-size: 100% 6px;
+  background-repeat: repeat-x;
+
+  &:hover {
+    background-image: linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a);
+  }
+
+  &:hover ${inlineCode} {
+    box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.5), inset 0 1px 4px rgba(16, 22, 26, 0.2);
+  }
+  &:active ${inlineCode} {
+    box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.7), inset 0 1px 4px rgba(16, 22, 26, 0.4);
+    background: var(--c-p-2);
+  }
 `;
