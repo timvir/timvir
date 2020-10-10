@@ -21,6 +21,7 @@ export const grid = css`
 
   & > *:not(.${noLayout}) {
     grid-column: lc / rc;
+    min-width: 0;
   }
 `;
 
