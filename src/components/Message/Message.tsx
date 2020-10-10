@@ -67,7 +67,11 @@ export default React.forwardRef(Message);
 const icon = css`
   position: relative;
   top: 3px;
-  margin: 0 16px 0 -4px;
+  margin: -2px 12px 0 -4px;
+
+  & > svg {
+    display: block;
+  }
 `;
 
 const variantStyles = {
