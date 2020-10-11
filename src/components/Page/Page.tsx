@@ -58,7 +58,7 @@ interface Props extends React.ComponentProps<typeof Root> {
    * You can use any component here, though timvir provides a ready-made component which
    * should fit most use cases ('<Footer>').
    */
-  Footer?: React.ReactType<{}>;
+  Footer?: React.ComponentType<{}>;
 }
 
 function Page(props: Props, ref: any /* FIXME */) {
