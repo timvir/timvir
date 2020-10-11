@@ -1,14 +1,13 @@
 import { css } from "linaria";
-import type Link from "next/link";
 import React from "react";
+import { useContext } from "../context";
 import { Node } from "../types";
 
-interface Props extends Node {
-  location: { asPath: string };
-  Link: typeof Link;
-}
+interface Props extends Node {}
 
-const Section = ({ location, Link, label, path, children = [] }: Props) => {
+const Section = ({ label, path, children = [] }: Props) => {
+  const { location, Link } = useContext();
+
   const [active, setActive] = React.useState<boolean>(() => {
     if (path) {
       return location.asPath.startsWith(path);
@@ -77,7 +76,7 @@ const Section = ({ location, Link, label, path, children = [] }: Props) => {
           </a>
         )}
       </div>
-      {active && children.map((c, i) => <Section key={i} location={location} Link={Link} {...c} />)}
+      {active && children.map((c, i) => <Section {...c} />)}
     </section>
   );
 };

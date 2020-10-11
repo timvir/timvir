@@ -1,14 +1,11 @@
 import { css, cx } from "linaria";
-import type Link from "next/link";
 import React from "react";
 import { useImmer } from "use-immer";
 import { Node } from "../types";
 import Section from "./Section";
 
 interface Props {
-  location: { asPath: string };
   toc: readonly Node[];
-  Link: typeof Link;
 
   search?: {
     open: () => void;
@@ -20,7 +17,7 @@ interface Props {
   };
 }
 
-function Sidebar({ location, toc, Link, search }: Props) {
+function Sidebar({ toc, search }: Props) {
   const [state, mutate] = useImmer({
     shadowVisible: false,
   });
@@ -91,7 +88,7 @@ function Sidebar({ location, toc, Link, search }: Props) {
         >
           <nav>
             {toc.map((c, i) => (
-              <Section key={i} location={location} Link={Link} {...c} />
+              <Section key={i} {...c} />
             ))}
           </nav>
         </div>

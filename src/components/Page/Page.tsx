@@ -6,6 +6,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useImmer } from "use-immer";
 import { NavigationFooter } from "../NavigationFooter";
 import * as mdxComponentsBase from "./components";
+import { Provider } from "./context";
 import { Sidebar } from "./internal";
 import { grid } from "./layout";
 import { theme } from "./theme";
@@ -93,7 +94,7 @@ function Page(props: Props, ref: any /* FIXME */) {
   );
 
   return (
-    <>
+    <Provider value={{ location, Link }}>
       <Root
         ref={ref}
         {...rest}
@@ -120,9 +121,7 @@ function Page(props: Props, ref: any /* FIXME */) {
           `}
         >
           <Sidebar
-            location={location}
             toc={toc}
-            Link={Link}
             search={
               search && {
                 open: () => {
@@ -214,7 +213,7 @@ function Page(props: Props, ref: any /* FIXME */) {
           />
         )}
       </Root>
-    </>
+    </Provider>
   );
 }
 
