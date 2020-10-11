@@ -1,8 +1,7 @@
+import { Node, useContext } from "@timvir/core";
 import { useCombobox } from "downshift";
 import { css, cx } from "linaria";
-import Link from "next/link";
 import React from "react";
-import { Node } from "../../Page";
 import { SearchBoxInput } from "../../SearchBoxInput";
 import { SearchBoxListItem } from "../../SearchBoxListItem";
 import Highlight from "./Highlight";
@@ -13,9 +12,6 @@ import Highlight from "./Highlight";
 const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
-  location: { asPath: string; push: (path: string) => void };
-  Link: typeof Link;
-
   onClose?: (ev: React.SyntheticEvent<HTMLElement>) => void;
 
   q: (
@@ -27,7 +23,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Dialog(props: Props, ref: any /* FIXME */) {
-  const { location, Link, onClose, q, className, ...rest } = props;
+  const { onClose, q, className, ...rest } = props;
+
+  const { location, Link } = useContext();
 
   const [value, setValue] = React.useState("");
   const [result, setResult] = React.useState<

@@ -193,7 +193,7 @@ function Page(props: Props, ref: any /* FIXME */) {
                     padding-top: 80px;
                   `}
                 >
-                  <NavigationFooter Link={Link} prev={toLink(index - 1)} next={toLink(index + 1)} />
+                  <NavigationFooter prev={toLink(index - 1)} next={toLink(index + 1)} />
                 </div>
               );
             })()}

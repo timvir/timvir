@@ -9,7 +9,7 @@ import routes from "./routes";
 import toc from "./toc";
 
 const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
-  Component: (props) => <Search location={useRouter()} Link={Link} {...props} {...defaultSearch(toc)} />,
+  Component: (props) => <Search {...props} {...defaultSearch(toc)} />,
 };
 
 const mdxComponents: MDXProviderComponents = {

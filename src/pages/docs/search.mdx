@@ -36,7 +36,7 @@ export default function Wrapper({ children }) {
       …
       search={{
         Component: (props) => (
-          <Search location={useRouter()} Link={Link} {...props} {...defaultSearch(toc)} />
+          <Search {...props} {...defaultSearch(toc)} />
         ),
       }}
     />

@@ -1,6 +1,6 @@
 import { css, cx } from "linaria";
-import type Link from "next/link";
 import React from "react";
+import { useContext } from "../Page/context";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -8,8 +8,6 @@ import React from "react";
 const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
-  Link: typeof Link;
-
   prev?: {
     href: string;
     label: React.ReactNode;
@@ -22,7 +20,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   };
 }
 
-function NavigationFooter({ prev, next, Link, className, ...props }: Props, ref: any /* FIXME */) {
+function NavigationFooter({ prev, next, className, ...props }: Props, ref: any /* FIXME */) {
   return (
     <Root
       ref={ref}
@@ -72,9 +70,7 @@ function NavigationFooter({ prev, next, Link, className, ...props }: Props, ref:
           {prev && (
             <>
               <SecondaryLabel>{prev.context || "/"}</SecondaryLabel>
-              <PrimaryLink Link={Link} href={prev.href}>
-                {prev.label}
-              </PrimaryLink>
+              <PrimaryLink href={prev.href}>{prev.label}</PrimaryLink>
             </>
           )}
         </div>
@@ -90,9 +86,7 @@ function NavigationFooter({ prev, next, Link, className, ...props }: Props, ref:
           {next && (
             <>
               <SecondaryLabel>{next.context || "/"}</SecondaryLabel>
-              <PrimaryLink Link={Link} href={next.href}>
-                {next.label}
-              </PrimaryLink>
+              <PrimaryLink href={next.href}>{next.label}</PrimaryLink>
             </>
           )}
         </div>
@@ -103,7 +97,9 @@ function NavigationFooter({ prev, next, Link, className, ...props }: Props, ref:
 
 export default React.forwardRef(NavigationFooter);
 
-const PrimaryLink = ({ href, Link, children }: { href: string; Link: Props["Link"]; children: React.ReactNode }) => {
+const PrimaryLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  const { Link } = useContext();
+
   return (
     <Link href={href}>
       <a

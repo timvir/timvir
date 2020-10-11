@@ -10,9 +10,6 @@ import { Dialog } from "./internal";
 const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
-  location: { asPath: string; push: (path: string) => void };
-  Link: typeof Link;
-
   open?: boolean;
   onClose?: (ev: React.SyntheticEvent<HTMLElement>) => void;
 
