@@ -12,7 +12,7 @@
     "@babel/preset-env": "^7.11.5",
     "@mdx-js/loader": "^1.6.5",
     "@mdx-js/react": "^1.6.4",
-    "@next/mdx": "^9.5.4",
+    "@next/mdx": "^9.5.5",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-replace": "^2.3.3",
