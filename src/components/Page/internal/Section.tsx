@@ -76,7 +76,7 @@ const Section = ({ label, path, children = [] }: Props) => {
           </a>
         )}
       </div>
-      {active && children.map((c, i) => <Section {...c} />)}
+      {active && children.map((c, i) => <Section key={i} {...c} />)}
     </section>
   );
 };
