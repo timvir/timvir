@@ -199,6 +199,7 @@ function Code(props: Props, ref: any /* FIXME */) {
 
                 return (
                   <div
+                    key={i}
                     {...lineProps}
                     className={cx(
                       className,
@@ -212,7 +213,7 @@ function Code(props: Props, ref: any /* FIXME */) {
                     )}
                   >
                     {line.map((token, key) => (
-                      <span {...getTokenProps({ token, key })} />
+                      <span key={key} {...getTokenProps({ token, key })} />
                     ))}
                   </div>
                 );

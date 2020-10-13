@@ -1,5 +1,4 @@
 import fuzzaldrin from "fuzzaldrin-plus";
-import Link from "next/link";
 import React from "react";
 import { Node } from "../Page";
 import { Dialog } from "./internal";
@@ -27,7 +26,7 @@ function Search(props: Props, ref: any /* FIXME */) {
   if (!open) {
     return null;
   } else {
-    return <Dialog {...rest} />;
+    return <Dialog ref={ref} {...rest} />;
   }
 }
 

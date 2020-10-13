@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { Page, extendedWidth, fullWidth } from "..";
+import { extendedWidth, fullWidth, Page } from "..";
 
 export default function Sample() {
   return (
@@ -51,4 +51,4 @@ export default function Sample() {
       </div>
     </Page>
   );
-};
+}

@@ -9,17 +9,19 @@ import routes from "./routes";
 import toc from "./toc";
 
 const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
-  Component: (props) => <Search {...props} {...defaultSearch(toc)} />,
+  Component: function Component(props) {
+    return <Search {...props} {...defaultSearch(toc)} />;
+  },
 };
 
 const mdxComponents: MDXProviderComponents = {
-  code: (props) => {
+  code: function code(props: any) {
     const [, language = "markdown"] = (props.className || "").match(/^language-(.*)$/) || [];
     return <Code language={language}>{props.children}</Code>;
   },
 };
 
-export default function Wrapper({ children }) {
+export default function Wrapper({ children }: { children?: React.ReactNode }) {
   return (
     <Page
       location={useRouter()}

@@ -14,7 +14,7 @@ const anchorize = (children?: React.ReactNode): string => {
 };
 
 function Heading(Component: React.ComponentType<React.HTMLAttributes<HTMLHeadingElement>>) {
-  return (props: React.HTMLAttributes<HTMLHeadingElement>) => {
+  return function Heading(props: React.HTMLAttributes<HTMLHeadingElement>) {
     const id = anchorize(props.children);
 
     return (

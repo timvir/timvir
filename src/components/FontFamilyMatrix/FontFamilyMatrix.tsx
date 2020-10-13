@@ -1,4 +1,4 @@
-import { css, cx } from "linaria";
+import { css } from "linaria";
 import React from "react";
 
 /**
@@ -71,5 +71,3 @@ function FontFamilyMatrix({ fontFaces, className, ...props }: Props, ref: any /*
 }
 
 export default React.forwardRef(FontFamilyMatrix);
-
-const capitalize = (str: string) => `${str[0].toUpperCase()}${str.slice(1)}`;

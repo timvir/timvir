@@ -10,7 +10,7 @@ export default function Page({ component, sample }) {
       <Component />
     </div>
   );
-};
+}
 
 export async function getStaticPaths() {
   const fs = await import("fs");

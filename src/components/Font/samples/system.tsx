@@ -1,6 +1,5 @@
 import React from "react";
 import { Font } from "..";
-import { Code } from "../../Code";
 
 export default function Sample() {
   return (
@@ -31,4 +30,4 @@ export default function Sample() {
       </Font>
     </>
   );
-};
+}

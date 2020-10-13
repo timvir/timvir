@@ -1,4 +1,4 @@
-import { Node, useContext } from "@timvir/core";
+import { useContext } from "@timvir/core";
 import { useCombobox } from "downshift";
 import { css, cx } from "linaria";
 import React from "react";
@@ -174,17 +174,3 @@ function Dialog(props: Props, ref: any /* FIXME */) {
 }
 
 export default React.forwardRef(Dialog);
-
-function flatten(n: Node): Array<{ label: string; path: string }> {
-  let ret: Array<{ label: string; path: string }> = [];
-
-  if (n.path) {
-    ret.push({ label: n.label, path: n.path });
-  }
-
-  if (n.children) {
-    ret = [...ret, ...n.children.flatMap(flatten)];
-  }
-
-  return ret;
-}

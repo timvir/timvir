@@ -57,7 +57,7 @@ function visit({ typeChecker, writer }: { typeChecker: ts.TypeChecker; writer: a
         tags: symbol.getJsDocTags(),
         props: {
           name: symbol.escapedName,
-          fields: [...node.members.entries()].map(([k, v]) => {
+          fields: [...node.members.entries()].map(([_, v]) => {
             const s = typeChecker.getSymbolAtLocation(v.name);
             const t = typeChecker.getTypeOfSymbolAtLocation(s, s.valueDeclaration);
 

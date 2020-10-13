@@ -39,14 +39,14 @@ function ColorContrastInspector(props: Props, ref: any /* FIXME */) {
       className={cx(
         className,
         css`
-        display: grid;
-        grid-gap: 2px;
-        align-items: center;
+          display: grid;
+          grid-gap: 2px;
+          align-items: center;
 
-        &:hover .${classes.cell}:not(.${classes.whitelisted}) {
-          opacity: .2;
-        }
-      `
+          &:hover .${classes.cell}:not(.${classes.whitelisted}) {
+            opacity: 0.2;
+          }
+        `
       )}
       style={{
         gridTemplateColumns: `80px repeat(${background.length}, 1fr)`,
@@ -86,7 +86,7 @@ function ColorContrastInspector(props: Props, ref: any /* FIXME */) {
       {foreground.map((text, i) => {
         const color = chroma.contrast(text, "white") > chroma.contrast(text, "black") ? "white" : "black";
         return (
-          <React.Fragment>
+          <React.Fragment key={i}>
             <div
               className={css`
                 grid-column: 1 / span 1;
