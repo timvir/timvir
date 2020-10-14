@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 export function useResizeObserver(callback: ResizeObserverCallback) {
   const [ref] = React.useState(() => ({ ro: mkResizeObserver((...args) => ref.callback(...args)), callback }));
