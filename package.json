@@ -8,7 +8,7 @@
   "dependencies": {
     "@babel/core": "^7.12.0",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.0",
-    "@babel/plugin-proposal-optional-chaining": "^7.12.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.1",
     "@babel/preset-env": "^7.12.0",
     "@mdx-js/loader": "^1.6.5",
     "@mdx-js/react": "^1.6.4",
