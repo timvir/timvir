@@ -19,7 +19,7 @@ function Caption(props: Props) {
       <figcaption
         className={css`
           font-size: 0.75rem;
-          color: #999;
+          color: var(--c-text-light);
           white-space: nowrap;
 
           display: flex;
@@ -27,10 +27,7 @@ function Caption(props: Props) {
           align-items: center;
         `}
       >
-        <div>
-          Source:{" "}
-          {mdx("a", { href: src, target: "_blank"}, src)}
-        </div>
+        <div>Source: {mdx("a", { href: src, target: "_blank" }, src)}</div>
 
         {code && (
           <div

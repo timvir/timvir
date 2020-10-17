@@ -26,7 +26,7 @@ const classes = {
     z-index: 1;
     position: relative;
     top: -6px;
-    color: #999;
+    color: var(--c-text-light);
   `,
 };
 

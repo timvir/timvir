@@ -69,11 +69,11 @@ function Exhibit(props: Props, ref: any /* FIXME */) {
 
         {caption && (
           <figcaption
-            style={{
-              fontSize: "0.75rem",
-              color: "#999",
-              marginTop: 6,
-            }}
+            className={css`
+              font-size: 0.75rem;
+              color: var(--c-text-light);
+              margin-top: 6px;
+            `}
           >
             {caption}
           </figcaption>
