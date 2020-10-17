@@ -11,7 +11,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   interactive?: boolean;
 }
 
-function Card({ elevation, interactive, className, ...props }: Props, ref: any /* FIXME */) {
+function Card(props: Props, ref: React.Ref<React.ElementRef<typeof Root>>) {
+  const { elevation, interactive, className, ...rest } = props;
+
   return (
     <Root
       ref={ref}
@@ -26,7 +28,7 @@ function Card({ elevation, interactive, className, ...props }: Props, ref: any /
           box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.15), 0 0 0 rgba(16, 22, 26, 0), 0 0 0 rgba(16, 22, 26, 0);
         `
       )}
-      {...props}
+      {...rest}
     />
   );
 }
@@ -48,7 +50,7 @@ const elevationStyles = {
   `,
   e4: css`
     box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 4px 8px rgba(16, 22, 26, 0.2), 0 18px 46px 6px rgba(16, 22, 26, 0.2);
-  `
+  `,
 } as const;
 
 const interactiveStyle = css`
