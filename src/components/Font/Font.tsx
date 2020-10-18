@@ -57,13 +57,6 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: a
         className,
         css`
           padding: 16px 0;
-
-          & .${classes.meta} > * {
-            opacity: 0.6;
-          }
-          &:hover .${classes.meta} > * {
-            opacity: 1;
-          }
         `
       )}
       {...props}
