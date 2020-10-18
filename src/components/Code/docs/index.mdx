@@ -1,4 +1,4 @@
-import { Sample } from "../../../../packages/macro";
+import { Sample, sampleCode } from "../../../../packages/macro";
 
 import { Code } from "..";
 import { Exhibit } from "../../Exhibit";
@@ -7,20 +7,14 @@ import { Exhibit } from "../../Exhibit";
 
 The `<Code>` component provides syntax highlighting for code blocks.
 
-<Code language="tsx" highlightedLines={[1, 2]}>
-  <Sample variant="basic" as="source" />
+<Code language="tsx">
+  {sampleCode({ variant: "basic", as: "markup" })}
 </Code>
-
-And this is how that code looks when rendered:
-
-<Sample variant="basic" language="javascript" />
 
 The default language is "markdown", but you can specify any of the languages
 which are supported by [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer).
 
-<Code language="javascript">
-  const answer = 42;
-</Code>
+<Code language="javascript">const answer = 42;</Code>
 
 ## Full-width
 

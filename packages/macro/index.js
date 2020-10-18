@@ -2,6 +2,8 @@ const { join, dirname } = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
 const { createMacro } = require("babel-plugin-macros");
+const { parse } = require("@babel/parser");
+const generate = require("@babel/generator");
 
 let counter = 0;
 
@@ -66,6 +68,53 @@ module.exports = createMacro(({ references, babel, state }) => {
           );
         },
       }[as]());
+    });
+  }
+
+  if (references.sampleCode) {
+    references.sampleCode.forEach((referencePath) => {
+      const callExpression = referencePath.parent;
+      const { variant, component = "..", as = "module" } = eval(
+        `(${generate.default(callExpression.arguments[0]).code})`
+      );
+
+      const { filename } = referencePath.hub.file.opts;
+      const module = join(dirname(filename), component, "samples", variant);
+      const source = (() => {
+        if (fs.existsSync(module)) {
+          return fs.readFileSync(module, "utf8");
+        } else {
+          return fs.readFileSync(module + ".tsx", "utf8");
+        }
+      })();
+
+      const string = {
+        module: () => source,
+        component: () => {
+          const file = parse(source, {
+            sourceType: "module",
+            plugins: ["jsx", "typescript"],
+          });
+
+          const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
+          const { declaration } = exportDefaultDeclaration;
+          return generate.default(declaration).code;
+        },
+        markup: () => {
+          const file = parse(source, {
+            sourceType: "module",
+            plugins: ["jsx", "typescript"],
+          });
+
+          const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
+          const { declaration } = exportDefaultDeclaration;
+          const body = declaration.body.body;
+          const returnStatement = body.find((node) => t.isReturnStatement(node));
+          return generate.default(returnStatement.argument).code;
+        },
+      }[as]();
+
+      referencePath.parentPath.parentPath.replaceWith(t.stringLiteral(string));
     });
   }
 });
