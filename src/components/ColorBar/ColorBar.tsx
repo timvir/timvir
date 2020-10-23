@@ -105,8 +105,7 @@ function ColorBar(props: Props, ref: any /* FIXME */) {
         ))}
       </div>
 
-      <Swatch
-        {...(typeof selected === "string" ? { value: selected } : selected)}
+      <div
         className={cx(
           css`
             position: absolute;
@@ -125,10 +124,14 @@ function ColorBar(props: Props, ref: any /* FIXME */) {
               opacity: 1;
             `
         )}
-        onMouseLeave={() => {
-          setSelected(undefined);
-        }}
-      />
+      >
+        <Swatch
+          {...(typeof selected === "string" ? { value: selected } : selected)}
+          onMouseLeave={() => {
+            setSelected(undefined);
+          }}
+        />
+      </div>
     </Root>
   );
 }
