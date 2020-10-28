@@ -51,7 +51,7 @@
     "null-loader": "^4.0.1",
     "prettier": "^2.1.2",
     "prism-react-renderer": "^1.1.1",
-    "prompts": "^2.3.2",
+    "prompts": "^2.4.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-feather": "^2.0.4",
