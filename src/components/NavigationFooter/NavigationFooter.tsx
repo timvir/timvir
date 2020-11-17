@@ -20,7 +20,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   };
 }
 
-function NavigationFooter({ prev, next, className, ...props }: Props, ref: any /* FIXME */) {
+function NavigationFooter({ prev, next, className, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
     <Root
       ref={ref}

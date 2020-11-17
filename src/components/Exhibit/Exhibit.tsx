@@ -21,7 +21,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   BackdropProps?: React.ComponentPropsWithoutRef<"div">;
 }
 
-function Exhibit(props: Props, ref: any /* FIXME */) {
+function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { title, source, caption, bleed = 0, BackdropProps, children, className, ...rest } = props;
 
   return (

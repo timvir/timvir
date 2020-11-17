@@ -20,7 +20,7 @@ interface Selector {
   sticky?: number;
 }
 
-function Exhibits({ children, ...props }: Props, ref: any /* FIXME */) {
+function Exhibits({ children, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const backdrop = React.useRef<HTMLDivElement>();
   const [selector, setSelector] = React.useState<Selector>({});
   const timeout = React.useRef<any>();

@@ -11,7 +11,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   variant?: "info" | "warning" | "alert";
 }
 
-function Message({ variant, className, children, ...props }: Props, ref: any /* FIXME */) {
+function Message({ variant, className, children, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
     <Root
       ref={ref}

@@ -12,7 +12,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   onSelectChapter?: (i: number) => void;
 }
 
-function ColorBook({ chapters, selectedChapter, onSelectChapter, ...props }: Props, ref: any /* FIXME */) {
+function ColorBook({ chapters, selectedChapter, onSelectChapter, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
     <Root
       ref={ref}

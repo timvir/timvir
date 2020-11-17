@@ -7,7 +7,7 @@ const Root = "div";
 
 interface Props extends React.ComponentProps<typeof Root> {}
 
-function Grid({ children, style, ...props }: Props, ref: any /* FIXME */) {
+function Grid({ children, style, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
     <Root
       ref={ref}

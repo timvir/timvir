@@ -12,7 +12,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   context?: React.ReactNode;
 }
 
-function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: any /* FIXME */) {
+function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
     <Root
       role="button"

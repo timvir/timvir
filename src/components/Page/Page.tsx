@@ -62,7 +62,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   Footer?: React.ComponentType<unknown>;
 }
 
-function Page(props: Props, ref: any /* FIXME */) {
+function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { location, toc, Link, className, search, mdxComponents, Footer, children, ...rest } = props;
 
   const [state, mutate] = useImmer({

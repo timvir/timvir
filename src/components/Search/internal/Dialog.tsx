@@ -22,7 +22,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   }>;
 }
 
-function Dialog(props: Props, ref: any /* FIXME */) {
+function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { onClose, q, className, ...rest } = props;
 
   const { location, Link } = useContext();

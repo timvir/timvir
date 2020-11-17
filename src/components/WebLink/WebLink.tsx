@@ -10,7 +10,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   url: string;
 }
 
-function WebLink({ url, className, ...props }: Props, ref: any /* FIXME */) {
+function WebLink({ url, className, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const [metadata, setMetadata] = React.useState(undefined);
 
   React.useEffect(() => {

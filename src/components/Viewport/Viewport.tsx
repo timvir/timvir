@@ -21,7 +21,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   code?: string;
 }
 
-function Viewport({ src, code, className, ...props }: Props, ref: any /* FIXME */) {
+function Viewport({ src, code, className, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   /*
    * The container measures the width of the main column. It is used to initialize
    * the default width.

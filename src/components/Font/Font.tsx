@@ -26,7 +26,7 @@ const classes = {
   `,
 };
 
-function Font({ name, font, info, className, children, ...props }: Props, ref: any /* FIXME */) {
+function Font({ name, font, info, className, children, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const [contentRef, setContentRef] = React.useState<null | HTMLDivElement>(null);
   const [fontSizeRef, setFontSizeRef] = React.useState<null | HTMLSpanElement>(null);
   const [infoRef, setInfoRef] = React.useState<null | HTMLDivElement>(null);

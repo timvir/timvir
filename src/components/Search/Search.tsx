@@ -20,7 +20,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   }>;
 }
 
-function Search(props: Props, ref: any /* FIXME */) {
+function Search(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { open, ...rest } = props;
 
   if (!open) {

@@ -14,7 +14,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   }>;
 }
 
-function Footer({ className, links, ...props }: Props, ref: any /* FIXME */) {
+function Footer({ className, links, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
     <Root
       ref={ref}

@@ -11,7 +11,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   sources: Array<{ srcSet: string; type: string }>;
 }
 
-function Image({ metadata, img, sources, ...props }: Props, ref: any /* FIXME */) {
+function Image({ metadata, img, sources, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
     <Root ref={ref} {...props}>
       {sources.map((p, i) => (

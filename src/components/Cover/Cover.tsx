@@ -13,7 +13,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   sources: Array<{ srcSet: string; type: string }>;
 }
 
-function Cover({ metadata, img, sources, className, ...props }: Props, ref: any /* FIXME */) {
+function Cover({ metadata, img, sources, className, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
     <Root ref={ref} className={cx(className, fullWidth)} {...props}>
       <picture>

@@ -30,7 +30,7 @@ const classes = {
   `,
 };
 
-function Icon({ descriptor, ...props }: Props, ref: any /* FIXME */) {
+function Icon({ descriptor, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
     <Root ref={ref} {...props}>
       <Measure bounds>

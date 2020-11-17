@@ -25,7 +25,7 @@ const classes = {
   `,
 };
 
-function Cell({ background, foreground, isWhitelisted, className, style, ...props }: Props, ref: any /* FIXME */) {
+function Cell({ background, foreground, isWhitelisted, className, style, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const large = opacity(3, background, foreground);
   const normal = opacity(4.5, background, foreground);
 

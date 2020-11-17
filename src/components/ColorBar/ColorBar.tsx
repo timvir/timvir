@@ -14,7 +14,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   values: Array<string | { value: string; contrastValue?: string; name?: string; ancestry?: string }>;
 }
 
-function ColorBar(props: Props, ref: any /* FIXME */) {
+function ColorBar(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { values, className, ...rest } = props;
 
   const [selected, setSelected] = React.useState<undefined | Props["values"][number]>(undefined);

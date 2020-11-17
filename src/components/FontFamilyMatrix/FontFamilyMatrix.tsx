@@ -10,7 +10,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   fontFaces: Array<{ name: string; style: React.CSSProperties; className?: string }>;
 }
 
-function FontFamilyMatrix({ fontFaces, className, ...props }: Props, ref: any /* FIXME */) {
+function FontFamilyMatrix({ fontFaces, className, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const sortedWeights = Array.from(new Set(fontFaces.map((fontFace) => fontFace.style.fontWeight))).sort();
   const styles = ["normal", "italic"];
 

@@ -36,7 +36,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   ancestry?: string;
 }
 
-function Swatch(props: Props, ref: any /* FIXME */) {
+function Swatch(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, ...rest } = props;
 
   const [label, setLabel] = React.useState(name);

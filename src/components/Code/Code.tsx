@@ -42,7 +42,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   highlightedLines?: Array<number>;
 }
 
-function Code(props: Props, ref: any /* FIXME */) {
+function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { children, language, fullWidth, highlightedLines, ...rest } = props;
 
   const isHighlightedLine = (() => {
