@@ -22,13 +22,15 @@ const classes = {
     font-size: 0.75rem;
     opacity: 0;
     transition: all 0.16s;
-    z-index: 1;
-    position: relative;
-    top: -10px;
+    z-index: -1;
     color: var(--c-text-light);
     text-align: center;
     user-select: none;
     pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -20px;
   `,
 };
 
@@ -45,7 +47,7 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
         className,
         css`
           position: relative;
-          z-index: 2;
+          z-index: 1;
 
           svg {
             display: block;
@@ -53,11 +55,11 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
 
           &:hover ${classes.name} {
             opacity: 1;
-            top: 0px;
+            bottom: -26px;
             color: var(--c-text);
           }
           &:active ${classes.name} {
-            top: -2px;
+            bottom: -24px;
           }
         `
       )}
