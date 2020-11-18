@@ -17,8 +17,6 @@ const classes = {
   name: css`
     margin-top: 6px;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     font-size: 0.75rem;
     opacity: 0;
     transition: all 0.16s;
@@ -28,9 +26,9 @@ const classes = {
     user-select: none;
     pointer-events: none;
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 50%;
     bottom: -20px;
+    transform: translateX(-50%);
   `,
 };
 
