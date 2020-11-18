@@ -2,7 +2,7 @@ import { css, cx } from "linaria";
 import React from "react";
 import { useResizeObserverEntry } from "../../hooks/useResizeObserver";
 import { Canvas } from "./internal";
-import { Descriptor, Size } from "./types";
+import { Descriptor } from "./types";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -10,7 +10,6 @@ import { Descriptor, Size } from "./types";
 const Root = "div";
 
 interface Props extends React.ComponentProps<typeof Root> {
-  allSizes: Size[];
   descriptor: Descriptor;
 }
 
@@ -34,7 +33,7 @@ const classes = {
 };
 
 function Icon(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { allSizes: _, descriptor, className, ...rest } = props;
+  const { descriptor, className, ...rest } = props;
 
   const [roRef, roe] = useResizeObserverEntry();
   const width = roe?.contentRect.width;

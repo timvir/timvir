@@ -4,7 +4,6 @@ import { Icon } from "..";
 export default function Sample() {
   return (
     <Icon
-      allSizes={[]}
       descriptor={{
         name: "ArrowRight",
         instances: [
