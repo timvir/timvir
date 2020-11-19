@@ -10,26 +10,26 @@ import indexT from "../templates/index";
 import sampleT from "../templates/sample";
 import { default as toc } from "./toc";
 
-export default async function() {
+export default async function () {
   const response = await prompts(
     [
       {
         type: "text",
         name: "name",
         message: "What's the name of your component?",
-        validate: value => (value === "" || value === "?" ? `HELP TEXT HERE` : true)
+        validate: (value) => (value === "" || value === "?" ? `HELP TEXT HERE` : true),
       },
       {
         type: "text",
         name: "Root",
         message: "What is the underlying DOM element (eg. div, span, input etc)",
-        initial: "div"
-      }
+        initial: "div",
+      },
     ],
     {
       onCancel: () => {
         process.exit(1);
-      }
+      },
     }
   );
 
@@ -50,19 +50,22 @@ export default async function() {
   await write(join(baseDir, `samples`, `basic.tsx`), sampleT(response));
 
   /*
-   * Generate the TOC for the components folder.
+   * If the project uses toc.timvir, update the components index and regenerate the TOC.
    */
-  await (async () => {
-    const folders = await fs.promises.readdir(join("src", "components"));
-    await write(
-      join("src", "pages", "docs", "components", "toc.timvir"),
-      folders
-        .filter(x => x !== "toc.timvir")
-        .sort()
-        .join("\n") + "\n",
-      true
-    );
-  })();
+  {
+    const path = join("src", "pages", "docs", "components", "toc.timvir");
+    if (!fs.promises.access(path).catch(() => true)) {
+      const folders = await fs.promises.readdir(join("src", "components"));
+      await write(
+        path,
+        folders
+          .filter((x) => x !== "toc.timvir")
+          .sort()
+          .join("\n") + "\n",
+        true
+      );
 
-  await toc();
+      await toc();
+    }
+  }
 }
