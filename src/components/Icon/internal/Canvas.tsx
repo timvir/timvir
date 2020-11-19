@@ -12,10 +12,16 @@ interface Props {
 }
 
 const classes = {
+  backdrop: css`
+    background: white;
+    place-self: stretch;
+    border-radius: 2px;
+    transition: all 0.2s;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+  `,
   grid: css`
     opacity: 0;
     transition: all 0.2s;
-    transform: scale(1.3);
     pointer-events: none;
   `,
 };
@@ -26,48 +32,35 @@ function Canvas(props: Props) {
   return (
     <Root
       className={css`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: white;
-        transition: all 0.2s;
+        display: grid;
+        place-items: center;
+
         cursor: pointer;
-        border-radius: 2px;
 
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+        & > * {
+          grid-column: 1;
+          grid-row: 1;
+        }
 
-        &:hover {
+        &:hover ${classes.backdrop} {
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
             0 8px 24px rgba(16, 22, 26, 0.2);
-          z-index: 5;
         }
 
-        &:active {
+        &:active ${classes.backdrop} {
+          margin: 1px;
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
-          transform: scale(0.99);
-        }
-
-        &:hover svg:first-of-type rect {
-          opacity: 1;
         }
 
         &:hover ${classes.grid} {
           opacity: 1;
-          transform: scale(1);
         }
-
-
       `}
       style={{ width, height }}
     >
+      <div className={classes.backdrop} />
       <Grid className={classes.grid} size={size} />
-      <div
-        style={{
-          position: "relative",
-          zIndex: 20,
-          fontSize: `${size}px`,
-        }}
-      >
+      <div style={{ fontSize: `${size}px`, zIndex: 1 }}>
         <Component />
       </div>
     </Root>
@@ -106,24 +99,8 @@ function Grid({ size, ...rest }: { size: number } & React.ComponentProps<"svg">)
   const sub = (a: number, b: number): number => a - b;
 
   return (
-    <svg
-      style={{ display: "block", position: "absolute", zIndex: 5, overflow: "visible" }}
-      width="120"
-      height="120"
-      viewBox="0 0 120 120"
-      {...rest}
-    >
-      <rect
-        className={css`
-          opacity: 0;
-          transition: opacity 0.2s;
-        `}
-        x={center - halfSize}
-        y={center - halfSize}
-        width={size}
-        height={size}
-        fill="#FFBBFF88"
-      />
+    <svg width="120" height="120" viewBox="0 0 120 120" {...rest}>
+      <rect x={center - halfSize} y={center - halfSize} width={size} height={size} fill="#FFBBFF88" />
 
       <Corner dx={sub} dy={sub} />
       <Corner dx={add} dy={sub} />
