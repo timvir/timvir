@@ -14,7 +14,7 @@
     "@babel/preset-typescript": "^7.12.1",
     "@mdx-js/loader": "^1.6.5",
     "@mdx-js/react": "^1.6.4",
-    "@next/mdx": "^10.0.1",
+    "@next/mdx": "^10.0.2",
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-replace": "^2.3.4",
