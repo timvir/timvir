@@ -4,6 +4,7 @@ export { Cover } from "../../components/Cover";
 export { Exhibit } from "../../components/Exhibit";
 export { Font } from "../../components/Font";
 export { Grid } from "../../components/Grid";
+export { Icon } from "../../components/Icon";
 export { Message } from "../../components/Message";
 export { Swatch } from "../../components/Swatch";
 export { Viewport } from "../../components/Viewport";
