@@ -15,7 +15,8 @@
   "module": "./index.js",
   "peerDependencies": {
     "@mdx-js/react": "*",
-    "react": "*"
+    "react": "*",
+    "react-hotkeys-hook": "^3.0.0"
   },
   "repository": {
     "type": "git",
