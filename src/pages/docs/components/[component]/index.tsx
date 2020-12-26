@@ -1,9 +1,11 @@
-import dynamic from "next/dynamic";
 import React from "react";
+import { dynamicMap } from "../../../../../packages/macro";
 import Wrapper from "../../../../timvir/wrapper";
 
+const componentRegistry = dynamicMap("../../../../components/*/docs/index.mdx");
+
 export default function Page({ component }) {
-  const Component = dynamic(() => import(`../../../../components/${component}/docs/index.mdx`));
+  const Component = componentRegistry[component];
 
   return (
     <Wrapper>

@@ -117,6 +117,38 @@ module.exports = createMacro(({ references, babel, state }) => {
       referencePath.parentPath.parentPath.replaceWith(t.stringLiteral(string));
     });
   }
+
+  if (references.dynamicMap) {
+    const globby = require("globby");
+    state.file.path.node.body.unshift(
+      t.importDeclaration([t.importDefaultSpecifier(t.identifier("dynamic"))], t.stringLiteral("next/dynamic"))
+    );
+
+    references.dynamicMap.forEach((referencePath) => {
+      const callExpression = referencePath.parent;
+      const pattern = callExpression.arguments[0].value;
+
+      const { filename } = referencePath.hub.file.opts;
+      // console.log(pattern, dirname(filename));
+      const files = globby.sync(pattern, { cwd: dirname(filename) });
+      // console.log(files);
+      const re = new RegExp(pattern.replace("*", "(.*)"));
+      const map = t.objectExpression(
+        files.map((path) =>
+          t.objectProperty(
+            t.stringLiteral(re.exec(path)[1]),
+            t.callExpression(t.identifier("dynamic"), [
+              t.arrowFunctionExpression([], t.callExpression(t.identifier("import"), [t.stringLiteral(path)])),
+            ])
+          )
+        )
+      );
+
+      // console.log(generate.default(map).code);
+
+      referencePath.parentPath.replaceWith(map);
+    });
+  }
 });
 
 const genName = (...buffers) => {
