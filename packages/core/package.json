@@ -16,7 +16,8 @@
   "peerDependencies": {
     "@mdx-js/react": "*",
     "react": "*",
-    "react-hotkeys-hook": "^3.0.0"
+    "react-hotkeys-hook": "*",
+    "use-immer": "*"
   },
   "repository": {
     "type": "git",
