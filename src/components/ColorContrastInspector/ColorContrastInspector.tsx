@@ -1,6 +1,6 @@
 import chroma from "chroma-js";
 import { css, cx } from "linaria";
-import React from "react";
+import * as React from "react";
 import { Cell } from "./internal";
 
 /**

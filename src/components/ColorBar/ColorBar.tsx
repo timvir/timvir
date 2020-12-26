@@ -1,5 +1,5 @@
 import { css, cx } from "linaria";
-import React from "react";
+import * as React from "react";
 import { Swatch } from "../Swatch";
 
 /**

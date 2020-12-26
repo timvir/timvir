@@ -4,7 +4,7 @@ import { Footer, Page } from "@timvir/core";
 import { defaultSearch, Search } from "@timvir/search";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import * as React from "react";
 import routes from "./routes";
 import toc from "./toc";
 

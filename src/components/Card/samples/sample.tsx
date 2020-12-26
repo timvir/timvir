@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Card } from "..";
 import { Sample } from "../../../../packages/macro";
 import { Exhibit } from "../../Exhibit";

@@ -1,6 +1,6 @@
 import { css } from "linaria";
 import { styled } from "linaria/react";
-import React from "react";
+import * as React from "react";
 
 const anchorize = (children?: React.ReactNode): string => {
   if (typeof children === "string") {

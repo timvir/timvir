@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React from "react";
+import * as React from "react";
 import { theme } from "../../../../../packages/core";
 
 export default function Page({ component, sample }) {

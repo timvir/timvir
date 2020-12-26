@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Swatch } from "..";
 
 export default function Sample() {

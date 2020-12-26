@@ -1,5 +1,5 @@
 import { css, cx } from "linaria";
-import React from "react";
+import * as React from "react";
 import { useResizeObserver, useResizeObserverEntry } from "../../hooks/useResizeObserver";
 import { fullWidth } from "@timvir/core";
 import { Caption, Handle, Ruler } from "./internal";

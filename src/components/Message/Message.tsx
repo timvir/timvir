@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { cx, css } from "linaria";
 import * as Icons from "react-feather";
 

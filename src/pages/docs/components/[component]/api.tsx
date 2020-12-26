@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React from "react";
+import * as React from "react";
 import Wrapper from "../../../../timvir/wrapper";
 
 export default function Page({ component }) {

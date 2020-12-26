@@ -1,5 +1,5 @@
 import fuzzaldrin from "fuzzaldrin-plus";
-import React from "react";
+import * as React from "react";
 import { Node } from "../Page";
 import { Dialog } from "./internal";
 

@@ -1,5 +1,5 @@
 import { css, cx } from "linaria";
-import React from "react";
+import * as React from "react";
 import { opacity } from "./utils";
 import * as Icons from "react-feather";
 

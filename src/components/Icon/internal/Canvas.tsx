@@ -1,5 +1,5 @@
 import { css } from "linaria";
-import React from "react";
+import * as React from "react";
 
 const Root = "div";
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import * as React from "react";
 import { extendedWidth, fullWidth, Page } from "..";
 
 export default function Sample() {

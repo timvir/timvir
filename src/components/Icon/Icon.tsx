@@ -1,5 +1,5 @@
 import { css, cx } from "linaria";
-import React from "react";
+import * as React from "react";
 import { useResizeObserverEntry } from "../../hooks/useResizeObserver";
 import { Canvas } from "./internal";
 import { Descriptor } from "./types";
