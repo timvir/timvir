@@ -14,6 +14,7 @@
   },
   "module": "./index.js",
   "dependencies": {
+    "@timvir/core": "*",
     "downshift": "^6.0.6",
     "fuzzaldrin-plus": "^0.6.0"
   },

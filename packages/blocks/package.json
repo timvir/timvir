@@ -14,6 +14,7 @@
   },
   "module": "./index.js",
   "peerDependencies": {
+    "@timvir/core": "*",
     "@mdx-js/react": "*",
     "prism-react-renderer": "*",
     "react": "*"
