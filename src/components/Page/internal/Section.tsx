@@ -1,4 +1,4 @@
-import { css } from "linaria";
+import { css } from "@linaria/core";
 import * as React from "react";
 import { useContext } from "../context";
 import { Node } from "../types";

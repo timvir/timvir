@@ -1,4 +1,4 @@
-import { css } from "linaria";
+import { css } from "@linaria/core";
 import * as colors from "../../theme/colors";
 
 export const theme = css`

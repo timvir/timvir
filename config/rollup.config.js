@@ -1,8 +1,8 @@
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
-import linaria from "linaria/rollup";
-import babel from "rollup-plugin-babel";
+import linaria from "@linaria/rollup";
+import babel from "@rollup/plugin-babel";
 import css from "rollup-plugin-css-only";
 // import { terser } from "rollup-plugin-terser";
 import shebang from "rollup-plugin-add-shebang";
@@ -40,6 +40,7 @@ export default [
           ["@babel/preset-react", { useSpread: true }],
         ],
         plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]],
+        babelHelpers: 'bundled'
       }),
       shebang(),
     ],
@@ -65,6 +66,8 @@ export default [
       resolve({ extensions }),
       // commonjs({}),
       replace({ "process.env.NODE_ENV": `"production"` }),
+      linaria(),
+      css({ output: "styles.css" }),
       babel({
         configFile: false,
         extensions,
@@ -74,9 +77,8 @@ export default [
           ["@babel/plugin-proposal-optional-chaining"],
           ["@babel/plugin-proposal-nullish-coalescing-operator"],
         ],
+        babelHelpers: "bundled",
       }),
-      linaria(),
-      css({ output: "packages/core/styles.css" }),
     ],
     external: [
       "next/link",
@@ -99,6 +101,7 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-env", { targets: { node } }]],
+        babelHelpers: 'bundled'
       }),
     ],
     external: [
@@ -124,6 +127,8 @@ export default [
       resolve({ extensions }),
       commonjs({}),
       replace({ "process.env.NODE_ENV": `"production"` }),
+      linaria(),
+      css({ output: "styles.css" }),
       babel({
         configFile: false,
         extensions,
@@ -133,9 +138,8 @@ export default [
           ["@babel/plugin-proposal-optional-chaining"],
           ["@babel/plugin-proposal-nullish-coalescing-operator"],
         ],
+        babelHelpers: 'bundled'
       }),
-      linaria(),
-      css({ output: "packages/blocks/styles.css" }),
     ],
     external: [
       "next/link",
@@ -158,6 +162,7 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-env", { targets: { node } }]],
+        babelHelpers: 'bundled'
       }),
     ],
     external: [
@@ -183,6 +188,8 @@ export default [
       resolve({ extensions }),
       // commonjs({}),
       replace({ "process.env.NODE_ENV": `"production"` }),
+      linaria(),
+      css({ output: "styles.css" }),
       babel({
         configFile: false,
         extensions,
@@ -192,9 +199,8 @@ export default [
           ["@babel/plugin-proposal-optional-chaining"],
           ["@babel/plugin-proposal-nullish-coalescing-operator"],
         ],
+        babelHelpers: 'bundled'
       }),
-      linaria(),
-      css({ output: "packages/search/styles.css" }),
     ],
     external: [
       "next/link",
@@ -217,6 +223,7 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-env", { targets: { node } }]],
+        babelHelpers: 'bundled'
       }),
     ],
     external: [

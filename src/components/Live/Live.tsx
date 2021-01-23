@@ -1,4 +1,4 @@
-import { css } from "linaria";
+import { css } from "@linaria/core";
 import theme from "prism-react-renderer/themes/github";
 import * as React from "react";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";

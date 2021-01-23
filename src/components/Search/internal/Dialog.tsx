@@ -1,6 +1,6 @@
 import { useContext } from "@timvir/core";
 import { useCombobox } from "downshift";
-import { css, cx } from "linaria";
+import { css, cx } from "@linaria/core";
 import * as React from "react";
 import { SearchBoxInput } from "../../SearchBoxInput";
 import { SearchBoxListItem } from "../../SearchBoxListItem";

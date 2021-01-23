@@ -1,5 +1,5 @@
 import { mdx } from "@mdx-js/react";
-import { css, cx } from "linaria";
+import { css, cx } from "@linaria/core";
 import * as React from "react";
 import * as Icons from "react-feather";
 

@@ -1,4 +1,4 @@
-import { css, cx } from "linaria";
+import { css, cx } from "@linaria/core";
 
 export const noLayout = css``;
 

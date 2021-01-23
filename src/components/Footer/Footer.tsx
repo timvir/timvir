@@ -1,5 +1,5 @@
 import { grid } from "@timvir/core";
-import { css, cx } from "linaria";
+import { css, cx } from "@linaria/core";
 import * as React from "react";
 
 /**

@@ -1,4 +1,4 @@
-import { css, cx } from "linaria";
+import { css, cx } from "@linaria/core";
 import * as React from "react";
 import { opacity } from "./utils";
 import * as Icons from "react-feather";

@@ -16,7 +16,7 @@ module.exports = withCSS(
         test: /\.(js|ts)x?$/,
         use: [
           {
-            loader: "linaria/loader",
+            loader: "@linaria/webpack-loader",
             options: { sourceMap: true }
           }
         ]

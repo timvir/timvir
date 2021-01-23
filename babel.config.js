@@ -1,4 +1,4 @@
 module.exports = {
-  presets: ["next/babel", "linaria/babel"],
+  presets: ["next/babel", "@linaria"],
   plugins: ["macros"]
 };
