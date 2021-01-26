@@ -23,7 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     res.statusCode = 200;
-    const metadata = await unfurl(req.query.url);
+    const metadata = await unfurl(req.query.url as string);
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(metadata));
   } catch (err) {
