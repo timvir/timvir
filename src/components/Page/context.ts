@@ -4,6 +4,15 @@ import * as React from "react";
 interface Value {
   location: { asPath: string; push: (path: string) => void };
   Link: typeof Link;
+
+  /*
+   * Configuration for blocks.
+   */
+  blocks?: {
+    WebLink?: {
+      unfurl: (url: string) => Promise<any>
+    }
+  }
 }
 
 const Context = React.createContext<undefined | Value>(undefined);

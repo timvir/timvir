@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cx, css } from "@linaria/core";
+import { useContext } from "@timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -10,13 +11,19 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   url: string;
 }
 
-function WebLink({ url, className, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { url, className, ...rest } = props;
+
   const [metadata, setMetadata] = React.useState(undefined);
 
+  const {
+    unfurl = async function unfurl(url: string) {
+      return fetch(`https://timvir.now.sh/api/unfurl?url=${encodeURIComponent(url)}`).then((res) => res.json());
+    },
+  } = useContext().blocks?.WebLink ?? {};
+
   React.useEffect(() => {
-    fetch(`https://timvir.now.sh/api/unfurl?url=${encodeURIComponent(url)}`)
-      .then((res) => res.json())
-      .then(setMetadata);
+    unfurl(url).then(setMetadata);
   }, [url, setMetadata]);
 
   const image = metadata?.open_graph?.images?.[0]?.url;
@@ -27,7 +34,7 @@ function WebLink({ url, className, ...props }: Props, ref: React.ForwardedRef<Re
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      {...props}
+      {...rest}
       className={cx(
         className,
         css`
