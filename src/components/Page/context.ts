@@ -1,7 +1,7 @@
 import Link from "next/link";
 import * as React from "react";
 
-interface Value {
+export interface Value {
   location: { asPath: string; push: (path: string) => void };
   Link: typeof Link;
 

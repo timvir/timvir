@@ -6,7 +6,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useImmer } from "use-immer";
 import { NavigationFooter } from "../NavigationFooter";
 import * as mdxComponentsBase from "./components";
-import { Provider } from "./context";
+import { Provider, Value } from "./context";
 import { Sidebar } from "./internal";
 import { grid } from "./layout";
 import { theme } from "./theme";
@@ -60,10 +60,15 @@ interface Props extends React.ComponentProps<typeof Root> {
    * should fit most use cases ('<Footer>').
    */
   Footer?: React.ComponentType<unknown>;
+
+  /**
+   * Configuration for blocks.
+   */
+  blocks?: Value["blocks"];
 }
 
 function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { location, toc, Link, className, search, mdxComponents, Footer, children, ...rest } = props;
+  const { location, toc, Link, className, search, mdxComponents, Footer, blocks, children, ...rest } = props;
 
   const [state, mutate] = useImmer({
     search: {
@@ -94,7 +99,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   );
 
   return (
-    <Provider value={{ location, Link }}>
+    <Provider value={{ location, Link, blocks }}>
       <Root
         ref={ref}
         {...rest}
