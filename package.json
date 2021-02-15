@@ -76,7 +76,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "sharp": "^0.27.0",
     "typescript": "^4.1.5",
-    "unfurl.js": "^5.2.3",
+    "unfurl.js": "^5.2.4",
     "use-immer": "^0.4.2"
   }
 }
