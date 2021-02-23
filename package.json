@@ -62,7 +62,7 @@
     "npm": "^7.5.4",
     "null-loader": "^4.0.1",
     "prettier": "^2.2.1",
-    "prism-react-renderer": "^1.1.1",
+    "prism-react-renderer": "^1.2.0",
     "prompts": "^2.4.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
