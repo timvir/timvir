@@ -43,7 +43,7 @@ function ColorContrastInspector(props: Props, ref: React.ForwardedRef<React.Elem
           grid-gap: 2px;
           align-items: center;
 
-          &:hover .${classes.cell}:not(.${classes.whitelisted}) {
+          &:hover ${classes.cell}:not(${classes.whitelisted}) {
             opacity: 0.2;
           }
         `
