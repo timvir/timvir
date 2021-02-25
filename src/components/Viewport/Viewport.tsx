@@ -198,9 +198,17 @@ function Viewport({ src, code, className, ...props }: Props, ref: React.Forwarde
                   frameBorder="0"
                   src={src}
                   onLoad={() => {
-                    const { height } = html.getBoundingClientRect();
-                    setHeight(height);
-                    setMaxHeight(height);
+                    /*
+                     * Once the iframe has loaded, initialize the height/maxHeight.
+                     * The <html> element may not exist though (eg. the page failed
+                     * to load, or it's not a HTML page).
+                     */
+                    const html = iframeRef.current?.contentDocument.querySelector("html");
+                    if (html) {
+                      const { height } = html.getBoundingClientRect();
+                      setHeight(height);
+                      setMaxHeight(height);
+                    }
                   }}
                   className={css`
                     display: block;

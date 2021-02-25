@@ -24,3 +24,12 @@ See also [Concepts: Component Sample](/concepts/component-sample).
 The `<Viewport>` displays a gray, animated background while the iframe is loading.
 
 <Viewport src="/api/slow" />
+
+## Unsupported content
+
+When the Viewport points to something else than a HTML document (eg. an image), it'll
+stay the default height, but display the contents nonetheless.
+
+TODO: display a nice error message describing the problem.
+
+<Viewport src="/assets/image.jpg" />
