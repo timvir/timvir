@@ -43,7 +43,7 @@
     "@zhif/macro": "0.0.16",
     "babel-plugin-macros": "^3.0.1",
     "blurhash": "^1.1.3",
-    "chroma-js": "^2.1.0",
+    "chroma-js": "^2.1.1",
     "commander": "^7.1.0",
     "cors": "^2.8.5",
     "dot": "^1.1.3",
