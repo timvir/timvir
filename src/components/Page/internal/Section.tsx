@@ -3,9 +3,13 @@ import * as React from "react";
 import { useContext } from "../context";
 import { Node } from "../types";
 
-interface Props extends Node {}
+interface Props extends Node {
+  depth: number;
+}
 
-const Section = ({ label, path, children = [] }: Props) => {
+function Section(props: Props) {
+  const { depth, label, path, children = [] } = props;
+
   const { location, Link } = useContext();
 
   const [active, setActive] = React.useState<boolean>(() => {
@@ -30,55 +34,49 @@ const Section = ({ label, path, children = [] }: Props) => {
         & > div {
           display: flex;
           align-items: center;
-        }
-        & > div:before {
-          opacity: 0;
-          color: var(--c-p-4);
-          content: "›";
-          height: 1.1rem;
-          font-size: 1rem;
-          line-height: 1rem;
-          transition: all 0.16s;
+          border-radius: 3px;
+          margin: 2px 0;
+          transition: background .16s;
         }
 
-        & > div:hover:before,
-        & > div[data-active="true"]:before {
-          opacity: 1;
-          left: 0;
+        & > div[data-active="true"] {
+          background: var(--c-p-2) !important;
         }
+
         & > div > a {
+          font-family: system-ui;
+          font-weight: 500;
           display: inline-block;
-          margin-left: 0.5ch;
           color: var(--c-text);
-          font-size: 0.8rem;
+          font-size: 14px;
           line-height: 1.725;
           background: none;
-          color: inherit;
           text-decoration: none;
           width: 100%;
+          padding: 0 24px;
+        }
+        & > div:hover {
+          background: var(--c-p-1);
         }
         & > div:hover a {
-          color: var(--c-p-4);
-        }
-        & > & {
-          padding: 0 0 0 2ch;
+          color: black;
         }
       `}
     >
       <div data-active={location.asPath === path}>
         {path ? (
           <Link href={path}>
-            <a>{label}</a>
+            <a style={{ paddingLeft: 24 + depth * 20 }}>{label}</a>
           </Link>
         ) : (
-          <a href="#" onClick={() => setActive((x) => !x)}>
+          <a style={{ paddingLeft: 24 + depth * 20 }} href="#" onClick={() => setActive((x) => !x)}>
             {label}
           </a>
         )}
       </div>
-      {active && children.map((c, i) => <Section key={i} {...c} />)}
+      {active && children.map((c, i) => <Section key={i} depth={depth + 1} {...c} />)}
     </section>
   );
-};
+}
 
 export default Section;

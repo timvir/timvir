@@ -63,7 +63,7 @@ function Sidebar({ toc, search }: Props) {
           <div
             className={cx(
               css`
-                padding: 24px 24px 24px;
+                padding: 24px 3px 24px;
                 flex-shrink: 0;
                 transition: all 0.16s;
               `,
@@ -79,7 +79,7 @@ function Sidebar({ toc, search }: Props) {
 
         <div
           className={css`
-            padding: 24px 24px 30px;
+            padding: 24px 3px 30px;
             overflow-y: auto;
             flex-grow: 1;
             overscroll-behavior: contain;
@@ -88,7 +88,7 @@ function Sidebar({ toc, search }: Props) {
         >
           <nav>
             {toc.map((c, i) => (
-              <Section key={i} {...c} />
+              <Section key={i} depth={0} {...c} />
             ))}
           </nav>
         </div>
@@ -103,23 +103,25 @@ const Search = ({ open, label }: Props["search"]) => {
   return (
     <div
       className={css`
-        position: relative;
-        margin: 0 0 0 -0.5ch;
+        font-family: system-ui;
       `}
     >
       <div
         role="button"
         className={css`
           color: var(--c-text);
-          font-size: 0.8rem;
+          font-size: 14px;
+          font-weight: 500;
           line-height: 1.725;
           cursor: pointer;
+          padding: 2px 24px;
+          border-radius: 3px;
 
           display: flex;
           align-items: center;
 
           &:hover {
-            color: var(--c-p-4);
+            background: var(--c-p-1);
           }
 
           & > svg {

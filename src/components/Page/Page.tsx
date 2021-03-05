@@ -121,7 +121,6 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
         <div
           className={css`
             background: var(--c-p-0);
-            border-right: 1px solid rgba(43, 188, 138, 0.1);
             grid-column: l / m;
           `}
         >
