@@ -2,10 +2,10 @@ import { css } from "@linaria/core";
 import * as colors from "../../theme/colors";
 
 export const theme = css`
-  font-family: "Menlo", "Meslo LG", monospace;
+  font-family: system-ui, sans-serif;
   font-feature-settings: "liga", "kern";
   text-rendering: optimizelegibility;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.725;
 
   color: ${colors.text.main};

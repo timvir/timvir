@@ -16,18 +16,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 
 function Footer({ className, links, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   return (
-    <Root
-      ref={ref}
-      className={cx(
-        className,
-        css`
-          padding: 50px 0 30px;
-          background: #20232a;
-          color: white;
-        `
-      )}
-      {...props}
-    >
+    <Root ref={ref} className={cx(className, classes.root)} {...props}>
       {links && (
         <div
           className={cx(
@@ -50,7 +39,7 @@ function Footer({ className, links, ...props }: Props, ref: React.ForwardedRef<R
                   className={css`
                     text-transform: uppercase;
                     color: #999;
-                    font-weight: 900;
+                    font-weight: 700;
                     letter-spacing: 0.08em;
                     margin-bottom: 12px;
                   `}
@@ -96,3 +85,11 @@ function Footer({ className, links, ...props }: Props, ref: React.ForwardedRef<R
 }
 
 export default React.forwardRef(Footer);
+
+const classes = {
+  root: css`
+    padding: 50px 0 30px;
+    background: #20232a;
+    color: white;
+  `,
+};

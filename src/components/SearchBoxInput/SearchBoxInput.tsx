@@ -52,6 +52,7 @@ function SearchBoxInput({ value, onChange, ...props }: Props, ref: React.Forward
         value={value}
         onChange={onChange}
         className={css`
+          font-family: inherit;
           font-size: inherit;
           line-height: inherit;
           border: none;

@@ -51,9 +51,9 @@ export const h1 = styled.h1`
   margin-bottom: 1rem;
   color: var(--c-p-4);
   letter-spacing: 0.01em;
-  font-weight: 700;
   font-style: normal;
-  font-size: 1.5em;
+  font-size: 36px;
+  font-weight: 600;
   text-indent: -0.05em;
 `;
 
@@ -65,8 +65,8 @@ export const h2 = Heading(styled.h2`
   color: var(--c-text);
   text-transform: none;
   letter-spacing: normal;
-  font-weight: bold;
-  font-size: 1rem;
+  font-size: 24px;
+  font-weight: 500;
 `);
 
 export const h3 = Heading(styled.h3`
@@ -77,8 +77,8 @@ export const h3 = Heading(styled.h3`
   color: var(--c-text);
   text-transform: none;
   letter-spacing: normal;
-  font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 18px;
+  font-weight: 500;
 `);
 
 export const h4 = Heading(styled.h4`
@@ -152,6 +152,7 @@ export const td = styled.td`
 export const inlineCode = styled.code`
   border-radius: 2px;
   padding: 2px 5px;
+  font-size: 0.9em;
   background: var(--c-p-1);
   box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), inset 0 1px 4px rgba(16, 22, 26, 0.1);
   transition: 0.16s;

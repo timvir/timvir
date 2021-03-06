@@ -27,16 +27,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
   return (
     <>
       {title && mdx("h3", {}, title)}
-      <Root
-        ref={ref}
-        className={cx(
-          className,
-          css`
-            margin: 0;
-          `
-        )}
-        {...rest}
-      >
+      <Root ref={ref} className={cx(className, classes.root)} {...rest}>
         <div
           className={css`
             display: flow-root;
@@ -72,7 +63,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
             className={css`
               font-size: 0.75rem;
               color: var(--c-text-light);
-              margin-top: 6px;
+              margin-top: 2px;
             `}
           >
             {caption}
@@ -84,3 +75,9 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
 }
 
 export default React.forwardRef(Exhibit);
+
+const classes = {
+  root: css`
+    margin: 0;
+  `,
+};

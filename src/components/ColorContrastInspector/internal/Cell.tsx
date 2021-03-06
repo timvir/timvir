@@ -69,6 +69,8 @@ function Cell({ background, foreground, isWhitelisted, className, style, ...prop
           align-items: center;
           justify-content: center;
 
+          font-weight: 500;
+
           &:hover ${classes.icon} {
             opacity: 1;
           }

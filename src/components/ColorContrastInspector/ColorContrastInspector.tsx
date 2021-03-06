@@ -43,13 +43,15 @@ function ColorContrastInspector(props: Props, ref: React.ForwardedRef<React.Elem
           grid-gap: 2px;
           align-items: center;
 
+          font-weight: 500;
+
           &:hover ${classes.cell}:not(${classes.whitelisted}) {
             opacity: 0.2;
           }
         `
       )}
       style={{
-        gridTemplateColumns: `80px repeat(${background.length}, 1fr)`,
+        gridTemplateColumns: `min-content repeat(${background.length}, 1fr)`,
       }}
     >
       <div style={{ height: 80 }} />
@@ -98,7 +100,7 @@ function ColorContrastInspector(props: Props, ref: React.ForwardedRef<React.Elem
             <div
               className={css`
                 grid-column: 1 / span 1;
-                padding-left: 12px;
+                padding: 0 12px;
                 border-right: 2px solid white;
                 height: 32px;
                 display: flex;

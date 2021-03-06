@@ -75,7 +75,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
           pointer-events: none;
           overflow: hidden;
 
-          font-family: "Menlo", "Meslo LG", monospace;
+          font-family: system-ui, sans-serif;
           font-feature-settings: "liga", "kern";
           text-rendering: optimizelegibility;
           font-size: 14px;
