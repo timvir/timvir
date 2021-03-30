@@ -38,7 +38,7 @@
     "@types/prompts": "^2.0.9",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
-    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
     "@zhif/macro": "0.0.16",
     "babel-plugin-macros": "^3.0.1",
