@@ -1,8 +1,14 @@
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import * as React from "react";
 import Wrapper from "../../../../timvir/wrapper";
 
 export default function Page({ component }) {
+  const { isFallback } = useRouter();
+  if (isFallback) {
+    return <Wrapper />;
+  }
+
   const Component = dynamic(() => import(`../../../../components/${component}/docs/index.mdx`));
 
   return (
@@ -13,12 +19,9 @@ export default function Page({ component }) {
 }
 
 export async function getStaticPaths() {
-  const fs = await import("fs");
-  const components = await fs.promises.readdir("src/components");
-
   return {
-    paths: components.map((component) => ({ params: { component } })),
-    fallback: false,
+    paths: [],
+    fallback: true,
   };
 }
 
