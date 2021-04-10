@@ -53,6 +53,10 @@ function configureLinaria(config) {
 }
 
 module.exports = withMDX({
+  future: {
+    webpack5: true,
+  },
+
   typescript: {
     ignoreDevErrors: true,
     ignoreBuildErrors: true,
