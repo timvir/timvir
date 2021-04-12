@@ -19,7 +19,7 @@
     "@linaria/react": "^3.0.0-beta.1",
     "@linaria/rollup": "^3.0.0-beta.1",
     "@linaria/shaker": "^3.0.0-beta.1",
-    "@linaria/webpack-loader": "^3.0.0-beta.1",
+    "@linaria/webpack-loader": "^3.0.0-beta.2",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@next/mdx": "^10.1.3",
