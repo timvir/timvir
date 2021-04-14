@@ -10,7 +10,8 @@
     ".": {
       "import": "./index.js",
       "default": "./index.cjs"
-    }
+    },
+    "./styles.css": "./styles.css"
   },
   "module": "./index.js",
   "peerDependencies": {
