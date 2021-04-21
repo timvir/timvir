@@ -15,6 +15,7 @@ export default [
   {
     label: "Components",
     children: [
+      { label: "Arbitrary", path: "/docs/components/Arbitrary" },
       { label: "Card", path: "/docs/components/Card" },
       { label: "Code", path: "/docs/components/Code", children: [{ label: "API", path: "/docs/components/Code/api" }] },
       { label: "ColorBar", path: "/docs/components/ColorBar", children: [{ label: "API", path: "/docs/components/ColorBar/api" }] },
