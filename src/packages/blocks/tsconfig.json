@@ -13,5 +13,5 @@
       "@timvir/*": ["../*"]
     }
   },
-  "include": ["index.ts"]
+  "include": ["**/*.ts"]
 }
