@@ -1,13 +1,13 @@
+import linaria from "@linaria/rollup";
+import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
-import linaria from "@linaria/rollup";
-import babel from "@rollup/plugin-babel";
-import css from "rollup-plugin-css-only";
 // import { terser } from "rollup-plugin-terser";
 import shebang from "rollup-plugin-add-shebang";
-
+import css from "rollup-plugin-css-only";
 import stylis from "stylis";
+
 stylis.set({ prefix: false });
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
@@ -16,6 +16,68 @@ const extensions = [".js", ".jsx", ".ts", ".tsx"];
  * The node version which we officially support in the NPM packages.
  */
 const node = "12";
+
+function block(name) {
+  return [
+    {
+      input: `src/packages/blocks/${name}/index.ts`,
+      output: [
+        {
+          file: `packages/blocks/${name}/index.js`,
+          format: "esm",
+        },
+      ],
+      plugins: [
+        resolve({ extensions }),
+        commonjs({}),
+        replace({ "process.env.NODE_ENV": `"production"` }),
+        linaria(),
+        css({ output: "styles.css" }),
+        babel({
+          configFile: false,
+          extensions,
+          presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+          plugins: [
+            ["babel-plugin-macros"],
+            ["@babel/plugin-proposal-optional-chaining"],
+            ["@babel/plugin-proposal-nullish-coalescing-operator"],
+          ],
+          babelHelpers: 'bundled'
+        }),
+      ],
+      external: [
+        "next/link",
+        "next/router",
+        ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
+        ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+      ],
+    },
+    {
+      input: `packages/blocks/${name}/index.js`,
+      output: [
+        {
+          file: `packages/blocks/${name}/index.cjs`,
+          format: "cjs",
+        },
+      ],
+      plugins: [
+        resolve({ extensions }),
+        babel({
+          configFile: false,
+          extensions,
+          presets: [["@babel/preset-env", { targets: { node } }]],
+          babelHelpers: 'bundled'
+        }),
+      ],
+      external: [
+        "next/link",
+        "next/router",
+        ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
+        ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+      ],
+    },
+  ]
+}
 
 export default [
   /*
@@ -172,6 +234,7 @@ export default [
       ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
     ],
   },
+  ...block("Arbitrary"),
 
   /*
    * @timvir/search

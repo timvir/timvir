@@ -11,7 +11,12 @@
       "import": "./index.js",
       "default": "./index.cjs"
     },
-    "./styles.css": "./styles.css"
+    "./styles.css": "./styles.css",
+    "./Arbitrary": {
+      "import": "./Arbitrary/index.js",
+      "default": "./Arbitrary/index.cjs"
+    },
+    "./Arbitrary/styles.css": "./Arbitrary/styles.css"
   },
   "module": "./index.js",
   "peerDependencies": {
