@@ -42,7 +42,7 @@ function block(name) {
             ["@babel/plugin-proposal-optional-chaining"],
             ["@babel/plugin-proposal-nullish-coalescing-operator"],
           ],
-          babelHelpers: 'bundled'
+          babelHelpers: "bundled",
         }),
       ],
       external: [
@@ -50,6 +50,7 @@ function block(name) {
         "next/router",
         ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
         ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+        /@timvir\/blocks/,
       ],
     },
     {
@@ -66,7 +67,7 @@ function block(name) {
           configFile: false,
           extensions,
           presets: [["@babel/preset-env", { targets: { node } }]],
-          babelHelpers: 'bundled'
+          babelHelpers: "bundled",
         }),
       ],
       external: [
@@ -74,9 +75,10 @@ function block(name) {
         "next/router",
         ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
         ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+        /@timvir\/blocks/,
       ],
     },
-  ]
+  ];
 }
 
 export default [
@@ -102,7 +104,7 @@ export default [
           ["@babel/preset-react", { useSpread: true }],
         ],
         plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]],
-        babelHelpers: 'bundled'
+        babelHelpers: "bundled",
       }),
       shebang(),
     ],
@@ -147,6 +149,7 @@ export default [
       "next/router",
       ...Object.keys(require("../packages/core/package.json").dependencies || {}),
       ...Object.keys(require("../packages/core/package.json").peerDependencies || {}),
+      /@timvir\/core/,
     ],
   },
   {
@@ -163,7 +166,7 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-env", { targets: { node } }]],
-        babelHelpers: 'bundled'
+        babelHelpers: "bundled",
       }),
     ],
     external: [
@@ -171,6 +174,7 @@ export default [
       "next/router",
       ...Object.keys(require("../packages/core/package.json").dependencies || {}),
       ...Object.keys(require("../packages/core/package.json").peerDependencies || {}),
+      /@timvir\/core/,
     ],
   },
 
@@ -200,7 +204,7 @@ export default [
           ["@babel/plugin-proposal-optional-chaining"],
           ["@babel/plugin-proposal-nullish-coalescing-operator"],
         ],
-        babelHelpers: 'bundled'
+        babelHelpers: "bundled",
       }),
     ],
     external: [
@@ -208,6 +212,7 @@ export default [
       "next/router",
       ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
       ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+      /@timvir\/blocks/,
     ],
   },
   {
@@ -224,7 +229,7 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-env", { targets: { node } }]],
-        babelHelpers: 'bundled'
+        babelHelpers: "bundled",
       }),
     ],
     external: [
@@ -232,6 +237,7 @@ export default [
       "next/router",
       ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
       ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+      /@timvir\/blocks/,
     ],
   },
   ...block("Arbitrary"),
@@ -262,7 +268,7 @@ export default [
           ["@babel/plugin-proposal-optional-chaining"],
           ["@babel/plugin-proposal-nullish-coalescing-operator"],
         ],
-        babelHelpers: 'bundled'
+        babelHelpers: "bundled",
       }),
     ],
     external: [
@@ -270,6 +276,7 @@ export default [
       "next/router",
       ...Object.keys(require("../packages/search/package.json").dependencies || {}),
       ...Object.keys(require("../packages/search/package.json").peerDependencies || {}),
+      /@timvir\/search/,
     ],
   },
   {
@@ -286,7 +293,7 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-env", { targets: { node } }]],
-        babelHelpers: 'bundled'
+        babelHelpers: "bundled",
       }),
     ],
     external: [
@@ -294,6 +301,7 @@ export default [
       "next/router",
       ...Object.keys(require("../packages/search/package.json").dependencies || {}),
       ...Object.keys(require("../packages/search/package.json").peerDependencies || {}),
+      /@timvir\/search/,
     ],
   },
 ];
