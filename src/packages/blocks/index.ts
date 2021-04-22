@@ -1,5 +1,6 @@
 export { Code } from "../../components/Code";
 export { ColorBar } from "../../components/ColorBar";
+export { ColorBook } from "../../components/ColorBook";
 export { Cover } from "../../components/Cover";
 export { Exhibit } from "../../components/Exhibit";
 export { Font } from "../../components/Font";
