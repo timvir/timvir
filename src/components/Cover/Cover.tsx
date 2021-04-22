@@ -13,14 +13,20 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   sources: Array<{ srcSet: string; type: string }>;
 }
 
-function Cover({ metadata, img, sources, className, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Cover(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { metadata, img, sources, className, ...rest } = props;
+
   return (
-    <Root ref={ref} className={cx(className, fullWidth)} {...props}>
+    <Root ref={ref} className={cx(className, fullWidth)} {...rest}>
       <picture>
         {sources.map((p, i) => (
           <source key={i} {...p} />
         ))}
-        <img {...metadata} {...img} style={{ maxWidth: "100%", height: "35vh", objectFit: "cover" }} />
+        <img
+          {...metadata}
+          {...img}
+          style={{ display: "block", maxWidth: "100%", height: "35vh", objectFit: "cover" }}
+        />
       </picture>
     </Root>
   );
