@@ -1,1 +1,1 @@
-export * from "../components/Arbitrary";
+export * from "../packages/blocks/Arbitrary";
