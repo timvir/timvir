@@ -7,51 +7,79 @@ import { css, cx } from "@linaria/core";
 const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
-  chapters: Array<{ values: Array<string> }>;
+  chapters: Array<Chapter>;
   selectedChapter?: number;
   onSelectChapter?: (i: number) => void;
 }
 
-function ColorBook({ chapters, selectedChapter, onSelectChapter, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+interface Chapter {
+  name?: string;
+  values: Array<string>;
+}
+
+function ColorBook(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { chapters, selectedChapter, onSelectChapter, className, ...rest } = props;
   return (
     <Root
       ref={ref}
-      {...props}
-      className={css`
-        display: grid;
-        grid-gap: 16px;
-        grid-auto-columns: 1fr;
-        align-items: start;
-        width: 100%;
-      `}
+      {...rest}
+      className={cx(
+        className,
+        css`
+          display: grid;
+          grid-gap: 16px;
+          grid-auto-columns: 1fr;
+          align-items: start;
+          width: 100%;
+        `
+      )}
     >
-      {chapters.map(({ values }, i) => (
-        <div
-          key={i}
-          style={{ gridColumn: i + 1 }}
-          className={cx(chapter, i === selectedChapter && activeChapter)}
-          onClick={() => {
-            if (onSelectChapter) {
-              onSelectChapter(i);
-            }
-          }}
-        >
-          {values.map(value => (
-            <div
-              key={value}
-              style={{ background: value }}
-              className={css`
-                flex-grow: 1;
+      {chapters.map(({ name, values }, i) => (
+        <div key={i} style={{ gridColumn: i + 1 }}>
+          <div
+            className={cx(chapter, i === selectedChapter && activeChapter)}
+            onClick={() => {
+              if (onSelectChapter) {
+                onSelectChapter(i);
+              }
+            }}
+          >
+            {values.map((value) => (
+              <div
+                key={value}
+                style={{ background: value }}
+                className={css`
+                  flex-grow: 1;
 
-                &:first-child {
-                  border-radius: 3px 3px 0 0;
-                }
-                &:last-child {
-                  border-radius: 0 0 3px 3px;
-                }
-              `}
-            />
-          ))}
+                  &:first-child {
+                    border-radius: 3px 3px 0 0;
+                  }
+                  &:last-child {
+                    border-radius: 0 0 3px 3px;
+                  }
+                `}
+              />
+            ))}
+          </div>
+          {name && (
+            <div
+              className={cx(
+                css`
+                  text-align: center;
+                  font-size: 0.75rem;
+                  color: var(--c-text-light);
+                  margin-top: 0.8em;
+                  line-height: 1;
+                `,
+                i === selectedChapter &&
+                  css`
+                    color: var(--c-text);
+                  `
+              )}
+            >
+              {name}
+            </div>
+          )}
         </div>
       ))}
     </Root>
@@ -90,7 +118,7 @@ const chapter = css`
 const activeChapter = css`
   &:hover::before,
   &::before {
-    box-shadow: 0 0 0 2px #137cbd;
+    box-shadow: 0 0 0 2px var(--c-p-5);
     opacity: 1;
   }
 `;

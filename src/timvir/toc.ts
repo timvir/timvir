@@ -19,7 +19,7 @@ export default [
       { label: "Card", path: "/docs/components/Card" },
       { label: "Code", path: "/docs/components/Code", children: [{ label: "API", path: "/docs/components/Code/api" }] },
       { label: "ColorBar", path: "/docs/components/ColorBar", children: [{ label: "API", path: "/docs/components/ColorBar/api" }] },
-      { label: "ColorBook", path: "/docs/components/ColorBook" },
+      { label: "ColorBook", path: "/docs/components/ColorBook", children: [{ label: "API", path: "/docs/components/ColorBook/api" }] },
       { label: "ColorContrastInspector", path: "/docs/components/ColorContrastInspector" },
       { label: "Cover", path: "/docs/components/Cover", children: [{ label: "API", path: "/docs/components/Cover/api" }] },
       { label: "Exhibit", path: "/docs/components/Exhibit", children: [{ label: "Samples" }] },
