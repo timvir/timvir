@@ -1,3 +1,4 @@
+export { Arbitrary } from "@timvir/blocks/Arbitrary";
 export { Code } from "../../components/Code";
 export { ColorBar } from "../../components/ColorBar";
 export { ColorBook } from "../../components/ColorBook";
