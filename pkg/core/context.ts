@@ -21,7 +21,7 @@ export const Provider = Context.Provider;
 export function useContext(): Value {
   const value = React.useContext(Context);
   if (!value) {
-    throw new Error("Page/useContext: Missing Provider");
+    throw new Error("timvir/core/useContext: Missing Provider");
   }
 
   return value;

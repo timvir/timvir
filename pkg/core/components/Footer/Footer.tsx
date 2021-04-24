@@ -1,4 +1,4 @@
-import { grid } from "@timvir/core";
+import { grid } from "../../layout";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 
@@ -14,9 +14,11 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   }>;
 }
 
-function Footer({ className, links, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Footer(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { className, links, ...rest } = props;
+
   return (
-    <Root ref={ref} className={cx(className, classes.root)} {...props}>
+    <Root ref={ref} className={cx(className, classes.root)} {...rest}>
       {links && (
         <div
           className={cx(

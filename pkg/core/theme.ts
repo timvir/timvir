@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import * as colors from "../../theme/colors";
+import * as colors from "./colors";
 
 export const theme = css`
   font-family: system-ui, sans-serif;

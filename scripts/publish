@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd packages
+cd pkg
 
 git tag --points-at HEAD | while read tag; do
   re="^v(.+)$"

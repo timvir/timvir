@@ -6,10 +6,10 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useImmer } from "use-immer";
 import { NavigationFooter } from "../NavigationFooter";
 import * as mdxComponentsBase from "./components";
-import { Provider, Value } from "./context";
+import { Provider, Value } from "../../context";
 import { Sidebar } from "./internal";
-import { grid } from "./layout";
-import { theme } from "./theme";
+import { grid } from "../../layout";
+import { theme } from "../../theme";
 import { Node } from "./types";
 
 /**

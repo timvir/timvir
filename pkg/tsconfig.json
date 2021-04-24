@@ -5,13 +5,11 @@
     "moduleResolution": "node",
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "outDir": "../../../packages/core",
     "declaration": true,
     "emitDeclarationOnly": true,
     "baseUrl": ".",
     "paths": {
-      "@timvir/*": ["../*"]
+      "@timvir/*": ["./*"]
     }
-  },
-  "include": ["./index.ts"]
+  }
 }

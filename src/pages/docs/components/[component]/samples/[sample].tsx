@@ -1,7 +1,7 @@
+import { theme } from "@timvir/core";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { theme } from "../../../../../packages/core";
 
 export default function Page({ component, sample }) {
   const { isFallback } = useRouter();
@@ -9,7 +9,13 @@ export default function Page({ component, sample }) {
     return null;
   }
 
-  const Component = dynamic(() => import(`../../../../../components/${component}/samples/${sample}.tsx`));
+  const Component = (() => {
+    if (component === "Page" || component === "Footer" || component === "NavigationFooter") {
+      return dynamic(() => import(`../../../../../../pkg/core/components/${component}/samples/${sample}.tsx`));
+    } else {
+      return dynamic(() => import(`../../../../../components/${component}/samples/${sample}.tsx`));
+    }
+  })();
 
   return (
     <div className={theme}>

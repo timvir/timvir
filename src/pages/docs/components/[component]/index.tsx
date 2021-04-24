@@ -9,7 +9,13 @@ export default function Page({ component }) {
     return <Wrapper />;
   }
 
-  const Component = dynamic(() => import(`../../../../components/${component}/docs/index.mdx`));
+  const Component = (() => {
+    if (component === "Page" || component === "Footer" || component === "NavigationFooter") {
+      return dynamic(() => import(`../../../../../pkg/core/components/${component}/docs/index.mdx`));
+    } else {
+      return dynamic(() => import(`../../../../components/${component}/docs/index.mdx`));
+    }
+  })();
 
   return (
     <Wrapper>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Card } from "..";
-import { Sample } from "../../../../packages/macro";
+import { Sample } from "../../../../pkg/macro";
 import { Exhibit } from "../../Exhibit";
 
 export default function S() {

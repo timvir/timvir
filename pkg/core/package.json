@@ -4,16 +4,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "sideEffects": false,
-  "types": "packages/core/index.d.ts",
-  "main": "./index.cjs",
   "exports": {
-    ".": {
-      "import": "./index.js",
-      "default": "./index.cjs"
-    },
+    ".": "./index.js",
     "./styles.css": "./styles.css"
   },
-  "module": "./index.js",
   "peerDependencies": {
     "@mdx-js/react": "*",
     "react": "*",
@@ -23,6 +17,6 @@
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:timvir/timvir.git",
-    "directory": "packages/core"
+    "directory": "pkg/core"
   }
 }

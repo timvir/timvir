@@ -1,7 +1,7 @@
-import Wrapper from "../../../timvir/wrapper";
+import Wrapper from "@/timvir/wrapper";
 export default Wrapper;
 
-import { extendedWidth } from "../../../components/Page";
+import { extendedWidth } from "@timvir/core";
 import { Exhibit } from "../../../components/Exhibit";
 import { Grid } from "../../../components/Grid";
 import { Code } from "../../../components/Code";
@@ -26,7 +26,7 @@ component is used in all grid items.
   <Exhibit caption="Variant 1">
     <div style={{ background: "magenta", height: 52 }} />
   </Exhibit>
-   <Exhibit caption="Variant 2">
+  <Exhibit caption="Variant 2">
     <div style={{ background: "magenta", height: 56 }} />
   </Exhibit>
   <Exhibit caption="Variant 3">
@@ -54,7 +54,7 @@ on the same row.
   </div>
 </Grid>
 
-This form could also make use of the extended width column to provide more space for both the exhibit and code. 
+This form could also make use of the extended width column to provide more space for both the exhibit and code.
 
 <Grid className={extendedWidth}>
   <Exhibit>
@@ -65,4 +65,4 @@ This form could also make use of the extended width column to provide more space
   </div>
 </Grid>
 
-<div style={{ marginTop: 100}} />
+<div style={{ marginTop: 100 }} />

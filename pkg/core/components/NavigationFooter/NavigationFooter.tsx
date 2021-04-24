@@ -1,6 +1,6 @@
 import { css, cx } from "@linaria/core";
 import * as React from "react";
-import { useContext } from "../Page/context";
+import { useContext } from "../../context";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -20,7 +20,10 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   };
 }
 
-function NavigationFooter({ prev, next, className, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function NavigationFooter(
+  { prev, next, className, ...props }: Props,
+  ref: React.ForwardedRef<React.ElementRef<typeof Root>>
+) {
   return (
     <Root
       ref={ref}

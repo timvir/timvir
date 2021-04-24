@@ -23,7 +23,7 @@ function block(name) {
       input: `src/packages/blocks/${name}/index.ts`,
       output: [
         {
-          file: `packages/blocks/${name}/index.js`,
+          file: `pkg/blocks/${name}/index.js`,
           format: "esm",
         },
       ],
@@ -48,16 +48,16 @@ function block(name) {
       external: [
         "next/link",
         "next/router",
-        ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
-        ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+        ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
+        ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
         /@timvir\/blocks/,
       ],
     },
     {
-      input: `packages/blocks/${name}/index.js`,
+      input: `pkg/blocks/${name}/index.js`,
       output: [
         {
-          file: `packages/blocks/${name}/index.cjs`,
+          file: `pkg/blocks/${name}/index.cjs`,
           format: "cjs",
         },
       ],
@@ -73,8 +73,8 @@ function block(name) {
       external: [
         "next/link",
         "next/router",
-        ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
-        ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+        ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
+        ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
         /@timvir\/blocks/,
       ],
     },
@@ -88,7 +88,7 @@ export default [
   {
     input: "src/cli/index.ts",
     output: {
-      file: "packages/cli/bin.js",
+      file: "pkg/cli/bin.js",
       format: "commonjs",
     },
     plugins: [
@@ -110,8 +110,8 @@ export default [
     ],
     external: [
       ...require("builtin-modules"),
-      ...Object.keys(require("../packages/cli/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/cli/package.json").peerDependencies || {}),
+      ...Object.keys(require("../pkg/cli/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/cli/package.json").peerDependencies || {}),
     ],
   },
 
@@ -119,16 +119,15 @@ export default [
    * @timvir/core
    */
   {
-    input: "src/packages/core/index.ts",
+    input: "pkg/core/index.ts",
     output: [
       {
-        file: "packages/core/index.js",
+        file: "pkg/core/index.js",
         format: "esm",
       },
     ],
     plugins: [
       resolve({ extensions }),
-      // commonjs({}),
       replace({ "process.env.NODE_ENV": `"production"` }),
       linaria(),
       css({ output: "styles.css" }),
@@ -147,33 +146,8 @@ export default [
     external: [
       "next/link",
       "next/router",
-      ...Object.keys(require("../packages/core/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/core/package.json").peerDependencies || {}),
-      /@timvir\/core/,
-    ],
-  },
-  {
-    input: "packages/core/index.js",
-    output: [
-      {
-        file: "packages/core/index.cjs",
-        format: "cjs",
-      },
-    ],
-    plugins: [
-      resolve({ extensions }),
-      babel({
-        configFile: false,
-        extensions,
-        presets: [["@babel/preset-env", { targets: { node } }]],
-        babelHelpers: "bundled",
-      }),
-    ],
-    external: [
-      "next/link",
-      "next/router",
-      ...Object.keys(require("../packages/core/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/core/package.json").peerDependencies || {}),
+      ...Object.keys(require("../pkg/core/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/core/package.json").peerDependencies || {}),
       /@timvir\/core/,
     ],
   },
@@ -185,7 +159,7 @@ export default [
     input: "src/packages/blocks/index.ts",
     output: [
       {
-        file: "packages/blocks/index.js",
+        file: "pkg/blocks/index.js",
         format: "esm",
       },
     ],
@@ -210,16 +184,16 @@ export default [
     external: [
       "next/link",
       "next/router",
-      ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+      ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
       /@timvir\/blocks/,
     ],
   },
   {
-    input: "packages/blocks/index.js",
+    input: "pkg/blocks/index.js",
     output: [
       {
-        file: "packages/blocks/index.cjs",
+        file: "pkg/blocks/index.cjs",
         format: "cjs",
       },
     ],
@@ -235,8 +209,8 @@ export default [
     external: [
       "next/link",
       "next/router",
-      ...Object.keys(require("../packages/blocks/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/blocks/package.json").peerDependencies || {}),
+      ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
       /@timvir\/blocks/,
     ],
   },
@@ -249,7 +223,7 @@ export default [
     input: "src/packages/search/index.ts",
     output: [
       {
-        file: "packages/search/index.js",
+        file: "pkg/search/index.js",
         format: "esm",
       },
     ],
@@ -274,16 +248,16 @@ export default [
     external: [
       "next/link",
       "next/router",
-      ...Object.keys(require("../packages/search/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/search/package.json").peerDependencies || {}),
+      ...Object.keys(require("../pkg/search/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/search/package.json").peerDependencies || {}),
       /@timvir\/search/,
     ],
   },
   {
-    input: "packages/search/index.js",
+    input: "pkg/search/index.js",
     output: [
       {
-        file: "packages/search/index.cjs",
+        file: "pkg/search/index.cjs",
         format: "cjs",
       },
     ],
@@ -299,8 +273,8 @@ export default [
     external: [
       "next/link",
       "next/router",
-      ...Object.keys(require("../packages/search/package.json").dependencies || {}),
-      ...Object.keys(require("../packages/search/package.json").peerDependencies || {}),
+      ...Object.keys(require("../pkg/search/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/search/package.json").peerDependencies || {}),
       /@timvir\/search/,
     ],
   },
