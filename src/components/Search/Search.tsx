@@ -1,6 +1,6 @@
 import fuzzaldrin from "fuzzaldrin-plus";
 import * as React from "react";
-import { Node } from "../Page";
+import { Node } from "../../../pkg/core/components/Page";
 import { Dialog } from "./internal";
 
 /**

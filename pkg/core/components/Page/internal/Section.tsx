@@ -36,7 +36,7 @@ function Section(props: Props) {
           align-items: center;
           border-radius: 3px;
           margin: 2px 0;
-          transition: background .16s;
+          transition: background 0.16s;
         }
 
         & > div[data-active="true"] {
@@ -65,7 +65,7 @@ function Section(props: Props) {
     >
       <div data-active={location.asPath === path}>
         {path ? (
-          <Link href={path}>
+          <Link href={{ pathname: path }}>
             <a style={{ paddingLeft: 24 + depth * 20 }}>{label}</a>
           </Link>
         ) : (

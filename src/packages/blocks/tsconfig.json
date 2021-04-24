@@ -10,6 +10,7 @@
     "emitDeclarationOnly": true,
     "baseUrl": ".",
     "paths": {
+      "@timvir/core": ["../../../pkg/core"],
       "@timvir/*": ["../*"]
     }
   },

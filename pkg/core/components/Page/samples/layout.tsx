@@ -1,7 +1,8 @@
+import { extendedWidth, fullWidth } from "@timvir/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { extendedWidth, fullWidth, Page } from "..";
+import { Page } from "..";
 
 export default function Sample() {
   return (
