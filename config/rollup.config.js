@@ -20,7 +20,7 @@ const node = "12";
 function block(name) {
   return [
     {
-      input: `src/packages/blocks/${name}/index.ts`,
+      input: `pkg/blocks/${name}/index.ts`,
       output: [
         {
           file: `pkg/blocks/${name}/index.js`,
@@ -156,7 +156,7 @@ export default [
    * @timvir/blocks
    */
   {
-    input: "src/packages/blocks/index.ts",
+    input: "pkg/blocks/index.ts",
     output: [
       {
         file: "pkg/blocks/index.js",
@@ -215,6 +215,7 @@ export default [
     ],
   },
   ...block("Arbitrary"),
+  ...block("WebLink"),
 
   /*
    * @timvir/search

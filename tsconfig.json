@@ -16,6 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@timvir/core": ["pkg/core"],
+      "@timvir/blocks": ["pkg/blocks"],
+      "@timvir/blocks/*": ["pkg/blocks/*"],
       "@timvir/*": ["src/packages/*"],
       "@/timvir/*": ["src/timvir/*"]
     }

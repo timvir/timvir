@@ -7,14 +7,17 @@
 /.linaria-cache/
 /public/images/
 
-/pkg/core/index.js
+/pkg/core/**/*.js
+/pkg/core/**/*.cjs
 /pkg/core/**/*.d.ts
-/pkg/core/styles.css
+/pkg/core/**/*.css
+
+/pkg/blocks/**/*.js
+/pkg/blocks/**/*.cjs
+/pkg/blocks/**/*.d.ts
+/pkg/blocks/**/*.css
 
 /pkg/cli/bin.js
-
-/pkg/blocks/*
-!/pkg/blocks/package.json
 
 /pkg/search/*
 !/pkg/search/package.json

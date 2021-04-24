@@ -10,8 +10,9 @@
     "baseUrl": ".",
     "paths": {
       "@timvir/core": ["core"],
-      "@timvir/*": ["../src/packages/*"]
+      "@timvir/blocks": ["blocks"],
+      "@timvir/blocks/*": ["blocks/*"],
+      "@timvir/search": ["../src/packages/search"]
     }
-  },
-  "exclude": ["blocks/Arbitrary/*"]
+  }
 }

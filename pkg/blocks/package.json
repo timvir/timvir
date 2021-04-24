@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "license": "MIT",
   "sideEffects": false,
-  "types": "packages/blocks/index.d.ts",
   "main": "./index.cjs",
   "exports": {
     ".": {
@@ -16,7 +15,12 @@
       "import": "./Arbitrary/index.js",
       "default": "./Arbitrary/index.cjs"
     },
-    "./Arbitrary/styles.css": "./Arbitrary/styles.css"
+    "./Arbitrary/styles.css": "./Arbitrary/styles.css",
+    "./WebLink": {
+      "import": "./WebLink/index.js",
+      "default": "./WebLink/index.cjs"
+    },
+    "./WebLink/styles.css": "./Arbitrary/styles.css"
   },
   "module": "./index.js",
   "peerDependencies": {

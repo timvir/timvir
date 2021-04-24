@@ -1,5 +1,5 @@
 import { MDXProviderComponents } from "@mdx-js/react";
-import { Code } from "@timvir/blocks";
+import { Code } from "pkg/blocks";
 import { Footer, Page } from "@timvir/core";
 import { defaultSearch, Search } from "@timvir/search";
 import Link, { LinkProps } from "next/link";

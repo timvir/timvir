@@ -1,4 +1,4 @@
-import { Swatch } from "@timvir/blocks";
+import { Swatch } from "pkg/blocks";
 import * as React from "react";
 import { ColorBook } from "..";
 import { ColorBar } from "../../ColorBar";
