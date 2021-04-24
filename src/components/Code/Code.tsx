@@ -66,6 +66,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
               margin: 0;
               overflow-x: auto;
               contain: content;
+              font-size: .9em;
             `,
             fullWidth && Page.fullWidth,
             fullWidth &&
