@@ -3,7 +3,59 @@ export default Wrapper;
 
 # @timvir/blocks/Arbitrary
 
-## Exports
+<div
+  style={{
+    fontSize: "1.1em",
+    margin: "24px -16px .5em",
+    padding: "6px 16px 3px",
+    background: "var(--c-p-0)",
+    borderBottom: "2px solid var(--c-p-2)",
+  }}
+>
+  <span style={{ color: "var(--c-text-light)" }}>component</span> <span style={{ fontWeight: 500 }}>Arbitrary</span>
+</div>
 
-- `Arbitrary`
-- `useContext`
+The `<Arbitrary>` component is a composition of an input field, button, and `<Exhibit>`. The children passed to
+this component are placed inside the `<Exhibit>`, and are provided with a custom React Context.
+
+See the [component documentation](/docs/components/Arbitrary) for details about its usage.
+
+<div
+  style={{
+    fontSize: "1.1em",
+    margin: "24px -16px .5em",
+    padding: "6px 16px 3px",
+    background: "var(--c-p-0)",
+    borderBottom: "2px solid var(--c-p-2)",
+  }}
+>
+  <span style={{ color: "var(--c-text-light)" }}>hook</span> <span style={{ fontWeight: 500 }}>useContext()</span>
+  <span style={{ color: "var(--c-text-light)" }}>{`: Context`}</span>
+</div>
+
+This hook gives you access to the [React Context] created by the `<Arbitrary>` component. The context
+contains a seed number which you can use to initialize a pseudorandom number generator (PRNG).
+
+```javascript
+const { seed } = useContext();
+```
+
+<div
+  style={{
+    fontSize: "1.1em",
+    margin: "24px -16px .5em",
+    padding: "6px 16px 3px",
+    background: "var(--c-p-0)",
+    borderBottom: "2px solid var(--c-p-2)",
+  }}
+>
+  <span style={{ color: "var(--c-text-light)" }}>type</span> <span style={{ fontWeight: 500 }}>Context</span>
+</div>
+
+```typescript
+interface Context {
+  seed: number;
+}
+```
+
+[react context]: https://reactjs.org/docs/context.html
