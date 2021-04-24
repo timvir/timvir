@@ -3,6 +3,14 @@ export default [
   { label: "Documentation", path: "/docs", children: [{ label: "Search", path: "/docs/search" }] },
   { label: "Commands", path: "/commands" },
   {
+    label: "Modules",
+    path: "/modules",
+    children: [
+      { label: "@timvir/core", path: "/modules/core" },
+      { label: "@timvir/blocks", path: "/modules/blocks", children: [{ label: "Arbitrary", path: "/modules/blocks/Arbitrary" }] },
+    ],
+  },
+  {
     label: "Packages",
     children: [
       { label: "@timvir/blocks", path: "/packages/blocks" },

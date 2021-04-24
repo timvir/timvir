@@ -20,14 +20,13 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   };
 }
 
-function NavigationFooter(
-  { prev, next, className, ...props }: Props,
-  ref: React.ForwardedRef<React.ElementRef<typeof Root>>
-) {
+function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { prev, next, className, ...rest } = props;
+
   return (
     <Root
       ref={ref}
-      {...props}
+      {...rest}
       className={cx(
         className,
         css`
@@ -104,7 +103,7 @@ const PrimaryLink = ({ href, children }: { href: string; children: React.ReactNo
   const { Link } = useContext();
 
   return (
-    <Link href={href}>
+    <Link href={{ pathname: href }}>
       <a
         className={css`
           font-size: 1.2rem;

@@ -1,6 +1,7 @@
 . Home
 docs Documentation
 commands Commands
+modules Modules
 packages Packages [F]
 docs/components Components [F]
 concepts Concepts [F]
