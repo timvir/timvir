@@ -2,7 +2,7 @@ import { mdx } from "@mdx-js/react";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 import * as Icons from "react-feather";
-import { Code } from "../../Code";
+import { Code } from "../../../../pkg/blocks/Code";
 
 interface Props {
   src: string;

@@ -2,8 +2,7 @@ import { css } from "@linaria/core";
 import theme from "prism-react-renderer/themes/github";
 import * as React from "react";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
-import { Exhibit } from "../Exhibit";
-import { Swatch } from "../Swatch";
+import { Exhibit, Swatch } from "@timvir/blocks";
 
 /**
  * The underlying DOM element which is rendered by this component.

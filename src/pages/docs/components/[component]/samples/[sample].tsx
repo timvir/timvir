@@ -12,7 +12,23 @@ export default function Page({ component, sample }) {
   const Component = (() => {
     if (component === "Page" || component === "Footer" || component === "NavigationFooter") {
       return dynamic(() => import(`../../../../../../pkg/core/components/${component}/samples/${sample}.tsx`));
-    } else if (component === "Arbitrary" || component === "WebLink") {
+    } else if (
+      [
+        "Arbitrary",
+        "Code",
+        "ColorBar",
+        "ColorBook",
+        "Cover",
+        "Exhibit",
+        "Font",
+        "Grid",
+        "Icon",
+        "Message",
+        "Swatch",
+        "Viewport",
+        "WebLink",
+      ].includes(component)
+    ) {
       return dynamic(() => import(`../../../../../../pkg/blocks/${component}/samples/${sample}.tsx`));
     } else {
       return dynamic(() => import(`../../../../../components/${component}/samples/${sample}.tsx`));
