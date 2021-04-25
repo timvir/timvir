@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "license": "MIT",
   "sideEffects": false,
-  "module": "./index.js",
   "exports": {
     ".": "./index.js",
     "./styles.css": "./styles.css"
