@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "sideEffects": false,
-  "main": "./index.cjs",
+  "module": "./index.js",
   "exports": {
     ".": "./index.js",
     "./Arbitrary": "./Arbitrary/index.js",
@@ -23,7 +23,6 @@
     "./Viewport": "./Viewport/index.js",
     "./WebLink": "./WebLink/index.js"
   },
-  "module": "./index.js",
   "peerDependencies": {
     "@mdx-js/react": "*",
     "@timvir/core": "*",
