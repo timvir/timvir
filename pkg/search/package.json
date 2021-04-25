@@ -25,6 +25,6 @@
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:timvir/timvir.git",
-    "directory": "packages/search"
+    "directory": "pkg/search"
   }
 }

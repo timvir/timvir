@@ -41,6 +41,6 @@
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:timvir/timvir.git",
-    "directory": "packages/blocks"
+    "directory": "pkg/blocks"
   }
 }

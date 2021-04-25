@@ -9,6 +9,6 @@
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:timvir/timvir.git",
-    "directory": "packages/macro"
+    "directory": "pkg/macro"
   }
 }

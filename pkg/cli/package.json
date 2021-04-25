@@ -12,6 +12,6 @@
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:timvir/timvir.git",
-    "directory": "packages/cli"
+    "directory": "pkg/cli"
   }
 }
