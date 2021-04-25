@@ -25,6 +25,7 @@
   "peerDependencies": {
     "@mdx-js/react": "*",
     "@timvir/core": "*",
+    "@timvir/std": "*",
     "prism-react-renderer": "*",
     "react-feather": "*",
     "react": "*",

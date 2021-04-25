@@ -12,6 +12,8 @@
       "@timvir/core": ["core"],
       "@timvir/blocks": ["blocks"],
       "@timvir/blocks/*": ["blocks/*"],
+      "@timvir/std": ["std"],
+      "@timvir/std/*": ["std/*"],
       "@timvir/search": ["../src/packages/search"]
     }
   }

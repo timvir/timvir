@@ -93,6 +93,39 @@ export default [
   },
 
   /*
+   * @timvir/std
+   */
+  {
+    input: "pkg/std/base58/index.ts",
+    output: [
+      {
+        file: "pkg/std/base58/index.js",
+        format: "esm",
+      },
+    ],
+    plugins: [
+      resolve({ extensions }),
+      replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
+      linaria(),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+        plugins: [
+          ["babel-plugin-macros"],
+          ["@babel/plugin-proposal-optional-chaining"],
+          ["@babel/plugin-proposal-nullish-coalescing-operator"],
+        ],
+        babelHelpers: "bundled",
+      }),
+    ],
+    external: [
+      ...Object.keys(require("../pkg/std/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/std/package.json").peerDependencies || {}),
+    ],
+  },
+
+  /*
    * @timvir/core
    */
   {

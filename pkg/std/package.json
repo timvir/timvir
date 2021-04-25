@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "name": "@timvir/std",
+  "version": "0.0.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    "base58": "./base58/index.js"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:timvir/timvir.git",
+    "directory": "pkg/std"
+  }
+}
