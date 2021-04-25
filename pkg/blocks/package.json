@@ -6,15 +6,8 @@
   "sideEffects": false,
   "main": "./index.cjs",
   "exports": {
-    ".": {
-      "import": "./index.js",
-      "default": "./index.cjs"
-    },
-    "./styles.css": "./styles.css",
-    "./Arbitrary": {
-      "import": "./Arbitrary/index.js",
-      "default": "./Arbitrary/index.cjs"
-    },
+    ".": "./index.js",
+    "./Arbitrary": "./Arbitrary/index.js",
     "./Arbitrary/styles.css": "./Arbitrary/styles.css",
     "./Code": "./Code/index.js",
     "./ColorBar": "./ColorBar/index.js",
@@ -25,6 +18,7 @@
     "./Grid": "./Grid/index.js",
     "./Icon": "./Icon/index.js",
     "./Message": "./Message/index.js",
+    "./styles.css": "./styles.css",
     "./Swatch": "./Swatch/index.js",
     "./Viewport": "./Viewport/index.js",
     "./WebLink": "./WebLink/index.js"

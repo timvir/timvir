@@ -55,32 +55,6 @@ function block(name) {
         /prism-react-renderer/,
       ],
     },
-    {
-      input: `pkg/blocks/${name}/index.js`,
-      output: [
-        {
-          file: `pkg/blocks/${name}/index.cjs`,
-          format: "cjs",
-        },
-      ],
-      plugins: [
-        resolve({ extensions }),
-        babel({
-          configFile: false,
-          extensions,
-          presets: [["@babel/preset-env", { targets: { node } }]],
-          babelHelpers: "bundled",
-        }),
-      ],
-      external: [
-        "next/link",
-        "next/router",
-        ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
-        ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
-        /@timvir\/blocks/,
-        /prism-react-renderer/,
-      ],
-    },
   ];
 }
 
@@ -199,32 +173,7 @@ export default [
       /@timvir\/blocks/,
     ],
   },
-  {
-    input: "pkg/blocks/index.js",
-    output: [
-      {
-        file: "pkg/blocks/index.cjs",
-        format: "cjs",
-      },
-    ],
-    plugins: [
-      resolve({ extensions }),
-      babel({
-        configFile: false,
-        extensions,
-        presets: [["@babel/preset-env", { targets: { node } }]],
-        babelHelpers: "bundled",
-      }),
-    ],
-    external: [
-      "next/link",
-      "next/router",
-      ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
-      ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
-      /@timvir\/blocks/,
-    ],
-  },
- 
+
   /*
    * @timvir/search
    */
