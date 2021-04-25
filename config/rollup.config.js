@@ -3,6 +3,7 @@ import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
+import * as fs from "fs";
 // import { terser } from "rollup-plugin-terser";
 import shebang from "rollup-plugin-add-shebang";
 import css from "rollup-plugin-css-only";
@@ -30,7 +31,7 @@ function block(name) {
       plugins: [
         resolve({ extensions }),
         commonjs({}),
-        replace({ "process.env.NODE_ENV": `"production"` }),
+        replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
         linaria(),
         css({ output: "styles.css" }),
         babel({
@@ -128,7 +129,7 @@ export default [
     ],
     plugins: [
       resolve({ extensions }),
-      replace({ "process.env.NODE_ENV": `"production"` }),
+      replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
       linaria(),
       css({ output: "styles.css" }),
       babel({
@@ -155,6 +156,13 @@ export default [
   /*
    * @timvir/blocks
    */
+  ...fs.readdirSync("pkg/blocks").flatMap((file) => {
+    if (file.match(/^[A-Z]/)) {
+      return block(file);
+    } else {
+      return [];
+    }
+  }),
   {
     input: "pkg/blocks/index.ts",
     output: [
@@ -166,7 +174,7 @@ export default [
     plugins: [
       resolve({ extensions }),
       commonjs({}),
-      replace({ "process.env.NODE_ENV": `"production"` }),
+      replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
       linaria(),
       css({ output: "styles.css" }),
       babel({
@@ -214,9 +222,7 @@ export default [
       /@timvir\/blocks/,
     ],
   },
-  ...block("Arbitrary"),
-  ...block("WebLink"),
-
+ 
   /*
    * @timvir/search
    */
@@ -231,7 +237,7 @@ export default [
     plugins: [
       resolve({ extensions }),
       // commonjs({}),
-      replace({ "process.env.NODE_ENV": `"production"` }),
+      replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
       linaria(),
       css({ output: "styles.css" }),
       babel({
