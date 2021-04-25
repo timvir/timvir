@@ -6,8 +6,10 @@ export default [
     label: "Modules",
     path: "/modules",
     children: [
-      { label: "@timvir/core", path: "/modules/core" },
       { label: "@timvir/blocks", path: "/modules/blocks", children: [{ label: "Arbitrary", path: "/modules/blocks/Arbitrary" }] },
+      { label: "@timvir/core", path: "/modules/core" },
+      { label: "@timvir/hooks", path: "/modules/hooks" },
+      { label: "@timvir/std", path: "/modules/std", children: [{ label: "base58", path: "/modules/std/base58" }] },
     ],
   },
   {

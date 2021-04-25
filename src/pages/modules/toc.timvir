@@ -1,2 +1,4 @@
-core @timvir/core
 blocks @timvir/blocks
+core @timvir/core
+hooks @timvir/hooks
+std @timvir/std
