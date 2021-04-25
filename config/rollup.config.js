@@ -52,6 +52,7 @@ function block(name) {
         ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
         ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
         /@timvir\/blocks/,
+        /prism-react-renderer/,
       ],
     },
     {
@@ -77,6 +78,7 @@ function block(name) {
         ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
         ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
         /@timvir\/blocks/,
+        /prism-react-renderer/,
       ],
     },
   ];

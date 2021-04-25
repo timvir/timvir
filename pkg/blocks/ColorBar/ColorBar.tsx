@@ -1,6 +1,6 @@
 import { css, cx } from "@linaria/core";
 import * as React from "react";
-import { Swatch } from "../Swatch";
+import { Swatch } from "@timvir/blocks/Swatch";
 
 /**
  * The underlying DOM element which is rendered by this component.

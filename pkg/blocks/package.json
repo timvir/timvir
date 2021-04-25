@@ -31,10 +31,12 @@
   },
   "module": "./index.js",
   "peerDependencies": {
-    "@timvir/core": "*",
     "@mdx-js/react": "*",
+    "@timvir/core": "*",
     "prism-react-renderer": "*",
-    "react": "*"
+    "react-feather": "*",
+    "react": "*",
+    "use-immer": "*"
   },
   "repository": {
     "type": "git",
