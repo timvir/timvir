@@ -17,6 +17,14 @@
 /pkg/blocks/**/*.d.ts
 /pkg/blocks/**/*.css
 
+/pkg/std/**/*.js
+/pkg/std/**/*.cjs
+/pkg/std/**/*.d.ts
+
+/pkg/hooks/**/*.js
+/pkg/hooks/**/*.cjs
+/pkg/hooks/**/*.d.ts
+
 /pkg/cli/bin.js
 
 /pkg/search/*

@@ -1,0 +1,19 @@
+{
+    "type": "module",
+    "name": "@timvir/hooks",
+    "version": "0.0.0",
+    "license": "MIT",
+    "sideEffects": false,
+    "exports": {
+      ".": "./index.js"
+    },
+    "peerDependencies": {
+      "react": "*"
+    },
+    "repository": {
+      "type": "git",
+      "url": "ssh://git@github.com:timvir/timvir.git",
+      "directory": "pkg/hooks"
+    }
+  }
+  

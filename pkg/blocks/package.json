@@ -26,6 +26,7 @@
     "@mdx-js/react": "*",
     "@timvir/core": "*",
     "@timvir/std": "*",
+    "@timvir/hooks": "*",
     "prism-react-renderer": "*",
     "react-feather": "*",
     "react": "*",

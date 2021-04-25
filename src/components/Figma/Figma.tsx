@@ -1,6 +1,6 @@
 import { css } from "@linaria/core";
+import { useResizeObserverEntry } from "@timvir/hooks";
 import * as React from "react";
-import { useResizeObserverEntry } from "../../hooks/useResizeObserver";
 
 /**
  * The underlying DOM element which is rendered by this component.

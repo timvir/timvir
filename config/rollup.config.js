@@ -52,6 +52,8 @@ function block(name) {
         ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
         ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
         /@timvir\/blocks/,
+        /@timvir\/hooks/,
+        /@timvir\/std/,
         /prism-react-renderer/,
       ],
     },
@@ -122,6 +124,39 @@ export default [
     external: [
       ...Object.keys(require("../pkg/std/package.json").dependencies || {}),
       ...Object.keys(require("../pkg/std/package.json").peerDependencies || {}),
+    ],
+  },
+
+  /*
+   * @timvir/hooks
+   */
+  {
+    input: "pkg/hooks/index.ts",
+    output: [
+      {
+        file: "pkg/hooks/index.js",
+        format: "esm",
+      },
+    ],
+    plugins: [
+      resolve({ extensions }),
+      replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
+      linaria(),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+        plugins: [
+          ["babel-plugin-macros"],
+          ["@babel/plugin-proposal-optional-chaining"],
+          ["@babel/plugin-proposal-nullish-coalescing-operator"],
+        ],
+        babelHelpers: "bundled",
+      }),
+    ],
+    external: [
+      ...Object.keys(require("../pkg/hooks/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/hooks/package.json").peerDependencies || {}),
     ],
   },
 
