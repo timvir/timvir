@@ -5,7 +5,7 @@
   "license": "MIT",
   "sideEffects": false,
   "exports": {
-    "base58": "./base58/index.js"
+    "./base58": "./base58/index.js"
   },
   "peerDependencies": {
     "react": "*"
