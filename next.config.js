@@ -57,6 +57,8 @@ module.exports = withMDX({
     webpack5: true,
   },
 
+  productionBrowserSourceMaps: true,
+
   typescript: {
     ignoreDevErrors: true,
     ignoreBuildErrors: true,
