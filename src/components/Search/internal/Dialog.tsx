@@ -143,7 +143,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
               `}
             >
               {items.map((item, index) => (
-                <Link key={index} href={item.node.path}>
+                <Link key={index} href={{ pathname: item.node.path }}>
                   <SearchBoxListItem
                     {...getItemProps({ item, index, onClick: onClose })}
                     icon={
