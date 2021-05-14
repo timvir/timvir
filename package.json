@@ -59,7 +59,7 @@
     "kleur": "^4.1.4",
     "mkdirp": "^1.0.4",
     "next": "^10.2.0",
-    "npm": "^7.12.1",
+    "npm": "^7.13.0",
     "null-loader": "^4.0.1",
     "prettier": "^2.3.0",
     "prism-react-renderer": "^1.2.0",
