@@ -1,6 +1,6 @@
 import fuzzaldrin from "fuzzaldrin-plus";
 import * as React from "react";
-import { Node } from "../../../pkg/core/components/Page";
+import { Node } from "@timvir/core";
 import { Dialog } from "./internal";
 
 /**
@@ -12,9 +12,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   open?: boolean;
   onClose?: (ev: React.SyntheticEvent<HTMLElement>) => void;
 
-  q: (
-    query: string
-  ) => Promise<{
+  q: (query: string) => Promise<{
     totalCount: number;
     edges: Array<{ node: { path: string; label: string; context?: string } }>;
   }>;
