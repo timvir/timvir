@@ -1,58 +1,77 @@
-const withMDX = require("@next/mdx")({
-  extension: /\.mdx?$/,
-});
+const withPlugins = require("next-compose-plugins");
 
-function configureLinaria(config) {
-  const extension = ".linaria.module.css";
+/*
+ * withLinaria()
+ */
+function withLinaria(nextConfig) {
+  const LINARIA_EXTENSION = ".linaria.module.css";
 
-  /**
-   * Traverse all rules (recursively) and patch the 'getLocalIdent' function of the css-loader
-   * to return a filename which ends with '.linaria.module.css'. This is required because Next.js
-   * only enforces *.module.css filenames when importing CSS from regular components (*.css is
-   * reserved for _app).
-   */
-  function patchGetLocalIdent(rules) {
-    for (const rule of rules) {
+  function traverse(rules) {
+    for (let rule of rules) {
       if (typeof rule.loader === "string" && rule.loader.includes("css-loader")) {
         if (rule.options && rule.options.modules && typeof rule.options.modules.getLocalIdent === "function") {
-          const nextGetLocalIdent = rule.options.modules.getLocalIdent;
+          let nextGetLocalIdent = rule.options.modules.getLocalIdent;
           rule.options.modules.getLocalIdent = (context, _, exportName, options) => {
-            if (context.resourcePath.includes(extension)) {
+            if (context.resourcePath.includes(LINARIA_EXTENSION)) {
               return exportName;
-            } else {
-              return nextGetLocalIdent(context, _, exportName, options);
             }
+            return nextGetLocalIdent(context, _, exportName, options);
           };
         }
       }
-
       if (typeof rule.use === "object") {
-        patchGetLocalIdent(Array.isArray(rule.use) ? rule.use : [rule.use]);
+        traverse(Array.isArray(rule.use) ? rule.use : [rule.use]);
       }
-
       if (Array.isArray(rule.oneOf)) {
-        patchGetLocalIdent(rule.oneOf);
+        traverse(rule.oneOf);
       }
     }
   }
 
-  patchGetLocalIdent(config.module.rules);
+  return {
+    ...nextConfig,
+    webpack(config, options) {
+      traverse(config.module.rules);
 
-  config.module.rules.push({
-    test: /\.(js|ts)x?$/,
-    use: [
-      {
-        loader: "@linaria/webpack-loader",
-        options: {
-          sourceMap: true,
-          extension,
-        },
-      },
-    ],
-  });
+      config.module.rules.push({
+        test: /(?!_app)\.(tsx|ts|js|mjs|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: require.resolve("@linaria/webpack-loader"),
+            options: {
+              sourceMap: process.env.NODE_ENV !== "production",
+              ...(nextConfig.linaria || {}),
+              extension: LINARIA_EXTENSION,
+            },
+          },
+        ],
+      });
+      config.module.rules.push({
+        test: /_app\.(tsx|ts|js|mjs|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: require.resolve("@linaria/webpack-loader"),
+            options: {
+              sourceMap: process.env.NODE_ENV !== "production",
+              ...(nextConfig.linaria || {}),
+              extension: ".css",
+            },
+          },
+        ],
+      });
+
+      if (typeof nextConfig.webpack === "function") {
+        return nextConfig.webpack(config, options);
+      }
+
+      return config;
+    },
+  };
 }
 
-module.exports = withMDX({
+module.exports = withPlugins([require("@next/mdx")({ extension: /\.mdx?$/ }), withLinaria], {
   future: {
     webpack5: true,
   },
@@ -64,9 +83,4 @@ module.exports = withMDX({
     ignoreBuildErrors: true,
   },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-
-  webpack(config) {
-    configureLinaria(config);
-    return config;
-  },
 });
