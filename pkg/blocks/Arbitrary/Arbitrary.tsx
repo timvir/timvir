@@ -89,7 +89,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
                 width: 100%;
               `}
               placeholder="Seed"
-              value={base58.encode(`${value.seed}`)}
+              value={base58.encode(new TextEncoder().encode(`${value.seed}`))}
               onPaste={(ev) => {
                 const v = ev.clipboardData.getData("text/plain");
                 mutate((draft) => {

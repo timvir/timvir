@@ -5,16 +5,13 @@ const bytesToHex = (() => {
 
 const alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 
-export function encode(input: string): string {
+export function encode(input: Uint8Array): string {
   if (input.length === 0) {
     return "";
   }
 
-  // string -> Uint8Array
-  const source = new TextEncoder().encode(input);
-
   // Uint8Array -> BigInt (Big Endian)
-  let x = BigInt("0x" + bytesToHex(source));
+  let x = BigInt("0x" + bytesToHex(input));
 
   const output = [];
   while (x > 0n) {
@@ -23,7 +20,7 @@ export function encode(input: string): string {
     output.push(alphabet[Number(mod)]);
   }
 
-  for (let i = 0; source[i] === 0; i++) {
+  for (let i = 0; input[i] === 0; i++) {
     output.push(alphabet[0]);
   }
 
