@@ -42,17 +42,17 @@ function Canvas(props: Props) {
           grid-row: 1;
         }
 
-        &:hover ${classes.backdrop} {
+        &:hover .${classes.backdrop} {
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
             0 8px 24px rgba(16, 22, 26, 0.2);
         }
 
-        &:active ${classes.backdrop} {
+        &:active .${classes.backdrop} {
           margin: 1px;
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
         }
 
-        &:hover ${classes.grid} {
+        &:hover .${classes.grid} {
           opacity: 1;
         }
       `}
