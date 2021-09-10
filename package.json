@@ -63,7 +63,7 @@
     "next": "^11.1.2",
     "next-compose-plugins": "^2.2.1",
     "next-linaria": "^1.0.1-beta",
-    "npm": "^7.22.0",
+    "npm": "^7.23.0",
     "null-loader": "^4.0.1",
     "prettier": "^2.3.2",
     "prism-react-renderer": "^1.2.1",
