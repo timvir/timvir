@@ -65,7 +65,7 @@
     "next-linaria": "^1.0.1-beta",
     "npm": "^7.22.0",
     "null-loader": "^4.0.1",
-    "prettier": "^2.3.2",
+    "prettier": "^2.4.1",
     "prism-react-renderer": "^1.2.1",
     "prompts": "^2.4.1",
     "pure-rand": "^5.0.0",
