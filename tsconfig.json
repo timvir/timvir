@@ -3,7 +3,7 @@
     "target": "esnext",
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -11,20 +11,49 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@timvir/core": ["pkg/core"],
-      "@timvir/hooks": ["pkg/hooks"],
-      "@timvir/std": ["pkg/std"],
-      "@timvir/std/*": ["pkg/std/*"],
-      "@timvir/blocks": ["pkg/blocks"],
-      "@timvir/blocks/*": ["pkg/blocks/*"],
-      "@timvir/*": ["src/packages/*"],
-      "@/timvir/*": ["src/timvir/*"]
-    }
+      "@timvir/core": [
+        "pkg/core"
+      ],
+      "@timvir/hooks": [
+        "pkg/hooks"
+      ],
+      "@timvir/std": [
+        "pkg/std"
+      ],
+      "@timvir/std/*": [
+        "pkg/std/*"
+      ],
+      "@timvir/blocks": [
+        "pkg/blocks"
+      ],
+      "@timvir/blocks/*": [
+        "pkg/blocks/*"
+      ],
+      "@timvir/*": [
+        "src/packages/*"
+      ],
+      "@/timvir/*": [
+        "src/timvir/*"
+      ]
+    },
+    "incremental": true
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

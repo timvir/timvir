@@ -1,9 +1,19 @@
+import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import { ParsedUrlQuery } from "querystring";
 import * as React from "react";
 import Wrapper from "../../../../timvir/wrapper";
 
-export default function Page({ component }) {
+interface Query extends ParsedUrlQuery {
+  component: string;
+}
+
+interface Props {
+  component: string;
+}
+
+export default function Page({ component }: Props) {
   const { isFallback } = useRouter();
   if (isFallback) {
     return <Wrapper />;
@@ -25,6 +35,6 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  return { props: { ...params } };
-}
+export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
+  return { props: { ...params! } };
+};

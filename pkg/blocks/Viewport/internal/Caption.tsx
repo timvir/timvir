@@ -44,7 +44,7 @@ function Caption(props: Props) {
             `}
             onClick={() => {
               if (codeRef) {
-                const infoParent = codeRef.parentElement;
+                const infoParent = codeRef.parentElement!;
 
                 if (infoParent.style.height === "0px") {
                   infoParent.style.height = `${codeRef.getBoundingClientRect().height}px`;

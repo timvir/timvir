@@ -1,9 +1,9 @@
 import { MDXProviderComponents } from "@mdx-js/react";
-import { Code } from "pkg/blocks";
 import { Footer, Page } from "@timvir/core";
 import { defaultSearch, Search } from "@timvir/search";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
+import { Code } from "pkg/blocks";
 import * as React from "react";
 import routes from "./routes";
 import toc from "./toc";
@@ -50,7 +50,7 @@ export default function Wrapper({ children }: { children?: React.ReactNode }) {
 }
 
 const getHref = (to: string) => {
-  if (routes[to]) {
+  if (to in routes) {
     return to;
   } else {
     for (const [pathname, re] of Object.entries(routes)) {
@@ -60,6 +60,8 @@ const getHref = (to: string) => {
       }
     }
   }
+
+  return "#";
 };
 
 function Link_(props: LinkProps) {

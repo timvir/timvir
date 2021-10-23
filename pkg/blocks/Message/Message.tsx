@@ -27,7 +27,7 @@ function Message({ variant, className, children, ...props }: Props, ref: React.F
           display: flex;
           align-items: flex-start;
         `,
-        variantStyles[variant]
+        variant !== undefined && variantStyles[variant]
       )}
       {...props}
     >

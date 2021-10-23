@@ -21,7 +21,7 @@ interface Selector {
 }
 
 function Exhibits({ children, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const backdrop = React.useRef<HTMLDivElement>();
+  const backdrop = React.useRef<HTMLDivElement>(null);
   const [selector, setSelector] = React.useState<Selector>({});
   const timeout = React.useRef<any>();
   const [codeRef, setCodeRef] = React.useState<null | HTMLDivElement>(null);
@@ -31,7 +31,7 @@ function Exhibits({ children, ...props }: Props, ref: React.ForwardedRef<React.E
   React.useEffect(() => {
     const index = selector.hover ?? selector.sticky;
     if (index !== undefined) {
-      const root = backdrop.current!.parentElement;
+      const root = backdrop.current!.parentElement!;
       const child = root.children[index + 1];
       const c = root.getBoundingClientRect();
       const e = child.getBoundingClientRect();
@@ -43,7 +43,7 @@ function Exhibits({ children, ...props }: Props, ref: React.ForwardedRef<React.E
     }
 
     if (codeRef) {
-      const infoParent = codeRef.parentElement;
+      const infoParent = codeRef.parentElement!;
       if (index !== undefined) {
         infoParent.style.height = `${codeRef.getBoundingClientRect().height}px`;
         infoParent.style.opacity = "1";
@@ -141,21 +141,28 @@ function Exhibits({ children, ...props }: Props, ref: React.ForwardedRef<React.E
         )}
       </div>
 
-      {(selector.hover !== undefined || selector.sticky !== undefined) && (
-        <div
-          className={cx(
-            css`
-              overflow: hidden;
-              transition: height 0.2s, opacity 0.2s 0.1s;
-            `
-          )}
-          style={{ height: 0, opacity: 0 }}
-        >
-          <div ref={setCodeRef}>
-            <Code language="jsx">{exhibits[selector.hover ?? selector.sticky].props.source}</Code>
+      {(() => {
+        const focusedExhibitIndex = selector.hover ?? selector.sticky;
+        if (focusedExhibitIndex === undefined) {
+          return null;
+        }
+
+        return (
+          <div
+            className={cx(
+              css`
+                overflow: hidden;
+                transition: height 0.2s, opacity 0.2s 0.1s;
+              `
+            )}
+            style={{ height: 0, opacity: 0 }}
+          >
+            <div ref={setCodeRef}>
+              <Code language="jsx">{exhibits[focusedExhibitIndex].props.source}</Code>
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </Root>
   );
 }

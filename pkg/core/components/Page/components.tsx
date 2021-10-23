@@ -2,7 +2,7 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import * as React from "react";
 
-const anchorize = (children?: React.ReactNode): string => {
+const anchorize = (children?: React.ReactNode): undefined | string => {
   if (typeof children === "string") {
     return children
       .toLowerCase()
@@ -57,41 +57,47 @@ export const h1 = styled.h1`
   text-indent: -0.05em;
 `;
 
-export const h2 = Heading(styled.h2`
-  position: relative;
-  display: block;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  color: var(--c-text);
-  text-transform: none;
-  letter-spacing: normal;
-  font-size: 24px;
-  font-weight: 500;
-`);
+export const h2 = Heading(
+  styled.h2`
+    position: relative;
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-text);
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 24px;
+    font-weight: 500;
+  ` as React.ComponentType<React.HTMLAttributes<HTMLHeadingElement>>
+);
 
-export const h3 = Heading(styled.h3`
-  position: relative;
-  display: block;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  color: var(--c-text);
-  text-transform: none;
-  letter-spacing: normal;
-  font-size: 18px;
-  font-weight: 500;
-`);
+export const h3 = Heading(
+  styled.h3`
+    position: relative;
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-text);
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 18px;
+    font-weight: 500;
+  ` as React.ComponentType<React.HTMLAttributes<HTMLHeadingElement>>
+);
 
-export const h4 = Heading(styled.h4`
-  position: relative;
-  display: block;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  color: var(--c-text);
-  text-transform: none;
-  letter-spacing: normal;
-  font-weight: normal;
-  font-size: 0.9rem;
-`);
+export const h4 = Heading(
+  styled.h4`
+    position: relative;
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--c-text);
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: normal;
+    font-size: 0.9rem;
+  ` as React.ComponentType<React.HTMLAttributes<HTMLHeadingElement>>
+);
 
 export const blockquote = styled.blockquote`
   margin-left: 0;

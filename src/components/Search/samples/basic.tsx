@@ -2,7 +2,7 @@ import * as React from "react";
 import { Search } from "..";
 import { defaultSearch } from "../Search";
 
-const toc = [];
+const toc: any[] = [];
 
 export default function Sample() {
   return <Search {...defaultSearch(toc)} open={false} />;

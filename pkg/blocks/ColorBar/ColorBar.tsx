@@ -126,7 +126,7 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
         )}
       >
         <Swatch
-          {...(typeof selected === "string" ? { value: selected } : selected)}
+          {...(typeof selected === "string" ? { value: selected } : { value: selected?.value ?? "" })}
           onMouseLeave={() => {
             setSelected(undefined);
           }}

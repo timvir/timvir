@@ -121,7 +121,7 @@ const PrimaryLink = ({ href, children }: { href: string; children: React.ReactNo
   );
 };
 
-const SecondaryLabel = ({ children }) => (
+const SecondaryLabel = ({ children }: { children?: React.ReactNode }) => (
   <div
     className={css`
       opacity: 0.5;

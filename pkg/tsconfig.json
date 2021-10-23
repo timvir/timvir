@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "strict": false,
+    "strict": true,
     "moduleResolution": "node",
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "emitDeclarationOnly": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "baseUrl": ".",
     "paths": {
       "@timvir/core": ["core"],

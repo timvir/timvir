@@ -22,7 +22,7 @@ export async function emit({ typeChecker, propsDeclaration, name }: any) {
   );
 }
 
-function Props(typeChecker, propsDeclaration) {
+function Props(typeChecker: any, propsDeclaration: any) {
   const fields = [...propsDeclaration.members.entries()].map(([_, v]) => {
     const s = typeChecker.getSymbolAtLocation(v.name);
     const t = typeChecker.getTypeOfSymbolAtLocation(s, s.valueDeclaration);
@@ -34,8 +34,8 @@ function Props(typeChecker, propsDeclaration) {
     };
 
     const tags = s.getJsDocTags();
-    const def = tags.find((x) => x.name === "default");
-    const example = tags.find((x) => x.name === "example");
+    const def = tags.find((x: any) => x.name === "default");
+    const example = tags.find((x: any) => x.name === "example");
 
     return {
       name: v.name.escapedText,

@@ -14,9 +14,7 @@ const Root = "div";
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   onClose?: (ev: React.SyntheticEvent<HTMLElement>) => void;
 
-  q: (
-    query: string
-  ) => Promise<{
+  q: (query: string) => Promise<{
     totalCount: number;
     edges: Array<{ node: { path: string; label: string; context?: string } }>;
   }>;
@@ -49,7 +47,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
     items,
     itemToString: (item) => (item ? item.node.label : ""),
     onInputValueChange: ({ inputValue }) => {
-      setValue(inputValue);
+      setValue(inputValue ?? "");
     },
     onSelectedItemChange: ({ selectedItem }) => {
       if (selectedItem) {

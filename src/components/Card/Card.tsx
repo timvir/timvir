@@ -19,7 +19,7 @@ function Card(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
       ref={ref}
       className={cx(
         className,
-        elevationStyles[`e${elevation}`],
+        elevation !== undefined && elevationStyles[`e${elevation}`],
         interactive && interactiveStyle,
         css`
           border-radius: 3px;

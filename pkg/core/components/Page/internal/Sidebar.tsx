@@ -99,7 +99,7 @@ function Sidebar({ toc, search }: Props) {
 
 export default Sidebar;
 
-const Search = ({ open, label }: Props["search"]) => {
+const Search = ({ open, label }: NonNullable<Props["search"]>) => {
   return (
     <div
       className={css`

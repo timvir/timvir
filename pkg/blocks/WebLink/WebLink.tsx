@@ -14,7 +14,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { url, className, ...rest } = props;
 
-  const [metadata, setMetadata] = React.useState(undefined);
+  const [metadata, setMetadata] = React.useState<undefined | any>(undefined);
 
   const {
     unfurl = async function unfurl(url: string) {

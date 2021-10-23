@@ -42,22 +42,22 @@ function Viewport({ src, code, className, ...props }: Props, ref: React.Forwarde
       setWidth(svgROE.contentRect.width);
     } else if (svgROE) {
       const max = svgROE.contentRect.width - 2 * (56 + 8 + 8);
-      if (width > max) {
+      if (width !== undefined && width > max) {
         setWidth(max);
       }
     }
   }, [containerROE, svgROE, setWidth, width]);
 
   const lock = React.useRef("");
-  const iframeRef = React.useRef<HTMLIFrameElement>();
+  const iframeRef = React.useRef<HTMLIFrameElement>(null);
 
   React.useEffect(() => {
     const onMouseMove = (ev: MouseEvent) => {
-      if (lock.current) {
+      if (lock.current && svgROE) {
         ev.preventDefault();
         const max = svgROE.contentRect.width - 2 * (56 + 8 + 8);
         setWidth((width) =>
-          Math.min(max, Math.max(320, width + 2 * ev.movementX * ({ left: -1, right: 1 }[lock.current] ?? 1)))
+          Math.min(max, Math.max(320, (width ?? 0) + 2 * ev.movementX * ({ left: -1, right: 1 }[lock.current] ?? 1)))
         );
       }
     };
@@ -86,7 +86,7 @@ function Viewport({ src, code, className, ...props }: Props, ref: React.Forwarde
     if (height !== undefined) {
       const height = entries[entries.length - 1].contentRect.height;
       setHeight(height);
-      setMaxHeight(Math.max(height, maxHeight));
+      setMaxHeight(Math.max(height, maxHeight ?? 0));
     }
   });
 
@@ -98,7 +98,7 @@ function Viewport({ src, code, className, ...props }: Props, ref: React.Forwarde
    * We hope that nobody intentionally adds margins around the <html> element. By default
    * it doesn't have.
    */
-  const html = iframeRef.current?.contentDocument.querySelector("html");
+  const html = iframeRef.current?.contentDocument?.querySelector("html");
   React.useEffect(() => {
     if (html) {
       iframeRO.observe(html);
@@ -203,7 +203,7 @@ function Viewport({ src, code, className, ...props }: Props, ref: React.Forwarde
                      * The <html> element may not exist though (eg. the page failed
                      * to load, or it's not a HTML page).
                      */
-                    const html = iframeRef.current?.contentDocument.querySelector("html");
+                    const html = iframeRef.current?.contentDocument?.querySelector("html");
                     if (html) {
                       const { height } = html.getBoundingClientRect();
                       setHeight(height);
@@ -237,7 +237,7 @@ function Viewport({ src, code, className, ...props }: Props, ref: React.Forwarde
 
       <Caption src={src} code={code} />
 
-      <div style={{ height: maxHeight - height || 0, transition: "height 0.16s" }} />
+      <div style={{ height: (maxHeight ?? 0) - (height ?? 0), transition: "height 0.16s" }} />
     </>
   );
 }

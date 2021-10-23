@@ -38,8 +38,10 @@ function Handle(props: Props) {
       `}
       onMouseDown={() => {
         lock.current = edge;
-        iframeRef.current.style.userSelect = "none";
-        iframeRef.current.style.pointerEvents = "none";
+        if (iframeRef.current) {
+          iframeRef.current.style.userSelect = "none";
+          iframeRef.current.style.pointerEvents = "none";
+        }
       }}
       style={{ gridColumn }}
     >

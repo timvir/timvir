@@ -1,9 +1,21 @@
 import { theme } from "@timvir/core";
+import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import { ParsedUrlQuery } from "querystring";
 import * as React from "react";
 
-export default function Page({ component, sample }) {
+interface Query extends ParsedUrlQuery {
+  component: string;
+  sample: string;
+}
+
+interface Props {
+  component: string;
+  sample: string;
+}
+
+export default function Page({ component, sample }: Props) {
   const { isFallback } = useRouter();
   if (isFallback) {
     return null;
@@ -49,6 +61,6 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  return { props: { ...params } };
-}
+export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
+  return { props: { ...params! } };
+};
