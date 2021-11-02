@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "sideEffects": false,
-  "types": "packages/search/index.d.ts",
+  "types": "src/packages/search/index.d.ts",
   "main": "./index.cjs",
   "exports": {
     ".": {
