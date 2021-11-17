@@ -3,12 +3,12 @@
  */
 
 import { css, cx } from "@linaria/core";
+import * as Page from "@timvir/core";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/github";
 import * as React from "react";
 import * as Icons from "react-feather";
 import { useImmer } from "use-immer";
-import * as Page from "@timvir/core";
+import { theme } from "./theme";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -66,7 +66,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
               margin: 0;
               overflow-x: auto;
               contain: content;
-              font-size: .9em;
+              font-size: 0.9em;
             `,
             fullWidth && Page.fullWidth,
             fullWidth &&
