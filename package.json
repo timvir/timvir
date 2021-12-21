@@ -41,7 +41,7 @@
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
-    "@typescript-eslint/parser": "^5.7.0",
+    "@typescript-eslint/parser": "^5.8.0",
     "@zhif/macro": "^0.0.17",
     "babel-plugin-macros": "^3.1.0",
     "blurhash": "^1.1.4",
