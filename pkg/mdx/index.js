@@ -94,11 +94,11 @@ export function remarkPlugin(options) {
       }
     });
 
-    if (file.history[0].match(/snippets/)) {
-      console.log(tree.children[7]);
-      const out = toMarkdown(tree, { extensions: [mdxToMarkdown()] });
-      console.log(out);
-    }
+    // if (file.history[0].match(/snippets/)) {
+    //   console.log(tree.children[7]);
+    //   const out = toMarkdown(tree, { extensions: [mdxToMarkdown()] });
+    //   console.log(out);
+    // }
   };
 }
 
