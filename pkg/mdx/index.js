@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import { fromMarkdown } from "mdast-util-from-markdown";
-import { mdxFromMarkdown, mdxToMarkdown } from "mdast-util-mdx";
-import { toMarkdown } from "mdast-util-to-markdown";
+import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
 import * as crypto from "node:crypto";
 import * as path from "node:path";
@@ -26,9 +25,6 @@ export function remarkPlugin(options) {
         const otherAttributes = attrs.filter(
           ({ type, name }) => type === "mdxJsxAttribute" && !(name in { component: 1, variant: 1, as: 1, props: 1 })
         );
-
-        // console.log(attrs);
-        // console.log({ component, variant, as, props, otherAttributes });
 
         /*
          * The module which holds the sample.
@@ -89,16 +85,8 @@ export function remarkPlugin(options) {
             }
           },
         }[as]());
-
-        // const code = toMarkdown(node, { extensions: [mdxToMarkdown()] });
       }
     });
-
-    // if (file.history[0].match(/snippets/)) {
-    //   console.log(tree.children[7]);
-    //   const out = toMarkdown(tree, { extensions: [mdxToMarkdown()] });
-    //   console.log(out);
-    // }
   };
 }
 
