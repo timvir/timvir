@@ -2,8 +2,8 @@ import * as fs from "fs";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
-import * as crypto from "node:crypto";
-import * as path from "node:path";
+import * as crypto from "crypto";
+import * as path from "path";
 import { visit } from "unist-util-visit";
 
 export function remarkPlugin(options) {
