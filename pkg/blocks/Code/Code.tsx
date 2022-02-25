@@ -44,7 +44,6 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 
 function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { children, language, fullWidth, highlightedLines, ...rest } = props;
-  console.log(props);
 
   const isHighlightedLine = (() => {
     return (line: number) => highlightedLines?.includes(line);
