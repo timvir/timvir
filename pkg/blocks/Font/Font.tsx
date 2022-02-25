@@ -1,4 +1,4 @@
-// import { mdx } from "@mdx-js/react";
+import { useMDXComponents } from "@mdx-js/react";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -26,7 +26,12 @@ const classes = {
   `,
 };
 
-function Font({ name, font, info, className, children, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Font(
+  { name, font, info, className, children, ...props }: Props,
+  ref: React.ForwardedRef<React.ElementRef<typeof Root>>
+) {
+  const components = useMDXComponents();
+
   const [contentRef, setContentRef] = React.useState<null | HTMLDivElement>(null);
   const [fontSizeRef, setFontSizeRef] = React.useState<null | HTMLSpanElement>(null);
   const [infoRef, setInfoRef] = React.useState<null | HTMLDivElement>(null);
@@ -62,15 +67,16 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: R
       {...props}
     >
       <div className={classes.meta}>
-        {/* {mdx(
-          "h3",
-          {
-            className: css`
+        {components.h3 && (
+          <components.h3
+            className={css`
               margin: 0 auto 0 0;
-            `,
-          },
-          <span ref={setFontSizeRef}>{name}</span>
-        )} */}
+            `}
+          >
+            <span ref={setFontSizeRef}>{name}</span>
+          </components.h3>
+        )}
+
         {info && (
           <div
             className={css`
