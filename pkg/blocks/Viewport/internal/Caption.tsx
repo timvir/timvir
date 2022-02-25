@@ -1,4 +1,4 @@
-import { mdx } from "@mdx-js/react";
+// import { mdx } from "@mdx-js/react";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -27,7 +27,7 @@ function Caption(props: Props) {
           align-items: center;
         `}
       >
-        <div>Source: {mdx("a", { href: src, target: "_blank" }, src)}</div>
+        {/* <div>Source: {mdx("a", { href: src, target: "_blank" }, src)}</div> */}
 
         {code && (
           <div

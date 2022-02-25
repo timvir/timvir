@@ -148,7 +148,9 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           `}
         >
           <div className={grid}>
-            <MDXProvider components={{ ...mdxComponentsBase, ...mdxComponents }}>{children}</MDXProvider>
+            <MDXProvider components={{ ...(mdxComponentsBase as Components), ...mdxComponents }}>
+              {children}
+            </MDXProvider>
           </div>
 
           <div

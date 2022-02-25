@@ -31,7 +31,7 @@ const tree = fromMarkdown(doc, {
 
 remarkPlugin()(tree, { history: [`${process.env.PWD}/index.mdx`] });
 
-console.log(tree.children[5]);
+console.log(tree.children[5].children[0]);
 
 const out = toMarkdown(tree, { extensions: [mdxToMarkdown()] });
 

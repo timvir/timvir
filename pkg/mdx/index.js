@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import { fromMarkdown } from "mdast-util-from-markdown";
-import { mdxFromMarkdown } from "mdast-util-mdx";
+import { mdxFromMarkdown, mdxToMarkdown } from "mdast-util-mdx";
+import { toMarkdown } from "mdast-util-to-markdown";
 import { mdxjs } from "micromark-extension-mdxjs";
 import * as crypto from "node:crypto";
 import * as path from "node:path";
@@ -74,18 +75,30 @@ export function remarkPlugin(options) {
               }
             })();
 
-            node.type ="mdxFlowExpression"
-            node.value = JSON.stringify(source)
+            const { children } = fromMarkdown(`{${JSON.stringify(source)}}`, {
+              extensions: [mdxjs()],
+              mdastExtensions: [mdxFromMarkdown()],
+            });
 
-            // parentPath.parentPath.replaceWith(
-            //   t.jsxExpressionContainer(t.templateLiteral([t.templateElement({ raw: source, cooked: source })], []))
-            // );
+            for (const [k] of Object.keys(node)) {
+              delete node[k];
+            }
+
+            for (const [k, v] of Object.entries(children[0])) {
+              node[k] = v;
+            }
           },
         }[as]());
 
         // const code = toMarkdown(node, { extensions: [mdxToMarkdown()] });
       }
     });
+
+    if (file.history[0].match(/snippets/)) {
+      console.log(tree.children[7]);
+      const out = toMarkdown(tree, { extensions: [mdxToMarkdown()] });
+      console.log(out);
+    }
   };
 }
 
@@ -96,10 +109,6 @@ const matchAttr =
 
 const findAttrValue = (attrs, n) => {
   return attrs.find(matchAttr("mdxJsxAttribute", n))?.value;
-};
-
-const findAttrExpression = (attrs, n) => {
-  return attrs.find(matchAttr("mdxJsxExpressionAttribute", n))?.value?.value;
 };
 
 const genName = (...buffers) => {

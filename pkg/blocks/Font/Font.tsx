@@ -1,4 +1,4 @@
-import { mdx } from "@mdx-js/react";
+// import { mdx } from "@mdx-js/react";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -62,7 +62,7 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: R
       {...props}
     >
       <div className={classes.meta}>
-        {mdx(
+        {/* {mdx(
           "h3",
           {
             className: css`
@@ -70,7 +70,7 @@ function Font({ name, font, info, className, children, ...props }: Props, ref: R
             `,
           },
           <span ref={setFontSizeRef}>{name}</span>
-        )}
+        )} */}
         {info && (
           <div
             className={css`

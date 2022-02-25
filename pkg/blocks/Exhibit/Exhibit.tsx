@@ -1,4 +1,4 @@
-import { mdx } from "@mdx-js/react";
+// import { mdx } from "@mdx-js/react";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 
@@ -26,7 +26,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
 
   return (
     <>
-      {title && mdx("h3", {}, title)}
+      {/* {title && mdx("h3", {}, title)} */}
       <Root ref={ref} className={cx(className, classes.root)} {...rest}>
         <div
           className={css`
