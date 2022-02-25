@@ -1,4 +1,4 @@
-import { MDXProviderComponents } from "@mdx-js/react";
+import { Components } from "@mdx-js/react/lib/index";
 import { Footer, Page } from "@timvir/core";
 import { defaultSearch, Search } from "@timvir/search";
 import Link, { LinkProps } from "next/link";
@@ -14,7 +14,7 @@ const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
   },
 };
 
-const mdxComponents: MDXProviderComponents = {
+const mdxComponents: Components = {
   code: function code(props: any) {
     const [, language = "markdown"] = (props.className || "").match(/^language-(.*)$/) || [];
     return <Code language={language}>{props.children}</Code>;

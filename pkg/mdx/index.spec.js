@@ -13,6 +13,14 @@ before
 
 <Sample variant="basic" props={{ variant: "info" }} color="black" {...spread} />
 
+<div>
+  {'text'}
+</div>
+
+<div>
+  <Sample variant="basic" component="../blocks/Arbitrary" as="source" />
+</div>
+
 after
 `;
 
@@ -21,9 +29,9 @@ const tree = fromMarkdown(doc, {
   mdastExtensions: [mdxFromMarkdown()],
 });
 
-remarkPlugin()(tree, { history: ["path/to/docs.mdx"] });
+remarkPlugin()(tree, { history: [`${process.env.PWD}/index.mdx`] });
 
-console.log(tree);
+console.log(tree.children[5]);
 
 const out = toMarkdown(tree, { extensions: [mdxToMarkdown()] });
 

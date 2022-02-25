@@ -1,6 +1,6 @@
+import * as fs from "fs";
 import { fromMarkdown } from "mdast-util-from-markdown";
-import { mdxFromMarkdown, mdxToMarkdown } from "mdast-util-mdx";
-import { toMarkdown } from "mdast-util-to-markdown";
+import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
 import * as crypto from "node:crypto";
 import * as path from "node:path";
@@ -73,6 +73,9 @@ export function remarkPlugin(options) {
                 return fs.readFileSync(module + ".tsx", "utf8");
               }
             })();
+
+            node.type ="mdxFlowExpression"
+            node.value = JSON.stringify(source)
 
             // parentPath.parentPath.replaceWith(
             //   t.jsxExpressionContainer(t.templateLiteral([t.templateElement({ raw: source, cooked: source })], []))
