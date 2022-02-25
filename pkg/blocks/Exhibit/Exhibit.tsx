@@ -23,7 +23,6 @@ interface Props extends React.ComponentProps<typeof Root> {
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const components = useMDXComponents();
-  console.log(components);
 
   const { title, source, caption, bleed = 0, BackdropProps, children, className, ...rest } = props;
 

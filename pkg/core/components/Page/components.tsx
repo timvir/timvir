@@ -155,7 +155,7 @@ export const td = styled.td`
   border: 1px solid var(--c-p-2);
 `;
 
-export const inlineCode = styled.code`
+export const code = styled.code`
   border-radius: 2px;
   padding: 2px 5px;
   font-size: 0.9em;
@@ -176,10 +176,10 @@ export const a = styled.a`
     background-image: linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a);
   }
 
-  &:hover ${inlineCode} {
+  &:hover ${code} {
     box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.5), inset 0 1px 4px rgba(16, 22, 26, 0.2);
   }
-  &:active ${inlineCode} {
+  &:active ${code} {
     box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.7), inset 0 1px 4px rgba(16, 22, 26, 0.4);
     background: var(--c-p-2);
   }

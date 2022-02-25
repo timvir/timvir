@@ -15,9 +15,11 @@ const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
 };
 
 const mdxComponents: Components = {
-  code: function code(props: any) {
-    const [, language = "markdown"] = (props.className || "").match(/^language-(.*)$/) || [];
-    return <Code language={language}>{props.children}</Code>;
+  pre: function pre(props: any) {
+    const [, language = "markdown"] =
+      (props.className ?? props.children?.props?.className ?? "").match(/^language-(.*)$/) || [];
+
+    return <Code language={language}>{props.children?.props?.children ?? props.children ?? ""}</Code>;
   },
 };
 
