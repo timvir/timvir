@@ -1,5 +1,5 @@
-import { mdx, useMDXComponents } from "@mdx-js/react";
 import { css, cx } from "@linaria/core";
+import { useMDXComponents } from "@mdx-js/react";
 import * as React from "react";
 
 /**
