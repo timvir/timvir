@@ -13,71 +13,83 @@ module.exports = createMacro(({ references, babel, state }) => {
 
   if (references.Sample) {
     references.Sample.forEach((referencePath) => {
-      if (referencePath.parent.type === "JSXClosingElement") return;
+      const { parent, parentPath } = referencePath;
 
-      const attrs = referencePath.parent.attributes;
-      const { filename } = referencePath.hub.file.opts;
+      if (parent.type === "JSXOpeningElement") {
+        const attrs = parent.attributes;
+        const { filename } = referencePath.hub.file.opts;
 
-      const component = findAttrValue(attrs, "component") || "..";
-      const variant = findAttrValue(attrs, "variant");
+        const component = findAttrValue(attrs, "component") || "..";
+        const variant = findAttrValue(attrs, "variant");
 
-      const as = findAttrValue(attrs, "as") || "component";
-      const props = findAttrExpression(attrs, "props") || t.objectExpression([]);
+        const as = findAttrValue(attrs, "as") || "component";
+        const props = findAttrExpression(attrs, "props") || t.objectExpression([]);
 
-      const otherAttributes = attrs.filter(
-        ({ name }) => name.type === "JSXIdentifier" && !(name.name in { component: 1, variant: 1, as: 1, props: 1 })
-      );
+        const otherAttributes = attrs.filter(
+          ({ name }) => name.type === "JSXIdentifier" && !(name.name in { component: 1, variant: 1, as: 1, props: 1 })
+        );
 
-      /*
-       * The module which holds the sample.
-       */
-      const module = join(dirname(filename), component, "samples", variant);
+        /*
+         * The module which holds the sample.
+         */
+        const module = join(dirname(filename), component, "samples", variant);
 
-      ({
-        component: () => {
-          /*
-           * Genrate a unique name that will be used to hold the reference
-           * to the sample component.
-           */
-          const name = `C${genName(filename, component, variant, "" + counter)}`;
-          counter = counter + 1;
+        ({
+          component: () => {
+            /*
+             * Genrate a unique name that will be used to hold the reference
+             * to the sample component.
+             */
+            const name = `C${genName(filename, component, variant, "" + counter)}`;
+            counter = counter + 1;
 
-          state.file.path.node.body.unshift(
-            t.importDeclaration([t.importDefaultSpecifier(t.identifier(name))], t.stringLiteral(module))
-          );
+            state.file.path.node.body.unshift(
+              t.importDeclaration([t.importDefaultSpecifier(t.identifier(name))], t.stringLiteral(module))
+            );
 
-          referencePath.parentPath.parentPath.replaceWith(
-            t.jsxElement(
-              t.jsxOpeningElement(t.jsxIdentifier(name), [...otherAttributes, t.jsxSpreadAttribute(props)], true),
-              null,
-              referencePath.parentPath.parentPath.node.children,
-              true
-            )
-          );
-        },
-        source: () => {
-          const source = (() => {
-            if (fs.existsSync(module)) {
-              return fs.readFileSync(module, "utf8");
-            } else {
-              return fs.readFileSync(module + ".tsx", "utf8");
-            }
-          })();
+            parentPath.parentPath.replaceWith(
+              t.jsxElement(
+                t.jsxOpeningElement(t.jsxIdentifier(name), [...otherAttributes, t.jsxSpreadAttribute(props)], true),
+                null,
+                parentPath.parentPath.node.children,
+                true
+              )
+            );
+          },
+          source: () => {
+            const source = (() => {
+              if (fs.existsSync(module)) {
+                return fs.readFileSync(module, "utf8");
+              } else {
+                return fs.readFileSync(module + ".tsx", "utf8");
+              }
+            })();
 
-          referencePath.parentPath.parentPath.replaceWith(
-            t.jsxExpressionContainer(t.templateLiteral([t.templateElement({ raw: source, cooked: source })], []))
-          );
-        },
-      }[as]());
+            parentPath.parentPath.replaceWith(
+              t.jsxExpressionContainer(t.templateLiteral([t.templateElement({ raw: source, cooked: source })], []))
+            );
+          },
+        }[as]());
+
+        return;
+      }
+
+      if (parent.type === "JSXClosingElement") {
+        return;
+      }
+
+      throw new Error(`Unhandled type: ${parent.type}`);
     });
   }
 
   if (references.sampleCode) {
     references.sampleCode.forEach((referencePath) => {
       const callExpression = referencePath.parent;
-      const { variant, component = "..", as = "module" } = eval(
-        `(${generate.default(callExpression.arguments[0]).code})`
-      );
+      const {
+        variant,
+        component = "..",
+        as = "module",
+      } = eval(`(${generate.default(callExpression.arguments[0]).code})`);
 
       const { filename } = referencePath.hub.file.opts;
       const module = join(dirname(filename), component, "samples", variant);
@@ -145,7 +157,10 @@ const genName = (...buffers) => {
   return ret.toString("utf8");
 };
 
-const matchAttr = (n) => ({ name }) => name.type === "JSXIdentifier" && name.name === n;
+const matchAttr =
+  (n) =>
+  ({ name }) =>
+    name.type === "JSXIdentifier" && name.name === n;
 
 const findAttrValue = (attrs, n) => {
   const attr = attrs.find(matchAttr(n));
