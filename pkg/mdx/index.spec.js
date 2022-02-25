@@ -1,38 +1,41 @@
+import test from "ava";
 import { fromMarkdown } from "mdast-util-from-markdown";
-import { toMarkdown } from "mdast-util-to-markdown";
+import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
-import { mdxFromMarkdown, mdxToMarkdown } from "mdast-util-mdx";
 import { remarkPlugin } from "./index.js";
 
-const doc = `
-import { Exhibit } from "@timvir/blocks";
+function process(doc) {
+  const tree = fromMarkdown(doc, {
+    extensions: [mdxjs()],
+    mdastExtensions: [mdxFromMarkdown()],
+  });
 
-# Heading
+  remarkPlugin()(tree, { history: [`test/samples/index.mdx`] });
 
-before
+  return tree;
+}
 
-<Sample variant="basic" props={{ variant: "info" }} color="black" {...spread} />
+test("Sample variant=basic", (t) => {
+  const tree = process(`<Sample variant="basic" />`);
 
-<div>
-  {'text'}
-</div>
+  t.is(tree.type, "root");
 
-<div>
-  <Sample variant="basic" component="../blocks/Arbitrary" as="source" />
-</div>
+  t.is(tree.children.at(0).type, "mdxjsEsm");
 
-after
-`;
-
-const tree = fromMarkdown(doc, {
-  extensions: [mdxjs()],
-  mdastExtensions: [mdxFromMarkdown()],
+  t.is(tree.children.at(1).type, "mdxJsxFlowElement");
+  t.is(tree.children.at(1).name, "CIBEfJwpOCZBzAhgVmaaNZUkovAEFETME");
 });
 
-remarkPlugin()(tree, { history: [`${process.env.PWD}/index.mdx`] });
+test("Sample variant=basic props={{ variant }}", (t) => {
+  const tree = process(`<Sample variant="basic" props={{ extra: 1 }} />`);
 
-console.log(tree.children[5].children[0]);
+  t.is(tree.type, "root");
 
-const out = toMarkdown(tree, { extensions: [mdxToMarkdown()] });
+  t.is(tree.children.at(0).type, "mdxjsEsm");
 
-console.log(out);
+  t.is(tree.children.at(1).type, "mdxJsxFlowElement");
+  t.is(tree.children.at(1).name, "CIBEfJwpOCZBzAhgVmaaNZUkovAEFETME");
+
+  t.is(tree.children.at(1).attributes.at(0).type, "mdxJsxExpressionAttribute");
+  t.is(tree.children.at(1).attributes.at(0).value, "...{ extra: 1 }");
+});
