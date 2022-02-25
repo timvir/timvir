@@ -30,7 +30,7 @@ function Caption(props: Props) {
         `}
       >
         <div>
-          Source:
+          Source:{" "}
           {components.a && (
             <components.a href={src} target="_blank">
               {src}

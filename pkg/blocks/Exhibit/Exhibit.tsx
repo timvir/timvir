@@ -23,12 +23,13 @@ interface Props extends React.ComponentProps<typeof Root> {
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const components = useMDXComponents();
+  console.log(components);
 
   const { title, source, caption, bleed = 0, BackdropProps, children, className, ...rest } = props;
 
   return (
     <>
-      {components.h3 && <components.h3>{title}</components.h3>}
+      {title && components.h3 && <components.h3>{title}</components.h3>}
 
       <Root ref={ref} className={cx(className, classes.root)} {...rest}>
         <div

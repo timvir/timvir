@@ -1,6 +1,6 @@
 import withPlugins from "next-compose-plugins";
 import withLinaria from "next-linaria";
-import { remarkPlugin } from './pkg/mdx/index.js';
+import { remarkPlugin } from "./pkg/mdx/index.js";
 
 export default withPlugins([withLinaria], {
   linaria: {
@@ -24,9 +24,8 @@ export default withPlugins([withLinaria], {
         {
           loader: "@mdx-js/loader",
           options: {
-            remarkPlugins: [
-              remarkPlugin
-            ],
+            providerImportSource: "@mdx-js/react",
+            remarkPlugins: [remarkPlugin],
           },
         },
       ],
