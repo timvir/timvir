@@ -1,10 +1,12 @@
 import { template } from "../template";
 
 export default template(`
-import { {{= it.name }} } from "..";
+import { Exhibit } from "@timvir/blocks";
 
 # {{= it.name }}
 
-<{{= it.name }} />
+<Exhibit>
+  <Sample variant="basic" />
+</Exhibit>
 
 `);
