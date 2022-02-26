@@ -11,7 +11,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   variant?: "info" | "warning" | "alert";
 }
 
-function Message({ variant, className, children, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Message(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { variant, className, children, ...rest } = props;
+
   return (
     <Root
       ref={ref}
@@ -29,7 +31,7 @@ function Message({ variant, className, children, ...props }: Props, ref: React.F
         `,
         variant !== undefined && variantStyles[variant]
       )}
-      {...props}
+      {...rest}
     >
       {variant && (
         <div className={icon}>

@@ -20,7 +20,9 @@ interface Selector {
   sticky?: number;
 }
 
-function Exhibits({ children, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { children, ...rest } = props
+
   const backdrop = React.useRef<HTMLDivElement>(null);
   const [selector, setSelector] = React.useState<Selector>({});
   const timeout = React.useRef<any>();
@@ -55,7 +57,7 @@ function Exhibits({ children, ...props }: Props, ref: React.ForwardedRef<React.E
   }, [selector, codeRef]);
 
   return (
-    <Root ref={ref} {...props}>
+    <Root ref={ref} {...rest}>
       <div
         className={css`
           position: relative;

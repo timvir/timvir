@@ -11,11 +11,12 @@ interface Props extends React.ComponentProps<typeof Root> {
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function SearchBoxInput({ value, onChange, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function SearchBoxInput(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { value, onChange, ...rest } = props;
+
   return (
     <Root
       ref={ref}
-      {...props}
       className={css`
         display: flex;
         align-items: center;
@@ -31,6 +32,7 @@ function SearchBoxInput({ value, onChange, ...props }: Props, ref: React.Forward
         z-index: 1;
         box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
       `}
+      {...rest}
     >
       <svg
         viewBox="0 0 17 17"

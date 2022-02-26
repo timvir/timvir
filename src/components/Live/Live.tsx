@@ -11,9 +11,11 @@ const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {}
 
-function Live({ ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Live(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { ...rest } = props
+
   return (
-    <Root ref={ref} {...props}>
+    <Root ref={ref} {...rest}>
       <LiveProvider theme={theme} code={`<Swatch value="#ff5511" contrastValue="white" />`} scope={{ Swatch }}>
         <Exhibit
           bleed={8}

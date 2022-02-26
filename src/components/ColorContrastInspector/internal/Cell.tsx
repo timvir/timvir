@@ -25,7 +25,9 @@ const classes = {
   `,
 };
 
-function Cell({ background, foreground, isWhitelisted, className, style, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Cell(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { background, foreground, isWhitelisted, className, style, ...rest } = props
+
   const large = opacity(3, background, foreground);
   const normal = opacity(4.5, background, foreground);
 
@@ -80,7 +82,7 @@ function Cell({ background, foreground, isWhitelisted, className, style, ...prop
         `
       )}
       style={{ color: foreground, ...style }}
-      {...props}
+      {...rest}
     >
       {content}
     </Root>

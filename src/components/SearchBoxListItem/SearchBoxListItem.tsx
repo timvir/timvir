@@ -12,12 +12,13 @@ interface Props extends React.ComponentProps<typeof Root> {
   context?: React.ReactNode;
 }
 
-function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { icon, label, context, ...rest } = props;
+
   return (
     <Root
       role="button"
       ref={ref}
-      {...props}
       className={css`
         display: flex;
         padding: 8px 0;
@@ -30,6 +31,7 @@ function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: React
           background: rgba(0, 0, 0, 0.05);
         }
       `}
+      {...rest}
     >
       <div
         className={css`
