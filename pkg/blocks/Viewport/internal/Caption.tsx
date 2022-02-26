@@ -1,8 +1,8 @@
-import { mdx } from "@mdx-js/react";
 import { css, cx } from "@linaria/core";
+import { useMDXComponents } from "@mdx-js/react";
+import { Code } from "@timvir/blocks";
 import * as React from "react";
 import * as Icons from "react-feather";
-import { Code } from "@timvir/blocks";
 
 interface Props {
   src: string;
@@ -10,6 +10,8 @@ interface Props {
 }
 
 function Caption(props: Props) {
+  const components = useMDXComponents();
+
   const { src, code } = props;
 
   const [codeRef, setCodeRef] = React.useState<null | HTMLDivElement>(null);
@@ -27,7 +29,14 @@ function Caption(props: Props) {
           align-items: center;
         `}
       >
-        <div>Source: {mdx("a", { href: src, target: "_blank" }, src)}</div>
+        <div>
+          Source:{" "}
+          {components.a && (
+            <components.a href={src} target="_blank">
+              {src}
+            </components.a>
+          )}
+        </div>
 
         {code && (
           <div

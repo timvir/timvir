@@ -1,5 +1,5 @@
-import { mdx } from "@mdx-js/react";
 import { css, cx } from "@linaria/core";
+import { useMDXComponents } from "@mdx-js/react";
 import * as React from "react";
 
 /**
@@ -22,11 +22,14 @@ interface Props extends React.ComponentProps<typeof Root> {
 }
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const components = useMDXComponents();
+
   const { title, source, caption, bleed = 0, BackdropProps, children, className, ...rest } = props;
 
   return (
     <>
-      {title && mdx("h3", {}, title)}
+      {title && components.h3 && <components.h3>{title}</components.h3>}
+
       <Root ref={ref} className={cx(className, classes.root)} {...rest}>
         <div
           className={css`

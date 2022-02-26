@@ -1,7 +1,8 @@
-const withPlugins = require("next-compose-plugins");
-const withLinaria = require("next-linaria");
+import withPlugins from "next-compose-plugins";
+import withLinaria from "next-linaria";
+import { remarkPlugin } from "./pkg/mdx/index.js";
 
-module.exports = withPlugins([require("@next/mdx")({ extension: /\.mdx?$/ }), withLinaria], {
+export default withPlugins([withLinaria], {
   linaria: {
     cacheDirectory: "./.next/cache/linaria",
   },
@@ -12,5 +13,24 @@ module.exports = withPlugins([require("@next/mdx")({ extension: /\.mdx?$/ }), wi
     ignoreDevErrors: true,
     ignoreBuildErrors: true,
   },
+
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+
+  webpack(config, options) {
+    config.module.rules.push({
+      test: /\.mdx?$/,
+      use: [
+        options.defaultLoaders.babel,
+        {
+          loader: "@mdx-js/loader",
+          options: {
+            providerImportSource: "@mdx-js/react",
+            remarkPlugins: [remarkPlugin],
+          },
+        },
+      ],
+    });
+
+    return config;
+  },
 });
