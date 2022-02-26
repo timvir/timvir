@@ -21,7 +21,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   code?: string;
 }
 
-function Viewport({ src, code, className, ...props }: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { src, code, className, ...rest } = props;
+
   /*
    * The container measures the width of the main column. It is used to initialize
    * the default width.
@@ -110,7 +112,7 @@ function Viewport({ src, code, className, ...props }: Props, ref: React.Forwarde
       <div ref={containerRef} />
       <Root
         ref={ref}
-        {...props}
+        {...rest}
         className={cx(
           className,
           fullWidth,
