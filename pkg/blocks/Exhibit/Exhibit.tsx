@@ -8,7 +8,6 @@ import * as React from "react";
 const Root = "figure";
 
 interface Props extends React.ComponentProps<typeof Root> {
-  source?: React.ReactNode;
   caption?: React.ReactNode;
 
   /**
@@ -19,6 +18,11 @@ interface Props extends React.ComponentProps<typeof Root> {
   bleed?: number;
 
   BackdropProps?: React.ComponentPropsWithoutRef<"div">;
+
+  /**
+   * @deprecated
+   */
+  source?: React.ReactNode;
 }
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
@@ -61,17 +65,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
           </pre>
         )}
 
-        {caption && (
-          <figcaption
-            className={css`
-              font-size: 0.75rem;
-              color: var(--c-text-light);
-              margin-top: 2px;
-            `}
-          >
-            {caption}
-          </figcaption>
-        )}
+        {caption && <figcaption className={classes.caption}>{caption}</figcaption>}
       </Root>
     </>
   );
@@ -82,5 +76,11 @@ export default React.forwardRef(Exhibit);
 const classes = {
   root: css`
     margin: 0;
+  `,
+
+  caption: css`
+    font-size: 0.75rem;
+    color: var(--c-text-light);
+    margin-top: 2px;
   `,
 };
