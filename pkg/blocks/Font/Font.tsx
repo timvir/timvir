@@ -26,11 +26,10 @@ const classes = {
   `,
 };
 
-function Font(
-  { name, font, info, className, children, ...props }: Props,
-  ref: React.ForwardedRef<React.ElementRef<typeof Root>>
-) {
-  const components = useMDXComponents();
+function Font(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const components = { h3: "h3", ...useMDXComponents() };
+
+  const { name, font, info, className, children, ...rest } = props;
 
   const [contentRef, setContentRef] = React.useState<null | HTMLDivElement>(null);
   const [fontSizeRef, setFontSizeRef] = React.useState<null | HTMLSpanElement>(null);
@@ -64,18 +63,16 @@ function Font(
           padding: 16px 0;
         `
       )}
-      {...props}
+      {...rest}
     >
       <div className={classes.meta}>
-        {components.h3 && (
-          <components.h3
-            className={css`
-              margin: 0 auto 0 0;
-            `}
-          >
-            <span ref={setFontSizeRef}>{name}</span>
-          </components.h3>
-        )}
+        <components.h3
+          className={css`
+            margin: 0 auto 0 0;
+          `}
+        >
+          <span ref={setFontSizeRef}>{name}</span>
+        </components.h3>
 
         {info && (
           <div

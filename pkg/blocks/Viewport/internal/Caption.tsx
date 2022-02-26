@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Caption(props: Props) {
-  const components = useMDXComponents();
+  const components = { a: "a", ...useMDXComponents() };
 
   const { src, code } = props;
 
@@ -31,11 +31,9 @@ function Caption(props: Props) {
       >
         <div>
           Source:{" "}
-          {components.a && (
-            <components.a href={src} target="_blank">
-              {src}
-            </components.a>
-          )}
+          <components.a href={src} target="_blank">
+            {src}
+          </components.a>
         </div>
 
         {code && (
