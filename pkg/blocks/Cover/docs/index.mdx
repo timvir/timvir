@@ -1,7 +1,8 @@
-import { importImage } from "@zhif/macro";
 import { Cover } from "..";
 
-<Cover {...importImage("../../../../assets/daniel-leone-v7daTKlZzaw-unsplash.jpg")} />
+import image from "../../../../assets/daniel-leone-v7daTKlZzaw-unsplash.jpg";
+
+<Cover metadata={image} img={{ src: image.src }} sources={[]} />
 
 # Cover
 
@@ -15,5 +16,5 @@ Use the `importImage()` macro from the `"@zhif/macro"` package to load the image
 import { Cover } from "@timvir/blocks";
 import { importImage } from "@zhif/macro";
 
-<Cover {...importImage("path/to/image.jpg")} />
+<Cover {...importImage("path/to/image.jpg")} />;
 ```

@@ -19,5 +19,6 @@
       "@timvir/std/*": ["std/*"],
       "@timvir/search": ["../src/packages/search"]
     }
-  }
+  },
+  "include": ["*.ts", "*.tsx", "../next-env.d.ts"]
 }

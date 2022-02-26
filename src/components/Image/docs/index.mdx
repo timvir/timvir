@@ -1,7 +1,10 @@
 import { Image } from "..";
-import { importImage } from "@zhif/macro"
+import { Exhibit } from "@timvir/blocks";
 
 # Image
+
+DEPRECATED. @zhif/macro introduces a dependency to Babel which is unfortunate.
+Need to find a better solution.
 
 The `<Image>` displays an image 🤔. Use it together with the "@zhif/macro" package.
 
@@ -14,4 +17,6 @@ import { importImage } from "@zhif/macro"
 
 ## Example
 
-<Image {...importImage("../../../../assets/khachik-simonian-nXOB-wh4Oyc-unsplash.jpg")} />
+<Exhibit>
+  <Sample variant="basic" />
+</Exhibit>

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Cover } from "..";
 
-import { importImage } from "@zhif/macro";
+import image from "../../../../assets/daniel-leone-v7daTKlZzaw-unsplash.jpg";
 
 export default function Sample() {
-  return <Cover {...importImage("../../../../assets/daniel-leone-v7daTKlZzaw-unsplash.jpg")} />;
+  return <Cover metadata={image} img={{ src: image.src }} sources={[]} />;
 }

@@ -1,4 +1,3 @@
 {
-  "presets": ["next/babel", "@linaria"],
-  "plugins": ["macros"]
+  "presets": ["next/babel", "@linaria"]
 }
