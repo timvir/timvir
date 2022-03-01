@@ -4,19 +4,19 @@ import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
 import { remarkPlugin } from "./index.js";
 
-function process(doc) {
+async function process(doc) {
   const tree = fromMarkdown(doc, {
     extensions: [mdxjs()],
     mdastExtensions: [mdxFromMarkdown()],
   });
 
-  remarkPlugin()(tree, { history: [`test/samples/index.mdx`] });
+  await remarkPlugin()(tree, { history: [`test/samples/index.mdx`] });
 
   return tree;
 }
 
-test("Sample variant=basic", (t) => {
-  const tree = process(`<Sample variant="basic" />`);
+test("Sample variant=basic", async (t) => {
+  const tree = await process(`<Sample variant="basic" />`);
 
   t.is(tree.type, "root");
 
@@ -26,8 +26,8 @@ test("Sample variant=basic", (t) => {
   t.is(tree.children.at(1).name, "CIBEfJwpOCZBzAhgVmaaNZUkovAEFETME");
 });
 
-test("Sample variant=basic props={{ variant }}", (t) => {
-  const tree = process(`<Sample variant="basic" props={{ extra: 1 }} />`);
+test("Sample variant=basic props={{ variant }}", async (t) => {
+  const tree = await process(`<Sample variant="basic" props={{ extra: 1 }} />`);
 
   t.is(tree.type, "root");
 

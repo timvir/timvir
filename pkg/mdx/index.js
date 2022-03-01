@@ -6,10 +6,10 @@ import * as crypto from "crypto";
 import * as path from "path";
 import { visit } from "unist-util-visit";
 
-export function remarkPlugin(options) {
+export function remarkPlugin() {
   let counter = 0;
 
-  return (tree, file) => {
+  return async (tree, file) => {
     const filename = file.history[0];
 
     visit(tree, "mdxJsxFlowElement", (node) => {
@@ -87,6 +87,8 @@ export function remarkPlugin(options) {
         }[as]());
       }
     });
+
+    return tree;
   };
 }
 
