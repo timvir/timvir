@@ -11,59 +11,46 @@ interface Props extends React.ComponentProps<typeof Root> {
   caption?: React.ReactNode;
 
   /**
-   * How much the component should extend out of its original box.
+   * How much the component should extend out of its original box. When number,
+   * it's the number of pixels. When a string, must evaluate to a CSS <length>
+   * (can be inline or reference to a CSS variable).
    *
    * @default 0
    */
-  bleed?: number;
+  bleed?: string | number;
 
   BackdropProps?: React.ComponentPropsWithoutRef<"div">;
-
-  /**
-   * @deprecated
-   */
-  source?: React.ReactNode;
 }
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const components = { h3: "h3", ...useMDXComponents() };
 
-  const { title, source, caption, bleed = 0, BackdropProps, children, className, ...rest } = props;
+  const { title, caption, bleed = 0, BackdropProps, children, className, style, ...rest } = props;
 
   return (
     <>
       {title && <components.h3>{title}</components.h3>}
 
-      <Root ref={ref} className={cx(className, classes.root)} {...rest}>
+      <Root
+        ref={ref}
+        className={cx(className, classes.root)}
+        style={{
+          ...style,
+          [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : bleed,
+        }}
+        {...rest}
+      >
         <div
-          className={css`
-            display: flow-root;
-            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
-          `}
+          className={classes.container}
           style={{
-            margin: `0 -${bleed}px`,
-            padding: bleed,
+            margin: `0 calc(-1 * var(${cssVariables.bleed}))`,
+            padding: `var(${cssVariables.bleed})`,
             border: bleed !== 0 ? `1px solid #EFEFEF` : "none",
           }}
           {...BackdropProps}
         >
           {children}
         </div>
-
-        {source && (
-          <pre
-            style={{
-              background: "#F8F8F8",
-              margin: `0 -${bleed}px`,
-              padding: `16px ${bleed}px 16px`,
-              borderTop: "1px solid grey",
-              fontSize: ".9rem",
-              borderRadius: "0 0 4px 4px",
-            }}
-          >
-            {source}
-          </pre>
-        )}
 
         {caption && <figcaption className={classes.caption}>{caption}</figcaption>}
       </Root>
@@ -73,14 +60,25 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
 
 export default React.forwardRef(Exhibit);
 
+const cssVariables = {
+  bleed: '--timvir-b-Exhibit-bleed'
+}
+
 const classes = {
   root: css`
     margin: 0;
+
+    ${cssVariables.bleed}: 0px;
+  `,
+
+  container: css`
+    display: flow-root;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
   `,
 
   caption: css`
     font-size: 0.75rem;
-    color: var(--c-text-light);
+    color: var(--timvir-secondary-text-color);
     margin-top: 2px;
   `,
 };
