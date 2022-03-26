@@ -42,11 +42,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
       >
         <div
           className={classes.container}
-          style={{
-            margin: `0 calc(-1 * var(${cssVariables.bleed}))`,
-            padding: `var(${cssVariables.bleed})`,
-            border: bleed !== 0 ? `1px solid #EFEFEF` : "none",
-          }}
+          style={{ border: bleed !== 0 ? `1px solid #EFEFEF` : "none" }}
           {...BackdropProps}
         >
           {children}
@@ -74,6 +70,9 @@ const classes = {
   container: css`
     display: flow-root;
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
+
+    margin: 0 calc(-1 * var(${cssVariables.bleed}));
+    padding: var(${cssVariables.bleed});
   `,
 
   caption: css`
