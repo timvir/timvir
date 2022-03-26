@@ -2,13 +2,38 @@ import { css } from "@linaria/core";
 import * as colors from "./colors";
 
 export const theme = css`
-  font-family: system-ui, sans-serif;
-  font-feature-settings: "liga", "kern";
-  text-rendering: optimizelegibility;
-  font-size: 16px;
-  line-height: 1.725;
+  :global() {
+    :root {
+      box-sizing: border-box;
+    }
 
-  color: ${colors.text.main};
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+  }
+
+  :global() {
+    :root {
+      --timvir-background-color: white;
+
+      --timvir-text-color: ${colors.text.main};
+      --timvir-secondary-text-color: ${colors.text.light};
+    }
+  }
+
+  :global() {
+    :root {
+      font-family: system-ui, sans-serif;
+      font-feature-settings: "liga", "kern";
+      text-rendering: optimizelegibility;
+
+      font-size: 16px;
+      line-height: 1.725;
+      
+      background-color: var(--timvir-background-color);
+      color: var(--timvir-text-color);
+    }
+  }
 
   --c-p-0: ${colors.green["50"]};
   --c-p-1: ${colors.green["100"]};
