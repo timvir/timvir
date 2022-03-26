@@ -18,7 +18,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
 
   const {
     unfurl = async function unfurl(url: string) {
-      return fetch(`https://timvir.now.sh/api/unfurl?url=${encodeURIComponent(url)}`).then((res) => res.json());
+      return fetch(`https://timvir.vercel.app/api/unfurl?url=${encodeURIComponent(url)}`).then((res) => res.json());
     },
   } = useContext().blocks?.WebLink ?? {};
 
