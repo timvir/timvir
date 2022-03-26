@@ -1,3 +1,4 @@
+import { css, cx } from "@linaria/core";
 import * as React from "react";
 
 /**
@@ -8,17 +9,21 @@ const Root = "div";
 interface Props extends React.ComponentProps<typeof Root> {}
 
 function Grid(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { children, style, ...rest } = props;
+  const { children, className, ...rest } = props;
 
   return (
-    <Root
-      ref={ref}
-      style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gridGap: 24, ...style }}
-      {...rest}
-    >
+    <Root ref={ref} className={cx(className, classes.root)} {...rest}>
       {children}
     </Root>
   );
 }
 
 export default React.forwardRef(Grid);
+
+const classes = {
+  root: css`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  `,
+};
