@@ -62,7 +62,7 @@ const cssVariables = {
 
 const classes = {
   root: css`
-    margin: 0;
+    margin: 0 0 1.5rem;
 
     ${cssVariables.bleed}: 0px;
   `,

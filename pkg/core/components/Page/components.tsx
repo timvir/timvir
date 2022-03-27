@@ -183,3 +183,15 @@ export const a = styled.a`
     background: var(--c-p-2);
   }
 `;
+
+export const p = styled.p`
+  margin: 0 0 1rem;
+`;
+
+export const ul = styled.ul`
+  margin: 0 0 1rem;
+`;
+
+export const ol = styled.ol`
+  margin: 0 0 1rem;
+`;

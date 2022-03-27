@@ -196,7 +196,7 @@ export default React.forwardRef(Code);
 
 const classes = {
   root: css`
-    margin: 1.5rem 0;
+    margin: 1.5rem 0 3rem;
   `,
 
   code: css`

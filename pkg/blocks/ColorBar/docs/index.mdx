@@ -5,7 +5,7 @@ import { Exhibit } from "../../Exhibit";
 
 A `ColorBar` is a horizontal arrangement of swatches.
 
-<Exhibit bleed={24}>
+<Exhibit>
   <ColorBar
     values={[
       "#D6CCFF",
@@ -22,9 +22,7 @@ A `ColorBar` is a horizontal arrangement of swatches.
   />
 </Exhibit>
 
-Grayscale
-
-<Exhibit bleed={24}>
+<Exhibit caption="Grayscale">
   <ColorBar
     values={[
       "#FFFFFF",
@@ -43,7 +41,7 @@ Grayscale
 
 The ColorBar works comfortably with as few as two colors and as many as 20
 
-<Exhibit bleed={24} caption="Two colors in a ColorBar">
+<Exhibit caption="Two colors in a ColorBar">
   <ColorBar
     values={[
       { value: "#FFE4A0", name: "Yellow Submarine", ancestry: "Yellow 001" },
@@ -52,7 +50,7 @@ The ColorBar works comfortably with as few as two colors and as many as 20
   />
 </Exhibit>
 
-<Exhibit bleed={24} caption="20 colors in a ColorBar">
+<Exhibit caption="20 colors in a ColorBar">
   <ColorBar
     values={[
       "#FFE4A0",

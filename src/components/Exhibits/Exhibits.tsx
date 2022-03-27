@@ -68,8 +68,6 @@ function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
           padding: 20px;
 
           .${exhibit} {
-            padding: 16px;
-
             & > div {
               background: none;
             }
@@ -153,7 +151,6 @@ function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
           <div
             className={cx(
               css`
-                overflow: hidden;
                 transition: height 0.2s, opacity 0.2s 0.1s;
               `
             )}
