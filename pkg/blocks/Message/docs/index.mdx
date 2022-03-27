@@ -1,12 +1,17 @@
 import { Exhibit } from "../../Exhibit";
 import { Grid } from "../../Grid";
 import { Swatch } from "../../Swatch";
+import { Code } from "../../Code";
 
 # Message
 
-<Exhibit bleed={8}>
+<Exhibit bleed="var(--timvir-page-margin)">
   <Sample variant="basic" />
 </Exhibit>
+
+<Code language="jsx">
+  <Sample variant="basic" as="source" />
+</Code>
 
 ## Variants
 
