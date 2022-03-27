@@ -156,12 +156,11 @@ export const td = styled.td`
 `;
 
 export const code = styled.code`
-  border-radius: 2px;
+  border-radius: 3px;
   padding: 2px 5px;
   font-size: 0.9em;
-  background: var(--c-p-1);
+  background: #f6f8fa;
   box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), inset 0 1px 4px rgba(16, 22, 26, 0.1);
-  transition: 0.16s;
 `;
 
 export const a = styled.a`
