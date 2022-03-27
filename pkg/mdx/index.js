@@ -5,6 +5,7 @@ import { mdxjs } from "micromark-extension-mdxjs";
 import * as crypto from "crypto";
 import * as path from "path";
 import { visit } from "unist-util-visit";
+import * as espree from "espree";
 
 export function remarkPlugin() {
   let counter = 0;
@@ -59,7 +60,33 @@ export function remarkPlugin() {
             node.name = name;
             node.attributes = [...otherAttributes];
             if (props?.value) {
-              node.attributes.push({ type: "mdxJsxExpressionAttribute", value: `...${props.value}` });
+              const estree = espree.parse(`export default { ...${props.value} }`, {
+                ecmaVersion: 2020,
+                sourceType: "module",
+              });
+
+              node.attributes.push({
+                type: "mdxJsxExpressionAttribute",
+                value: `...${props.value}`,
+                data: {
+                  estree: {
+                    body: [
+                      {
+                        type: "ExpressionStatement",
+                        expression: {
+                          type: "ObjectExpression",
+                          properties: [
+                            {
+                              type: "SpreadElement",
+                              argument: estree.body[0].declaration.properties[0].argument,
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              });
             }
           },
           source: () => {
