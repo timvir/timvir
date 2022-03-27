@@ -1,5 +1,5 @@
 import { ColorBar } from "..";
-import { Exhibit } from "../../Exhibit";
+import { Code, Exhibit } from "@timvir/blocks";
 
 # ColorBar
 
@@ -22,22 +22,13 @@ A `ColorBar` is a horizontal arrangement of swatches.
   />
 </Exhibit>
 
-<Exhibit caption="Grayscale">
-  <ColorBar
-    values={[
-      "#FFFFFF",
-      "#FAFAFA",
-      "#F2F2F2",
-      "#EEEEEE",
-      "#DDDDDD",
-      "#BBBBBB",
-      "#9D9D9D",
-      "#727272",
-      "#333333",
-      "#111111",
-    ]}
-  />
+<Exhibit>
+  <ColorBar values={["#a0dbc2", "#60c19f", "#1a896b", "#0e6d54"]} />
 </Exhibit>
+
+<Code language="jsx" caption="Pass an array of color values to the component." highlightedLines={[5]}>
+  <Sample variant="basic" as="source" />
+</Code>
 
 The ColorBar works comfortably with as few as two colors and as many as 20
 
