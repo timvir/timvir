@@ -67,7 +67,7 @@ function ColorBook(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
                 css`
                   text-align: center;
                   font-size: 0.75rem;
-                  color: var(--c-text-light);
+                  color: var(--timvir-secondary-text-color);
                   margin-top: 0.8em;
                   line-height: 1;
                 `,

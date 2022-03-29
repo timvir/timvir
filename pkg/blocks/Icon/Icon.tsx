@@ -21,7 +21,7 @@ const classes = {
     opacity: 0;
     transition: all 0.16s;
     z-index: -1;
-    color: var(--c-text-light);
+    color: var(--timvir-secondary-text-color);
     text-align: center;
     user-select: none;
     pointer-events: none;

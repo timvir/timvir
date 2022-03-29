@@ -21,7 +21,7 @@ function Caption(props: Props) {
       <figcaption
         className={css`
           font-size: 0.75rem;
-          color: var(--c-text-light);
+          color: var(--timvir-secondary-text-color);
           white-space: nowrap;
 
           display: flex;
