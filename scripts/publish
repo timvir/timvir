@@ -10,11 +10,12 @@ git tag --points-at HEAD | while read tag; do
     echo Publish ${VERSION}
 
     for PACKAGE in *; do
+      if test -f "$PACKAGE/package.json"; then
+        cat "$PACKAGE/package.json" | jq --arg version "$VERSION" '.version = $version' > tmp;
+        mv tmp "$PACKAGE/package.json"
 
-      cat "$PACKAGE/package.json" | jq --arg version "$VERSION" '.version = $version' > tmp;
-      mv tmp "$PACKAGE/package.json"
-
-      pushd "$PACKAGE"; npm publish . --access public; popd
+        pushd "$PACKAGE"; npm publish . --access public; popd
+      fi
     done
   fi
 done
