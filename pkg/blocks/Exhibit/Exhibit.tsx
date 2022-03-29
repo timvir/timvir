@@ -57,8 +57,8 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
 export default React.forwardRef(Exhibit);
 
 const cssVariables = {
-  bleed: '--timvir-b-Exhibit-bleed'
-}
+  bleed: "--timvir-b-Exhibit-bleed",
+};
 
 const classes = {
   root: css`

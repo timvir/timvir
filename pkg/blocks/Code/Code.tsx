@@ -60,10 +60,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
     <Root ref={ref} className={cx(classes.root, fullWidth && Page.fullWidth)} {...rest}>
       <Highlight {...defaultProps} code={children.trim()} language={language ?? "markup"} theme={theme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre
-            className={cx(className, classes.code, fullWidth && classes.fullWidth)}
-            style={style}
-          >
+          <pre className={cx(className, classes.code, fullWidth && classes.fullWidth)} style={style}>
             <div
               className={css`
                 display: grid;
@@ -186,7 +183,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           </pre>
         )}
       </Highlight>
-      
+
       {caption && <div className={classes.caption}>{caption}</div>}
     </Root>
   );
@@ -207,6 +204,7 @@ const classes = {
     border-radius: 5px;
 
     --timvir-b-Code-bleed: var(--timvir-page-margin, 24px);
+    --timvir-b-Code-inlinePadding: max(var(--timvir-b-Code-bleed), 24px);
 
     padding: 0;
     margin: 0 calc(-1 * var(--timvir-b-Code-bleed));
@@ -246,7 +244,7 @@ const classes = {
   `,
 
   line: css`
-    padding-inline: var(--timvir-b-Code-bleed);
+    padding-inline: var(--timvir-b-Code-inlinePadding);
     margin-inline: 1px;
   `,
   highlightedLine: css`
@@ -265,5 +263,5 @@ const classes = {
     font-size: 0.75rem;
     color: var(--timvir-secondary-text-color);
     margin-top: 2px;
-  `
+  `,
 };
