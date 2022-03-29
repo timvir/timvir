@@ -21,19 +21,15 @@ export const theme = css`
     }
   }
 
-  :global() {
-    :root {
-      font-family: system-ui, sans-serif;
-      font-feature-settings: "liga", "kern";
-      text-rendering: optimizelegibility;
+  font-family: system-ui, sans-serif;
+  font-feature-settings: "liga", "kern";
+  text-rendering: optimizelegibility;
 
-      font-size: 16px;
-      line-height: 1.725;
-      
-      background-color: var(--timvir-background-color);
-      color: var(--timvir-text-color);
-    }
-  }
+  font-size: 16px;
+  line-height: 1.725;
+
+  background-color: var(--timvir-background-color);
+  color: var(--timvir-text-color);
 
   --c-p-0: ${colors.green["50"]};
   --c-p-1: ${colors.green["100"]};
