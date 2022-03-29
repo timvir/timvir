@@ -73,7 +73,7 @@ function ColorBook(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
                 `,
                 i === selectedChapter &&
                   css`
-                    color: var(--c-text);
+                    color: var(--timvir-primary-text-color);
                   `
               )}
             >

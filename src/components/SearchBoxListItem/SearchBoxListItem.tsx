@@ -23,7 +23,7 @@ function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.ElementRe
         display: flex;
         padding: 8px 0;
         font-size: 14px;
-        color: var(--c-text);
+        color: var(--timvir-primary-text-color);
         cursor: pointer;
         box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
 

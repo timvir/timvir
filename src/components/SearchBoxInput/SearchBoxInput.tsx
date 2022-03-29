@@ -68,7 +68,7 @@ function SearchBoxInput(props: Props, ref: React.ForwardedRef<React.ElementRef<t
           overflow: hidden;
           text-overflow: ellipsis;
 
-          color: var(--c-text);
+          color: var(--timvir-primary-text-color);
 
           &:focus {
             outline: 0;

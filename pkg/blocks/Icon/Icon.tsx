@@ -54,7 +54,7 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           &:hover .${classes.name} {
             opacity: 1;
             bottom: -26px;
-            color: var(--c-text);
+            color: var(--timvir-primary-text-color);
           }
           &:active .${classes.name} {
             bottom: -24px;

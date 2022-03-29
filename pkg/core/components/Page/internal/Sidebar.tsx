@@ -109,7 +109,7 @@ const Search = ({ open, label }: NonNullable<Props["search"]>) => {
       <div
         role="button"
         className={css`
-          color: var(--c-text);
+          color: var(--timvir-primary-text-color);
           font-size: 14px;
           font-weight: 500;
           line-height: 1.725;

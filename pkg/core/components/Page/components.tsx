@@ -63,7 +63,7 @@ export const h2 = Heading(
     display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--c-text);
+    color: var(--timvir-primary-text-color);
     text-transform: none;
     letter-spacing: normal;
     font-size: 24px;
@@ -77,7 +77,7 @@ export const h3 = Heading(
     display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--c-text);
+    color: var(--timvir-primary-text-color);
     text-transform: none;
     letter-spacing: normal;
     font-size: 18px;
@@ -91,7 +91,7 @@ export const h4 = Heading(
     display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--c-text);
+    color: var(--timvir-primary-text-color);
     text-transform: none;
     letter-spacing: normal;
     font-weight: normal;

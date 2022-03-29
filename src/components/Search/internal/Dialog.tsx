@@ -78,7 +78,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
           text-rendering: optimizelegibility;
           font-size: 14px;
           line-height: 1.725;
-          color: var(--c-text);
+          color: var(--timvir-primary-text-color);
         `
       )}
     >
