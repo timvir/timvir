@@ -55,6 +55,17 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
             background: rgba(55, 53, 47, 0.08);
             box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
           }
+
+          @media (prefers-color-scheme: dark) {
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.08);
+            }
+            &:active {
+              background: rgba(255, 255, 255, 0.08);
+            }
+          }
         `
       )}
     >
@@ -66,7 +77,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
       >
         <div
           className={css`
-            color: rgb(55, 53, 47);
+            color: var(--timvir-text-color);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -80,7 +91,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
           className={css`
             font-size: 0.75rem;
             line-height: 1.1rem;
-            color: rgba(55, 53, 47, 0.6);
+            color: var(--timvir-secondary-text-color);
             height: 2.2rem;
             overflow: hidden;
           `}
@@ -107,7 +118,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
             className={css`
               font-size: 0.75rem;
               line-height: 1rem;
-              color: rgb(55, 53, 47);
+              color: var(--timvir-text-color);
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;

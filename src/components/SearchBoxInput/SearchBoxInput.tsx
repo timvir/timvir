@@ -31,6 +31,10 @@ function SearchBoxInput(props: Props, ref: React.ForwardedRef<React.ElementRef<t
         flex-shrink: 0;
         z-index: 1;
         box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
+
+        @media (prefers-color-scheme: dark) {
+          box-shadow: rgba(255, 255, 255, 0.09) 0px 1px 0px;
+        }
       `}
       {...rest}
     >
@@ -40,7 +44,7 @@ function SearchBoxInput(props: Props, ref: React.ForwardedRef<React.ElementRef<t
           width: 18px;
           height: 18px;
           display: block;
-          fill: rgba(55, 53, 47, 0.4);
+          fill: var(--timvir-secondary-text-color);
           flex-shrink: 0;
           backface-visibility: hidden;
           margin-right: 10px;
@@ -68,7 +72,7 @@ function SearchBoxInput(props: Props, ref: React.ForwardedRef<React.ElementRef<t
           overflow: hidden;
           text-overflow: ellipsis;
 
-          color: var(--timvir-primary-text-color);
+          color: var(--timvir-text-color);
 
           &:focus {
             outline: 0;

@@ -70,7 +70,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
             <span
               className={css`
                 display: inline-block;
-                color: grey;
+                color: var(--timvir-secondary-text-color);
                 margin-right: 6px;
               `}
             >
@@ -87,6 +87,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
                 padding: 0;
                 height: 34px;
                 width: 100%;
+                color: inherit;
               `}
               placeholder="Seed"
               value={base58.encode(new TextEncoder().encode(`${value.seed}`))}

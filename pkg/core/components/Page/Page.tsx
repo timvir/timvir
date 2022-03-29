@@ -123,6 +123,10 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           className={css`
             background: var(--c-p-0);
             grid-column: l / m;
+
+            @media (prefers-color-scheme: dark) {
+              background: #1b1c1e;
+            }
           `}
         >
           <Sidebar

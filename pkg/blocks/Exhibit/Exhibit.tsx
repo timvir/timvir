@@ -42,7 +42,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
       >
         <div
           className={classes.container}
-          style={{ border: bleed !== 0 ? `1px solid #EFEFEF` : "none" }}
+          style={{ border: bleed !== 0 ? `1px solid var(${cssVariables.borderColor})` : "none" }}
           {...BackdropProps}
         >
           {children}
@@ -58,6 +58,7 @@ export default React.forwardRef(Exhibit);
 
 const cssVariables = {
   bleed: "--timvir-b-Exhibit-bleed",
+  borderColor: "--timvir-b-Exhibit-borderColor",
 };
 
 const classes = {
@@ -65,6 +66,12 @@ const classes = {
     margin: 0 0 1.5rem;
 
     ${cssVariables.bleed}: 0px;
+
+    ${cssVariables.borderColor}: #EFEFEF;
+
+    @media (prefers-color-scheme: dark) {
+      ${cssVariables.borderColor}: #101010;
+    }
   `,
 
   container: css`
@@ -73,6 +80,10 @@ const classes = {
 
     margin: 0 calc(-1 * var(${cssVariables.bleed}));
     padding: var(${cssVariables.bleed});
+
+    @media (prefers-color-scheme: dark) {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
+    }
   `,
 
   caption: css`

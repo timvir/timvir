@@ -19,6 +19,15 @@ export const theme = css`
       --timvir-text-color: ${colors.text.main};
       --timvir-secondary-text-color: ${colors.text.light};
     }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --timvir-background-color: #1f2023;
+
+        --timvir-text-color: rgba(255 255 255 / 0.86);
+        --timvir-secondary-text-color: rgba(255 255 255 / 0.56);
+      }
+    }
   }
 
   font-family: system-ui, sans-serif;

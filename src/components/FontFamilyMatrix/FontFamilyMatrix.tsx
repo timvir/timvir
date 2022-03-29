@@ -22,7 +22,6 @@ function FontFamilyMatrix(props: Props, ref: React.ForwardedRef<React.ElementRef
         className={css`
           margin: 0 -24px;
           padding: 16px 24px;
-          background: white;
           font-size: 2rem;
           line-height: 1;
           display: grid;
@@ -36,7 +35,7 @@ function FontFamilyMatrix(props: Props, ref: React.ForwardedRef<React.ElementRef
             <div
               className={css`
                 font-size: 14px;
-                opacity: 0.5;
+                color: var(--timvir-secondary-text-color);
                 padding-right: 24px;
               `}
             >

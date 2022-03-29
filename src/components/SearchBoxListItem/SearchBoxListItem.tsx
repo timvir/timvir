@@ -23,12 +23,20 @@ function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.ElementRe
         display: flex;
         padding: 8px 0;
         font-size: 14px;
-        color: var(--timvir-primary-text-color);
+        color: var(--timvir-text-color);
         cursor: pointer;
         box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
 
         &:hover {
           background: rgba(0, 0, 0, 0.05);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          box-shadow: rgba(255, 255, 255, 0.09) 0px 1px 0px;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.05);
+          }
         }
       `}
       {...rest}
@@ -55,7 +63,7 @@ function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.ElementRe
           <div
             className={css`
               font-size: 12px;
-              color: rgba(55, 53, 47, 0.4);
+              color: var(--timvir-secondary-text-color);
             `}
           >
             {context}

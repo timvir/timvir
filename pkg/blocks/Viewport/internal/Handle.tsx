@@ -22,7 +22,7 @@ function Handle(props: Props) {
         justify-content: center;
 
         opacity: 0.5;
-        color: var(--timvir-primary-text-color);
+        color: var(--timvir-text-color);
 
         border-radius: 2px;
         transition: all 0.2s cubic-bezier(0.4, 1, 0.75, 0.9);

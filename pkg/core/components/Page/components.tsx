@@ -63,7 +63,7 @@ export const h2 = Heading(
     display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--timvir-primary-text-color);
+    color: var(--timvir-text-color);
     text-transform: none;
     letter-spacing: normal;
     font-size: 24px;
@@ -77,7 +77,7 @@ export const h3 = Heading(
     display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--timvir-primary-text-color);
+    color: var(--timvir-text-color);
     text-transform: none;
     letter-spacing: normal;
     font-size: 18px;
@@ -91,7 +91,7 @@ export const h4 = Heading(
     display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--timvir-primary-text-color);
+    color: var(--timvir-text-color);
     text-transform: none;
     letter-spacing: normal;
     font-weight: normal;
@@ -161,6 +161,11 @@ export const code = styled.code`
   font-size: 0.9em;
   background: #f6f8fa;
   box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), inset 0 1px 4px rgba(16, 22, 26, 0.1);
+
+  @media (prefers-color-scheme: dark) {
+    background: #2b2a33;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 4px rgba(255, 255, 255, 0.1);
+  }
 `;
 
 export const a = styled.a`

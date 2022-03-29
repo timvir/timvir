@@ -78,7 +78,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
           text-rendering: optimizelegibility;
           font-size: 14px;
           line-height: 1.725;
-          color: var(--timvir-primary-text-color);
+          color: var(--timvir-text-color);
         `
       )}
     >
@@ -128,6 +128,10 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
               max-width: 600px;
               min-height: 50px;
               max-height: 80vh;
+
+              @media (prefers-color-scheme: dark) {
+                background: black;
+              }
             `}
             {...getComboboxProps()}
           >
@@ -158,7 +162,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
                     label={<Highlight string={item.node.path} query={value} />}
                     context={item.node.context}
                     style={{
-                      background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined,
+                      // background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined,
                     }}
                   />
                 </Link>

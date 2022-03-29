@@ -22,12 +22,15 @@ function Message(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
         css`
           position: relative;
           background: var(--c-p-0);
+          color: black;
           border-radius: 3px;
           padding: 16px 24px 16px 24px;
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2);
 
           display: flex;
           align-items: flex-start;
+
+          line-height: 1.5;
         `,
         variant !== undefined && variantStyles[variant]
       )}
@@ -79,6 +82,7 @@ const icon = css`
 const variantStyles = {
   info: css`
     background: #f0f2fc;
+    color: black;
 
     .${icon} {
       color: #2a47d5;
@@ -86,6 +90,7 @@ const variantStyles = {
   `,
   warning: css`
     background: #fcf9f0;
+    color: black;
 
     .${icon} {
       color: #a68521;
@@ -93,6 +98,7 @@ const variantStyles = {
   `,
   alert: css`
     background: #fcf0f0;
+    color: black;
 
     .${icon} {
       color: #da4444;

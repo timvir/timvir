@@ -47,7 +47,7 @@ function Section(props: Props) {
           font-family: system-ui;
           font-weight: 500;
           display: inline-block;
-          color: var(--timvir-primary-text-color);
+          color: var(--timvir-text-color);
           font-size: 14px;
           line-height: 1.725;
           background: none;
