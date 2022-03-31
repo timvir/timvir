@@ -121,12 +121,8 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
       >
         <div
           className={css`
-            background: var(--c-p-0);
+            background-color: var(--timvir-sidebar-background-color);
             grid-column: l / m;
-
-            :global(:root[data-timvir-theme="dark"]) & {
-              background: #1b1c1e;
-            }
           `}
         >
           <Sidebar

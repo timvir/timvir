@@ -15,16 +15,24 @@ export const theme = css`
   :global() {
     :root {
       --timvir-background-color: white;
-
       --timvir-text-color: ${colors.text.main};
       --timvir-secondary-text-color: ${colors.text.light};
+
+      --timvir-sidebar-background-color: ${colors.green["50"]};
+      --timvir-sidebar-text-color: ${colors.text.main};
+
+      --timvir-accent-color: ${colors.green["400"]};
     }
 
     :root[data-timvir-theme="dark"] {
       --timvir-background-color: #1f2023;
-
       --timvir-text-color: rgba(255 255 255 / 0.86);
       --timvir-secondary-text-color: rgba(255 255 255 / 0.56);
+
+      --timvir-sidebar-background-color: #1b1c1e;
+      --timvir-sidebar-text-color: ${colors.text.main};
+
+      --timvir-accent-color: ${colors.green["400"]};
     }
   }
 
