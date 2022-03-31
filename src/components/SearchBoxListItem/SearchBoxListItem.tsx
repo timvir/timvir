@@ -31,7 +31,7 @@ function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.ElementRe
           background: rgba(0, 0, 0, 0.05);
         }
 
-        @media (prefers-color-scheme: dark) {
+        :global(:root[data-timvir-theme="dark"]) & {
           box-shadow: rgba(255, 255, 255, 0.09) 0px 1px 0px;
 
           &:hover {

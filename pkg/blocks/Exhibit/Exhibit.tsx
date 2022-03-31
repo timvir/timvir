@@ -59,6 +59,7 @@ export default React.forwardRef(Exhibit);
 const cssVariables = {
   bleed: "--timvir-b-Exhibit-bleed",
   borderColor: "--timvir-b-Exhibit-borderColor",
+  background: "--timvir-b-Exhibit-background",
 };
 
 const classes = {
@@ -68,22 +69,20 @@ const classes = {
     ${cssVariables.bleed}: 0px;
 
     ${cssVariables.borderColor}: #EFEFEF;
+    ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
 
-    @media (prefers-color-scheme: dark) {
+    :global(:root[data-timvir-theme="dark"]) & {
       ${cssVariables.borderColor}: #101010;
+      ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
     }
   `,
 
   container: css`
     display: flow-root;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
+    background: var(${cssVariables.background});
 
     margin: 0 calc(-1 * var(${cssVariables.bleed}));
     padding: var(${cssVariables.bleed});
-
-    @media (prefers-color-scheme: dark) {
-      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
-    }
   `,
 
   caption: css`

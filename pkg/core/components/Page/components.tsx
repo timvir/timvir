@@ -162,7 +162,7 @@ export const code = styled.code`
   background: #f6f8fa;
   box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), inset 0 1px 4px rgba(16, 22, 26, 0.1);
 
-  @media (prefers-color-scheme: dark) {
+  :global(:root[data-timvir-theme="dark"]) & {
     background: #2b2a33;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 4px rgba(255, 255, 255, 0.1);
   }

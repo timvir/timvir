@@ -129,7 +129,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
               min-height: 50px;
               max-height: 80vh;
 
-              @media (prefers-color-scheme: dark) {
+              :global(:root[data-timvir-theme="dark"]) & {
                 background: black;
               }
             `}

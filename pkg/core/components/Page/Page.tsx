@@ -124,7 +124,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
             background: var(--c-p-0);
             grid-column: l / m;
 
-            @media (prefers-color-scheme: dark) {
+            :global(:root[data-timvir-theme="dark"]) & {
               background: #1b1c1e;
             }
           `}
