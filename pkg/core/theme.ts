@@ -20,13 +20,11 @@ export const theme = css`
       --timvir-secondary-text-color: ${colors.text.light};
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --timvir-background-color: #1f2023;
+    :root[data-timvir-theme="dark"] {
+      --timvir-background-color: #1f2023;
 
-        --timvir-text-color: rgba(255 255 255 / 0.86);
-        --timvir-secondary-text-color: rgba(255 255 255 / 0.56);
-      }
+      --timvir-text-color: rgba(255 255 255 / 0.86);
+      --timvir-secondary-text-color: rgba(255 255 255 / 0.56);
     }
   }
 

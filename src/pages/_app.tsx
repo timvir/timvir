@@ -21,9 +21,39 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no" />
+
+        <script>
+          {themeDetector}
+        </script>
       </Head>
 
       <Component {...pageProps} />
     </>
   );
 }
+
+const themeDetector = `
+function useTheme(theme) {
+  document.documentElement.setAttribute("data-timvir-theme", theme);
+}
+
+const theme = (() => {
+  try {
+    const theme = localStorage.getItem("timvir-theme");
+    if (theme) {
+      return theme;
+    }
+  } catch {}
+
+  if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+    return "light";
+  }
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
+})()
+
+if (theme) {
+  useTheme(theme);
+}
+`
