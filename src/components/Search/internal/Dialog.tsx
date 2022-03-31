@@ -42,7 +42,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
 
   const items = result?.edges ?? [];
 
-  const { getComboboxProps, getMenuProps, getInputProps, highlightedIndex, getItemProps, closeMenu } = useCombobox({
+  const { getComboboxProps, getMenuProps, getInputProps, /* highlightedIndex, */ getItemProps, closeMenu } = useCombobox({
     defaultHighlightedIndex: 0,
     items,
     itemToString: (item) => (item ? item.node.label : ""),
