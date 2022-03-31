@@ -30,7 +30,7 @@ export const theme = css`
       --timvir-secondary-text-color: rgba(255 255 255 / 0.56);
 
       --timvir-sidebar-background-color: #1b1c1e;
-      --timvir-sidebar-text-color: ${colors.text.main};
+      --timvir-sidebar-text-color: rgba(255 255 255 / 0.86);
 
       --timvir-accent-color: ${colors.green["400"]};
     }

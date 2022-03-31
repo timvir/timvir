@@ -17,7 +17,9 @@ interface Props {
   };
 }
 
-function Sidebar({ toc, search }: Props) {
+function Sidebar(props: Props) {
+  const { toc, search } = props;
+
   const [state, mutate] = useImmer({
     shadowVisible: false,
   });
@@ -32,21 +34,7 @@ function Sidebar({ toc, search }: Props) {
   };
 
   return (
-    <aside
-      className={cx(
-        css`
-          position: fixed;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          width: 0;
-
-          @media (min-width: 60rem) {
-            width: 300px;
-          }
-        `
-      )}
-    >
+    <aside className={cx(classes.root)}>
       <div
         className={css`
           display: none;
@@ -77,15 +65,7 @@ function Sidebar({ toc, search }: Props) {
           </div>
         )}
 
-        <div
-          className={css`
-            padding: 24px 3px 30px;
-            overflow-y: auto;
-            flex-grow: 1;
-            overscroll-behavior: contain;
-          `}
-          onScroll={onScroll}
-        >
+        <div className={classes.sections} onScroll={onScroll}>
           <nav>
             {toc.map((c, i) => (
               <Section key={i} depth={0} {...c} />
@@ -98,6 +78,27 @@ function Sidebar({ toc, search }: Props) {
 }
 
 export default Sidebar;
+
+const classes = {
+  root: css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+
+    @media (min-width: 60rem) {
+      width: 300px;
+    }
+  `,
+
+  sections: css`
+    padding: 24px 3px 30px;
+    overflow-y: auto;
+    flex-grow: 1;
+    overscroll-behavior: contain;
+  `,
+};
 
 const Search = ({ open, label }: NonNullable<Props["search"]>) => {
   return (
