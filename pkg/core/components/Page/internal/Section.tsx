@@ -73,10 +73,10 @@ const classes = {
       height: 27px;
     }
     &:hover a {
-      background-color: #484d5b;
+      background-color: var(--timvir-sidebar-highlight-color);
     }
     &[data-active="true"] a {
-      background-color: #484d5b;
+      background-color: var(--timvir-sidebar-highlight-color);
     }
   `,
 };

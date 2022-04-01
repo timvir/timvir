@@ -1,5 +1,29 @@
 import { css } from "@linaria/core";
+import { color } from "d3-color";
 import * as colors from "./colors";
+
+const themes = {
+  light: {
+    backgroundColor: "#ffffff",
+    textColor: colors.text.main,
+    secondaryTextColor: colors.text.light,
+
+    sidebarBackgroundColor: colors.green["50"],
+    sidebarTextColor: colors.text.main,
+
+    accentColor: colors.green["400"],
+  },
+  dark: {
+    backgroundColor: "#1f2023",
+    textColor: "rgba(255 255 255 / 0.86)",
+    secondaryTextColor: "rgba(255 255 255 / 0.56)",
+
+    sidebarBackgroundColor: "#1b1c1e",
+    sidebarTextColor: "rgba(255 255 255 / 0.86)",
+
+    accentColor: colors.green["400"],
+  },
+} as const;
 
 export const theme = css`
   :global() {
@@ -7,32 +31,20 @@ export const theme = css`
       box-sizing: border-box;
     }
 
-    *, *:before, *:after {
+    *,
+    *:before,
+    *:after {
       box-sizing: inherit;
     }
   }
 
   :global() {
     :root {
-      --timvir-background-color: white;
-      --timvir-text-color: ${colors.text.main};
-      --timvir-secondary-text-color: ${colors.text.light};
-
-      --timvir-sidebar-background-color: ${colors.green["50"]};
-      --timvir-sidebar-text-color: ${colors.text.main};
-
-      --timvir-accent-color: ${colors.green["400"]};
+      ${mkTheme(themes.light)};
     }
 
     :root[data-timvir-theme="dark"] {
-      --timvir-background-color: #1f2023;
-      --timvir-text-color: rgba(255 255 255 / 0.86);
-      --timvir-secondary-text-color: rgba(255 255 255 / 0.56);
-
-      --timvir-sidebar-background-color: #1b1c1e;
-      --timvir-sidebar-text-color: rgba(255 255 255 / 0.86);
-
-      --timvir-accent-color: ${colors.green["400"]};
+      ${mkTheme(themes.dark)};
     }
   }
 
@@ -58,3 +70,25 @@ export const theme = css`
   --c-text: ${colors.text.main};
   --c-text-light: ${colors.text.light};
 `;
+
+function mkTheme(config: typeof themes[keyof typeof themes]) {
+  return `
+    --timvir-background-color: ${config.backgroundColor};
+    --timvir-text-color: ${config.textColor};
+    --timvir-secondary-text-color: ${config.secondaryTextColor};
+
+    --timvir-sidebar-background-color: ${config.sidebarBackgroundColor};
+    --timvir-sidebar-text-color: ${config.sidebarTextColor};
+    --timvir-sidebar-highlight-color: ${tweakColor(config.sidebarBackgroundColor)};
+
+    --timvir-accent-color: ${config.accentColor};
+  `;
+}
+
+const tweakColor = (input: string): string => {
+  const c = color(input)!.rgb();
+  const v = luminance([c.r, c.g, c.b]);
+  return v < 127 ? c.brighter(2).toString() : c.darker(0.3).toString();
+};
+
+const luminance = ([r, g, b]: [number, number, number]) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
