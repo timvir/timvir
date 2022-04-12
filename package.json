@@ -93,6 +93,6 @@
     "unfurl.js": "^5.6.4",
     "unist-util-visit": "^4.1.0",
     "unist-util-visit-parents": "^5.1.0",
-    "use-immer": "^0.6.0"
+    "use-immer": "^0.7.0"
   }
 }
