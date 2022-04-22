@@ -13,7 +13,7 @@ export function remarkPlugin() {
   return async (tree, file) => {
     const filename = file.history[0];
 
-    visit(tree, "mdxJsxFlowElement", (node) => {
+    visit(tree, ["mdxJsxTextElement", "mdxJsxFlowElement"], (node) => {
       if (node.name === "Sample") {
         const { attributes: attrs } = node;
 

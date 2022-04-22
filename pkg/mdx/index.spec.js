@@ -39,3 +39,16 @@ test("Sample variant=basic props={{ variant }}", async (t) => {
   t.is(tree.children.at(1).attributes.at(0).type, "mdxJsxExpressionAttribute");
   t.is(tree.children.at(1).attributes.at(0).value, "...{ extra: 1 }");
 });
+
+test("Sample inline", async (t) => {
+  const tree = await process(`<Sample variant="basic" /> or <Sample variant="basic" />`);
+
+  t.is(tree.type, "root");
+
+  console.log(JSON.stringify(tree, null, 4))
+
+  t.is(tree.children.at(0).type, "mdxjsEsm");
+
+  t.is(tree.children.at(2).type, "paragraph");
+  t.is(tree.children.at(2).children.at(0).type, "mdxJsxTextElement");
+});
