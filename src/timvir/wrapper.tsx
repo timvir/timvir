@@ -24,9 +24,14 @@ const mdxComponents: Components = {
 };
 
 export default function Wrapper({ children }: { children?: React.ReactNode }) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return null;
+  }
+
   return (
     <Page
-      location={useRouter()}
+      location={router}
       Link={Link_ as any}
       toc={toc}
       search={search}
