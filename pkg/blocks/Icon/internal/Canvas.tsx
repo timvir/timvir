@@ -8,7 +8,7 @@ interface Props {
   height: number;
 
   size: number;
-  Component: React.ReactType;
+  Component: React.ElementType;
 }
 
 const classes = {
