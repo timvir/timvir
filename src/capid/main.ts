@@ -15,9 +15,9 @@ export async function main() {
         sourceFile,
         visit({
           typeChecker,
-          writer: o => {
+          writer: (o: any) => {
             writer = o;
-          }
+          },
         })
       );
 
@@ -34,10 +34,14 @@ async function initTypeScript() {
     fileExists: ts.sys.fileExists,
     readFile: ts.sys.readFile,
     readDirectory: ts.sys.readDirectory,
-    useCaseSensitiveFileNames: true
+    useCaseSensitiveFileNames: true,
   };
 
   const configFileName = ts.findConfigFile(".", ts.sys.fileExists, "tsconfig.json");
+  if (!configFileName) {
+    throw new Error("initTypeScript: could not find config file");
+  }
+
   const configFile = ts.readConfigFile(configFileName, ts.sys.readFile);
   const { options, fileNames } = ts.parseJsonConfigFileContent(configFile.config, parseConfigHost, ".");
 
@@ -50,6 +54,9 @@ function visit({ typeChecker, writer }: { typeChecker: ts.TypeChecker; writer: a
   return (node: ts.Node) => {
     if (ts.isInterfaceDeclaration(node) && node.name.text === "Props") {
       const symbol = typeChecker.getSymbolAtLocation(node.name);
+      if (!symbol) {
+        return;
+      }
 
       writer({
         propsDeclaration: node,
@@ -57,31 +64,41 @@ function visit({ typeChecker, writer }: { typeChecker: ts.TypeChecker; writer: a
         tags: symbol.getJsDocTags(),
         props: {
           name: symbol.escapedName,
-          fields: [...node.members.entries()].map(([k, v]) => {
+          fields: [...node.members.entries()].flatMap(([_, v]) => {
+            if (!v.name) {
+              return [];
+            }
+
             const s = typeChecker.getSymbolAtLocation(v.name);
+            if (!s || !s.valueDeclaration) {
+              return [];
+            }
+
             const t = typeChecker.getTypeOfSymbolAtLocation(s, s.valueDeclaration);
 
             const type = {
               optional: !!v.questionToken,
               name: typeChecker.typeToString(t),
-              module: ""
+              module: "",
             };
 
             const tags = s.getJsDocTags();
-            const def = tags.find(x => x.name === "default");
-            const example = tags.find(x => x.name === "example");
+            const def = tags.find((x) => x.name === "default");
+            const example = tags.find((x) => x.name === "example");
 
-            return {
-              name: (v.name as any).escapedText,
-              type,
-              def: def ? def.text : undefined,
-              example: example ? example.text : undefined,
-              comment: {
-                shortText: ts.displayPartsToString(s.getDocumentationComment(typeChecker))
-              }
-            };
-          })
-        }
+            return [
+              {
+                name: (v.name as any).escapedText,
+                type,
+                def: def ? def.text : undefined,
+                example: example ? example.text : undefined,
+                comment: {
+                  shortText: ts.displayPartsToString(s.getDocumentationComment(typeChecker)),
+                },
+              },
+            ];
+          }),
+        },
       });
     }
   };

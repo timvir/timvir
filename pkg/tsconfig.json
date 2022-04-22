@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "strict": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "baseUrl": ".",
+    "paths": {
+      "@timvir/core": ["core"],
+      "@timvir/hooks": ["hooks"],
+      "@timvir/blocks": ["blocks"],
+      "@timvir/blocks/*": ["blocks/*"],
+      "@timvir/std": ["std"],
+      "@timvir/std/*": ["std/*"],
+      "@timvir/search": ["../src/packages/search"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "../next-env.d.ts"]
+}

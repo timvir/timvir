@@ -1,39 +1,66 @@
+import { theme } from "@timvir/core";
+import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import React from "react";
-import { theme } from "../../../../../packages/core";
+import { useRouter } from "next/router";
+import { ParsedUrlQuery } from "querystring";
+import * as React from "react";
 
-export default function Page({ component, sample }) {
-  const Component = dynamic(() => import(`../../../../../components/${component}/samples/${sample}.tsx`));
+interface Query extends ParsedUrlQuery {
+  component: string;
+  sample: string;
+}
+
+interface Props {
+  component: string;
+  sample: string;
+}
+
+export default function Page({ component, sample }: Props) {
+  const { isFallback } = useRouter();
+  if (isFallback) {
+    return null;
+  }
+
+  const Component = (() => {
+    if (component === "Page" || component === "Footer" || component === "NavigationFooter") {
+      return dynamic(() => import(`../../../../../../pkg/core/components/${component}/samples/${sample}.tsx`));
+    } else if (
+      [
+        "Arbitrary",
+        "Code",
+        "ColorBar",
+        "ColorBook",
+        "Cover",
+        "Exhibit",
+        "Font",
+        "Grid",
+        "Icon",
+        "Message",
+        "Swatch",
+        "Viewport",
+        "WebLink",
+      ].includes(component)
+    ) {
+      return dynamic(() => import(`../../../../../../pkg/blocks/${component}/samples/${sample}.tsx`));
+    } else {
+      return dynamic(() => import(`../../../../../components/${component}/samples/${sample}.tsx`));
+    }
+  })();
 
   return (
     <div className={theme}>
       <Component />
     </div>
   );
-};
+}
 
 export async function getStaticPaths() {
-  const fs = await import("fs");
-  const path = await import("path");
-
-  const paths = [];
-
-  const components = await fs.promises.readdir("src/components");
-  for (const component of components) {
-    try {
-      const samples = await fs.promises.readdir(`src/components/${component}/samples`);
-      for (const sample of samples) {
-        paths.push({ params: { component, sample: path.basename(sample, path.extname(sample)) } });
-      }
-    } catch {}
-  }
-
   return {
-    paths,
-    fallback: false,
+    paths: [],
+    fallback: true,
   };
 }
 
-export async function getStaticProps({ params }) {
-  return { props: { ...params } };
-}
+export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
+  return { props: { ...params! } };
+};

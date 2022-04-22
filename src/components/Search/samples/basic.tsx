@@ -1,11 +1,9 @@
-import React from "react";
+import * as React from "react";
 import { Search } from "..";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import { defaultSearch } from "../Search";
 
-const toc = [];
+const toc: any[] = [];
 
 export default function Sample() {
-  return <Search location={useRouter()} Link={Link} toc={toc} {...defaultSearch(toc)} open={false} />;
-};
+  return <Search {...defaultSearch(toc)} open={false} />;
+}

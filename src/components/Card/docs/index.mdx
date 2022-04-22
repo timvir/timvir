@@ -1,9 +1,6 @@
 import { Card } from "..";
 
-import { Picture } from "@zhif/macro";
-import { Exhibit } from "../../Exhibit";
-import { Grid } from "../../Grid";
-import { Sample } from "../../../../packages/macro";
+import { Exhibit, Grid } from "@timvir/blocks";
 
 # Card
 
@@ -13,10 +10,10 @@ import { Sample } from "../../../../packages/macro";
   </Exhibit>
   <Exhibit caption="Interactive Image Card">
     <Card elevation={2} interactive>
-      <Picture
+      {/* <Picture
         src="../../../../assets/jay-mantri-TFyi0QOx08c-unsplash.jpg"
         style={{ display: "block", width: "100%", height: "120px", borderRadius: "3px 3px 0 0", objectFit: "cover" }}
-      />
+      /> */}
       <div style={{ padding: 20 }}>CARD</div>
     </Card>
   </Exhibit>

@@ -1,0 +1,30 @@
+{
+  "type": "module",
+  "name": "@timvir/search",
+  "version": "0.0.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "types": "src/packages/search/index.d.ts",
+  "main": "./index.cjs",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "default": "./index.cjs"
+    },
+    "./styles.css": "./styles.css"
+  },
+  "module": "./index.js",
+  "dependencies": {
+    "@timvir/core": "*",
+    "downshift": "^6.0.6",
+    "fuzzaldrin-plus": "^0.6.0"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:timvir/timvir.git",
+    "directory": "pkg/search"
+  }
+}

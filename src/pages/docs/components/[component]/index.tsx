@@ -1,27 +1,64 @@
+import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import React from "react";
+import { useRouter } from "next/router";
+import { ParsedUrlQuery } from "querystring";
+import * as React from "react";
 import Wrapper from "../../../../timvir/wrapper";
 
-export default function Page({ component }) {
-  const Component = dynamic(() => import(`../../../../components/${component}/docs/index.mdx`));
+interface Query extends ParsedUrlQuery {
+  component: string;
+}
+
+interface Props {
+  component: string;
+}
+
+export default function Page({ component }: Props) {
+  const { isFallback } = useRouter();
+  if (isFallback) {
+    return <Wrapper />;
+  }
+
+  const Component = (() => {
+    if (component === "Page" || component === "Footer" || component === "NavigationFooter") {
+      return dynamic(() => import(`../../../../../pkg/core/components/${component}/docs/index.mdx`));
+    } else if (
+      [
+        "Arbitrary",
+        "Code",
+        "ColorBar",
+        "ColorBook",
+        "Cover",
+        "Exhibit",
+        "Font",
+        "Grid",
+        "Icon",
+        "Message",
+        "Swatch",
+        "Viewport",
+        "WebLink",
+      ].includes(component)
+    ) {
+      return dynamic(() => import(`../../../../../pkg/blocks/${component}/docs/index.mdx`));
+    } else {
+      return dynamic(() => import(`../../../../components/${component}/docs/index.mdx`));
+    }
+  })();
 
   return (
     <Wrapper>
       <Component />
     </Wrapper>
   );
-};
+}
 
 export async function getStaticPaths() {
-  const fs = await import("fs");
-  const components = await fs.promises.readdir("src/components");
-
   return {
-    paths: components.map((component) => ({ params: { component } })),
-    fallback: false,
+    paths: [],
+    fallback: true,
   };
 }
 
-export async function getStaticProps({ params }) {
-  return { props: { ...params } };
-}
+export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
+  return { props: { ...params! } };
+};

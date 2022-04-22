@@ -1,5 +1,5 @@
-import { css, cx } from "linaria";
-import React from "react";
+import { css } from "@linaria/core";
+import * as React from "react";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -10,17 +10,18 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   fontFaces: Array<{ name: string; style: React.CSSProperties; className?: string }>;
 }
 
-function FontFamilyMatrix({ fontFaces, className, ...props }: Props, ref: any /* FIXME */) {
+function FontFamilyMatrix(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { fontFaces, className, ...rest } = props
+
   const sortedWeights = Array.from(new Set(fontFaces.map((fontFace) => fontFace.style.fontWeight))).sort();
   const styles = ["normal", "italic"];
 
   return (
-    <Root ref={ref} className={className} {...props}>
+    <Root ref={ref} className={className} {...rest}>
       <div
         className={css`
           margin: 0 -24px;
           padding: 16px 24px;
-          background: white;
           font-size: 2rem;
           line-height: 1;
           display: grid;
@@ -34,7 +35,7 @@ function FontFamilyMatrix({ fontFaces, className, ...props }: Props, ref: any /*
             <div
               className={css`
                 font-size: 14px;
-                opacity: 0.5;
+                color: var(--timvir-secondary-text-color);
                 padding-right: 24px;
               `}
             >
@@ -71,5 +72,3 @@ function FontFamilyMatrix({ fontFaces, className, ...props }: Props, ref: any /*
 }
 
 export default React.forwardRef(FontFamilyMatrix);
-
-const capitalize = (str: string) => `${str[0].toUpperCase()}${str.slice(1)}`;

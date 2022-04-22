@@ -1,6 +1,6 @@
-import { css } from "linaria";
-import React from "react";
-import { useResizeObserverEntry } from "../../hooks/useResizeObserver";
+import { css } from "@linaria/core";
+import { useResizeObserverEntry } from "@timvir/hooks";
+import * as React from "react";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -11,11 +11,13 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   url: string;
 }
 
-function Figma({ url, ...props }: Props, ref: any /* FIXME */) {
+function Figma(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { url, ...rest } = props
+
   const [roRef, roe] = useResizeObserverEntry();
 
   return (
-    <Root ref={ref} {...props}>
+    <Root ref={ref} {...rest}>
       <div
         ref={roRef}
         className={css`

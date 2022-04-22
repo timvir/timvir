@@ -3,7 +3,7 @@
     "target": "esnext",
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -11,6 +11,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "jsx": "preserve",
     "lib": [
       "dom",
@@ -19,8 +21,32 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@timvir/*": ["src/packages/*"]
-    }
+      "@timvir/core": [
+        "pkg/core"
+      ],
+      "@timvir/hooks": [
+        "pkg/hooks"
+      ],
+      "@timvir/std": [
+        "pkg/std"
+      ],
+      "@timvir/std/*": [
+        "pkg/std/*"
+      ],
+      "@timvir/blocks": [
+        "pkg/blocks"
+      ],
+      "@timvir/blocks/*": [
+        "pkg/blocks/*"
+      ],
+      "@timvir/*": [
+        "src/packages/*"
+      ],
+      "@/timvir/*": [
+        "src/timvir/*"
+      ]
+    },
+    "incremental": true
   },
   "exclude": [
     "node_modules"

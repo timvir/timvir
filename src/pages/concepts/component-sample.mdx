@@ -6,7 +6,7 @@ export default Wrapper;
 A _Component Sample_ is a standalone JavaScript module (ESM), with a default export that is a React component.
 
 ```
-import React from "react";
+import * as React from "react";
 
 export default () => <div>This is a Component Sample</div>
 ```
@@ -37,7 +37,7 @@ For example, if you have a checkbox-like component and want to show it as checke
 page.
 
 ```
-import React from "react";
+import * as React from "react";
 import { Checkbox } from "..";
 
 interface Props {

@@ -1,7 +1,8 @@
-import React from "react";
+import * as React from "react";
 import { Image } from "..";
-import { importImage } from "@zhif/macro";
+
+import image from "../../../../assets/khachik-simonian-nXOB-wh4Oyc-unsplash.jpg";
 
 export default function Sample() {
-  return <Image {...importImage("../../../../assets/khachik-simonian-nXOB-wh4Oyc-unsplash.jpg")} />;
+  return <Image metadata={image} img={{ src: image.src }} sources={[]} />;
 }

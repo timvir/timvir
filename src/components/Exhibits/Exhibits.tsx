@@ -1,7 +1,8 @@
-import { css, cx } from "linaria";
+import { css, cx } from "@linaria/core";
+import { Code } from "@timvir/blocks";
+import { send, useContext } from "@timvir/core";
 import * as React from "react";
 import * as Icons from "react-feather";
-import { send, useContext } from "../Page/context";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -22,15 +23,19 @@ interface Selector {
   sticky?: number;
 }
 
-function Exhibits({ codeId, children, ...props }: Props, ref: any /* FIXME */) {
+function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { codeId, children, ...rest } = props;
+
   const context = useContext();
-  const backdrop = React.useRef<HTMLDivElement>();
+  const backdrop = React.useRef<HTMLDivElement>(null);
+  const [codeRef, setCodeRef] = React.useState<null | HTMLDivElement>(null);
+
   const [selector, setSelector] = React.useState<Selector>({});
   const timeout = React.useRef<any>();
 
   const exhibits: React.ReactElement[] = React.Children.toArray(children).filter(React.isValidElement);
 
-  const { source } = exhibits[selector.hover ?? selector.sticky]?.props ?? {};
+  const { source } = exhibits[(selector.hover ?? selector.sticky) as any]?.props ?? {};
   React.useEffect(() => {
     if (codeId) {
       if (source) {
@@ -44,7 +49,7 @@ function Exhibits({ codeId, children, ...props }: Props, ref: any /* FIXME */) {
   React.useEffect(() => {
     const index = selector.hover ?? selector.sticky;
     if (index !== undefined) {
-      const root = backdrop.current!.parentElement;
+      const root = backdrop.current!.parentElement!;
       const child = root.children[index + 1];
       const c = root.getBoundingClientRect();
       const e = child.getBoundingClientRect();
@@ -54,10 +59,21 @@ function Exhibits({ codeId, children, ...props }: Props, ref: any /* FIXME */) {
     } else {
       backdrop.current!.style.clipPath = "";
     }
-  }, [selector]);
+
+    if (codeRef) {
+      const infoParent = codeRef.parentElement!;
+      if (index !== undefined) {
+        infoParent.style.height = `${codeRef.getBoundingClientRect().height}px`;
+        infoParent.style.opacity = "1";
+      } else {
+        infoParent.style.height = "0px";
+        infoParent.style.opacity = "0";
+      }
+    }
+  }, [selector, codeRef]);
 
   return (
-    <Root ref={ref} {...props}>
+    <Root ref={ref} {...rest}>
       <div
         className={css`
           position: relative;
@@ -68,8 +84,6 @@ function Exhibits({ codeId, children, ...props }: Props, ref: any /* FIXME */) {
           padding: 20px;
 
           .${exhibit} {
-            padding: 16px;
-
             & > div {
               background: none;
             }
@@ -142,6 +156,28 @@ function Exhibits({ codeId, children, ...props }: Props, ref: any /* FIXME */) {
           </div>
         )}
       </div>
+
+      {(() => {
+        const focusedExhibitIndex = selector.hover ?? selector.sticky;
+        if (focusedExhibitIndex === undefined) {
+          return null;
+        }
+
+        return (
+          <div
+            className={cx(
+              css`
+                transition: height 0.2s, opacity 0.2s 0.1s;
+              `
+            )}
+            style={{ height: 0, opacity: 0 }}
+          >
+            <div ref={setCodeRef}>
+              <Code language="jsx">{exhibits[focusedExhibitIndex].props.source}</Code>
+            </div>
+          </div>
+        );
+      })()}
     </Root>
   );
 }

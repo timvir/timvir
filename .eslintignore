@@ -1,0 +1,9 @@
+.linaria-cache
+.next
+
+node_modules
+
+config/rollup.config.js
+next.config.js
+
+pkg/**/*.js

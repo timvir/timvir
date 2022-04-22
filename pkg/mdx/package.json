@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "name": "@timvir/mdx",
+  "version": "0.0.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": "./index.js"
+  },
+  "dependencies": {
+    "mdast-util-from-markdown": "^1.2.0",
+    "mdast-util-mdx": "^2.0.0",
+    "micromark-extension-mdxjs": "^1.0.0",
+    "unist-util-visit": "^4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:timvir/timvir.git",
+    "directory": "pkg/mdx"
+  }
+}

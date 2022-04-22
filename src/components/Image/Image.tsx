@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -11,9 +11,11 @@ interface Props extends React.ComponentProps<typeof Root> {
   sources: Array<{ srcSet: string; type: string }>;
 }
 
-function Image({ metadata, img, sources, ...props }: Props, ref: any /* FIXME */) {
+function Image(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { metadata, img, sources, ...rest } = props
+
   return (
-    <Root ref={ref} {...props}>
+    <Root ref={ref} {...rest}>
       {sources.map((p, i) => (
         <source key={i} {...p} />
       ))}

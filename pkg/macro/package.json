@@ -1,0 +1,14 @@
+{
+  "name": "@timvir/macro",
+  "version": "0.0.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "prettier": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:timvir/timvir.git",
+    "directory": "pkg/macro"
+  }
+}

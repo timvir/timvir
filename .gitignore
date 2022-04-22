@@ -1,16 +1,32 @@
 .DS_store
 
 .npmrc
+tsconfig.tsbuildinfo
 
 /node_modules/
 /.next/
 /.linaria-cache/
 /public/images/
 
-/packages/cli/bin.js
+/pkg/core/**/*.js
+/pkg/core/**/*.cjs
+/pkg/core/**/*.d.ts
+/pkg/core/**/*.css
 
-/packages/core/*
-!/packages/core/package.json
+/pkg/blocks/**/*.js
+/pkg/blocks/**/*.cjs
+/pkg/blocks/**/*.d.ts
+/pkg/blocks/**/*.css
 
-/packages/blocks/*
-!/packages/blocks/package.json
+/pkg/std/**/*.js
+/pkg/std/**/*.cjs
+/pkg/std/**/*.d.ts
+
+/pkg/hooks/**/*.js
+/pkg/hooks/**/*.cjs
+/pkg/hooks/**/*.d.ts
+
+/pkg/cli/bin.js
+
+/pkg/search/*
+!/pkg/search/package.json

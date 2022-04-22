@@ -1,5 +1,5 @@
-import { css, cx } from "linaria";
-import React from "react";
+import { css, cx } from "@linaria/core";
+import * as React from "react";
 import { opacity } from "./utils";
 import * as Icons from "react-feather";
 
@@ -25,7 +25,9 @@ const classes = {
   `,
 };
 
-function Cell({ background, foreground, isWhitelisted, className, style, ...props }: Props, ref: any /* FIXME */) {
+function Cell(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { background, foreground, isWhitelisted, className, style, ...rest } = props
+
   const large = opacity(3, background, foreground);
   const normal = opacity(4.5, background, foreground);
 
@@ -69,6 +71,8 @@ function Cell({ background, foreground, isWhitelisted, className, style, ...prop
           align-items: center;
           justify-content: center;
 
+          font-weight: 500;
+
           &:hover ${classes.icon} {
             opacity: 1;
           }
@@ -78,7 +82,7 @@ function Cell({ background, foreground, isWhitelisted, className, style, ...prop
         `
       )}
       style={{ color: foreground, ...style }}
-      {...props}
+      {...rest}
     >
       {content}
     </Root>

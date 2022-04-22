@@ -36,7 +36,7 @@ export default async function() {
 }
 
 const tmpl = template(`
-import React from "react";
+import * as React from "react";
 import Wrapper from "../../../../timvir/wrapper";
 import Content from "../../../../components/{{= it.component }}/docs/{{= it.file }}";
 

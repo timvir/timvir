@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "name": "@timvir/core",
+  "version": "0.0.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": "./index.js",
+    "./styles.css": "./styles.css"
+  },
+  "peerDependencies": {
+    "@mdx-js/react": "*",
+    "react": "*",
+    "react-hotkeys-hook": "*",
+    "use-immer": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:timvir/timvir.git",
+    "directory": "pkg/core"
+  }
+}

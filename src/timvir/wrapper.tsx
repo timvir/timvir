@@ -1,29 +1,29 @@
-import { MDXProviderComponents } from "@mdx-js/react";
+import { Components } from "@mdx-js/react/lib/index";
+import { Footer, Page } from "@timvir/core";
+import { defaultSearch, Search } from "@timvir/search";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
-import { Code } from "../components/Code";
-import { Search } from "../components/Search";
-import { defaultSearch } from "../components/Search/Search";
-import { Page } from "../packages/core";
-import toc from "./toc";
+import { Code } from "pkg/blocks";
+import * as React from "react";
 import routes from "./routes";
-import { Footer } from "../components/Footer";
+import toc from "./toc";
 
-const search = {
-  Component: (props: { open: boolean }) => (
-    <Search location={useRouter()} Link={Link} toc={toc} {...props} {...defaultSearch(toc)} />
-  ),
-};
-
-const mdxComponents: MDXProviderComponents = {
-  code: (props) => {
-    const [, language = "markdown"] = (props.className || "").match(/^language-(.*)$/) || [];
-    return <Code language={language}>{props.children}</Code>;
+const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
+  Component: function Component(props) {
+    return <Search {...props} {...defaultSearch(toc)} />;
   },
 };
 
-export default function Wrapper({ children }) {
+const mdxComponents: Components = {
+  pre: function pre(props: any) {
+    const [, language = "markdown"] =
+      (props.className ?? props.children?.props?.className ?? "").match(/^language-(.*)$/) || [];
+
+    return <Code language={language}>{props.children?.props?.children ?? props.children ?? ""}</Code>;
+  },
+};
+
+export default function Wrapper({ children }: { children?: React.ReactNode }) {
   return (
     <Page
       location={useRouter()}
@@ -37,7 +37,7 @@ export default function Wrapper({ children }) {
             {
               group: "Docs",
               items: [
-                { label: "Getting Started", href: "/docs/getting-started" },
+                { label: "Getting Started", href: "/docs" },
                 // { label: "Components", href: "/docs/components" },
               ],
             },
@@ -52,7 +52,7 @@ export default function Wrapper({ children }) {
 }
 
 const getHref = (to: string) => {
-  if (routes[to]) {
+  if (to in routes) {
     return to;
   } else {
     for (const [pathname, re] of Object.entries(routes)) {
@@ -62,6 +62,8 @@ const getHref = (to: string) => {
       }
     }
   }
+
+  return "#";
 };
 
 function Link_(props: LinkProps) {

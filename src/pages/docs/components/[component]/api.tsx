@@ -1,8 +1,24 @@
+import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
-import React from "react";
+import { useRouter } from "next/router";
+import { ParsedUrlQuery } from "querystring";
+import * as React from "react";
 import Wrapper from "../../../../timvir/wrapper";
 
-export default function Page({ component }) {
+interface Query extends ParsedUrlQuery {
+  component: string;
+}
+
+interface Props {
+  component: string;
+}
+
+export default function Page({ component }: Props) {
+  const { isFallback } = useRouter();
+  if (isFallback) {
+    return <Wrapper />;
+  }
+
   const Component = dynamic(() => import(`../../../../components/${component}/docs/api.mdx`));
 
   return (
@@ -10,18 +26,15 @@ export default function Page({ component }) {
       <Component />
     </Wrapper>
   );
-};
+}
 
 export async function getStaticPaths() {
-  const fs = await import("fs");
-  const components = await fs.promises.readdir("src/components");
-
   return {
-    paths: components.map((component) => ({ params: { component } })),
-    fallback: false,
+    paths: [],
+    fallback: true,
   };
 }
 
-export async function getStaticProps({ params }) {
-  return { props: { ...params } };
-}
+export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
+  return { props: { ...params! } };
+};

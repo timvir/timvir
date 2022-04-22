@@ -1,5 +1,5 @@
-import React from "react";
-import { css } from "linaria";
+import * as React from "react";
+import { css } from "@linaria/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -12,22 +12,34 @@ interface Props extends React.ComponentProps<typeof Root> {
   context?: React.ReactNode;
 }
 
-function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: any /* FIXME */) {
+function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { icon, label, context, ...rest } = props;
+
   return (
     <Root
       role="button"
       ref={ref}
-      {...props}
       className={css`
         display: flex;
         padding: 8px 0;
         font-size: 14px;
+        color: var(--timvir-text-color);
         cursor: pointer;
+        box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
 
         &:hover {
           background: rgba(0, 0, 0, 0.05);
         }
+
+        :global(:root[data-timvir-theme="dark"]) & {
+          box-shadow: rgba(255, 255, 255, 0.09) 0px 1px 0px;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.05);
+          }
+        }
       `}
+      {...rest}
     >
       <div
         className={css`
@@ -36,6 +48,7 @@ function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: any /
           justify-content: center;
           margin-left: 14px;
           width: 18px;
+          height: 24px;
         `}
       >
         {icon}
@@ -50,7 +63,7 @@ function SearchBoxListItem({ icon, label, context, ...props }: Props, ref: any /
           <div
             className={css`
               font-size: 12px;
-              color: rgba(55, 53, 47, 0.4);
+              color: var(--timvir-secondary-text-color);
             `}
           >
             {context}

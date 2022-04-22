@@ -1,5 +1,5 @@
-import { css } from "linaria";
-import React from "react";
+import { css } from "@linaria/core";
+import * as React from "react";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -11,11 +11,12 @@ interface Props extends React.ComponentProps<typeof Root> {
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function SearchBoxInput({ value, onChange, ...props }: Props, ref: any /* FIXME */) {
+function SearchBoxInput(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const { value, onChange, ...rest } = props;
+
   return (
     <Root
       ref={ref}
-      {...props}
       className={css`
         display: flex;
         align-items: center;
@@ -30,7 +31,12 @@ function SearchBoxInput({ value, onChange, ...props }: Props, ref: any /* FIXME 
         flex-shrink: 0;
         z-index: 1;
         box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
+
+        :global(:root[data-timvir-theme="dark"]) & {
+          box-shadow: rgba(255, 255, 255, 0.09) 0px 1px 0px;
+        }
       `}
+      {...rest}
     >
       <svg
         viewBox="0 0 17 17"
@@ -38,7 +44,7 @@ function SearchBoxInput({ value, onChange, ...props }: Props, ref: any /* FIXME 
           width: 18px;
           height: 18px;
           display: block;
-          fill: rgba(55, 53, 47, 0.4);
+          fill: var(--timvir-secondary-text-color);
           flex-shrink: 0;
           backface-visibility: hidden;
           margin-right: 10px;
@@ -52,6 +58,7 @@ function SearchBoxInput({ value, onChange, ...props }: Props, ref: any /* FIXME 
         value={value}
         onChange={onChange}
         className={css`
+          font-family: inherit;
           font-size: inherit;
           line-height: inherit;
           border: none;
@@ -65,7 +72,7 @@ function SearchBoxInput({ value, onChange, ...props }: Props, ref: any /* FIXME 
           overflow: hidden;
           text-overflow: ellipsis;
 
-          color: var(--c-text);
+          color: var(--timvir-text-color);
 
           &:focus {
             outline: 0;

@@ -1,7 +1,8 @@
+import { AppProps } from "next/app";
 import Head from "next/head";
-import React from "react";
+import * as React from "react";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <style jsx global>{`
@@ -20,9 +21,37 @@ export default function App({ Component, pageProps }) {
 
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no" />
+
+        <script dangerouslySetInnerHTML={{ __html: themeDetector }} />
       </Head>
 
       <Component {...pageProps} />
     </>
   );
 }
+
+const themeDetector = `
+function useTheme(theme) {
+  document.documentElement.setAttribute("data-timvir-theme", theme);
+}
+
+const theme = (() => {
+  try {
+    const theme = localStorage.getItem("timvir-theme");
+    if (theme) {
+      return theme;
+    }
+  } catch {}
+
+  if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+    return "light";
+  }
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
+})()
+
+if (theme) {
+  useTheme(theme);
+}
+`;

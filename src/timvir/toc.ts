@@ -1,19 +1,35 @@
 export default [
   { label: "Home", path: "/" },
-  { label: "Documentation", path: "/docs/getting-started" },
+  { label: "Documentation", path: "/docs", children: [{ label: "Search", path: "/docs/search" }] },
   { label: "Commands", path: "/commands" },
+  {
+    label: "Modules",
+    path: "/modules",
+    children: [
+      {
+        label: "@timvir/blocks",
+        path: "/modules/blocks",
+        children: [{ label: "Arbitrary", path: "/modules/blocks/Arbitrary" }],
+      },
+      { label: "@timvir/core", path: "/modules/core" },
+      { label: "@timvir/hooks", path: "/modules/hooks" },
+      { label: "@timvir/std", path: "/modules/std", children: [{ label: "base58", path: "/modules/std/base58" }] },
+    ],
+  },
   {
     label: "Packages",
     children: [
+      { label: "@timvir/blocks", path: "/packages/blocks" },
       { label: "@timvir/cli", path: "/packages/cli" },
       { label: "@timvir/core", path: "/packages/core" },
       { label: "@timvir/macro", path: "/packages/macro" },
-      { label: "@timvir/blocks", path: "/packages/blocks" },
+      { label: "@timvir/search", path: "/packages/search" },
     ],
   },
   {
     label: "Components",
     children: [
+      { label: "Arbitrary", path: "/docs/components/Arbitrary" },
       { label: "Card", path: "/docs/components/Card" },
       { label: "Code", path: "/docs/components/Code", children: [{ label: "API", path: "/docs/components/Code/api" }] },
       {
@@ -21,7 +37,11 @@ export default [
         path: "/docs/components/ColorBar",
         children: [{ label: "API", path: "/docs/components/ColorBar/api" }],
       },
-      { label: "ColorBook", path: "/docs/components/ColorBook" },
+      {
+        label: "ColorBook",
+        path: "/docs/components/ColorBook",
+        children: [{ label: "API", path: "/docs/components/ColorBook/api" }],
+      },
       { label: "ColorContrastInspector", path: "/docs/components/ColorContrastInspector" },
       {
         label: "Cover",
@@ -46,7 +66,6 @@ export default [
       { label: "NavigationFooter", path: "/docs/components/NavigationFooter" },
       { label: "Page", path: "/docs/components/Page" },
       { label: "Search", path: "/docs/components/Search" },
-      { label: "SearchBox", path: "/docs/components/SearchBox" },
       { label: "SearchBoxInput", path: "/docs/components/SearchBoxInput" },
       { label: "SearchBoxListItem", path: "/docs/components/SearchBoxListItem" },
       {

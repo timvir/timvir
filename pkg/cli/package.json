@@ -1,0 +1,17 @@
+{
+  "name": "@timvir/cli",
+  "version": "0.0.0",
+  "license": "MIT",
+  "bin": {
+    "timvir": "./bin.js"
+  },
+  "dependencies": {
+    "prettier": "*",
+    "typescript": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:timvir/timvir.git",
+    "directory": "pkg/cli"
+  }
+}

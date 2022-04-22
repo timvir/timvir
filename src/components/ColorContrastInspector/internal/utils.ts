@@ -5,7 +5,7 @@ export function opacity(contrast: number, background: string, text: string) {
     return undefined;
   }
 
-  const go = (min: number, max: number) => {
+  const go = (min: number, max: number): undefined | number => {
     if (min > max) {
       return undefined;
     }
