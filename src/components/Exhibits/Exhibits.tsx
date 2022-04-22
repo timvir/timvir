@@ -1,5 +1,4 @@
 import { css, cx } from "@linaria/core";
-import { Code } from "@timvir/blocks";
 import { send, useContext } from "@timvir/core";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -156,28 +155,6 @@ function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
           </div>
         )}
       </div>
-
-      {(() => {
-        const focusedExhibitIndex = selector.hover ?? selector.sticky;
-        if (focusedExhibitIndex === undefined) {
-          return null;
-        }
-
-        return (
-          <div
-            className={cx(
-              css`
-                transition: height 0.2s, opacity 0.2s 0.1s;
-              `
-            )}
-            style={{ height: 0, opacity: 0 }}
-          >
-            <div ref={setCodeRef}>
-              <Code language="jsx">{exhibits[focusedExhibitIndex].props.source}</Code>
-            </div>
-          </div>
-        );
-      })()}
     </Root>
   );
 }
