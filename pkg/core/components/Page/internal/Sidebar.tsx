@@ -122,7 +122,7 @@ const Search = ({ open, label }: NonNullable<Props["search"]>) => {
           align-items: center;
 
           &:hover {
-            background: var(--c-p-1);
+            background: var(--timvir-sidebar-highlight-color);
           }
 
           & > svg {

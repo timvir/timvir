@@ -64,11 +64,6 @@ export const theme = css`
   --c-p-3: ${colors.green["300"]};
   --c-p-4: ${colors.green["400"]};
   --c-p-5: ${colors.green["500"]};
-
-  --c-gray-8: ${colors.gray["800"]};
-
-  --c-text: ${colors.text.main};
-  --c-text-light: ${colors.text.light};
 `;
 
 function mkTheme(config: typeof themes[keyof typeof themes]) {
