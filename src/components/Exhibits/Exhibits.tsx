@@ -27,7 +27,6 @@ function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
 
   const context = useContext();
   const backdrop = React.useRef<HTMLDivElement>(null);
-  const [codeRef, setCodeRef] = React.useState<null | HTMLDivElement>(null);
 
   const [selector, setSelector] = React.useState<Selector>({});
   const timeout = React.useRef<any>();
@@ -58,18 +57,7 @@ function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
     } else {
       backdrop.current!.style.clipPath = "";
     }
-
-    if (codeRef) {
-      const infoParent = codeRef.parentElement!;
-      if (index !== undefined) {
-        infoParent.style.height = `${codeRef.getBoundingClientRect().height}px`;
-        infoParent.style.opacity = "1";
-      } else {
-        infoParent.style.height = "0px";
-        infoParent.style.opacity = "0";
-      }
-    }
-  }, [selector, codeRef]);
+  }, [selector]);
 
   return (
     <Root ref={ref} {...rest}>
