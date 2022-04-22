@@ -66,7 +66,7 @@ export function send<T>(context: Value, id: string, member: string, body: T) {
 }
 
 export function useProps<P extends { id?: string }>(props: P) {
-  const mailbox = useMailbox(props.id);
+  const mailbox = useMailbox(props.id!);
 
   const [state, mutate] = useImmer({
     overrides: undefined as undefined | Partial<P>,
