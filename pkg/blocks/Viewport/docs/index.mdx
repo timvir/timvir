@@ -2,32 +2,42 @@ import { Viewport } from "..";
 
 # Viewport
 
-The `<Viewport>` component is a full-width component which is a lightly interactive wrapper around an `<iframe>`.
-The viewport can be resized to simulate different device widths. The height of the iframe will automatically adjust
-to the iframe content.
+The `<Viewport>` component is a full-width component which is a lightly
+interactive wrapper around an `<iframe>`. The viewport can be resized to
+simulate different device widths. The height of the iframe will automatically
+adjust to the iframe content.
 
-The component does not provide the full functionality of the browsers responsive device mode simulation. In particular,
-it can't simulate network / CPU throttling, nor can it change the user agent. It's purpose is to provide a simple
-interface to test your components at different viewport widths.
+The component does not provide the full functionality of the browsers responsive
+device mode simulation. In particular, it can't simulate network / CPU
+throttling, nor can it change the user agent. It's purpose is to provide a
+simple interface to test your components at different viewport widths.
 
-Since `<Viewport>` uses an `<iframe>`, you must provide a page which can be loaded into it. If you used the timvir
-cli to scaffold your component, you already have one such sample (in `src/components/…/samples/basic.tsx`). Make that
-sample available via a Next.js page and load it into the `<Viewport>`.
+Since `<Viewport>` uses an `<iframe>`, you must provide an URL which can be
+loaded into it. If you used the timvir cli to scaffold your component, you
+already have one such sample (in `src/components/…/samples/basic.tsx`). Make
+that sample available via a Next.js page and load it into the `<Viewport>`.
 
 See also [Concepts: Component Sample](/concepts/component-sample).
 
-<Viewport src="/docs/components/Grid/samples/basic" />
+You can use any URL, it does not have to be <Sample variant="trigger"
+target="local">local</Sample>, it can also be any <Sample variant="trigger"
+target="public">public url</Sample>. Note that if the URL is pointing to another
+origin, it must allow embedding (not block it via `X-Frame-Options` or
+`Content-Security-Policy`).
+
+<Viewport id="sample" src="/docs/components/Grid/samples/basic" />
 
 ## Loading Behaviour
 
-The `<Viewport>` displays a gray, animated background while the iframe is loading.
+The `<Viewport>` displays a gray, animated background while the iframe is
+loading.
 
 <Viewport src="/api/slow" />
 
 ## Unsupported content
 
-When the Viewport points to something else than a HTML document (eg. an image), it'll
-stay the default height, but display the contents nonetheless.
+When the Viewport points to something else than a HTML document (eg. an image),
+it'll stay the default height, but display the contents nonetheless.
 
 TODO: display a nice error message describing the problem.
 

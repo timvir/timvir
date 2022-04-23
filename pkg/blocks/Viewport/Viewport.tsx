@@ -22,7 +22,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const block = useBlock(props)
+  const block = useBlock(props);
 
   const { src, code, className, ...rest } = block.props;
 
@@ -87,6 +87,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
   }, [svgROE]);
 
   const iframeRO = useResizeObserver((entries) => {
+    console.log(entries);
     if (height !== undefined) {
       const height = entries[entries.length - 1].contentRect.height;
       setHeight(height);
@@ -104,10 +105,15 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
    */
   const html = iframeRef.current?.contentDocument?.querySelector("html");
   React.useEffect(() => {
+    console.log("about to observe", html);
     if (html) {
       iframeRO.observe(html);
+
+      return () => {
+        iframeRO.unobserve(html);
+      };
     }
-  });
+  }, [html]);
 
   return (
     <>
@@ -136,6 +142,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
+              font-variant-numeric: tabular-nums;
             `}
           >
             {width}px
