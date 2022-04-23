@@ -1,7 +1,10 @@
+import { Bus } from "@timvir/core/bus";
 import Link from "next/link";
 import * as React from "react";
 
 export interface Value {
+  bus: Bus
+
   location: { asPath: string; push: (path: string) => void };
   Link: typeof Link;
 

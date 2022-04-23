@@ -1,3 +1,4 @@
+import { makeBus } from "@timvir/core/bus";
 import { MDXProvider } from "@mdx-js/react";
 import { Components } from "@mdx-js/react/lib/index";
 import { css, cx } from "@linaria/core";
@@ -77,6 +78,14 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
     },
   });
 
+  const [bus] = React.useState(makeBus)
+  const context = React.useMemo<Value>(() => ({
+    bus,
+    location,
+    Link,
+    blocks,
+  }), [bus, location, Link, blocks]);
+
   useHotkeys(
     "command+p,escape",
     (ev, handler) => {
@@ -100,7 +109,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   );
 
   return (
-    <Provider value={{ location, Link, blocks }}>
+    <Provider value={context}>
       <Root
         ref={ref}
         {...rest}
