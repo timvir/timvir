@@ -8,6 +8,9 @@
     ".": "./index.js",
     "./styles.css": "./styles.css"
   },
+  "dependencies": {
+    "wonka": "^4"
+  },
   "peerDependencies": {
     "@mdx-js/react": "*",
     "react": "*",
