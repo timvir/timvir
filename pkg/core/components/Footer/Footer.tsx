@@ -20,48 +20,14 @@ function Footer(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
   return (
     <Root ref={ref} className={cx(className, classes.root)} {...rest}>
       {links && (
-        <div
-          className={cx(
-            grid,
-            css`
-              margin-bottom: 50px;
-            `
-          )}
-        >
-          <div
-            className={css`
-              display: grid;
-              grid-template-columns: repeat(auto-fill, minmax(234px, 1fr));
-              grid-gap: 32px;
-            `}
-          >
+        <div className={grid}>
+          <div className={classes.linkGroups}>
             {links.map(({ group, items }, i) => (
               <div key={i}>
-                <div
-                  className={css`
-                    text-transform: uppercase;
-                    color: #999;
-                    font-weight: 700;
-                    letter-spacing: 0.08em;
-                    margin-bottom: 12px;
-                  `}
-                >
-                  {group}
-                </div>
+                <div className={classes.linkGroupTitle}>{group}</div>
                 <div>
                   {items.map(({ label, href }, j) => (
-                    <a
-                      key={j}
-                      href={href}
-                      className={css`
-                        display: block;
-                        color: white;
-                        text-decoration: none;
-                        &:hover {
-                          color: var(--c-p-4);
-                        }
-                      `}
-                    >
+                    <a key={j} href={href} className={classes.link}>
                       {label}
                     </a>
                   ))}
@@ -72,15 +38,10 @@ function Footer(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
         </div>
       )}
 
-      <div
-        className={cx(
-          grid,
-          css`
-            color: #999;
-          `
-        )}
-      >
-        <div>Copyright 2020</div>
+      <div className={cx(grid, classes.meta)}>
+        <div>
+          Built with <a href="https://timvir.vercel.app">Timvir</a>
+        </div>
       </div>
     </Root>
   );
@@ -93,5 +54,48 @@ const classes = {
     padding: 50px 0 30px;
     background: #20232a;
     color: white;
+
+    display: grid;
+    gap: 50px;
+  `,
+
+  linkGroups: css`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(234px, 1fr));
+    grid-gap: 32px;
+  `,
+
+  linkGroupTitle: css`
+    text-transform: uppercase;
+    color: var(--timvir-secondary-text-color);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  `,
+
+  link: css`
+    display: block;
+    color: white;
+    text-decoration: none;
+    &:hover {
+      color: var(--c-p-4);
+    }
+  `,
+
+  meta: css`
+    color: var(--timvir-secondary-text-color);
+
+    a {
+      color: currentColor;
+      text-decoration: none;
+      background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
+      background-position: bottom;
+      background-size: 100% 6px;
+      background-repeat: repeat-x;
+
+      &:hover {
+        background-image: linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a);
+      }
+    }
   `,
 };
