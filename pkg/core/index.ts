@@ -6,7 +6,7 @@ export * from "./context";
 export { extendedWidth, fullWidth, grid } from "./layout";
 export { theme } from "./theme";
 
-export function useElement<P extends { id?: string }>(props: P) {
+export function useBlock<P extends { id?: string }>(props: P) {
   const [p, { hasOverrides, reset }] = useProps(props);
 
   return {
