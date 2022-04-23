@@ -27,6 +27,7 @@ export function useMailbox(id?: string): Source<Message> {
 }
 
 export function useBlock<P extends { id?: string }>(props: P) {
+  const { bus } = useContext();
   const mailbox = useMailbox(props.id);
 
   const [state, mutate] = useImmer({
@@ -59,6 +60,7 @@ export function useBlock<P extends { id?: string }>(props: P) {
   );
 
   return {
+    bus,
     mailbox,
     props: { ...props, ...state.overrides },
     hasOverrides: !!state.overrides,
