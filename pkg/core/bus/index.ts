@@ -1,34 +1,32 @@
 import * as React from "react";
 import { useImmer } from "use-immer";
 import { filter, pipe, Source, Subject, subscribe } from "wonka";
-import { useContext, Value } from "./context";
+import { useContext } from "../context";
+import { Message } from "./messages";
+
+export * from "./messages";
 
 /**
  * The bus is a wonk Subject that represents a stream of Messages.
  */
 export type Bus = Subject<Message>;
 
-export type Message = Invoke<unknown>;
-
-export interface Invoke<T> {
-  type: "INVOKE";
-
-  path: string;
-  interface: string;
-  member: string;
-  body: T;
-}
-
-export function send<T>(context: Value, id: string, member: string, body: T) {
-  context.bus.next({
+/**
+ * Send a message to the bus.
+ */
+export function send<T>(bus: Bus, id: string, member: string, body: T) {
+  bus.next({
     type: "INVOKE",
-    path: `/dev/timvir/component/${id}`,
+    path: `/dev/timvir/element/${id}`,
     interface: "dev.timvir.Props",
     member,
     body,
   });
 }
 
+/**
+ * A mailbox is a wonka source which receives messages for one specific element.
+ */
 export function useMailbox(id: string): Source<Message> {
   const { bus } = useContext();
 
@@ -36,7 +34,7 @@ export function useMailbox(id: string): Source<Message> {
     () =>
       pipe(
         bus.source,
-        filter((x) => x.path === `/dev/timvir/component/${id}`)
+        filter((x) => x.path === `/dev/timvir/element/${id}`)
       ),
     [bus, id]
   );

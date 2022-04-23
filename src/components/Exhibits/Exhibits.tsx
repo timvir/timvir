@@ -37,9 +37,9 @@ function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
   React.useEffect(() => {
     if (codeId) {
       if (source) {
-        send(context, codeId, "merge", { children: source });
+        send(context.bus, codeId, "merge", { children: source });
       } else {
-        send(context, codeId, "reset", {});
+        send(context.bus, codeId, "reset", {});
       }
     }
   }, [codeId, source]);

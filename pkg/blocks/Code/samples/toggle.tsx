@@ -12,7 +12,7 @@ export default function Sample({ language, children }: any) {
       href="#"
       role="button"
       onClick={() => {
-        send(context, "code-1", "merge", {
+        send(context.bus, "code-1", "merge", {
           highlightedLines: undefined,
           language,
           children: code[language as any as keyof typeof code],

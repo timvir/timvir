@@ -55,7 +55,7 @@ value of the `color` prop.
 
 ```typescript
 const context = useContext();
-send(context, "some-component-id", "merge", { color: "rebeccapurple" });
+send(context.bus, "some-component-id", "merge", { color: "rebeccapurple" });
 ```
 
 The targetted component can use the `useProps()` hook to merge any overrides into the
