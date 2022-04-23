@@ -25,7 +25,7 @@
         "pkg/core"
       ],
       "@timvir/core/*": [
-        "core/*"
+        "pkg/core/*"
       ],
       "@timvir/hooks": [
         "pkg/hooks"
