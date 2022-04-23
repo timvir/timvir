@@ -4,6 +4,7 @@
 
 import { css, cx } from "@linaria/core";
 import * as Page from "@timvir/core";
+import { useBlock } from "@timvir/core";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -45,7 +46,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { children, language, fullWidth, highlightedLines, caption, ...rest } = props;
+  const block = useBlock(props)
+
+  const { children, language, fullWidth, highlightedLines, caption, ...rest } = block.props;
 
   const isHighlightedLine = (() => {
     return (line: number) => highlightedLines?.includes(line);

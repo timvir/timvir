@@ -1,6 +1,7 @@
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 import { Swatch } from "@timvir/blocks/Swatch";
+import { useBlock } from "@timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -15,7 +16,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function ColorBar(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { values, className, ...rest } = props;
+  const block = useBlock(props)
+
+  const { values, className, ...rest } = block.props;
 
   const [selected, setSelected] = React.useState<undefined | Props["values"][number]>(undefined);
 

@@ -4,6 +4,7 @@ import * as React from "react";
 import { useImmer } from "use-immer";
 import * as base58 from "@timvir/std/base58";
 import { Context } from "./context";
+import { useBlock } from "@timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -15,7 +16,9 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
 }
 
 function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { ExhibitProps, children, ...rest } = props;
+  const block = useBlock(props)
+
+  const { ExhibitProps, children, ...rest } = block.props;
 
   const [value, mutate] = useImmer({
     seed: 0,

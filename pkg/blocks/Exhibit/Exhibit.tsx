@@ -1,5 +1,6 @@
 import { css, cx } from "@linaria/core";
 import { useMDXComponents } from "@mdx-js/react";
+import { useBlock } from "@timvir/core";
 import * as React from "react";
 
 /**
@@ -23,9 +24,10 @@ interface Props extends React.ComponentProps<typeof Root> {
 }
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+  const block = useBlock(props)
   const components = { h3: "h3", ...useMDXComponents() };
 
-  const { title, caption, bleed = 0, BackdropProps, children, className, style, ...rest } = props;
+  const { title, caption, bleed = 0, BackdropProps, children, className, style, ...rest } = block.props;
 
   return (
     <>

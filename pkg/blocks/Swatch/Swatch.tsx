@@ -1,4 +1,5 @@
 import { css, cx } from "@linaria/core";
+import { useBlock } from "@timvir/core";
 import * as React from "react";
 
 /**
@@ -37,7 +38,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Swatch(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, ...rest } = props;
+  const block = useBlock(props)
+
+  const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, ...rest } = block.props;
 
   const [label, setLabel] = React.useState(name);
   React.useEffect(() => {
