@@ -4,7 +4,7 @@
 
 import { css, cx } from "@linaria/core";
 import * as Page from "@timvir/core";
-import { useProps } from "@timvir/core";
+import { useProps } from "@timvir/core/bus";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import * as React from "react";
 import * as Icons from "react-feather";

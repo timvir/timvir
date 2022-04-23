@@ -1,5 +1,6 @@
 import { css, cx } from "@linaria/core";
-import { send, useContext } from "@timvir/core";
+import { useContext } from "@timvir/core";
+import { send } from "@timvir/core/bus";
 import * as React from "react";
 import * as Icons from "react-feather";
 

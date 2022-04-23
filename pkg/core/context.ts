@@ -1,6 +1,6 @@
+import { Bus } from "@timvir/core/bus";
 import Link from "next/link";
 import * as React from "react";
-import { Bus } from "./bus";
 
 export interface Value {
   bus: Bus;

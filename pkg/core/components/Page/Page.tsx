@@ -1,12 +1,12 @@
 import { css, cx } from "@linaria/core";
 import { MDXProvider } from "@mdx-js/react";
 import { Components } from "@mdx-js/react/lib/index";
+import { makeBus } from "@timvir/core/bus";
 import type Link from "next/link";
 import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useImmer } from "use-immer";
-import { makeSubject } from "wonka";
-import { Message, Provider, Value } from "../../context";
+import { Provider, Value } from "../../context";
 import { grid } from "../../layout";
 import { theme } from "../../theme";
 import { NavigationFooter } from "../NavigationFooter";
@@ -79,7 +79,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   });
 
   const [context] = React.useState(() => ({
-    bus: makeSubject<Message>(),
+    bus: makeBus(),
     location,
     Link,
     blocks,

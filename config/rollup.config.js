@@ -198,6 +198,40 @@ export default [
   },
 
   /*
+   * @timvir/core/bus
+   */
+  {
+    input: "pkg/core/bus/index.ts",
+    output: [
+      {
+        file: "pkg/core/bus/index.js",
+        format: "esm",
+      },
+    ],
+    plugins: [
+      resolve({ extensions }),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+        plugins: [
+          ["babel-plugin-macros"],
+          ["@babel/plugin-proposal-optional-chaining"],
+          ["@babel/plugin-proposal-nullish-coalescing-operator"],
+        ],
+        babelHelpers: "bundled",
+      }),
+    ],
+    external: [
+      "next/link",
+      "next/router",
+      ...Object.keys(require("../pkg/core/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/core/package.json").peerDependencies || {}),
+      /@timvir\/core/,
+    ],
+  },
+
+  /*
    * @timvir/blocks
    */
   ...fs.readdirSync("pkg/blocks").flatMap((file) => {

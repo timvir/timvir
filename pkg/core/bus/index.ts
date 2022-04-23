@@ -1,15 +1,17 @@
 import * as React from "react";
 import { useImmer } from "use-immer";
-import { filter, pipe, Source, Subject, subscribe } from "wonka";
+import { filter, makeSubject, pipe, Source, Subject, subscribe } from "wonka";
 import { useContext } from "../context";
 import { Message } from "./messages";
 
 export * from "./messages";
 
 /**
- * The bus is a wonk Subject that represents a stream of Messages.
+ * The bus is a wonka Subject that represents a stream of Messages.
  */
 export type Bus = Subject<Message>;
+
+export const makeBus = () => makeSubject<Message>();
 
 /**
  * Send a message to the bus.

@@ -12,6 +12,7 @@
     "baseUrl": ".",
     "paths": {
       "@timvir/core": ["core"],
+      "@timvir/core/*": ["core/*"],
       "@timvir/hooks": ["hooks"],
       "@timvir/blocks": ["blocks"],
       "@timvir/blocks/*": ["blocks/*"],
