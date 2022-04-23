@@ -4,7 +4,7 @@
 
 import { css, cx } from "@linaria/core";
 import * as Page from "@timvir/core";
-import { useProps } from "@timvir/core/bus";
+import { useElement } from "@timvir/core";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -46,8 +46,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const [{ children, language, fullWidth, highlightedLines, caption, ...rest }, { hasOverrides, reset }] =
-    useProps(props);
+  const element = useElement(props);
+
+  const { children, language, fullWidth, highlightedLines, caption, ...rest } = element.props;
 
   const isHighlightedLine = (() => {
     return (line: number) => highlightedLines?.includes(line);
@@ -188,14 +189,14 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
 
       {caption && <div className={classes.caption}>{caption}</div>}
 
-      {hasOverrides && (
+      {element.hasOverrides && (
         <button
           className={css`
             position: absolute;
             bottom: 0;
             right: 0;
           `}
-          onClick={reset}
+          onClick={element.reset}
         >
           reset
         </button>
