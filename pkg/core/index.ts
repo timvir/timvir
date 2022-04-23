@@ -13,21 +13,21 @@ export { theme } from "./theme";
 /**
  * A mailbox is a wonka source which receives messages for one specific block (identified by its id).
  */
-export function useMailbox(id: string): Source<Message> {
+export function useMailbox(id?: string): Source<Message> {
   const { bus } = useContext();
 
   return React.useMemo(
     () =>
       pipe(
         bus.source,
-        filter((x) => x.path === `/dev/timvir/block/${id}`)
+        filter((x) => id ? x.path === `/dev/timvir/block/${id}` : false)
       ),
     [bus, id]
   );
 }
 
 export function useBlock<P extends { id?: string }>(props: P) {
-  const mailbox = useMailbox(props.id!);
+  const mailbox = useMailbox(props.id);
 
   const [state, mutate] = useImmer({
     overrides: undefined as undefined | Partial<P>,
