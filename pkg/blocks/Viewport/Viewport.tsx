@@ -1,5 +1,5 @@
 import { css, cx } from "@linaria/core";
-import { fullWidth } from "@timvir/core";
+import { fullWidth, useBlock } from "@timvir/core";
 import { useResizeObserver, useResizeObserverEntry } from "@timvir/hooks";
 import * as React from "react";
 import { Caption, Handle, Ruler } from "./internal";
@@ -22,7 +22,9 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { src, code, className, ...rest } = props;
+  const block = useBlock(props)
+
+  const { src, code, className, ...rest } = block.props;
 
   /*
    * The container measures the width of the main column. It is used to initialize
