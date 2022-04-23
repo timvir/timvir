@@ -24,6 +24,9 @@
       "@timvir/core": [
         "pkg/core"
       ],
+      "@timvir/core/*": [
+        "core/*"
+      ],
       "@timvir/hooks": [
         "pkg/hooks"
       ],
