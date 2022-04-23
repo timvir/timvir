@@ -59,6 +59,7 @@ export function useBlock<P extends { id?: string }>(props: P) {
   );
 
   return {
+    mailbox,
     props: { ...props, ...state.overrides },
     hasOverrides: !!state.overrides,
     reset: () => {
