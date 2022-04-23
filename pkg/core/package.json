@@ -6,6 +6,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./index.js",
+    "./bus": "./bus/index.js",
     "./styles.css": "./styles.css"
   },
   "dependencies": {
