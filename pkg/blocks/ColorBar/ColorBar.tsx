@@ -1,7 +1,7 @@
 import { css, cx } from "@linaria/core";
-import * as React from "react";
 import { Swatch } from "@timvir/blocks/Swatch";
 import { useBlock } from "@timvir/core";
+import * as React from "react";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -16,22 +16,18 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function ColorBar(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const block = useBlock(props)
+  const block = useBlock(props);
 
   const { values, className, ...rest } = block.props;
 
   const [selected, setSelected] = React.useState<undefined | Props["values"][number]>(undefined);
 
   return (
-    <Root ref={ref} className={cx(className, classes.root )} {...rest}>
-      <div className={cx(classes.bar)} style={{ opacity: selected ? 0 : 1}}>
+    <Root ref={ref} className={cx(className, classes.root, selected && tweaks.selected)} {...rest}>
+      <div className={classes.bar} style={{ opacity: selected ? 0 : 1 }}>
         {values.map((value, i) => (
           <div key={i} className={classes.value}>
             <div
-              className={css`
-                transition: all 0.16s;
-                cursor: pointer;
-              `}
               style={{ background: typeof value === "string" ? value : value.value }}
               onClick={() => {
                 setSelected(value);
@@ -41,26 +37,7 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
         ))}
       </div>
 
-      <div
-        className={cx(
-          css`
-            position: absolute;
-            top: 50%;
-            right: 0px;
-            left: 0px;
-            transform: translateY(-50%);
-            pointer-events: none;
-            opacity: 0;
-            z-index: 4;
-            transition: opacity 0.16s;
-          `,
-          selected &&
-            css`
-              pointer-events: all;
-              opacity: 1;
-            `
-        )}
-      >
+      <div className={classes.overlay}>
         <Swatch
           {...(typeof selected === "string" ? { value: selected } : { value: selected?.value ?? "" })}
           onMouseLeave={() => {
@@ -73,6 +50,10 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
 }
 
 export default React.forwardRef(ColorBar);
+
+const tweaks = {
+  selected: css``,
+};
 
 const classes = {
   root: css`
@@ -112,6 +93,10 @@ const classes = {
     display: grid;
     place-items: stretch;
 
+    & > div {
+      transition: all 0.16s;
+      cursor: pointer;
+    }
     &:first-child > div {
       border-radius: 2px 0 0 2px;
     }
@@ -128,5 +113,22 @@ const classes = {
       box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
         0 8px 24px rgba(16, 22, 26, 0.2);
     }
-  `
+  `,
+
+  overlay: css`
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    left: 0px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 4;
+    transition: opacity 0.16s;
+
+    .${tweaks.selected} & {
+      pointer-events: all;
+      opacity: 1;
+    }
+  `,
 };
