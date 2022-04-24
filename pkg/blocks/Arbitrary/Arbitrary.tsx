@@ -30,6 +30,18 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
     });
   }, [mutate]);
 
+  React.useEffect(() => {
+    if (props.id) {
+      block.bus.next({
+        type: "SIGNAL",
+        path: `/dev/timvir/block/${props.id}`,
+        interface: "dev.timvir.block.Arbitrary",
+        member: "seed",
+        body: value.seed,
+      });
+    }
+  }, [block.bus, value.seed]);
+
   return (
     <Context.Provider value={value}>
       <Root ref={ref} className={cx(classes.root, className)} {...rest}>
