@@ -31,6 +31,11 @@ export default withPlugins([withLinaria], {
       ],
     });
 
+    config.module.rules.push({
+      test: /core\/theme\/detector/,
+      type: "asset/source",
+    });
+
     return config;
   },
 });

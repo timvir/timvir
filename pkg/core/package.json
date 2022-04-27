@@ -7,6 +7,7 @@
   "exports": {
     ".": "./index.js",
     "./bus": "./bus/index.js",
+    "./theme/detector": "./theme/detector.js",
     "./styles.css": "./styles.css"
   },
   "dependencies": {

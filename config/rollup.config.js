@@ -4,7 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import * as fs from "fs";
-// import { terser } from "rollup-plugin-terser";
+import { terser } from "rollup-plugin-terser";
 import shebang from "rollup-plugin-add-shebang";
 import css from "rollup-plugin-css-only";
 import stylis from "stylis";
@@ -229,6 +229,33 @@ export default [
       ...Object.keys(require("../pkg/core/package.json").dependencies || {}),
       ...Object.keys(require("../pkg/core/package.json").peerDependencies || {}),
       /@timvir\/core/,
+    ],
+  },
+
+  /*
+   * @timvir/core/theme/detector
+   */
+  {
+    input: "pkg/core/theme/detector.ts",
+    output: [
+      {
+        file: "pkg/core/theme/detector.js",
+        format: "esm",
+      },
+    ],
+    plugins: [
+      terser(),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+        plugins: [
+          ["babel-plugin-macros"],
+          ["@babel/plugin-proposal-optional-chaining"],
+          ["@babel/plugin-proposal-nullish-coalescing-operator"],
+        ],
+        babelHelpers: "bundled",
+      }),
     ],
   },
 
