@@ -45,8 +45,6 @@ test("Sample as inline", async (t) => {
 
   t.is(tree.type, "root");
 
-  console.log(JSON.stringify(tree, null, 4))
-
   t.is(tree.children.at(0).type, "mdxjsEsm");
 
   t.is(tree.children.at(2).type, "paragraph");
