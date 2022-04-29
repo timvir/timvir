@@ -46,7 +46,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const block = useBlock(props)
+  const block = useBlock(props);
 
   const { children, language, fullWidth, highlightedLines, caption, ...rest } = block.props;
 

@@ -3,21 +3,8 @@ import { Exhibit } from "..";
 
 export default function Sample() {
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
-      <Exhibit bleed={24}>
-        <div
-          style={{
-            height: 40,
-            padding: "0 16px",
-            background: "teal",
-            color: "white",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          Hey, look here, look at my beauty!
-        </div>
-      </Exhibit>
-    </div>
+    <Exhibit bleed={8} caption={`Explain what the exhibit is all about.`}>
+      <div>Hey, look here, look at my beauty!</div>
+    </Exhibit>
   );
 }

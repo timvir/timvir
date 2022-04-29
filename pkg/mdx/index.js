@@ -1,11 +1,15 @@
-import * as fs from "fs";
+import generate from "@babel/generator";
+import { parse } from "@babel/parser";
+import * as t from "@babel/types";
+import * as crypto from "node:crypto";
+import * as espree from "espree";
+import * as fs from "node:fs";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
-import * as crypto from "crypto";
-import * as path from "path";
+import * as path from "node:path";
+import prettier from "prettier";
 import { visit } from "unist-util-visit";
-import * as espree from "espree";
 
 export function remarkPlugin() {
   let counter = 0;
@@ -31,6 +35,14 @@ export function remarkPlugin() {
          * The module which holds the sample.
          */
         const module = path.join(path.dirname(filename), component, "samples", variant);
+
+        function loadSource() {
+          if (fs.existsSync(module)) {
+            return fs.readFileSync(module, "utf8");
+          } else {
+            return fs.readFileSync(module + ".tsx", "utf8");
+          }
+        }
 
         ({
           component: () => {
@@ -90,12 +102,66 @@ export function remarkPlugin() {
             }
           },
           source: () => {
+            const source = loadSource();
+
+            const { children } = fromMarkdown(`{${JSON.stringify(source)}}`, {
+              extensions: [mdxjs()],
+              mdastExtensions: [mdxFromMarkdown()],
+            });
+
+            for (const [k] of Object.keys(node)) {
+              delete node[k];
+            }
+
+            for (const [k, v] of Object.entries(children[0])) {
+              node[k] = v;
+            }
+          },
+          [`source/component`]: () => {
             const source = (() => {
-              if (fs.existsSync(module)) {
-                return fs.readFileSync(module, "utf8");
-              } else {
-                return fs.readFileSync(module + ".tsx", "utf8");
-              }
+              const file = parse(loadSource(), {
+                sourceType: "module",
+                plugins: ["jsx", "typescript"],
+              });
+
+              const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
+              const { declaration } = exportDefaultDeclaration;
+              const { code } = generate.default(declaration);
+              return prettier.format(code, {
+                parser: "typescript",
+                printWidth: 80,
+              });
+            })();
+
+            const { children } = fromMarkdown(`{${JSON.stringify(source)}}`, {
+              extensions: [mdxjs()],
+              mdastExtensions: [mdxFromMarkdown()],
+            });
+
+            for (const [k] of Object.keys(node)) {
+              delete node[k];
+            }
+
+            for (const [k, v] of Object.entries(children[0])) {
+              node[k] = v;
+            }
+          },
+          [`source/markup`]: () => {
+            const source = (() => {
+              const file = parse(loadSource(), {
+                sourceType: "module",
+                plugins: ["jsx", "typescript"],
+              });
+
+              const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
+              const { declaration } = exportDefaultDeclaration;
+              const body = declaration.body.body;
+              const returnStatement = body.find((node) => t.isReturnStatement(node));
+              const { code } = generate.default(returnStatement.argument);
+              return prettier.format(code, {
+                parser: "mdx",
+                printWidth: 80,
+              });
             })();
 
             const { children } = fromMarkdown(`{${JSON.stringify(source)}}`, {
