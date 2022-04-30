@@ -1,66 +1,69 @@
-import { PrismTheme } from "prism-react-renderer";
+import { css } from "@linaria/core";
 
-export const theme: PrismTheme = {
-  plain: {
-    color: "#393A34",
-    backgroundColor: "#f6f8fa",
-  },
+export default css`
+  color: #393a34;
+  background-color: #f6f8fa;
 
-  styles: [
-    {
-      types: ["comment", "prolog", "doctype", "cdata"],
-      style: {
-        color: "#999988",
-        fontStyle: "italic",
-      },
-    },
-    {
-      types: ["namespace"],
-      style: {
-        opacity: 0.7,
-      },
-    },
-    {
-      types: ["string", "attr-value"],
-      style: {
-        color: "#e3116c",
-      },
-    },
-    {
-      types: ["punctuation", "operator"],
-      style: {
-        color: "#393A34",
-      },
-    },
-    {
-      types: ["entity", "url", "symbol", "number", "boolean", "variable", "constant", "property", "regex", "inserted"],
-      style: {
-        color: "#36acaa",
-      },
-    },
-    {
-      types: ["atrule", "keyword", "attr-name", "selector"],
-      style: {
-        color: "#00a4db",
-      },
-    },
-    {
-      types: ["function", "deleted", "tag"],
-      style: {
-        color: "#d73a49",
-      },
-    },
-    {
-      types: ["function-variable"],
-      style: {
-        color: "#6f42c1",
-      },
-    },
-    {
-      types: ["tag", "selector", "keyword"],
-      style: {
-        color: "#00009f",
-      },
-    },
-  ],
-};
+  & :is(.comment, .prolog, .doctype, .cdata) {
+    color: #999988;
+    font-style: italic;
+  }
+  & :is(.namespace) {
+    opacity: 0.7;
+  }
+  & :is(.string, .attr-value) {
+    color: #e3116c;
+  }
+  & :is(.punctuation, .operator) {
+    color: #6cb6ff;
+  }
+  & :is(.function, .delete, .tag) {
+    color: #d73a49;
+  }
+  & :is(.tag, .selector, .keyword) {
+    color: #00009f;
+  }
+  & :is(.function-variable) {
+    color: #6f42c1;
+  }
+  & :is(.atrule, .keyword, .attr-name, .selector) {
+    color: #00a4db;
+  }
+  & :is(.entity, .url, .symbol, .number, .boolean, .variable, .constant, .property, .regex, .inserted) {
+    color: #36acaa;
+  }
+
+  :global(:root[data-timvir-theme="dark"]) & {
+    color: #adbac7;
+    background-color: #2d333b;
+
+    & :is(.comment, .prolog, .doctype, .cdata) {
+      color: #999988;
+      font-style: italic;
+    }
+    & :is(.namespace) {
+      opacity: 0.7;
+    }
+    & :is(.string, .attr-value) {
+      color: #96d0ff;
+    }
+    & :is(.punctuation, .operator) {
+      color: #6cb6ff;
+    }
+    & :is(.function, .delete, .tag) {
+      color: #d73a49;
+    }
+    & :is(.tag, .selector, .keyword) {
+      color: #8ddb8c;
+    }
+    & :is(.function-variable) {
+      color: #6f42c1;
+    }
+    & :is(.atrule, .keyword, .attr-name, .selector) {
+      color: #f47067;
+    }
+    & :is(.entity, .url, .symbol, .number, .boolean, .variable, .constant, .property, .regex, .inserted) {
+      color: #dcbdfb;
+    }
+  }
+`;

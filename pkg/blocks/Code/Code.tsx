@@ -5,11 +5,11 @@
 import { css, cx } from "@linaria/core";
 import * as Page from "@timvir/core";
 import { useBlock } from "@timvir/core";
-import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import Highlight, { defaultProps, Language, PrismTheme } from "prism-react-renderer";
 import * as React from "react";
 import * as Icons from "react-feather";
 import { useImmer } from "use-immer";
-import { theme } from "./theme";
+import theme from "./theme";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -45,6 +45,11 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   caption?: React.ReactNode;
 }
 
+const nullTheme: PrismTheme = {
+  plain: {},
+  styles: [],
+};
+
 function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const block = useBlock(props);
 
@@ -61,9 +66,9 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
 
   return (
     <Root ref={ref} className={cx(classes.root, fullWidth && Page.fullWidth)} {...rest}>
-      <Highlight {...defaultProps} code={children.trim()} language={language ?? "markup"} theme={theme}>
+      <Highlight {...defaultProps} code={children.trim()} language={language ?? "markup"} theme={nullTheme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={cx(className, classes.code, fullWidth && classes.fullWidth)} style={style}>
+          <pre className={cx(className, theme, classes.code, fullWidth && classes.fullWidth)} style={style}>
             <div
               className={css`
                 display: grid;
@@ -218,6 +223,16 @@ const classes = {
     &:hover {
       box-shadow: inset 0 0 0 1px rgb(16 22 26 / 30%), 0 1px 4px rgb(16 22 26 / 10%), 0 8px 24px rgb(16 22 26 / 10%);
     }
+
+    :global(:root[data-timvir-theme="dark"]) & {
+      box-shadow: inset 0 0 0 1px rgb(216 222 226 / 10%), 0 1px 4px rgb(216 222 226 / 5%),
+        0 2px 8px rgb(216 222 226 / 2%);
+
+      &:hover {
+        box-shadow: inset 0 0 0 1px rgb(216 222 226 / 10%), 0 1px 3px rgb(216 222 226 / 7%),
+          0 2px 16px rgb(216 222 226 / 5%);
+      }
+    }
   `,
 
   fullWidth: css`
@@ -252,6 +267,10 @@ const classes = {
   `,
   highlightedLine: css`
     background-color: #ffe10044;
+
+    :global(:root[data-timvir-theme="dark"]) & {
+      background-color: rgba(174, 124, 20, 0.15);
+    }
   `,
 
   lineNumber: css`
