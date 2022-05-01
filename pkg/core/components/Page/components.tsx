@@ -24,7 +24,7 @@ function Heading(Component: React.ComponentType<React.HTMLAttributes<HTMLHeading
             position: absolute;
             top: 0em;
             left: -0.8em;
-            color: var(--c-p-4);
+            color: var(--timvir-accent-color);
             font-weight: bold;
             font-size: 1em;
             text-decoration: none;
@@ -49,7 +49,7 @@ export const h1 = styled.h1`
   display: block;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  color: var(--c-p-4);
+  color: var(--timvir-accent-color);
   letter-spacing: 0.01em;
   font-style: normal;
   font-size: 36px;
@@ -63,7 +63,6 @@ export const h2 = Heading(
     display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--timvir-text-color);
     text-transform: none;
     letter-spacing: normal;
     font-size: 24px;
@@ -77,7 +76,6 @@ export const h3 = Heading(
     display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--timvir-text-color);
     text-transform: none;
     letter-spacing: normal;
     font-size: 18px;
@@ -91,7 +89,6 @@ export const h4 = Heading(
     display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--timvir-text-color);
     text-transform: none;
     letter-spacing: normal;
     font-weight: normal;
