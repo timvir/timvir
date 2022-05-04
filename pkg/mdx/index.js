@@ -127,10 +127,13 @@ export function remarkPlugin() {
               const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
               const { declaration } = exportDefaultDeclaration;
               const { code } = generate.default(declaration);
-              return prettier.format(code, {
-                parser: "typescript",
-                printWidth: 80,
-              });
+              return prettier
+                .format(code, {
+                  parser: "typescript",
+                  printWidth: 80,
+                })
+                .trim()
+                .slice(0, -1);
             })();
 
             const { children } = fromMarkdown(`{${JSON.stringify(source)}}`, {
@@ -158,10 +161,13 @@ export function remarkPlugin() {
               const body = declaration.body.body;
               const returnStatement = body.find((node) => t.isReturnStatement(node));
               const { code } = generate.default(returnStatement.argument);
-              return prettier.format(code, {
-                parser: "mdx",
-                printWidth: 80,
-              });
+              return prettier
+                .format(code, {
+                  parser: "typescript",
+                  printWidth: 80,
+                })
+                .trim()
+                .slice(0, -1);
             })();
 
             const { children } = fromMarkdown(`{${JSON.stringify(source)}}`, {
