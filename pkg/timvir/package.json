@@ -16,16 +16,16 @@
   },
   "dependencies": {
     "bytestring": "^0.0.5",
-    "downshift": "^6.0.6",
+    "downshift": "^6",
     "fuzzaldrin-plus": "^0.6.0",
+    "immer": "^9",
+    "prism-react-renderer": "^1",
+    "react-feather": "^2",
+    "use-immer": "^0.7.0",
     "wonka": "^4"
   },
   "peerDependencies": {
     "@mdx-js/react": "*",
-    "prism-react-renderer": "*",
-    "react-feather": "*",
-    "react-hotkeys-hook": "*",
-    "react": "*",
-    "use-immer": "*"
+    "react": "*"
   }
 }
