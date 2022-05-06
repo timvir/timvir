@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <script type="module" dangerouslySetInnerHTML={{ __html: require("@timvir/core/theme/detector") }} />
+        <script type="module" dangerouslySetInnerHTML={{ __html: require("timvir/core/theme/detector") }} />
       </Head>
       <body>
         <Main />
