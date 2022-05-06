@@ -1,6 +1,6 @@
 import fuzzaldrin from "fuzzaldrin-plus";
 import * as React from "react";
-import { Node } from "@timvir/core";
+import { Node } from "timvir/core";
 import { Dialog } from "./internal";
 
 /**

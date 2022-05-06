@@ -12,9 +12,12 @@
     "./context": "./context/index.js",
     "./core": "./core/index.js",
     "./hooks": "./hooks/index.js",
+    "./search": "./search/index.js",
     "./std/base58": "./std/base58/index.js"
   },
   "dependencies": {
+    "downshift": "^6.0.6",
+    "fuzzaldrin-plus": "^0.6.0",
     "wonka": "^4"
   },
   "peerDependencies": {

@@ -139,6 +139,7 @@ export default [
   module("context"),
   module("core"),
   module("hooks"),
+  module("search"),
   module("std/base58"),
 
   /*

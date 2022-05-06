@@ -1,4 +1,4 @@
-import { useContext } from "@timvir/core";
+import { useContext } from "timvir/core";
 import { useCombobox } from "downshift";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
@@ -42,20 +42,21 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
 
   const items = result?.edges ?? [];
 
-  const { getComboboxProps, getMenuProps, getInputProps, /* highlightedIndex, */ getItemProps, closeMenu } = useCombobox({
-    defaultHighlightedIndex: 0,
-    items,
-    itemToString: (item) => (item ? item.node.label : ""),
-    onInputValueChange: ({ inputValue }) => {
-      setValue(inputValue ?? "");
-    },
-    onSelectedItemChange: ({ selectedItem }) => {
-      if (selectedItem) {
-        location.push(selectedItem.node.path);
-      }
-      closeMenu();
-    },
-  });
+  const { getComboboxProps, getMenuProps, getInputProps, /* highlightedIndex, */ getItemProps, closeMenu } =
+    useCombobox({
+      defaultHighlightedIndex: 0,
+      items,
+      itemToString: (item) => (item ? item.node.label : ""),
+      onInputValueChange: ({ inputValue }) => {
+        setValue(inputValue ?? "");
+      },
+      onSelectedItemChange: ({ selectedItem }) => {
+        if (selectedItem) {
+          location.push(selectedItem.node.path);
+        }
+        closeMenu();
+      },
+    });
 
   return (
     <Root
@@ -145,7 +146,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
               `}
             >
               {items.map((item, index) => (
-                <Link key={index} href={{ pathname: item.node.path }}>
+                <Link key={index} href={item.node.path}>
                   <SearchBoxListItem
                     {...getItemProps({ item, index, onClick: onClose })}
                     icon={
@@ -161,9 +162,11 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
                     }
                     label={<Highlight string={item.node.path} query={value} />}
                     context={item.node.context}
-                    style={{
-                      // background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined,
-                    }}
+                    style={
+                      {
+                        // background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined,
+                      }
+                    }
                   />
                 </Link>
               ))}
