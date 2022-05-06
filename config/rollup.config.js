@@ -60,7 +60,131 @@ function block(name) {
   ];
 }
 
+function block1(name) {
+  return [
+    {
+      input: `pkg/timvir/blocks/${name}/index.ts`,
+      output: [
+        {
+          file: `pkg/timvir/blocks/${name}/index.js`,
+          format: "esm",
+        },
+      ],
+      plugins: [
+        resolve({ extensions }),
+        commonjs({}),
+        replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
+        linaria(),
+        css({ output: "styles.css" }),
+        babel({
+          configFile: false,
+          extensions,
+          presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+          plugins: [
+            ["babel-plugin-macros"],
+            ["@babel/plugin-proposal-optional-chaining"],
+            ["@babel/plugin-proposal-nullish-coalescing-operator"],
+          ],
+          babelHelpers: "bundled",
+        }),
+      ],
+      external: [
+        ...Object.keys(require("../pkg/timvir/package.json").dependencies || {}),
+        ...Object.keys(require("../pkg/timvir/package.json").peerDependencies || {}),
+        /^timvir\//,
+      ],
+    },
+  ];
+}
+
+function module(name) {
+  return {
+    input: `pkg/timvir/${name}/index.ts`,
+    output: {
+      file: `pkg/timvir/${name}/index.js`,
+      format: "esm",
+    },
+    plugins: [
+      resolve({ extensions }),
+      commonjs(),
+      linaria(),
+      css({ output: "styles.css" }),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [
+          ["@babel/preset-typescript"],
+          ["@babel/preset-env", { targets: { node } }],
+          ["@babel/preset-react", { useSpread: true }],
+        ],
+        plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]],
+        babelHelpers: "bundled",
+      }),
+      shebang(),
+    ],
+    external: [
+      ...require("builtin-modules"),
+      ...Object.keys(require("../pkg/timvir/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/timvir/package.json").peerDependencies || {}),
+      /^timvir\//,
+    ],
+  };
+}
+
 export default [
+  /*
+   * timvir
+   */
+  module("bus"),
+  module("context"),
+  module("core"),
+  module("hooks"),
+  module("std/base58"),
+
+  /*
+   * timvir/blocks/*
+   */
+  ...fs.readdirSync("pkg/timvir/blocks").flatMap((file) => {
+    if (file.match(/^[A-Z]/)) {
+      return block1(file);
+    } else {
+      return [];
+    }
+  }),
+  {
+    input: "pkg/timvir/blocks/index.ts",
+    output: [
+      {
+        file: "pkg/timvir/blocks/index.js",
+        format: "esm",
+      },
+    ],
+    plugins: [
+      resolve({ extensions }),
+      commonjs({}),
+      replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
+      linaria(),
+      css({ output: "styles.css" }),
+      babel({
+        configFile: false,
+        extensions,
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+        plugins: [
+          ["babel-plugin-macros"],
+          ["@babel/plugin-proposal-optional-chaining"],
+          ["@babel/plugin-proposal-nullish-coalescing-operator"],
+        ],
+        babelHelpers: "bundled",
+      }),
+    ],
+    external: [
+      ...require("builtin-modules"),
+      ...Object.keys(require("../pkg/timvir/package.json").dependencies || {}),
+      ...Object.keys(require("../pkg/timvir/package.json").peerDependencies || {}),
+      /^timvir\//,
+    ],
+  },
+
   /*
    * @timvir/cli
    */

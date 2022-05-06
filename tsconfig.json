@@ -47,6 +47,9 @@
       ],
       "@/timvir/*": [
         "src/timvir/*"
+      ],
+      "timvir/*": [
+        "pkg/timvir/*"
       ]
     },
     "incremental": true

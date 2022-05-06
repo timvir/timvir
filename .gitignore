@@ -8,6 +8,11 @@ tsconfig.tsbuildinfo
 /.linaria-cache/
 /public/images/
 
+/pkg/timvir/**/*.js
+/pkg/timvir/**/*.cjs
+/pkg/timvir/**/*.d.ts
+/pkg/timvir/**/*.css
+
 /pkg/core/**/*.js
 /pkg/core/**/*.cjs
 /pkg/core/**/*.d.ts

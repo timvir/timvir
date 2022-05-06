@@ -1,0 +1,27 @@
+{
+  "type": "module",
+  "name": "timvir",
+  "version": "0.0.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    "./style.css": "./style.css",
+    "./blocks/*": "./blocks/*",
+    "./bus": "./bus/index.js",
+    "./context": "./context/index.js",
+    "./core": "./core/index.js",
+    "./hooks": "./hooks/index.js",
+    "./std/base58": "./std/base58/index.js"
+  },
+  "dependencies": {
+    "wonka": "^4"
+  },
+  "peerDependencies": {
+    "@mdx-js/react": "*",
+    "prism-react-renderer": "*",
+    "react-feather": "*",
+    "react-hotkeys-hook": "*",
+    "react": "*",
+    "use-immer": "*"
+  }
+}

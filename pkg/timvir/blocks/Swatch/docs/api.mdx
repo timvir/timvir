@@ -1,0 +1,76 @@
+# API
+
+<div style={ { display: "grid", gridTemplateColumns: "min-content 1fr" } }>
+  <div style={ { fontWeight: "bold", marginRight: 16 } }>Root:</div>
+  <div>{`<div>`}</div>
+  <div style={ { fontWeight: "bold", marginRight: 16 } }>Ref:</div>
+  <div>Forward <span style={ { color: "rgb(153, 153, 153)" } }>(HTMLDivElement)</span></div>
+</div>
+
+## Props
+
+<Props {...{"fields":[{"name":"value","type":{"optional":false,"name":"string","module":""},"example":"\"#FFFFFF\"","comment":{"shortText":"The CSS Color value of the swatch. Any CSS color definition is accepted."}},{"name":"contrastValue","type":{"optional":true,"name":"string","module":""},"comment":{"shortText":"Color of the text that is rendered on top of the swatch. Should be chosen\nsuch that it provides enough contrast. If not provided then the normal text\ncolor from the page will be inherited."}},{"name":"name","type":{"optional":true,"name":"string","module":""},"comment":{"shortText":"Name of the swatch."}},{"name":"ancestry","type":{"optional":true,"name":"string","module":""},"example":"\"Blue 500\"","comment":{"shortText":"Use this as a short reference where or how the color was derived. If it is an\nprimordial color (not derived from any color palette or other algorithm), then\nleave it empty."}}]}} />
+
+export const required = (
+  <svg
+    x="0px"
+    y="0px"
+    width="10px"
+    height="10px"
+    viewBox="0 0 16 16"
+    style={ { position: "relative", top: 0, display: "inline-block", marginRight: 8 } }
+  >
+    <g transform="translate(0, 0)">
+      <circle cx="8" cy="8" r="8" fill="#444444"></circle>
+    </g>
+  </svg>
+);
+
+export const optional = (
+  <svg
+    x="0px"
+    y="0px"
+    width="10px"
+    height="10px"
+    viewBox="0 0 16 16"
+    style={ { position: "relative", top: 0, display: "inline-block", marginRight: 8 } }
+  >
+    <g transform="translate(0, 0)">
+      <circle
+        cx="8"
+        cy="8"
+        r="7.5"
+        fill="none"
+        stroke="#444444"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        data-cap="butt"
+      ></circle>
+    </g>
+  </svg>
+);
+
+export const Props = ({ fields }) => (
+  <div style={ { marginTop: 16, display: "grid", gridGap: 24 } }>
+    {fields.map(({ name, type, def, example, comment }) => (
+      <div key={name}>
+        <div style={ { marginLeft: -18 } }>
+          {type.optional ? optional : required}
+          <span style={ { fontWeight: "bold" } }>{name}</span>{`: `}
+          <span>{type.name}</span>
+          {def && (
+            <>
+             {` = `}<span style={ { fontWeight: "bold" } }>{def}</span>
+            </>
+          )}
+        </div>
+        <div>{comment.shortText}</div>
+        {example && (
+          <div style={ { marginLeft: 0, marginTop: 8, color: "rgb(153, 153, 153)", fontSize: "0.8rem" } }>
+            Example: <span style={ { fontWeight: "bold" } }>{example}</span>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+)
