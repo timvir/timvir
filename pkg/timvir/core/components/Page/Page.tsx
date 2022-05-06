@@ -5,7 +5,7 @@ import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
-import { theme } from "timvir/core/theme";
+import { theme } from "../../theme";
 import { useImmer } from "use-immer";
 import { grid } from "../../layout";
 import { NavigationFooter } from "../NavigationFooter";
