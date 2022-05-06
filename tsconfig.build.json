@@ -1,5 +1,5 @@
 {
   "files": [],
   "include": [],
-  "references": [{ "path": "./pkg" }, { "path": "./src/packages/search" }]
+  "references": [{ "path": "./pkg" }]
 }

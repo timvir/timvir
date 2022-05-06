@@ -11,6 +11,7 @@
     "noUnusedParameters": true,
     "baseUrl": ".",
     "paths": {
+      "timvir": ["timvir"],
       "@timvir/core": ["core"],
       "@timvir/core/*": ["core/*"],
       "@timvir/hooks": ["hooks"],

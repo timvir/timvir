@@ -8,8 +8,8 @@ export * from "./components/Footer";
 export * from "./components/Page";
 
 export { useContext } from "timvir/context";
-export { extendedWidth, fullWidth, grid } from "./layout.js";
-export { theme } from "./theme/index.js";
+export { extendedWidth, fullWidth, grid } from "./layout";
+export { theme } from "./theme";
 
 /**
  * A mailbox is a wonka source which receives messages for one specific block (identified by its id).
