@@ -32,6 +32,7 @@ export default [
       { label: "Exhibit", path: "/blocks/Exhibit" },
       { label: "Font", path: "/blocks/Font" },
       { label: "Grid", path: "/blocks/Grid" },
+      { label: "Icon", path: "/blocks/Icon" },
       { label: "Message", path: "/blocks/Message" },
       { label: "Swatch", path: "/blocks/Swatch" },
       { label: "Viewport", path: "/blocks/Viewport" },
