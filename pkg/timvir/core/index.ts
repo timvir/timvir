@@ -8,8 +8,8 @@ export * from "./components/Footer";
 export * from "./components/Page";
 
 export { useContext } from "timvir/context";
-export { extendedWidth, fullWidth, grid } from "./layout";
-export { theme } from "./theme";
+export { extendedWidth, fullWidth, grid } from "./layout.js";
+export { theme } from "./theme/index.js";
 
 /**
  * A mailbox is a wonka source which receives messages for one specific block (identified by its id).
@@ -21,7 +21,7 @@ export function useMailbox(id?: string): Source<Message> {
     () =>
       pipe(
         bus.source,
-        filter((x) => id ? x.path === `/dev/timvir/block/${id}` : false)
+        filter((x) => (id ? x.path === `/dev/timvir/block/${id}` : false))
       ),
     [bus, id]
   );
