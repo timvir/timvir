@@ -1,7 +1,7 @@
 import { css, cx } from "@linaria/core";
 import { Exhibit } from "timvir/blocks";
 import { useBlock } from "timvir/core";
-import * as base58 from "timvir/std/base58";
+import * as base58 from "bytestring/base58";
 import * as React from "react";
 import { useImmer } from "use-immer";
 import { Context } from "./context";

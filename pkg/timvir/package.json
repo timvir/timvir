@@ -12,10 +12,10 @@
     "./context": "./context/index.js",
     "./core": "./core/index.js",
     "./hooks": "./hooks/index.js",
-    "./search": "./search/index.js",
-    "./std/base58": "./std/base58/index.js"
+    "./search": "./search/index.js"
   },
   "dependencies": {
+    "bytestring": "^0.0.5",
     "downshift": "^6.0.6",
     "fuzzaldrin-plus": "^0.6.0",
     "wonka": "^4"

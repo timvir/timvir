@@ -48,6 +48,7 @@
     "ava": "^4.2.0",
     "babel-plugin-macros": "^3.1.0",
     "blurhash": "^1.1.5",
+    "bytestring": "^0.0.5",
     "chroma-js": "^2.4.2",
     "commander": "^9.2.0",
     "core-js": "^3.22.4",
