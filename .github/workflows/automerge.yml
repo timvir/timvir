@@ -1,0 +1,21 @@
+name: Automerge
+on: pull_request
+
+permissions:
+  contents: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - id: metadata
+        uses: dependabot/fetch-metadata@v1.3.1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - if: ${{ steps.dependabot-metadata.outputs.directory == '/' }}
+        run: gh pr merge --auto --merge "$PULL_REQUEST_URL"
+        env:
+          PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
