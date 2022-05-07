@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "name": "timvir",
-  "env": {
-    "NODE_ENV": "production"
-  }
-}
