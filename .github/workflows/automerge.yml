@@ -14,7 +14,7 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - if: ${{ steps.dependabot-metadata.outputs.directory == '/' }}
+      - if: ${{ steps.metadata.outputs.directory == '/' }}
         run: gh pr merge --auto --merge "$PULL_REQUEST_URL"
         env:
           PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}
