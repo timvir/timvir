@@ -102,6 +102,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
                     position: absolute;
                     top: 0;
                     right: 0;
+                    overflow: hidden;
 
                     width: var(--size);
                     height: var(--size);
