@@ -1,11 +1,21 @@
-name: Automerge
+name: Dependabot
 on: pull_request
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
-  dependabot:
+  approve:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - run: gh pr review --approve "$PULL_REQUEST_URL"
+        env:
+          PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  automerge:
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
