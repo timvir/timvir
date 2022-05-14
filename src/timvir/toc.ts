@@ -29,6 +29,7 @@ export default [
       { label: "Code", path: "/blocks/Code" },
       { label: "ColorBar", path: "/blocks/ColorBar" },
       { label: "ColorBook", path: "/blocks/ColorBook" },
+      { label: "Cover", path: "/blocks/Cover" },
       { label: "Exhibit", path: "/blocks/Exhibit" },
       { label: "Font", path: "/blocks/Font" },
       { label: "Grid", path: "/blocks/Grid" },
