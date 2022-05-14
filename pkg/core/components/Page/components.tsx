@@ -13,7 +13,7 @@ const anchorize = (children?: React.ReactNode): undefined | string => {
   }
 };
 
-function Heading(Component: React.ComponentType<React.HTMLAttributes<HTMLHeadingElement>>) {
+function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>>) {
   return function Heading(props: React.HTMLAttributes<HTMLHeadingElement>) {
     const id = anchorize(props.children);
 
@@ -67,7 +67,7 @@ export const h2 = Heading(
     letter-spacing: normal;
     font-size: 24px;
     font-weight: 500;
-  ` as React.ComponentType<React.HTMLAttributes<HTMLHeadingElement>>
+  `
 );
 
 export const h3 = Heading(
@@ -80,7 +80,7 @@ export const h3 = Heading(
     letter-spacing: normal;
     font-size: 18px;
     font-weight: 500;
-  ` as React.ComponentType<React.HTMLAttributes<HTMLHeadingElement>>
+  `
 );
 
 export const h4 = Heading(
@@ -93,7 +93,7 @@ export const h4 = Heading(
     letter-spacing: normal;
     font-weight: normal;
     font-size: 0.9rem;
-  ` as React.ComponentType<React.HTMLAttributes<HTMLHeadingElement>>
+  `
 );
 
 export const blockquote = styled.blockquote`
