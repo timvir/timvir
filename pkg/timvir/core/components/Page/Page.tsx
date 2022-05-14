@@ -5,9 +5,10 @@ import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
-import { theme } from "../../theme";
 import { useImmer } from "use-immer";
 import { grid } from "../../layout";
+import { theme } from "../../theme";
+import { Commands } from "../Commands";
 import { NavigationFooter } from "../NavigationFooter";
 import * as mdxComponentsBase from "./components";
 import { Sidebar } from "./internal";
@@ -85,8 +86,9 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
       location,
       Link,
       blocks,
+      toc,
     }),
-    [bus, location, Link, blocks]
+    [bus, location, Link, blocks, toc]
   );
 
   useHotkeys(
@@ -232,6 +234,8 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           />
         )}
       </Root>
+
+      <Commands />
     </Provider>
   );
 }

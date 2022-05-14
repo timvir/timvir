@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Bus } from "timvir/bus";
+import { Node } from "../core/components/Page/types";
 
 export interface Value {
   bus: Bus;
@@ -15,6 +16,8 @@ export interface Value {
       unfurl: (url: string) => Promise<any>;
     };
   };
+
+  toc: readonly Node[];
 }
 
 const Context = React.createContext<undefined | Value>(undefined);
