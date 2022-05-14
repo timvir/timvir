@@ -12,19 +12,8 @@ function Action(props: Props) {
 
   return (
     <div className={classes.root} {...rest}>
-      <div
-        className={css`
-          margin-right: 12px;
-          width: 16px;
-
-          & > svg {
-            display: block;
-          }
-        `}
-      >
+      <div className={classes.icon}>
         <svg
-          width="16"
-          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -36,14 +25,7 @@ function Action(props: Props) {
           <polyline points="12 5 19 12 12 19" />
         </svg>
       </div>
-      <div
-        className={css`
-          font-size: 0.8125rem;
-          color: rgb(247, 248, 248);
-        `}
-      >
-        {label}
-      </div>
+      <div className={classes.label}>{label}</div>
     </div>
   );
 }
@@ -79,5 +61,21 @@ const classes = {
     &:hover {
       background-color: rgb(55, 55, 60);
     }
+  `,
+
+  icon: css`
+    margin-right: 12px;
+    width: 16px;
+
+    & > svg {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  `,
+
+  label: css`
+    font-size: 0.8125rem;
+    color: rgb(247, 248, 248);
   `,
 };

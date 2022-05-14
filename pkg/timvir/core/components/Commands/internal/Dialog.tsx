@@ -48,38 +48,9 @@ function Dialog(props: Props) {
 
   return (
     <div className={classes.root} style={state.style} {...rest}>
-      <div
-        className={css`
-          margin: 16px 16px 0px;
-          height: 25px;
-          line-height: 25px;
-          padding: 0px 8px;
-          font-size: 0.8em;
-          flex-shrink: 0;
-          align-self: flex-start;
-          color: rgb(138, 143, 152);
-          background: rgb(49, 50, 54);
-          border-radius: 4px;
-          max-width: calc(100vw - 60px);
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        `}
-      >
-        Context
-      </div>
+      <div className={classes.context}>Context</div>
 
-      <div
-        className={css`
-          border-bottom: 1px solid rgb(49, 50, 54);
-          display: grid;
-          grid-template-columns: 1fr;
-          align-items: center;
-          position: relative;
-          flex-shrink: 0;
-          height: 62px;
-        `}
-      >
+      <div className={classes.prompt}>
         <input
           autoFocus
           placeholder="Type a command or search…"
@@ -90,44 +61,13 @@ function Dialog(props: Props) {
               draft.query = query;
             });
           }}
-          className={css`
-            padding: 20px;
-            grid-area: 1 / 1 / auto / auto;
-            margin: 0px;
-            border: none;
-            appearance: none;
-            font-size: inherit;
-            height: 62px;
-            background: transparent;
-            color: rgb(214, 214, 214);
-            caret-color: rgb(110, 94, 210);
-            outline: none;
-            width: 100%;
-          `}
         />
       </div>
 
       <div>
-        <div
-          className={css`
-            background: rgba(247, 247, 248, 0.03);
-            height: 24px;
+        <div className={classes.subheader}>Pages</div>
 
-            padding-inline: 14px;
-
-            font-size: 0.75rem;
-            color: rgb(129, 128, 142);
-          `}
-        >
-          Pages
-        </div>
-
-        <div
-          className={css`
-            height: 300px;
-            overflow: auto;
-          `}
-        >
+        <div className={classes.commands}>
           {state.commands.map(({ node }, index) => (
             <Action
               key={index}
@@ -168,5 +108,62 @@ const classes = {
     overflow: hidden;
 
     transition: opacity 0.2s, transform 0.2s;
+  `,
+
+  context: css`
+    margin: 16px 16px 0px;
+    height: 25px;
+    line-height: 25px;
+    padding: 0px 8px;
+    font-size: 0.8em;
+    flex-shrink: 0;
+    align-self: flex-start;
+    color: rgb(138, 143, 152);
+    background: rgb(49, 50, 54);
+    border-radius: 4px;
+    max-width: calc(100vw - 60px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `,
+
+  prompt: css`
+    border-bottom: 1px solid rgb(49, 50, 54);
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+    height: 62px;
+
+    & > input {
+      padding: 20px;
+      grid-area: 1 / 1 / auto / auto;
+      margin: 0px;
+      border: none;
+      appearance: none;
+      font-size: inherit;
+      height: 62px;
+      background: transparent;
+      color: rgb(214, 214, 214);
+      caret-color: rgb(110, 94, 210);
+      outline: none;
+      width: 100%;
+    }
+  `,
+
+  subheader: css`
+    background: rgba(247, 247, 248, 0.03);
+    height: 24px;
+
+    padding-inline: 14px;
+
+    font-size: 0.75rem;
+    color: rgb(129, 128, 142);
+  `,
+
+  commands: css`
+    height: 300px;
+    overflow: auto;
   `,
 };

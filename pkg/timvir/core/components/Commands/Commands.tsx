@@ -120,6 +120,19 @@ function Commands(props: Props) {
     { enableOnTags: ["INPUT"] }
   );
 
+  /*
+   * Crude body scroll lock when the dialog is open.
+   */
+  React.useEffect(() => {
+    if (state.open) {
+      document.body.style.overflow = "hidden";
+
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+  }, [state.open]);
+
   return state.dialog?.reactPortal ?? null;
 }
 
