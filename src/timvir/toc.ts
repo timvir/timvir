@@ -27,6 +27,7 @@ export default [
     children: [
       { label: "Arbitrary", path: "/blocks/Arbitrary" },
       { label: "Code", path: "/blocks/Code" },
+      { label: "CodeSourceLink", path: "/blocks/CodeSourceLink" },
       { label: "ColorBar", path: "/blocks/ColorBar" },
       { label: "ColorBook", path: "/blocks/ColorBook" },
       { label: "Cover", path: "/blocks/Cover" },

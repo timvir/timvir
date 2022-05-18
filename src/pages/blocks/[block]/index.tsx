@@ -26,6 +26,7 @@ export default function Page({ block }: Props) {
       [
         "Arbitrary",
         "Code",
+        "CodeSourceLink",
         "ColorBar",
         "ColorBook",
         "Cover",
