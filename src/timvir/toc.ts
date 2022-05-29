@@ -6,8 +6,8 @@ export default [
     label: "Modules",
     path: "/modules",
     children: [
-      { label: "@timvir/blocks", path: "/modules/blocks", children: [{ label: "Arbitrary", path: "/modules/blocks/Arbitrary" }] },
-      { label: "@timvir/core", path: "/modules/core" },
+      { label: "timvir/blocks", path: "/modules/blocks", children: [{ label: "Arbitrary", path: "/modules/blocks/Arbitrary" }] },
+      { label: "timvir/core", path: "/modules/core" },
       { label: "@timvir/hooks", path: "/modules/hooks" },
       { label: "@timvir/std", path: "/modules/std", children: [{ label: "base58", path: "/modules/std/base58" }] },
     ],
@@ -15,9 +15,9 @@ export default [
   {
     label: "Packages",
     children: [
-      { label: "@timvir/blocks", path: "/packages/blocks" },
+      { label: "timvir/blocks", path: "/packages/blocks" },
       { label: "@timvir/cli", path: "/packages/cli" },
-      { label: "@timvir/core", path: "/packages/core" },
+      { label: "timvir/core", path: "/packages/core" },
       { label: "@timvir/macro", path: "/packages/macro" },
       { label: "@timvir/search", path: "/packages/search" },
     ],

@@ -21,7 +21,7 @@ export default function Page({ component }: Props) {
 
   const Component = (() => {
     if (component === "Page" || component === "Footer" || component === "NavigationFooter") {
-      return dynamic(() => import(`../../../../../pkg/core/components/${component}/docs/index.mdx`));
+      return dynamic(() => import(`../../../../../pkg/timvir/core/components/${component}/docs/index.mdx`));
     } else if (
       [
         "Arbitrary",
@@ -39,7 +39,7 @@ export default function Page({ component }: Props) {
         "WebLink",
       ].includes(component)
     ) {
-      return dynamic(() => import(`../../../../../pkg/blocks/${component}/docs/index.mdx`));
+      return dynamic(() => import(`../../../../../pkg/timvir/blocks/${component}/docs/index.mdx`));
     } else {
       return dynamic(() => import(`../../../../components/${component}/docs/index.mdx`));
     }

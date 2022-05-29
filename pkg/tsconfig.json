@@ -11,15 +11,7 @@
     "noUnusedParameters": true,
     "baseUrl": ".",
     "paths": {
-      "timvir": ["timvir"],
-      "@timvir/core": ["core"],
-      "@timvir/core/*": ["core/*"],
-      "@timvir/hooks": ["hooks"],
-      "@timvir/blocks": ["blocks"],
-      "@timvir/blocks/*": ["blocks/*"],
-      "@timvir/std": ["std"],
-      "@timvir/std/*": ["std/*"],
-      "@timvir/search": ["../src/packages/search"]
+      "timvir": ["timvir"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "../next-env.d.ts"]

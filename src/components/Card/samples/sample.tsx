@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Card } from "..";
-import Sample from "../../../../pkg/blocks/Swatch/samples/basic";
-import { Exhibit } from "@timvir/blocks";
+import Sample from "../../../../pkg/timvir/blocks/Swatch/samples/basic";
+import { Exhibit } from "timvir/blocks";
 
 export default function S() {
   return (

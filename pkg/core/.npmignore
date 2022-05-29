@@ -1,6 +1,0 @@
-*.ts
-*.tsx
-!*.d.ts
-
-**/docs/*
-**/samples/*
