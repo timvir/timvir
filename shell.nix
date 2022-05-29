@@ -27,5 +27,7 @@ in pkgs.mkShell {
     if [ -n "$PS1" ]; then
       ${banner}/bin/banner
     fi
+
+    export PATH=$PWD/node_modules/.bin:$PATH
   '';
 }
