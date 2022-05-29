@@ -17,7 +17,6 @@ jobs:
       - run: npm ci
       - run: ./node_modules/.bin/tsc --build tsconfig.build.json
       - run: ./node_modules/.bin/rollup -c config/rollup.config.js
-      - run: cat pkg/blocks/*/styles.css > pkg/blocks/styles.css
       - run: cat pkg/timvir/blocks/*/styles.css > pkg/timvir/blocks/styles.css
       - run: cat pkg/timvir/*/styles.css > pkg/timvir/styles.css
       - run: ./scripts/publish

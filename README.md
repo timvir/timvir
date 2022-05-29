@@ -7,7 +7,7 @@ Timvir grew out of our realization that we want the documentation to be part of 
 As such, Timvir is meant to be integrated into, and deployed as part of your product. For example, in a Next.js app it means putting the
 documentation into `pages/docs/**/*.mdx`, and making it available under `https://example.com/docs`.
 
-The `@timvir/blocks` package provides standard components for documenting colors, typography, react components etc. This set of components
+The `timvir/blocks` package provides standard components for documenting colors, typography, react components etc. This set of components
 will be expanded in the future to cover the needs when documenting a project and its design system.
 
 A second part of Timvir is a set of **conventions** how to write and document React components. It is not necessary to follow these conventions

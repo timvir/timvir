@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { useResizeObserverEntry } from "@timvir/hooks";
+import { useResizeObserverEntry } from "timvir/hooks";
 import * as React from "react";
 
 /**

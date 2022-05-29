@@ -38,7 +38,7 @@ If you Next.js project has a compatible setup, follow these steps:
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { Page } from "@timvir/core";
+import { Page } from "timvir/core";
 
 export default ({ children }: { children?: React.ReactNode }) => (
   <Page location={useRouter()} Link={Link} toc={[]}>
@@ -51,7 +51,7 @@ export default ({ children }: { children?: React.ReactNode }) => (
 
 ```
 import App from "next/app";
-import "@timvir/core/styles.css";
+import "timvir/core/styles.css";
 export default App;
 ```
 

@@ -1,6 +1,6 @@
 import { css, cx } from "@linaria/core";
 import * as React from "react";
-import { Code } from "@timvir/blocks";
+import { Code } from "timvir/blocks";
 import * as Icons from "react-feather";
 
 /**

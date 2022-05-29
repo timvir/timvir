@@ -1,4 +1,4 @@
-import { theme } from "@timvir/core";
+import { theme } from "timvir/core";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -23,7 +23,7 @@ export default function Page({ component, sample }: Props) {
 
   const Component = (() => {
     if (component === "Page" || component === "Footer" || component === "NavigationFooter") {
-      return dynamic(() => import(`../../../../../../pkg/core/components/${component}/samples/${sample}.tsx`));
+      return dynamic(() => import(`../../../../../../pkg/timvir/core/components/${component}/samples/${sample}.tsx`));
     } else if (
       [
         "Arbitrary",
@@ -41,7 +41,7 @@ export default function Page({ component, sample }: Props) {
         "WebLink",
       ].includes(component)
     ) {
-      return dynamic(() => import(`../../../../../../pkg/blocks/${component}/samples/${sample}.tsx`));
+      return dynamic(() => import(`../../../../../../pkg/timvir/blocks/${component}/samples/${sample}.tsx`));
     } else {
       return dynamic(() => import(`../../../../../components/${component}/samples/${sample}.tsx`));
     }

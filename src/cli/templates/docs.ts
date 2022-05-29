@@ -1,7 +1,7 @@
 import { template } from "../template";
 
 export default template(`
-import { Exhibit } from "@timvir/blocks";
+import { Exhibit } from "timvir/blocks";
 
 # {{= it.name }}
 
