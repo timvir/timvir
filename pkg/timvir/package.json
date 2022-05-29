@@ -26,6 +26,7 @@
   },
   "peerDependencies": {
     "@mdx-js/react": "*",
-    "react": "*"
+    "react": "*",
+    "react-dom": "*"
   }
 }
