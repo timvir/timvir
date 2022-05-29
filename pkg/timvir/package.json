@@ -15,7 +15,7 @@
     "./search": "./search/index.js"
   },
   "dependencies": {
-    "bytestring": "^0.0.5",
+    "bytestring": "^1",
     "downshift": "^6",
     "fuzzaldrin-plus": "^0.6.0",
     "immer": "^9",

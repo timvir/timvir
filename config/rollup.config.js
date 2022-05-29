@@ -16,51 +16,9 @@ const extensions = [".js", ".jsx", ".ts", ".tsx"];
 /*
  * The node version which we officially support in the NPM packages.
  */
-const node = "12";
+const node = "16";
 
 function block(name) {
-  return [
-    {
-      input: `pkg/blocks/${name}/index.ts`,
-      output: [
-        {
-          file: `pkg/blocks/${name}/index.js`,
-          format: "esm",
-        },
-      ],
-      plugins: [
-        resolve({ extensions }),
-        commonjs({}),
-        replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
-        linaria(),
-        css({ output: "styles.css" }),
-        babel({
-          configFile: false,
-          extensions,
-          presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
-          plugins: [
-            ["babel-plugin-macros"],
-            ["@babel/plugin-proposal-optional-chaining"],
-            ["@babel/plugin-proposal-nullish-coalescing-operator"],
-          ],
-          babelHelpers: "bundled",
-        }),
-      ],
-      external: [
-        "next/link",
-        "next/router",
-        ...Object.keys(require("../pkg/blocks/package.json").dependencies || {}),
-        ...Object.keys(require("../pkg/blocks/package.json").peerDependencies || {}),
-        /@timvir\/blocks/,
-        /@timvir\/hooks/,
-        /@timvir\/std/,
-        /prism-react-renderer/,
-      ],
-    },
-  ];
-}
-
-function block1(name) {
   return [
     {
       input: `pkg/timvir/blocks/${name}/index.ts`,
@@ -146,7 +104,7 @@ export default [
    */
   ...fs.readdirSync("pkg/timvir/blocks").flatMap((file) => {
     if (file.match(/^[A-Z]/)) {
-      return block1(file);
+      return block(file);
     } else {
       return [];
     }
