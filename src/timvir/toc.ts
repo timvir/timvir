@@ -15,11 +15,8 @@ export default [
   {
     label: "Packages",
     children: [
-      { label: "timvir/blocks", path: "/packages/blocks" },
+      { label: "timvir", path: "/packages/timvir" },
       { label: "@timvir/cli", path: "/packages/cli" },
-      { label: "timvir/core", path: "/packages/core" },
-      { label: "@timvir/macro", path: "/packages/macro" },
-      { label: "@timvir/search", path: "/packages/search" },
     ],
   },
   {
