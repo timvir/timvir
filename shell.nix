@@ -17,7 +17,7 @@ let
 
 in pkgs.mkShell {
   buildInputs = [
-    pkgs.nodejs-16_x
+    pkgs.nodejs-18_x
     pkgs.jq
 
     tools.dev
