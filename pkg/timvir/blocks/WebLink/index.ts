@@ -1,1 +1,1 @@
-export { default as WebLink } from "./WebLink";
+export { default as WebLink } from "./WebLink.js";

@@ -1,2 +1,2 @@
 
-export { default as Exhibit } from "./Exhibit";
+export { default as Exhibit } from "./Exhibit.js";

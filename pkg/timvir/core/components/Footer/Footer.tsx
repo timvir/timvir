@@ -1,4 +1,4 @@
-import { grid } from "../../layout";
+import { grid } from "../../layout.js";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 

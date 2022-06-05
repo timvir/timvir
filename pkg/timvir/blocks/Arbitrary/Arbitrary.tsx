@@ -4,7 +4,7 @@ import { useBlock } from "timvir/core";
 import * as base58 from "bytestring/base58";
 import * as React from "react";
 import { useImmer } from "use-immer";
-import { Context } from "./context";
+import { Context } from "./context.js";
 
 /**
  * The underlying DOM element which is rendered by this component.

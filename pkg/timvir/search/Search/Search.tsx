@@ -1,7 +1,7 @@
 import fuzzaldrin from "fuzzaldrin-plus";
 import * as React from "react";
 import { Node } from "timvir/core";
-import { Dialog } from "./internal";
+import { Dialog } from "./internal/index.js";
 
 /**
  * The underlying DOM element which is rendered by this component.

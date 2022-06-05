@@ -2,7 +2,7 @@ import { extendedWidth, fullWidth } from "timvir/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { Page } from "..";
+import { Page } from "../index.js";
 
 export default function Sample() {
   return (

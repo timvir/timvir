@@ -1,6 +1,6 @@
 import { css } from "@linaria/core";
 import { color } from "d3-color";
-import * as colors from "./colors";
+import * as colors from "./colors.js";
 
 const themes = {
   light: {

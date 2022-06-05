@@ -4,7 +4,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useImmer } from "use-immer";
-import { Dialog } from "./internal";
+import { Dialog } from "./internal/index.js";
 
 interface Props {}
 

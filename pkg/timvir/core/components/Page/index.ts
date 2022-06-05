@@ -1,2 +1,2 @@
-export { default as Page } from "./Page";
-export * from "./types";
+export { default as Page } from "./Page.js";
+export * from "./types.js";

@@ -2,7 +2,7 @@ import { css, cx } from "@linaria/core";
 import { fullWidth, useBlock } from "timvir/core";
 import { useResizeObserver, useResizeObserverEntry } from "timvir/hooks";
 import * as React from "react";
-import { Caption, Handle, Ruler } from "./internal";
+import { Caption, Handle, Ruler } from "./internal/index.js";
 
 /**
  * The underlying DOM element which is rendered by this component.

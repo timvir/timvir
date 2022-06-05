@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Font } from "..";
-import { Code } from "../../Code";
+import { Font } from "../index.js";
+import { Code } from "../../Code/index.js";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof Font>>;
 

@@ -2,9 +2,9 @@ import { useContext } from "timvir/core";
 import { useCombobox } from "downshift";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
-import { SearchBoxInput } from "../../SearchBoxInput";
-import { SearchBoxListItem } from "../../SearchBoxListItem";
-import Highlight from "./Highlight";
+import { SearchBoxInput } from "../../SearchBoxInput/index.js";
+import { SearchBoxListItem } from "../../SearchBoxListItem/index.js";
+import Highlight from "./Highlight.js";
 
 /**
  * The underlying DOM element which is rendered by this component.

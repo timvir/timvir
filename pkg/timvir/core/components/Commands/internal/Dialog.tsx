@@ -3,7 +3,7 @@ import * as React from "react";
 import { useContext } from "timvir/context";
 import { defaultSearch } from "timvir/search";
 import { useImmer } from "use-immer";
-import Action from "./Action";
+import Action from "./Action.js";
 
 interface Props {
   open?: boolean;

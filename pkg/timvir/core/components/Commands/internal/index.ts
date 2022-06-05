@@ -1,2 +1,2 @@
-export { default as Action } from "./Action";
-export { default as Dialog } from "./Dialog";
+export { default as Action } from "./Action.js";
+export { default as Dialog } from "./Dialog.js";

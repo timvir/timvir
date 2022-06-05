@@ -1,7 +1,7 @@
 import { makeSubject, Subject } from "wonka";
-import { Message } from "./messages";
+import { Message } from "./messages.js";
 
-export * from "./messages";
+export * from "./messages.js";
 
 /**
  * The bus is a wonka Subject that represents a stream of Messages.

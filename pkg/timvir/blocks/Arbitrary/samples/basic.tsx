@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Arbitrary } from "..";
-import { useContext } from "../context";
+import { Arbitrary } from "../index.js";
+import { useContext } from "../context.js";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof Arbitrary>>;
 

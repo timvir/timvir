@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Exhibit } from "..";
+import { Exhibit } from "../index.js";
 
 export default function Sample() {
   return (

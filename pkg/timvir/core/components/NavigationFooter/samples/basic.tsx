@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { NavigationFooter } from "..";
-import { Page } from "../../Page";
+import { NavigationFooter } from "../index.js";
+import { Page } from "../../Page/index.js";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof NavigationFooter>>;
 

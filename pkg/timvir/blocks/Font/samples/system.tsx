@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Font } from "..";
+import { Font } from "../index.js";
 
 export default function Sample() {
   return (

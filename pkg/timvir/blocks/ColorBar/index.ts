@@ -1,1 +1,1 @@
-export { default as ColorBar } from "./ColorBar";
+export { default as ColorBar } from "./ColorBar.js";

@@ -9,7 +9,7 @@ import Highlight, { defaultProps, Language, PrismTheme } from "prism-react-rende
 import * as React from "react";
 import * as Icons from "react-feather";
 import { useImmer } from "use-immer";
-import theme from "./theme";
+import theme from "./theme.js";
 
 /**
  * The underlying DOM element which is rendered by this component.

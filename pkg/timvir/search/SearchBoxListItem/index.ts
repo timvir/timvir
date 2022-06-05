@@ -1,2 +1,2 @@
 
-export { default as SearchBoxListItem } from "./SearchBoxListItem";
+export { default as SearchBoxListItem } from "./SearchBoxListItem.js";

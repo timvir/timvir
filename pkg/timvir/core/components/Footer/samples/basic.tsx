@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Footer } from "..";
+import { Footer } from "../index.js";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof Footer>>;
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Code } from "..";
+import { Code } from "../index.js";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof Code>>;
 

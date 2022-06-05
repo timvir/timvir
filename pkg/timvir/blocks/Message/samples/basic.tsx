@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Message } from "..";
+import { Message } from "../index.js";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof Message>>;
 

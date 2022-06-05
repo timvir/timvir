@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Search } from "..";
-import { defaultSearch } from "../Search";
+import { Search } from "../index.js";
+import { defaultSearch } from "../Search.js";
 
 const toc: any[] = [];
 

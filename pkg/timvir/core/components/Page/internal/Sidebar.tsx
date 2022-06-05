@@ -1,8 +1,8 @@
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 import { useImmer } from "use-immer";
-import { Node } from "../types";
-import Section from "./Section";
+import { Node } from "../types.js";
+import Section from "./Section.js";
 
 interface Props {
   toc: readonly Node[];

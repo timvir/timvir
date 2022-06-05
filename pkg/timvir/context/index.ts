@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Bus } from "timvir/bus";
-import { Node } from "../core/components/Page/types";
+import { Node } from "../core/components/Page/types.js";
 
 export interface Value {
   bus: Bus;

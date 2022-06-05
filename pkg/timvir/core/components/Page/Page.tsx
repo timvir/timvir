@@ -6,13 +6,13 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
 import { useImmer } from "use-immer";
-import { grid } from "../../layout";
-import { theme } from "../../theme";
-import { Commands } from "../Commands";
-import { NavigationFooter } from "../NavigationFooter";
-import * as mdxComponentsBase from "./components";
-import { Sidebar } from "./internal";
-import { Node } from "./types";
+import { grid } from "../../layout.js";
+import { theme } from "../../theme/index.js";
+import { Commands } from "../Commands/index.js";
+import { NavigationFooter } from "../NavigationFooter/index.js";
+import * as mdxComponentsBase from "./components.js";
+import { Sidebar } from "./internal/index.js";
+import { Node } from "./types.js";
 
 /**
  * The underlying DOM element which is rendered by this component.

@@ -1,7 +1,7 @@
 import { css } from "@linaria/core";
 import * as React from "react";
 import { useContext } from "timvir/context";
-import { Node } from "../types";
+import { Node } from "../types.js";
 
 interface Props extends Node {
   depth: number;

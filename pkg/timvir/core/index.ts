@@ -4,12 +4,12 @@ import { useContext } from "timvir/context";
 import * as React from "react";
 import { useImmer } from "use-immer";
 
-export * from "./components/Footer";
-export * from "./components/Page";
+export * from "./components/Footer/index.js";
+export * from "./components/Page/index.js";
 
 export { useContext } from "timvir/context";
-export { extendedWidth, fullWidth, grid } from "./layout";
-export { theme } from "./theme";
+export { extendedWidth, fullWidth, grid } from "./layout.js";
+export { theme } from "./theme/index.js";
 
 /**
  * A mailbox is a wonka source which receives messages for one specific block (identified by its id).

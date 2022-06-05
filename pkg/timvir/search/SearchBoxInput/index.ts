@@ -1,2 +1,2 @@
 
-export { default as SearchBoxInput } from "./SearchBoxInput";
+export { default as SearchBoxInput } from "./SearchBoxInput.js";

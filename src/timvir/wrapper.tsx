@@ -5,8 +5,8 @@ import * as React from "react";
 import { Code } from "timvir/blocks";
 import { Footer, Page } from "timvir/core";
 import { defaultSearch, Search } from "timvir/search";
-import routes from "./routes";
-import toc from "./toc";
+import routes from "./routes.js";
+import toc from "./toc.js";
 
 const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
   Component: function Component(props) {

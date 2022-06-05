@@ -1,5 +1,5 @@
 import * as React from "react";
-import { WebLink } from "..";
+import { WebLink } from "../index.js";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof WebLink>>;
 

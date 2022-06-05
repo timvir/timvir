@@ -1,8 +1,8 @@
 import { css, cx } from "@linaria/core";
 import { useResizeObserverEntry } from "timvir/hooks";
 import * as React from "react";
-import { Canvas } from "./internal";
-import { Descriptor } from "./types";
+import { Canvas } from "./internal/index.js";
+import { Descriptor } from "./types.js";
 
 /**
  * The underlying DOM element which is rendered by this component.
