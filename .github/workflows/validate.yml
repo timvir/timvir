@@ -12,7 +12,6 @@ jobs:
           node-version: "16.x"
       - run: npm install
       - run: ./node_modules/.bin/eslint .
-      - run: cd pkg/mdx && ../../node_modules/.bin/ava
       - run: ./node_modules/.bin/tsc --build tsconfig.json
       - run: ./node_modules/.bin/tsc --build tsconfig.build.json
       - run: ./node_modules/.bin/rollup -c config/rollup.config.js
