@@ -17,7 +17,7 @@
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
     "@linaria/babel-preset": "^3.0.0-beta.21",
-    "@linaria/core": "^3.0.0-beta.21",
+    "@linaria/core": "^3.0.0-beta.22",
     "@linaria/react": "^3.0.0-beta.21",
     "@linaria/rollup": "^3.0.0-beta.21",
     "@linaria/shaker": "^3.0.0-beta.21",
