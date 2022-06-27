@@ -65,7 +65,7 @@
     "globby": "^13.1.2",
     "immer": "^9.0.15",
     "install": "^0.13.0",
-    "kleur": "^4.1.4",
+    "kleur": "^4.1.5",
     "mdast-util-from-markdown": "^1.2.0",
     "mdast-util-mdx": "^2.0.0",
     "mdast-util-mdx-jsx": "^2.0.1",
