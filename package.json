@@ -34,7 +34,7 @@
     "@types/cors": "^2.8.12",
     "@types/d3-color": "^3.0.2",
     "@types/dot": "^1.1.5",
-    "@types/estree": "^0.0.51",
+    "@types/estree": "^0.0.52",
     "@types/fuzzaldrin-plus": "^0.6.2",
     "@types/mdx-js__react": "^1.5.5",
     "@types/mkdirp": "^1.0.2",
