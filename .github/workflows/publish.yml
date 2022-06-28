@@ -9,12 +9,14 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
-          registry-url: "https://registry.npmjs.org"
-      - run: npm ci
+          node-version: 18
+          registry-url: https://registry.npmjs.org
+
+      - run: npm install
+
       - run: ./node_modules/.bin/tsc --build tsconfig.build.json
       - run: ./node_modules/.bin/rollup -c config/rollup.config.js
       - run: cat pkg/timvir/blocks/*/styles.css > pkg/timvir/blocks/styles.css
