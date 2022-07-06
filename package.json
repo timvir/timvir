@@ -42,7 +42,7 @@
     "@types/prettier": "^2.6.3",
     "@types/prompts": "^2.0.14",
     "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.5",
+    "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "@zhif/macro": "^0.0.17",
