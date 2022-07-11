@@ -46,7 +46,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "@zhif/macro": "^0.0.17",
-    "ava": "^4.3.0",
+    "ava": "^4.3.1",
     "babel-plugin-macros": "^3.1.0",
     "blurhash": "^1.1.5",
     "bytestring": "^1.0.0",
