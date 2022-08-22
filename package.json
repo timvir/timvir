@@ -92,7 +92,7 @@
     "sharp": "^0.30.7",
     "typescript": "^4.7.4",
     "unfurl.js": "^5.7.0",
-    "unist-util-visit": "^4.1.0",
+    "unist-util-visit": "^4.1.1",
     "unist-util-visit-parents": "^5.1.0",
     "use-immer": "^0.7.0",
     "wonka": "^4.0.15"
