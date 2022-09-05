@@ -30,8 +30,8 @@ function FontFamilyMatrix(props: Props, ref: React.ForwardedRef<React.ElementRef
           align-items: baseline;
         `}
       >
-        {sortedWeights.map((weight) => (
-          <>
+        {sortedWeights.map((weight, i) => (
+          <React.Fragment key={i}>
             <div
               className={css`
                 font-size: 14px;
@@ -41,17 +41,18 @@ function FontFamilyMatrix(props: Props, ref: React.ForwardedRef<React.ElementRef
             >
               {weight}
             </div>
-            {styles.map((style) => {
+            {styles.map((style, i) => {
               const fontFace = fontFaces.find((x) => x.style.fontWeight === weight && x.style.fontStyle === style);
               if (fontFace) {
                 return (
-                  <div className={fontFace.className} style={{ ...fontFace.style, paddingRight: 48 }}>
+                  <div key={i} className={fontFace.className} style={{ ...fontFace.style, paddingRight: 48 }}>
                     {fontFace.name}
                   </div>
                 );
               } else {
                 return (
                   <div
+                    key={i}
                     className={css`
                       font-style: normal;
                       font-weight: 400;
@@ -64,7 +65,7 @@ function FontFamilyMatrix(props: Props, ref: React.ForwardedRef<React.ElementRef
                 );
               }
             })}
-          </>
+          </React.Fragment>
         ))}
       </div>
     </Root>
