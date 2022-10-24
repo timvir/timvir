@@ -27,7 +27,7 @@
     "@next/mdx": "^12.3.1",
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
-    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-replace": "^5.0.1",
     "@types/babel__core": "^7.1.19",
     "@types/chroma-js": "^2.1.4",
