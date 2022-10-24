@@ -25,7 +25,7 @@
     "@mdx-js/loader": "^2.1.5",
     "@mdx-js/react": "^2.1.5",
     "@next/mdx": "^12.3.1",
-    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-replace": "^5.0.0",
