@@ -42,7 +42,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
 
   const items = result?.edges ?? [];
 
-  const { getComboboxProps, getMenuProps, getInputProps, /* highlightedIndex, */ getItemProps, closeMenu } =
+  const { getMenuProps, getInputProps, /* highlightedIndex, */ getItemProps, closeMenu } =
     useCombobox({
       defaultHighlightedIndex: 0,
       items,
@@ -134,7 +134,6 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
                 background: black;
               }
             `}
-            {...getComboboxProps()}
           >
             <SearchBoxInput {...getInputProps()} />
             <main
