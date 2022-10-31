@@ -48,7 +48,7 @@
     "@zhif/macro": "^0.0.17",
     "ava": "^5.0.1",
     "babel-plugin-macros": "^3.1.0",
-    "blurhash": "^2.0.3",
+    "blurhash": "^2.0.4",
     "bytestring": "^1.0.0",
     "chroma-js": "^2.4.2",
     "commander": "^9.4.1",
