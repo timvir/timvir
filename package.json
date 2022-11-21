@@ -94,7 +94,7 @@
     "unfurl.js": "^6.0.0",
     "unist-util-visit": "^4.1.1",
     "unist-util-visit-parents": "^5.1.0",
-    "use-immer": "^0.7.0",
+    "use-immer": "^0.8.1",
     "wonka": "^6.1.1"
   }
 }
