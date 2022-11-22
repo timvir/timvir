@@ -23,7 +23,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   toc: readonly Node[];
 
   location: { asPath: string; push: (path: string) => void };
-  Link: React.ComponentType<{ href: string; children?: React.ReactNode }>;
+  Link: React.ComponentType<React.ComponentProps<"a"> & { passHref?: boolean; legacyBehavior?: boolean }>;
 
   /**
    * Overrides the built-in MDX component implementations.
