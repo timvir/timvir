@@ -6,7 +6,7 @@ export interface Value {
   bus: Bus;
 
   location: { asPath: string; push: (path: string) => void };
-  Link: React.ComponentType<{ href: string; children?: React.ReactNode }>;
+  Link: React.ComponentType<React.ComponentProps<"a"> & { passHref?: boolean; legacyBehavior?: boolean }>;
 
   /*
    * Configuration for blocks.

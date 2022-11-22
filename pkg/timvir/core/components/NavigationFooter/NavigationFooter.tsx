@@ -103,20 +103,19 @@ const PrimaryLink = ({ href, children }: { href: string; children: React.ReactNo
   const { Link } = useContext();
 
   return (
-    <Link href={href}>
-      <a
-        className={css`
-          font-size: 1.2rem;
-          color: inherit;
-          text-decoration: none;
+    <Link
+      href={href}
+      className={css`
+        font-size: 1.2rem;
+        color: inherit;
+        text-decoration: none;
 
-          &:hover {
-            color: var(--c-p-3);
-          }
-        `}
-      >
-        {children}
-      </a>
+        &:hover {
+          color: var(--c-p-3);
+        }
+      `}
+    >
+      {children}
     </Link>
   );
 };

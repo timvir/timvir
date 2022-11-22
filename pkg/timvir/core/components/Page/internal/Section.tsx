@@ -32,8 +32,8 @@ function Section(props: Props) {
     <section className={classes.root}>
       <div className={classes.node} data-active={location.asPath === path}>
         {path ? (
-          <Link href={path}>
-            <a style={{ marginLeft: depth * 20 }}>{label}</a>
+          <Link href={path} style={{ marginLeft: depth * 20 }}>
+            {label}
           </Link>
         ) : (
           <a style={{ marginLeft: depth * 20 }} href="#" onClick={() => setActive((x) => !x)}>
