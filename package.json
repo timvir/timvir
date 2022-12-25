@@ -28,7 +28,7 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-replace": "^5.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
     "@types/babel__core": "^7.1.20",
     "@types/chroma-js": "^2.1.4",
     "@types/cors": "^2.8.13",
