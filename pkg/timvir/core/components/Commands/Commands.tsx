@@ -109,7 +109,7 @@ function Commands(props: Props) {
         close();
       }
     },
-    { enableOnTags: ["INPUT"] }
+    { enableOnFormTags: ["INPUT"] }
   );
 
   useHotkeys(
@@ -117,7 +117,7 @@ function Commands(props: Props) {
     () => {
       close();
     },
-    { enableOnTags: ["INPUT"] }
+    { enableOnFormTags: ["INPUT"] }
   );
 
   /*

@@ -27,6 +27,7 @@
   "peerDependencies": {
     "@mdx-js/react": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "react-hotkeys-hook": "^4"
   }
 }

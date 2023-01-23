@@ -92,25 +92,24 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   );
 
   useHotkeys(
-    "command+p,escape",
-    (ev, handler) => {
-      switch (handler.key) {
-        case "command+p": {
-          ev.preventDefault();
-          mutate((draft) => {
-            draft.search.open = !draft.search.open;
-          });
-          return;
-        }
-        case "escape": {
-          mutate((draft) => {
-            draft.search.open = false;
-          });
-          return;
-        }
-      }
+    "meta+p",
+    (ev) => {
+      ev.preventDefault();
+      mutate((draft) => {
+        draft.search.open = !draft.search.open;
+      });
     },
-    { enableOnTags: ["BODY", "INPUT"] as any }
+    { enableOnFormTags: true }
+  );
+
+  useHotkeys(
+    "escape",
+    () => {
+      mutate((draft) => {
+        draft.search.open = false;
+      });
+    },
+    { enableOnFormTags: true }
   );
 
   return (
