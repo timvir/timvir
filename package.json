@@ -83,7 +83,7 @@
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-hotkeys-hook": "^4.3.4",
-    "react-live": "^3.1.1",
+    "react-live": "^3.1.2",
     "react-measure": "^2.5.2",
     "rollup": "^2.79.1",
     "rollup-plugin-add-shebang": "^0.3.1",
