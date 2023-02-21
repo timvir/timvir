@@ -15,7 +15,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
     "@linaria/babel-preset": "^3.0.0-beta.21",
     "@linaria/core": "^3.0.0-beta.21",
     "@linaria/react": "^3.0.0-beta.22",
