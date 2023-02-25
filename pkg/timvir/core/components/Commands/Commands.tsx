@@ -99,7 +99,7 @@ function Commands(props: Props) {
   }
 
   useHotkeys(
-    "command+k",
+    "meta+k",
     (ev) => {
       ev.preventDefault();
 
