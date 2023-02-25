@@ -8,9 +8,9 @@
     ".": "./index.js"
   },
   "dependencies": {
-    "@babel/generator": "^7.17.0",
-    "@babel/parser": "^7.17.0",
-    "@babel/types": "^7.17.0",
+    "@babel/generator": "^7.21.1",
+    "@babel/parser": "^7.21.2",
+    "@babel/types": "^7.21.2",
     "espree": "^9.3.1",
     "mdast-util-from-markdown": "^1.2.0",
     "mdast-util-mdx": "^2.0.1",
