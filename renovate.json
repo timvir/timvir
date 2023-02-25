@@ -1,0 +1,36 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:base"],
+    "rangeStrategy": "bump",
+    "prHourlyLimit": 0,
+    "packageRules": [
+      {
+        "extends": "monorepo:react",
+        "groupName": "React"
+      },
+      {
+        "extends": "monorepo:nextjs",
+        "groupName": "Next.js"
+      },
+      {
+        "extends": "monorepo:babel",
+        "groupName": "Babel"
+      },
+      {
+        "matchPackagePatterns": ["^@linaria/"],
+        "groupName": "Linaria"
+      },
+      {
+        "matchPackagePatterns": ["^eslint", "^@typescript-eslint/"],
+        "groupName": "ESLint"
+      },
+      {
+        "matchPackageNames": ["sharp", "@types/sharp"],
+        "groupName": "Sharp"
+      },
+      {
+        "matchPackageNames": ["immer", "use-immer"],
+        "groupName": "Immer"
+      }
+    ]
+  }
