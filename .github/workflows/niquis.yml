@@ -1,7 +1,7 @@
 name: Niquis
 on:
   push:
-    branches: [master]
+    branches: ['master', 'gh-readonly-queue/master/**']
   pull_request: {}
 
 jobs:
