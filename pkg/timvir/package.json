@@ -21,7 +21,7 @@
     "immer": "^9",
     "prism-react-renderer": "^1",
     "react-feather": "^2",
-    "use-immer": "^0.7.0",
+    "use-immer": "^0.8.1",
     "wonka": "^6"
   },
   "peerDependencies": {
