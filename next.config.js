@@ -5,7 +5,6 @@ export default withLinaria({ cacheDirectory: "./.next/cache/linaria" })({
   productionBrowserSourceMaps: true,
 
   typescript: {
-    ignoreDevErrors: true,
     ignoreBuildErrors: true,
   },
 
