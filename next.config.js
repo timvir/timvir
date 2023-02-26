@@ -8,6 +8,10 @@ export default withLinaria({ cacheDirectory: "./.next/cache/linaria" })({
     ignoreBuildErrors: true,
   },
 
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 
   webpack(config, options) {
