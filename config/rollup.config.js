@@ -3,13 +3,25 @@ import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
-import * as fs from "fs";
 import terser from "@rollup/plugin-terser";
 import shebang from "rollup-plugin-add-shebang";
 import css from "rollup-plugin-css-only";
+
+import * as fs from "fs";
 import stylis from "stylis";
 
+import builtinModules from "builtin-modules";
+
 stylis.set({ prefix: false });
+
+function externalFor(pkg) {
+  const packageJson = JSON.parse(fs.readFileSync(`pkg/${pkg}/package.json`, 'utf8'));
+
+  return [
+    ...Object.keys(packageJson.dependencies || {}),
+    ...Object.keys(packageJson.peerDependencies || {}),
+  ]
+}
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
 
@@ -47,8 +59,7 @@ function block(name) {
         }),
       ],
       external: [
-        ...Object.keys(require("../pkg/timvir/package.json").dependencies || {}),
-        ...Object.keys(require("../pkg/timvir/package.json").peerDependencies || {}),
+        ...externalFor("timvir"),
         /^timvir\//,
       ],
     },
@@ -81,9 +92,8 @@ function module(name) {
       shebang(),
     ],
     external: [
-      ...require("builtin-modules"),
-      ...Object.keys(require("../pkg/timvir/package.json").dependencies || {}),
-      ...Object.keys(require("../pkg/timvir/package.json").peerDependencies || {}),
+      ...builtinModules,
+      ...externalFor("timvir"),
       /^timvir\//,
     ],
   };
@@ -136,9 +146,8 @@ export default [
       }),
     ],
     external: [
-      ...require("builtin-modules"),
-      ...Object.keys(require("../pkg/timvir/package.json").dependencies || {}),
-      ...Object.keys(require("../pkg/timvir/package.json").peerDependencies || {}),
+      ...builtinModules,
+      ...externalFor("timvir"),
       /^timvir\//,
     ],
   },
@@ -197,9 +206,8 @@ export default [
       shebang(),
     ],
     external: [
-      ...require("builtin-modules"),
-      ...Object.keys(require("../pkg/cli/package.json").dependencies || {}),
-      ...Object.keys(require("../pkg/cli/package.json").peerDependencies || {}),
+      ...builtinModules,
+      ...externalFor("cli"),
     ],
   },
 ];
