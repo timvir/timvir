@@ -1,8 +1,8 @@
 import withPlugins from "next-compose-plugins";
-import withLinaria from "next-linaria";
+import { withLinaria } from "./next/withLinaria.js"
 import { remarkPlugin } from "./pkg/mdx/index.js";
 
-export default withPlugins([withLinaria], {
+export default withPlugins([withLinaria({ cacheDirectory: "./.next/cache/linaria" })], {
   linaria: {
     cacheDirectory: "./.next/cache/linaria",
   },
