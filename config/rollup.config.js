@@ -4,7 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import * as fs from "fs";
-import { terser } from "rollup-plugin-terser";
+import terser from "@rollup/plugin-terser";
 import shebang from "rollup-plugin-add-shebang";
 import css from "rollup-plugin-css-only";
 import stylis from "stylis";
