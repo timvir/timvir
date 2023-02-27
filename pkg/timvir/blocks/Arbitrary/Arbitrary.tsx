@@ -52,10 +52,11 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
               className={classes.input}
               placeholder="Seed"
               value={base58.encode(new TextEncoder().encode(`${value.seed}`))}
+              readOnly
               onPaste={(ev) => {
                 const v = ev.clipboardData.getData("text/plain");
                 mutate((draft) => {
-                  draft.seed = +base58.decode(v);
+                  draft.seed = +(new TextDecoder().decode(base58.decode(v)));
                 });
               }}
               onFocus={(ev) => {
