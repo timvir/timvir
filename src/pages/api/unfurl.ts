@@ -21,13 +21,19 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: any) {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   await runMiddleware(req, res, cors);
 
+  if (typeof req.query.url !== "string") {
+    res.statusCode = 400;
+    res.end("Query param 'url' missing");
+    return;
+  }
+
   try {
     res.statusCode = 200;
-    const metadata = await unfurl(req.query.url as string);
+    const metadata = await unfurl(req.query.url);
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(metadata));
   } catch (err) {
     res.statusCode = 500;
-    res.end(JSON.stringify(err));
+    res.end(`Failed to unfurl ${req.query.url}`);
   }
 };
