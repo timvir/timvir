@@ -23,7 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (typeof req.query.url !== "string") {
     res.statusCode = 400;
-    res.end("Query param 'url' missing");
+    res.end();
     return;
   }
 
@@ -34,6 +34,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.end(JSON.stringify(metadata));
   } catch (err) {
     res.statusCode = 500;
-    res.end(`Failed to unfurl ${req.query.url}`);
+    res.end();
   }
 };
