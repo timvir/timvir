@@ -28,6 +28,6 @@
     "@mdx-js/react": "^2",
     "react": "^17 || ^18",
     "react-dom": "^17 || ^18",
-    "react-hotkeys-hook": "^4"
+    "react-hotkeys-hook": "^4.3.8"
   }
 }
