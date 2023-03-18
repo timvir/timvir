@@ -22,7 +22,7 @@
     "prism-react-renderer": "^1",
     "react-feather": "^2",
     "use-immer": "^0.8.1",
-    "wonka": "^6"
+    "wonka": "^6.2.5"
   },
   "peerDependencies": {
     "@mdx-js/react": "^2",
