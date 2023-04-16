@@ -281,10 +281,10 @@ importers:
   pkg/macro:
     dependencies:
       '@babel/generator':
-        specifier: ^7
+        specifier: ^7.21.4
         version: 7.21.4
       '@babel/parser':
-        specifier: ^7
+        specifier: ^7.21.4
         version: 7.21.4
       prettier:
         specifier: ^2
@@ -293,13 +293,13 @@ importers:
   pkg/mdx:
     dependencies:
       '@babel/generator':
-        specifier: ^7
+        specifier: ^7.21.4
         version: 7.21.4
       '@babel/parser':
-        specifier: ^7
+        specifier: ^7.21.4
         version: 7.21.4
       '@babel/types':
-        specifier: ^7
+        specifier: ^7.21.4
         version: 7.21.4
       espree:
         specifier: ^9
