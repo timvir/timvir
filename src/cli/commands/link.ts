@@ -1,6 +1,6 @@
 import fs from "fs";
 import kleur from "kleur";
-import mkdirp from "mkdirp";
+import { mkdirp } from "mkdirp";
 import { basename, dirname, join } from "path";
 import { write } from "../stdlib";
 import { template } from "../template";
