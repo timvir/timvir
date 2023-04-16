@@ -1,6 +1,6 @@
 import fs from "fs";
 import kleur from "kleur";
-import mkdirp from "mkdirp";
+import { mkdirp } from "mkdirp";
 import { join } from "path";
 import prettier from "prettier";
 import { write } from "../stdlib";
