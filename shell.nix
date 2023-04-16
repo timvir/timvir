@@ -19,6 +19,7 @@ in pkgs.mkShell {
   buildInputs = [
     pkgs.nodejs-18_x
     pkgs.jq
+    pkgs.nodePackages.pnpm
 
     tools.dev
   ];

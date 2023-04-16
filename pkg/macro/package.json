@@ -4,6 +4,8 @@
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
+    "@babel/parser": "^7",
+    "@babel/generator": "^7",
     "prettier": "*"
   },
   "repository": {

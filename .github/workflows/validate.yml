@@ -10,11 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8
 
-      - run: npm install
+      - run: pnpm install
 
       - run: ./node_modules/.bin/eslint .
       - run: ./node_modules/.bin/tsc --build tsconfig.json
