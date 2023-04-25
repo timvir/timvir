@@ -266,8 +266,8 @@ importers:
         specifier: ^0.9.0
         version: 0.9.0(immer@10.0.1)(react@18.2.0)
       wonka:
-        specifier: ^6.3.1
-        version: 6.3.1
+        specifier: ^6.3.2
+        version: 6.3.2
 
   pkg/cli:
     dependencies:
@@ -356,8 +356,8 @@ importers:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0
         version: 0.9.0(immer@10.0.1)(react@18.2.0)
       wonka:
-        specifier: ^6
-        version: 6.3.1
+        specifier: ^6.3.2
+        version: 6.3.2
 
 packages:
 
@@ -7035,8 +7035,8 @@ packages:
       isexe: 2.0.0
     dev: false
 
-  /wonka@6.3.1:
-    resolution: {integrity: sha512-nJyGPcjuBiaLFn8QAlrHd+QjV9AlPO7snOWAhgx6aX0nQLMV6Wi0nqfrkmsXIH0efngbDOroOz2QyLnZMF16Hw==}
+  /wonka@6.3.2:
+    resolution: {integrity: sha512-2xXbQ1LnwNS7egVm1HPhW2FyKrekolzhpM3mCwXdQr55gO+tAiY76rhb32OL9kKsW8taj++iP7C6hxlVzbnvrw==}
     dev: false
 
   /word-wrap@1.2.3:
