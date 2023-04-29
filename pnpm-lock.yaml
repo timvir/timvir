@@ -272,7 +272,7 @@ importers:
         specifier: ^2
         version: 2.8.7
       typescript:
-        specifier: ^5
+        specifier: ^5.0.4
         version: 5.0.4
 
   pkg/macro:

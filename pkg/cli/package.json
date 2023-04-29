@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "prettier": "^2",
-    "typescript": "^5"
+    "typescript": "^5.0.4"
   },
   "repository": {
     "type": "git",
