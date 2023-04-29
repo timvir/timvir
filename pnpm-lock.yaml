@@ -335,7 +335,7 @@ importers:
         specifier: ^9 || ^10
         version: 10.0.1
       prism-react-renderer:
-        specifier: ^2.0.3
+        specifier: ^2
         version: 2.0.3(react@18.2.0)
       react:
         specifier: ^17 || ^18
