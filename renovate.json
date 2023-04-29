@@ -5,6 +5,15 @@
     "prHourlyLimit": 0,
     "packageRules": [
       {
+        "matchFiles": [
+          "pkg/cli/package.json",
+          "pkg/macro/package.json",
+          "pkg/mdx/package.json",
+          "pkg/timvir/package.json"
+        ],
+        "rangeStrategy": "update-lockfile"
+      },
+      {
         "extends": "monorepo:react",
         "groupName": "React"
       },
