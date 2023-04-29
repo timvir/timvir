@@ -75,7 +75,7 @@
     "mkdirp": "^3.0.0",
     "next": "^13.3.1",
     "null-loader": "^4.0.1",
-    "prettier": "^2.8.7",
+    "prettier": "^2.8.8",
     "prism-react-renderer": "^2.0.3",
     "prompts": "^2.4.2",
     "pure-rand": "^6.0.2",
