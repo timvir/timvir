@@ -5,7 +5,7 @@
 import { css, cx } from "@linaria/core";
 import * as Page from "timvir/core";
 import { useBlock } from "timvir/core";
-import Highlight, { defaultProps, Language, PrismTheme } from "prism-react-renderer";
+import { Highlight } from "prism-react-renderer";
 import * as React from "react";
 import * as Icons from "react-feather";
 import { useImmer } from "use-immer";
@@ -27,7 +27,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
    *
    * @default "markup"
    */
-  language?: Language;
+  language?: string;
 
   /**
    * When set, the code block spans the full width. Note that the text itself
@@ -45,7 +45,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   caption?: React.ReactNode;
 }
 
-const nullTheme: PrismTheme = {
+const nullTheme = {
   plain: {},
   styles: [],
 };
@@ -66,7 +66,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
 
   return (
     <Root ref={ref} className={cx(classes.root, fullWidth && Page.fullWidth)} {...rest}>
-      <Highlight {...defaultProps} code={children.trim()} language={language ?? "markup"} theme={nullTheme}>
+      <Highlight code={children.trim()} language={language ?? "markup"} theme={nullTheme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={cx(className, theme, classes.code, fullWidth && classes.fullWidth)} style={style}>
             <div
