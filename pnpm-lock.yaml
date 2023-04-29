@@ -302,7 +302,7 @@ importers:
         specifier: ^7
         version: 7.21.4
       espree:
-        specifier: ^9
+        specifier: ^9.5.1
         version: 9.5.1
       mdast-util-from-markdown:
         specifier: ^1
