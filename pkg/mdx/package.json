@@ -13,7 +13,7 @@
     "@babel/types": "^7",
     "espree": "^9",
     "mdast-util-from-markdown": "^1",
-    "mdast-util-mdx": "^2",
+    "mdast-util-mdx": "^2.0.1",
     "micromark-extension-mdxjs": "^1",
     "prettier": "^2",
     "unist-util-visit": "^4"
