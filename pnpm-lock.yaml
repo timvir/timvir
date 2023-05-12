@@ -251,8 +251,8 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       unfurl.js:
-        specifier: ^6.3.1
-        version: 6.3.1
+        specifier: ^6.3.2
+        version: 6.3.2
       unist-util-visit:
         specifier: ^4.1.2
         version: 4.1.2
@@ -6695,8 +6695,8 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: false
 
-  /unfurl.js@6.3.1:
-    resolution: {integrity: sha512-hPSc4CifebcfCTHF+jGz0Qo67P/OPyQm/zC46tgVXvDhBEYVnoZlJ3e1WOmlmpoHx8KkmikbbeLlIMYDdRFM9w==}
+  /unfurl.js@6.3.2:
+    resolution: {integrity: sha512-F2oC3nc/p/ARgAghuScaPQMds95S/hLZwjdhZiYhQDGvwc67V4rkiLuLyatlb14I3scO40rVMGzRiC8OTEKPkQ==}
     engines: {node: '>=6.0.0'}
     dependencies:
       debug: 3.2.7
