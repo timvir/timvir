@@ -98,8 +98,8 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
       '@types/node':
-        specifier: ^18.16.3
-        version: 18.16.3
+        specifier: ^18.16.9
+        version: 18.16.9
       '@types/prettier':
         specifier: ^2.7.2
         version: 2.7.2
@@ -2120,7 +2120,7 @@ packages:
       '@linaria/logger': 4.0.0
       '@linaria/utils': 4.3.4
       '@rollup/pluginutils': 4.2.1
-      vite: 4.1.4(@types/node@18.16.3)
+      vite: 4.1.4(@types/node@18.16.9)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2464,7 +2464,7 @@ packages:
   /@types/cors@2.8.13:
     resolution: {integrity: sha512-RG8AStHlUiV5ysZQKq97copd2UmVYw3/pRMLefISZ3S1hK104Cwm7iLQ3fTKx+lsUH2CE8FlLaYeEA2LSeqYUA==}
     dependencies:
-      '@types/node': 18.16.3
+      '@types/node': 18.16.9
     dev: false
 
   /@types/d3-color@3.1.0:
@@ -2560,15 +2560,15 @@ packages:
   /@types/mkdirp@1.0.2:
     resolution: {integrity: sha512-o0K1tSO0Dx5X6xlU5F1D6625FawhC3dU3iqr25lluNv/+/QIVH8RLNEiVokgIZo+mz+87w/3Mkg/VvQS+J51fQ==}
     dependencies:
-      '@types/node': 18.16.3
+      '@types/node': 18.16.9
     dev: false
 
   /@types/ms@0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: false
 
-  /@types/node@18.16.3:
-    resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
+  /@types/node@18.16.9:
+    resolution: {integrity: sha512-IeB32oIV4oGArLrd7znD2rkHQ6EDCM+2Sr76dJnrHwv9OHBTTM6nuDLK9bmikXzPa0ZlWMWtRGo/Uw4mrzQedA==}
     dev: false
 
   /@types/parse-json@4.0.0:
@@ -2586,7 +2586,7 @@ packages:
   /@types/prompts@2.4.4:
     resolution: {integrity: sha512-p5N9uoTH76lLvSAaYSZtBCdEXzpOOufsRjnhjVSrZGXikVGHX9+cc9ERtHRV4hvBKHyZb1bg4K+56Bd2TqUn4A==}
     dependencies:
-      '@types/node': 18.16.3
+      '@types/node': 18.16.9
       kleur: 3.0.3
     dev: false
 
@@ -4795,7 +4795,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.16.3
+      '@types/node': 18.16.9
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -6875,7 +6875,7 @@ packages:
       vfile-message: 3.1.0
     dev: false
 
-  /vite@4.1.4(@types/node@18.16.3):
+  /vite@4.1.4(@types/node@18.16.9):
     resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -6900,7 +6900,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.16.3
+      '@types/node': 18.16.9
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
