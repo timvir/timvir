@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 importers:
 
@@ -101,8 +105,8 @@ importers:
         specifier: ^18.16.9
         version: 18.16.9
       '@types/prettier':
-        specifier: ^2.7.2
-        version: 2.7.2
+        specifier: ^2.7.3
+        version: 2.7.3
       '@types/prompts':
         specifier: ^2.4.4
         version: 2.4.4
@@ -2575,8 +2579,8 @@ packages:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: false
 
-  /@types/prettier@2.7.2:
-    resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
+  /@types/prettier@2.7.3:
+    resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
     dev: false
 
   /@types/prismjs@1.26.0:
