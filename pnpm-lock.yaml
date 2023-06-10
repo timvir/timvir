@@ -111,8 +111,8 @@ importers:
         specifier: ^2.4.4
         version: 2.4.4
       '@types/react':
-        specifier: ^18.2.6
-        version: 18.2.6
+        specifier: ^18.2.10
+        version: 18.2.10
       '@types/react-dom':
         specifier: ^18.2.4
         version: 18.2.4
@@ -2300,7 +2300,7 @@ packages:
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.1
-      '@types/react': 18.2.6
+      '@types/react': 18.2.10
       react: 18.2.0
     dev: false
 
@@ -2668,7 +2668,7 @@ packages:
   /@types/mdx-js__react@1.5.5:
     resolution: {integrity: sha512-k8pnaP6JXVlQh18HgL5X6sYFNC/qZnzO7R2+HsmwrwUd+JnnsU0d9lyyT0RQrHg1anxDU36S98TI/fsGtmYqqg==}
     dependencies:
-      '@types/react': 18.2.6
+      '@types/react': 18.2.10
     dev: false
 
   /@types/mdx@2.0.1:
@@ -2715,11 +2715,11 @@ packages:
   /@types/react-dom@18.2.4:
     resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
     dependencies:
-      '@types/react': 18.2.6
+      '@types/react': 18.2.10
     dev: false
 
-  /@types/react@18.2.6:
-    resolution: {integrity: sha512-wRZClXn//zxCFW+ye/D2qY65UsYP1Fpex2YXorHc8awoNamkMZSvBxwxdYVInsHOZZd2Ppq8isnSzJL5Mpf8OA==}
+  /@types/react@18.2.10:
+    resolution: {integrity: sha512-5UTpmDa5L+PgTLXhLPNolv7/Qh+1YQuy4fsh/IahJbvtaLz2g9qX0CKsE0rBQCvn9ymt9NpvZENZwclbLKc3EQ==}
     dependencies:
       '@types/prop-types': 15.7.3
       '@types/scheduler': 0.16.1
