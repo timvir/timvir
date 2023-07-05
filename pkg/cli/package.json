@@ -6,7 +6,7 @@
     "timvir": "./bin.js"
   },
   "dependencies": {
-    "prettier": "^2",
+    "prettier": "^3.0.0",
     "typescript": "^5"
   },
   "repository": {
