@@ -78,8 +78,8 @@ importers:
         specifier: ^7.20.2
         version: 7.20.2
       '@types/chroma-js':
-        specifier: ^2.4.0
-        version: 2.4.0
+        specifier: ^2.4.1
+        version: 2.4.1
       '@types/cors':
         specifier: ^2.8.13
         version: 2.8.13
@@ -2537,8 +2537,8 @@ packages:
       '@babel/types': 7.22.5
     dev: false
 
-  /@types/chroma-js@2.4.0:
-    resolution: {integrity: sha512-JklMxityrwjBTjGY2anH8JaTx3yjRU3/sEHSblLH1ba5lqcSh1LnImXJZO5peJfXyqKYWjHTGy4s5Wz++hARrw==}
+  /@types/chroma-js@2.4.1:
+    resolution: {integrity: sha512-YIm3RLfWdDU0/3rsNnu/Hh4uKCLQ9p/w1NvnFfBOBL/BGqOvuLNuhXwkJMUKMscmFJdan25lYqv2+qh1l7tZLg==}
     dev: false
 
   /@types/cors@2.8.13:
