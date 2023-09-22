@@ -93,8 +93,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       '@types/fuzzaldrin-plus':
-        specifier: ^0.6.2
-        version: 0.6.2
+        specifier: ^0.6.3
+        version: 0.6.3
       '@types/mdx-js__react':
         specifier: ^1.5.5
         version: 1.5.5
@@ -2603,8 +2603,8 @@ packages:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
     dev: false
 
-  /@types/fuzzaldrin-plus@0.6.2:
-    resolution: {integrity: sha512-f9QkOre3T9YI1+Pd6CVgt0rY/KiPFlYHhbKXmjDYZVbIgOLDls1k22nuIq7skIGz/tS4f5gRRWW6wR2B2dWEqQ==}
+  /@types/fuzzaldrin-plus@0.6.3:
+    resolution: {integrity: sha512-++TL4+wLrnGoGRRPKy4J33INT6LwE+mtvAcBgd+LwN2rxCa5jknw+hsZkBn2Gh1mkA6t90iVv7hiS1mrj/fpBQ==}
     dev: false
 
   /@types/hast@2.3.4:
