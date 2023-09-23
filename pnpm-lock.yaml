@@ -124,7 +124,7 @@ importers:
         version: 6.7.2(eslint@8.50.0)(typescript@5.0.4)
       '@zhif/macro':
         specifier: ^0.0.17
-        version: 0.0.17(@babel/parser@7.22.7)(babel-plugin-macros@3.1.0)(sharp@0.32.2)
+        version: 0.0.17(@babel/parser@7.22.7)(babel-plugin-macros@3.1.0)(sharp@0.32.6)
       ava:
         specifier: ^5.3.1
         version: 5.3.1
@@ -246,8 +246,8 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(rollup@3.22.0)
       sharp:
-        specifier: ^0.32.2
-        version: 0.32.2
+        specifier: ^0.32.6
+        version: 0.32.6
       stylis:
         specifier: ^3.5.4
         version: 3.5.4
@@ -2949,7 +2949,7 @@ packages:
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
     dev: false
 
-  /@zhif/macro@0.0.17(@babel/parser@7.22.7)(babel-plugin-macros@3.1.0)(sharp@0.32.2):
+  /@zhif/macro@0.0.17(@babel/parser@7.22.7)(babel-plugin-macros@3.1.0)(sharp@0.32.6):
     resolution: {integrity: sha512-dlIPeqi0Zg5nbr8BO3Zg4s6tZSr/0AkKfhlNfYOMXR4iGfkkkoyN0XH+8wB3qNFSTJc6r/6Uy4sRj/X3fqEQWA==}
     peerDependencies:
       '@babel/parser': ^7.0.0
@@ -2958,7 +2958,7 @@ packages:
     dependencies:
       '@babel/parser': 7.22.7
       babel-plugin-macros: 3.1.0
-      sharp: 0.32.2
+      sharp: 0.32.6
     dev: false
 
   /acorn-import-assertions@1.8.0(acorn@8.9.0):
@@ -3794,8 +3794,8 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /detect-libc@2.0.1:
-    resolution: {integrity: sha512-463v3ZeIrcWtdgIg6vI6XUncguvr2TnGl4SzDXinkt9mSLpBJKXT3mW6xT3VQdDN11+WVs29pgvivTc4Lp8v+w==}
+  /detect-libc@2.0.2:
+    resolution: {integrity: sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==}
     engines: {node: '>=8'}
     dev: false
 
@@ -6029,7 +6029,7 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      detect-libc: 2.0.1
+      detect-libc: 2.0.2
       expand-template: 2.0.3
       github-from-package: 0.0.0
       minimist: 1.2.6
@@ -6476,13 +6476,13 @@ packages:
       has-property-descriptors: 1.0.0
     dev: false
 
-  /sharp@0.32.2:
-    resolution: {integrity: sha512-e4hyWKtU7ks/rLmoPys476zhpQnLqPJopz4+5b6OPeyJfvCTInAp0pe5tGhstjsNdUvDLrUVGEwevewYdZM8Eg==}
+  /sharp@0.32.6:
+    resolution: {integrity: sha512-KyLTWwgcR9Oe4d9HwCwNM2l7+J0dUQwn/yf7S0EnTtb0eVS4RxO0eUSvxPtzT4F3SY+C4K6fqdv/DO27sJ/v/w==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:
       color: 4.2.3
-      detect-libc: 2.0.1
+      detect-libc: 2.0.2
       node-addon-api: 6.1.0
       prebuild-install: 7.1.1
       semver: 7.5.4
