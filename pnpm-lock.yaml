@@ -84,8 +84,8 @@ importers:
         specifier: ^2.8.14
         version: 2.8.14
       '@types/d3-color':
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^3.1.1
+        version: 3.1.1
       '@types/dot':
         specifier: ^1.1.5
         version: 1.1.5
@@ -2547,8 +2547,8 @@ packages:
       '@types/node': 18.16.19
     dev: false
 
-  /@types/d3-color@3.1.0:
-    resolution: {integrity: sha512-HKuicPHJuvPgCD+np6Se9MQvS6OCbJmOjGvylzMJRlDwUXjKTTXs6Pwgk79O09Vj/ho3u1ofXnhFOaEWWPrlwA==}
+  /@types/d3-color@3.1.1:
+    resolution: {integrity: sha512-CSAVrHAtM9wfuLJ2tpvvwCU/F22sm7rMHNN+yh9D6O6hyAms3+O0cgMpC1pm6UEUMOntuZC8bMt74PteiDUdCg==}
     dev: false
 
   /@types/debug@4.1.7:
