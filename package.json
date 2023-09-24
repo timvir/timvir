@@ -41,7 +41,7 @@
     "@types/mkdirp": "^1.0.2",
     "@types/node": "^18.17.19",
     "@types/prettier": "^2.7.3",
-    "@types/prompts": "^2.4.4",
+    "@types/prompts": "^2.4.5",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
