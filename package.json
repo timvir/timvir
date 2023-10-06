@@ -65,7 +65,7 @@
     "fast-check": "^3.13.1",
     "fuzzaldrin-plus": "^0.6.0",
     "globby": "^13.2.2",
-    "immer": "^10.0.2",
+    "immer": "^10.0.3",
     "install": "^0.13.0",
     "kleur": "^4.1.5",
     "mdast-util-from-markdown": "^1.3.1",
