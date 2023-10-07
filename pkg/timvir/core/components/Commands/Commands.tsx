@@ -64,7 +64,7 @@ function Commands(props: Props) {
           >
             <Dialog open onClose={close} />
           </div>,
-          draft.dialog.containerElement as HTMLDivElement
+          draft.dialog.containerElement as any as HTMLDivElement,
         );
 
         draft.dialog.reactPortal = reactPortal;
@@ -83,14 +83,14 @@ function Commands(props: Props) {
               onDispose={() => {
                 mutate((draft) => {
                   if (!draft.open && draft.dialog) {
-                    document.body.removeChild(draft.dialog.containerElement as HTMLDivElement);
+                    document.body.removeChild(draft.dialog.containerElement as any as HTMLDivElement);
                     draft.dialog = null;
                   }
                 });
               }}
             />
           </div>,
-          draft.dialog.containerElement as HTMLDivElement
+          draft.dialog.containerElement as any as HTMLDivElement
         );
 
         draft.dialog.reactPortal = reactPortal;
