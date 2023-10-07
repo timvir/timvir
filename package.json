@@ -89,7 +89,7 @@
     "rollup-plugin-css-only": "^4.3.0",
     "sharp": "^0.32.6",
     "stylis": "^3.5.4",
-    "typescript": "^5.0.4",
+    "typescript": "^5.2.2",
     "unfurl.js": "^6.3.2",
     "unist-util-visit": "^4.1.2",
     "unist-util-visit-parents": "^5.1.3",
