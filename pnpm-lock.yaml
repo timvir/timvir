@@ -87,8 +87,8 @@ importers:
         specifier: ^3.1.2
         version: 3.1.2
       '@types/dot':
-        specifier: ^1.1.5
-        version: 1.1.5
+        specifier: ^1.1.6
+        version: 1.1.6
       '@types/estree':
         specifier: ^1.0.2
         version: 1.0.2
@@ -2499,8 +2499,8 @@ packages:
       '@types/ms': 0.7.31
     dev: false
 
-  /@types/dot@1.1.5:
-    resolution: {integrity: sha512-fguu7IaFdubwG18Y6GbjVM9yItNeQezVCvsXn/QFPe/+Vsbjpz+Rddi3Fg/YX11+xqeaB0sPSfP3ebLI4NNGGw==}
+  /@types/dot@1.1.6:
+    resolution: {integrity: sha512-lZi2qSgNA4Uqwl4kML3fb4l8Em7UlxzhJDpL+3Ozs7ooD3+j0Cl9qtpZd+9lKBDj44xl6KrunhUDiuMmK4zLDw==}
     dev: false
 
   /@types/eslint-scope@3.7.4:
