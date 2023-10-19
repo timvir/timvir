@@ -14,7 +14,7 @@
     "espree": "^9",
     "mdast-util-from-markdown": "^1",
     "mdast-util-mdx": "^2",
-    "micromark-extension-mdxjs": "^3.0.0",
+    "micromark-extension-mdxjs": "^3",
     "prettier": "^2",
     "unist-util-visit": "^4"
   },
