@@ -96,8 +96,8 @@ importers:
         specifier: ^0.6.4
         version: 0.6.4
       '@types/mdx-js__react':
-        specifier: ^1.5.6
-        version: 1.5.6
+        specifier: ^1.5.7
+        version: 1.5.7
       '@types/mkdirp':
         specifier: ^1.0.2
         version: 1.0.2
@@ -2569,8 +2569,8 @@ packages:
     resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
     dev: false
 
-  /@types/mdx-js__react@1.5.6:
-    resolution: {integrity: sha512-NPQSvm0NiUzagIWkqY8wcHILt61dI/FerbX5ZIilFpCmDBtRii20CtGdzXrbAZXOk49BziT69xBlOzOuROAAEw==}
+  /@types/mdx-js__react@1.5.7:
+    resolution: {integrity: sha512-QsG4MviR05zsfj+nhaVqGv1C1uZFgJ0tn4SPOf6vz4/pIuUDpohJgINsHU6ObxQ/6urrHtu1bUKOs0npFyiFhg==}
     dependencies:
       '@types/react': 18.2.22
     dev: false
