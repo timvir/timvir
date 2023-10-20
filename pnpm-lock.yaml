@@ -81,8 +81,8 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
       '@types/cors':
-        specifier: ^2.8.14
-        version: 2.8.14
+        specifier: ^2.8.15
+        version: 2.8.15
       '@types/d3-color':
         specifier: ^3.1.2
         version: 3.1.2
@@ -2483,8 +2483,8 @@ packages:
     resolution: {integrity: sha512-YIm3RLfWdDU0/3rsNnu/Hh4uKCLQ9p/w1NvnFfBOBL/BGqOvuLNuhXwkJMUKMscmFJdan25lYqv2+qh1l7tZLg==}
     dev: false
 
-  /@types/cors@2.8.14:
-    resolution: {integrity: sha512-RXHUvNWYICtbP6s18PnOCaqToK8y14DnLd75c6HfyKf228dxy7pHNOQkxPtvXKp/hINFMDjbYzsj63nnpPMSRQ==}
+  /@types/cors@2.8.15:
+    resolution: {integrity: sha512-n91JxbNLD8eQIuXDIChAN1tCKNWCEgpceU9b7ZMbFA+P+Q4yIeh80jizFLEvolRPc1ES0VdwFlGv+kJTSirogw==}
     dependencies:
       '@types/node': 18.18.6
     dev: false
