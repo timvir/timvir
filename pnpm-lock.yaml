@@ -61,7 +61,7 @@ importers:
         version: 13.5.4(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
       '@rollup/plugin-babel':
         specifier: ^6.0.4
-        version: 6.0.4(@babel/core@7.23.2)(@types/babel__core@7.20.2)(rollup@3.29.4)
+        version: 6.0.4(@babel/core@7.23.2)(@types/babel__core@7.20.3)(rollup@3.29.4)
       '@rollup/plugin-commonjs':
         specifier: ^25.0.7
         version: 25.0.7(rollup@3.29.4)
@@ -75,8 +75,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@3.29.4)
       '@types/babel__core':
-        specifier: ^7.20.2
-        version: 7.20.2
+        specifier: ^7.20.3
+        version: 7.20.3
       '@types/chroma-js':
         specifier: ^2.4.1
         version: 2.4.1
@@ -2330,7 +2330,7 @@ packages:
       fastq: 1.11.1
     dev: false
 
-  /@rollup/plugin-babel@6.0.4(@babel/core@7.23.2)(@types/babel__core@7.20.2)(rollup@3.29.4):
+  /@rollup/plugin-babel@6.0.4(@babel/core@7.23.2)(@types/babel__core@7.20.3)(rollup@3.29.4):
     resolution: {integrity: sha512-YF7Y52kFdFT/xVSuVdjkV5ZdX/3YtmX0QulG+x0taQOtJdHYzVU61aSSkAgVJ7NOv6qPkIYiJSgSWWN/DM5sGw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -2346,7 +2346,7 @@ packages:
       '@babel/core': 7.23.2
       '@babel/helper-module-imports': 7.22.15
       '@rollup/pluginutils': 5.0.2(rollup@3.29.4)
-      '@types/babel__core': 7.20.2
+      '@types/babel__core': 7.20.3
       rollup: 3.29.4
     dev: false
 
@@ -2450,8 +2450,8 @@ packages:
       '@types/estree': 1.0.3
     dev: false
 
-  /@types/babel__core@7.20.2:
-    resolution: {integrity: sha512-pNpr1T1xLUc2l3xJKuPtsEky3ybxN3m4fJkknfIpTCTfIZCDW57oAg+EfCgIIp2rvCe0Wn++/FfodDS4YXxBwA==}
+  /@types/babel__core@7.20.3:
+    resolution: {integrity: sha512-54fjTSeSHwfan8AyHWrKbfBWiEUrNTZsUwPTDSNaaP1QDQIZbeNUg3a59E9D+375MzUw/x1vx2/0F5LBz+AeYA==}
     dependencies:
       '@babel/parser': 7.23.0
       '@babel/types': 7.23.0
