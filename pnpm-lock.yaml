@@ -171,8 +171,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.52.0)
       fast-check:
-        specifier: ^3.13.1
-        version: 3.13.1
+        specifier: ^3.13.2
+        version: 3.13.2
       fuzzaldrin-plus:
         specifier: ^0.6.0
         version: 0.6.0
@@ -4194,8 +4194,8 @@ packages:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
     dev: false
 
-  /fast-check@3.13.1:
-    resolution: {integrity: sha512-Xp00tFuWd83i8rbG/4wU54qU+yINjQha7bXH2N4ARNTkyOimzHtUBJ5+htpdXk7RMaCOD/j2jxSjEt9u9ZPNeQ==}
+  /fast-check@3.13.2:
+    resolution: {integrity: sha512-ouTiFyeMoqmNg253xqy4NSacr5sHxH6pZpLOaHgaAdgZxFWdtsfxExwolpveoAE9CJdV+WYjqErNGef6SqA5Mg==}
     engines: {node: '>=8.0.0'}
     dependencies:
       pure-rand: 6.0.4
