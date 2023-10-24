@@ -39,7 +39,7 @@
     "@types/fuzzaldrin-plus": "^0.6.4",
     "@types/mdx-js__react": "^1.5.7",
     "@types/mkdirp": "^1.0.2",
-    "@types/node": "^18.18.6",
+    "@types/node": "^20.8.8",
     "@types/prettier": "^2.7.3",
     "@types/prompts": "^2.4.7",
     "@types/react": "^18.2.31",
