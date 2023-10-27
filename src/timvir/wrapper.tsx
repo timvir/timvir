@@ -1,4 +1,4 @@
-import { Components } from "@mdx-js/react/lib/index";
+import { MDXProvider } from "@mdx-js/react";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
@@ -14,7 +14,7 @@ const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
   },
 };
 
-const mdxComponents: Components = {
+const mdxComponents: React.ComponentPropsWithoutRef<typeof MDXProvider>['components'] = {
   pre: function pre(props: any) {
     const [, language = "markdown"] =
       (props.className ?? props.children?.props?.className ?? "").match(/^language-(.*)$/) || [];
