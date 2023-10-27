@@ -324,8 +324,8 @@ importers:
   pkg/timvir:
     dependencies:
       '@mdx-js/react':
-        specifier: ^3.0.0
-        version: 3.0.0(@types/react@18.2.33)(react@18.2.0)
+        specifier: ^2 || ^3
+        version: 2.0.0(react@18.2.0)
       bytestring:
         specifier: ^1
         version: 1.0.0
@@ -2203,6 +2203,16 @@ packages:
       vfile: 6.0.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@mdx-js/react@2.0.0(react@18.2.0):
+    resolution: {integrity: sha512-icpMd43xqORnHSVRwALZv3ELN3IS7VS3BL+FyH2FFergQPSQ21FX0lN+OMIs0X+3dGY1L0DLhBCkMfPO+yDG7Q==}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      '@types/mdx': 2.0.1
+      '@types/react': 18.2.33
+      react: 18.2.0
     dev: false
 
   /@mdx-js/react@3.0.0(@types/react@18.2.33)(react@18.2.0):
