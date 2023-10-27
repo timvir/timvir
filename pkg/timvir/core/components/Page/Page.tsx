@@ -1,6 +1,5 @@
 import { css, cx } from "@linaria/core";
 import { MDXProvider } from "@mdx-js/react";
-import { Components } from "@mdx-js/react/lib/index";
 import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { makeBus } from "timvir/bus";
@@ -33,7 +32,7 @@ interface Props extends React.ComponentProps<typeof Root> {
    * highlighting. If you want to enable syntax highlighting in code blocks, use the
    * '<Code>' component from 'timvir/blocks'.
    */
-  mdxComponents?: Components;
+  mdxComponents?: React.ComponentPropsWithoutRef<typeof MDXProvider>['components'];
 
   /**
    * Search Configuration. When provided, then the Search menu will appear in the sidebar.
@@ -161,7 +160,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           `}
         >
           <div className={grid}>
-            <MDXProvider components={{ ...(mdxComponentsBase as any as Components), ...mdxComponents }}>
+            <MDXProvider components={{ ...(mdxComponentsBase as any), ...mdxComponents }}>
               {children}
             </MDXProvider>
           </div>
