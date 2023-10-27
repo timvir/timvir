@@ -25,7 +25,7 @@
     "wonka": "^6"
   },
   "peerDependencies": {
-    "@mdx-js/react": "^3.0.0",
+    "@mdx-js/react": "^2 || ^3",
     "react": "^17 || ^18",
     "react-dom": "^17 || ^18",
     "react-hotkeys-hook": "^4"
