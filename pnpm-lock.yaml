@@ -240,8 +240,8 @@ importers:
         specifier: ^0.3.1
         version: 0.3.1
       rollup-plugin-css-only:
-        specifier: ^4.3.0
-        version: 4.3.0(rollup@4.2.0)
+        specifier: ^4.4.0
+        version: 4.4.0(rollup@4.2.0)
       sharp:
         specifier: ^0.32.6
         version: 0.32.6
@@ -6674,11 +6674,11 @@ packages:
       rollup-pluginutils: 2.8.2
     dev: false
 
-  /rollup-plugin-css-only@4.3.0(rollup@4.2.0):
-    resolution: {integrity: sha512-BsiCqJJQzZh2lQiHY5irejRoJ3I1EUFHEi5PjVqsr+EmOh54YrWVwd3YZEXnQJ2+fzlhif0YM/Kf0GuH90GAdQ==}
+  /rollup-plugin-css-only@4.4.0(rollup@4.2.0):
+    resolution: {integrity: sha512-1NWsTbWD2i9t4MM2+xBYPu1GN+QNoo+8FFwhIUjzaxA1YjhiWU1AfTOsmWMJFyDPwSchCKhrhI03ZPjXo/RiQQ==}
     engines: {node: '>=14'}
     peerDependencies:
-      rollup: <4
+      rollup: <5
     dependencies:
       '@rollup/pluginutils': 5.0.5(rollup@4.2.0)
       rollup: 4.2.0
