@@ -105,8 +105,8 @@ importers:
         specifier: ^2.7.3
         version: 2.7.3
       '@types/prompts':
-        specifier: ^2.4.7
-        version: 2.4.7
+        specifier: ^2.4.8
+        version: 2.4.8
       '@types/react':
         specifier: ^18.2.35
         version: 18.2.35
@@ -2684,8 +2684,8 @@ packages:
     resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
     dev: false
 
-  /@types/prompts@2.4.7:
-    resolution: {integrity: sha512-5zTamE+QQM4nR6Ab3yHK+ovWuhLJXaa2ZLt3mT1en8U3ubWtjVT1vXDaVFC2+cL89uVn7Y+gIq5B3IcVvBl5xQ==}
+  /@types/prompts@2.4.8:
+    resolution: {integrity: sha512-fPOEzviubkEVCiLduO45h+zFHB0RZX8tFt3C783sO5cT7fUXf3EEECpD26djtYdh4Isa9Z9tasMQuZnYPtvYzw==}
     dependencies:
       '@types/node': 20.8.10
       kleur: 3.0.3
