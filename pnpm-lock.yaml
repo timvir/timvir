@@ -93,8 +93,8 @@ importers:
         specifier: ^0.6.4
         version: 0.6.4
       '@types/mdx-js__react':
-        specifier: ^1.5.7
-        version: 1.5.7
+        specifier: ^1.5.8
+        version: 1.5.8
       '@types/mkdirp':
         specifier: ^1.0.2
         version: 1.0.2
@@ -2662,8 +2662,8 @@ packages:
       '@types/unist': 3.0.1
     dev: false
 
-  /@types/mdx-js__react@1.5.7:
-    resolution: {integrity: sha512-QsG4MviR05zsfj+nhaVqGv1C1uZFgJ0tn4SPOf6vz4/pIuUDpohJgINsHU6ObxQ/6urrHtu1bUKOs0npFyiFhg==}
+  /@types/mdx-js__react@1.5.8:
+    resolution: {integrity: sha512-iLQL8JZ4AZ+rpZvGUsQwENffpsSCMLYB8kE6OhGasLmdYn7aSLq53uOvZrKx5FM+hymE2nm08HDfq7tFx02ElA==}
     dependencies:
       '@types/react': 18.2.35
     dev: false
