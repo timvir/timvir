@@ -55,7 +55,7 @@ importers:
         version: 3.0.0(webpack@5.76.2)
       '@mdx-js/react':
         specifier: ^3.0.0
-        version: 3.0.0(@types/react@18.2.37)(react@18.2.0)
+        version: 3.0.0(@types/react@18.2.38)(react@18.2.0)
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.23.3)(@types/babel__core@7.20.4)(rollup@4.5.0)
@@ -108,11 +108,11 @@ importers:
         specifier: ^2.4.8
         version: 2.4.8
       '@types/react':
-        specifier: ^18.2.37
-        version: 18.2.37
+        specifier: ^18.2.38
+        version: 18.2.38
       '@types/react-dom':
-        specifier: ^18.2.15
-        version: 18.2.15
+        specifier: ^18.2.16
+        version: 18.2.16
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.11.0
         version: 6.11.0(@typescript-eslint/parser@6.11.0)(eslint@8.54.0)(typescript@5.2.2)
@@ -322,7 +322,7 @@ importers:
     dependencies:
       '@mdx-js/react':
         specifier: ^2 || ^3
-        version: 3.0.0(@types/react@18.2.37)(react@18.2.0)
+        version: 3.0.0(@types/react@18.2.38)(react@18.2.0)
       bytestring:
         specifier: ^1
         version: 1.0.0
@@ -2213,14 +2213,14 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/react@3.0.0(@types/react@18.2.37)(react@18.2.0):
+  /@mdx-js/react@3.0.0(@types/react@18.2.38)(react@18.2.0):
     resolution: {integrity: sha512-nDctevR9KyYFyV+m+/+S4cpzCWHqj+iHDHq3QrsWezcC+B17uZdIWgCguESUkwFhM3n/56KxWVE3V6EokrmONQ==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.1
-      '@types/react': 18.2.37
+      '@types/react': 18.2.38
       react: 18.2.0
     dev: false
 
@@ -2665,7 +2665,7 @@ packages:
   /@types/mdx-js__react@1.5.8:
     resolution: {integrity: sha512-iLQL8JZ4AZ+rpZvGUsQwENffpsSCMLYB8kE6OhGasLmdYn7aSLq53uOvZrKx5FM+hymE2nm08HDfq7tFx02ElA==}
     dependencies:
-      '@types/react': 18.2.37
+      '@types/react': 18.2.38
     dev: false
 
   /@types/mdx@2.0.1:
@@ -2711,14 +2711,14 @@ packages:
     resolution: {integrity: sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==}
     dev: false
 
-  /@types/react-dom@18.2.15:
-    resolution: {integrity: sha512-HWMdW+7r7MR5+PZqJF6YFNSCtjz1T0dsvo/f1BV6HkV+6erD/nA7wd9NM00KVG83zf2nJ7uATPO9ttdIPvi3gg==}
+  /@types/react-dom@18.2.16:
+    resolution: {integrity: sha512-766c37araZ9vxtYs25gvY2wNdFWsT2ZiUvOd0zMhTaoGj6B911N8CKQWgXXJoPMLF3J82thpRqQA7Rf3rBwyJw==}
     dependencies:
-      '@types/react': 18.2.37
+      '@types/react': 18.2.38
     dev: false
 
-  /@types/react@18.2.37:
-    resolution: {integrity: sha512-RGAYMi2bhRgEXT3f4B92WTohopH6bIXw05FuGlmJEnv/omEn190+QYEIYxIAuIBdKgboYYdVved2p1AxZVQnaw==}
+  /@types/react@18.2.38:
+    resolution: {integrity: sha512-cBBXHzuPtQK6wNthuVMV6IjHAFkdl/FOPFIlkd81/Cd1+IqkHu/A+w4g43kaQQoYHik/ruaQBDL72HyCy1vuMw==}
     dependencies:
       '@types/prop-types': 15.7.3
       '@types/scheduler': 0.16.1
