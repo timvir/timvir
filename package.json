@@ -75,7 +75,7 @@
     "next": "^13.5.6",
     "null-loader": "^4.0.1",
     "prettier": "^2.8.8",
-    "prism-react-renderer": "^2.2.0",
+    "prism-react-renderer": "^2.3.0",
     "prompts": "^2.4.2",
     "pure-rand": "^6.0.4",
     "react": "^18.2.0",
