@@ -36,11 +36,11 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       '@linaria/core':
-        specifier: ^5.0.2
-        version: 5.0.2
+        specifier: ^6.0.0
+        version: 6.0.0
       '@linaria/react':
-        specifier: ^5.0.3
-        version: 5.0.3(react@18.2.0)
+        specifier: ^6.0.0
+        version: 6.0.0(react@18.2.0)
       '@linaria/rollup':
         specifier: ^5.0.4
         version: 5.0.4(rollup@4.6.1)(vite@5.0.2)
@@ -2243,6 +2243,15 @@ packages:
       - supports-color
     dev: false
 
+  /@linaria/core@6.0.0:
+    resolution: {integrity: sha512-baRaaL1RGd6+DSB4HZhTfJWa214DaQXn0M3CLaPAwouoM4sU2ZF64X6aQ/L5fCbdNCN7SNNf5DtcWAxWC2bjLA==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@wyw-in-js/processor-utils': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@linaria/logger@5.0.0:
     resolution: {integrity: sha512-PZd5H0I4F84U0kXSE+vD75ltIGDxEA6gMDNWS2aDZFitmdlQM5rIXqvKFrp5NsHa7a3AH+I2Hxm0dg60WZF7vg==}
     engines: {node: '>=16.0.0'}
@@ -2253,16 +2262,16 @@ packages:
       - supports-color
     dev: false
 
-  /@linaria/react@5.0.3(react@18.2.0):
-    resolution: {integrity: sha512-faTQHnUlrAz0Lodu+rr6Yx59rX0nqFOrZ5/IdlfQcTRz9VebyVL4vtA3AOecmn1YFZjMpqjopT0OzNz6GknQSg==}
+  /@linaria/react@6.0.0(react@18.2.0):
+    resolution: {integrity: sha512-rzvaNIT9d5dxIiTew2ZYiYkuiuCCOiK6SLv+rmdewAFN6e5Ywd17UlwOEiIhRoJYmZktiMwPzb03m9+dLjGPhg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: '>=16'
     dependencies:
       '@emotion/is-prop-valid': 1.2.0
-      '@linaria/core': 5.0.2
-      '@linaria/tags': 5.0.2
-      '@linaria/utils': 5.0.2
+      '@linaria/core': 6.0.0
+      '@wyw-in-js/processor-utils': 0.2.2
+      '@wyw-in-js/shared': 0.2.2
       minimatch: 9.0.3
       react: 18.2.0
       react-html-attributes: 1.4.6
@@ -3227,6 +3236,27 @@ packages:
     dependencies:
       '@webassemblyjs/ast': 1.11.1
       '@xtuc/long': 4.2.2
+    dev: false
+
+  /@wyw-in-js/processor-utils@0.2.2:
+    resolution: {integrity: sha512-8jGKcdWb6XwuvHu9FAmBD9FOCCkoiU/FLb/GpEewSlT9sX17d4FZjzqIpKOZloMKH5PN3nuudTnT0Xrh6yLy2Q==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@babel/generator': 7.23.5
+      '@wyw-in-js/shared': 0.2.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@wyw-in-js/shared@0.2.2:
+    resolution: {integrity: sha512-5ClcaHLYykswtQldwWIyCRYJAin44VVTNUPTMFcAdZGU6jrSmz4c9xDbbpWcaruwNLuV8c2eq8xOUzF0BRjbjg==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      debug: 4.3.4
+      find-up: 5.0.0
+      minimatch: 9.0.3
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@xtuc/ieee754@1.2.0:
