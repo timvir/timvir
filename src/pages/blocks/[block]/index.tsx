@@ -24,16 +24,10 @@ export default function Page({ block }: Props) {
       return dynamic(() => import(`../../../../pkg/timvir/core/components/${block}/docs/index.mdx`));
     } else if (
       [
-        "ColorBar",
-        "ColorBook",
-        "Cover",
-        "Exhibit",
-        "Font",
         "Grid",
         "Icon",
         "Message",
         "Swatch",
-        "Viewport",
         "WebLink",
       ].includes(block)
     ) {
