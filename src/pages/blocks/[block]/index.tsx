@@ -22,17 +22,7 @@ export default function Page({ block }: Props) {
   const Component = (() => {
     if (block === "Page" || block === "Footer" || block === "NavigationFooter") {
       return dynamic(() => import(`../../../../pkg/timvir/core/components/${block}/docs/index.mdx`));
-    } else if (
-      [
-        "Grid",
-        "Icon",
-        "Message",
-        "Swatch",
-        "WebLink",
-      ].includes(block)
-    ) {
-      return dynamic(() => import(`../../../../pkg/timvir/blocks/${block}/docs/index.mdx`));
-    } else {
+    }  else {
       return dynamic(() => import(`../../../components/${block}/docs/index.mdx`));
     }
   })();
