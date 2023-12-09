@@ -1,8 +1,8 @@
-const path = require("path");
-const globby = require("globby");
+import * as path from "path";
+import * as globby from "globby";
 
 function main() {
-  const files = globby.sync("**/*.(tsx|mdx)", {
+  const files = globby.globbySync("**/*.(tsx|mdx)", {
     cwd: path.resolve(process.cwd(), "src", "pages"),
     ignore: ["api", "_*.tsx"],
   });
