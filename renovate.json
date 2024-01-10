@@ -32,7 +32,8 @@
       },
       {
         "matchPackagePatterns": ["^eslint", "^@typescript-eslint/"],
-        "groupName": "ESLint"
+        "groupName": "ESLint",
+        "automerge": true
       },
       {
         "matchPackageNames": ["sharp", "@types/sharp"],
