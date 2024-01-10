@@ -42,6 +42,10 @@
       {
         "matchPackageNames": ["immer", "use-immer"],
         "groupName": "Immer"
+      },
+      {
+        "matchPackagePatterns": ["^@types/"],
+        "automerge": true
       }
     ]
   }
