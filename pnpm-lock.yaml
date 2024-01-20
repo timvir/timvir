@@ -43,7 +43,7 @@ importers:
         version: 5.0.3(react@18.2.0)
       '@linaria/rollup':
         specifier: ^5.0.4
-        version: 5.0.4(rollup@4.9.1)(vite@5.0.7)
+        version: 5.0.4(rollup@4.9.1)(vite@5.0.12)
       '@linaria/shaker':
         specifier: ^5.0.3
         version: 5.0.3
@@ -2271,7 +2271,7 @@ packages:
       - supports-color
     dev: false
 
-  /@linaria/rollup@5.0.4(rollup@4.9.1)(vite@5.0.7):
+  /@linaria/rollup@5.0.4(rollup@4.9.1)(vite@5.0.12):
     resolution: {integrity: sha512-1Ajo+J1yEeOp2Sjcw3C59YjgCmZ3RcDD6tGv5KmA8DfhHfcegLLqqAO1I4Q5VvgVgErSrAzicn/sIsyWtNExOw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -2280,7 +2280,7 @@ packages:
       '@linaria/babel-preset': 5.0.4
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
-      '@linaria/vite': 5.0.4(rollup@4.9.1)(vite@5.0.7)
+      '@linaria/vite': 5.0.4(rollup@4.9.1)(vite@5.0.12)
       '@rollup/pluginutils': 5.0.5(rollup@4.9.1)
       rollup: 4.9.1
     transitivePeerDependencies:
@@ -2335,7 +2335,7 @@ packages:
       - supports-color
     dev: false
 
-  /@linaria/vite@5.0.4(rollup@4.9.1)(vite@5.0.7):
+  /@linaria/vite@5.0.4(rollup@4.9.1)(vite@5.0.12):
     resolution: {integrity: sha512-T3gPaUvf4sfM2D74ZAehTWSE6mLZ/qhzWzwid1siKPOAW1F4m1mYjkdL7dPZGc97pg+JaFBnHXXIOfz5/5fwBQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -2345,7 +2345,7 @@ packages:
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
       '@rollup/pluginutils': 5.0.5(rollup@4.9.1)
-      vite: 5.0.7(@types/node@20.11.5)
+      vite: 5.0.12(@types/node@20.11.5)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -7655,8 +7655,8 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite@5.0.7(@types/node@20.11.5):
-    resolution: {integrity: sha512-B4T4rJCDPihrQo2B+h1MbeGL/k/GMAHzhQ8S0LjQ142s6/+l3hHTT095ORvsshj4QCkoWu3Xtmob5mazvakaOw==}
+  /vite@5.0.12(@types/node@20.11.5):
+    resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
