@@ -228,8 +228,8 @@ importers:
         specifier: ^2.0.10
         version: 2.0.10(react@18.2.0)
       react-hotkeys-hook:
-        specifier: ^4.4.4
-        version: 4.4.4(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^4.5.0
+        version: 4.5.0(react-dom@18.2.0)(react@18.2.0)
       react-measure:
         specifier: ^2.5.2
         version: 2.5.2(react-dom@18.2.0)(react@18.2.0)
@@ -349,7 +349,7 @@ importers:
         version: 2.0.10(react@18.2.0)
       react-hotkeys-hook:
         specifier: ^4
-        version: 4.4.4(react-dom@18.2.0)(react@18.2.0)
+        version: 4.5.0(react-dom@18.2.0)(react@18.2.0)
       use-immer:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0
         version: 0.9.0(immer@10.0.3)(react@18.2.0)
@@ -6649,8 +6649,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-hotkeys-hook@4.4.4(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-wzZmqb/Obr0ds9Myc1sIFPJ52GA/Eeg/vXBWV0HA1LvHlVAW5Va3KB0q6EZNlNSHQWscWZ2K8+6w0GYSie2o7A==}
+  /react-hotkeys-hook@4.5.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Samb85GSgAWFQNvVt3PS90LPPGSf9mkH/r4au81ZP1yOIFayLC3QAvqTgGtJ8YEDMXtPmaVBs6NgipHO6h4Mug==}
     peerDependencies:
       react: '>=16.8.1'
       react-dom: '>=16.8.1'
