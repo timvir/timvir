@@ -53,7 +53,7 @@
     "bytestring": "^1.0.0",
     "chroma-js": "^2.4.2",
     "commander": "^11.1.0",
-    "core-js": "^3.34.0",
+    "core-js": "^3.35.1",
     "cors": "^2.8.5",
     "d3-color": "^3.1.0",
     "dot": "^1.1.3",
