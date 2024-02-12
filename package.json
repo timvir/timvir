@@ -44,7 +44,7 @@
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@typescript-eslint/parser": "^7.0.0",
     "@zhif/macro": "^0.0.17",
     "ava": "^6.1.1",
     "babel-plugin-macros": "^3.1.0",
