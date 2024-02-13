@@ -43,7 +43,7 @@
     "@types/prompts": "^2.4.9",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
     "@zhif/macro": "^0.0.17",
     "ava": "^6.1.1",
