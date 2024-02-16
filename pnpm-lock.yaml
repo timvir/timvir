@@ -252,8 +252,8 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
       unfurl.js:
-        specifier: ^6.3.2
-        version: 6.3.2
+        specifier: ^6.4.0
+        version: 6.4.0
       unist-util-visit:
         specifier: ^4.1.2
         version: 4.1.2
@@ -7491,8 +7491,8 @@ packages:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: false
 
-  /unfurl.js@6.3.2:
-    resolution: {integrity: sha512-F2oC3nc/p/ARgAghuScaPQMds95S/hLZwjdhZiYhQDGvwc67V4rkiLuLyatlb14I3scO40rVMGzRiC8OTEKPkQ==}
+  /unfurl.js@6.4.0:
+    resolution: {integrity: sha512-DogJFWPkOWMcu2xPdpmbcsL+diOOJInD3/jXOv6saX1upnWmMK8ndAtDWUfJkuInqNI9yzADud4ID9T+9UeWCw==}
     engines: {node: '>=6.0.0'}
     dependencies:
       debug: 3.2.7
