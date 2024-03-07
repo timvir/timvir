@@ -5,7 +5,7 @@
 import { css, cx } from "@linaria/core";
 import * as Page from "timvir/core";
 import { useBlock } from "timvir/core";
-import { Highlight } from "prism-react-renderer";
+import { codeToHtml } from "shiki";
 import * as React from "react";
 import * as Icons from "react-feather";
 import { useImmer } from "use-immer";
@@ -53,7 +53,7 @@ const nullTheme = {
 function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const block = useBlock(props);
 
-  const { children, language, fullWidth, highlightedLines, caption, ...rest } = block.props;
+  const { children, language, fullWidth, highlightedLines, caption, className, ...rest } = block.props;
 
   const isHighlightedLine = (() => {
     return (line: number) => highlightedLines?.includes(line);
@@ -62,136 +62,126 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   const [state, mutate] = useImmer({
     mouseOver: false,
     copiedToClipboard: false,
+    html: "",
   });
+
+  React.useEffect(() => {
+    (async () => {
+      console.log({ children: children.trim() });
+      const html = await codeToHtml(children.trim(), { lang: language ?? "markup", theme: "vitesse-dark" });
+      mutate((draft) => {
+        draft.html = html;
+      });
+    })();
+  }, [mutate, children, language]);
 
   return (
     <Root ref={ref} className={cx(classes.root, fullWidth && Page.fullWidth)} {...rest}>
-      <Highlight code={children.trim()} language={language ?? "markup"} theme={nullTheme}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={cx(className, theme, classes.code, fullWidth && classes.fullWidth)} style={style}>
-            <div
+      <div className={cx(className, theme, classes.code, fullWidth && classes.fullWidth)}>
+        <div
+          className={css`
+            display: grid;
+            grid-template-columns: 1fr;
+          `}
+          onMouseEnter={() => {
+            mutate((draft) => {
+              draft.mouseOver = true;
+            });
+          }}
+          onMouseLeave={() => {
+            mutate((draft) => {
+              draft.mouseOver = false;
+              draft.copiedToClipboard = false;
+            });
+          }}
+        >
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(children);
+              mutate((draft) => {
+                draft.copiedToClipboard = true;
+              });
+            }}
+            className={cx(
+              css`
+                --size: 48px;
+
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                right: 0;
+                overflow: hidden;
+
+                width: var(--size);
+                height: var(--size);
+
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-end;
+
+                outline: none;
+                border: none;
+                padding: 6px;
+                background: transparent;
+
+                transition: all 0.2s;
+
+                cursor: pointer;
+
+                &:hover {
+                  color: white;
+                }
+                &:hover svg:first-child {
+                  transform: translate(0, 0);
+                }
+                &:active svg:first-child {
+                  transform: translate(2px, -2px);
+                }
+
+                pointer-events: none;
+                opacity: 0;
+              `,
+              state.mouseOver &&
+                css`
+                  pointer-events: all;
+                  opacity: 1;
+                `
+            )}
+          >
+            <svg
+              width={48}
+              height={48}
+              viewBox="0 0 48 48"
               className={css`
-                display: grid;
-                grid-template-columns: 1fr;
-                padding-block: 16px;
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                right: 0;
+                path {
+                  fill: var(--c-p-4);
+                }
+
+                transition: all 0.2s;
+                transform: translate(48px, -48px);
               `}
-              onMouseEnter={() => {
-                mutate((draft) => {
-                  draft.mouseOver = true;
-                });
-              }}
-              onMouseLeave={() => {
-                mutate((draft) => {
-                  draft.mouseOver = false;
-                  draft.copiedToClipboard = false;
-                });
-              }}
             >
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText(children);
-                  mutate((draft) => {
-                    draft.copiedToClipboard = true;
-                  });
-                }}
-                className={cx(
-                  css`
-                    --size: 48px;
+              <path d="M0 0 H48 V48 Z" />
+            </svg>
+            {state.copiedToClipboard ? <Icons.Clipboard size={"16px"} /> : <Icons.Copy size={"16px"} />}
+          </button>
 
-                    z-index: 1;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    overflow: hidden;
-
-                    width: var(--size);
-                    height: var(--size);
-
-                    display: flex;
-                    align-items: flex-start;
-                    justify-content: flex-end;
-
-                    outline: none;
-                    border: none;
-                    padding: 6px;
-                    background: transparent;
-
-                    transition: all 0.2s;
-
-                    cursor: pointer;
-
-                    &:hover {
-                      color: white;
-                    }
-                    &:hover svg:first-child {
-                      transform: translate(0, 0);
-                    }
-                    &:active svg:first-child {
-                      transform: translate(2px, -2px);
-                    }
-
-                    pointer-events: none;
-                    opacity: 0;
-                  `,
-                  state.mouseOver &&
-                    css`
-                      pointer-events: all;
-                      opacity: 1;
-                    `
-                )}
-              >
-                <svg
-                  width={48}
-                  height={48}
-                  viewBox="0 0 48 48"
-                  className={css`
-                    position: absolute;
-                    z-index: -1;
-                    top: 0;
-                    right: 0;
-                    path {
-                      fill: var(--c-p-4);
-                    }
-
-                    transition: all 0.2s;
-                    transform: translate(48px, -48px);
-                  `}
-                >
-                  <path d="M0 0 H48 V48 Z" />
-                </svg>
-                {state.copiedToClipboard ? <Icons.Clipboard size={"16px"} /> : <Icons.Copy size={"16px"} />}
-              </button>
-
-              <div
-                className={cx(
-                  fullWidth
-                    ? css`
-                        padding: 16px 24px 16px 0;
-                      `
-                    : css``
-                )}
-              >
-                {tokens.map((line, i) => {
-                  const { className, ...lineProps } = getLineProps({ line, key: i });
-
-                  return (
-                    <div
-                      key={i}
-                      {...lineProps}
-                      className={cx(className, classes.line, isHighlightedLine(i + 1) && classes.highlightedLine)}
-                    >
-                      {/* <span className={classes.lineNumber}>{i + 1}</span> */}
-                      {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({ token, key })} />
-                      ))}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </pre>
-        )}
-      </Highlight>
+          <div
+            className={cx(
+              fullWidth
+                ? css`
+                    padding: 16px 24px 16px 0;
+                  `
+                : css``
+            )}
+            dangerouslySetInnerHTML={{ __html: state.html }}
+          />
+        </div>
+      </div>
 
       {caption && <div className={classes.caption}>{caption}</div>}
     </Root>
@@ -233,6 +223,18 @@ const classes = {
         box-shadow: inset 0 0 0 1px rgb(216 222 226 / 10%), 0 1px 3px rgb(216 222 226 / 7%),
           0 2px 16px rgb(216 222 226 / 5%);
       }
+    }
+
+    & pre {
+      margin: 0;
+      padding: 16px 0;
+
+      background-color: transparent !important;
+    }
+
+    & pre .line {
+      padding-inline: var(--timvir-b-Code-inlinePadding);
+      margin-inline: 1px;
     }
   `,
 

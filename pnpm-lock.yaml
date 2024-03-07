@@ -245,6 +245,9 @@ importers:
       sharp:
         specifier: ^0.33.1
         version: 0.33.1
+      shiki:
+        specifier: ^1.1.7
+        version: 1.1.7
       stylis:
         specifier: ^3.5.4
         version: 3.5.4
@@ -2770,6 +2773,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@shikijs/core@1.1.7:
+    resolution: {integrity: sha512-gTYLUIuD1UbZp/11qozD3fWpUTuMqPSf3svDMMrL0UmlGU7D9dPw/V1FonwAorCUJBltaaESxq90jrSjQyGixg==}
+    dev: false
 
   /@sindresorhus/merge-streams@2.2.1:
     resolution: {integrity: sha512-255V7MMIKw6aQ43Wbqp9HZ+VHn6acddERTLiiLnlcPLU9PdTq9Aijl12oklAgUEblLWye+vHLzmqBx6f2TGcZw==}
@@ -7125,6 +7132,12 @@ packages:
   /shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+    dev: false
+
+  /shiki@1.1.7:
+    resolution: {integrity: sha512-9kUTMjZtcPH3i7vHunA6EraTPpPOITYTdA5uMrvsJRexktqP0s7P3s9HVK80b4pP42FRVe03D7fT3NmJv2yYhw==}
+    dependencies:
+      '@shikijs/core': 1.1.7
     dev: false
 
   /side-channel@1.0.4:
