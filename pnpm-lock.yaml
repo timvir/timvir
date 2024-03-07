@@ -209,9 +209,6 @@ importers:
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
-      prism-react-renderer:
-        specifier: ^2.3.1
-        version: 2.3.1(react@18.2.0)
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
@@ -245,6 +242,9 @@ importers:
       sharp:
         specifier: ^0.33.1
         version: 0.33.1
+      shiki:
+        specifier: ^1.1.7
+        version: 1.1.7
       stylis:
         specifier: ^3.5.4
         version: 3.5.4
@@ -335,9 +335,6 @@ importers:
       immer:
         specifier: ^9 || ^10
         version: 10.0.3
-      prism-react-renderer:
-        specifier: ^2
-        version: 2.3.1(react@18.2.0)
       react:
         specifier: ^17 || ^18
         version: 18.2.0
@@ -350,6 +347,9 @@ importers:
       react-hotkeys-hook:
         specifier: ^4
         version: 4.5.0(react-dom@18.2.0)(react@18.2.0)
+      shiki:
+        specifier: ^1
+        version: 1.1.7
       use-immer:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0
         version: 0.9.0(immer@10.0.3)(react@18.2.0)
@@ -2771,6 +2771,10 @@ packages:
     dev: false
     optional: true
 
+  /@shikijs/core@1.1.7:
+    resolution: {integrity: sha512-gTYLUIuD1UbZp/11qozD3fWpUTuMqPSf3svDMMrL0UmlGU7D9dPw/V1FonwAorCUJBltaaESxq90jrSjQyGixg==}
+    dev: false
+
   /@sindresorhus/merge-streams@2.2.1:
     resolution: {integrity: sha512-255V7MMIKw6aQ43Wbqp9HZ+VHn6acddERTLiiLnlcPLU9PdTq9Aijl12oklAgUEblLWye+vHLzmqBx6f2TGcZw==}
     engines: {node: '>=18'}
@@ -2939,10 +2943,6 @@ packages:
 
   /@types/prettier@2.7.3:
     resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
-    dev: false
-
-  /@types/prismjs@1.26.0:
-    resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
     dev: false
 
   /@types/prompts@2.4.9:
@@ -3829,11 +3829,6 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
-    dev: false
-
-  /clsx@2.0.0:
-    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
-    engines: {node: '>=6'}
     dev: false
 
   /code-excerpt@4.0.0:
@@ -6663,16 +6658,6 @@ packages:
       parse-ms: 4.0.0
     dev: false
 
-  /prism-react-renderer@2.3.1(react@18.2.0):
-    resolution: {integrity: sha512-Rdf+HzBLR7KYjzpJ1rSoxT9ioO85nZngQEoFIhL07XhtJHlCU3SOz0GJ6+qvMyQe0Se+BV3qpe6Yd/NmQF5Juw==}
-    peerDependencies:
-      react: '>=16.0.0'
-    dependencies:
-      '@types/prismjs': 1.26.0
-      clsx: 2.0.0
-      react: 18.2.0
-    dev: false
-
   /prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
     engines: {node: '>= 6'}
@@ -7125,6 +7110,12 @@ packages:
   /shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+    dev: false
+
+  /shiki@1.1.7:
+    resolution: {integrity: sha512-9kUTMjZtcPH3i7vHunA6EraTPpPOITYTdA5uMrvsJRexktqP0s7P3s9HVK80b4pP42FRVe03D7fT3NmJv2yYhw==}
+    dependencies:
+      '@shikijs/core': 1.1.7
     dev: false
 
   /side-channel@1.0.4:
