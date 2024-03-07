@@ -335,9 +335,6 @@ importers:
       immer:
         specifier: ^9 || ^10
         version: 10.0.3
-      prism-react-renderer:
-        specifier: ^2
-        version: 2.3.1(react@18.2.0)
       react:
         specifier: ^17 || ^18
         version: 18.2.0
@@ -350,6 +347,9 @@ importers:
       react-hotkeys-hook:
         specifier: ^4
         version: 4.5.0(react-dom@18.2.0)(react@18.2.0)
+      shiki:
+        specifier: ^1
+        version: 1.1.7
       use-immer:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0
         version: 0.9.0(immer@10.0.3)(react@18.2.0)
@@ -2945,10 +2945,6 @@ packages:
     resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
     dev: false
 
-  /@types/prismjs@1.26.0:
-    resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
-    dev: false
-
   /@types/prompts@2.4.9:
     resolution: {integrity: sha512-qTxFi6Buiu8+50/+3DGIWLHM6QuWsEKugJnnP6iv2Mc4ncxE4A/OJkjuVOA+5X0X1S/nq5VJRa8Lu+nwcvbrKA==}
     dependencies:
@@ -3833,11 +3829,6 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
-    dev: false
-
-  /clsx@2.0.0:
-    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
-    engines: {node: '>=6'}
     dev: false
 
   /code-excerpt@4.0.0:
@@ -6665,16 +6656,6 @@ packages:
     engines: {node: '>=18'}
     dependencies:
       parse-ms: 4.0.0
-    dev: false
-
-  /prism-react-renderer@2.3.1(react@18.2.0):
-    resolution: {integrity: sha512-Rdf+HzBLR7KYjzpJ1rSoxT9ioO85nZngQEoFIhL07XhtJHlCU3SOz0GJ6+qvMyQe0Se+BV3qpe6Yd/NmQF5Juw==}
-    peerDependencies:
-      react: '>=16.0.0'
-    dependencies:
-      '@types/prismjs': 1.26.0
-      clsx: 2.0.0
-      react: 18.2.0
     dev: false
 
   /prompts@2.4.2:
