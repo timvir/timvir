@@ -45,19 +45,10 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   caption?: React.ReactNode;
 }
 
-const nullTheme = {
-  plain: {},
-  styles: [],
-};
-
 function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const block = useBlock(props);
 
   const { children, language, fullWidth, highlightedLines, caption, className, ...rest } = block.props;
-
-  const isHighlightedLine = (() => {
-    return (line: number) => highlightedLines?.includes(line);
-  })();
 
   const [state, mutate] = useImmer({
     mouseOver: false,
@@ -67,8 +58,21 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
 
   React.useEffect(() => {
     (async () => {
-      console.log({ children: children.trim() });
-      const html = await codeToHtml(children.trim(), { lang: language ?? "markup", theme: "vitesse-dark" });
+      const html = await codeToHtml(children.trim(), {
+        lang: language ?? "markup",
+
+        themes: {
+          light: "github-light",
+          dark: "github-dark",
+        },
+
+        decorations: (highlightedLines ?? []).map((line) => ({
+          start: { line: line - 1, character: 0 },
+          end: { line: line, character: 0 },
+          properties: { class: "highlighted-line" },
+        })),
+      });
+
       mutate((draft) => {
         draft.html = html;
       });
@@ -193,6 +197,15 @@ export default React.forwardRef(Code);
 const classes = {
   root: css`
     margin: 1.5rem 0 3rem;
+
+    :global(:root[data-timvir-theme="dark"]) & {
+      .shiki, .shiki span {
+        color: var(--shiki-dark) !important;
+        font-style: var(--shiki-dark-font-style) !important;
+        font-weight: var(--shiki-dark-font-weight) !important;
+        text-decoration: var(--shiki-dark-text-decoration) !important;
+      }
+    }
   `,
 
   code: css`
