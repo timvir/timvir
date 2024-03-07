@@ -69,7 +69,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
         decorations: (highlightedLines ?? []).map((line) => ({
           start: { line: line - 1, character: 0 },
           end: { line: line, character: 0 },
-          properties: { class: "highlighted-line" },
+          properties: { class: classes.highlightedLine },
         })),
       });
 
@@ -243,6 +243,15 @@ const classes = {
       padding: 16px 0;
 
       background-color: transparent !important;
+    }
+
+    & pre code {
+      display: block;
+    }
+    & pre code .line {
+      display: inline-block;
+      position: relative;
+      width: 100%;
     }
 
     & pre .line {
