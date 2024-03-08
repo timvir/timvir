@@ -87,11 +87,9 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
   }, [svgROE]);
 
   const iframeRO = useResizeObserver((entries) => {
-    if (height !== undefined) {
-      const height = entries[entries.length - 1].contentRect.height;
-      setHeight(height);
-      setMaxHeight(Math.max(height, maxHeight ?? 0));
-    }
+    const height = entries[entries.length - 1].contentRect.height;
+    setHeight(height);
+    setMaxHeight(Math.max(height, maxHeight ?? 0));
   });
 
   /*
