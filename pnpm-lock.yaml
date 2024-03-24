@@ -43,7 +43,7 @@ importers:
         version: 5.0.3(react@18.2.0)
       '@linaria/rollup':
         specifier: ^5.0.4
-        version: 5.0.4(rollup@4.13.0)(vite@5.2.4)
+        version: 5.0.4(rollup@4.13.0)(vite@5.2.6)
       '@linaria/shaker':
         specifier: ^5.0.3
         version: 5.0.3
@@ -177,8 +177,8 @@ importers:
         specifier: ^14.0.1
         version: 14.0.1
       immer:
-        specifier: ^10.0.3
-        version: 10.0.3
+        specifier: ^10.0.4
+        version: 10.0.4
       install:
         specifier: ^0.13.0
         version: 0.13.0
@@ -262,7 +262,7 @@ importers:
         version: 5.1.3
       use-immer:
         specifier: ^0.9.0
-        version: 0.9.0(immer@10.0.3)(react@18.2.0)
+        version: 0.9.0(immer@10.0.4)(react@18.2.0)
       wonka:
         specifier: ^6.3.4
         version: 6.3.4
@@ -334,7 +334,7 @@ importers:
         version: 0.6.0
       immer:
         specifier: ^9 || ^10
-        version: 10.0.3
+        version: 10.0.4
       react:
         specifier: ^17 || ^18
         version: 18.2.0
@@ -352,7 +352,7 @@ importers:
         version: 1.2.0
       use-immer:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0
-        version: 0.9.0(immer@10.0.3)(react@18.2.0)
+        version: 0.9.0(immer@10.0.4)(react@18.2.0)
       wonka:
         specifier: ^6
         version: 6.3.4
@@ -2306,7 +2306,7 @@ packages:
       - supports-color
     dev: false
 
-  /@linaria/rollup@5.0.4(rollup@4.13.0)(vite@5.2.4):
+  /@linaria/rollup@5.0.4(rollup@4.13.0)(vite@5.2.6):
     resolution: {integrity: sha512-1Ajo+J1yEeOp2Sjcw3C59YjgCmZ3RcDD6tGv5KmA8DfhHfcegLLqqAO1I4Q5VvgVgErSrAzicn/sIsyWtNExOw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -2315,7 +2315,7 @@ packages:
       '@linaria/babel-preset': 5.0.4
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
-      '@linaria/vite': 5.0.4(rollup@4.13.0)(vite@5.2.4)
+      '@linaria/vite': 5.0.4(rollup@4.13.0)(vite@5.2.6)
       '@rollup/pluginutils': 5.0.5(rollup@4.13.0)
       rollup: 4.13.0
     transitivePeerDependencies:
@@ -2370,7 +2370,7 @@ packages:
       - supports-color
     dev: false
 
-  /@linaria/vite@5.0.4(rollup@4.13.0)(vite@5.2.4):
+  /@linaria/vite@5.0.4(rollup@4.13.0)(vite@5.2.6):
     resolution: {integrity: sha512-T3gPaUvf4sfM2D74ZAehTWSE6mLZ/qhzWzwid1siKPOAW1F4m1mYjkdL7dPZGc97pg+JaFBnHXXIOfz5/5fwBQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -2380,7 +2380,7 @@ packages:
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
       '@rollup/pluginutils': 5.0.5(rollup@4.13.0)
-      vite: 5.2.4(@types/node@20.11.30)
+      vite: 5.2.6(@types/node@20.11.30)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -5048,8 +5048,8 @@ packages:
     engines: {node: '>= 4'}
     dev: false
 
-  /immer@10.0.3:
-    resolution: {integrity: sha512-pwupu3eWfouuaowscykeckFmVTpqbzW+rXFCX8rQLkZzM9ftBmU/++Ra+o+L27mz03zJTlyV4UUr+fdKNffo4A==}
+  /immer@10.0.4:
+    resolution: {integrity: sha512-cuBuGK40P/sk5IzWa9QPUaAdvPHjkk1c+xYsd9oZw+YQQEV+10G0P5uMpGctZZKnyQ+ibRO08bD25nWLmYi2pw==}
     dev: false
 
   /import-fresh@3.3.0:
@@ -7737,13 +7737,13 @@ packages:
       punycode: 2.1.1
     dev: false
 
-  /use-immer@0.9.0(immer@10.0.3)(react@18.2.0):
+  /use-immer@0.9.0(immer@10.0.4)(react@18.2.0):
     resolution: {integrity: sha512-/L+enLi0nvuZ6j4WlyK0US9/ECUtV5v9RUbtxnn5+WbtaXYUaOBoKHDNL9I5AETdurQ4rIFIj/s+Z5X80ATyKw==}
     peerDependencies:
       immer: '>=2.0.0'
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      immer: 10.0.3
+      immer: 10.0.4
       react: 18.2.0
     dev: false
 
@@ -7789,8 +7789,8 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite@5.2.4(@types/node@20.11.30):
-    resolution: {integrity: sha512-vjFghvHWidBTinu5TCymJk/lRHlR5ljqB83yugr0HA1xspUPdOZHqbqDLnZ8f9/jINrtFHTCYYyIUi+o+Q5iyg==}
+  /vite@5.2.6(@types/node@20.11.30):
+    resolution: {integrity: sha512-FPtnxFlSIKYjZ2eosBQamz4CbyrTizbZ3hnGJlh/wMtCrlp1Hah6AzBLjGI5I2urTfNnpovpHdrL6YRuBOPnCA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
