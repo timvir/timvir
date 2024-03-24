@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "bytestring": "^1",
-    "downshift": "^7",
+    "downshift": "^9.0.0",
     "fuzzaldrin-plus": "^0.6.0",
     "immer": "^9 || ^10",
     "shiki": "^1",
