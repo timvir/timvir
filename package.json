@@ -86,7 +86,7 @@
     "rollup-plugin-add-shebang": "^0.3.1",
     "rollup-plugin-css-only": "^4.5.2",
     "sharp": "^0.33.3",
-    "shiki": "^1.2.0",
+    "shiki": "^1.2.1",
     "stylis": "^3.5.4",
     "typescript": "^5.4.3",
     "unfurl.js": "^6.4.0",
