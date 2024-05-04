@@ -2,11 +2,20 @@ module.exports = {
   plugins: {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     react: require("eslint-plugin-react"),
+    "react-hooks": require("eslint-plugin-react-hooks"),
   },
   languageOptions: {
     parser: require("@typescript-eslint/parser"),
   },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
   rules: {
+    ...require("@typescript-eslint/eslint-plugin").configs.recommended.rules,
+    ...require("eslint-plugin-react").configs.recommended.rules,
+
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-empty-interface": 0,
@@ -18,5 +27,12 @@ module.exports = {
     "react/prop-types": 0,
     "react/no-unknown-property": ["error", { ignore: ["jsx", "global"] }],
   },
-  ignores: [".linaria-cache/**", ".next/**", "node_modules/**", "config/rollup.config.js", "pkg/**/*.js"],
+  ignores: [
+    "eslint.config.cjs",
+    ".linaria-cache/**",
+    ".next/**",
+    "node_modules/**",
+    "config/rollup.config.js",
+    "pkg/**/*.js",
+  ],
 };
