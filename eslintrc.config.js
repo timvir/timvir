@@ -1,4 +1,4 @@
-{
+export default {
   "parser": "@typescript-eslint/parser",
   "settings": {
     "react": {
@@ -18,5 +18,6 @@
     "react/no-children-prop": 0,
     "react/prop-types": 0,
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }]
-  }
+  },
+  "ignores": [".linaria-cache", ".next", "node_modules", "config/rollup.config.js", "pkg/**/*.js"]
 }
