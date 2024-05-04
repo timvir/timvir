@@ -3,6 +3,9 @@ module.exports = {
     "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
     react: require("eslint-plugin-react"),
   },
+  languageOptions: {
+    parser: require("@typescript-eslint/parser"),
+  },
   rules: {
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-empty-function": 0,
@@ -15,5 +18,5 @@ module.exports = {
     "react/prop-types": 0,
     "react/no-unknown-property": ["error", { ignore: ["jsx", "global"] }],
   },
-  ignores: [".linaria-cache", ".next", "node_modules", "config/rollup.config.js", "pkg/**/*.js"],
+  ignores: [".linaria-cache/**", ".next/**", "node_modules/**", "config/rollup.config.js", "pkg/**/*.js"],
 };
