@@ -40,7 +40,7 @@ importers:
         version: 5.0.2
       '@linaria/react':
         specifier: ^5.0.3
-        version: 5.0.3(react@18.2.0)
+        version: 5.0.3(react@18.3.1)
       '@linaria/rollup':
         specifier: ^5.0.4
         version: 5.0.4(rollup@4.17.2)(vite@5.2.6(@types/node@20.12.8)(terser@5.31.0))
@@ -55,7 +55,7 @@ importers:
         version: 3.0.1(webpack@5.91.0)
       '@mdx-js/react':
         specifier: ^3.0.1
-        version: 3.0.1(@types/react@18.3.1)(react@18.2.0)
+        version: 3.0.1(@types/react@18.3.1)(react@18.3.1)
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.24.5)(@types/babel__core@7.20.5)(rollup@4.17.2)
@@ -157,7 +157,7 @@ importers:
         version: 1.1.3
       downshift:
         specifier: ^7.6.2
-        version: 7.6.2(react@18.2.0)
+        version: 7.6.2(react@18.3.1)
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -202,7 +202,7 @@ importers:
         version: 3.0.1
       next:
         specifier: ^14.2.3
-        version: 14.2.3(@babel/core@7.24.5)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 14.2.3(@babel/core@7.24.5)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       null-loader:
         specifier: ^4.0.1
         version: 4.0.1(webpack@5.91.0)
@@ -216,20 +216,20 @@ importers:
         specifier: ^6.1.0
         version: 6.1.0
       react:
-        specifier: ^18.2.0
-        version: 18.2.0
+        specifier: ^18.3.1
+        version: 18.3.1
       react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
       react-feather:
         specifier: ^2.0.10
-        version: 2.0.10(react@18.2.0)
+        version: 2.0.10(react@18.3.1)
       react-hotkeys-hook:
         specifier: ^4.5.0
-        version: 4.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 4.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-measure:
         specifier: ^2.5.2
-        version: 2.5.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 2.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       rollup:
         specifier: ^4.16.4
         version: 4.17.2
@@ -262,7 +262,7 @@ importers:
         version: 5.1.3
       use-immer:
         specifier: ^0.9.0
-        version: 0.9.0(immer@10.1.1)(react@18.2.0)
+        version: 0.9.0(immer@10.1.1)(react@18.3.1)
       wonka:
         specifier: ^6.3.4
         version: 6.3.4
@@ -322,13 +322,13 @@ importers:
     dependencies:
       '@mdx-js/react':
         specifier: ^2 || ^3
-        version: 3.0.1(@types/react@18.3.1)(react@18.2.0)
+        version: 3.0.1(@types/react@18.3.1)(react@18.3.1)
       bytestring:
         specifier: ^1
         version: 1.0.0
       downshift:
         specifier: ^7
-        version: 7.6.2(react@18.2.0)
+        version: 7.6.2(react@18.3.1)
       fuzzaldrin-plus:
         specifier: ^0.6.0
         version: 0.6.0
@@ -337,22 +337,22 @@ importers:
         version: 10.1.1
       react:
         specifier: ^17 || ^18
-        version: 18.2.0
+        version: 18.3.1
       react-dom:
         specifier: ^17 || ^18
-        version: 18.2.0(react@18.2.0)
+        version: 18.3.1(react@18.3.1)
       react-feather:
         specifier: ^2
-        version: 2.0.10(react@18.2.0)
+        version: 2.0.10(react@18.3.1)
       react-hotkeys-hook:
         specifier: ^4
-        version: 4.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 4.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       shiki:
         specifier: ^1
         version: 1.4.0
       use-immer:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0
-        version: 0.9.0(immer@10.1.1)(react@18.2.0)
+        version: 0.9.0(immer@10.1.1)(react@18.3.1)
       wonka:
         specifier: ^6
         version: 6.3.4
@@ -3598,10 +3598,10 @@ packages:
   randombytes@2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
 
-  react-dom@18.2.0:
-    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+  react-dom@18.3.1:
+    resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
     peerDependencies:
-      react: ^18.2.0
+      react: ^18.3.1
 
   react-feather@2.0.10:
     resolution: {integrity: sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==}
@@ -3629,8 +3629,8 @@ packages:
       react: '>0.13.0'
       react-dom: '>0.13.0'
 
-  react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+  react@18.3.1:
+    resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
     engines: {node: '>=0.10.0'}
 
   readable-stream@3.6.2:
@@ -3748,8 +3748,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  scheduler@0.23.0:
-    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+  scheduler@0.23.2:
+    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
 
   schema-utils@3.3.0:
     resolution: {integrity: sha512-pN/yOAvcC+5rQ5nERGuwrjLlYvLTbCibnZ1I7B1LaiAz9BRBlE9GMgE/eqV30P7aJQUf7Ddimy/RsbYO/GrVGg==}
@@ -5366,14 +5366,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@linaria/react@5.0.3(react@18.2.0)':
+  '@linaria/react@5.0.3(react@18.3.1)':
     dependencies:
       '@emotion/is-prop-valid': 1.2.0
       '@linaria/core': 5.0.2
       '@linaria/tags': 5.0.2
       '@linaria/utils': 5.0.2
       minimatch: 9.0.4
-      react: 18.2.0
+      react: 18.3.1
       react-html-attributes: 1.4.6
       ts-invariant: 0.10.3
     transitivePeerDependencies:
@@ -5502,11 +5502,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.0.1(@types/react@18.3.1)(react@18.2.0)':
+  '@mdx-js/react@3.0.1(@types/react@18.3.1)(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.1
       '@types/react': 18.3.1
-      react: 18.2.0
+      react: 18.3.1
 
   '@next/env@14.2.3': {}
 
@@ -6508,12 +6508,12 @@ snapshots:
 
   dot@1.1.3: {}
 
-  downshift@7.6.2(react@18.2.0):
+  downshift@7.6.2(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.15.4
       compute-scroll-into-view: 2.0.4
       prop-types: 15.8.1
-      react: 18.2.0
+      react: 18.3.1
       react-is: 17.0.2
       tslib: 2.6.2
 
@@ -7944,7 +7944,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next@14.2.3(@babel/core@7.24.5)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  next@14.2.3(@babel/core@7.24.5)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@next/env': 14.2.3
       '@swc/helpers': 0.5.5
@@ -7952,9 +7952,9 @@ snapshots:
       caniuse-lite: 1.0.30001596
       graceful-fs: 4.2.11
       postcss: 8.4.31
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(@babel/core@7.24.5)(babel-plugin-macros@3.1.0)(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      styled-jsx: 5.1.1(@babel/core@7.24.5)(babel-plugin-macros@3.1.0)(react@18.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.3
       '@next/swc-darwin-x64': 14.2.3
@@ -8160,21 +8160,21 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  react-dom@18.2.0(react@18.2.0):
+  react-dom@18.3.1(react@18.3.1):
     dependencies:
       loose-envify: 1.4.0
-      react: 18.2.0
-      scheduler: 0.23.0
+      react: 18.3.1
+      scheduler: 0.23.2
 
-  react-feather@2.0.10(react@18.2.0):
+  react-feather@2.0.10(react@18.3.1):
     dependencies:
       prop-types: 15.8.1
-      react: 18.2.0
+      react: 18.3.1
 
-  react-hotkeys-hook@4.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  react-hotkeys-hook@4.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   react-html-attributes@1.4.6:
     dependencies:
@@ -8184,16 +8184,16 @@ snapshots:
 
   react-is@17.0.2: {}
 
-  react-measure@2.5.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  react-measure@2.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.15.4
       get-node-dimensions: 1.2.1
       prop-types: 15.8.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
       resize-observer-polyfill: 1.5.1
 
-  react@18.2.0:
+  react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
 
@@ -8359,7 +8359,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  scheduler@0.23.0:
+  scheduler@0.23.2:
     dependencies:
       loose-envify: 1.4.0
 
@@ -8551,10 +8551,10 @@ snapshots:
     dependencies:
       inline-style-parser: 0.1.1
 
-  styled-jsx@5.1.1(@babel/core@7.24.5)(babel-plugin-macros@3.1.0)(react@18.2.0):
+  styled-jsx@5.1.1(@babel/core@7.24.5)(babel-plugin-macros@3.1.0)(react@18.3.1):
     dependencies:
       client-only: 0.0.1
-      react: 18.2.0
+      react: 18.3.1
     optionalDependencies:
       '@babel/core': 7.24.5
       babel-plugin-macros: 3.1.0
@@ -8786,10 +8786,10 @@ snapshots:
     dependencies:
       punycode: 2.1.1
 
-  use-immer@0.9.0(immer@10.1.1)(react@18.2.0):
+  use-immer@0.9.0(immer@10.1.1)(react@18.3.1):
     dependencies:
       immer: 10.1.1
-      react: 18.2.0
+      react: 18.3.1
 
   util-deprecate@1.0.2: {}
 
