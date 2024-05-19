@@ -243,8 +243,8 @@ importers:
         specifier: ^0.33.3
         version: 0.33.3
       shiki:
-        specifier: ^1.4.0
-        version: 1.4.0
+        specifier: ^1.6.0
+        version: 1.6.0
       stylis:
         specifier: ^3.5.4
         version: 3.5.4
@@ -349,7 +349,7 @@ importers:
         version: 4.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       shiki:
         specifier: ^1
-        version: 1.4.0
+        version: 1.6.0
       use-immer:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0
         version: 0.9.0(immer@10.1.1)(react@18.3.1)
@@ -1625,8 +1625,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@shikijs/core@1.4.0':
-    resolution: {integrity: sha512-CxpKLntAi64h3j+TwWqVIQObPTED0FyXLHTTh3MKXtqiQNn2JGcMQQ362LftDbc9kYbDtrksNMNoVmVXzKFYUQ==}
+  '@shikijs/core@1.6.0':
+    resolution: {integrity: sha512-NIEAi5U5R7BLkbW1pG/ZKu3eb1lzc3/+jD0lFsuxMT7zjaf9bbNwdNyMr7zh/Zl8EXQtQ+MYBAt5G+JLu+5DlA==}
 
   '@sindresorhus/merge-streams@2.2.1':
     resolution: {integrity: sha512-255V7MMIKw6aQ43Wbqp9HZ+VHn6acddERTLiiLnlcPLU9PdTq9Aijl12oklAgUEblLWye+vHLzmqBx6f2TGcZw==}
@@ -3791,8 +3791,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@1.4.0:
-    resolution: {integrity: sha512-5WIn0OL8PWm7JhnTwRWXniy6eEDY234mRrERVlFa646V2ErQqwIFd2UML7e0Pq9eqSKLoMa3Ke+xbsF+DAuy+Q==}
+  shiki@1.6.0:
+    resolution: {integrity: sha512-P31ROeXcVgW/k3Z+vUUErcxoTah7ZRaimctOpzGuqAntqnnSmx1HOsvnbAB8Z2qfXPRhw61yptAzCsuKOhTHwQ==}
 
   side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
@@ -5653,7 +5653,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.17.2':
     optional: true
 
-  '@shikijs/core@1.4.0': {}
+  '@shikijs/core@1.6.0': {}
 
   '@sindresorhus/merge-streams@2.2.1': {}
 
@@ -8422,9 +8422,9 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@1.4.0:
+  shiki@1.6.0:
     dependencies:
-      '@shikijs/core': 1.4.0
+      '@shikijs/core': 1.6.0
 
   side-channel@1.0.4:
     dependencies:
