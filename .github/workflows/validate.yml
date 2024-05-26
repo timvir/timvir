@@ -10,18 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v11
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v4.0.0
-        with:
-          version: 8
-
-      - run: pnpm install
-
-      - run: ./node_modules/.bin/eslint .
-      - run: ./node_modules/.bin/tsc --build tsconfig.json
-      - run: ./node_modules/.bin/tsc --build tsconfig.build.json
-      - run: ./node_modules/.bin/rollup -c config/rollup.config.js
-      - run: ./node_modules/.bin/ava
+      - run: nix develop --command bash -c 'pnpm install'
+      - run: nix develop --command bash -c 'tsc --build tsconfig.json'
+      - run: nix develop --command bash -c 'tsc --build tsconfig.build.json'
+      - run: nix develop --command bash -c 'rollup -c config/rollup.config.js'
+      - run: nix develop --command bash -c 'ava'
