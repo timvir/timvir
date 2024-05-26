@@ -36,7 +36,7 @@
     "@types/dot": "^1.1.7",
     "@types/estree": "^1.0.5",
     "@types/fuzzaldrin-plus": "^0.6.5",
-    "@types/mdx-js__react": "^1.5.8",
+    "@types/mdx-js__react": "^2.0.0",
     "@types/mkdirp": "^2.0.0",
     "@types/node": "^20.12.12",
     "@types/prettier": "^2.7.3",
