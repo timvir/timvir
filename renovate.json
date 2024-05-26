@@ -4,6 +4,7 @@
     "rangeStrategy": "bump",
     "prHourlyLimit": 0,
     "postUpdateOptions": ["pnpmDedupe"],
+    "dependencyDashboardApproval": true,
     "packageRules": [
       {
         "matchFiles": [
