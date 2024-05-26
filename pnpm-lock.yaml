@@ -285,7 +285,7 @@ importers:
         specifier: ^7
         version: 7.24.6
       espree:
-        specifier: ^10.0.0
+        specifier: ^9 || ^10
         version: 10.0.1
       mdast-util-from-markdown:
         specifier: ^1
