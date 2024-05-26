@@ -11,18 +11,12 @@ importers:
       '@babel/core':
         specifier: ^7.24.6
         version: 7.24.6
-      '@babel/plugin-proposal-export-namespace-from':
-        specifier: ^7.18.9
-        version: 7.18.9(@babel/core@7.24.6)
       '@babel/plugin-proposal-nullish-coalescing-operator':
         specifier: ^7.18.6
         version: 7.18.6(@babel/core@7.24.6)
       '@babel/plugin-proposal-optional-chaining':
         specifier: ^7.21.0
         version: 7.21.0(@babel/core@7.24.6)
-      '@babel/plugin-transform-modules-commonjs':
-        specifier: ^7.24.6
-        version: 7.24.6(@babel/core@7.24.6)
       '@babel/preset-env':
         specifier: ^7.24.6
         version: 7.24.6(@babel/core@7.24.6)
@@ -706,18 +700,6 @@ packages:
       '@babel/core': 7.24.6
       '@babel/helper-environment-visitor': 7.24.6
       '@babel/helper-plugin-utils': 7.24.6
-    dev: false
-
-  /@babel/plugin-proposal-export-namespace-from@7.18.9(@babel/core@7.24.6):
-    resolution: {integrity: sha512-k1NtHyOMvlDDFeb9G5PhUXuGj8m/wiwojgQVEhJ/fsVsMCpLyOP4h0uGEjYJKrRI+EVPlb5Jk+Gt9P97lOGwtA==}
-    engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-export-namespace-from instead.
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.24.6
-      '@babel/helper-plugin-utils': 7.24.6
-      '@babel/plugin-syntax-export-namespace-from': 7.8.3(@babel/core@7.24.6)
     dev: false
 
   /@babel/plugin-proposal-nullish-coalescing-operator@7.18.6(@babel/core@7.24.6):
