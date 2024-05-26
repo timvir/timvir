@@ -13,6 +13,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v11
 
       - run: nix develop --command bash -c 'pnpm install'
+      - run: nix develop --command bash -c 'eslint .'
       - run: nix develop --command bash -c 'tsc --build tsconfig.json'
       - run: nix develop --command bash -c 'tsc --build tsconfig.build.json'
       - run: nix develop --command bash -c 'rollup -c config/rollup.config.js'
