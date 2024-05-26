@@ -16,7 +16,7 @@
     "mdast-util-mdx": "^2",
     "micromark-extension-mdxjs": "^3",
     "prettier": "^2",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5"
   },
   "repository": {
     "type": "git",
