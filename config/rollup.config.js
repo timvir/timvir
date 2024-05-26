@@ -15,12 +15,9 @@ import builtinModules from "builtin-modules";
 stylis.set({ prefix: false });
 
 function externalFor(pkg) {
-  const packageJson = JSON.parse(fs.readFileSync(`pkg/${pkg}/package.json`, 'utf8'));
+  const packageJson = JSON.parse(fs.readFileSync(`pkg/${pkg}/package.json`, "utf8"));
 
-  return [
-    ...Object.keys(packageJson.dependencies || {}),
-    ...Object.keys(packageJson.peerDependencies || {}),
-  ]
+  return [...Object.keys(packageJson.dependencies || {}), ...Object.keys(packageJson.peerDependencies || {})];
 }
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
@@ -50,18 +47,11 @@ function block(name) {
           configFile: false,
           extensions,
           presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
-          plugins: [
-            ["babel-plugin-macros"],
-            ["@babel/plugin-proposal-optional-chaining"],
-            ["@babel/plugin-proposal-nullish-coalescing-operator"],
-          ],
+          plugins: [["babel-plugin-macros"]],
           babelHelpers: "bundled",
         }),
       ],
-      external: [
-        ...externalFor("timvir"),
-        /^timvir\//,
-      ],
+      external: [...externalFor("timvir"), /^timvir\//],
     },
   ];
 }
@@ -86,16 +76,11 @@ function module(name) {
           ["@babel/preset-env", { targets: { node } }],
           ["@babel/preset-react", { useSpread: true }],
         ],
-        plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]],
         babelHelpers: "bundled",
       }),
       shebang(),
     ],
-    external: [
-      ...builtinModules,
-      ...externalFor("timvir"),
-      /^timvir\//,
-    ],
+    external: [...builtinModules, ...externalFor("timvir"), /^timvir\//],
   };
 }
 
@@ -137,19 +122,11 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
-        plugins: [
-          ["babel-plugin-macros"],
-          ["@babel/plugin-proposal-optional-chaining"],
-          ["@babel/plugin-proposal-nullish-coalescing-operator"],
-        ],
+        plugins: [["babel-plugin-macros"]],
         babelHelpers: "bundled",
       }),
     ],
-    external: [
-      ...builtinModules,
-      ...externalFor("timvir"),
-      /^timvir\//,
-    ],
+    external: [...builtinModules, ...externalFor("timvir"), /^timvir\//],
   },
 
   /*
@@ -169,11 +146,7 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
-        plugins: [
-          ["babel-plugin-macros"],
-          ["@babel/plugin-proposal-optional-chaining"],
-          ["@babel/plugin-proposal-nullish-coalescing-operator"],
-        ],
+        plugins: [["babel-plugin-macros"]],
         babelHelpers: "bundled",
       }),
     ],
@@ -200,14 +173,10 @@ export default [
           ["@babel/preset-env", { targets: { node } }],
           ["@babel/preset-react", { useSpread: true }],
         ],
-        plugins: [["@babel/plugin-proposal-optional-chaining"], ["@babel/plugin-proposal-nullish-coalescing-operator"]],
         babelHelpers: "bundled",
       }),
       shebang(),
     ],
-    external: [
-      ...builtinModules,
-      ...externalFor("cli"),
-    ],
+    external: [...builtinModules, ...externalFor("cli")],
   },
 ];
