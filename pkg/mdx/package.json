@@ -15,7 +15,7 @@
     "mdast-util-from-markdown": "^1 || ^2",
     "mdast-util-mdx": "^2 || ^3",
     "micromark-extension-mdxjs": "^3",
-    "prettier": "^2",
+    "prettier": "^3.0.0",
     "unist-util-visit": "^5"
   },
   "repository": {
