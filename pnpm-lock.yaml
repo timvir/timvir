@@ -80,9 +80,6 @@ importers:
       '@types/fuzzaldrin-plus':
         specifier: ^0.6.5
         version: 0.6.5
-      '@types/mdx-js__react':
-        specifier: ^1.5.8
-        version: 1.5.8
       '@types/node':
         specifier: ^20.12.12
         version: 20.12.12
@@ -2884,12 +2881,6 @@ packages:
     resolution: {integrity: sha512-tYR83EignvhYO9iU3kDg8V28M0jqyh9zzp5GV+EO+AYnyUl3P5ltkTeJuTiFZQFz670FSb3EwT/6LQdX+UdKfw==}
     dependencies:
       '@types/unist': 3.0.1
-    dev: false
-
-  /@types/mdx-js__react@1.5.8:
-    resolution: {integrity: sha512-iLQL8JZ4AZ+rpZvGUsQwENffpsSCMLYB8kE6OhGasLmdYn7aSLq53uOvZrKx5FM+hymE2nm08HDfq7tFx02ElA==}
-    dependencies:
-      '@types/react': 18.3.3
     dev: false
 
   /@types/mdx@2.0.1:
