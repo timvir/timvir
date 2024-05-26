@@ -22,7 +22,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const block = useBlock(props)
+  const block = useBlock(props);
 
   const { src, code, className, ...rest } = block.props;
 
@@ -199,17 +199,27 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
                   ref={iframeRef}
                   frameBorder="0"
                   src={src}
-                  onLoad={() => {
-                    /*
-                     * Once the iframe has loaded, initialize the height/maxHeight.
-                     * The <html> element may not exist though (eg. the page failed
-                     * to load, or it's not a HTML page).
-                     */
-                    const html = iframeRef.current?.contentDocument?.querySelector("html");
-                    if (html) {
-                      const { height } = html.getBoundingClientRect();
-                      setHeight(height);
-                      setMaxHeight(height);
+                  onLoad={(ev) => {
+                    const document = ev.currentTarget.contentDocument;
+                    if (document) {
+                      /*
+                       * Inject a simple style reset into the iframe.
+                       */
+                      const style = document.createElement("style");
+                      style.innerHTML = "body { margin: 0 }";
+                      document.head.appendChild(style);
+
+                      /*
+                       * Once the iframe has loaded, initialize the height/maxHeight.
+                       * The <html> element may not exist though (eg. the page failed
+                       * to load, or it's not a HTML page).
+                       */
+                      const html = document.querySelector("html");
+                      if (html) {
+                        const { height } = html.getBoundingClientRect();
+                        setHeight(height);
+                        setMaxHeight(height);
+                      }
                     }
                   }}
                   className={css`
