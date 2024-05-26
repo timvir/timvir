@@ -4,7 +4,6 @@ const crypto = require("crypto");
 const { createMacro } = require("babel-plugin-macros");
 const { parse } = require("@babel/parser");
 const generate = require("@babel/generator");
-const prettier = require("prettier");
 
 let counter = 0;
 
@@ -111,11 +110,7 @@ module.exports = createMacro(({ references, babel, state }) => {
 
           const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
           const { declaration } = exportDefaultDeclaration;
-          const { code } = generate.default(declaration);
-          return prettier.format(code, {
-            parser: "typescript",
-            printWidth: 80,
-          });
+          return generate.default(declaration).code
         },
         markup: () => {
           const file = parse(source, {
@@ -127,11 +122,7 @@ module.exports = createMacro(({ references, babel, state }) => {
           const { declaration } = exportDefaultDeclaration;
           const body = declaration.body.body;
           const returnStatement = body.find((node) => t.isReturnStatement(node));
-          const { code } = generate.default(returnStatement.argument);
-          return prettier.format(code, {
-            parser: "typescript",
-            printWidth: 80,
-          });
+          return generate.default(returnStatement.argument).code;
         },
       }[as]();
 
