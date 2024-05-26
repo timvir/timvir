@@ -22,7 +22,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const block = useBlock(props)
+  const block = useBlock(props);
 
   const { src, code, className, ...rest } = block.props;
 
@@ -93,19 +93,37 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
   });
 
   /*
-   * The <html> element of the iframe document is the one which we observe and
-   * measure. We do not use <body> because that may have margins around which would
-   * throw off our height observations.
-   *
-   * We hope that nobody intentionally adds margins around the <html> element. By default
-   * it doesn't have.
+   * Note this useEffect runs on each render. This is fine beause it doesn't do any
+   * expensive computation, and the Viewport component only re-renders when the iframe
+   * itself is changes height or the user resizes the width of the Viewport.
    */
-  const html = iframeRef.current?.contentDocument?.querySelector("html");
   React.useEffect(() => {
-    if (html) {
-      iframeRO.observe(html);
+    const document = iframeRef.current?.contentDocument;
+    if (document) {
+      injectStyle(document);
+
+      /*
+       * The <body> element of the iframe document is the one which we observe and
+       * measure. It should not have any margins (we remove them by injecting a simple
+       * style reset into the iframe document).
+       */
+      iframeRO.observe(document.body);
     }
   });
+
+  /*
+   * Inject a simple style reset into the document.
+   */
+  function injectStyle(document: Document): void {
+    if (document.querySelector("style#timvir-viewport-style")) {
+      return;
+    }
+
+    const style = document.createElement("style");
+    style.id = "timvir-viewport-style";
+    style.innerHTML = "body { margin: 0 }";
+    document.head.appendChild(style);
+  }
 
   return (
     <>
@@ -199,15 +217,12 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
                   ref={iframeRef}
                   frameBorder="0"
                   src={src}
-                  onLoad={() => {
-                    /*
-                     * Once the iframe has loaded, initialize the height/maxHeight.
-                     * The <html> element may not exist though (eg. the page failed
-                     * to load, or it's not a HTML page).
-                     */
-                    const html = iframeRef.current?.contentDocument?.querySelector("html");
-                    if (html) {
-                      const { height } = html.getBoundingClientRect();
+                  onLoad={(ev) => {
+                    const document = ev.currentTarget.contentDocument;
+                    if (document) {
+                      injectStyle(document);
+
+                      const { height } = document.body.getBoundingClientRect();
                       setHeight(height);
                       setMaxHeight(height);
                     }
