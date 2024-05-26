@@ -12,8 +12,8 @@
     "@babel/parser": "^7",
     "@babel/types": "^7",
     "espree": "^9 || ^10",
-    "mdast-util-from-markdown": "^1",
-    "mdast-util-mdx": "^2",
+    "mdast-util-from-markdown": "^1 || ^2",
+    "mdast-util-mdx": "^2 || ^3",
     "micromark-extension-mdxjs": "^3",
     "prettier": "^2",
     "unist-util-visit": "^5"
