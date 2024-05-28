@@ -59,7 +59,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   React.useEffect(() => {
     (async () => {
       const html = await codeToHtml(children.trim(), {
-        lang: language ?? "markup",
+        lang: language,
 
         themes: {
           light: "github-light",
@@ -211,7 +211,7 @@ const classes = {
   code: css`
     overflow-x: auto;
     contain: content;
-    font-size: 0.9em;
+    font-size: 0.8em;
 
     border-radius: 5px;
 

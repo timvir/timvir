@@ -46,53 +46,44 @@ function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHea
 }
 
 export const h1 = styled.h1`
-  display: block;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  color: var(--timvir-accent-color);
-  letter-spacing: 0.01em;
-  font-style: normal;
-  font-size: 36px;
-  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.125;
+  font-weight: 590;
   text-indent: -0.05em;
 `;
 
 export const h2 = Heading(
   styled.h2`
     position: relative;
-    display: block;
-    margin-top: 2rem;
+    margin-top: 4.5rem;
     margin-bottom: 0.5rem;
-    text-transform: none;
-    letter-spacing: normal;
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.1666;
+    font-weight: 590;
   `
 );
 
 export const h3 = Heading(
   styled.h3`
     position: relative;
-    display: block;
-    margin-top: 2rem;
+    margin-top: 3rem;
     margin-bottom: 0.5rem;
-    text-transform: none;
-    letter-spacing: normal;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 1.0625rem;
+    line-height: 1.4705882353;
+    font-weight: 590;
   `
 );
 
 export const h4 = Heading(
   styled.h4`
     position: relative;
-    display: block;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
-    text-transform: none;
-    letter-spacing: normal;
-    font-weight: normal;
-    font-size: 0.9rem;
+    font-size: 0.9375rem;
+    line-height: 1.4375;
+    font-weight: 590;
   `
 );
 
@@ -153,15 +144,13 @@ export const td = styled.td`
 `;
 
 export const code = styled.code`
-  border-radius: 3px;
-  padding: 2px 5px;
-  font-size: 0.9em;
-  background: #f6f8fa;
-  box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), inset 0 1px 4px rgba(16, 22, 26, 0.1);
+  border-radius: 5px;
+  padding: 4px 6px 3px;
+  font-size: 0.8em;
+  background: #e6eaee;
 
   :global(:root[data-timvir-theme="dark"]) & {
-    background: #2b2a33;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 4px rgba(255, 255, 255, 0.1);
+    background: #42414d;
   }
 `;
 

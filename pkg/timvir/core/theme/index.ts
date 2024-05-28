@@ -52,8 +52,8 @@ export const theme = css`
   font-feature-settings: "liga", "kern";
   text-rendering: optimizelegibility;
 
-  font-size: 16px;
-  line-height: 1.725;
+  font-size: 0.9375rem;
+  line-height: 1.7333;
 
   background-color: var(--timvir-background-color);
   color: var(--timvir-text-color);
