@@ -58,6 +58,7 @@ function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ElementRef
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
+          flex-wrap: wrap;
         `}
       >
         <div
@@ -80,9 +81,11 @@ function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ElementRef
           className={css`
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
             justify-content: flex-start;
-            text-align: right;
+            @media (min-width: 48rem) {
+              align-items: flex-end;
+              text-align: right;
+            }
           `}
         >
           {next && (

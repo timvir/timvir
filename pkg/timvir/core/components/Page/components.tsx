@@ -21,15 +21,14 @@ function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHea
       <Component id={id} {...props}>
         <a
           className={css`
-            position: absolute;
-            top: 0em;
-            left: -0.8em;
+            margin-right: 6px;
             color: var(--timvir-accent-color);
             font-weight: bold;
             font-size: 1em;
             text-decoration: none;
 
             @media (min-width: 48rem) {
+              position: absolute;
               top: -0.1em;
               left: -0.9em;
               font-size: 1.1em;
@@ -55,6 +54,8 @@ export const h1 = styled.h1`
   font-size: 36px;
   font-weight: 600;
   text-indent: -0.05em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const h2 = Heading(

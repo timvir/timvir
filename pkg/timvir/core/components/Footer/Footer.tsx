@@ -67,10 +67,10 @@ const classes = {
 
   linkGroupTitle: css`
     text-transform: uppercase;
-    color: var(--timvir-secondary-text-color);
     font-weight: 700;
     letter-spacing: 0.08em;
     margin-bottom: 12px;
+    opacity: .5;
   `,
 
   link: css`
