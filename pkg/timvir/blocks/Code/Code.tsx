@@ -59,7 +59,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   React.useEffect(() => {
     (async () => {
       const html = await codeToHtml(children.trim(), {
-        lang: language ?? 'text',
+        lang: language ?? "text",
 
         themes: {
           light: "github-light",
@@ -199,7 +199,8 @@ const classes = {
     margin: 1.5rem 0 3rem;
 
     :global(:root[data-timvir-theme="dark"]) & {
-      .shiki, .shiki span {
+      .shiki,
+      .shiki span {
         color: var(--shiki-dark) !important;
         font-style: var(--shiki-dark-font-style) !important;
         font-weight: var(--shiki-dark-font-weight) !important;
