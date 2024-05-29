@@ -59,7 +59,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   React.useEffect(() => {
     (async () => {
       const html = await codeToHtml(children.trim(), {
-        lang: language,
+        lang: language ?? 'text',
 
         themes: {
           light: "github-light",
