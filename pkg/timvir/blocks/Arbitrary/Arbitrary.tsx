@@ -103,6 +103,7 @@ const classes = {
     padding: 0 0 0 10px;
     height: 36px;
     position: relative;
+    background: var(--timvir-secondary-background-color);
 
     &::after {
       display: block;
@@ -110,16 +111,16 @@ const classes = {
       content: "";
       inset: 0;
       pointer-events: none;
-      border: 1px solid var(--timvir-secondary-text-color);
+      border: 1px solid var(--timvir-border-color);
       border-radius: 2px;
     }
 
     &:hover::after {
-      border-color: var(--timvir-accent-color);
+      border-color: var(--timvir-text-color);
     }
 
     &:focus-within::after {
-      border-color: var(--timvir-accent-color);
+      border-color: var(--timvir-text-color);
     }
   `,
 
@@ -136,7 +137,6 @@ const classes = {
     background: transparent;
     align-self: stretch;
     padding: 0;
-    height: 34px;
     width: 100%;
     color: inherit;
   `,
@@ -145,17 +145,19 @@ const classes = {
     border: none;
     outline: none;
     height: 36px;
-    background: var(--timvir-accent-color);
-    font: inherit;
+    border: 1px solid var(--timvir-border-color);
     border-radius: 2px;
-    cursor: pointer;
-    transition: background 0.2s;
+    background: var(--timvir-secondary-background-color);
+    color: var(--timvir-text-color);
+    font: inherit;
 
     &:hover {
-      background: var(--c-p-3);
+      border-color: var(--timvir-text-color);
+      background: var(--timvir-sidebar-highlight-color);
     }
     &:active {
-      background: var(--c-p-4);
+      border-color: var(--timvir-text-color);
+      background: var(--timvir-sidebar-highlight-color);
     }
   `,
 };
