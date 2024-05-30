@@ -51,7 +51,7 @@ function Sidebar(props: Props) {
           <div
             className={cx(
               css`
-                padding: 24px 3px 24px;
+                padding: 24px 0 0;
                 flex-shrink: 0;
                 transition: all 0.16s;
               `,
@@ -93,41 +93,49 @@ const classes = {
   `,
 
   sections: css`
-    padding: 24px 3px 30px;
+    padding: 16px 0 30px;
     overflow-y: auto;
     flex-grow: 1;
     overscroll-behavior: contain;
   `,
 };
 
-const Search = ({ open, label }: NonNullable<Props["search"]>) => {
+function Search(props: NonNullable<Props["search"]>) {
+  const { open, label } = props;
+
   return (
     <div
       className={css`
         font-family: system-ui;
+        padding: 0 16px;
       `}
     >
       <div
         role="button"
         className={css`
           color: var(--timvir-text-color);
-          font-size: 14px;
-          font-weight: 500;
-          line-height: 1.725;
+          font-size: 0.8125rem;
+          line-height: 2.2;
+          font-weight: 400;
           cursor: pointer;
-          padding: 2px 24px;
-          border-radius: 3px;
+          height: 36px;
+          border-radius: 8px;
+          padding: 0 12px;
+          border: 1px solid var(--timvir-border-color);
+          background: var(--timvir-secondary-background-color);
+          opacity: 0.7;
 
           display: flex;
           align-items: center;
 
           &:hover {
             background: var(--timvir-sidebar-highlight-color);
+            opacity: 1;
           }
 
           & > svg {
             display: block;
-            margin-right: 4px;
+            margin-right: 8px;
           }
         `}
         onClick={open}
@@ -138,8 +146,8 @@ const Search = ({ open, label }: NonNullable<Props["search"]>) => {
             fill="currentColor"
           />
         </svg>
-        {label || "Quick Find"}
+        {label || "Search docs"}
       </div>
     </div>
   );
-};
+}

@@ -87,7 +87,7 @@ const classes = {
       color: var(--timvir-sidebar-text-color);
       font-size: 0.8125rem;
       line-height: 2.2;
-      font-weight: 510;
+      font-weight: 500;
       background: none;
       text-decoration: none;
       width: 100%;
