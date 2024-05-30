@@ -92,12 +92,15 @@ const classes = {
       text-decoration: none;
       width: 100%;
       padding: 0 8px;
+      opacity: 0.7;
     }
     &:hover a {
       background-color: var(--timvir-sidebar-highlight-color);
+      opacity: 1;
     }
     &[data-active="true"] a {
       background-color: var(--timvir-sidebar-highlight-color);
+      opacity: 1;
     }
   `,
 
