@@ -34,7 +34,8 @@ function FontFamilyMatrix(props: Props, ref: React.ForwardedRef<React.ElementRef
           <React.Fragment key={i}>
             <div
               className={css`
-                font-size: 14px;
+                font-size: 0.875rem;
+                line-height: 1.5;
                 color: var(--timvir-secondary-text-color);
                 padding-right: 24px;
               `}
@@ -54,9 +55,8 @@ function FontFamilyMatrix(props: Props, ref: React.ForwardedRef<React.ElementRef
                   <div
                     key={i}
                     className={css`
-                      font-style: normal;
-                      font-weight: 400;
-                      font-size: 14px;
+                      font-size: 0.875rem;
+                      line-height: 1.5;
                       opacity: 0.5;
                     `}
                   >

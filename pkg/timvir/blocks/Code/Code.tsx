@@ -59,7 +59,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   React.useEffect(() => {
     (async () => {
       const html = await codeToHtml(children.trim(), {
-        lang: language ?? "markup",
+        lang: language ?? "text",
 
         themes: {
           light: "github-light",
@@ -199,7 +199,8 @@ const classes = {
     margin: 1.5rem 0 3rem;
 
     :global(:root[data-timvir-theme="dark"]) & {
-      .shiki, .shiki span {
+      .shiki,
+      .shiki span {
         color: var(--shiki-dark) !important;
         font-style: var(--shiki-dark-font-style) !important;
         font-weight: var(--shiki-dark-font-weight) !important;
@@ -211,7 +212,7 @@ const classes = {
   code: css`
     overflow-x: auto;
     contain: content;
-    font-size: 0.9em;
+    font-size: 0.8em;
 
     border-radius: 5px;
 
@@ -307,7 +308,8 @@ const classes = {
   `,
 
   caption: css`
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.1875;
     color: var(--timvir-secondary-text-color);
     margin-top: 2px;
   `,
