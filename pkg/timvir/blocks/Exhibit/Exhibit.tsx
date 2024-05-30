@@ -70,11 +70,10 @@ const classes = {
 
     ${cssVariables.bleed}: 0px;
 
-    ${cssVariables.borderColor}: #EFEFEF;
+    ${cssVariables.borderColor}: var(--timvir-border-color);
     ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
 
     :global(:root[data-timvir-theme="dark"]) & {
-      ${cssVariables.borderColor}: #101010;
       ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
     }
   `,
