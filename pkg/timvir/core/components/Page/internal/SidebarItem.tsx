@@ -29,12 +29,12 @@ function SidebarItem(props: Props) {
     <div className={classes.root} data-active={location.asPath === path}>
       {path ? (
         <Link href={path} style={{ marginLeft: depth * 16 }}>
-          {label}
+          <span className={classes.label}>{label}</span>
           {icon}
         </Link>
       ) : (
         <a style={{ marginLeft: depth * 16 }} href="#" onClick={() => setActive((x) => !x)}>
-          {label}
+          <span className={classes.label}>{label}</span>
           {icon}
         </a>
       )}
@@ -51,6 +51,7 @@ const classes = {
     margin: 1px 0;
 
     & > a {
+      min-width: 0;
       transition: background 0.16s;
       border-radius: 4px;
       display: flex;
@@ -75,8 +76,15 @@ const classes = {
     }
   `,
 
+  label: css`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: auto;
+  `,
+
   icon: css`
-    margin-left: auto;
+    margin-left: 4px;
     transition: transform 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transform-origin: center center;
   `,
