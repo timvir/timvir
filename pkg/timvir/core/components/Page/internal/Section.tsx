@@ -84,7 +84,7 @@ const classes = {
       border-radius: 8px;
       display: flex;
       align-items: center;
-      color: var(--timvir-sidebar-text-color);
+      color: var(--timvir-text-color);
       font-size: 0.8125rem;
       line-height: 2.2;
       font-weight: 500;

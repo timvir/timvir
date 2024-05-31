@@ -11,9 +11,6 @@ const themes = {
 
     borderColor: "#e9e8ea",
 
-    sidebarBackgroundColor: colors.green["50"],
-    sidebarTextColor: colors.text.main,
-
     accentColor: colors.green["400"],
   },
   dark: {
@@ -23,9 +20,6 @@ const themes = {
     secondaryBackgroundColor: "#161618",
 
     borderColor: "#27292f",
-
-    sidebarBackgroundColor: "#1b1c1e",
-    sidebarTextColor: "rgba(255 255 255 / 0.86)",
 
     accentColor: colors.green["400"],
   },
@@ -81,8 +75,6 @@ function mkTheme(config: typeof themes[keyof typeof themes]) {
 
     --timvir-border-color: ${config.borderColor};
 
-    --timvir-sidebar-background-color: ${config.sidebarBackgroundColor};
-    --timvir-sidebar-text-color: ${config.sidebarTextColor};
     --timvir-sidebar-highlight-color: ${tweakColor(config.backgroundColor)};
 
     --timvir-accent-color: ${config.accentColor};
