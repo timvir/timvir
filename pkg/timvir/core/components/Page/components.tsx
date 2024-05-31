@@ -147,11 +147,8 @@ export const code = styled.code`
   border-radius: 5px;
   padding: 4px 6px 3px;
   font-size: 0.8em;
-  background: #e6eaee;
-
-  :global(:root[data-timvir-theme="dark"]) & {
-    background: #42414d;
-  }
+  background: var(--timvir-secondary-background-color);
+  border: 1px solid var(--timvir-border-color);
 `;
 
 export const a = styled.a`
