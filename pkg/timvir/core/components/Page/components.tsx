@@ -1,6 +1,7 @@
 import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import * as React from "react";
+import * as Icons from "react-feather";
 
 const anchorize = (children?: React.ReactNode): undefined | string => {
   if (typeof children === "string") {
@@ -21,25 +22,34 @@ function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHea
       <Component id={id} {...props}>
         <a
           className={css`
-            position: absolute;
-            top: 0em;
-            left: -0.8em;
-            color: var(--timvir-accent-color);
-            font-weight: bold;
-            font-size: 1em;
+            color: inherit;
             text-decoration: none;
 
-            @media (min-width: 48rem) {
-              top: -0.1em;
-              left: -0.9em;
-              font-size: 1.1em;
+            &:hover svg {
+              opacity: 1;
+              transform: none;
+              visibility: visible;
+              --visibility-delay: 0s;
             }
           `}
           href={id && `#${id}`}
         >
-          #
+          {props.children}
+          <Icons.Link
+            className={css`
+              margin-left: 6px;
+              color: var(--timvir-secondary-text-color);
+              height: 0.9rem;
+              width: 0.9rem;
+              vertical-align: middle;
+
+              transition: opacity 0.2s, transform 0.2s, visibility 0s var(--visibility-delay, 0.2s);
+              opacity: 0;
+              visibility: hidden;
+              transform: translateX(-50%);
+            `}
+          />
         </a>
-        {props.children}
       </Component>
     );
   };

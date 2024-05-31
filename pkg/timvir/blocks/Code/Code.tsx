@@ -242,7 +242,6 @@ const classes = {
 
     & pre .line {
       padding-inline: var(--timvir-b-Code-inlinePadding);
-      margin-inline: 1px;
     }
   `,
 
@@ -274,7 +273,6 @@ const classes = {
 
   line: css`
     padding-inline: var(--timvir-b-Code-inlinePadding);
-    margin-inline: 1px;
   `,
   highlightedLine: css`
     background-color: #ffe10044;

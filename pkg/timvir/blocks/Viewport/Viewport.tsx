@@ -152,6 +152,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
               top: 50%;
               left: 50%;
               transform: translate(-50%, -50%);
+              font-variant-numeric: tabular-nums;
             `}
           >
             {width}px
