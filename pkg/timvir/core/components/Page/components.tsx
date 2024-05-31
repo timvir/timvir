@@ -51,8 +51,7 @@ export const h1 = styled.h1`
   line-height: 1.125;
   font-weight: 590;
   text-indent: -0.05em;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  work-break: break-word;
 `;
 
 export const h2 = Heading(
