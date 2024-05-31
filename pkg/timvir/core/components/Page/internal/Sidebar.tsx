@@ -66,7 +66,7 @@ function Sidebar(props: Props) {
         )}
 
         <div className={classes.sections} onScroll={onScroll}>
-          <nav>
+          <nav className={classes.nav}>
             {toc.map((c, i) => (
               <Section key={i} depth={0} {...c} />
             ))}
@@ -98,6 +98,10 @@ const classes = {
     flex-grow: 1;
     overscroll-behavior: contain;
   `,
+
+  nav: css`
+    padding-inline: 16px;
+  `
 };
 
 function Search(props: NonNullable<Props["search"]>) {
@@ -123,14 +127,12 @@ function Search(props: NonNullable<Props["search"]>) {
           padding: 0 12px;
           border: 1px solid var(--timvir-border-color);
           background: var(--timvir-secondary-background-color);
-          opacity: 0.7;
 
           display: flex;
           align-items: center;
 
           &:hover {
             background: var(--timvir-sidebar-highlight-color);
-            opacity: 1;
           }
 
           & > svg {
