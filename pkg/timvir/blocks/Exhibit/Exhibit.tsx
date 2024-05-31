@@ -70,11 +70,10 @@ const classes = {
 
     ${cssVariables.bleed}: 0px;
 
-    ${cssVariables.borderColor}: #EFEFEF;
+    ${cssVariables.borderColor}: var(--timvir-border-color);
     ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
 
     :global(:root[data-timvir-theme="dark"]) & {
-      ${cssVariables.borderColor}: #101010;
       ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
     }
   `,
@@ -88,7 +87,8 @@ const classes = {
   `,
 
   caption: css`
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.1875;
     color: var(--timvir-secondary-text-color);
     margin-top: 2px;
   `,

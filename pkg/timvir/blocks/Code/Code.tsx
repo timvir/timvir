@@ -59,7 +59,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   React.useEffect(() => {
     (async () => {
       const html = await codeToHtml(children.trim(), {
-        lang: language ?? "markup",
+        lang: language ?? "text",
 
         themes: {
           light: "github-light",
@@ -199,7 +199,8 @@ const classes = {
     margin: 1.5rem 0 3rem;
 
     :global(:root[data-timvir-theme="dark"]) & {
-      .shiki, .shiki span {
+      .shiki,
+      .shiki span {
         color: var(--shiki-dark) !important;
         font-style: var(--shiki-dark-font-style) !important;
         font-weight: var(--shiki-dark-font-weight) !important;
@@ -211,38 +212,23 @@ const classes = {
   code: css`
     overflow-x: auto;
     contain: content;
-    font-size: 0.9em;
+    font-size: 0.8em;
 
     border-radius: 5px;
 
-    --timvir-b-Code-bleed: var(--timvir-page-margin, 24px);
-    --timvir-b-Code-inlinePadding: max(var(--timvir-b-Code-bleed), 24px);
+    --timvir-b-Code-bleed: calc(var(--timvir-page-margin, 24px) * 0.6666);
+    --timvir-b-Code-inlinePadding: max(var(--timvir-b-Code-bleed), 8px);
 
     padding: 0;
     margin: 0 calc(-1 * var(--timvir-b-Code-bleed));
 
-    box-shadow: inset 0 0 0 1px rgb(16 22 26 / 20%), 0 1px 4px rgb(16 22 26 / 10%);
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: inset 0 0 0 1px rgb(16 22 26 / 30%), 0 1px 4px rgb(16 22 26 / 10%), 0 8px 24px rgb(16 22 26 / 10%);
-    }
-
-    :global(:root[data-timvir-theme="dark"]) & {
-      box-shadow: inset 0 0 0 1px rgb(216 222 226 / 10%), 0 1px 4px rgb(216 222 226 / 5%),
-        0 2px 8px rgb(216 222 226 / 2%);
-
-      &:hover {
-        box-shadow: inset 0 0 0 1px rgb(216 222 226 / 10%), 0 1px 3px rgb(216 222 226 / 7%),
-          0 2px 16px rgb(216 222 226 / 5%);
-      }
-    }
+    border: 1px solid var(--timvir-border-color);
 
     & pre {
       margin: 0;
       padding: 16px 0;
 
-      background-color: transparent !important;
+      background-color: var(--timvir-secondary-background-color) !important;
     }
 
     & pre code {
@@ -307,7 +293,8 @@ const classes = {
   `,
 
   caption: css`
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.1875;
     color: var(--timvir-secondary-text-color);
     margin-top: 2px;
   `,
