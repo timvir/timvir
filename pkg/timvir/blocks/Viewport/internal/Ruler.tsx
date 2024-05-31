@@ -21,7 +21,13 @@ function Ruler(props: Props) {
         margin: 8px 0;
       `}
     >
-      <rect x={-containerWidth / 2} y={-height / 2} width={containerWidth} height={height} fill="rgba(0, 0, 0, .1)" />
+      <rect
+        x={-containerWidth / 2}
+        y={-height / 2}
+        width={containerWidth}
+        height={height}
+        fill="var(--timvir-secondary-background-color)"
+      />
 
       <line
         x1={-viewportWidth / 2}
@@ -29,7 +35,7 @@ function Ruler(props: Props) {
         y1={-height / 2}
         y2={height / 2}
         strokeWidth={2}
-        stroke="var(--c-p-4)"
+        stroke="var(--timvir-text-color)"
       />
       <line
         x1={viewportWidth / 2}
@@ -37,7 +43,7 @@ function Ruler(props: Props) {
         y1={-height / 2}
         y2={height / 2}
         strokeWidth={2}
-        stroke="var(--c-p-4)"
+        stroke="var(--timvir-text-color)"
       />
     </svg>
   );

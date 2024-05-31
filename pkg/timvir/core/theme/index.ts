@@ -29,6 +29,7 @@ export const theme = css`
   :global() {
     :root {
       box-sizing: border-box;
+      scroll-padding-top: 20px;
     }
 
     *,
