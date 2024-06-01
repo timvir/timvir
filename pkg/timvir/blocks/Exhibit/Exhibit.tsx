@@ -6,7 +6,7 @@ import * as React from "react";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Root = "figure";
+const Root = "div";
 
 interface Props extends React.ComponentProps<typeof Root> {
   caption?: React.ReactNode;
@@ -22,7 +22,7 @@ interface Props extends React.ComponentProps<typeof Root> {
 }
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const block = useBlock(props)
+  const block = useBlock(props);
   const components = { h3: "h3", ...useMDXComponents() };
 
   const { title, caption, bleed, BackdropProps, children, className, style, ...rest } = block.props;
@@ -42,13 +42,16 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
       >
         <div
           className={classes.container}
-          style={{ border: bleed !== 0 ? `1px solid var(${cssVariables.borderColor})` : "none" }}
           {...BackdropProps}
+          style={{
+            border: bleed === 0 ? "none" : `1px solid var(${cssVariables.borderColor})`,
+            ...BackdropProps?.style,
+          }}
         >
           {children}
         </div>
 
-        {caption && <figcaption className={classes.caption}>{caption}</figcaption>}
+        {caption && <div className={classes.caption}>{caption}</div>}
       </Root>
     </>
   );
@@ -64,8 +67,6 @@ const cssVariables = {
 
 const classes = {
   root: css`
-    margin: 0 0 1.5rem;
-
     ${cssVariables.bleed}: calc(var(--timvir-margin, 0px) * 0.6666);
 
     ${cssVariables.borderColor}: var(--timvir-border-color);
@@ -82,6 +83,8 @@ const classes = {
 
     margin: 0 calc(-1 * var(${cssVariables.bleed}));
     padding: var(${cssVariables.bleed});
+
+    border-radius: 5px;
   `,
 
   caption: css`

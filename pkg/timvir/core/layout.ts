@@ -28,6 +28,14 @@ export const grid = css`
     grid-column: lc / rc;
     min-width: 0;
   }
+
+  & > * {
+    margin: 0 0 2rem;
+  }
+
+  & > p + ul {
+    margin-top: -1.25rem;
+  }
 `;
 
 export const extendedWidth = cx(
