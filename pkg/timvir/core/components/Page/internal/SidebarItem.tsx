@@ -29,11 +29,13 @@ function SidebarItem(props: Props) {
     <div className={classes.root} data-active={location.asPath === path}>
       {path ? (
         <Link href={path} style={{ marginLeft: depth * 16 }}>
+          {props.icon ? React.cloneElement(props.icon, { className: classes.icn }) : null}
           <span className={classes.label}>{label}</span>
           {icon}
         </Link>
       ) : (
         <a style={{ marginLeft: depth * 16 }} href="#" onClick={() => setActive((x) => !x)}>
+          {props.icon ? React.cloneElement(props.icon, { className: classes.icn }) : null}
           <span className={classes.label}>{label}</span>
           {icon}
         </a>
@@ -74,6 +76,13 @@ const classes = {
       background-color: var(--timvir-sidebar-highlight-color);
       opacity: 1;
     }
+  `,
+
+  icn: css`
+    display: block;
+    width: 1.3em;
+    height: 1.3em;
+    margin-right: 8px;
   `,
 
   label: css`
