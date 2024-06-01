@@ -67,8 +67,7 @@ export const h1 = styled.h1`
 export const h2 = Heading(
   styled.h2`
     position: relative;
-    margin-top: 4.5rem;
-    margin-bottom: 0.5rem;
+    margin: 2.5rem 0 1rem;
     font-size: 1.5rem;
     line-height: 1.1666;
     font-weight: 590;
@@ -78,8 +77,7 @@ export const h2 = Heading(
 export const h3 = Heading(
   styled.h3`
     position: relative;
-    margin-top: 3rem;
-    margin-bottom: 0.5rem;
+    margin: 1rem 0 1rem;
     font-size: 1.0625rem;
     line-height: 1.4705882353;
     font-weight: 590;
@@ -89,8 +87,7 @@ export const h3 = Heading(
 export const h4 = Heading(
   styled.h4`
     position: relative;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
+    margin: 1rem 0 1rem;
     font-size: 0.9375rem;
     line-height: 1.4375;
     font-weight: 590;
@@ -183,13 +180,10 @@ export const a = styled.a`
 `;
 
 export const p = styled.p`
-  margin: 0 0 1rem;
 `;
 
 export const ul = styled.ul`
-  margin: 0 0 1rem;
 `;
 
 export const ol = styled.ol`
-  margin: 0 0 1rem;
 `;

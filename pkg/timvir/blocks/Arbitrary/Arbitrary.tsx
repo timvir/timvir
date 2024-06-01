@@ -56,7 +56,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
               onPaste={(ev) => {
                 const v = ev.clipboardData.getData("text/plain");
                 mutate((draft) => {
-                  draft.seed = +(new TextDecoder().decode(base58.decode(v)));
+                  draft.seed = +new TextDecoder().decode(base58.decode(v));
                 });
               }}
               onFocus={(ev) => {
@@ -77,7 +77,13 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
           </button>
         </div>
 
-        <Exhibit {...ExhibitProps}>{children}</Exhibit>
+        <Exhibit
+          bleed={0}
+          BackdropProps={{ style: { borderRadius: 2, border: "1px solid var(--timvir-border-color)" } }}
+          {...ExhibitProps}
+        >
+          {children}
+        </Exhibit>
       </Root>
     </Context.Provider>
   );
