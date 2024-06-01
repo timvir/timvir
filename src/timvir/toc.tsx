@@ -57,4 +57,8 @@ export default [
     children: [{ label: "Component Sample", path: "/concepts/component-sample", icon: <Icons.AlignLeft /> }],
   },
   { label: "Snippets", path: "/snippets" },
+  {
+    label: "TIPs",
+    children: [{ label: "TIP 0001", path: "/tip/0001", icon: <Icons.GitCommit /> }],
+  },
 ] as const;
