@@ -5,7 +5,7 @@ import { Code } from "../../Code";
 
 # Message
 
-<Exhibit bleed="var(--timvir-page-margin)">
+<Exhibit>
   <Sample variant="basic" />
 </Exhibit>
 
@@ -16,13 +16,13 @@ import { Code } from "../../Code";
 ## Variants
 
 <Grid>
-  <Exhibit bleed={8} caption="info">
+  <Exhibit caption="info">
     <Sample variant="basic" props={{ variant: "info" }} />
   </Exhibit>
-  <Exhibit bleed={8} caption="warning">
+  <Exhibit caption="warning">
     <Sample variant="basic" props={{ variant: "warning" }} />
   </Exhibit>
-  <Exhibit bleed={8} caption="alert">
+  <Exhibit caption="alert">
     <Sample variant="basic" props={{ variant: "alert" }} />
   </Exhibit>
 </Grid>
@@ -32,7 +32,7 @@ import { Code } from "../../Code";
 Make the title bold and place it before the message, or use a level 3 heading. You can use arbitrary markdown inside the message.
 
 <Grid>
-<Exhibit bleed={8} caption="Inline title">
+<Exhibit caption="Inline title">
   <Sample variant="basic">
 
 
@@ -42,7 +42,7 @@ Make the title bold and place it before the message, or use a level 3 heading. Y
 </Exhibit>
 
 
-<Exhibit bleed={8} caption="Title as a separate block elment">
+<Exhibit caption="Title as a separate block elment">
   <Sample variant="basic">
 
 

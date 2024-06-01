@@ -15,8 +15,6 @@ interface Props extends React.ComponentProps<typeof Root> {
    * How much the component should extend out of its original box. When number,
    * it's the number of pixels. When a string, must evaluate to a CSS <length>
    * (can be inline or reference to a CSS variable).
-   *
-   * @default 0
    */
   bleed?: string | number;
 
@@ -68,7 +66,7 @@ const classes = {
   root: css`
     margin: 0 0 1.5rem;
 
-    ${cssVariables.bleed}: calc(var(--timvir-page-margin, 24px) * 0.6666);
+    ${cssVariables.bleed}: calc(var(--timvir-margin, 0px) * 0.6666);
 
     ${cssVariables.borderColor}: var(--timvir-border-color);
     ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
