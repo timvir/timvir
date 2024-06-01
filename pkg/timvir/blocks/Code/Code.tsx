@@ -216,7 +216,7 @@ const classes = {
 
     border-radius: 5px;
 
-    --timvir-b-Code-bleed: calc(var(--timvir-page-margin, 24px) * 0.6666);
+    --timvir-b-Code-bleed: calc(var(--timvir-margin, 0px) * 0.6666);
     --timvir-b-Code-inlinePadding: max(var(--timvir-b-Code-bleed), 8px);
 
     padding: 0;
