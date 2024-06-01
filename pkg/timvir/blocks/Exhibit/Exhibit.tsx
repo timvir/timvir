@@ -27,7 +27,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
   const block = useBlock(props)
   const components = { h3: "h3", ...useMDXComponents() };
 
-  const { title, caption, bleed = 0, BackdropProps, children, className, style, ...rest } = block.props;
+  const { title, caption, bleed, BackdropProps, children, className, style, ...rest } = block.props;
 
   return (
     <>
@@ -38,7 +38,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
         className={cx(className, classes.root)}
         style={{
           ...style,
-          [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : bleed,
+          [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : undefined,
         }}
         {...rest}
       >
@@ -68,7 +68,7 @@ const classes = {
   root: css`
     margin: 0 0 1.5rem;
 
-    ${cssVariables.bleed}: 0px;
+    ${cssVariables.bleed}: calc(var(--timvir-page-margin, 24px) * 0.6666);
 
     ${cssVariables.borderColor}: var(--timvir-border-color);
     ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
