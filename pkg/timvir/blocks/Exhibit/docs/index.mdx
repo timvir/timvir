@@ -15,7 +15,7 @@ Think of it as a `<figure>` + `<figcaption>` for React components.
 
 Add a title to the exhibit if it helps the reader to understand the exhibit better. The title is placed snuggly to the exhibit.
 
-<Exhibit bleed={8} title="This Is Not A Button" caption="It's an input element, of type text">
+<Exhibit title="This Is Not A Button" caption="It's an input element, of type text">
   <input type="text" placeholder="Type something…" style={{ boxSizing: "border-box", width: "100%", padding: 8 }} />
 </Exhibit>
 
@@ -23,33 +23,25 @@ Add a title to the exhibit if it helps the reader to understand the exhibit bett
 
 Use the `bleed` prop to control how much the checkered background extends beyond the box of the element itself.
 
-#### bleed 0
-
-<Exhibit bleed={0}>
+<Exhibit bleed={0} caption="Bleed 0">
   <div
     style={{ height: 40, padding: "0 16px", background: "teal", color: "white", display: "flex", alignItems: "center" }}
   />
 </Exhibit>
 
-#### bleed 4
-
-<Exhibit bleed={4}>
+<Exhibit bleed={4} caption="Bleed 4">
   <div
     style={{ height: 40, padding: "0 16px", background: "teal", color: "white", display: "flex", alignItems: "center" }}
   />
 </Exhibit>
 
-#### bleed 12
-
-<Exhibit bleed={12}>
+<Exhibit bleed={12} caption="Bleed 12">
   <div
     style={{ height: 40, padding: "0 16px", background: "teal", color: "white", display: "flex", alignItems: "center" }}
   />
 </Exhibit>
 
-#### bleed 24
-
-<Exhibit bleed={24}>
+<Exhibit bleed={24} caption="Bleed 24">
   <div
     style={{ height: 40, padding: "0 16px", background: "teal", color: "white", display: "flex", alignItems: "center" }}
   />
