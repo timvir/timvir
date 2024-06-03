@@ -97,5 +97,8 @@ const classes = {
     margin-left: 4px;
     transition: transform 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transform-origin: center center;
+
+    width: 1rem;
+    height: 1rem;
   `,
 };
