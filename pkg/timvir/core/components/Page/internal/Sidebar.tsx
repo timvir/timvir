@@ -1,10 +1,9 @@
 import { css, cx } from "@linaria/core";
 import * as React from "react";
-import { useImmer } from "use-immer";
 import { Node } from "../types";
 import Section from "./Section";
 
-interface Props {
+interface Props extends React.ComponentPropsWithoutRef<"nav"> {
   toc: readonly Node[];
 
   search?: {
@@ -18,25 +17,14 @@ interface Props {
 }
 
 function Sidebar(props: Props) {
-  const { toc, search } = props;
-
-  const [state, mutate] = useImmer({
-    shadowVisible: false,
-  });
-
-  const onScroll = (ev: React.SyntheticEvent<HTMLDivElement>) => {
-    const shadowVisible = ev.currentTarget.scrollTop > 2;
-    if (state.shadowVisible !== shadowVisible) {
-      mutate((draft) => {
-        draft.shadowVisible = shadowVisible;
-      });
-    }
-  };
+  const { toc, search, className, ...rest } = props;
 
   return (
-    <aside className={cx(classes.root)}>
-      <div
-        className={css`
+    <nav
+      className={cx(
+        className,
+        classes.root,
+        css`
           display: none;
           height: 0;
 
@@ -45,35 +33,64 @@ function Sidebar(props: Props) {
             flex-direction: column;
             height: 100%;
           }
+        `
+      )}
+      {...rest}
+    >
+      <header
+        className={css`
+          padding: 24px 24px 0;
         `}
       >
+        <div
+          className={css`
+            font-size: 0.875rem;
+            line-height: 1.3125;
+            margin-bottom: 16px;
+
+            display: flex;
+            gap: 16px;
+          `}
+        >
+          <div
+            className={css`
+              font-weight: 590;
+            `}
+          >
+            Timvir
+          </div>
+          <div
+            className={css`
+              background-color: var(--timvir-border-color);
+              width: 1px;
+              height: 20px;
+            `}
+          />
+          <div>Docs</div>
+        </div>
+
         {search && (
           <div
             className={cx(
               css`
-                padding: 24px 0 0;
                 flex-shrink: 0;
                 transition: all 0.16s;
-              `,
-              state.shadowVisible &&
-                css`
-                  box-shadow: 0 1px 0 rgba(16, 22, 26, 0.15);
-                `
+              `
             )}
           >
             <Search {...search} />
           </div>
         )}
+      </header>
 
-        <div className={classes.sections} onScroll={onScroll}>
-          <nav className={classes.nav}>
-            {toc.map((c, i) => (
-              <Section key={i} depth={0} {...c} />
-            ))}
-          </nav>
-        </div>
+      <div className={classes.sections}>
+        <nav className={classes.nav}>
+          {toc.map((c, i) => (
+            <Section key={i} depth={0} {...c} />
+          ))}
+        </nav>
       </div>
-    </aside>
+    </nav>
   );
 }
 
@@ -93,15 +110,26 @@ const classes = {
   `,
 
   sections: css`
-    padding: 16px 0 30px;
+    padding: 24px 0;
     overflow-y: auto;
     flex-grow: 1;
-    overscroll-behavior: contain;
+    overscroll-behavior: auto;
+
+    scroll-padding-block: 24px;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 12px,
+      #000 24px,
+      #000 calc(100% - 24px),
+      rgba(0, 0, 0, 0.2) calc(100% - 12px),
+      transparent 100%
+    );
   `,
 
   nav: css`
-    padding-inline: 16px;
-  `
+    padding-inline: 24px;
+  `,
 };
 
 function Search(props: NonNullable<Props["search"]>) {
@@ -111,7 +139,6 @@ function Search(props: NonNullable<Props["search"]>) {
     <div
       className={css`
         font-family: system-ui;
-        padding: 0 16px;
       `}
     >
       <div

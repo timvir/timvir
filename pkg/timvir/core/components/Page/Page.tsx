@@ -32,7 +32,7 @@ interface Props extends React.ComponentProps<typeof Root> {
    * highlighting. If you want to enable syntax highlighting in code blocks, use the
    * '<Code>' component from 'timvir/blocks'.
    */
-  mdxComponents?: React.ComponentPropsWithoutRef<typeof MDXProvider>['components'];
+  mdxComponents?: React.ComponentPropsWithoutRef<typeof MDXProvider>["components"];
 
   /**
    * Search Configuration. When provided, then the Search menu will appear in the sidebar.
@@ -131,26 +131,23 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           `
         )}
       >
-        <div
+        <Sidebar
           className={css`
             grid-column: l / m;
             border-right: 1px solid var(--timvir-border-color);
           `}
-        >
-          <Sidebar
-            toc={toc}
-            search={
-              search && {
-                open: () => {
-                  mutate((draft) => {
-                    draft.search.open = true;
-                  });
-                },
-                ...search,
-              }
+          toc={toc}
+          search={
+            search && {
+              open: () => {
+                mutate((draft) => {
+                  draft.search.open = true;
+                });
+              },
+              ...search,
             }
-          />
-        </div>
+          }
+        />
 
         <div
           className={css`
@@ -160,9 +157,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           `}
         >
           <div className={grid}>
-            <MDXProvider components={{ ...(mdxComponentsBase as any), ...mdxComponents }}>
-              {children}
-            </MDXProvider>
+            <MDXProvider components={{ ...(mdxComponentsBase as any), ...mdxComponents }}>{children}</MDXProvider>
           </div>
 
           <div
