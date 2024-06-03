@@ -63,7 +63,7 @@ function Sidebar(props: Props) {
             className={css`
               background-color: var(--timvir-border-color);
               width: 1px;
-              height: 20px;
+              height: 1.25rem;
             `}
           />
           <div>Docs</div>
@@ -149,7 +149,7 @@ function Search(props: NonNullable<Props["search"]>) {
           line-height: 2.2;
           font-weight: 400;
           cursor: pointer;
-          height: 36px;
+          min-height: 36px;
           border-radius: 8px;
           padding: 0 12px;
           border: 1px solid var(--timvir-border-color);
@@ -165,6 +165,8 @@ function Search(props: NonNullable<Props["search"]>) {
           & > svg {
             display: block;
             margin-right: 8px;
+            width: 0.75rem;
+            height: 0.75rem;
           }
         `}
         onClick={open}

@@ -107,7 +107,7 @@ const classes = {
     display: flex;
     align-items: center;
     padding: 0 0 0 10px;
-    height: 36px;
+    min-height: 36px;
     position: relative;
     background: var(--timvir-secondary-background-color);
 
@@ -150,7 +150,7 @@ const classes = {
   button: css`
     border: none;
     outline: none;
-    height: 36px;
+    min-height: 36px;
     border: 1px solid var(--timvir-border-color);
     border-radius: 2px;
     background: var(--timvir-secondary-background-color);
