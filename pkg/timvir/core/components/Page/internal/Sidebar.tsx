@@ -160,7 +160,7 @@ const classes = {
     background-color: var(--timvir-background-color);
 
     #menu:checked ~ & {
-      display: block;
+      display: flex;
       position: fixed;
       top: 6rem;
       left: 0;
@@ -169,7 +169,8 @@ const classes = {
     }
 
     @media (min-width: 48rem) {
-      display: block;
+      display: flex;
+      height: 100%;
       position: static;
     }
   `,
