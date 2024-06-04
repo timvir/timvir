@@ -2,6 +2,7 @@ import { css, cx } from "@linaria/core";
 import * as React from "react";
 import { Node } from "../types";
 import Section from "./Section";
+import * as Icons from "react-feather";
 
 interface Props extends React.ComponentPropsWithoutRef<"nav"> {
   toc: readonly Node[];
@@ -25,12 +26,10 @@ function Sidebar(props: Props) {
         className,
         classes.root,
         css`
-          display: none;
-          height: 0;
+          display: flex;
+          flex-direction: column;
 
-          @media (min-width: 60rem) {
-            display: flex;
-            flex-direction: column;
+          @media (min-width: 48rem) {
             height: 100%;
           }
         `
@@ -39,14 +38,22 @@ function Sidebar(props: Props) {
     >
       <header
         className={css`
-          padding: 24px 24px 0;
+          padding: 0 var(--timvir-page-margin);
+          height: 3rem;
+          display: flex;
+          align-items: center;
+
+          @media (min-width: 48rem) {
+            padding-top: 24px;
+            display: block;
+            height: auto;
+          }
         `}
       >
         <div
           className={css`
             font-size: 0.875rem;
             line-height: 1.3125;
-            margin-bottom: 16px;
 
             display: flex;
             gap: 16px;
@@ -75,6 +82,12 @@ function Sidebar(props: Props) {
               css`
                 flex-shrink: 0;
                 transition: all 0.16s;
+                margin-top: 16px;
+                display: none;
+
+                @media (min-width: 48rem) {
+                  display: block;
+                }
               `
             )}
           >
@@ -83,12 +96,55 @@ function Sidebar(props: Props) {
         )}
       </header>
 
-      <div className={classes.sections}>
-        <nav className={classes.nav}>
-          {toc.map((c, i) => (
-            <Section key={i} depth={0} {...c} />
-          ))}
-        </nav>
+      <label
+        htmlFor="menu"
+        className={css`
+          border-bottom: 1px solid var(--timvir-border-color);
+          padding: 0 var(--timvir-page-margin);
+          height: 3rem;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          @media (min-width: 48rem) {
+            display: none;
+          }
+        `}
+      >
+        <span>Menu</span>
+        <Icons.Menu
+          size={`1rem`}
+          className={css`
+            margin-left: auto;
+          `}
+        />
+      </label>
+
+      <input
+        type="checkbox"
+        id="menu"
+        className={css`
+          display: none;
+        `}
+        onChange={(ev) => {
+          document.body.classList.toggle(
+            css`
+              overflow-y: scroll;
+              position: fixed;
+              top: 0px;
+            `,
+            ev.currentTarget.checked
+          );
+        }}
+      />
+      <div className={classes.content}>
+        <div className={classes.sections}>
+          <div className={classes.nav}>
+            {toc.map((c, i) => (
+              <Section key={i} depth={0} {...c} />
+            ))}
+          </div>
+        </div>
       </div>
     </nav>
   );
@@ -97,18 +153,26 @@ function Sidebar(props: Props) {
 export default Sidebar;
 
 const classes = {
-  root: css`
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 0;
+  root: css``,
 
-    @media (min-width: 60rem) {
-      width: 300px;
+  content: css`
+    display: none;
+    background-color: var(--timvir-background-color);
+
+    #menu:checked ~ & {
+      display: block;
+      position: fixed;
+      top: 6rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    @media (min-width: 48rem) {
+      display: block;
+      position: static;
     }
   `,
-
   sections: css`
     padding: 24px 0;
     overflow-y: auto;
@@ -128,7 +192,10 @@ const classes = {
   `,
 
   nav: css`
-    padding-inline: 24px;
+    padding-inline: calc(var(--timvir-page-margin) - 8px);
+    @media (min-width: 48rem) {
+      padding-inline: var(--timvir-page-margin)
+    }
   `,
 };
 

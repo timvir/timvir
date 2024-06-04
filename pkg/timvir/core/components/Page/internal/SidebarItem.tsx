@@ -52,6 +52,19 @@ const classes = {
     align-items: center;
     margin: 1px 0;
 
+    font-size: 0.9375rem;
+    line-height: 2.2;
+
+    @media (min-width: 48rem) {
+      font-size: 0.8125rem;
+    }
+
+    @media (any-pointer: coarse) {
+      & > a {
+        min-height: 44px;
+      }
+    }
+
     & > a {
       min-width: 0;
       transition: background 0.16s;
@@ -59,8 +72,6 @@ const classes = {
       display: flex;
       align-items: center;
       color: var(--timvir-text-color);
-      font-size: 0.8125rem;
-      line-height: 2.2;
       font-weight: 500;
       background: none;
       text-decoration: none;

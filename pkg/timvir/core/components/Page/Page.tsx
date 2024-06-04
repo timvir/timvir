@@ -122,10 +122,14 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           css`
             min-height: 100vh;
 
-            display: grid;
-            grid-template-columns: [l] 0 [m] 1fr [r];
+            --timvir-page-margin: 16px;
 
-            @media (min-width: 60rem) {
+            display: grid;
+            grid-template-areas: "navigation" "content";
+
+            @media (min-width: 48rem) {
+              --timvir-page-margin: 24px;
+              grid-template-areas: "navigation content";
               grid-template-columns: [l] 300px [m] 1fr [r];
             }
           `
@@ -133,8 +137,18 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
       >
         <Sidebar
           className={css`
-            grid-column: l / m;
-            border-right: 1px solid var(--timvir-border-color);
+            grid-area: navigation;
+            z-index: 1;
+
+            @media (min-width: 48rem) {
+              position: fixed;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              width: 300px;
+
+              border-right: 1px solid var(--timvir-border-color);
+            }
           `}
           toc={toc}
           search={
@@ -153,7 +167,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           className={css`
             display: flex;
             flex-direction: column;
-            grid-column: m / r;
+            grid-area: content;
           `}
         >
           <div className={grid}>
