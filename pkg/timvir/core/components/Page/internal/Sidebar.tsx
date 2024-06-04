@@ -21,21 +21,7 @@ function Sidebar(props: Props) {
   const { toc, search, className, ...rest } = props;
 
   return (
-    <nav
-      className={cx(
-        className,
-        classes.root,
-        css`
-          display: flex;
-          flex-direction: column;
-
-          @media (min-width: 48rem) {
-            height: 100%;
-          }
-        `
-      )}
-      {...rest}
-    >
+    <nav className={cx(className, classes.root)} {...rest}>
       <header
         className={css`
           padding: 0 var(--timvir-page-margin);
@@ -127,19 +113,17 @@ function Sidebar(props: Props) {
           display: none;
         `}
         onChange={(ev) => {
-          document.body.classList.toggle(
-            css`
-              overflow-y: scroll;
-              position: fixed;
-              top: 0px;
-            `,
-            ev.currentTarget.checked
-          );
+          document.body.classList.toggle(classes.scrollLock, ev.currentTarget.checked);
         }}
       />
       <div className={classes.content}>
         <div className={classes.sections}>
-          <div className={classes.nav}>
+          <div
+            className={classes.nav}
+            onClick={() => {
+              document.body.classList.remove(classes.scrollLock);
+            }}
+          >
             {toc.map((c, i) => (
               <Section key={i} depth={0} {...c} />
             ))}
@@ -153,7 +137,21 @@ function Sidebar(props: Props) {
 export default Sidebar;
 
 const classes = {
-  root: css``,
+  scrollLock: css`
+    overflow-y: scroll;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+  `,
+
+  root: css`
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 48rem) {
+      height: 100%;
+    }
+  `,
 
   content: css`
     display: none;
@@ -170,8 +168,10 @@ const classes = {
 
     @media (min-width: 48rem) {
       display: flex;
+      flex-direction: column;
       height: 100%;
       position: static;
+      overflow: hidden;
     }
   `,
   sections: css`
@@ -195,7 +195,7 @@ const classes = {
   nav: css`
     padding-inline: calc(var(--timvir-page-margin) - 8px);
     @media (min-width: 48rem) {
-      padding-inline: var(--timvir-page-margin)
+      padding-inline: var(--timvir-page-margin);
     }
   `,
 };

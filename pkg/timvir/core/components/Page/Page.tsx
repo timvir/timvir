@@ -139,6 +139,9 @@ function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
           className={css`
             grid-area: navigation;
             z-index: 1;
+            background-color: var(--timvir-background-color);
+            position: sticky;
+            top: 0;
 
             @media (min-width: 48rem) {
               position: fixed;
