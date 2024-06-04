@@ -3,6 +3,7 @@ import * as React from "react";
 import { Node } from "../types";
 import Section from "./Section";
 import * as Icons from "react-feather";
+import { useContext } from "timvir/context";
 
 interface Props extends React.ComponentPropsWithoutRef<"nav"> {
   toc: readonly Node[];
@@ -18,7 +19,24 @@ interface Props extends React.ComponentPropsWithoutRef<"nav"> {
 }
 
 function Sidebar(props: Props) {
+  const { location } = useContext();
+
   const { toc, search, className, ...rest } = props;
+
+  const node = (function find(nodes: readonly Node[]): undefined | Node {
+    for (const node of nodes) {
+      if (node.path === location.asPath) {
+        return node;
+      }
+
+      if (node.children) {
+        const n = find(node.children);
+        if (n) {
+          return n;
+        }
+      }
+    }
+  })(toc);
 
   return (
     <nav className={cx(className, classes.root)} {...rest}>
@@ -97,7 +115,20 @@ function Sidebar(props: Props) {
           }
         `}
       >
-        <span>Menu</span>
+        {node?.icon
+          ? React.cloneElement(node.icon, {
+              className: css`
+                display: block;
+                width: 1.3em;
+                height: 1.3em;
+                margin-right: 8px;
+                min-width: -moz-fit-content;
+                min-width: fit-content;
+              `,
+            })
+          : null}
+        <span>{node?.label ?? "Menu"}</span>
+
         <Icons.Menu
           size={`1rem`}
           className={css`
