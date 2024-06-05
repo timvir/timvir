@@ -122,8 +122,7 @@ function Sidebar(props: Props) {
                 width: 1.3em;
                 height: 1.3em;
                 margin-right: 8px;
-                min-width: -moz-fit-content;
-                min-width: fit-content;
+                min-width: 1.3em;
               `,
             })
           : null}
