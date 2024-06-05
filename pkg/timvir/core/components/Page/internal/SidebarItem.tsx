@@ -94,7 +94,7 @@ const classes = {
     width: 1.3em;
     height: 1.3em;
     margin-right: 8px;
-    min-width: fit-content;
+    min-width: 1.3em;
   `,
 
   label: css`
