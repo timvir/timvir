@@ -136,6 +136,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
           fullWidth,
           css`
             contain: layout;
+            margin-bottom: 0;
           `
         )}
       >
