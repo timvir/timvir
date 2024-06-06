@@ -39,7 +39,7 @@ function Footer(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
       )}
 
       <div className={cx(grid, classes.meta)}>
-        <div>
+        <div style={{ marginBottom: 0 }}>
           Built with <a href="https://timvir.vercel.app">Timvir</a>
         </div>
       </div>
@@ -52,11 +52,11 @@ export default React.forwardRef(Footer);
 const classes = {
   root: css`
     padding: 50px 0 30px;
-    background: #20232a;
-    color: white;
 
     display: grid;
     gap: 50px;
+
+    border-top: 1px solid var(--timvir-border-color);
   `,
 
   linkGroups: css`
@@ -66,16 +66,13 @@ const classes = {
   `,
 
   linkGroupTitle: css`
-    text-transform: uppercase;
-    color: var(--timvir-secondary-text-color);
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-weight: 600;
     margin-bottom: 12px;
   `,
 
   link: css`
     display: block;
-    color: white;
+    color: inherit;
     text-decoration: none;
     &:hover {
       color: var(--c-p-4);
@@ -86,7 +83,7 @@ const classes = {
     color: var(--timvir-secondary-text-color);
 
     a {
-      color: currentColor;
+      color: inherit;
       text-decoration: none;
       background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
       background-position: bottom;

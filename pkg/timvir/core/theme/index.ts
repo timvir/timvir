@@ -67,7 +67,7 @@ export const theme = css`
   --c-p-5: ${colors.green["500"]};
 `;
 
-function mkTheme(config: typeof themes[keyof typeof themes]) {
+function mkTheme(config: (typeof themes)[keyof typeof themes]) {
   return `
     --timvir-background-color: ${config.backgroundColor};
     --timvir-text-color: ${config.textColor};
