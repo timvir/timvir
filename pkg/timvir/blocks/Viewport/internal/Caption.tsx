@@ -20,7 +20,8 @@ function Caption(props: Props) {
     <>
       <figcaption
         className={css`
-          font-size: 0.75rem;
+          font-size: 0.8125rem;
+          line-height: 1.1875;
           color: var(--timvir-secondary-text-color);
           white-space: nowrap;
 

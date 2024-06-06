@@ -292,6 +292,6 @@ const classes = {
     font-size: 0.8125rem;
     line-height: 1.1875;
     color: var(--timvir-secondary-text-color);
-    margin-top: 2px;
+    margin-top: 0.3em;
   `,
 };
