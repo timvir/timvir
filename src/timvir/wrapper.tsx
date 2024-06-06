@@ -2,7 +2,7 @@ import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { Code } from "timvir/blocks";
-import { Footer, Page } from "timvir/core";
+import { Page } from "timvir/core";
 import { defaultSearch, Search } from "timvir/search";
 import routes from "./routes";
 import toc from "./toc";
@@ -29,27 +29,7 @@ export default function Wrapper({ children }: { children?: React.ReactNode }) {
   }
 
   return (
-    <Page
-      location={router}
-      Link={Link_ as any}
-      toc={toc}
-      search={search}
-      mdxComponents={mdxComponents}
-      Footer={() => (
-        <Footer
-          links={[
-            {
-              group: "Docs",
-              items: [
-                { label: "Getting Started", href: "/docs" },
-                // { label: "Components", href: "/docs/components" },
-              ],
-            },
-            { group: "Community", items: [{ label: "GitHub", href: "https://github.com/timvir/timvir" }] },
-          ]}
-        />
-      )}
-    >
+    <Page location={router} Link={Link_ as any} toc={toc} search={search} mdxComponents={mdxComponents}>
       {children}
     </Page>
   );
