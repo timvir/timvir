@@ -53,7 +53,17 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   const [state, mutate] = useImmer({
     mouseOver: false,
     copiedToClipboard: false,
-    html: "",
+
+    /*
+     * Prevent layout shift during (asynchronous) highlighting of the markup by
+     * initializing the html witha  pre/code block with the expected number of
+     * lines.
+     */
+    html: `<pre><code>${children
+      .trim()
+      .split("\n")
+      .map(() => "\n")
+      .join("")}</code></pre>`,
   });
 
   React.useEffect(() => {
