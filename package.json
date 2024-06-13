@@ -83,7 +83,7 @@
     "typescript": "^5.4.5",
     "unfurl.js": "^6.4.0",
     "unist-util-visit": "^5.0.0",
-    "use-immer": "^0.9.0",
+    "use-immer": "^0.10.0",
     "wonka": "^6.3.4"
   }
 }
