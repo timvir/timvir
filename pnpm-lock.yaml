@@ -234,8 +234,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       use-immer:
-        specifier: ^0.9.0
-        version: 0.9.0(immer@10.1.1)(react@18.3.1)
+        specifier: ^0.10.0
+        version: 0.10.0(immer@10.1.1)(react@18.3.1)
       wonka:
         specifier: ^6.3.4
         version: 6.3.4
@@ -324,8 +324,8 @@ importers:
         specifier: ^1
         version: 1.6.3
       use-immer:
-        specifier: ^0.8.0 || ^0.8.1 || ^0.9.0
-        version: 0.9.0(immer@10.1.1)(react@18.3.1)
+        specifier: ^0.10.0
+        version: 0.10.0(immer@10.1.1)(react@18.3.1)
       wonka:
         specifier: ^6
         version: 6.3.4
@@ -7504,10 +7504,10 @@ packages:
       punycode: 2.1.1
     dev: false
 
-  /use-immer@0.9.0(immer@10.1.1)(react@18.3.1):
-    resolution: {integrity: sha512-/L+enLi0nvuZ6j4WlyK0US9/ECUtV5v9RUbtxnn5+WbtaXYUaOBoKHDNL9I5AETdurQ4rIFIj/s+Z5X80ATyKw==}
+  /use-immer@0.10.0(immer@10.1.1)(react@18.3.1):
+    resolution: {integrity: sha512-/eVwNR4TG9Tm/dd+aHYLLaI0FLfYKlkTqKMkn78Ah/EYVzWd/zJIgpkdoFEKbhQJOGo8XN7/mWrTx0exp1c+Ug==}
     peerDependencies:
-      immer: '>=2.0.0'
+      immer: '>=8.0.0'
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
       immer: 10.1.1
