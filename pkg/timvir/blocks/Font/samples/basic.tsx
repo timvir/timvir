@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Font } from "..";
 import { Code } from "../../Code";
+import { css } from "@linaria/core";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof Font>>;
 
@@ -15,7 +16,7 @@ export default function Sample(props: Props) {
             This font is for the main page heading. Its size is defined in terms of viewport width. Therefore it
             automatically scales with the viewport. To apply this style to an element, use the following code:
           </p>
-          <Code language="css" style={{ "--timvir-margin": "0px" }}>{`font-family: system-ui;
+          <Code language="css" className={css`--timvir-margin: 0px;`}>{`font-family: system-ui;
 font-weight: 700;
 font-size: 5vw;
 line-height: 1.3;`}</Code>
