@@ -41,7 +41,10 @@ function Font(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
 
       const intervalId = setInterval(() => {
         if (fontSizeRef) {
-          const innerText = `${name} – ${Math.round(parseInt(computedStyle.fontSize))}px`;
+          const fontSize = parseInt(computedStyle.fontSize, 10)
+          const lineHeight = parseInt(computedStyle.lineHeight, 10)
+
+          const innerText = `${name} – ${Math.round(fontSize)}px / ${Math.round(lineHeight / fontSize * 1000) / 1000}`;
           if (fontSizeRef.innerText !== innerText) {
             fontSizeRef.innerText = innerText;
           }
@@ -55,16 +58,7 @@ function Font(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   }, [name, contentRef]);
 
   return (
-    <Root
-      ref={ref}
-      className={cx(
-        className,
-        css`
-          padding: 16px 0;
-        `
-      )}
-      {...rest}
-    >
+    <Root ref={ref} className={cx(className)} {...rest}>
       <div className={classes.meta}>
         <components.h3
           className={css`
@@ -131,8 +125,6 @@ function Font(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
               ref={setInfoRef}
               className={css`
                 padding: 0 0 16px;
-                display: flex;
-                flex-direction: column;
               `}
             >
               {info}

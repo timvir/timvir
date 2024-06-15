@@ -12,11 +12,10 @@ export default function Sample(props: Props) {
       info={
         <>
           <p>
-            This font is used for this and that. Its size is defined in terms of viewport width, as such it
-            automatically scales with the viewport.
+            This font is for the main page heading. Its size is defined in terms of viewport width. Therefore it
+            automatically scales with the viewport. To apply this style to an element, use the following code:
           </p>
-
-          <Code language="css">{`font-family: system-ui;
+          <Code language="css" style={{ "--timvir-margin": "0px" }}>{`font-family: system-ui;
 font-weight: 700;
 font-size: 5vw;
 line-height: 1.3;`}</Code>
