@@ -1,23 +1,28 @@
-import { Font } from "..";
-import { Code } from "../../Code";
-import { Viewport } from "../../Viewport";
+import { Exhibit } from "../../Exhibit";
 
 # Font
 
-<Sample variant="basic" />
+The Font block displays a sample text in a given font, and provides basic information about the font metrics.
+The metrics show the actual, computed font size and line height values from the DOM.
+They are updated in real time to support fonts that make use of dynamic CSS units (such as `vw`).
+To provide context (such as where this font is used, or instructions for developers how to apply the font style), use the info option.
 
-<Font name="Heading 2" font={{ style: { fontFamily: "system-ui", fontWeight: 700, fontSize: "2vw", lineHeight: 1.3 } }}>
-  The basic structure of each upright letter remained the same in its italic companion.
-</Font>
+<Exhibit caption="A Font block inside an Exhibit. You would not usually use it like that but here we do to better illustrate what it contains.">
+  <Sample variant="basic" />
+</Exhibit>
 
-<Font name="Body 1" font={{ style: { fontFamily: "system-ui", fontSize: 18 } }}>
-  Originally called Neuste schmale fette Zeitungs-Grotesk, the design was listed in this catalogue as Enge fette Grotesque. It was a straight-sided sans serif with rounded terminals, and it bears no relation to any styles of Akzidenz-Grotesk. The remaining three sans serif designs in that undated, post-sale catalogue were Schmale magere Grotesque, Breite Grotesque, and Breite fette Grotesque.
-</Font>
+## Timvir Font System
 
-<Font name="Meta" font={{ style: { fontFamily: "system-ui", fontSize: 14 } }}>
-  Meta Text
-</Font>
+The samples below illustrate the font system used by Timvir itself.
+Note that the Timvir font system is currently (for most parts) not responsive.
+The font sizes remain the same across all viewport sizes.
 
-## Inside Viewport
+In Timvir itself, ont sizes are always specified in rem, line height in unitless values.
+This ensures the font size scales when the user has set a non-standard font size in their browser (currently Chrome and Firefox offer such option, Safari does not).
 
-<Viewport src="/docs/components/Font/samples/system" />
+<Sample variant="timvir/h1" />
+<Sample variant="timvir/h2" />
+<Sample variant="timvir/h3" />
+<Sample variant="timvir/h4" />
+<Sample variant="timvir/body1" />
+<Sample variant="timvir/caption" />
