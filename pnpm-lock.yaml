@@ -219,8 +219,8 @@ importers:
         specifier: ^0.33.4
         version: 0.33.4
       shiki:
-        specifier: ^1.6.4
-        version: 1.6.4
+        specifier: ^1.7.0
+        version: 1.7.0
       stylis:
         specifier: ^3.5.4
         version: 3.5.4
@@ -322,7 +322,7 @@ importers:
         version: 4.5.0(react-dom@18.3.1)(react@18.3.1)
       shiki:
         specifier: ^1
-        version: 1.6.4
+        version: 1.7.0
       use-immer:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0 || ^0.10.0
         version: 0.10.0(immer@10.1.1)(react@18.3.1)
@@ -2781,8 +2781,8 @@ packages:
     dev: false
     optional: true
 
-  /@shikijs/core@1.6.4:
-    resolution: {integrity: sha512-WTU9rzZae1p2v6LOxMf6LhtmZOkIHYYW160IuahUyJy7YXPPjyWZLR1ag+SgD22ZMxZtz1gfU6Tccc8t0Il/XA==}
+  /@shikijs/core@1.7.0:
+    resolution: {integrity: sha512-O6j27b7dGmJbR3mjwh/aHH8Ld+GQvA0OQsNO43wKWnqbAae3AYXrhFyScHGX8hXZD6vX2ngjzDFkZY5srtIJbQ==}
     dev: false
 
   /@sindresorhus/merge-streams@2.2.1:
@@ -6916,10 +6916,10 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /shiki@1.6.4:
-    resolution: {integrity: sha512-X88chM7w8jnadoZtjPTi5ahCJx9pc9f8GfEkZAEYUTlcUZIEw2D/RY86HI/LkkE7Nj8TQWkiBfaFTJ3VJT6ESg==}
+  /shiki@1.7.0:
+    resolution: {integrity: sha512-H5pMn4JA7ayx8H0qOz1k2qANq6mZVCMl1gKLK6kWIrv1s2Ial4EmD4s4jE8QB5Dw03d/oCQUxc24sotuyR5byA==}
     dependencies:
-      '@shikijs/core': 1.6.4
+      '@shikijs/core': 1.7.0
     dev: false
 
   /side-channel@1.0.6:
