@@ -31,7 +31,7 @@ importers:
         version: 5.0.3(react@18.3.1)
       '@linaria/rollup':
         specifier: ^5.0.4
-        version: 5.0.4(rollup@4.18.0)(vite@5.3.1)
+        version: 5.0.4(rollup@4.18.0)(vite@5.3.2)
       '@linaria/shaker':
         specifier: ^5.0.3
         version: 5.0.3
@@ -219,8 +219,8 @@ importers:
         specifier: ^0.33.4
         version: 0.33.4
       shiki:
-        specifier: ^1.9.1
-        version: 1.9.1
+        specifier: ^1.10.0
+        version: 1.10.0
       stylis:
         specifier: ^3.5.4
         version: 3.5.4
@@ -322,7 +322,7 @@ importers:
         version: 4.5.0(react-dom@18.3.1)(react@18.3.1)
       shiki:
         specifier: ^1
-        version: 1.9.1
+        version: 1.10.0
       use-immer:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0 || ^0.10.0
         version: 0.10.0(immer@10.1.1)(react@18.3.1)
@@ -2265,7 +2265,7 @@ packages:
       - supports-color
     dev: false
 
-  /@linaria/rollup@5.0.4(rollup@4.18.0)(vite@5.3.1):
+  /@linaria/rollup@5.0.4(rollup@4.18.0)(vite@5.3.2):
     resolution: {integrity: sha512-1Ajo+J1yEeOp2Sjcw3C59YjgCmZ3RcDD6tGv5KmA8DfhHfcegLLqqAO1I4Q5VvgVgErSrAzicn/sIsyWtNExOw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -2274,7 +2274,7 @@ packages:
       '@linaria/babel-preset': 5.0.4
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
-      '@linaria/vite': 5.0.4(rollup@4.18.0)(vite@5.3.1)
+      '@linaria/vite': 5.0.4(rollup@4.18.0)(vite@5.3.2)
       '@rollup/pluginutils': 5.0.5(rollup@4.18.0)
       rollup: 4.18.0
     transitivePeerDependencies:
@@ -2329,7 +2329,7 @@ packages:
       - supports-color
     dev: false
 
-  /@linaria/vite@5.0.4(rollup@4.18.0)(vite@5.3.1):
+  /@linaria/vite@5.0.4(rollup@4.18.0)(vite@5.3.2):
     resolution: {integrity: sha512-T3gPaUvf4sfM2D74ZAehTWSE6mLZ/qhzWzwid1siKPOAW1F4m1mYjkdL7dPZGc97pg+JaFBnHXXIOfz5/5fwBQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -2339,7 +2339,7 @@ packages:
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
       '@rollup/pluginutils': 5.0.5(rollup@4.18.0)
-      vite: 5.3.1(@types/node@20.14.9)
+      vite: 5.3.2(@types/node@20.14.9)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -2781,8 +2781,8 @@ packages:
     dev: false
     optional: true
 
-  /@shikijs/core@1.9.1:
-    resolution: {integrity: sha512-EmUful2MQtY8KgCF1OkBtOuMcvaZEvmdubhW0UHCGXi21O9dRLeADVCj+k6ZS+de7Mz9d2qixOXJ+GLhcK3pXg==}
+  /@shikijs/core@1.10.0:
+    resolution: {integrity: sha512-BZcr6FCmPfP6TXaekvujZcnkFmJHZ/Yglu97r/9VjzVndQA56/F4WjUKtJRQUnK59Wi7p/UTAOekMfCJv7jnYg==}
     dev: false
 
   /@sindresorhus/merge-streams@2.2.1:
@@ -6917,10 +6917,10 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /shiki@1.9.1:
-    resolution: {integrity: sha512-8PDkgb5ja3nfujTjvC4VytL6wGOGCtFAClUb2r3QROevYXxcq+/shVJK5s6gy0HZnjaJgFxd6BpPqpRfqne5rA==}
+  /shiki@1.10.0:
+    resolution: {integrity: sha512-YD2sXQ+TMD/F9BimV9Jn0wj35pqOvywvOG/3PB6hGHyGKlM7TJ9tyJ02jOb2kF8F0HfJwKNYrh3sW7jEcuRlXA==}
     dependencies:
-      '@shikijs/core': 1.9.1
+      '@shikijs/core': 1.10.0
     dev: false
 
   /side-channel@1.0.6:
@@ -7532,8 +7532,8 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite@5.3.1(@types/node@20.14.9):
-    resolution: {integrity: sha512-XBmSKRLXLxiaPYamLv3/hnP/KXDai1NDexN0FpkTaZXTfycHvkRHoenpgl/fvuK/kPbB6xAgoyiryAhQNxYmAQ==}
+  /vite@5.3.2(@types/node@20.14.9):
+    resolution: {integrity: sha512-6lA7OBHBlXUxiJxbO5aAY2fsHHzDr1q7DvXYnyZycRs2Dz+dXBWuhpWHvmljTRTpQC2uvGmUFFkSHF2vGo90MA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
