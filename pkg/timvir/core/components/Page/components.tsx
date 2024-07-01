@@ -37,6 +37,7 @@ function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHea
           {props.children}
           <Icons.Link
             className={css`
+              display: inline-block;
               margin-left: 6px;
               color: var(--timvir-secondary-text-color);
               height: 0.9rem;
