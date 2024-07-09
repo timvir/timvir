@@ -90,8 +90,8 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   }, [mutate, children, language]);
 
   return (
-    <Root ref={ref} className={cx(classes.root, fullWidth && Page.fullWidth)} {...rest}>
-      <div className={cx(className, theme, classes.code, fullWidth && classes.fullWidth)}>
+    <Root ref={ref} className={cx("timvir-b-Code", classes.root, fullWidth && Page.fullWidth)} {...rest}>
+      <div className={cx("timvir-b-Code-container", className, theme, classes.code, fullWidth && classes.fullWidth)}>
         <div
           className={css`
             display: grid;
@@ -197,7 +197,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
         </div>
       </div>
 
-      {caption && <div className={classes.caption}>{caption}</div>}
+      {caption && <div className={cx("timvir-b-Code-caption", classes.caption)}>{caption}</div>}
     </Root>
   );
 }

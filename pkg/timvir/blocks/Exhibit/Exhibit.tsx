@@ -33,7 +33,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
 
       <Root
         ref={ref}
-        className={cx(className, classes.root)}
+        className={cx("timvir-b-Exhibit", className, classes.root)}
         style={{
           ...style,
           [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : undefined,
@@ -41,7 +41,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
         {...rest}
       >
         <div
-          className={classes.container}
+          className={cx("timvir-b-Exhibit-container", classes.container)}
           {...BackdropProps}
           style={{
             border: bleed === 0 ? "none" : `1px solid var(${cssVariables.borderColor})`,
@@ -51,7 +51,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
           {children}
         </div>
 
-        {caption && <div className={classes.caption}>{caption}</div>}
+        {caption && <div className={cx("timvir-b-Exhibit-caption", classes.caption)}>{caption}</div>}
       </Root>
     </>
   );

@@ -44,12 +44,12 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
 
   return (
     <Context.Provider value={value}>
-      <Root ref={ref} className={cx(classes.root, className)} {...rest}>
+      <Root ref={ref} className={cx("timvir-b-Arbitrary", classes.root, className)} {...rest}>
         <div className={classes.controls}>
           <div className={classes.textField}>
             <span className={classes.startAdornment}>Seed:</span>
             <input
-              className={classes.input}
+              className={cx("timvir-b-Arbitrary-seed", classes.input)}
               placeholder="Seed"
               value={base58.encode(new TextEncoder().encode(`${value.seed}`))}
               readOnly
