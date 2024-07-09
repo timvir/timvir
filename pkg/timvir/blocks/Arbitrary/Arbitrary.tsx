@@ -78,7 +78,6 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
         </div>
 
         <Exhibit
-          bleed={0}
           BackdropProps={{ style: { borderRadius: 2, border: "1px solid var(--timvir-border-color)" } }}
           {...ExhibitProps}
         >
