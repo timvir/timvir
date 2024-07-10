@@ -26,6 +26,19 @@ for (const url of urls) {
     await page.goto(url, { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
 
+    const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
+    for (const inputElement of inputElements) {
+      await inputElement.evaluate((element) => {
+        const pasteEvent = new ClipboardEvent("paste", {
+          bubbles: true,
+          cancelable: true,
+          clipboardData: new DataTransfer(),
+        });
+        pasteEvent.clipboardData!.setData("text/plain", "gGV7y4U6pZVL");
+        element.dispatchEvent(pasteEvent);
+      });
+    }
+
     const buffer = await page.screenshot({ fullPage: true });
 
     const formData = new FormData();
@@ -46,19 +59,6 @@ for (const url of urls) {
         console.log(res.statusText);
         throw res;
       }
-    }
-
-    const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
-    for (const inputElement of inputElements) {
-      await inputElement.evaluate((element) => {
-        const pasteEvent = new ClipboardEvent("paste", {
-          bubbles: true,
-          cancelable: true,
-          clipboardData: new DataTransfer(),
-        });
-        pasteEvent.clipboardData!.setData("text/plain", "gGV7y4U6pZVL");
-        element.dispatchEvent(pasteEvent);
-      });
     }
 
     {
