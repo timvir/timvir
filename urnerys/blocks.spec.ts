@@ -71,7 +71,7 @@ for (const url of urls) {
 
         const formData = new FormData();
         formData.set("project", "timvir");
-        formData.set("build", "head");
+        formData.set("build", build);
         formData.set("set", title.substring(1) + "/exhibits");
         formData.set("snapshot", sanitizeTitle(innerText));
         formData.set("formula", "none");
