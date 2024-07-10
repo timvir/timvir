@@ -132,6 +132,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
         ref={ref}
         {...rest}
         className={cx(
+          "timvir-b-Viewport",
           className,
           fullWidth,
           css`
