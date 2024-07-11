@@ -77,12 +77,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
           </button>
         </div>
 
-        <Exhibit
-          BackdropProps={{ style: { borderRadius: 2, border: "1px solid var(--timvir-border-color)" } }}
-          {...ExhibitProps}
-        >
-          {children}
-        </Exhibit>
+        <Exhibit {...ExhibitProps}>{children}</Exhibit>
       </Root>
     </Context.Provider>
   );
