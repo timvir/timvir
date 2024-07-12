@@ -9,6 +9,7 @@ const urls = [
   "/blocks/Exhibit",
   "/blocks/Message",
   "/blocks/Swatch",
+  "/blocks/Viewport",
 ];
 
 function sanitizeTitle(s: string): string {
@@ -24,7 +25,8 @@ for (const url of urls) {
   test(url, async ({ page }, { title }) => {
     await page.setViewportSize({ width: 1680, height: 1200 });
     await page.goto(url, { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(2000);
+
+    await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
 
     const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
     for (const inputElement of inputElements) {
