@@ -10,6 +10,7 @@ const urls = [
   "/blocks/Message",
   "/blocks/Swatch",
   "/blocks/Viewport",
+  "/blocks/WebLink",
 ];
 
 function sanitizeTitle(s: string): string {
