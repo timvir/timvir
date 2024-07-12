@@ -27,8 +27,6 @@ for (const url of urls) {
     await page.setViewportSize({ width: 1680, height: 1200 });
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
-    await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
-
     const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
     for (const inputElement of inputElements) {
       await inputElement.evaluate((element) => {
@@ -41,6 +39,8 @@ for (const url of urls) {
         element.dispatchEvent(pasteEvent);
       });
     }
+
+    await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
 
     const buffer = await page.screenshot({ fullPage: true });
 
