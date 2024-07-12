@@ -9,7 +9,6 @@ const urls = [
   "/blocks/Exhibit",
   "/blocks/Message",
   "/blocks/Swatch",
-  "/blocks/Viewport",
   "/blocks/WebLink",
 ];
 
