@@ -3,6 +3,7 @@ import { fullWidth, useBlock } from "timvir/core";
 import { useResizeObserver, useResizeObserverEntry } from "timvir/hooks";
 import * as React from "react";
 import { Caption, Handle, Ruler } from "./internal";
+import { useImmer } from "use-immer";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -25,6 +26,10 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
   const block = useBlock(props);
 
   const { src, code, className, ...rest } = block.props;
+
+  const [state, mutate] = useImmer({
+    settled: false,
+  });
 
   /*
    * The container measures the width of the main column. It is used to initialize
@@ -95,7 +100,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
   /*
    * Note this useEffect runs on each render. This is fine beause it doesn't do any
    * expensive computation, and the Viewport component only re-renders when the iframe
-   * itself is changes height or the user resizes the width of the Viewport.
+   * itself changes height or the user resizes the width of the Viewport.
    */
   React.useEffect(() => {
     const document = iframeRef.current?.contentDocument;
@@ -125,6 +130,23 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
     document.head.appendChild(style);
   }
 
+  /*
+   * 20ms after the height has been set, we consider this block settled. This
+   * time includes the 16ms CSS transition time, and a tiny bit more to allow
+   * for the content in the iframe itself to finish rendering.
+   */
+  React.useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      mutate((draft) => {
+        draft.settled = true;
+      });
+    }, 20);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [mutate, height]);
+
   return (
     <>
       <div ref={containerRef} />
@@ -133,6 +155,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
         {...rest}
         className={cx(
           "timvir-b-Viewport",
+          !state.settled && "timvir-unsettled",
           className,
           fullWidth,
           css`

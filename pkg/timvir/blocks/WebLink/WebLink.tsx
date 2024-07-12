@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cx, css } from "@linaria/core";
 import { useContext } from "timvir/core";
+import { useImmer } from "use-immer";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -14,14 +15,23 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const { url, className, ...rest } = props;
 
-  const [metadata, setMetadata] = React.useState<undefined | any>(undefined);
+  const [state, mutate] = useImmer({
+    settled: false,
+    metadata: undefined as any,
+  });
 
   const { unfurl = defaultUnfurl } = useContext().blocks?.WebLink ?? {};
 
   React.useEffect(() => {
-    unfurl(url).then(setMetadata);
-  }, [url, setMetadata]);
+    unfurl(url).then((metadata) => {
+      mutate((draft) => {
+        draft.settled = true;
+        draft.metadata = metadata;
+      });
+    });
+  }, [url, mutate]);
 
+  const metadata = state.metadata;
   const image = metadata?.open_graph?.images?.[0]?.url;
 
   return (
@@ -30,7 +40,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={cx(className, classes.root)}
+      className={cx("timvir-b-WebLink", !state.settled && "timvir-unsettled", className, classes.root)}
       {...rest}
     >
       <div className={classes.text}>

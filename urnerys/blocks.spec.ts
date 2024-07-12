@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { Page, test } from "@playwright/test";
 
 const build = process.env.GITHUB_RUN_ID ?? "head";
 
@@ -9,6 +9,7 @@ const urls = [
   "/blocks/Exhibit",
   "/blocks/Message",
   "/blocks/Swatch",
+  "/blocks/WebLink",
 ];
 
 function sanitizeTitle(s: string): string {
@@ -20,11 +21,21 @@ function sanitizeTitle(s: string): string {
     .toLowerCase();
 }
 
+async function waitForImages(page: Page): Promise<void> {
+  const viewportSize = page.viewportSize();
+
+  if (viewportSize) {
+    const height = await page.evaluate(() => document.documentElement.scrollHeight).then(Math.ceil);
+    await page.setViewportSize({ width: viewportSize.width, height });
+    await page.waitForLoadState("networkidle");
+    await page.setViewportSize(viewportSize);
+  }
+}
+
 for (const url of urls) {
   test(url, async ({ page }, { title }) => {
     await page.setViewportSize({ width: 1680, height: 1200 });
     await page.goto(url, { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(2000);
 
     const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
     for (const inputElement of inputElements) {
@@ -38,6 +49,10 @@ for (const url of urls) {
         element.dispatchEvent(pasteEvent);
       });
     }
+
+    await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
+
+    await waitForImages(page);
 
     const buffer = await page.screenshot({ fullPage: true });
 
