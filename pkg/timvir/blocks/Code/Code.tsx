@@ -93,7 +93,11 @@ function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
   }, [mutate, children, language]);
 
   return (
-    <Root ref={ref} className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", classes.root, fullWidth && Page.fullWidth)} {...rest}>
+    <Root
+      ref={ref}
+      className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", classes.root, fullWidth && Page.fullWidth)}
+      {...rest}
+    >
       <div className={cx("timvir-b-Code-container", className, theme, classes.code, fullWidth && classes.fullWidth)}>
         <div
           className={css`
