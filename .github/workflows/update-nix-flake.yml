@@ -1,0 +1,23 @@
+name: Update Nix Flake
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "37 5 * * *"
+
+jobs:
+  update-nix-flake:
+    name: Update Nix Flake
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v12
+
+      - run: nix flake update
+
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          add-paths: flake.lock
+          branch: update-nix-flake
+          commit-message: Update Nix Flake
+          title: Update Nix Flake
