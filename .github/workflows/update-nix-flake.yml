@@ -3,7 +3,7 @@ name: Update Nix Flake
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "37 5 * * *"
+    - cron: "53 20 * * *"
 
 jobs:
   update-nix-flake:
