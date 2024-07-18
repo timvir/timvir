@@ -31,7 +31,7 @@ importers:
         version: 5.0.3(react@18.3.1)
       '@linaria/rollup':
         specifier: ^5.0.4
-        version: 5.0.4(rollup@4.18.1)(vite@5.3.3)
+        version: 5.0.4(rollup@4.18.1)(vite@5.3.4)
       '@linaria/shaker':
         specifier: ^5.0.3
         version: 5.0.3
@@ -256,7 +256,7 @@ importers:
     dependencies:
       '@babel/generator':
         specifier: ^7
-        version: 7.24.9
+        version: 7.24.10
       '@babel/parser':
         specifier: ^7
         version: 7.24.8
@@ -268,7 +268,7 @@ importers:
     dependencies:
       '@babel/generator':
         specifier: ^7
-        version: 7.24.9
+        version: 7.24.10
       '@babel/parser':
         specifier: ^7
         version: 7.24.8
@@ -367,7 +367,7 @@ packages:
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/helper-compilation-targets': 7.24.8
       '@babel/helper-module-transforms': 7.24.9(@babel/core@7.24.9)
       '@babel/helpers': 7.24.8
@@ -384,8 +384,8 @@ packages:
       - supports-color
     dev: false
 
-  /@babel/generator@7.24.9:
-    resolution: {integrity: sha512-G8v3jRg+z8IwY1jHFxvCNhOPYPterE4XljNgdGTYfSTtzzwjIswIzIaSPSLs3R7yFuqnqNeay5rjICfqVr+/6A==}
+  /@babel/generator@7.24.10:
+    resolution: {integrity: sha512-o9HBZL1G2129luEUlG1hB4N/nlYNWHnpwlND9eOMclRqqu1YDy2sSYVCFUZwl8I1Gxh+QSRrP2vD7EpUmFVXxg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.24.9
@@ -1726,7 +1726,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/helper-environment-visitor': 7.24.7
       '@babel/helper-function-name': 7.24.7
       '@babel/helper-hoist-variables': 7.24.7
@@ -2282,7 +2282,7 @@ packages:
     engines: {node: '>=16.0.0'}
     dependencies:
       '@babel/core': 7.24.9
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/helper-module-imports': 7.24.7
       '@babel/template': 7.24.7
       '@babel/traverse': 7.24.8
@@ -2340,7 +2340,7 @@ packages:
       - supports-color
     dev: false
 
-  /@linaria/rollup@5.0.4(rollup@4.18.1)(vite@5.3.3):
+  /@linaria/rollup@5.0.4(rollup@4.18.1)(vite@5.3.4):
     resolution: {integrity: sha512-1Ajo+J1yEeOp2Sjcw3C59YjgCmZ3RcDD6tGv5KmA8DfhHfcegLLqqAO1I4Q5VvgVgErSrAzicn/sIsyWtNExOw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -2349,7 +2349,7 @@ packages:
       '@linaria/babel-preset': 5.0.4
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
-      '@linaria/vite': 5.0.4(rollup@4.18.1)(vite@5.3.3)
+      '@linaria/vite': 5.0.4(rollup@4.18.1)(vite@5.3.4)
       '@rollup/pluginutils': 5.0.5(rollup@4.18.1)
       rollup: 4.18.1
     transitivePeerDependencies:
@@ -2362,7 +2362,7 @@ packages:
     engines: {node: '>=16.0.0'}
     dependencies:
       '@babel/core': 7.24.9
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/plugin-transform-modules-commonjs': 7.24.8(@babel/core@7.24.9)
       '@babel/plugin-transform-runtime': 7.22.15(@babel/core@7.24.9)
       '@babel/plugin-transform-template-literals': 7.24.7(@babel/core@7.24.9)
@@ -2379,7 +2379,7 @@ packages:
     resolution: {integrity: sha512-opcORl2sA6WkBjTNLHTgpet97dNKnwPRX/QGGZMykBsvGH3AsnEg/bT31cKBMBhL+YBGQsCdBmolxvCkWPOXQw==}
     engines: {node: '>=16.0.0'}
     dependencies:
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
     transitivePeerDependencies:
@@ -2391,7 +2391,7 @@ packages:
     engines: {node: '>=16.0.0'}
     dependencies:
       '@babel/core': 7.24.9
-      '@babel/generator': 7.24.9
+      '@babel/generator': 7.24.10
       '@babel/plugin-transform-modules-commonjs': 7.24.8(@babel/core@7.24.9)
       '@babel/template': 7.24.7
       '@babel/traverse': 7.24.8
@@ -2404,7 +2404,7 @@ packages:
       - supports-color
     dev: false
 
-  /@linaria/vite@5.0.4(rollup@4.18.1)(vite@5.3.3):
+  /@linaria/vite@5.0.4(rollup@4.18.1)(vite@5.3.4):
     resolution: {integrity: sha512-T3gPaUvf4sfM2D74ZAehTWSE6mLZ/qhzWzwid1siKPOAW1F4m1mYjkdL7dPZGc97pg+JaFBnHXXIOfz5/5fwBQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -2414,7 +2414,7 @@ packages:
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
       '@rollup/pluginutils': 5.0.5(rollup@4.18.1)
-      vite: 5.3.3(@types/node@20.14.11)
+      vite: 5.3.4(@types/node@20.14.11)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -2712,7 +2712,7 @@ packages:
       rollup: 4.18.1
       serialize-javascript: 6.0.2
       smob: 1.0.0
-      terser: 5.31.2
+      terser: 5.31.3
     dev: false
 
   /@rollup/pluginutils@4.2.1:
@@ -7344,12 +7344,12 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
-      terser: 5.31.2
+      terser: 5.31.3
       webpack: 5.93.0
     dev: false
 
-  /terser@5.31.2:
-    resolution: {integrity: sha512-LGyRZVFm/QElZHy/CPr/O4eNZOZIzsrQ92y4v9UJe/pFJjypje2yI3C2FmPtvUEnhadlSbmG2nXtdcjHOjCfxw==}
+  /terser@5.31.3:
+    resolution: {integrity: sha512-pAfYn3NIZLyZpa83ZKigvj6Rn9c/vd5KfYGX7cN1mnzqgDcxWvrU5ZtAfIKhEXz9nRecw4z3LXkjaq96/qZqAA==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -7644,8 +7644,8 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vite@5.3.3(@types/node@20.14.11):
-    resolution: {integrity: sha512-NPQdeCU0Dv2z5fu+ULotpuq5yfCS1BzKUIPhNbP3YBfAMGJXbt2nS+sbTFu+qchaqWTD+H3JK++nRwr6XIcp6A==}
+  /vite@5.3.4(@types/node@20.14.11):
+    resolution: {integrity: sha512-Cw+7zL3ZG9/NZBB8C+8QbQZmR54GwqIz+WMI4b3JgdYJvX+ny9AjJXqkGQlDXSXRP9rP0B4tbciRMOVEKulVOA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
