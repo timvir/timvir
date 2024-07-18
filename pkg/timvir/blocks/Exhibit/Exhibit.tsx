@@ -1,5 +1,4 @@
 import { css, cx } from "@linaria/core";
-import { useMDXComponents } from "@mdx-js/react";
 import { useBlock } from "timvir/core";
 import * as React from "react";
 
@@ -23,37 +22,32 @@ interface Props extends React.ComponentProps<typeof Root> {
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const block = useBlock(props);
-  const components = { h3: "h3", ...useMDXComponents() };
 
   const { title, caption, bleed, BackdropProps, children, className, style, ...rest } = block.props;
 
   return (
-    <>
-      {title && <components.h3>{title}</components.h3>}
-
-      <Root
-        ref={ref}
-        className={cx("timvir-b-Exhibit", className, classes.root)}
+    <Root
+      ref={ref}
+      className={cx("timvir-b-Exhibit", className, classes.root)}
+      style={{
+        ...style,
+        [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : undefined,
+      }}
+      {...rest}
+    >
+      <div
+        className={cx("timvir-b-Exhibit-container", classes.container)}
+        {...BackdropProps}
         style={{
-          ...style,
-          [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : undefined,
+          border: bleed === 0 ? "none" : `1px solid var(${cssVariables.borderColor})`,
+          ...BackdropProps?.style,
         }}
-        {...rest}
       >
-        <div
-          className={cx("timvir-b-Exhibit-container", classes.container)}
-          {...BackdropProps}
-          style={{
-            border: bleed === 0 ? "none" : `1px solid var(${cssVariables.borderColor})`,
-            ...BackdropProps?.style,
-          }}
-        >
-          {children}
-        </div>
+        {children}
+      </div>
 
-        {caption && <div className={cx("timvir-b-Exhibit-caption", classes.caption)}>{caption}</div>}
-      </Root>
-    </>
+      {caption && <div className={cx("timvir-b-Exhibit-caption", classes.caption)}>{caption}</div>}
+    </Root>
   );
 }
 
