@@ -64,7 +64,7 @@ for (const url of urls) {
     formData.set("formula", "w1680");
     formData.set("payload", new File([buffer], "screenshot.png", { type: "image/png" }));
 
-    {
+    (async () => {
       const res = await fetch(`https://urnerys.dev/rpc/uploadImage`, {
         method: "POST",
         body: formData,
@@ -74,7 +74,7 @@ for (const url of urls) {
         console.log(res.statusText);
         throw res;
       }
-    }
+    })();
 
     {
       const elements = await page.$$(".timvir-b-Exhibit");
@@ -92,7 +92,7 @@ for (const url of urls) {
         formData.set("formula", "none");
         formData.set("payload", new File([buffer], "screenshot.png", { type: "image/png" }));
 
-        {
+        (async () => {
           const res = await fetch(`https://urnerys.dev/rpc/uploadImage`, {
             method: "POST",
             body: formData,
@@ -102,7 +102,7 @@ for (const url of urls) {
             console.log(res.statusText);
             throw res;
           }
-        }
+        })();
       }
     }
   });
