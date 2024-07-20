@@ -1,0 +1,23 @@
+name: Update Browserslist Database
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "41 8 * * *"
+
+jobs:
+  update-browserslist-database:
+    name: Update Browserslist Database
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v12
+
+      - run: nix develop --command bash -c 'pnpm up caniuse-lite'
+      - run: nix develop --command bash -c 'pnpm dedupe'
+
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          branch: update-browserslist-database
+          title: Update Browserslist Database
+          commit-message: Update Browserslist Database
