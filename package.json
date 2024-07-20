@@ -54,7 +54,7 @@
     "dot": "^1.1.3",
     "downshift": "^9.0.6",
     "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.4",
+    "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "fast-check": "^3.20.0",
     "fuzzaldrin-plus": "^0.6.0",
