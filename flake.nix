@@ -31,7 +31,7 @@
           devShells.default = pkgs.mkShell {
             buildInputs = [
               node
-              node.pkgs.pnpm
+              pkgs.nodejs.pkgs.pnpm
 
               pkgs.jq
 
@@ -41,6 +41,17 @@
             shellHook = ''
               ${banner}/bin/banner
               export PATH=$PWD/node_modules/.bin:$PATH
+            '';
+          };
+
+          devShells.workflow = pkgs.mkShell {
+            buildInputs = [
+              pkgs.nodejs
+              pkgs.nodejs.pkgs.pnpm
+            ];
+
+            shellHook = ''
+              pnpm install >/dev/null 2>&1
             '';
           };
         }
