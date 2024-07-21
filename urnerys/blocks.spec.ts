@@ -21,6 +21,36 @@ function sanitizeTitle(s: string): string {
     .toLowerCase();
 }
 
+interface UploadImageRequest {
+  build: string;
+  set: string;
+  snapshot: string;
+  formula: string;
+  payload: File;
+}
+
+async function uploadImage({ build, set, snapshot, formula, payload }: UploadImageRequest) {
+  const body = new FormData();
+  body.set("project", "timvir");
+  body.set("build", build);
+  body.set("set", set);
+  body.set("snapshot", snapshot);
+  body.set("formula", formula);
+  body.set("payload", payload);
+
+  (async () => {
+    const res = await fetch(`https://urnerys.dev/rpc/uploadImage`, {
+      method: "POST",
+      body,
+    });
+
+    if (!res.ok) {
+      console.log(res.statusText);
+      throw res;
+    }
+  })();
+}
+
 async function waitForImages(page: Page): Promise<void> {
   const viewportSize = page.viewportSize();
 
@@ -56,25 +86,13 @@ for (const url of urls) {
 
     const buffer = await page.screenshot({ fullPage: true });
 
-    const formData = new FormData();
-    formData.set("project", "timvir");
-    formData.set("build", build);
-    formData.set("set", title.substring(1));
-    formData.set("snapshot", "page");
-    formData.set("formula", "w1680");
-    formData.set("payload", new File([buffer], "screenshot.png", { type: "image/png" }));
-
-    (async () => {
-      const res = await fetch(`https://urnerys.dev/rpc/uploadImage`, {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!res.ok) {
-        console.log(res.statusText);
-        throw res;
-      }
-    })();
+    uploadImage({
+      build,
+      set: title.substring(1),
+      snapshot: "page",
+      formula: "w1680",
+      payload: new File([buffer], "screenshot.png", { type: "image/png" }),
+    });
 
     {
       const elements = await page.$$(".timvir-b-Exhibit");
@@ -84,25 +102,13 @@ for (const url of urls) {
         const childElement = await element.$(".timvir-b-Exhibit-caption");
         const innerText = (await childElement?.innerText()) ?? `${index}`;
 
-        const formData = new FormData();
-        formData.set("project", "timvir");
-        formData.set("build", build);
-        formData.set("set", title.substring(1) + "/exhibits");
-        formData.set("snapshot", sanitizeTitle(innerText));
-        formData.set("formula", "none");
-        formData.set("payload", new File([buffer], "screenshot.png", { type: "image/png" }));
-
-        (async () => {
-          const res = await fetch(`https://urnerys.dev/rpc/uploadImage`, {
-            method: "POST",
-            body: formData,
-          });
-
-          if (!res.ok) {
-            console.log(res.statusText);
-            throw res;
-          }
-        })();
+        uploadImage({
+          build,
+          set: title.substring(1) + "/exhibits",
+          snapshot: sanitizeTitle(innerText),
+          formula: "none",
+          payload: new File([buffer], "screenshot.png", { type: "image/png" }),
+        });
       }
     }
   });
