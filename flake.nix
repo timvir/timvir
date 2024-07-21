@@ -31,7 +31,7 @@
           devShells.default = pkgs.mkShell {
             buildInputs = [
               node
-              pkgs.nodejs.pkgs.pnpm
+              node.pkgs.pnpm
 
               pkgs.jq
 
@@ -46,8 +46,8 @@
 
           devShells.workflow = pkgs.mkShell {
             buildInputs = [
-              pkgs.nodejs
-              pkgs.nodejs.pkgs.pnpm
+              node
+              node.pkgs.pnpm
             ];
 
             shellHook = ''
