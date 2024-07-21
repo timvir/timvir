@@ -17,11 +17,11 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - run: pnpm install
       - run: ./node_modules/.bin/playwright install --with-deps chromium

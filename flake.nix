@@ -19,7 +19,7 @@
             echo "     [timˈvir] n. book"
           '';
 
-          nodejs = pkgs.nodejs_20;
+          nodejs = pkgs.nodejs_22;
 
           tools = {
             dev = pkgs.writeShellScriptBin "dev" ''
