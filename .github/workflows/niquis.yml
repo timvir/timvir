@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@v12
+      - run: nix run github:nicknovitski/nix-develop .#workflow
 
-      - run: nix develop --command bash -c 'pnpm install'
-      - run: nix develop --command bash -c 'npm run build'
+      - run: npm run build
 
       - uses: niquis/action@master
         env:
