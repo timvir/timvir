@@ -21,7 +21,15 @@ function sanitizeTitle(s: string): string {
     .toLowerCase();
 }
 
-async function uploadImage({ build, set, snapshot, formula, payload }) {
+interface UploadImageRequest {
+  build: string;
+  set: string;
+  snapshot: string;
+  formula: string;
+  payload: File;
+}
+
+async function uploadImage({ build, set, snapshot, formula, payload }: UploadImageRequest) {
   const body = new FormData();
   body.set("project", "timvir");
   body.set("build", build);
