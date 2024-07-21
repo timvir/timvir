@@ -12,9 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@v12
+      - run: nix run github:nicknovitski/nix-develop .#workflow
 
-      - run: nix develop --command bash -c 'pnpm up caniuse-lite'
-      - run: nix develop --command bash -c 'pnpm dedupe'
+      - run: pnpm up caniuse-lite
+      - run: pnpm dedupe
 
       - uses: peter-evans/create-pull-request@v6
         with:

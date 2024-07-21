@@ -19,7 +19,7 @@
             echo "     [timˈvir] n. book"
           '';
 
-          node = pkgs.nodejs_20;
+          nodejs = pkgs.nodejs_20;
 
           tools = {
             dev = pkgs.writeShellScriptBin "dev" ''
@@ -30,8 +30,8 @@
         in {
           devShells.default = pkgs.mkShell {
             buildInputs = [
-              node
-              node.pkgs.pnpm
+              nodejs
+              nodejs.pkgs.pnpm
 
               pkgs.jq
 
@@ -40,6 +40,18 @@
 
             shellHook = ''
               ${banner}/bin/banner
+              export PATH=$PWD/node_modules/.bin:$PATH
+            '';
+          };
+
+          devShells.workflow = pkgs.mkShell {
+            buildInputs = [
+              nodejs
+              nodejs.pkgs.pnpm
+            ];
+
+            shellHook = ''
+              pnpm install >/dev/null 2>&1
               export PATH=$PWD/node_modules/.bin:$PATH
             '';
           };
