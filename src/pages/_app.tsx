@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
           box-sizing: border-box;
           overscroll-behavior: none;
           overflow-x: hidden;
+          min-width: 0;
         }
 
         *,
