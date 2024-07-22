@@ -111,5 +111,7 @@ const classes = {
 
     width: 1rem;
     height: 1rem;
+
+    flex: 0 0 1rem;
   `,
 };
