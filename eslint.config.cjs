@@ -12,6 +12,7 @@ module.exports = {
       version: "detect",
     },
   },
+  files: ["**/*.js", "**/*.ts", "**/*.tsx"],
   rules: {
     ...require("@typescript-eslint/eslint-plugin").configs.recommended.rules,
     ...require("eslint-plugin-react").configs.recommended.rules,
@@ -29,8 +30,8 @@ module.exports = {
   },
   ignores: [
     "eslint.config.cjs",
-    ".linaria-cache/**",
-    ".next/**",
+    ".linaria-cache/**/*",
+    ".next/**/*",
     "node_modules/**",
     "config/rollup.config.js",
     "pkg/**/*.js",
