@@ -15,7 +15,7 @@ export async function write(path: string, content0: string, force = false): Prom
       try {
         await fs.promises.stat(path);
         console.log(`  - ${path} ${ps} ${kleur.gray("skip")}`);
-      } catch (err) {
+      } catch {
         console.log(`  - ${path} ${ps} ${kleur.green("write")}`);
         await fs.promises.writeFile(path, content);
       }

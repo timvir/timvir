@@ -23,7 +23,7 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-non-null-assertion": 0,
     "@typescript-eslint/no-require-imports": 0,
-    "@typescript-eslint/no-unused-vars": [1, { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }],
+    "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }],
 
     "react/no-children-prop": 0,
     "react/prop-types": 0,

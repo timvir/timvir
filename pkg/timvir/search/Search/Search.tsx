@@ -3,11 +3,6 @@ import * as React from "react";
 import { Node } from "timvir/core";
 import { Dialog } from "./internal";
 
-/**
- * The underlying DOM element which is rendered by this component.
- */
-const Root = "div";
-
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   open?: boolean;
   onClose?: (ev: React.SyntheticEvent<HTMLElement>) => void;

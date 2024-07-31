@@ -11,7 +11,7 @@ function Action(props: Props) {
   const { label, ...rest } = props;
 
   return (
-    <div className={classes.root} {...rest}>
+    <Root className={classes.root} {...rest}>
       <div className={classes.icon}>
         <svg
           viewBox="0 0 24 24"
@@ -26,7 +26,7 @@ function Action(props: Props) {
         </svg>
       </div>
       <div className={classes.label}>{label}</div>
-    </div>
+    </Root>
   );
 }
 

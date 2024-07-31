@@ -32,7 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const metadata = await unfurl(req.query.url);
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(metadata));
-  } catch (err) {
+  } catch {
     res.statusCode = 500;
     res.end();
   }
