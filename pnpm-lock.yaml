@@ -123,8 +123,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       chroma-js:
-        specifier: ^2.4.2
-        version: 2.4.2
+        specifier: ^2.6.0
+        version: 2.6.0
       commander:
         specifier: ^12.1.0
         version: 12.1.0
@@ -2093,8 +2093,8 @@ packages:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
 
-  chroma-js@2.4.2:
-    resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
+  chroma-js@2.6.0:
+    resolution: {integrity: sha512-BLHvCB9s8Z1EV4ethr6xnkl/P2YRFOGqfgvuMG/MyCbZPrTA+NeiByY6XvgF0zP4/2deU2CXnWyMa3zu1LqQ3A==}
 
   chrome-trace-event@1.0.4:
     resolution: {integrity: sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==}
@@ -6241,7 +6241,7 @@ snapshots:
 
   chownr@2.0.0: {}
 
-  chroma-js@2.4.2: {}
+  chroma-js@2.6.0: {}
 
   chrome-trace-event@1.0.4: {}
 
