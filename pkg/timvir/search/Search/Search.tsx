@@ -3,7 +3,7 @@ import * as React from "react";
 import { Node } from "timvir/core";
 import { Dialog } from "./internal";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithoutRef<"div"> {
   open?: boolean;
   onClose?: (ev: React.SyntheticEvent<HTMLElement>) => void;
 
@@ -13,7 +13,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   }>;
 }
 
-function Search(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Search(props: Props, ref: React.ForwardedRef<React.ElementRef<"div">>) {
   const { open, ...rest } = props;
 
   if (!open) {
