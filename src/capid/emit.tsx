@@ -8,7 +8,7 @@ export async function emit({ typeChecker, propsDeclaration, name }: any) {
   const docPathBase = path.join("src", "components", name, "docs");
   try {
     fs.mkdirSync(docPathBase);
-  } catch (e) {
+  } catch {
     // Ignore
   }
 
