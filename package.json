@@ -56,7 +56,7 @@
     "eslint": "^9.9.0",
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "fast-check": "^3.20.0",
+    "fast-check": "^3.21.0",
     "fuzzaldrin-plus": "^0.6.0",
     "globby": "^14.0.2",
     "immer": "^10.1.1",
