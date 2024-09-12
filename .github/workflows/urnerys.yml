@@ -3,7 +3,7 @@ name: Urnerys
 on: deployment_status
 
 env:
-  URNERYS: urnerys.dev
+  URNERYS: app.urnerys.dev
 
 jobs:
   urnerys:
