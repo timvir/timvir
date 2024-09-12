@@ -39,7 +39,7 @@ async function uploadImage({ build, set, snapshot, formula, payload }: UploadIma
   body.set("payload", payload);
 
   (async () => {
-    const res = await fetch(`https://urnerys.dev/rpc/uploadImage`, {
+    const res = await fetch(`https://${process.env.URNERYS}/rpc/uploadImage`, {
       method: "POST",
       body,
     });
