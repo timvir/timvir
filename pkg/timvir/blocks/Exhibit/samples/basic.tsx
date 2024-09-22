@@ -3,8 +3,17 @@ import { Exhibit } from "..";
 
 export default function Sample() {
   return (
-    <Exhibit bleed={8} caption={`Explain what the exhibit is all about.`}>
-      <div>Hey, look here, look at my beauty!</div>
+    <Exhibit caption={`This Exhibit serves to illustrate how the block is structured and how you can use it.`}>
+      <div
+        style={{
+          backgroundColor: "#80008020",
+          padding: 20,
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        This is a sample React component – a plain div with a semi-transparent magenta background color.
+      </div>
     </Exhibit>
   );
 }

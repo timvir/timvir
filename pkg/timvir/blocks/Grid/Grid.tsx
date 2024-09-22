@@ -24,6 +24,8 @@ const classes = {
   root: css`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
+    gap: var(--timvir-page-margin, 24px);
+
+    --timvir-margin: calc(var(--timvir-page-margin, 24px) * 0.5);
   `,
 };

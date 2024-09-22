@@ -1,10 +1,11 @@
 import { css, cx } from "@linaria/core";
 import * as React from "react";
-import { useImmer } from "use-immer";
 import { Node } from "../types";
 import Section from "./Section";
+import * as Icons from "react-feather";
+import { useContext } from "timvir/context";
 
-interface Props {
+interface Props extends React.ComponentPropsWithoutRef<"nav"> {
   toc: readonly Node[];
 
   search?: {
@@ -18,89 +19,220 @@ interface Props {
 }
 
 function Sidebar(props: Props) {
-  const { toc, search } = props;
+  const { location } = useContext();
 
-  const [state, mutate] = useImmer({
-    shadowVisible: false,
-  });
+  const { toc, search, className, ...rest } = props;
 
-  const onScroll = (ev: React.SyntheticEvent<HTMLDivElement>) => {
-    const shadowVisible = ev.currentTarget.scrollTop > 2;
-    if (state.shadowVisible !== shadowVisible) {
-      mutate((draft) => {
-        draft.shadowVisible = shadowVisible;
-      });
+  const node = (function find(nodes: readonly Node[]): undefined | Node {
+    for (const node of nodes) {
+      if (node.path === location.asPath) {
+        return node;
+      }
+
+      if (node.children) {
+        const n = find(node.children);
+        if (n) {
+          return n;
+        }
+      }
     }
-  };
+  })(toc);
 
   return (
-    <aside className={cx(classes.root)}>
-      <div
+    <nav className={cx(className, classes.root)} {...rest}>
+      <header
         className={css`
-          display: none;
-          height: 0;
+          padding: 0 var(--timvir-page-margin);
+          height: 3rem;
+          display: flex;
+          align-items: center;
 
-          @media (min-width: 60rem) {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+          @media (min-width: 48rem) {
+            padding-top: 24px;
+            display: block;
+            height: auto;
           }
         `}
       >
+        <div
+          className={css`
+            font-size: 0.875rem;
+            line-height: 1.3125;
+
+            display: flex;
+            gap: 16px;
+          `}
+        >
+          <div
+            className={css`
+              font-weight: 590;
+            `}
+          >
+            Timvir
+          </div>
+          <div
+            className={css`
+              background-color: var(--timvir-border-color);
+              width: 1px;
+              height: 1.25rem;
+            `}
+          />
+          <div>Docs</div>
+        </div>
+
         {search && (
           <div
             className={cx(
               css`
-                padding: 24px 3px 24px;
                 flex-shrink: 0;
                 transition: all 0.16s;
-              `,
-              state.shadowVisible &&
-                css`
-                  box-shadow: 0 1px 0 rgba(16, 22, 26, 0.15);
-                `
+                margin-top: 16px;
+                display: none;
+
+                @media (min-width: 48rem) {
+                  display: block;
+                }
+              `
             )}
           >
             <Search {...search} />
           </div>
         )}
+      </header>
 
-        <div className={classes.sections} onScroll={onScroll}>
-          <nav>
+      <label
+        htmlFor="menu"
+        className={css`
+          border-bottom: 1px solid var(--timvir-border-color);
+          padding: 0 var(--timvir-page-margin);
+          height: 3rem;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          @media (min-width: 48rem) {
+            display: none;
+          }
+        `}
+      >
+        {node?.icon
+          ? React.cloneElement(node.icon, {
+              className: css`
+                display: block;
+                width: 1.3em;
+                height: 1.3em;
+                margin-right: 8px;
+                min-width: 1.3em;
+              `,
+            })
+          : null}
+        <span>{node?.label ?? "Menu"}</span>
+
+        <Icons.Menu
+          size={`1rem`}
+          className={css`
+            margin-left: auto;
+          `}
+        />
+      </label>
+
+      <input
+        type="checkbox"
+        id="menu"
+        className={css`
+          display: none;
+        `}
+        onChange={(ev) => {
+          document.body.classList.toggle(classes.scrollLock, ev.currentTarget.checked);
+        }}
+      />
+      <div className={classes.content}>
+        <div className={classes.sections}>
+          <div
+            className={classes.nav}
+            onClick={() => {
+              document.body.classList.remove(classes.scrollLock);
+            }}
+          >
             {toc.map((c, i) => (
               <Section key={i} depth={0} {...c} />
             ))}
-          </nav>
+          </div>
         </div>
       </div>
-    </aside>
+    </nav>
   );
 }
 
 export default Sidebar;
 
 const classes = {
-  root: css`
+  scrollLock: css`
+    overflow-y: scroll;
     position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 0;
+    top: 0px;
+    width: 100%;
+  `,
 
-    @media (min-width: 60rem) {
-      width: 300px;
+  root: css`
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 48rem) {
+      height: 100%;
     }
   `,
 
+  content: css`
+    display: none;
+    background-color: var(--timvir-background-color);
+
+    #menu:checked ~ & {
+      display: flex;
+      position: fixed;
+      top: 6rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    @media (min-width: 48rem) {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: static;
+      overflow: hidden;
+    }
+  `,
   sections: css`
-    padding: 24px 3px 30px;
+    padding: 24px 0;
     overflow-y: auto;
     flex-grow: 1;
-    overscroll-behavior: contain;
+    overscroll-behavior: auto;
+
+    scroll-padding-block: 24px;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 12px,
+      #000 24px,
+      #000 calc(100% - 24px),
+      rgba(0, 0, 0, 0.2) calc(100% - 12px),
+      transparent 100%
+    );
+  `,
+
+  nav: css`
+    padding-inline: calc(var(--timvir-page-margin) - 8px);
+    @media (min-width: 48rem) {
+      padding-inline: var(--timvir-page-margin);
+    }
   `,
 };
 
-const Search = ({ open, label }: NonNullable<Props["search"]>) => {
+function Search(props: NonNullable<Props["search"]>) {
+  const { open, label } = props;
+
   return (
     <div
       className={css`
@@ -111,12 +243,15 @@ const Search = ({ open, label }: NonNullable<Props["search"]>) => {
         role="button"
         className={css`
           color: var(--timvir-text-color);
-          font-size: 14px;
-          font-weight: 500;
-          line-height: 1.725;
+          font-size: 0.8125rem;
+          line-height: 2.2;
+          font-weight: 400;
           cursor: pointer;
-          padding: 2px 24px;
-          border-radius: 3px;
+          min-height: 36px;
+          border-radius: 8px;
+          padding: 0 12px;
+          border: 1px solid var(--timvir-border-color);
+          background: var(--timvir-secondary-background-color);
 
           display: flex;
           align-items: center;
@@ -127,7 +262,9 @@ const Search = ({ open, label }: NonNullable<Props["search"]>) => {
 
           & > svg {
             display: block;
-            margin-right: 4px;
+            margin-right: 8px;
+            width: 0.75rem;
+            height: 0.75rem;
           }
         `}
         onClick={open}
@@ -138,8 +275,8 @@ const Search = ({ open, label }: NonNullable<Props["search"]>) => {
             fill="currentColor"
           />
         </svg>
-        {label || "Quick Find"}
+        {label || "Search docs"}
       </div>
     </div>
   );
-};
+}

@@ -44,19 +44,19 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof
 
   return (
     <Context.Provider value={value}>
-      <Root ref={ref} className={cx(classes.root, className)} {...rest}>
+      <Root ref={ref} className={cx("timvir-b-Arbitrary", classes.root, className)} {...rest}>
         <div className={classes.controls}>
           <div className={classes.textField}>
             <span className={classes.startAdornment}>Seed:</span>
             <input
-              className={classes.input}
+              className={cx("timvir-b-Arbitrary-seed", classes.input)}
               placeholder="Seed"
               value={base58.encode(new TextEncoder().encode(`${value.seed}`))}
               readOnly
               onPaste={(ev) => {
                 const v = ev.clipboardData.getData("text/plain");
                 mutate((draft) => {
-                  draft.seed = +(new TextDecoder().decode(base58.decode(v)));
+                  draft.seed = +new TextDecoder().decode(base58.decode(v));
                 });
               }}
               onFocus={(ev) => {
@@ -101,8 +101,9 @@ const classes = {
     display: flex;
     align-items: center;
     padding: 0 0 0 10px;
-    height: 36px;
+    min-height: 36px;
     position: relative;
+    background: var(--timvir-secondary-background-color);
 
     &::after {
       display: block;
@@ -110,16 +111,16 @@ const classes = {
       content: "";
       inset: 0;
       pointer-events: none;
-      border: 1px solid var(--timvir-secondary-text-color);
+      border: 1px solid var(--timvir-border-color);
       border-radius: 2px;
     }
 
     &:hover::after {
-      border-color: var(--timvir-accent-color);
+      border-color: var(--timvir-text-color);
     }
 
     &:focus-within::after {
-      border-color: var(--timvir-accent-color);
+      border-color: var(--timvir-text-color);
     }
   `,
 
@@ -136,7 +137,6 @@ const classes = {
     background: transparent;
     align-self: stretch;
     padding: 0;
-    height: 34px;
     width: 100%;
     color: inherit;
   `,
@@ -144,18 +144,20 @@ const classes = {
   button: css`
     border: none;
     outline: none;
-    height: 36px;
-    background: var(--timvir-accent-color);
-    font: inherit;
+    min-height: 36px;
+    border: 1px solid var(--timvir-border-color);
     border-radius: 2px;
-    cursor: pointer;
-    transition: background 0.2s;
+    background: var(--timvir-secondary-background-color);
+    color: var(--timvir-text-color);
+    font: inherit;
 
     &:hover {
-      background: var(--c-p-3);
+      border-color: var(--timvir-text-color);
+      background: var(--timvir-sidebar-highlight-color);
     }
     &:active {
-      background: var(--c-p-4);
+      border-color: var(--timvir-text-color);
+      background: var(--timvir-sidebar-highlight-color);
     }
   `,
 };

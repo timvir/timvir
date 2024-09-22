@@ -1,0 +1,37 @@
+name: Urnerys
+
+on: deployment_status
+
+env:
+  URNERYS: app.urnerys.dev
+
+jobs:
+  urnerys:
+    name: Urnerys
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: urnerys/action/createBuild@main
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - run: pnpm install
+      - run: ./node_modules/.bin/playwright install --with-deps chromium
+
+      - run: ./node_modules/.bin/playwright test --retries 3 ./urnerys/*.spec.ts
+        env:
+          URL: ${{ github.event.deployment_status.target_url }}
+
+      - if: github.event.deployment_status.environment != 'Production'
+        uses: urnerys/action/checkBuild@main
+
+      - if: github.event.deployment_status.environment == 'Production'
+        uses: urnerys/action/moveBaseline@main

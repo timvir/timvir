@@ -1,56 +1,41 @@
-import { Exhibit } from "..";
 import { Code } from "timvir/blocks";
 
 # Exhibit
 
-The `<Exhibit>` is a block which is used to present something–usually a React component–in a nice way. It's a way to say:
+The `<Exhibit>` is a block which presents something–usually a React component–in a nice way.
+
+The presented element is placed on top of a checkered background.
+This helps illustrating which parts of the element are transparent, or if the element comes with a specific background color.
+
+A bit of padding is included all around the presented element.
+Together with the checkered background, it makes the `<Exhibit>` block stand out next plain text or other blocks.
+You can tweak the bleed size, or disable the bleed altogether if you want to draw attention to the exact box size of the presented element itself.
+
+The caption, if provided, is placed below the block.
+Use it to explain what is being presented, or provide contex around it.
+Think of the `<Exhibit>` block as a `<figure>` + `<figcaption>` for React components.
 
 <Sample variant="basic" />
 
+## Usage
+
+Import `Exhibit` from the `timvir/blocks` module, then use in a Timvir mdx page like so:
+
 <Code language="jsx">
-  <Sample variant="basic" as="source/markup" />
+  <Sample variant="usage" as="source/markup" />
 </Code>
-
-Think of it as a `<figure>` + `<figcaption>` for React components.
-
-Add a title to the exhibit if it helps the reader to understand the exhibit better. The title is placed snuggly to the exhibit.
-
-<Exhibit bleed={8} title="This Is Not A Button" caption="It's an input element, of type text">
-  <input type="text" placeholder="Type something…" style={{ boxSizing: "border-box", width: "100%", padding: 8 }} />
-</Exhibit>
 
 ## Bleed
 
 Use the `bleed` prop to control how much the checkered background extends beyond the box of the element itself.
+If you set the bleed explicitly, it is not recommended to use more than 16px.
+That is the page margin on small viewports and a bleed larger than that can mess with the page layout.
 
-#### bleed 0
+Setting bleed to zero (0) does not remove the checkered background.
+It will still be visible behind your element (if your element is transparent).
+To entirely remove any bleed and checkered background, render your element directly, without wrapping it in an `<Exhibit>`.
 
-<Exhibit bleed={0}>
-  <div
-    style={{ height: 40, padding: "0 16px", background: "teal", color: "white", display: "flex", alignItems: "center" }}
-  />
-</Exhibit>
-
-#### bleed 4
-
-<Exhibit bleed={4}>
-  <div
-    style={{ height: 40, padding: "0 16px", background: "teal", color: "white", display: "flex", alignItems: "center" }}
-  />
-</Exhibit>
-
-#### bleed 12
-
-<Exhibit bleed={12}>
-  <div
-    style={{ height: 40, padding: "0 16px", background: "teal", color: "white", display: "flex", alignItems: "center" }}
-  />
-</Exhibit>
-
-#### bleed 24
-
-<Exhibit bleed={24}>
-  <div
-    style={{ height: 40, padding: "0 16px", background: "teal", color: "white", display: "flex", alignItems: "center" }}
-  />
-</Exhibit>
+<Sample variant="bleed" props={{ bleed: 0 }} />
+<Sample variant="bleed" props={{ bleed: 8 }} />
+<Sample variant="bleed" props={{ bleed: 16 }} />
+<Sample variant="bleed" />

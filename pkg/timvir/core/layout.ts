@@ -6,6 +6,7 @@ export const grid = css`
   display: grid;
 
   --timvir-page-margin: 16px;
+  --timvir-margin: var(--timvir-page-margin);
 
   grid-auto-rows: min-content;
   grid-template-columns: [le] var(--timvir-page-margin) [lex lc] 1fr [rc rex] var(--timvir-page-margin) [re];
@@ -26,6 +27,14 @@ export const grid = css`
   & > *:not(.${noLayout}) {
     grid-column: lc / rc;
     min-width: 0;
+  }
+
+  & > * {
+    margin: 0 0 2rem;
+  }
+
+  & > p + ul {
+    margin-top: -1.25rem;
   }
 `;
 

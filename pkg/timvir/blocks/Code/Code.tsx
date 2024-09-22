@@ -5,7 +5,7 @@
 import { css, cx } from "@linaria/core";
 import * as Page from "timvir/core";
 import { useBlock } from "timvir/core";
-import { Highlight } from "prism-react-renderer";
+import { codeToHtml } from "shiki";
 import * as React from "react";
 import * as Icons from "react-feather";
 import { useImmer } from "use-immer";
@@ -45,155 +45,166 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   caption?: React.ReactNode;
 }
 
-const nullTheme = {
-  plain: {},
-  styles: [],
-};
-
 function Code(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
   const block = useBlock(props);
 
-  const { children, language, fullWidth, highlightedLines, caption, ...rest } = block.props;
-
-  const isHighlightedLine = (() => {
-    return (line: number) => highlightedLines?.includes(line);
-  })();
+  const { children, language, fullWidth, highlightedLines, caption, className, ...rest } = block.props;
 
   const [state, mutate] = useImmer({
+    settled: false,
+
     mouseOver: false,
     copiedToClipboard: false,
+
+    /*
+     * Prevent layout shift during (asynchronous) highlighting of the markup by
+     * initializing the html witha  pre/code block with the expected number of
+     * lines.
+     */
+    html: `<pre><code>${children
+      .trim()
+      .split("\n")
+      .map(() => "\n")
+      .join("")}</code></pre>`,
   });
 
+  React.useEffect(() => {
+    (async () => {
+      const html = await codeToHtml(children.trim(), {
+        lang: language ?? "text",
+
+        themes: {
+          light: "github-light",
+          dark: "github-dark",
+        },
+
+        decorations: (highlightedLines ?? []).map((line) => ({
+          start: { line: line - 1, character: 0 },
+          end: { line: line, character: 0 },
+          properties: { class: classes.highlightedLine },
+        })),
+      });
+
+      mutate((draft) => {
+        draft.settled = true;
+        draft.html = html;
+      });
+    })();
+  }, [mutate, children, language]);
+
   return (
-    <Root ref={ref} className={cx(classes.root, fullWidth && Page.fullWidth)} {...rest}>
-      <Highlight code={children.trim()} language={language ?? "markup"} theme={nullTheme}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={cx(className, theme, classes.code, fullWidth && classes.fullWidth)} style={style}>
-            <div
+    <Root
+      ref={ref}
+      className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", classes.root, fullWidth && Page.fullWidth)}
+      {...rest}
+    >
+      <div className={cx("timvir-b-Code-container", className, theme, classes.code, fullWidth && classes.fullWidth)}>
+        <div
+          className={css`
+            display: grid;
+            grid-template-columns: 1fr;
+          `}
+          onMouseEnter={() => {
+            mutate((draft) => {
+              draft.mouseOver = true;
+            });
+          }}
+          onMouseLeave={() => {
+            mutate((draft) => {
+              draft.mouseOver = false;
+              draft.copiedToClipboard = false;
+            });
+          }}
+        >
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(children);
+              mutate((draft) => {
+                draft.copiedToClipboard = true;
+              });
+            }}
+            className={cx(
+              css`
+                --size: 48px;
+
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                right: 0;
+                overflow: hidden;
+
+                width: var(--size);
+                height: var(--size);
+
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-end;
+
+                outline: none;
+                border: none;
+                padding: 6px;
+                background: transparent;
+
+                transition: all 0.2s;
+
+                cursor: pointer;
+
+                &:hover {
+                  color: white;
+                }
+                &:hover svg:first-child {
+                  transform: translate(0, 0);
+                }
+                &:active svg:first-child {
+                  transform: translate(2px, -2px);
+                }
+
+                pointer-events: none;
+                opacity: 0;
+              `,
+              state.mouseOver &&
+                css`
+                  pointer-events: all;
+                  opacity: 1;
+                `
+            )}
+          >
+            <svg
+              width={48}
+              height={48}
+              viewBox="0 0 48 48"
               className={css`
-                display: grid;
-                grid-template-columns: 1fr;
-                padding-block: 16px;
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                right: 0;
+                path {
+                  fill: var(--c-p-4);
+                }
+
+                transition: all 0.2s;
+                transform: translate(48px, -48px);
               `}
-              onMouseEnter={() => {
-                mutate((draft) => {
-                  draft.mouseOver = true;
-                });
-              }}
-              onMouseLeave={() => {
-                mutate((draft) => {
-                  draft.mouseOver = false;
-                  draft.copiedToClipboard = false;
-                });
-              }}
             >
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText(children);
-                  mutate((draft) => {
-                    draft.copiedToClipboard = true;
-                  });
-                }}
-                className={cx(
-                  css`
-                    --size: 48px;
+              <path d="M0 0 H48 V48 Z" />
+            </svg>
+            {state.copiedToClipboard ? <Icons.Clipboard size={"16px"} /> : <Icons.Copy size={"16px"} />}
+          </button>
 
-                    z-index: 1;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    overflow: hidden;
+          <div
+            className={cx(
+              fullWidth
+                ? css`
+                    padding: 16px 24px 16px 0;
+                  `
+                : css``
+            )}
+            dangerouslySetInnerHTML={{ __html: state.html }}
+          />
+        </div>
+      </div>
 
-                    width: var(--size);
-                    height: var(--size);
-
-                    display: flex;
-                    align-items: flex-start;
-                    justify-content: flex-end;
-
-                    outline: none;
-                    border: none;
-                    padding: 6px;
-                    background: transparent;
-
-                    transition: all 0.2s;
-
-                    cursor: pointer;
-
-                    &:hover {
-                      color: white;
-                    }
-                    &:hover svg:first-child {
-                      transform: translate(0, 0);
-                    }
-                    &:active svg:first-child {
-                      transform: translate(2px, -2px);
-                    }
-
-                    pointer-events: none;
-                    opacity: 0;
-                  `,
-                  state.mouseOver &&
-                    css`
-                      pointer-events: all;
-                      opacity: 1;
-                    `
-                )}
-              >
-                <svg
-                  width={48}
-                  height={48}
-                  viewBox="0 0 48 48"
-                  className={css`
-                    position: absolute;
-                    z-index: -1;
-                    top: 0;
-                    right: 0;
-                    path {
-                      fill: var(--c-p-4);
-                    }
-
-                    transition: all 0.2s;
-                    transform: translate(48px, -48px);
-                  `}
-                >
-                  <path d="M0 0 H48 V48 Z" />
-                </svg>
-                {state.copiedToClipboard ? <Icons.Clipboard size={"16px"} /> : <Icons.Copy size={"16px"} />}
-              </button>
-
-              <div
-                className={cx(
-                  fullWidth
-                    ? css`
-                        padding: 16px 24px 16px 0;
-                      `
-                    : css``
-                )}
-              >
-                {tokens.map((line, i) => {
-                  const { className, ...lineProps } = getLineProps({ line, key: i });
-
-                  return (
-                    <div
-                      key={i}
-                      {...lineProps}
-                      className={cx(className, classes.line, isHighlightedLine(i + 1) && classes.highlightedLine)}
-                    >
-                      {/* <span className={classes.lineNumber}>{i + 1}</span> */}
-                      {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({ token, key })} />
-                      ))}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </pre>
-        )}
-      </Highlight>
-
-      {caption && <div className={classes.caption}>{caption}</div>}
+      {caption && <div className={cx("timvir-b-Code-caption", classes.caption)}>{caption}</div>}
     </Root>
   );
 }
@@ -202,37 +213,50 @@ export default React.forwardRef(Code);
 
 const classes = {
   root: css`
-    margin: 1.5rem 0 3rem;
+    :global(:root[data-timvir-theme="dark"]) & {
+      .shiki,
+      .shiki span {
+        color: var(--shiki-dark) !important;
+        font-style: var(--shiki-dark-font-style) !important;
+        font-weight: var(--shiki-dark-font-weight) !important;
+        text-decoration: var(--shiki-dark-text-decoration) !important;
+      }
+    }
   `,
 
   code: css`
     overflow-x: auto;
     contain: content;
-    font-size: 0.9em;
+    font-size: 0.8em;
 
     border-radius: 5px;
 
-    --timvir-b-Code-bleed: var(--timvir-page-margin, 24px);
-    --timvir-b-Code-inlinePadding: max(var(--timvir-b-Code-bleed), 24px);
+    --timvir-b-Code-bleed: calc(var(--timvir-margin, 0px) * 0.6666);
+    --timvir-b-Code-inlinePadding: max(var(--timvir-b-Code-bleed), 8px);
 
     padding: 0;
     margin: 0 calc(-1 * var(--timvir-b-Code-bleed));
 
-    box-shadow: inset 0 0 0 1px rgb(16 22 26 / 20%), 0 1px 4px rgb(16 22 26 / 10%);
-    transition: box-shadow 0.3s;
+    border: 1px solid var(--timvir-border-color);
 
-    &:hover {
-      box-shadow: inset 0 0 0 1px rgb(16 22 26 / 30%), 0 1px 4px rgb(16 22 26 / 10%), 0 8px 24px rgb(16 22 26 / 10%);
+    & pre {
+      margin: 0;
+      padding: 16px 0;
+
+      background-color: var(--timvir-secondary-background-color) !important;
     }
 
-    :global(:root[data-timvir-theme="dark"]) & {
-      box-shadow: inset 0 0 0 1px rgb(216 222 226 / 10%), 0 1px 4px rgb(216 222 226 / 5%),
-        0 2px 8px rgb(216 222 226 / 2%);
+    & pre code {
+      display: block;
+    }
+    & pre code .line {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+    }
 
-      &:hover {
-        box-shadow: inset 0 0 0 1px rgb(216 222 226 / 10%), 0 1px 3px rgb(216 222 226 / 7%),
-          0 2px 16px rgb(216 222 226 / 5%);
-      }
+    & pre .line {
+      padding-inline: var(--timvir-b-Code-inlinePadding);
     }
   `,
 
@@ -264,7 +288,6 @@ const classes = {
 
   line: css`
     padding-inline: var(--timvir-b-Code-inlinePadding);
-    margin-inline: 1px;
   `,
   highlightedLine: css`
     background-color: #ffe10044;
@@ -283,8 +306,9 @@ const classes = {
   `,
 
   caption: css`
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.1875;
     color: var(--timvir-secondary-text-color);
-    margin-top: 2px;
+    margin-top: 0.3em;
   `,
 };

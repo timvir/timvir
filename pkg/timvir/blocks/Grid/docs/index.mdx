@@ -1,15 +1,6 @@
 import { Grid } from "..";
 import { Exhibit } from "../../Exhibit";
-import { Image } from "../../../../../src/components/Image";
 import { fullWidth } from "timvir/core";
-
-import image1 from "../../../../../assets/khachik-simonian-nXOB-wh4Oyc-unsplash.jpg"
-import image2 from "../../../../../assets/frank-mckenna-4V8JxijgZ_c-unsplash.jpg"
-import image3 from "../../../../../assets/jay-mantri-TFyi0QOx08c-unsplash.jpg"
-import image4 from "../../../../../assets/jeremy-bishop-EwKXn5CapA4-unsplash.jpg"
-import image5 from "../../../../../assets/lukasz-szmigiel-jFCViYFYcus-unsplash.jpg"
-import image6 from "../../../../../assets/qingbao-meng-01_igFr7hd4-unsplash.jpg"
-import image7 from "../../../../../assets/v2osk-1Z2niiBPg5A-unsplash.jpg"
 
 # Grid
 
@@ -52,31 +43,19 @@ import image7 from "../../../../../assets/v2osk-1Z2niiBPg5A-unsplash.jpg"
   <div style={{ height: 100, background: "rgba(0,0,0,.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>ITEM</div>
 </Grid>
 
-Combine `<Grid>` with the `<Image>` component.
-
-<Grid>
-  <Image metadata={image1} img={{ src: image1.src }} sources={[]}  />
-  <Image metadata={image2} img={{ src: image2.src }} sources={[]} />
-  <Image metadata={image3} img={{ src: image3.src }} sources={[]} />
-  <Image metadata={image4} img={{ src: image4.src }} sources={[]} />
-  <Image metadata={image5} img={{ src: image5.src }} sources={[]} />
-  <Image metadata={image6} img={{ src: image6.src }} sources={[]} />
-  <Image metadata={image7} img={{ src: image7.src }} sources={[]} />
-</Grid>
-
 Combine `<Grid>` with the `<Exhibit>` component.
 
 <Grid>
-  <Exhibit bleed={8}>
+  <Exhibit>
     <div style={{ height: 100, background: "rgba(0,0,0,.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>ITEM</div>
   </Exhibit>
-  <Exhibit bleed={8}>
+  <Exhibit>
     <div style={{ height: 100, background: "rgba(0,0,0,.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>ITEM</div>
   </Exhibit>
-  <Exhibit bleed={8}>
+  <Exhibit>
     <div style={{ height: 100, background: "rgba(0,0,0,.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>ITEM</div>
   </Exhibit>
-  <Exhibit bleed={8}>
+  <Exhibit>
     <div style={{ height: 100, background: "rgba(0,0,0,.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>ITEM</div>
   </Exhibit>
 </Grid>

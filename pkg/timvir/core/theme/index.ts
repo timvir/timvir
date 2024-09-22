@@ -7,9 +7,9 @@ const themes = {
     backgroundColor: "#ffffff",
     textColor: colors.text.main,
     secondaryTextColor: colors.text.light,
+    secondaryBackgroundColor: "#f9f8f9",
 
-    sidebarBackgroundColor: colors.green["50"],
-    sidebarTextColor: colors.text.main,
+    borderColor: "#e9e8ea",
 
     accentColor: colors.green["400"],
   },
@@ -17,9 +17,9 @@ const themes = {
     backgroundColor: "#1f2023",
     textColor: "rgba(255 255 255 / 0.86)",
     secondaryTextColor: "rgba(255 255 255 / 0.56)",
+    secondaryBackgroundColor: "#161618",
 
-    sidebarBackgroundColor: "#1b1c1e",
-    sidebarTextColor: "rgba(255 255 255 / 0.86)",
+    borderColor: "#27292f",
 
     accentColor: colors.green["400"],
   },
@@ -29,6 +29,7 @@ export const theme = css`
   :global() {
     :root {
       box-sizing: border-box;
+      scroll-padding-top: 20px;
     }
 
     *,
@@ -52,8 +53,8 @@ export const theme = css`
   font-feature-settings: "liga", "kern";
   text-rendering: optimizelegibility;
 
-  font-size: 16px;
-  line-height: 1.725;
+  font-size: 0.9375rem;
+  line-height: 1.7333;
 
   background-color: var(--timvir-background-color);
   color: var(--timvir-text-color);
@@ -66,15 +67,16 @@ export const theme = css`
   --c-p-5: ${colors.green["500"]};
 `;
 
-function mkTheme(config: typeof themes[keyof typeof themes]) {
+function mkTheme(config: (typeof themes)[keyof typeof themes]) {
   return `
     --timvir-background-color: ${config.backgroundColor};
     --timvir-text-color: ${config.textColor};
     --timvir-secondary-text-color: ${config.secondaryTextColor};
+    --timvir-secondary-background-color: ${config.secondaryBackgroundColor};
 
-    --timvir-sidebar-background-color: ${config.sidebarBackgroundColor};
-    --timvir-sidebar-text-color: ${config.sidebarTextColor};
-    --timvir-sidebar-highlight-color: ${tweakColor(config.sidebarBackgroundColor)};
+    --timvir-border-color: ${config.borderColor};
+
+    --timvir-sidebar-highlight-color: ${tweakColor(config.backgroundColor)};
 
     --timvir-accent-color: ${config.accentColor};
   `;
@@ -83,7 +85,7 @@ function mkTheme(config: typeof themes[keyof typeof themes]) {
 const tweakColor = (input: string): string => {
   const c = color(input)!.rgb();
   const v = luminance([c.r, c.g, c.b]);
-  return v < 127 ? c.brighter(2).toString() : c.darker(0.3).toString();
+  return v < 127 ? c.brighter(0.8).toString() : c.darker(0.2).toString();
 };
 
 const luminance = ([r, g, b]: [number, number, number]) => 0.2126 * r + 0.7152 * g + 0.0722 * b;

@@ -4,6 +4,7 @@
     "rangeStrategy": "bump",
     "prHourlyLimit": 0,
     "postUpdateOptions": ["pnpmDedupe"],
+    "dependencyDashboardApproval": true,
     "packageRules": [
       {
         "matchFiles": [
@@ -32,7 +33,8 @@
       },
       {
         "matchPackagePatterns": ["^eslint", "^@typescript-eslint/"],
-        "groupName": "ESLint"
+        "groupName": "ESLint",
+        "automerge": true
       },
       {
         "matchPackageNames": ["sharp", "@types/sharp"],
@@ -41,6 +43,10 @@
       {
         "matchPackageNames": ["immer", "use-immer"],
         "groupName": "Immer"
+      },
+      {
+        "matchPackagePatterns": ["^@types/"],
+        "automerge": true
       }
     ]
   }

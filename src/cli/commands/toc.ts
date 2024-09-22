@@ -95,7 +95,7 @@ async function buildTableOfContents(prefix: string, folder: string): Promise<Arr
 
       ret.push({ label: line.label, path, children });
     }
-  } catch (e) {}
+  } catch {}
 
   return ret;
 }

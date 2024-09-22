@@ -30,6 +30,7 @@ function Message(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof R
           display: flex;
           align-items: flex-start;
 
+          font-size: 0.875rem;
           line-height: 1.5;
         `,
         variant !== undefined && variantStyles[variant]

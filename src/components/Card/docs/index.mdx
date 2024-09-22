@@ -5,10 +5,7 @@ import { Exhibit, Grid } from "timvir/blocks";
 # Card
 
 <Grid>
-  <Exhibit caption="Image Card">
-    <Sample variant="image" />
-  </Exhibit>
-  <Exhibit caption="Interactive Image Card">
+  <Exhibit bleed={8} caption="Interactive Image Card">
     <Card elevation={2} interactive>
       {/* <Picture
         src="../../../../assets/jay-mantri-TFyi0QOx08c-unsplash.jpg"
@@ -17,10 +14,10 @@ import { Exhibit, Grid } from "timvir/blocks";
       <div style={{ padding: 20 }}>CARD</div>
     </Card>
   </Exhibit>
-  <Exhibit caption="Card showing a Sample (Swatch)">
+  <Exhibit bleed={8} caption="Card showing a Sample (Swatch)">
     <Sample variant="sample" />
   </Exhibit>
-  <Exhibit caption="Interactive Card">
+  <Exhibit bleed={8} caption="Interactive Card">
     <Sample variant="interactive" />
   </Exhibit>
 </Grid>

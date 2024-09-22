@@ -1,12 +1,11 @@
 import { css, cx } from "@linaria/core";
-import { useMDXComponents } from "@mdx-js/react";
 import { useBlock } from "timvir/core";
 import * as React from "react";
 
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Root = "figure";
+const Root = "div";
 
 interface Props extends React.ComponentProps<typeof Root> {
   caption?: React.ReactNode;
@@ -15,8 +14,6 @@ interface Props extends React.ComponentProps<typeof Root> {
    * How much the component should extend out of its original box. When number,
    * it's the number of pixels. When a string, must evaluate to a CSS <length>
    * (can be inline or reference to a CSS variable).
-   *
-   * @default 0
    */
   bleed?: string | number;
 
@@ -24,35 +21,33 @@ interface Props extends React.ComponentProps<typeof Root> {
 }
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const block = useBlock(props)
-  const components = { h3: "h3", ...useMDXComponents() };
+  const block = useBlock(props);
 
-  const { title, caption, bleed = 0, BackdropProps, children, className, style, ...rest } = block.props;
+  const { caption, bleed, BackdropProps, children, className, style, ...rest } = block.props;
 
   return (
-    <>
-      {title && <components.h3>{title}</components.h3>}
-
-      <Root
-        ref={ref}
-        className={cx(className, classes.root)}
+    <Root
+      ref={ref}
+      className={cx("timvir-b-Exhibit", className, classes.root)}
+      style={{
+        ...style,
+        [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : undefined,
+      }}
+      {...rest}
+    >
+      <div
+        className={cx("timvir-b-Exhibit-container", classes.container)}
+        {...BackdropProps}
         style={{
-          ...style,
-          [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : bleed,
+          border: bleed === 0 ? "none" : `1px solid var(${cssVariables.borderColor})`,
+          ...BackdropProps?.style,
         }}
-        {...rest}
       >
-        <div
-          className={classes.container}
-          style={{ border: bleed !== 0 ? `1px solid var(${cssVariables.borderColor})` : "none" }}
-          {...BackdropProps}
-        >
-          {children}
-        </div>
+        {children}
+      </div>
 
-        {caption && <figcaption className={classes.caption}>{caption}</figcaption>}
-      </Root>
-    </>
+      {caption && <div className={cx("timvir-b-Exhibit-caption", classes.caption)}>{caption}</div>}
+    </Root>
   );
 }
 
@@ -66,15 +61,12 @@ const cssVariables = {
 
 const classes = {
   root: css`
-    margin: 0 0 1.5rem;
+    ${cssVariables.bleed}: calc(var(--timvir-margin, 0px) * 0.6666);
 
-    ${cssVariables.bleed}: 0px;
-
-    ${cssVariables.borderColor}: #EFEFEF;
-    ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
+    ${cssVariables.borderColor}: var(--timvir-border-color);
+    ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==);
 
     :global(:root[data-timvir-theme="dark"]) & {
-      ${cssVariables.borderColor}: #101010;
       ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
     }
   `,
@@ -85,11 +77,14 @@ const classes = {
 
     margin: 0 calc(-1 * var(${cssVariables.bleed}));
     padding: var(${cssVariables.bleed});
+
+    border-radius: 5px;
   `,
 
   caption: css`
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.1875;
     color: var(--timvir-secondary-text-color);
-    margin-top: 2px;
+    margin-top: 0.3em;
   `,
 };
