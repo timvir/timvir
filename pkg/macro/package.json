@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:timvir/timvir.git",
+    "url": "git+https://github.com/timvir/timvir.git",
     "directory": "pkg/macro"
   }
 }
