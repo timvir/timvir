@@ -14,7 +14,7 @@ git tag --points-at HEAD | while read tag; do
         cat "$PACKAGE/package.json" | jq --arg version "$VERSION" '.version = $version' > tmp;
         mv tmp "$PACKAGE/package.json"
 
-        pushd "$PACKAGE"; npm publish . --access public; popd
+        pushd "$PACKAGE"; npm publish . --provenance --access public; popd
       fi
     done
   fi
