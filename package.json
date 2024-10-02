@@ -20,7 +20,7 @@
     "@linaria/webpack5-loader": "^5.0.4",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
-    "@playwright/test": "^1.47.1",
+    "@playwright/test": "^1.47.2",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
