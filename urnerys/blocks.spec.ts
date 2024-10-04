@@ -30,6 +30,8 @@ interface UploadImageRequest {
 }
 
 async function uploadImage({ build, set, snapshot, formula, payload }: UploadImageRequest) {
+  console.log("uploadImage", build, set, snapshot, formula);
+
   const body = new FormData();
   body.set("project", "timvir");
   body.set("build", build);
