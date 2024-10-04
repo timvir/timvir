@@ -88,7 +88,7 @@ for (const url of urls) {
 
     const buffer = await page.screenshot({ fullPage: true });
 
-    uploadImage({
+    await uploadImage({
       build,
       set: title.substring(1),
       snapshot: "page",
@@ -104,7 +104,7 @@ for (const url of urls) {
         const childElement = await element.$(".timvir-b-Exhibit-caption");
         const innerText = (await childElement?.innerText()) ?? `${index}`;
 
-        uploadImage({
+        await uploadImage({
           build,
           set: title.substring(1) + "/exhibits",
           snapshot: sanitizeTitle(innerText),
