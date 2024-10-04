@@ -38,17 +38,15 @@ async function uploadImage({ build, set, snapshot, formula, payload }: UploadIma
   body.set("formula", formula);
   body.set("payload", payload);
 
-  (async () => {
-    const res = await fetch(`https://${process.env.URNERYS}/rpc/uploadImage`, {
-      method: "POST",
-      body,
-    });
+  const res = await fetch(`https://${process.env.URNERYS}/rpc/uploadImage`, {
+    method: "POST",
+    body,
+  });
 
-    if (!res.ok) {
-      console.log(res.statusText);
-      throw res;
-    }
-  })();
+  if (!res.ok) {
+    console.log(res.statusText);
+    throw res;
+  }
 }
 
 async function waitForImages(page: Page): Promise<void> {
