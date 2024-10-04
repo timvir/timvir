@@ -64,6 +64,8 @@ async function waitForImages(page: Page): Promise<void> {
 
 for (const url of urls) {
   test(url, async ({ page }, { title }) => {
+    const imageUploads: Array<Promise<unknown>> = [];
+
     await page.setViewportSize({ width: 1680, height: 1200 });
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
@@ -86,13 +88,15 @@ for (const url of urls) {
 
     const buffer = await page.screenshot({ fullPage: true });
 
-    uploadImage({
-      build,
-      set: title.substring(1),
-      snapshot: "page",
-      formula: "w1680",
-      payload: new File([buffer], "screenshot.png", { type: "image/png" }),
-    });
+    imageUploads.push(
+      uploadImage({
+        build,
+        set: title.substring(1),
+        snapshot: "page",
+        formula: "w1680",
+        payload: new File([buffer], "screenshot.png", { type: "image/png" }),
+      })
+    );
 
     {
       const elements = await page.$$(".timvir-b-Exhibit");
@@ -102,14 +106,18 @@ for (const url of urls) {
         const childElement = await element.$(".timvir-b-Exhibit-caption");
         const innerText = (await childElement?.innerText()) ?? `${index}`;
 
-        uploadImage({
-          build,
-          set: title.substring(1) + "/exhibits",
-          snapshot: sanitizeTitle(innerText),
-          formula: "none",
-          payload: new File([buffer], "screenshot.png", { type: "image/png" }),
-        });
+        imageUploads.push(
+          uploadImage({
+            build,
+            set: title.substring(1) + "/exhibits",
+            snapshot: sanitizeTitle(innerText),
+            formula: "none",
+            payload: new File([buffer], "screenshot.png", { type: "image/png" }),
+          })
+        );
       }
     }
+
+    await Promise.all(imageUploads);
   });
 }
