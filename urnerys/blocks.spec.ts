@@ -30,8 +30,6 @@ interface UploadImageRequest {
 }
 
 async function uploadImage({ build, set, snapshot, formula, payload }: UploadImageRequest) {
-  console.log("uploadImage", build, set, snapshot, formula);
-
   const body = new FormData();
   body.set("project", "timvir");
   body.set("build", build);
@@ -66,6 +64,8 @@ async function waitForImages(page: Page): Promise<void> {
 
 for (const url of urls) {
   test(url, async ({ page }, { title }) => {
+    const imageUploads: Array<Promise<unknown>> = [];
+
     await page.setViewportSize({ width: 1680, height: 1200 });
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
@@ -88,13 +88,15 @@ for (const url of urls) {
 
     const buffer = await page.screenshot({ fullPage: true });
 
-    await uploadImage({
-      build,
-      set: title.substring(1),
-      snapshot: "page",
-      formula: "w1680",
-      payload: new File([buffer], "screenshot.png", { type: "image/png" }),
-    });
+    imageUploads.push(
+      uploadImage({
+        build,
+        set: title.substring(1),
+        snapshot: "page",
+        formula: "w1680",
+        payload: new File([buffer], "screenshot.png", { type: "image/png" }),
+      })
+    );
 
     {
       const elements = await page.$$(".timvir-b-Exhibit");
@@ -104,14 +106,18 @@ for (const url of urls) {
         const childElement = await element.$(".timvir-b-Exhibit-caption");
         const innerText = (await childElement?.innerText()) ?? `${index}`;
 
-        await uploadImage({
-          build,
-          set: title.substring(1) + "/exhibits",
-          snapshot: sanitizeTitle(innerText),
-          formula: "none",
-          payload: new File([buffer], "screenshot.png", { type: "image/png" }),
-        });
+        imageUploads.push(
+          uploadImage({
+            build,
+            set: title.substring(1) + "/exhibits",
+            snapshot: sanitizeTitle(innerText),
+            formula: "none",
+            payload: new File([buffer], "screenshot.png", { type: "image/png" }),
+          })
+        );
       }
     }
+
+    await Promise.all(imageUploads);
   });
 }
