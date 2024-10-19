@@ -39,11 +39,11 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4(webpack@5.93.0)
       '@mdx-js/loader':
-        specifier: ^3.0.1
-        version: 3.0.1(webpack@5.93.0)
+        specifier: ^3.1.0
+        version: 3.1.0(webpack@5.93.0)
       '@mdx-js/react':
-        specifier: ^3.0.1
-        version: 3.0.1(@types/react@18.3.11)(react@18.3.1)
+        specifier: ^3.1.0
+        version: 3.1.0(@types/react@18.3.11)(react@18.3.1)
       '@playwright/test':
         specifier: ^1.48.1
         version: 1.48.1
@@ -298,7 +298,7 @@ importers:
     dependencies:
       '@mdx-js/react':
         specifier: ^2 || ^3
-        version: 3.0.1(@types/react@18.3.11)(react@18.3.1)
+        version: 3.1.0(@types/react@18.3.11)(react@18.3.1)
       bytestring:
         specifier: ^1
         version: 1.0.0
@@ -1283,16 +1283,19 @@ packages:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
 
-  '@mdx-js/loader@3.0.1':
-    resolution: {integrity: sha512-YbYUt7YyEOdFxhyuCWmLKf5vKhID/hJAojEUnheJk4D8iYVLFQw+BAoBWru/dHGch1omtmZOPstsmKPyBF68Tw==}
+  '@mdx-js/loader@3.1.0':
+    resolution: {integrity: sha512-xU/lwKdOyfXtQGqn3VnJjlDrmKXEvMi1mgYxVmukEUtVycIz1nh7oQ40bKTd4cA7rLStqu0740pnhGYxGoqsCg==}
     peerDependencies:
       webpack: '>=5'
+    peerDependenciesMeta:
+      webpack:
+        optional: true
 
   '@mdx-js/mdx@3.0.0':
     resolution: {integrity: sha512-Icm0TBKBLYqroYbNW3BPnzMGn+7mwpQOK310aZ7+fkCtiU3aqv2cdcX+nd0Ydo3wI5Rx8bX2Z2QmGb/XcAClCw==}
 
-  '@mdx-js/react@3.0.1':
-    resolution: {integrity: sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==}
+  '@mdx-js/react@3.1.0':
+    resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
@@ -5203,10 +5206,11 @@ snapshots:
       - encoding
       - supports-color
 
-  '@mdx-js/loader@3.0.1(webpack@5.93.0)':
+  '@mdx-js/loader@3.1.0(webpack@5.93.0)':
     dependencies:
       '@mdx-js/mdx': 3.0.0
       source-map: 0.7.4
+    optionalDependencies:
       webpack: 5.93.0
     transitivePeerDependencies:
       - supports-color
@@ -5239,7 +5243,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.0.1(@types/react@18.3.11)(react@18.3.1)':
+  '@mdx-js/react@3.1.0(@types/react@18.3.11)(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.1
       '@types/react': 18.3.11
