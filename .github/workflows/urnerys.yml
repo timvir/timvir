@@ -4,6 +4,7 @@ on: deployment_status
 
 env:
   URNERYS: app.urnerys.dev
+  BUILD: "github-run-${{ github.run_id }}-${{ github.run_attempt }}"
 
 jobs:
   urnerys:
@@ -11,7 +12,8 @@ jobs:
     if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
-      - uses: urnerys/action/createBuild@main
+      - run: |
+          curl -sf -X POST -H "Content-Type: application/json" -d '{ "id": "'"$BUILD"'", "build": { "origin": { "commit": "${{ github.sha }}" } } }' "https://$URNERYS/api/v1/projects/timvir/builds"
 
       - uses: actions/checkout@v4
 
@@ -30,8 +32,12 @@ jobs:
         env:
           URL: ${{ github.event.deployment_status.target_url }}
 
-      - if: github.event.deployment_status.environment != 'Production'
-        uses: urnerys/action/checkBuild@main
-
-      - if: github.event.deployment_status.environment == 'Production'
-        uses: urnerys/action/moveBaseline@main
+      - run: |
+          case "${{ github.event.deployment_status.environment }}" in
+            Production)
+              curl -sf -X PATCH -H "Content-Type: application/json" -d '{ "baseline": { "build": "'"$BUILD"'" } }' "https://$URNERYS/api/v1/projects/timvir/baselines/production"
+              ;;
+            *)
+              curl -sf -X POST -H "Content-Type: application/json" -d '{ "check": { "baseline": "production" } }' "https://$URNERYS/api/v1/projects/timvir/builds/$BUILD/checks"
+              ;;
+          esac

@@ -1,6 +1,6 @@
 import { Page, test } from "@playwright/test";
 
-const build = process.env.GITHUB_RUN_ID ?? "head";
+const build = process.env.BUILD ?? "head";
 
 const urls = [
   "/blocks/Arbitrary",
