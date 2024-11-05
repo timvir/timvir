@@ -1,52 +1,52 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:base"],
-    "rangeStrategy": "bump",
-    "prHourlyLimit": 0,
-    "postUpdateOptions": ["pnpmDedupe"],
-    "dependencyDashboardApproval": true,
-    "packageRules": [
-      {
-        "matchFiles": [
-          "pkg/cli/package.json",
-          "pkg/macro/package.json",
-          "pkg/mdx/package.json",
-          "pkg/timvir/package.json"
-        ],
-        "rangeStrategy": "update-lockfile"
-      },
-      {
-        "extends": "monorepo:react",
-        "groupName": "React"
-      },
-      {
-        "extends": "monorepo:nextjs",
-        "groupName": "Next.js"
-      },
-      {
-        "extends": "monorepo:babel",
-        "groupName": "Babel"
-      },
-      {
-        "matchPackagePatterns": ["^@linaria/"],
-        "groupName": "Linaria"
-      },
-      {
-        "matchPackagePatterns": ["^eslint", "^@typescript-eslint/"],
-        "groupName": "ESLint",
-        "automerge": true
-      },
-      {
-        "matchPackageNames": ["sharp", "@types/sharp"],
-        "groupName": "Sharp"
-      },
-      {
-        "matchPackageNames": ["immer", "use-immer"],
-        "groupName": "Immer"
-      },
-      {
-        "matchPackagePatterns": ["^@types/"],
-        "automerge": true
-      }
-    ]
-  }
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "rangeStrategy": "bump",
+  "prHourlyLimit": 0,
+  "postUpdateOptions": ["pnpmDedupe"],
+  "dependencyDashboardApproval": true,
+  "packageRules": [
+    {
+      "matchFileNames": [
+        "pkg/cli/package.json",
+        "pkg/macro/package.json",
+        "pkg/mdx/package.json",
+        "pkg/timvir/package.json"
+      ],
+      "rangeStrategy": "update-lockfile"
+    },
+    {
+      "extends": ["monorepo:react"],
+      "groupName": "React"
+    },
+    {
+      "extends": ["monorepo:nextjs"],
+      "groupName": "Next.js"
+    },
+    {
+      "extends": ["monorepo:babel"],
+      "groupName": "Babel"
+    },
+    {
+      "groupName": "Linaria",
+      "matchPackageNames": ["/^@linaria//"]
+    },
+    {
+      "groupName": "ESLint",
+      "automerge": true,
+      "matchPackageNames": ["/^eslint/", "/^@typescript-eslint//"]
+    },
+    {
+      "matchPackageNames": ["sharp", "@types/sharp"],
+      "groupName": "Sharp"
+    },
+    {
+      "matchPackageNames": ["immer", "use-immer"],
+      "groupName": "Immer"
+    },
+    {
+      "automerge": true,
+      "matchPackageNames": ["/^@types//"]
+    }
+  ]
+}
