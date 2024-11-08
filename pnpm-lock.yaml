@@ -204,8 +204,8 @@ importers:
         specifier: ^2.0.10
         version: 2.0.10(react@18.3.1)
       react-hotkeys-hook:
-        specifier: ^4.5.1
-        version: 4.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^4.6.1
+        version: 4.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-measure:
         specifier: ^2.5.2
         version: 2.5.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -322,7 +322,7 @@ importers:
         version: 2.0.10(react@18.3.1)
       react-hotkeys-hook:
         specifier: ^4
-        version: 4.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 4.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       shiki:
         specifier: ^1
         version: 1.22.2
@@ -3407,8 +3407,8 @@ packages:
     peerDependencies:
       react: '>=16.8.6'
 
-  react-hotkeys-hook@4.5.1:
-    resolution: {integrity: sha512-scAEJOh3Irm0g95NIn6+tQVf/OICCjsQsC9NBHfQws/Vxw4sfq1tDQut5fhTEvPraXhu/sHxRd9lOtxzyYuNAg==}
+  react-hotkeys-hook@4.6.1:
+    resolution: {integrity: sha512-XlZpbKUj9tkfgPgT9gA+1p7Ey6vFIZHttUjPqpTdyT5nqQ8mHL7elxvSbaC+dpSiHUSmr21Ya1mDxBZG3aje4Q==}
     peerDependencies:
       react: '>=16.8.1'
       react-dom: '>=16.8.1'
@@ -7679,7 +7679,7 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
 
-  react-hotkeys-hook@4.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-hotkeys-hook@4.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
