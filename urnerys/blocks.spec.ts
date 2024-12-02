@@ -31,14 +31,12 @@ interface UploadImageRequest {
 
 async function uploadImage({ build, set, snapshot, formula, payload }: UploadImageRequest) {
   const body = new FormData();
-  body.set("project", "timvir");
-  body.set("build", build);
-  body.set("set", set);
+  body.set("collection", set);
   body.set("snapshot", snapshot);
   body.set("formula", formula);
   body.set("payload", payload);
 
-  const res = await fetch(`https://${process.env.URNERYS}/rpc/uploadImage`, {
+  const res = await fetch(`https://${process.env.URNERYS}/api/v1/projects/timvir/builds/${build}/images`, {
     method: "POST",
     body,
   });
@@ -93,7 +91,7 @@ for (const url of urls) {
         snapshot: "page",
         formula: "w1680",
         payload: new File([buffer], "screenshot.png", { type: "image/png" }),
-      })
+      }),
     );
 
     {
@@ -111,7 +109,7 @@ for (const url of urls) {
             snapshot: sanitizeTitle(innerText),
             formula: "none",
             payload: new File([buffer], "screenshot.png", { type: "image/png" }),
-          })
+          }),
         );
       }
     }
