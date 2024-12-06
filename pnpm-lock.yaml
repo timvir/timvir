@@ -43,7 +43,7 @@ importers:
         version: 3.1.0(webpack@5.93.0)
       '@mdx-js/react':
         specifier: ^3.1.0
-        version: 3.1.0(@types/react@18.3.13)(react@19.0.0)
+        version: 3.1.0(@types/react@18.3.14)(react@19.0.0)
       '@playwright/test':
         specifier: ^1.49.0
         version: 1.49.0
@@ -93,11 +93,11 @@ importers:
         specifier: ^2.4.9
         version: 2.4.9
       '@types/react':
-        specifier: ^18.3.13
-        version: 18.3.13
+        specifier: ^18.3.14
+        version: 18.3.14
       '@types/react-dom':
-        specifier: ^18.3.1
-        version: 18.3.1
+        specifier: ^18.3.2
+        version: 18.3.2
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.17.0
         version: 8.17.0(@typescript-eslint/parser@8.17.0(eslint@9.16.0)(typescript@5.7.2))(eslint@9.16.0)(typescript@5.7.2)
@@ -301,7 +301,7 @@ importers:
     dependencies:
       '@mdx-js/react':
         specifier: ^2 || ^3
-        version: 3.1.0(@types/react@18.3.13)(react@19.0.0)
+        version: 3.1.0(@types/react@18.3.14)(react@19.0.0)
       bytestring:
         specifier: ^1
         version: 1.0.0
@@ -1629,11 +1629,11 @@ packages:
   '@types/prop-types@15.7.3':
     resolution: {integrity: sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==}
 
-  '@types/react-dom@18.3.1':
-    resolution: {integrity: sha512-qW1Mfv8taImTthu4KoXgDfLuk4bydU6Q/TkADnDWWHwi4NX4BR+LWfTp2sVmTqRrsHvyDDTelgelxJ+SsejKKQ==}
+  '@types/react-dom@18.3.2':
+    resolution: {integrity: sha512-Fqp+rcvem9wEnGr3RY8dYNvSQ8PoLqjZ9HLgaPUOjJJD120uDyOxOjc/39M4Kddp9JQCxpGQbnhVQF0C0ncYVg==}
 
-  '@types/react@18.3.13':
-    resolution: {integrity: sha512-ii/gswMmOievxAJed4PAHT949bpYjPKXvXo1v6cRB/kqc2ZR4n+SgyCyvyc5Fec5ez8VnUumI1Vk7j6fRyRogg==}
+  '@types/react@18.3.14':
+    resolution: {integrity: sha512-NzahNKvjNhVjuPBQ+2G7WlxstQ+47kXZNHlUvFakDViuIEfGY926GqhMueQFZ7woG+sPiQKlF36XfrIUVSUfFg==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -5240,10 +5240,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.1.0(@types/react@18.3.13)(react@19.0.0)':
+  '@mdx-js/react@3.1.0(@types/react@18.3.14)(react@19.0.0)':
     dependencies:
       '@types/mdx': 2.0.1
-      '@types/react': 18.3.13
+      '@types/react': 18.3.14
       react: 19.0.0
 
   '@next/env@15.0.4': {}
@@ -5524,11 +5524,11 @@ snapshots:
 
   '@types/prop-types@15.7.3': {}
 
-  '@types/react-dom@18.3.1':
+  '@types/react-dom@18.3.2':
     dependencies:
-      '@types/react': 18.3.13
+      '@types/react': 18.3.14
 
-  '@types/react@18.3.13':
+  '@types/react@18.3.14':
     dependencies:
       '@types/prop-types': 15.7.3
       csstype: 3.0.8
