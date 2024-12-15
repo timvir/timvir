@@ -46,7 +46,7 @@
     "blurhash": "^2.0.5",
     "builtin-modules": "^4.0.0",
     "bytestring": "^1.0.0",
-    "caniuse-lite": "^1.0.30001687",
+    "caniuse-lite": "^1.0.30001688",
     "chroma-js": "^3.1.2",
     "commander": "^12.1.0",
     "core-js": "^3.39.0",
