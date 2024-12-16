@@ -1,3 +1,5 @@
+"use client";
+
 import { css, cx } from "@linaria/core";
 import { Exhibit } from "timvir/blocks";
 import { useBlock } from "timvir/core";

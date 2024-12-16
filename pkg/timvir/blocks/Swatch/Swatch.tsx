@@ -1,3 +1,5 @@
+"use client";
+
 import { css, cx } from "@linaria/core";
 import { useBlock } from "timvir/core";
 import * as React from "react";
