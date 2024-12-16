@@ -333,7 +333,7 @@ importers:
         specifier: ^1
         version: 1.24.2
       use-immer:
-        specifier: ^0.11.0
+        specifier: ^0.8.0 || ^0.8.1 || ^0.9.0 || ^0.10.0 || ^0.11.0
         version: 0.11.0(immer@10.1.1)(react@19.0.0)
       wonka:
         specifier: ^6
