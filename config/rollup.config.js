@@ -6,6 +6,7 @@ import replace from "@rollup/plugin-replace";
 import terser from "@rollup/plugin-terser";
 import shebang from "rollup-plugin-add-shebang";
 import css from "rollup-plugin-css-only";
+import preserveDirectives from "rollup-preserve-directives";
 
 import * as fs from "fs";
 import stylis from "stylis";
@@ -50,6 +51,7 @@ function block(name) {
           plugins: [["babel-plugin-macros"]],
           babelHelpers: "bundled",
         }),
+        preserveDirectives(),
       ],
       external: [...externalFor("timvir"), /^timvir\//],
     },
@@ -79,6 +81,7 @@ function module(name) {
         babelHelpers: "bundled",
       }),
       shebang(),
+      preserveDirectives(),
     ],
     external: [...builtinModules, ...externalFor("timvir"), /^timvir\//],
   };
