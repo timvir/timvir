@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * This is documentation for the Code component.
  */
