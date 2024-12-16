@@ -1,3 +1,5 @@
+"use client";
+
 import { css, cx } from "@linaria/core";
 import { MDXProvider } from "@mdx-js/react";
 import * as React from "react";
