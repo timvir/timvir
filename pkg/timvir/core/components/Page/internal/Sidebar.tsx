@@ -129,7 +129,7 @@ function Sidebar(props: Props) {
         <span>{node?.label ?? "Menu"}</span>
 
         <Icons.Menu
-          size={`1rem`}
+          size={16}
           className={css`
             margin-left: auto;
           `}
