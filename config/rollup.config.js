@@ -58,9 +58,9 @@ function block(name) {
   ];
 }
 
-function module(name, source = `${name}/index.ts`) {
+function module(name) {
   return {
-    input: `pkg/timvir/${source}`,
+    input: `pkg/timvir/${name}/index.ts`,
     output: {
       file: `pkg/timvir/${name}/index.js`,
       format: "esm",
