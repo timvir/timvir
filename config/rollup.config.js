@@ -94,7 +94,7 @@ export default [
   module("bus"),
   module("context"),
   module("core"),
-  module("builtins", "core/components/Page/components.tsx"),
+  module("builtins"),
   module("hooks"),
   module("search"),
 
