@@ -8,6 +8,7 @@
     "./styles.css": "./styles.css",
     "./blocks": "./blocks/index.js",
     "./blocks/*": "./blocks/*/index.js",
+    "./builtins": "./builtins/index.js",
     "./bus": "./bus/index.js",
     "./context": "./context/index.js",
     "./core": "./core/index.js",
