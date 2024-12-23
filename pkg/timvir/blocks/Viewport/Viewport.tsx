@@ -100,39 +100,6 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
   });
 
   /*
-   * Note this useEffect runs on each render. This is fine beause it doesn't do any
-   * expensive computation, and the Viewport component only re-renders when the iframe
-   * itself changes height or the user resizes the width of the Viewport.
-   */
-  React.useEffect(() => {
-    const document = iframeRef.current?.contentDocument;
-    if (document) {
-      injectStyle(document);
-
-      /*
-       * The <body> element of the iframe document is the one which we observe and
-       * measure. It should not have any margins (we remove them by injecting a simple
-       * style reset into the iframe document).
-       */
-      iframeRO.observe(document.body);
-    }
-  });
-
-  /*
-   * Inject a simple style reset into the document.
-   */
-  function injectStyle(document: Document): void {
-    if (document.querySelector("style#timvir-viewport-style")) {
-      return;
-    }
-
-    const style = document.createElement("style");
-    style.id = "timvir-viewport-style";
-    style.innerHTML = "body { margin: 0 }";
-    document.head.appendChild(style);
-  }
-
-  /*
    * 20ms after the height has been set, we consider this block settled. This
    * time includes the 16ms CSS transition time, and a tiny bit more to allow
    * for the content in the iframe itself to finish rendering.
@@ -247,13 +214,51 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
                   src={src}
                   onLoad={(ev) => {
                     const document = ev.currentTarget.contentDocument;
-                    if (document) {
-                      injectStyle(document);
-
-                      const { height } = document.body.getBoundingClientRect();
-                      setHeight(height);
-                      setMaxHeight(height);
+                    if (!document) {
+                      console.warn(`Viewport: iframe has no contentDocument`);
+                      return;
                     }
+
+                    /*
+                     * Some browsers (notably Firefox) don't always fully initialize the <iframe>
+                     * element (see https://bugzilla.mozilla.org/show_bug.cgi?id=1191683). The
+                     * 'head' and 'body' properties in Document (which we access below) may be null
+                     * when this onLoad callback runs.
+                     *
+                     * We use the Document readyState to decide if we can interact and observe the
+                     * DOM.
+                     */
+
+                    const initializeDocument = () => {
+                      if (document.readyState === "interactive" || document.readyState === "complete") {
+                        /*
+                         * Inject a simple style reset into the document.
+                         */
+                        {
+                          const style = document.createElement("style");
+                          style.id = "timvir-viewport-style";
+                          style.innerHTML = "body { margin: 0 }";
+                          document.head.appendChild(style);
+                        }
+
+                        {
+                          const { height } = document.body.getBoundingClientRect();
+                          setHeight(height);
+                          setMaxHeight(height);
+                        }
+
+                        /*
+                         * The <body> element of the iframe document is the one which we observe and
+                         * measure. It should not have any margins (we remove them by injecting a simple
+                         * style reset into the iframe document).
+                         */
+                        iframeRO.observe(document.body);
+                      } else {
+                        document?.addEventListener("readystatechange", initializeDocument, { once: true });
+                      }
+                    };
+
+                    initializeDocument();
                   }}
                   className={css`
                     display: block;
