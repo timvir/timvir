@@ -58,9 +58,9 @@ function block(name) {
   ];
 }
 
-function module(name) {
+function module(name, source = `${name}/index.ts`) {
   return {
-    input: `pkg/timvir/${name}/index.ts`,
+    input: `pkg/timvir/${source}`,
     output: {
       file: `pkg/timvir/${name}/index.js`,
       format: "esm",
@@ -94,6 +94,7 @@ export default [
   module("bus"),
   module("context"),
   module("core"),
+  module("core/components", "core/components/Page/components.tsx"),
   module("hooks"),
   module("search"),
 
