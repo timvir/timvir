@@ -11,7 +11,7 @@ import { grid } from "../../layout";
 import { theme } from "../../theme";
 import { Commands } from "../Commands";
 import { NavigationFooter } from "../NavigationFooter";
-import * as mdxComponentsBase from "./components";
+import * as mdxComponentsBase from "timvir/builtins";
 import { Sidebar } from "./internal";
 import { Node } from "./types";
 

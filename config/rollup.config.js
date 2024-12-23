@@ -94,6 +94,7 @@ export default [
   module("bus"),
   module("context"),
   module("core"),
+  module("builtins"),
   module("hooks"),
   module("search"),
 
