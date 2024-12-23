@@ -26,7 +26,7 @@ const extensions = [".js", ".jsx", ".ts", ".tsx"];
 /*
  * The node version which we officially support in the NPM packages.
  */
-const node = "16";
+const node = "18";
 
 function block(name) {
   return [
