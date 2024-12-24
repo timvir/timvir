@@ -238,16 +238,19 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
                         iframeRO.observe(document.body);
 
                         /*
-                         * 20ms after the iframe document is complete, we the Viewport block settled.
-                         * This time includes the 16ms CSS transition time, and a tiny bit more to allow
-                         * for the content in the iframe itself to finish rendering.
+                         * 50ms after the iframe document is complete, we consider the Viewport block
+                         * settled. This time includes the 16ms CSS transition time, and a tiny bit more
+                         * to allow for the content in the iframe itself to finish rendering.
+                         *
+                         * This time is not quite enough if the iframe loads additional code or needs to
+                         * load data from a remote source. But should be enough for statically rendered
+                         * content.
                          */
-
                         setTimeout(() => {
                           mutate((draft) => {
                             draft.settled = true;
                           });
-                        }, 20);
+                        }, 50);
                       } else {
                         document?.addEventListener("readystatechange", initializeDocument, { once: true });
                       }
