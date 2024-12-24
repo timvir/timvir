@@ -84,7 +84,7 @@ importers:
         specifier: ^0.6.5
         version: 0.6.5
       '@types/node':
-        specifier: ^22.10.1
+        specifier: ^22.10.2
         version: 22.10.2
       '@types/prettier':
         specifier: ^2.7.3
