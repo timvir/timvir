@@ -99,23 +99,6 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
     setMaxHeight(Math.max(height, maxHeight ?? 0));
   });
 
-  /*
-   * 20ms after the height has been set, we consider this block settled. This
-   * time includes the 16ms CSS transition time, and a tiny bit more to allow
-   * for the content in the iframe itself to finish rendering.
-   */
-  React.useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      mutate((draft) => {
-        draft.settled = true;
-      });
-    }, 20);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [mutate, height]);
-
   return (
     <>
       <div ref={containerRef} />
@@ -230,7 +213,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
                      */
 
                     const initializeDocument = () => {
-                      if (document.readyState === "interactive" || document.readyState === "complete") {
+                      if (document.readyState === "complete") {
                         /*
                          * Inject a simple style reset into the document.
                          */
@@ -253,6 +236,21 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
                          * style reset into the iframe document).
                          */
                         iframeRO.observe(document.body);
+
+                        /*
+                         * 50ms after the iframe document is complete, we consider the Viewport block
+                         * settled. This time includes the 16ms CSS transition time, and a tiny bit more
+                         * to allow for the content in the iframe itself to finish rendering.
+                         *
+                         * This time is not quite enough if the iframe loads additional code or needs to
+                         * load data from a remote source. But should be enough for statically rendered
+                         * content.
+                         */
+                        setTimeout(() => {
+                          mutate((draft) => {
+                            draft.settled = true;
+                          });
+                        }, 50);
                       } else {
                         document?.addEventListener("readystatechange", initializeDocument, { once: true });
                       }
