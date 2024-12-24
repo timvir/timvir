@@ -21,14 +21,16 @@ interface Selector {
 }
 
 function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { children, ...rest } = props
+  const { children, ...rest } = props;
 
   const backdrop = React.useRef<HTMLDivElement>(null);
   const [selector, setSelector] = React.useState<Selector>({});
-  const timeout = React.useRef<any>();
+  const timeout = React.useRef<any>(null);
   const [codeRef, setCodeRef] = React.useState<null | HTMLDivElement>(null);
 
-  const exhibits: React.ReactElement[] = React.Children.toArray(children).filter(React.isValidElement);
+  const exhibits: React.ReactElement<{ source: string }>[] = React.Children.toArray(children).filter(
+    React.isValidElement
+  ) as any;
 
   React.useEffect(() => {
     const index = selector.hover ?? selector.sticky;
@@ -90,8 +92,12 @@ function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof 
         />
 
         {exhibits.map((child, i) => {
-          return React.cloneElement(child, {
-            className: cx(child.props.className, exhibit),
+          if (!React.isValidElement(child)) {
+            return child;
+          }
+
+          return React.cloneElement<any>(child, {
+            className: cx((child.props as any).className, exhibit),
             source: undefined,
             onMouseEnter: (_ev: React.MouseEvent<HTMLDivElement>) => {
               if (selector.sticky !== undefined) {

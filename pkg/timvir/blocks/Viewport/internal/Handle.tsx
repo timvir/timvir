@@ -5,7 +5,7 @@ interface Props {
   gridColumn: string;
   lock: React.MutableRefObject<string>;
   edge: "left" | "right";
-  iframeRef: React.RefObject<HTMLIFrameElement>;
+  iframeRef: React.RefObject<null | HTMLIFrameElement>;
 }
 
 function Handle(props: Props) {
