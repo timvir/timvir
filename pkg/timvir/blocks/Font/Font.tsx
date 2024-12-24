@@ -1,4 +1,5 @@
 import { useMDXComponents } from "@mdx-js/react";
+import * as builtins from "timvir/builtins";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -27,7 +28,7 @@ const classes = {
 };
 
 function Font(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const components = { h3: "h3", ...useMDXComponents() };
+  const components = { ...builtins, ...useMDXComponents() };
 
   const { name, font, info, className, children, ...rest } = props;
 
@@ -41,10 +42,12 @@ function Font(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root
 
       const intervalId = setInterval(() => {
         if (fontSizeRef) {
-          const fontSize = parseInt(computedStyle.fontSize, 10)
-          const lineHeight = parseInt(computedStyle.lineHeight, 10)
+          const fontSize = parseInt(computedStyle.fontSize, 10);
+          const lineHeight = parseInt(computedStyle.lineHeight, 10);
 
-          const innerText = `${name} – ${Math.round(fontSize)}px / ${Math.round(lineHeight / fontSize * 1000) / 1000}`;
+          const innerText = `${name} – ${Math.round(fontSize)}px / ${
+            Math.round((lineHeight / fontSize) * 1000) / 1000
+          }`;
           if (fontSizeRef.innerText !== innerText) {
             fontSizeRef.innerText = innerText;
           }

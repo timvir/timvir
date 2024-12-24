@@ -1,4 +1,5 @@
 import { useMDXComponents } from "@mdx-js/react";
+import * as builtins from "timvir/builtins";
 import { useContext } from "timvir/core";
 import { send } from "timvir/bus";
 import * as React from "react";
@@ -6,7 +7,7 @@ import * as React from "react";
 export default function Sample({ language, children }: any) {
   const context = useContext();
 
-  const components = { a: "a", ...useMDXComponents() };
+  const components = { ...builtins, ...useMDXComponents() };
 
   return (
     <components.a
