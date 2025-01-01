@@ -1,7 +1,7 @@
-import { withLinaria } from "./next/withLinaria.js"
+import withLinaria from "next-with-linaria";
 import { remarkPlugin } from "./pkg/mdx/index.js";
 
-export default withLinaria({ cacheDirectory: "./.next/cache/linaria" })({
+export default withLinaria({
   productionBrowserSourceMaps: true,
 
   typescript: {
