@@ -22,7 +22,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   BackdropProps?: React.ComponentPropsWithoutRef<"div">;
 }
 
-function Exhibit(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const block = useBlock(props);
 
   const { caption, bleed, BackdropProps, children, className, style, ...rest } = block.props;

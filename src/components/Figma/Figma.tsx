@@ -11,8 +11,8 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   url: string;
 }
 
-function Figma(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const { url, ...rest } = props
+function Figma(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+  const { url, ...rest } = props;
 
   const [roRef, roe] = useResizeObserverEntry();
 

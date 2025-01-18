@@ -29,7 +29,7 @@ const classes = {
   `,
 };
 
-function ColorContrastInspector(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function ColorContrastInspector(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { background, foreground, whitelist, className, ...rest } = props;
 
   return (

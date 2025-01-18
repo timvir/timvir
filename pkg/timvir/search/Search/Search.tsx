@@ -13,7 +13,7 @@ interface Props extends React.ComponentPropsWithoutRef<"div"> {
   }>;
 }
 
-function Search(props: Props, ref: React.ForwardedRef<React.ElementRef<"div">>) {
+function Search(props: Props, ref: React.ForwardedRef<React.ComponentRef<"div">>) {
   const { open, ...rest } = props;
 
   if (!open) {

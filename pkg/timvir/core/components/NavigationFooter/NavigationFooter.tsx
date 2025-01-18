@@ -21,7 +21,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   };
 }
 
-function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { Link } = useContext();
 
   const { prev, next, className, ...rest } = props;

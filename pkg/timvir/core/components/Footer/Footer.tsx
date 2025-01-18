@@ -14,7 +14,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   }>;
 }
 
-function Footer(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Footer(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { className, links, ...rest } = props;
 
   return (

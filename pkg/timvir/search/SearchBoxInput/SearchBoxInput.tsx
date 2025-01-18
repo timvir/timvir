@@ -11,7 +11,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function SearchBoxInput(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function SearchBoxInput(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { value, onChange, ...rest } = props;
 
   return (

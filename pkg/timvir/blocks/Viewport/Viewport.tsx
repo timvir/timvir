@@ -24,7 +24,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   code?: string;
 }
 
-function Viewport(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const block = useBlock(props);
 
   const { src, code, className, ...rest } = block.props;

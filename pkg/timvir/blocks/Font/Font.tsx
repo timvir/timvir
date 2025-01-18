@@ -27,7 +27,7 @@ const classes = {
   `,
 };
 
-function Font(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const components = { ...builtins, ...useMDXComponents() };
 
   const { name, font, info, className, children, ...rest } = props;

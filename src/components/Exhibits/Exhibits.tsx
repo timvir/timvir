@@ -20,7 +20,7 @@ interface Selector {
   sticky?: number;
 }
 
-function Exhibits(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Exhibits(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { children, ...rest } = props;
 
   const backdrop = React.useRef<HTMLDivElement>(null);
