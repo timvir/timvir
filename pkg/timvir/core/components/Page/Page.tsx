@@ -71,7 +71,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   blocks?: Value["blocks"];
 }
 
-function Page(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { location, toc, Link, className, search, mdxComponents, Footer, blocks, children, ...rest } = props;
 
   const [state, mutate] = useImmer({

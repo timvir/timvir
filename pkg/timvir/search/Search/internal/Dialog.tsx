@@ -20,7 +20,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   }>;
 }
 
-function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function Dialog(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { onClose, q, className, ...rest } = props;
 
   const { location, Link } = useContext();
@@ -42,21 +42,20 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Ro
 
   const items = result?.edges ?? [];
 
-  const { getMenuProps, getInputProps, /* highlightedIndex, */ getItemProps, closeMenu } =
-    useCombobox({
-      defaultHighlightedIndex: 0,
-      items,
-      itemToString: (item) => (item ? item.node.label : ""),
-      onInputValueChange: ({ inputValue }) => {
-        setValue(inputValue ?? "");
-      },
-      onSelectedItemChange: ({ selectedItem }) => {
-        if (selectedItem) {
-          location.push(selectedItem.node.path);
-        }
-        closeMenu();
-      },
-    });
+  const { getMenuProps, getInputProps, /* highlightedIndex, */ getItemProps, closeMenu } = useCombobox({
+    defaultHighlightedIndex: 0,
+    items,
+    itemToString: (item) => (item ? item.node.label : ""),
+    onInputValueChange: ({ inputValue }) => {
+      setValue(inputValue ?? "");
+    },
+    onSelectedItemChange: ({ selectedItem }) => {
+      if (selectedItem) {
+        location.push(selectedItem.node.path);
+      }
+      closeMenu();
+    },
+  });
 
   return (
     <Root

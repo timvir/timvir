@@ -39,15 +39,15 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   ancestry?: string;
 }
 
-function Swatch(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
-  const block = useBlock(props)
+function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+  const block = useBlock(props);
 
   const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, ...rest } = block.props;
 
   const [label, setLabel] = React.useState(name);
   React.useEffect(() => {
-    setLabel(name)
-  }, [name])
+    setLabel(name);
+  }, [name]);
 
   return (
     <Root

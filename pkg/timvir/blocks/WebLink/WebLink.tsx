@@ -14,7 +14,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   url: string;
 }
 
-function WebLink(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { url, className, ...rest } = props;
 
   const [state, mutate] = useImmer({

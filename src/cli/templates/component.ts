@@ -10,7 +10,7 @@ const Root = "{{= it.Root }}";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {}
 
-function {{= it.name }}(props: Props, ref: React.ForwardedRef<React.ElementRef<typeof Root>>) {
+function {{= it.name }}(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { ...rest } = props;
 
   return (
