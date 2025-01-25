@@ -333,7 +333,7 @@ importers:
         specifier: ^4
         version: 4.6.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       shiki:
-        specifier: ^2.0.0
+        specifier: ^1 || ^2
         version: 2.1.0
       use-immer:
         specifier: ^0.8.0 || ^0.8.1 || ^0.9.0 || ^0.10.0 || ^0.11.0
