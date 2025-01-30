@@ -69,8 +69,8 @@ importers:
         specifier: ^7.20.5
         version: 7.20.5
       '@types/chroma-js':
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^3.1.1
+        version: 3.1.1
       '@types/cors':
         specifier: ^2.8.17
         version: 2.8.17
@@ -1578,8 +1578,8 @@ packages:
   '@types/babel__traverse@7.0.15':
     resolution: {integrity: sha512-Pzh9O3sTK8V6I1olsXpCfj2k/ygO2q1X0vhhnDrEQyYLHZesWz+zMZMVcwXLCYf0U36EtmyYaFGPfXlTtDHe3A==}
 
-  '@types/chroma-js@3.1.0':
-    resolution: {integrity: sha512-Uwl3SOtUkbQ6Ye6ZYu4q4xdLGBzmY839sEHYtOT7i691neeyd+7fXWT5VIkcUSfNwIFrIjQutNYQn9h4q5HFvg==}
+  '@types/chroma-js@3.1.1':
+    resolution: {integrity: sha512-SFCr4edNkZ1bGaLzGz7rgR1bRzVX4MmMxwsIa3/Bh6ose8v+hRpneoizHv0KChdjxaXyjRtaMq7sCuZSzPomQA==}
 
   '@types/cors@2.8.17':
     resolution: {integrity: sha512-8CGDvrBj1zgo2qE+oS3pOCyYNqCPryMWY2bGfwA0dcfopWGgxs+78df0Rs3rc9THP4JkOhLsAa+15VdpAqkcUA==}
@@ -5529,7 +5529,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.7
 
-  '@types/chroma-js@3.1.0': {}
+  '@types/chroma-js@3.1.1': {}
 
   '@types/cors@2.8.17':
     dependencies:
