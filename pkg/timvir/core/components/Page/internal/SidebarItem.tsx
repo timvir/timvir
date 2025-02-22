@@ -26,7 +26,7 @@ function SidebarItem(props: Props) {
     );
 
   return (
-    <div className={classes.root} data-active={location.asPath.replace(/#.*^/, "") === path}>
+    <div className={classes.root} data-active={location.asPath.replace(/#.*$/, "") === path}>
       {path ? (
         <Link href={path} style={{ marginLeft: depth * 16 }}>
           {props.icon ? React.cloneElement(props.icon, { className: classes.icn }) : null}
