@@ -25,15 +25,17 @@ function Sidebar(props: Props) {
 
   const node = (function find(nodes: readonly Node[]): undefined | Node {
     for (const node of nodes) {
-      if (node.path === location.asPath) {
-        return node;
-      }
-
       if (node.children) {
         const n = find(node.children);
         if (n) {
           return n;
         }
+      }
+    }
+
+    for (const node of nodes) {
+      if (node.path && location.asPath.startsWith(node.path)) {
+        return node;
       }
     }
   })(toc);
