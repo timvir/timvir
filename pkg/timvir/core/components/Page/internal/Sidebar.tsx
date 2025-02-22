@@ -25,7 +25,7 @@ function Sidebar(props: Props) {
 
   const node = (function find(nodes: readonly Node[]): undefined | Node {
     for (const node of nodes) {
-      if (node.path === location.asPath) {
+      if (location.asPath.replace(/#.*$/, "") === node.path) {
         return node;
       }
 
