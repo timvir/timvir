@@ -57,7 +57,7 @@
     "downshift": "^9.0.8",
     "eslint": "^9.21.0",
     "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "fast-check": "^3.23.2",
     "fuzzaldrin-plus": "^0.6.0",
     "globby": "^14.1.0",
