@@ -83,7 +83,7 @@
     "sharp": "^0.33.5",
     "shiki": "^3.0.0",
     "stylis": "^3.5.4",
-    "typescript": "^5.7.3",
+    "typescript": "^5.8.2",
     "unfurl.js": "^6.4.0",
     "unist-util-visit": "^5.0.0",
     "use-immer": "^0.11.0",
