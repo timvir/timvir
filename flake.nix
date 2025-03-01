@@ -19,8 +19,6 @@
             echo "     [timˈvir] n. book"
           '';
 
-          nodejs = pkgs.nodejs_22;
-
           tools = {
             dev = pkgs.writeShellScriptBin "dev" ''
               clear
@@ -30,8 +28,8 @@
         in {
           devShells.default = pkgs.mkShell {
             buildInputs = [
-              nodejs
-              nodejs.pkgs.pnpm
+              pkgs.nodejs
+              pkgs.pnpm
 
               pkgs.jq
 
@@ -46,8 +44,8 @@
 
           devShells.workflow = pkgs.mkShell {
             buildInputs = [
-              nodejs
-              nodejs.pkgs.pnpm
+              pkgs.nodejs
+              pkgs.pnpm
             ];
 
             shellHook = ''
