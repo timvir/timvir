@@ -246,8 +246,8 @@ importers:
         specifier: ^0.11.0
         version: 0.11.0(immer@10.1.1)(react@19.0.0)
       wonka:
-        specifier: ^6.3.4
-        version: 6.3.4
+        specifier: ^6.3.5
+        version: 6.3.5
 
   pkg/cli:
     dependencies:
@@ -337,7 +337,7 @@ importers:
         version: 0.11.0(immer@10.1.1)(react@19.0.0)
       wonka:
         specifier: ^6
-        version: 6.3.4
+        version: 6.3.5
 
 packages:
 
@@ -4091,8 +4091,8 @@ packages:
   wide-align@1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
 
-  wonka@6.3.4:
-    resolution: {integrity: sha512-CjpbqNtBGNAeyNS/9W6q3kSkKE52+FjIj7AkFlLr11s/VWGUu6a2CdYSdGxocIhIVjaW/zchesBQUKPVU69Cqg==}
+  wonka@6.3.5:
+    resolution: {integrity: sha512-SSil+ecw6B4/Dm7Pf2sAshKQ5hWFvfyGlfPbEd6A14dOH6VDjrmbY86u6nZvy9omGwwIPFR8V41+of1EezgoUw==}
 
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
@@ -8591,7 +8591,7 @@ snapshots:
     dependencies:
       string-width: 4.2.3
 
-  wonka@6.3.4: {}
+  wonka@6.3.5: {}
 
   wrap-ansi@7.0.0:
     dependencies:
