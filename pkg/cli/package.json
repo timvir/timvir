@@ -1,6 +1,6 @@
 {
   "name": "@timvir/cli",
-  "version": "0.0.0",
+  "version": "0.2.34",
   "license": "MIT",
   "bin": {
     "timvir": "bin.js"
