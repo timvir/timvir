@@ -14,10 +14,12 @@ interface Props extends React.ComponentProps<typeof Root> {
 }
 
 function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const { as = Root, icon, label, context, ...rest } = props;
+  const { as, icon, label, context, ...rest } = props;
+
+  const Component = as ?? Root;
 
   return (
-    <Root
+    <Component
       role="button"
       ref={ref}
       className={css`
@@ -71,7 +73,7 @@ function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.Component
           </div>
         )}
       </div>
-    </Root>
+    </Component>
   );
 }
 
