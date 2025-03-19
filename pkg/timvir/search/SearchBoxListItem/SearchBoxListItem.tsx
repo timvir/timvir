@@ -4,19 +4,22 @@ import { css } from "@linaria/core";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Root = "div";
+const Root = "a";
 
 interface Props extends React.ComponentProps<typeof Root> {
+  as?: React.ComponentType<React.ComponentProps<typeof Root>>;
   icon?: React.ReactNode;
   label: React.ReactNode;
   context?: React.ReactNode;
 }
 
 function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const { icon, label, context, ...rest } = props;
+  const { as, icon, label, context, ...rest } = props;
+
+  const Component = as ?? Root;
 
   return (
-    <Root
+    <Component
       role="button"
       ref={ref}
       className={css`
@@ -26,6 +29,7 @@ function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.Component
         color: var(--timvir-text-color);
         cursor: pointer;
         box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
+        text-decoration: none;
 
         &:hover {
           background: rgba(0, 0, 0, 0.05);
@@ -70,7 +74,7 @@ function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.Component
           </div>
         )}
       </div>
-    </Root>
+    </Component>
   );
 }
 

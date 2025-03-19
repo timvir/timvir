@@ -144,29 +144,30 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
               `}
             >
               {items.map((item, index) => (
-                <Link key={index} href={item.node.path} passHref legacyBehavior>
-                  <SearchBoxListItem
-                    {...getItemProps({ item, index, onClick: onClose })}
-                    icon={
-                      <svg x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16">
-                        <g fill="none" stroke="#444" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit={10}>
-                          <path data-color="color-2" d="M4.5 11.5L11.5 11.5" />
-                          <path data-color="color-2" d="M4.5 8.5L11.5 8.5" />
-                          <path data-color="color-2" d="M4.5 5.5L6.5 5.5" />
-                          <path d="M9.5 0.5L1.5 0.5 1.5 15.5 14.5 15.5 14.5 5.5z" />
-                          <path d="M9.5 0.5L9.5 5.5 14.5 5.5" />
-                        </g>
-                      </svg>
+                <SearchBoxListItem
+                  key={index}
+                  as={Link}
+                  href={item.node.path}
+                  {...getItemProps({ item, index, onClick: onClose })}
+                  icon={
+                    <svg x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16">
+                      <g fill="none" stroke="#444" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit={10}>
+                        <path data-color="color-2" d="M4.5 11.5L11.5 11.5" />
+                        <path data-color="color-2" d="M4.5 8.5L11.5 8.5" />
+                        <path data-color="color-2" d="M4.5 5.5L6.5 5.5" />
+                        <path d="M9.5 0.5L1.5 0.5 1.5 15.5 14.5 15.5 14.5 5.5z" />
+                        <path d="M9.5 0.5L9.5 5.5 14.5 5.5" />
+                      </g>
+                    </svg>
+                  }
+                  label={<Highlight string={item.node.path} query={value} />}
+                  context={item.node.context}
+                  style={
+                    {
+                      // background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined,
                     }
-                    label={<Highlight string={item.node.path} query={value} />}
-                    context={item.node.context}
-                    style={
-                      {
-                        // background: highlightedIndex === index ? "rgba(0, 0, 0, 0.05)" : undefined,
-                      }
-                    }
-                  />
-                </Link>
+                  }
+                />
               ))}
             </main>
           </div>
