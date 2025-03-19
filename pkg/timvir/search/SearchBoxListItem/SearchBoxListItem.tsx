@@ -4,16 +4,17 @@ import { css } from "@linaria/core";
 /**
  * The underlying DOM element which is rendered by this component.
  */
-const Root = "div";
+const Root = "a";
 
 interface Props extends React.ComponentProps<typeof Root> {
+  as?: React.ComponentType<React.ComponentProps<typeof Root>>;
   icon?: React.ReactNode;
   label: React.ReactNode;
   context?: React.ReactNode;
 }
 
 function SearchBoxListItem(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const { icon, label, context, ...rest } = props;
+  const { as = Root, icon, label, context, ...rest } = props;
 
   return (
     <Root
