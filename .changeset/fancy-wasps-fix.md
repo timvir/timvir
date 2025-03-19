@@ -1,5 +1,5 @@
 ---
-"timvir": minor
+"timvir": patch
 ---
 
 Relax Link type
