@@ -16,37 +16,12 @@
       "rangeStrategy": "update-lockfile"
     },
     {
-      "extends": ["monorepo:react"],
-      "groupName": "React"
-    },
-    {
-      "extends": ["monorepo:nextjs"],
-      "groupName": "Next.js"
-    },
-    {
-      "extends": ["monorepo:babel"],
-      "groupName": "Babel"
-    },
-    {
       "groupName": "Linaria",
       "matchPackageNames": ["/^@linaria//"]
     },
     {
-      "groupName": "ESLint",
       "automerge": true,
-      "matchPackageNames": ["/^eslint/", "/^@typescript-eslint//"]
-    },
-    {
-      "matchPackageNames": ["sharp", "@types/sharp"],
-      "groupName": "Sharp"
-    },
-    {
-      "matchPackageNames": ["immer", "use-immer"],
-      "groupName": "Immer"
-    },
-    {
-      "automerge": true,
-      "matchPackageNames": ["/^@types//"]
+      "matchPackageNames": ["/^@types//", "/^eslint/", "/^@typescript-eslint//"]
     }
   ]
 }
