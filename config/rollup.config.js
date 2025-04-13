@@ -9,7 +9,7 @@ import css from "rollup-plugin-css-only";
 import preserveDirectives from "rollup-preserve-directives";
 
 import * as fs from "fs";
-import stylis from "stylis";
+import * as stylis from "stylis";
 
 import builtinModules from "builtin-modules";
 
