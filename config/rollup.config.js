@@ -1,4 +1,4 @@
-import linaria from "@linaria/rollup";
+import linaria from "@wyw-in-js/rollup";
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
