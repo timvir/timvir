@@ -9,11 +9,8 @@ import css from "rollup-plugin-css-only";
 import preserveDirectives from "rollup-preserve-directives";
 
 import * as fs from "fs";
-import stylis from "stylis";
 
 import builtinModules from "builtin-modules";
-
-stylis.set({ prefix: false });
 
 function externalFor(pkg) {
   const packageJson = JSON.parse(fs.readFileSync(`pkg/${pkg}/package.json`, "utf8"));

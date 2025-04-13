@@ -228,8 +228,8 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2
       stylis:
-        specifier: ^3.5.4
-        version: 3.5.4
+        specifier: ^4.3.6
+        version: 4.3.6
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -3814,9 +3814,6 @@ packages:
         optional: true
       babel-plugin-macros:
         optional: true
-
-  stylis@3.5.4:
-    resolution: {integrity: sha512-8/3pSmthWM7lsPBKv7NXkzn2Uc9W7NotcwGNpJaa3k7WMM1XDCA4MgT5k/8BIexd5ydZdboXtU90XH9Ec4Bv/Q==}
 
   stylis@4.3.6:
     resolution: {integrity: sha512-yQ3rwFWRfwNUY7H5vpU0wfdkNSnvnJinhF9830Swlaxl03zsOjCfmX0ugac+3LtK0lYSgwL/KXc8oYL3mG4YFQ==}
@@ -8341,8 +8338,6 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.26.10
       babel-plugin-macros: 3.1.0
-
-  stylis@3.5.4: {}
 
   stylis@4.3.6: {}
 
