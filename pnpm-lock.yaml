@@ -30,11 +30,11 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       '@linaria/core':
-        specifier: ^5.0.2
-        version: 5.0.2
+        specifier: ^6.3.0
+        version: 6.3.0
       '@linaria/react':
-        specifier: ^5.0.3
-        version: 5.0.3(react@19.1.0)
+        specifier: ^6.3.0
+        version: 6.3.0(react@19.1.0)
       '@linaria/rollup':
         specifier: ^5.0.4
         version: 5.0.4(rollup@4.40.0)(vite@5.3.4(@types/node@22.14.1)(terser@5.39.0))
@@ -1307,12 +1307,16 @@ packages:
     resolution: {integrity: sha512-l5jQq7w9kDvonfr/0MBF47Dagx9Y9f/o5Q8j3zv7GepwG/yHQdbjKr0tq07rx2fSDDX7Nbqlxk6k9Ymir/NGpg==}
     engines: {node: '>=16.0.0'}
 
+  '@linaria/core@6.3.0':
+    resolution: {integrity: sha512-fs1aQyX4DmJpeGMyobuSznAo/Y02+Q8vhm+c/jr2WHDmqKHEJpCqH2Mhu1End+SdiUvZIUgb4MNiZryWtZLD5g==}
+    engines: {node: '>=16.0.0'}
+
   '@linaria/logger@5.0.0':
     resolution: {integrity: sha512-PZd5H0I4F84U0kXSE+vD75ltIGDxEA6gMDNWS2aDZFitmdlQM5rIXqvKFrp5NsHa7a3AH+I2Hxm0dg60WZF7vg==}
     engines: {node: '>=16.0.0'}
 
-  '@linaria/react@5.0.3':
-    resolution: {integrity: sha512-faTQHnUlrAz0Lodu+rr6Yx59rX0nqFOrZ5/IdlfQcTRz9VebyVL4vtA3AOecmn1YFZjMpqjopT0OzNz6GknQSg==}
+  '@linaria/react@6.3.0':
+    resolution: {integrity: sha512-CjdEPwQCIRB3BRecnwK0g9mEWow3M1zAJTKI7h/B6j3yRLQRelitcoLd19MxZNz89pc0NNPALqy2I+eBGH0lJA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: '>=16'
@@ -1826,6 +1830,14 @@ packages:
 
   '@webassemblyjs/wast-printer@1.14.1':
     resolution: {integrity: sha512-kPSSXE6De1XOR820C90RIo2ogvZG+c3KiHzqUoO/F34Y2shGzesfqv7o57xrxovZJH/MetF5UjroJ/R/3isoiw==}
+
+  '@wyw-in-js/processor-utils@0.6.0':
+    resolution: {integrity: sha512-5YAZMUmF+S2HaqheKfew6ybbYBMnF10PjIgI7ieyuFxCohyqJNF4xdo6oHftv2z5Z4vCQ0OZHtDOQyDImBYwmg==}
+    engines: {node: '>=16.0.0'}
+
+  '@wyw-in-js/shared@0.6.0':
+    resolution: {integrity: sha512-BozBos29AuMWOvjjKf+bYYN+Vku0Nar6+y5oxrJXIZzUEKiWTVnIxO256vi8cUBGfo/DH44o+qZTkkdSN2pPXw==}
+    engines: {node: '>=16.0.0'}
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -2899,8 +2911,9 @@ packages:
     resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
     engines: {node: '>= 0.4'}
 
-  is-core-module@2.13.1:
-    resolution: {integrity: sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==}
+  is-core-module@2.16.1:
+    resolution: {integrity: sha512-UfoeMA6fIJ8wTYFEUjelnaGI67v6+N7qXJEvQuIGa99l4xsCruSYOVSQ0uPANn4dAzm8lkYPaKLrrijLq7x23w==}
+    engines: {node: '>= 0.4'}
 
   is-data-view@1.0.2:
     resolution: {integrity: sha512-RKtWF8pGmS87i2D6gqQu/l7EYRlVdfzemCJN/P3UOs//x1QE7mfhvzHIApBTRf7axvT6DMGwSwBXYCT0nfB9xw==}
@@ -3761,8 +3774,9 @@ packages:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
     engines: {node: '>=8'}
 
-  resolve@1.22.1:
-    resolution: {integrity: sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==}
+  resolve@1.22.10:
+    resolution: {integrity: sha512-NPRy+/ncIMeDlTAsuqwKIiferiawhefFJtkNSW0qZJEqMEb+qBt/77B/jGeeek+F0uOeN05CDa6HXbbIgtVX4w==}
+    engines: {node: '>= 0.4'}
     hasBin: true
 
   resolve@2.0.0-next.5:
@@ -4440,7 +4454,7 @@ snapshots:
       '@babel/helper-plugin-utils': 7.26.5
       debug: 4.3.7
       lodash.debounce: 4.0.8
-      resolve: 1.22.1
+      resolve: 1.22.10
     transitivePeerDependencies:
       - supports-color
 
@@ -4451,7 +4465,7 @@ snapshots:
       '@babel/helper-plugin-utils': 7.26.5
       debug: 4.3.7
       lodash.debounce: 4.0.8
-      resolve: 1.22.1
+      resolve: 1.22.10
     transitivePeerDependencies:
       - supports-color
 
@@ -4462,7 +4476,7 @@ snapshots:
       '@babel/helper-plugin-utils': 7.26.5
       debug: 4.3.7
       lodash.debounce: 4.0.8
-      resolve: 1.22.1
+      resolve: 1.22.10
     transitivePeerDependencies:
       - supports-color
 
@@ -5524,6 +5538,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@linaria/core@6.3.0':
+    dependencies:
+      '@wyw-in-js/processor-utils': 0.6.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@linaria/logger@5.0.0':
     dependencies:
       debug: 4.3.7
@@ -5531,15 +5551,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@linaria/react@5.0.3(react@19.1.0)':
+  '@linaria/react@6.3.0(react@19.1.0)':
     dependencies:
       '@emotion/is-prop-valid': 1.2.0
-      '@linaria/core': 5.0.2
-      '@linaria/tags': 5.0.2
-      '@linaria/utils': 5.0.2
+      '@linaria/core': 6.3.0
+      '@wyw-in-js/processor-utils': 0.6.0
+      '@wyw-in-js/shared': 0.6.0
       minimatch: 9.0.4
       react: 19.1.0
       react-html-attributes: 1.4.6
+      resolve: 1.22.10
       ts-invariant: 0.10.3
     transitivePeerDependencies:
       - supports-color
@@ -5761,7 +5782,7 @@ snapshots:
       '@types/resolve': 1.20.2
       deepmerge: 4.3.0
       is-module: 1.0.0
-      resolve: 1.22.1
+      resolve: 1.22.10
     optionalDependencies:
       rollup: 4.40.0
 
@@ -6167,6 +6188,21 @@ snapshots:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
 
+  '@wyw-in-js/processor-utils@0.6.0':
+    dependencies:
+      '@babel/generator': 7.27.0
+      '@wyw-in-js/shared': 0.6.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@wyw-in-js/shared@0.6.0':
+    dependencies:
+      debug: 4.3.7
+      find-up: 5.0.0
+      minimatch: 9.0.4
+    transitivePeerDependencies:
+      - supports-color
+
   '@xtuc/ieee754@1.2.0': {}
 
   '@xtuc/long@4.2.2': {}
@@ -6371,7 +6407,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.24.6
       cosmiconfig: 7.1.0
-      resolve: 1.22.1
+      resolve: 1.22.10
 
   babel-plugin-polyfill-corejs2@0.4.11(@babel/core@7.26.10):
     dependencies:
@@ -7422,7 +7458,7 @@ snapshots:
 
   is-callable@1.2.7: {}
 
-  is-core-module@2.13.1:
+  is-core-module@2.16.1:
     dependencies:
       hasown: 2.0.2
 
@@ -8440,15 +8476,15 @@ snapshots:
 
   resolve-from@5.0.0: {}
 
-  resolve@1.22.1:
+  resolve@1.22.10:
     dependencies:
-      is-core-module: 2.13.1
+      is-core-module: 2.16.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
   resolve@2.0.0-next.5:
     dependencies:
-      is-core-module: 2.13.1
+      is-core-module: 2.16.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
