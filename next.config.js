@@ -27,7 +27,6 @@ const plugins = [
         type: "commonJS",
         rootDir,
       },
-      classNamePrefix: "timvir",
     },
   }),
 ];
