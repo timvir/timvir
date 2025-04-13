@@ -1,8 +1,8 @@
 import { css, cx } from "@linaria/core";
 
-export const noLayout = css``;
+export const noLayout: string = css``;
 
-export const grid = css`
+export const grid: string = css`
   display: grid;
 
   --timvir-page-margin: 16px;
@@ -38,14 +38,14 @@ export const grid = css`
   }
 `;
 
-export const extendedWidth = cx(
+export const extendedWidth: string = cx(
   noLayout,
   css`
     grid-column: lex / rex;
   `
 );
 
-export const fullWidth = cx(
+export const fullWidth: string = cx(
   noLayout,
   css`
     grid-column: le / re;
