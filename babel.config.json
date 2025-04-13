@@ -1,4 +1,4 @@
 {
-  "presets": ["next/babel", "@linaria"],
+  "presets": ["next/babel", "@wyw-in-js"],
   "plugins": ["@babel/plugin-transform-unicode-regex"]
 }
