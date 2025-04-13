@@ -66,4 +66,4 @@ export default css`
       color: #dcbdfb;
     }
   }
-`;
+` as string;

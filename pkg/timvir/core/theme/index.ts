@@ -25,7 +25,7 @@ const themes = {
   },
 } as const;
 
-export const theme = css`
+export const theme: string = css`
   :global() {
     :root {
       box-sizing: border-box;
