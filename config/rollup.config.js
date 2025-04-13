@@ -4,11 +4,14 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import terser from "@rollup/plugin-terser";
+import stylexPlugin0 from "@stylexswc/rollup-plugin";
 import linaria from "@wyw-in-js/rollup";
 import builtinModules from "builtin-modules";
 import shebang from "rollup-plugin-add-shebang";
 import css from "rollup-plugin-css-only";
 import preserveDirectives from "rollup-preserve-directives";
+
+const stylexPlugin = stylexPlugin0.default
 
 function externalFor(pkg) {
   const packageJson = JSON.parse(fs.readFileSync(`pkg/${pkg}/package.json`, "utf8"));
@@ -43,6 +46,13 @@ function block(name) {
         replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
         linaria(),
         css({ output: "styles.css" }),
+        stylexPlugin({
+          useCSSLayers: true,
+          fileName: "stylex.css",
+          rsOptions: {
+            classNamePrefix: "timvir-s-",
+          },
+        }),
         babel({
           configFile: false,
           extensions,
@@ -69,6 +79,13 @@ function module(name) {
       commonjs(),
       linaria(),
       css({ output: "styles.css" }),
+      stylexPlugin({
+        useCSSLayers: true,
+        fileName: "stylex.css",
+        rsOptions: {
+          classNamePrefix: "timvir-s-",
+        },
+      }),
       babel({
         configFile: false,
         extensions,
@@ -121,6 +138,13 @@ export default [
       replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
       linaria(),
       css({ output: "styles.css" }),
+      stylexPlugin({
+        useCSSLayers: true,
+        fileName: "stylex.css",
+        rsOptions: {
+          classNamePrefix: "timvir-s-",
+        },
+      }),
       babel({
         configFile: false,
         extensions,
