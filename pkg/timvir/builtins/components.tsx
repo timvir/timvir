@@ -56,7 +56,7 @@ function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHea
   };
 }
 
-export const h1 = styled.h1`
+export const h1: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = styled.h1`
   margin-top: 3rem;
   margin-bottom: 1rem;
   font-size: 2rem;
@@ -65,7 +65,7 @@ export const h1 = styled.h1`
   text-indent: -0.05em;
 `;
 
-export const h2 = Heading(
+export const h2: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading(
   styled.h2`
     position: relative;
     margin: 2.5rem 0 1rem;
@@ -75,7 +75,7 @@ export const h2 = Heading(
   `
 );
 
-export const h3 = Heading(
+export const h3: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading(
   styled.h3`
     position: relative;
     margin: 1rem 0 1rem;
@@ -85,7 +85,7 @@ export const h3 = Heading(
   `
 );
 
-export const h4 = Heading(
+export const h4: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading(
   styled.h4`
     position: relative;
     margin: 1rem 0 1rem;
@@ -95,7 +95,7 @@ export const h4 = Heading(
   `
 );
 
-export const blockquote = styled.blockquote`
+export const blockquote: React.FunctionComponent<React.BlockquoteHTMLAttributes<HTMLQuoteElement>> = styled.blockquote`
   margin-left: 0;
   font-size: 1.1rem;
 
@@ -107,7 +107,7 @@ export const blockquote = styled.blockquote`
   }
 `;
 
-export const hr = styled.hr`
+export const hr: React.FunctionComponent<React.HTMLAttributes<HTMLHRElement>> = styled.hr`
   display: block;
   border: none;
   height: 1px;
@@ -116,7 +116,7 @@ export const hr = styled.hr`
   opacity: 0.25;
 `;
 
-export const table = styled.table`
+export const table: React.FunctionComponent<React.TableHTMLAttributes<HTMLTableElement>> = styled.table`
   border-spacing: 0;
   border-collapse: collapse;
 
@@ -124,11 +124,11 @@ export const table = styled.table`
   overflow: auto;
 `;
 
-export const thead = styled.thead``;
+export const thead: React.FunctionComponent<React.HTMLAttributes<HTMLTableSectionElement>> = styled.thead``;
 
-export const tbody = styled.tbody``;
+export const tbody: React.FunctionComponent<React.HTMLAttributes<HTMLTableSectionElement>> = styled.tbody``;
 
-export const tr = styled.tr`
+export const tr: React.FunctionComponent<React.HTMLAttributes<HTMLTableRowElement>> = styled.tr`
   background-color: #fff;
   border-top: 1px solid var(--c-p-2);
 
@@ -137,21 +137,21 @@ export const tr = styled.tr`
   }
 `;
 
-export const th = styled.th`
+export const th: React.FunctionComponent<React.ThHTMLAttributes<HTMLTableHeaderCellElement>> = styled.th`
   text-align: ${(props) => props.align || "center"};
 
   padding: 6px 13px;
   border: 1px solid var(--c-p-2);
 `;
 
-export const td = styled.td`
+export const td: React.FunctionComponent<React.TdHTMLAttributes<HTMLTableDataCellElement>> = styled.td`
   text-align: ${(props) => props.align || "left"};
 
   padding: 6px 13px;
   border: 1px solid var(--c-p-2);
 `;
 
-export const code = styled.code`
+export const code: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = styled.code`
   border-radius: 5px;
   padding: 4px 6px 3px;
   font-size: 0.8em;
@@ -159,7 +159,7 @@ export const code = styled.code`
   border: 1px solid var(--timvir-border-color);
 `;
 
-export const a = styled.a`
+export const a: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement>> = styled.a`
   color: currentColor;
   text-decoration: none;
   background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
@@ -171,20 +171,17 @@ export const a = styled.a`
     background-image: linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a);
   }
 
-  &:hover ${code} {
+  &:hover ${code as any} {
     box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.5), inset 0 1px 4px rgba(16, 22, 26, 0.2);
   }
-  &:active ${code} {
+  &:active ${code as any} {
     box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.7), inset 0 1px 4px rgba(16, 22, 26, 0.4);
     background: var(--c-p-2);
   }
 `;
 
-export const p = styled.p`
-`;
+export const p: React.FunctionComponent<React.HTMLAttributes<HTMLParagraphElement>> = styled.p``;
 
-export const ul = styled.ul`
-`;
+export const ul: React.FunctionComponent<React.HTMLAttributes<HTMLUListElement>> = styled.ul``;
 
-export const ol = styled.ol`
-`;
+export const ol: React.FunctionComponent<React.HTMLAttributes<HTMLOListElement>> = styled.ol``;
