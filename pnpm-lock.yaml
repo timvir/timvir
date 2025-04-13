@@ -49,7 +49,7 @@ importers:
         version: 3.1.0(webpack@5.93.0)
       '@mdx-js/react':
         specifier: ^3.1.0
-        version: 3.1.0(@types/react@19.1.0)(react@19.1.0)
+        version: 3.1.0(@types/react@19.1.1)(react@19.1.0)
       '@playwright/test':
         specifier: ^1.51.1
         version: 1.51.1
@@ -99,11 +99,11 @@ importers:
         specifier: ^2.4.9
         version: 2.4.9
       '@types/react':
-        specifier: ^19.1.0
-        version: 19.1.0
+        specifier: ^19.1.1
+        version: 19.1.1
       '@types/react-dom':
         specifier: ^19.1.2
-        version: 19.1.2(@types/react@19.1.0)
+        version: 19.1.2(@types/react@19.1.1)
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.29.1
         version: 8.29.1(@typescript-eslint/parser@8.29.1(eslint@9.24.0)(typescript@5.8.3))(eslint@9.24.0)(typescript@5.8.3)
@@ -304,7 +304,7 @@ importers:
     dependencies:
       '@mdx-js/react':
         specifier: ^2 || ^3
-        version: 3.1.0(@types/react@19.1.0)(react@19.1.0)
+        version: 3.1.0(@types/react@19.1.1)(react@19.1.0)
       bytestring:
         specifier: ^1
         version: 1.0.0
@@ -1715,8 +1715,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.1.0':
-    resolution: {integrity: sha512-UaicktuQI+9UKyA4njtDOGBD/67t8YEBt2xdfqu8+gP9hqPUPsiXlNPcpS2gVdjmis5GKPG3fCxbQLVgxsQZ8w==}
+  '@types/react@19.1.1':
+    resolution: {integrity: sha512-ePapxDL7qrgqSF67s0h9m412d9DbXyC1n59O2st+9rjuuamWsZuD2w55rqY12CbzsZ7uVXb5Nw0gEp9Z8MMutQ==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -5684,10 +5684,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.1.0(@types/react@19.1.0)(react@19.1.0)':
+  '@mdx-js/react@3.1.0(@types/react@19.1.1)(react@19.1.0)':
     dependencies:
       '@types/mdx': 2.0.1
-      '@types/react': 19.1.0
+      '@types/react': 19.1.1
       react: 19.1.0
 
   '@next/env@15.3.0': {}
@@ -5980,11 +5980,11 @@ snapshots:
       '@types/node': 22.14.0
       kleur: 3.0.3
 
-  '@types/react-dom@19.1.2(@types/react@19.1.0)':
+  '@types/react-dom@19.1.2(@types/react@19.1.1)':
     dependencies:
-      '@types/react': 19.1.0
+      '@types/react': 19.1.1
 
-  '@types/react@19.1.0':
+  '@types/react@19.1.1':
     dependencies:
       csstype: 3.0.8
 
