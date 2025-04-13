@@ -2,6 +2,32 @@ import { css } from "@linaria/core";
 import { styled } from "@linaria/react";
 import * as React from "react";
 import * as Icons from "react-feather";
+import * as stylex from "@stylexjs/stylex";
+
+const styles = stylex.create({
+  h1: {
+    marginTop: "3rem",
+    marginBottom: "1rem",
+    fontSize: "2rem",
+    lineHeight: 1.125,
+    fontWeight: 590,
+    textIndent: "-0.05em",
+  },
+
+  headingAnchor: {
+    display: "inline-block",
+    marginLeft: "6px",
+    color: "var(--timvir-secondary-text-color)",
+    height: "0.9rem",
+    width: "0.9rem",
+    verticalAlign: "middle",
+
+    transition: "opacity 0.2s, transform 0.2s, visibility 0s var(--visibility-delay, 0.2s)",
+    opacity: "var(--opacity, 0)",
+    visibility: "var(--visibility, hidden)",
+    transform: "var(--transform, translateX(-50%))",
+  },
+});
 
 const anchorize = (children?: React.ReactNode): undefined | string => {
   if (typeof children === "string") {
@@ -25,45 +51,26 @@ function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHea
             color: inherit;
             text-decoration: none;
 
-            &:hover svg {
-              opacity: 1;
-              transform: none;
-              visibility: visible;
+            &:hover {
+              --opacity: 1;
+              --transform: none;
+              --visibility: visible;
               --visibility-delay: 0s;
             }
           `}
           href={id && `#${id}`}
         >
           {props.children}
-          <Icons.Link
-            className={css`
-              display: inline-block;
-              margin-left: 6px;
-              color: var(--timvir-secondary-text-color);
-              height: 0.9rem;
-              width: 0.9rem;
-              vertical-align: middle;
-
-              transition: opacity 0.2s, transform 0.2s, visibility 0s var(--visibility-delay, 0.2s);
-              opacity: 0;
-              visibility: hidden;
-              transform: translateX(-50%);
-            `}
-          />
+          <Icons.Link {...stylex.props(styles.headingAnchor)} />
         </a>
       </Component>
     );
   };
 }
 
-export const h1 = styled.h1`
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  line-height: 1.125;
-  font-weight: 590;
-  text-indent: -0.05em;
-`;
+export const h1 = (props: React.HTMLAttributes<HTMLHeadingElement>) => {
+  return <h1 {...props} {...stylex.props(styles.h1)} />;
+};
 
 export const h2 = Heading(
   styled.h2`
@@ -180,11 +187,8 @@ export const a = styled.a`
   }
 `;
 
-export const p = styled.p`
-`;
+export const p = styled.p``;
 
-export const ul = styled.ul`
-`;
+export const ul = styled.ul``;
 
-export const ol = styled.ol`
-`;
+export const ol = styled.ol``;
