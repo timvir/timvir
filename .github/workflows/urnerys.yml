@@ -6,6 +6,9 @@ env:
   URNERYS: app.urnerys.dev
   BUILD: "github-run-${{ github.run_id }}-${{ github.run_attempt }}"
 
+permissions:
+  contents: read
+
 jobs:
   urnerys:
     name: Urnerys
