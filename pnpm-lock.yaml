@@ -203,9 +203,6 @@ importers:
       react-hotkeys-hook:
         specifier: ^5.0.1
         version: 5.0.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      react-measure:
-        specifier: ^2.5.2
-        version: 2.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       rollup:
         specifier: ^4.40.0
         version: 4.40.0
@@ -2495,9 +2492,6 @@ packages:
     resolution: {integrity: sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==}
     engines: {node: '>= 0.4'}
 
-  get-node-dimensions@1.2.1:
-    resolution: {integrity: sha512-2MSPMu7S1iOTL+BOa6K1S62hB2zUAYNF/lV0gSVlOaacd087lc6nR1H1r0e3B1CerTo+RceOmi1iJW+vp21xcQ==}
-
   get-proto@1.0.1:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
     engines: {node: '>= 0.4'}
@@ -3463,12 +3457,6 @@ packages:
   react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
 
-  react-measure@2.5.2:
-    resolution: {integrity: sha512-M+rpbTLWJ3FD6FXvYV6YEGvQ5tMayQ3fGrZhRPHrE9bVlBYfDCLuDcgNttYfk8IqfOI03jz6cbpqMRTUclQnaA==}
-    peerDependencies:
-      react: '>0.13.0'
-      react-dom: '>0.13.0'
-
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
@@ -3538,9 +3526,6 @@ packages:
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
-
-  resize-observer-polyfill@1.5.1:
-    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
 
   resolve-cwd@3.0.0:
     resolution: {integrity: sha512-OrZaX2Mb+rJCpH/6CpSqt9xFVpN++x01XnN2ie9g6P5/3xelLAkXWVADpdz1IHD/KFfEXyE6V0U01OQ3UO2rEg==}
@@ -6745,8 +6730,6 @@ snapshots:
       hasown: 2.0.2
       math-intrinsics: 1.1.0
 
-  get-node-dimensions@1.2.1: {}
-
   get-proto@1.0.1:
     dependencies:
       dunder-proto: 1.0.1
@@ -7874,15 +7857,6 @@ snapshots:
 
   react-is@18.2.0: {}
 
-  react-measure@2.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
-    dependencies:
-      '@babel/runtime': 7.24.6
-      get-node-dimensions: 1.2.1
-      prop-types: 15.8.1
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      resize-observer-polyfill: 1.5.1
-
   react@19.1.0: {}
 
   read-yaml-file@1.1.0:
@@ -7980,8 +7954,6 @@ snapshots:
   require-directory@2.1.1: {}
 
   require-from-string@2.0.2: {}
-
-  resize-observer-polyfill@1.5.1: {}
 
   resolve-cwd@3.0.0:
     dependencies:
