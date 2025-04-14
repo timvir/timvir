@@ -44,7 +44,6 @@
     "@zhif/macro": "^0.0.17",
     "ava": "^6.2.0",
     "babel-plugin-macros": "^3.1.0",
-    "blurhash": "^2.0.5",
     "builtin-modules": "^5.0.0",
     "bytestring": "^1.0.0",
     "caniuse-lite": "^1.0.30001713",
