@@ -120,8 +120,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       bytestring:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       caniuse-lite:
         specifier: ^1.0.30001713
         version: 1.0.30001713
@@ -301,7 +301,7 @@ importers:
         version: 3.1.0(@types/react@19.1.2)(react@19.1.0)
       bytestring:
         specifier: ^1
-        version: 1.0.0
+        version: 1.0.1
       downshift:
         specifier: ^7 || ^8 || ^9
         version: 9.0.9(react@19.1.0)
@@ -1885,8 +1885,8 @@ packages:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
     engines: {node: '>=10.16.0'}
 
-  bytestring@1.0.0:
-    resolution: {integrity: sha512-9mtNL+tQad2UQ4VeQYLbz2g4XPpuXEKvaobNTEQH6dwxhd9vDVsBWxFTdLQxHfYF9st8y8/YoQ1ozbCE2ySWcg==}
+  bytestring@1.0.1:
+    resolution: {integrity: sha512-seab+KRloh+sdNawOZD3hp4mseMO7fKDauxlCMEZiRDpPHK7+NyJpEONoS5ocwJqovRZEfCpk3MWDuwSP5Q3pA==}
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
@@ -6058,7 +6058,7 @@ snapshots:
     dependencies:
       streamsearch: 1.1.0
 
-  bytestring@1.0.0: {}
+  bytestring@1.0.1: {}
 
   call-bind-apply-helpers@1.0.2:
     dependencies:
