@@ -1,12 +1,12 @@
 name: Scorecard
 on:
-  workflow_dispatch: {}
   branch_protection_rule: {}
   schedule:
     - cron: "21 23 * * 6"
+  pull_request:
+    branches: [master]
   push:
-    branches:
-      - master
+    branches: [master]
 
 permissions: read-all
 
