@@ -65,8 +65,8 @@ export function useBlock<P extends { id?: string }>(props: P) {
     props: { ...props, ...state.overrides },
     hasOverrides: !!state.overrides,
     reset: () => {
-      mutate((draft) => {
-        draft.overrides = undefined;
+      setState({
+        overrides: undefined,
       });
     },
   };
