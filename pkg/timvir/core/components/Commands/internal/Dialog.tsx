@@ -2,7 +2,6 @@ import { css } from "@linaria/core";
 import * as React from "react";
 import { useContext } from "timvir/context";
 import { defaultSearch } from "timvir/search";
-import { useImmer } from "use-immer";
 import Action from "./Action";
 
 interface Props {
@@ -16,7 +15,7 @@ function Dialog(props: Props) {
 
   const { open, onClose, onDispose, ...rest } = props;
 
-  const [state, mutate] = useImmer({
+  const [state, setState] = React.useState({
     style: { opacity: 0, transform: "scale(0.98)" } as React.CSSProperties,
     query: "",
 
@@ -24,27 +23,32 @@ function Dialog(props: Props) {
   });
 
   React.useEffect(() => {
-    mutate((draft) => {
-      if (open) {
-        draft.style = { opacity: 1, transform: "none" };
-      } else {
-        draft.style = { opacity: 0, transform: "scale(0.95)" };
+    if (open) {
+      setState((state) => ({
+        ...state,
+        style: { opacity: 1, transform: "none" },
+      }));
+    } else {
+      setState((state) => ({
+        ...state,
+        style: { opacity: 0, transform: "scale(0.95)" },
+      }));
 
-        setTimeout(() => {
-          onDispose?.();
-        }, 200);
-      }
-    });
-  }, [mutate, open]);
+      setTimeout(() => {
+        onDispose?.();
+      }, 200);
+    }
+  }, [open]);
 
   React.useEffect(() => {
     (async () => {
       const { edges } = await defaultSearch(toc).q(state.query);
-      mutate((draft) => {
-        draft.commands = edges;
-      });
+      setState((state) => ({
+        ...state,
+        commands: edges,
+      }));
     })();
-  }, [mutate, state.query]);
+  }, [state.query]);
 
   return (
     <div className={classes.root} style={state.style} {...rest}>
@@ -56,10 +60,10 @@ function Dialog(props: Props) {
           placeholder="Type a command or search…"
           value={state.query}
           onChange={(ev) => {
-            const query = ev.currentTarget.value;
-            mutate((draft) => {
-              draft.query = query;
-            });
+            setState((state) => ({
+              ...state,
+              query: ev.currentTarget.value,
+            }));
           }}
         />
       </div>

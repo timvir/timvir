@@ -10,7 +10,6 @@ import { useBlock } from "timvir/core";
 import { codeToHtml } from "shiki";
 import * as React from "react";
 import * as Icons from "react-feather";
-import { useImmer } from "use-immer";
 import theme from "./theme";
 
 /**
@@ -52,7 +51,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   const { children, language, fullWidth, highlightedLines, caption, className, ...rest } = block.props;
 
-  const [state, mutate] = useImmer({
+  const [state, setState] = React.useState({
     settled: false,
 
     mouseOver: false,
@@ -87,12 +86,13 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         })),
       });
 
-      mutate((draft) => {
-        draft.settled = true;
-        draft.html = html;
-      });
+      setState((state) => ({
+        ...state,
+        settled: true,
+        html,
+      }));
     })();
-  }, [mutate, children, language]);
+  }, [children, language]);
 
   return (
     <Root
@@ -107,23 +107,26 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
             grid-template-columns: 1fr;
           `}
           onMouseEnter={() => {
-            mutate((draft) => {
-              draft.mouseOver = true;
-            });
+            setState((state) => ({
+              ...state,
+              mouseOver: true,
+            }));
           }}
           onMouseLeave={() => {
-            mutate((draft) => {
-              draft.mouseOver = false;
-              draft.copiedToClipboard = false;
-            });
+            setState((state) => ({
+              ...state,
+              mouseOver: false,
+              copiedToClipboard: false,
+            }));
           }}
         >
           <button
             onClick={() => {
               navigator.clipboard.writeText(children);
-              mutate((draft) => {
-                draft.copiedToClipboard = true;
-              });
+              setState((state) => ({
+                ...state,
+                copiedToClipboard: true,
+              }));
             }}
             className={cx(
               css`
