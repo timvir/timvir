@@ -1,4 +1,3 @@
-import fuzzaldrin from "fuzzaldrin-plus";
 import * as React from "react";
 import { Node } from "timvir/core";
 import { Dialog } from "./internal";
@@ -28,14 +27,14 @@ export default React.forwardRef(Search);
 export function defaultSearch(toc: readonly Node[]) {
   return {
     q: async (query: string) => {
-      const preparedQuery = fuzzaldrin.prepareQuery(query);
       const items = toc
         .flatMap((n) => flatten(n))
         .map((n) => ({
           ...n,
-          score: fuzzaldrin.score(n.path, query, {
-            preparedQuery,
-          }),
+          score: (() => {
+            const matchLength = n.path.toLowerCase().split(query.toLowerCase()).length - 1;
+            return matchLength / n.path.length;
+          })(),
         }))
         .filter((n) => (query ? n.score > 0 : true))
         .sort((a, b) => b.score - a.score);
