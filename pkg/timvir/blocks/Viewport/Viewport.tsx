@@ -5,7 +5,6 @@ import { fullWidth, useBlock } from "timvir/core";
 import { useResizeObserver, useResizeObserverEntry } from "timvir/hooks";
 import * as React from "react";
 import { Caption, Handle, Ruler } from "./internal";
-import { useImmer } from "use-immer";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -29,7 +28,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
 
   const { src, code, className, ...rest } = block.props;
 
-  const [state, mutate] = useImmer({
+  const [state, setState] = React.useState({
     settled: false,
   });
 
@@ -247,8 +246,8 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
                          * content.
                          */
                         setTimeout(() => {
-                          mutate((draft) => {
-                            draft.settled = true;
+                          setState({
+                            settled: true,
                           });
                         }, 50);
                       } else {
