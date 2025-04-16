@@ -6,7 +6,6 @@ import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
-import { useImmer } from "use-immer";
 import { grid } from "../../layout";
 import { theme } from "../../theme";
 import { Commands } from "../Commands";
@@ -74,7 +73,7 @@ interface Props extends React.ComponentProps<typeof Root> {
 function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { location, toc, Link, className, search, mdxComponents, Footer, blocks, children, ...rest } = props;
 
-  const [state, mutate] = useImmer({
+  const [state, setState] = React.useState({
     search: {
       open: false,
     },
@@ -96,8 +95,10 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     "meta+p",
     (ev) => {
       ev.preventDefault();
-      mutate((draft) => {
-        draft.search.open = !draft.search.open;
+      setState({
+        search: {
+          open: !state.search.open,
+        },
       });
     },
     { enableOnFormTags: true }
@@ -106,8 +107,10 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   useHotkeys(
     "escape",
     () => {
-      mutate((draft) => {
-        draft.search.open = false;
+      setState({
+        search: {
+          open: false,
+        },
       });
     },
     { enableOnFormTags: true }
@@ -159,8 +162,10 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           search={
             search && {
               open: () => {
-                mutate((draft) => {
-                  draft.search.open = true;
+                setState({
+                  search: {
+                    open: true,
+                  },
                 });
               },
               ...search,
@@ -239,8 +244,10 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           <search.Component
             {...state.search}
             onClose={() => {
-              mutate((draft) => {
-                draft.search.open = false;
+              setState({
+                search: {
+                  open: false,
+                },
               });
             }}
           />

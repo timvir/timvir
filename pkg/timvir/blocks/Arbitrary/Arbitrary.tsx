@@ -55,7 +55,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
               onPaste={(ev) => {
                 const v = ev.clipboardData.getData("text/plain");
                 setValue({
-                  seed: +new TextDecoder().decode(base58.decode(v))
+                  seed: +new TextDecoder().decode(base58.decode(v)),
                 });
               }}
               onFocus={(ev) => {
@@ -68,7 +68,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
             className={classes.button}
             onClick={() => {
               setValue({
-                seed: crypto.getRandomValues(new Uint32Array(1))[0];
+                seed: crypto.getRandomValues(new Uint32Array(1))[0],
               });
             }}
           >
