@@ -60,9 +60,10 @@ function Dialog(props: Props) {
           placeholder="Type a command or search…"
           value={state.query}
           onChange={(ev) => {
+            const query = ev.currentTarget.value;
             setState((state) => ({
               ...state,
-              query: ev.currentTarget.value,
+              query,
             }));
           }}
         />
