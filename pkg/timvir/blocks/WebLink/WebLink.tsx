@@ -3,7 +3,6 @@
 import * as React from "react";
 import { cx, css } from "@linaria/core";
 import { useContext } from "timvir/core";
-import { useImmer } from "use-immer";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -17,7 +16,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { url, className, ...rest } = props;
 
-  const [state, mutate] = useImmer({
+  const [state, setState] = React.useState({
     settled: false,
     metadata: undefined as any,
   });
@@ -26,12 +25,12 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
 
   React.useEffect(() => {
     unfurl(url).then((metadata) => {
-      mutate((draft) => {
-        draft.settled = true;
-        draft.metadata = metadata;
+      setState({
+        settled: true,
+        metadata: metadata,
       });
     });
-  }, [url, mutate]);
+  }, [url]);
 
   const metadata = state.metadata;
   const image = metadata?.open_graph?.images?.[0]?.url;
