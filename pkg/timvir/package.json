@@ -19,10 +19,8 @@
     "bytestring": "^1",
     "downshift": "^7 || ^8 || ^9",
     "fuzzaldrin-plus": "^0.6.0",
-    "immer": "^9 || ^10",
     "shiki": "^1 || ^2 || ^3",
     "react-feather": "^2",
-    "use-immer": "^0.8.0 || ^0.8.1 || ^0.9.0 || ^0.10.0 || ^0.11.0",
     "wonka": "^6"
   },
   "peerDependencies": {

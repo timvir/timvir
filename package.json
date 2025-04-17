@@ -59,7 +59,6 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "fuzzaldrin-plus": "^0.6.0",
     "globby": "^14.1.0",
-    "immer": "^10.1.1",
     "kleur": "^4.1.5",
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-mdx": "^3.0.0",
@@ -81,7 +80,6 @@
     "typescript": "^5.8.3",
     "unfurl.js": "^6.4.0",
     "unist-util-visit": "^5.0.0",
-    "use-immer": "^0.11.0",
     "wonka": "^6.3.5"
   }
 }

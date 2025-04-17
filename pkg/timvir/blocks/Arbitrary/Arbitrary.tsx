@@ -5,7 +5,6 @@ import { Exhibit } from "timvir/blocks";
 import { useBlock } from "timvir/core";
 import * as base58 from "bytestring/base58";
 import * as React from "react";
-import { useImmer } from "use-immer";
 import { Context } from "./context";
 
 /**
@@ -22,15 +21,13 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
 
   const { ExhibitProps, className, children, ...rest } = block.props;
 
-  const [value, mutate] = useImmer({
-    seed: 0,
-  });
+  const [value, setValue] = React.useState({ seed: 0 });
 
   React.useEffect(() => {
-    mutate((draft) => {
-      draft.seed = crypto.getRandomValues(new Uint32Array(1))[0];
+    setValue({
+      seed: crypto.getRandomValues(new Uint32Array(1))[0],
     });
-  }, [mutate]);
+  }, []);
 
   React.useEffect(() => {
     if (props.id) {
@@ -57,8 +54,8 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
               readOnly
               onPaste={(ev) => {
                 const v = ev.clipboardData.getData("text/plain");
-                mutate((draft) => {
-                  draft.seed = +new TextDecoder().decode(base58.decode(v));
+                setValue({
+                  seed: +new TextDecoder().decode(base58.decode(v)),
                 });
               }}
               onFocus={(ev) => {
@@ -70,8 +67,8 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
           <button
             className={classes.button}
             onClick={() => {
-              mutate((draft) => {
-                draft.seed = crypto.getRandomValues(new Uint32Array(1))[0];
+              setValue({
+                seed: crypto.getRandomValues(new Uint32Array(1))[0],
               });
             }}
           >

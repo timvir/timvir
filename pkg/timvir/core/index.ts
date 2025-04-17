@@ -2,7 +2,6 @@ import { filter, pipe, Source, subscribe } from "wonka";
 import { Message } from "timvir/bus";
 import { useContext } from "timvir/context";
 import * as React from "react";
-import { useImmer } from "use-immer";
 
 export * from "./components/Footer";
 export * from "./components/Page";
@@ -31,7 +30,7 @@ export function useBlock<P extends { id?: string }>(props: P) {
   const { bus } = useContext();
   const mailbox = useMailbox(props.id);
 
-  const [state, mutate] = useImmer({
+  const [state, setState] = React.useState({
     overrides: undefined as undefined | Partial<P>,
   });
 
@@ -42,22 +41,22 @@ export function useBlock<P extends { id?: string }>(props: P) {
         subscribe((msg: Message) => {
           if (msg.interface === "dev.timvir.Props") {
             if (msg.member === "set") {
-              mutate((draft) => {
-                draft.overrides = msg.body as any;
+              setState({
+                overrides: msg.body as any,
               });
             } else if (msg.member === "merge") {
-              mutate((draft) => {
-                draft.overrides = { ...(draft.overrides as any), ...(msg.body as any) };
+              setState({
+                overrides: { ...(state.overrides as any), ...(msg.body as any) },
               });
             } else if (msg.member === "reset") {
-              mutate((draft) => {
-                draft.overrides = undefined;
+              setState({
+                overrides: undefined,
               });
             }
           }
         })
       ).unsubscribe,
-    [mailbox, mutate]
+    [mailbox]
   );
 
   return {
@@ -66,8 +65,8 @@ export function useBlock<P extends { id?: string }>(props: P) {
     props: { ...props, ...state.overrides },
     hasOverrides: !!state.overrides,
     reset: () => {
-      mutate((draft) => {
-        draft.overrides = undefined;
+      setState({
+        overrides: undefined,
       });
     },
   };

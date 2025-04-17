@@ -161,9 +161,6 @@ importers:
       globby:
         specifier: ^14.1.0
         version: 14.1.0
-      immer:
-        specifier: ^10.1.1
-        version: 10.1.1
       kleur:
         specifier: ^4.1.5
         version: 4.1.5
@@ -227,9 +224,6 @@ importers:
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.0.0
-      use-immer:
-        specifier: ^0.11.0
-        version: 0.11.0(immer@10.1.1)(react@19.1.0)
       wonka:
         specifier: ^6.3.5
         version: 6.3.5
@@ -299,9 +293,6 @@ importers:
       fuzzaldrin-plus:
         specifier: ^0.6.0
         version: 0.6.0
-      immer:
-        specifier: ^9 || ^10
-        version: 10.1.1
       react:
         specifier: ^17 || ^18 || ^19
         version: 19.1.0
@@ -317,9 +308,6 @@ importers:
       shiki:
         specifier: ^1 || ^2 || ^3
         version: 3.2.2
-      use-immer:
-        specifier: ^0.8.0 || ^0.8.1 || ^0.9.0 || ^0.10.0 || ^0.11.0
-        version: 0.11.0(immer@10.1.1)(react@19.1.0)
       wonka:
         specifier: ^6
         version: 6.3.5
@@ -2609,9 +2597,6 @@ packages:
     resolution: {integrity: sha512-bAH5jbK/F3T3Jls4I0SO1hmPR0dKU0a7+SY6n1yzRtG54FLO8d6w/nxLFX2Nb7dBu6cCWXPaAME6cYqFUMmuCA==}
     engines: {node: '>= 4'}
 
-  immer@10.1.1:
-    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
-
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -3944,12 +3929,6 @@ packages:
 
   uri-js@4.2.2:
     resolution: {integrity: sha512-KY9Frmirql91X2Qgjry0Wd4Y+YTdrdZheS8TFwvkbLWf/G5KNJDCh6pKL5OZctEW4+0Baa5idK2ZQuELRwPznQ==}
-
-  use-immer@0.11.0:
-    resolution: {integrity: sha512-RNAqi3GqsWJ4bcCd4LMBgdzvPmTABam24DUaFiKfX9s3MSorNRz9RDZYJkllJoMHUxVLMDetwAuCDeyWNrp1yA==}
-    peerDependencies:
-      immer: '>=8.0.0'
-      react: ^16.8.0 || ^17.0.1 || ^18.0.0 || ^19.0.0
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -6862,8 +6841,6 @@ snapshots:
 
   ignore@7.0.3: {}
 
-  immer@10.1.1: {}
-
   import-fresh@3.3.0:
     dependencies:
       parent-module: 1.0.1
@@ -8442,11 +8419,6 @@ snapshots:
   uri-js@4.2.2:
     dependencies:
       punycode: 2.1.1
-
-  use-immer@0.11.0(immer@10.1.1)(react@19.1.0):
-    dependencies:
-      immer: 10.1.1
-      react: 19.1.0
 
   util-deprecate@1.0.2: {}
 
