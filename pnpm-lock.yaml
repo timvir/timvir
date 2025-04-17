@@ -284,9 +284,6 @@ importers:
       downshift:
         specifier: ^7 || ^8 || ^9
         version: 9.0.9(react@19.1.0)
-      fuzzaldrin-plus:
-        specifier: ^0.6.0
-        version: 0.6.0
       react:
         specifier: ^17 || ^18 || ^19
         version: 19.1.0
@@ -2428,9 +2425,6 @@ packages:
 
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
-
-  fuzzaldrin-plus@0.6.0:
-    resolution: {integrity: sha512-srIDThJHkdp3aPwJpR/HNzYZCRJwm07b/igxseoHSB7qR8e/gQp4F6lMGknE3TQI1Aq14TiFf/wzrHOp9LY/EA==}
 
   gauge@3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}
@@ -6620,8 +6614,6 @@ snapshots:
       is-callable: 1.2.7
 
   functions-have-names@1.2.3: {}
-
-  fuzzaldrin-plus@0.6.0: {}
 
   gauge@3.0.2:
     dependencies:
