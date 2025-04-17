@@ -74,9 +74,6 @@ importers:
       '@types/estree':
         specifier: ^1.0.7
         version: 1.0.7
-      '@types/fuzzaldrin-plus':
-        specifier: ^0.6.5
-        version: 0.6.5
       '@types/node':
         specifier: ^22.14.1
         version: 22.14.1
@@ -155,9 +152,6 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^5.2.0
         version: 5.2.0(eslint@9.24.0)
-      fuzzaldrin-plus:
-        specifier: ^0.6.0
-        version: 0.6.0
       globby:
         specifier: ^14.1.0
         version: 14.1.0
@@ -290,9 +284,6 @@ importers:
       downshift:
         specifier: ^7 || ^8 || ^9
         version: 9.0.9(react@19.1.0)
-      fuzzaldrin-plus:
-        specifier: ^0.6.0
-        version: 0.6.0
       react:
         specifier: ^17 || ^18 || ^19
         version: 19.1.0
@@ -1458,9 +1449,6 @@ packages:
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
 
-  '@types/fuzzaldrin-plus@0.6.5':
-    resolution: {integrity: sha512-fUFxKXq/Qu8WVgPtSkQMK7jF5odTnBaIthuhKQb6PivpTaTTUlOTMS3WsT+UpWVZcYQH5skjHuFRTNmrUGSDfg==}
-
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
 
@@ -2437,9 +2425,6 @@ packages:
 
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
-
-  fuzzaldrin-plus@0.6.0:
-    resolution: {integrity: sha512-srIDThJHkdp3aPwJpR/HNzYZCRJwm07b/igxseoHSB7qR8e/gQp4F6lMGknE3TQI1Aq14TiFf/wzrHOp9LY/EA==}
 
   gauge@3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}
@@ -5435,8 +5420,6 @@ snapshots:
 
   '@types/estree@1.0.7': {}
 
-  '@types/fuzzaldrin-plus@0.6.5': {}
-
   '@types/hast@3.0.4':
     dependencies:
       '@types/unist': 3.0.3
@@ -6631,8 +6614,6 @@ snapshots:
       is-callable: 1.2.7
 
   functions-have-names@1.2.3: {}
-
-  fuzzaldrin-plus@0.6.0: {}
 
   gauge@3.0.2:
     dependencies:

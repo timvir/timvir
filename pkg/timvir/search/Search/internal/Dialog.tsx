@@ -4,7 +4,6 @@ import { css, cx } from "@linaria/core";
 import * as React from "react";
 import { SearchBoxInput } from "../../SearchBoxInput";
 import { SearchBoxListItem } from "../../SearchBoxListItem";
-import Highlight from "./Highlight";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -160,7 +159,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
                       </g>
                     </svg>
                   }
-                  label={<Highlight string={item.node.path} query={value} />}
+                  label={item.node.path}
                   context={item.node.context}
                   style={
                     {
