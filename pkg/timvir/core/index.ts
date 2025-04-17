@@ -27,6 +27,8 @@ export function useMailbox(id?: string): Source<Message> {
   );
 }
 
+const foo = 42
+
 export function useBlock<P extends { id?: string }>(props: P) {
   const { bus } = useContext();
   const mailbox = useMailbox(props.id);
