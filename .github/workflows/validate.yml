@@ -9,6 +9,15 @@ permissions:
   contents: read
 
 jobs:
+  knip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v16
+      - run: nix run github:nicknovitski/nix-develop .#workflow
+
+      - run: npx knip
+
   validate:
     runs-on: ubuntu-latest
     steps:
