@@ -32,7 +32,7 @@ function SearchBoxInput(props: Props, ref: React.ForwardedRef<React.ComponentRef
         z-index: 1;
         box-shadow: rgba(55, 53, 47, 0.09) 0px 1px 0px;
 
-        :global(:root[data-timvir-theme="dark"]) & {
+        :root[data-timvir-theme="dark"] & {
           box-shadow: rgba(255, 255, 255, 0.09) 0px 1px 0px;
         }
       `}
