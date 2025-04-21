@@ -33,9 +33,9 @@ export default css`
     color: #36acaa;
   }
 
-  :global(:root[data-timvir-theme="dark"]) & {
+  :root[data-timvir-theme="dark"] & {
     color: #adbac7;
-    background-color: #2d333b;
+    background-color: var(--timvir-secondary-background-color);
 
     & :is(.comment, .prolog, .doctype, .cdata) {
       color: #999988;

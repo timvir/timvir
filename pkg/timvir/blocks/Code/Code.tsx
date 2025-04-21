@@ -218,7 +218,7 @@ export default React.forwardRef(Code);
 
 const classes = {
   root: css`
-    :global(:root[data-timvir-theme="dark"]) & {
+    :root[data-timvir-theme="dark"] & {
       .shiki,
       .shiki span {
         color: var(--shiki-dark) !important;
@@ -297,7 +297,7 @@ const classes = {
   highlightedLine: css`
     background-color: #ffe10044;
 
-    :global(:root[data-timvir-theme="dark"]) & {
+    :root[data-timvir-theme="dark"] & {
       background-color: rgba(174, 124, 20, 0.15);
     }
   `,

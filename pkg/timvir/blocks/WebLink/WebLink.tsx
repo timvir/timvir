@@ -83,7 +83,7 @@ const classes = {
       box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
     }
 
-    :global(:root[data-timvir-theme="dark"]) & {
+    :root[data-timvir-theme="dark"] & {
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 
       &:hover {

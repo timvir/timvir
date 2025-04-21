@@ -128,7 +128,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
               min-height: 50px;
               max-height: 80vh;
 
-              :global(:root[data-timvir-theme="dark"]) & {
+              :root[data-timvir-theme="dark"] & {
                 background: black;
               }
             `}
