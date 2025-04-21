@@ -1,0 +1,46 @@
+{
+  "changesets": [
+    {
+      "releases": [
+        {
+          "name": "timvir",
+          "type": "patch"
+        }
+      ],
+      "summary": "Fix dark mode styles\n\nDuring the recent Linaria v5 -> v6 (and corresponding csstype v3 -> v4) upgrade, the dark mode styles were slightly broken.\nThis patch restores the dark mode styles.",
+      "id": "six-eyes-mix"
+    }
+  ],
+  "releases": [
+    {
+      "name": "timvir",
+      "type": "patch",
+      "oldVersion": "0.2.38",
+      "changesets": [
+        "six-eyes-mix"
+      ],
+      "newVersion": "0.2.39"
+    },
+    {
+      "name": "@timvir/cli",
+      "type": "patch",
+      "oldVersion": "0.2.38",
+      "changesets": [],
+      "newVersion": "0.2.39"
+    },
+    {
+      "name": "@timvir/macro",
+      "type": "patch",
+      "oldVersion": "0.2.38",
+      "changesets": [],
+      "newVersion": "0.2.39"
+    },
+    {
+      "name": "@timvir/mdx",
+      "type": "patch",
+      "oldVersion": "0.2.38",
+      "changesets": [],
+      "newVersion": "0.2.39"
+    }
+  ]
+}

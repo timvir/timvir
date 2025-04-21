@@ -25,7 +25,7 @@ jobs:
 
       - run: |
           if ./node_modules/.bin/changeset status --output=release.json 2>/dev/null; then
-            echo "VERSION=$(jq -r '.releases[] | select(.name == "timvir") | .newVersion' release.json)" >> "$GITHUB_ENV"
+            echo "VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> "$GITHUB_ENV"
             rm release.json
           fi
 
