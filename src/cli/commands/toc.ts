@@ -19,7 +19,7 @@ export default async function() {
     join("src", "timvir", "toc.ts"),
     prettier.format(`export default ${JSON.stringify(toc)} as const`, {
       parser: "typescript",
-      printWidth: Infinity
+      printWidth: Number.POSITIVE_INFINITY
     }),
     true
   );
