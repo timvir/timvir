@@ -14,7 +14,6 @@
   "linter": {
     "rules": {
       "style": {
-        "useSelfClosingElements": "off",
         "noNonNullAssertion": "off",
         "useImportType": "off",
         "noUselessElse": "off"
