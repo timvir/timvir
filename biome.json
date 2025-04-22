@@ -1,0 +1,74 @@
+{
+  "files": {
+    "ignore": [".direnv", ".next", "node_modules"]
+  },
+
+  "formatter": {
+    "enabled": false
+  },
+
+  "organizeImports": {
+    "enabled": false
+  },
+
+  "linter": {
+    "rules": {
+      "style": {
+        "noParameterAssign": "off",
+        "useSelfClosingElements": "off",
+        "useConst": "off",
+        "noUnusedTemplateLiteral": "off",
+        "noNonNullAssertion": "off",
+        "useImportType": "off",
+        "useTemplate": "off",
+        "useNumberNamespace": "off",
+        "noUselessElse": "off",
+        "useNodejsImportProtocol": "off"
+      },
+      "correctness": {
+        "noChildrenProp": "off",
+        "noEmptyPattern": "off",
+        "useJsxKeyInIterable": "off",
+        "noUnknownProperty": "off",
+        "useExhaustiveDependencies": "off"
+      },
+      "security": {
+        "noGlobalEval": "off",
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "performance": {
+        "noAccumulatingSpread": "off"
+      },
+      "suspicious": {
+        "noEmptyInterface": "off",
+        "noAssignInExpressions": "off",
+        "noGlobalIsNan": "off",
+        "noConfusingVoidType": "off",
+        "noShorthandPropertyOverrides": "off",
+        "noArrayIndexKey": "off",
+        "noExplicitAny": "off",
+        "noDoubleEquals": "off"
+      },
+      "complexity": {
+        "useLiteralKeys": "off",
+        "useArrowFunction": "off",
+        "noForEach": "off",
+        "useOptionalChain": "off",
+        "useRegexLiterals": "off"
+      },
+      "a11y": {
+        "useButtonType": "off",
+        "noBlankTarget": "off",
+        "useFocusableInteractive": "off",
+        "useIframeTitle": "off",
+        "useSemanticElements": "off",
+        "noAutofocus": "off",
+        "useKeyWithClickEvents": "off",
+        "noSvgWithoutTitle": "off",
+        "useGenericFontNames": "off",
+        "useValidAnchor": "off",
+        "useAltText": "off"
+      }
+    }
+  }
+}
