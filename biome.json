@@ -21,7 +21,6 @@
         "noNonNullAssertion": "off",
         "useImportType": "off",
         "useTemplate": "off",
-        "useNumberNamespace": "off",
         "noUselessElse": "off",
         "useNodejsImportProtocol": "off"
       },

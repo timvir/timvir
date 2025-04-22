@@ -42,8 +42,8 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
       const intervalId = setInterval(() => {
         if (fontSizeRef) {
-          const fontSize = parseInt(computedStyle.fontSize, 10);
-          const lineHeight = parseInt(computedStyle.lineHeight, 10);
+          const fontSize = Number.parseInt(computedStyle.fontSize, 10);
+          const lineHeight = Number.parseInt(computedStyle.lineHeight, 10);
 
           const innerText = `${name} – ${Math.round(fontSize)}px / ${
             Math.round((lineHeight / fontSize) * 1000) / 1000
