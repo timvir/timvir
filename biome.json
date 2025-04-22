@@ -14,9 +14,7 @@
   "linter": {
     "rules": {
       "style": {
-        "noParameterAssign": "off",
         "useSelfClosingElements": "off",
-        "useConst": "off",
         "noUnusedTemplateLiteral": "off",
         "noNonNullAssertion": "off",
         "useImportType": "off",
@@ -25,25 +23,15 @@
       },
       "correctness": {
         "useJsxKeyInIterable": "off",
-        "noUnknownProperty": "off",
         "useExhaustiveDependencies": "off"
       },
       "security": {
         "noGlobalEval": "off",
         "noDangerouslySetInnerHtml": "off"
       },
-      "performance": {
-        "noAccumulatingSpread": "off"
-      },
       "suspicious": {
-        "noEmptyInterface": "off",
-        "noAssignInExpressions": "off",
-        "noGlobalIsNan": "off",
-        "noConfusingVoidType": "off",
-        "noShorthandPropertyOverrides": "off",
         "noArrayIndexKey": "off",
-        "noExplicitAny": "off",
-        "noDoubleEquals": "off"
+        "noExplicitAny": "off"
       },
       "complexity": {
         "useArrowFunction": "off",
