@@ -34,7 +34,6 @@
         "noExplicitAny": "off"
       },
       "complexity": {
-        "useArrowFunction": "off",
         "useOptionalChain": "off",
         "useRegexLiterals": "off"
       },
