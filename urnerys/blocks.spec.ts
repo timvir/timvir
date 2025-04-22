@@ -105,7 +105,7 @@ for (const url of urls) {
         imageUploads.push(
           uploadImage({
             build,
-            set: title.substring(1) + "/exhibits",
+            set: `${title.substring(1)}/exhibits`,
             snapshot: sanitizeTitle(innerText),
             formula: "none",
             payload: new File([buffer], "screenshot.png", { type: "image/png" }),

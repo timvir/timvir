@@ -2,7 +2,7 @@ import fs from "node:fs";
 import kleur from "kleur";
 
 export async function write(path: string, content0: string, force = false): Promise<void> {
-  const content = content0.trim() + "\n";
+  const content = `${content0.trim()}\n`;
   const ps = kleur.gray("".padEnd(Math.max(0, 90 - path.length), "."));
 
   const originalContent = await fs.promises.readFile(path, "utf8").catch(() => "");

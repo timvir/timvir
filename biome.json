@@ -17,7 +17,6 @@
         "useSelfClosingElements": "off",
         "noNonNullAssertion": "off",
         "useImportType": "off",
-        "useTemplate": "off",
         "noUselessElse": "off"
       },
       "correctness": {
