@@ -59,7 +59,7 @@ function ColorContrastInspector(props: Props, ref: React.ForwardedRef<React.Comp
       {background.map((value, i) => {
         const color = chroma.contrast(value, "white") > chroma.contrast(value, "black") ? "white" : "black";
         return (
-          <>
+          <React.Fragment key={i}>
             <div
               className={css`
                 align-self: stretch;
@@ -81,7 +81,7 @@ function ColorContrastInspector(props: Props, ref: React.ForwardedRef<React.Comp
             >
               {value}
             </div>
-          </>
+          </React.Fragment>
         );
       })}
 

@@ -20,7 +20,6 @@
         "noUselessElse": "off"
       },
       "correctness": {
-        "useJsxKeyInIterable": "off",
         "useExhaustiveDependencies": "off"
       },
       "security": {
