@@ -32,7 +32,6 @@
         "noExplicitAny": "off"
       },
       "complexity": {
-        "useOptionalChain": "off",
         "useRegexLiterals": "off"
       },
       "a11y": {

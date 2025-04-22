@@ -3,7 +3,7 @@ const LINARIA_EXTENSION = ".linaria.module.css";
 function traverse(rules) {
   for (const rule of rules) {
     if (typeof rule.loader === "string" && rule.loader.includes("css-loader")) {
-      if (rule.options && rule.options.modules && typeof rule.options.modules.getLocalIdent === "function") {
+      if (rule.options?.modules && typeof rule.options.modules.getLocalIdent === "function") {
         const nextGetLocalIdent = rule.options.modules.getLocalIdent;
         rule.options.modules.mode = "local";
         rule.options.modules.auto = true;
