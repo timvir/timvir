@@ -1,6 +1,6 @@
-const { join, dirname } = require("path");
-const fs = require("fs");
-const crypto = require("crypto");
+const { join, dirname } = require("node:path");
+const fs = require("node:fs");
+const crypto = require("node:crypto");
 const { createMacro } = require("babel-plugin-macros");
 const { parse } = require("@babel/parser");
 const generate = require("@babel/generator");

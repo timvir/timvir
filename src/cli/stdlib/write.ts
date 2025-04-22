@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import kleur from "kleur";
 
 export async function write(path: string, content0: string, force = false): Promise<void> {
