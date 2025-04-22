@@ -47,7 +47,6 @@
       },
       "complexity": {
         "useArrowFunction": "off",
-        "noForEach": "off",
         "useOptionalChain": "off",
         "useRegexLiterals": "off"
       },

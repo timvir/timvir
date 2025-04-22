@@ -12,7 +12,7 @@ module.exports = createMacro(({ references, babel, state }) => {
   const t = babel.types;
 
   if (references.Sample) {
-    references.Sample.forEach((referencePath) => {
+    for (const referencePath of references.Sample) {
       const { parent, parentPath } = referencePath;
 
       if (parent.type === "JSXOpeningElement") {
@@ -79,11 +79,11 @@ module.exports = createMacro(({ references, babel, state }) => {
       }
 
       throw new Error(`Unhandled type: ${parent.type}`);
-    });
+    }
   }
 
   if (references.sampleCode) {
-    references.sampleCode.forEach((referencePath) => {
+    for (const referencePath of references.sampleCode) {
       const callExpression = referencePath.parent;
       const {
         variant,
@@ -136,7 +136,7 @@ module.exports = createMacro(({ references, babel, state }) => {
       }[as]();
 
       referencePath.parentPath.parentPath.replaceWith(t.stringLiteral(string));
-    });
+    }
   }
 });
 
