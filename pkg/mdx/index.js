@@ -117,7 +117,7 @@ export function remarkPlugin() {
               node[k] = v;
             }
           },
-          [`source/component`]: () => {
+          "source/component": () => {
             const source = (() => {
               const file = parse(loadSource(), {
                 sourceType: "module",
@@ -149,7 +149,7 @@ export function remarkPlugin() {
               node[k] = v;
             }
           },
-          [`source/markup`]: () => {
+          "source/markup": () => {
             const source = (() => {
               const file = parse(loadSource(), {
                 sourceType: "module",

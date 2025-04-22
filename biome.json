@@ -46,7 +46,6 @@
         "noDoubleEquals": "off"
       },
       "complexity": {
-        "useLiteralKeys": "off",
         "useArrowFunction": "off",
         "noForEach": "off",
         "useOptionalChain": "off",
