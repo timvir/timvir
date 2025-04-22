@@ -4,11 +4,7 @@ import * as ReactDOM from "react-dom";
 import { useHotkeys } from "react-hotkeys-hook";
 import { Dialog } from "./internal";
 
-interface Props {}
-
-function Commands(props: Props) {
-  const {} = props;
-
+function Commands() {
   const [state, setState] = React.useState({
     /**
      * Whether the command palette should be open or not. The command palette is
