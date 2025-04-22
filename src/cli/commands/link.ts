@@ -20,9 +20,9 @@ export default async function () {
       if (fs.existsSync(dir)) {
         const docs = await fs.promises.readdir(dir);
         for (const file of docs) {
-          const path = join("src", "pages", "docs", "components", component, basename(file, ".mdx") + ".tsx");
+          const path = join("src", "pages", "docs", "components", component, `${basename(file, ".mdx")}.tsx`);
           await mkdirp(dirname(path));
-          write(path, tmpl({ component, file }).trim() + "\n", true);
+          write(path, `${tmpl({ component, file }).trim()}\n`, true);
         }
       }
     }

@@ -40,7 +40,7 @@ export function remarkPlugin() {
           if (fs.existsSync(module)) {
             return fs.readFileSync(module, "utf8");
           } else {
-            return fs.readFileSync(module + ".tsx", "utf8");
+            return fs.readFileSync(`${module}.tsx`, "utf8");
           }
         }
 
@@ -50,7 +50,7 @@ export function remarkPlugin() {
              * Genrate a unique name that will be used to hold the reference
              * to the sample component.
              */
-            const name = `C${genName(filename, component, variant, "" + counter)}`;
+            const name = `C${genName(filename, component, variant, `${counter}`)}`;
             counter = counter + 1;
 
             /*

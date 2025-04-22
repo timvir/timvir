@@ -40,7 +40,7 @@ module.exports = createMacro(({ references, babel, state }) => {
              * Genrate a unique name that will be used to hold the reference
              * to the sample component.
              */
-            const name = `C${genName(filename, component, variant, "" + counter)}`;
+            const name = `C${genName(filename, component, variant, `${counter}`)}`;
             counter = counter + 1;
 
             state.file.path.node.body.unshift(
@@ -61,7 +61,7 @@ module.exports = createMacro(({ references, babel, state }) => {
               if (fs.existsSync(module)) {
                 return fs.readFileSync(module, "utf8");
               } else {
-                return fs.readFileSync(module + ".tsx", "utf8");
+                return fs.readFileSync(`${module}.tsx`, "utf8");
               }
             })();
 
@@ -97,7 +97,7 @@ module.exports = createMacro(({ references, babel, state }) => {
         if (fs.existsSync(module)) {
           return fs.readFileSync(module, "utf8");
         } else {
-          return fs.readFileSync(module + ".tsx", "utf8");
+          return fs.readFileSync(`${module}.tsx`, "utf8");
         }
       })();
 

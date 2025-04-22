@@ -58,10 +58,10 @@ export default async function () {
       const folders = await fs.promises.readdir(join("src", "components"));
       await write(
         path,
-        folders
+        `${folders
           .filter((x) => x !== "toc.timvir")
           .sort()
-          .join("\n") + "\n",
+          .join("\n")}\n`,
         true
       );
 
