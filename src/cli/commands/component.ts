@@ -1,7 +1,7 @@
-import fs from "fs";
+import fs from "node:fs";
 import kleur from "kleur";
 import { mkdirp } from "mkdirp";
-import { join } from "path";
+import { join } from "node:path";
 import prompts from "prompts";
 import { write } from "../stdlib";
 import componentT from "../templates/component";

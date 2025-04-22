@@ -1,7 +1,7 @@
-import fs from "fs";
+import fs from "node:fs";
 import kleur from "kleur";
 import { mkdirp } from "mkdirp";
-import { basename, dirname, join } from "path";
+import { basename, dirname, join } from "node:path";
 import { write } from "../stdlib";
 import { template } from "../template";
 

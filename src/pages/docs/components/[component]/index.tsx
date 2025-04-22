@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { ParsedUrlQuery } from "querystring";
+import { ParsedUrlQuery } from "node:querystring";
 import * as React from "react";
 import Wrapper from "../../../../timvir/wrapper";
 

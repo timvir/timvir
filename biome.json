@@ -21,8 +21,7 @@
         "noNonNullAssertion": "off",
         "useImportType": "off",
         "useTemplate": "off",
-        "noUselessElse": "off",
-        "useNodejsImportProtocol": "off"
+        "noUselessElse": "off"
       },
       "correctness": {
         "useJsxKeyInIterable": "off",

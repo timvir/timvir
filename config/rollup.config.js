@@ -8,7 +8,7 @@ import shebang from "rollup-plugin-add-shebang";
 import css from "rollup-plugin-css-only";
 import preserveDirectives from "rollup-preserve-directives";
 
-import * as fs from "fs";
+import * as fs from "node:fs";
 
 import builtinModules from "builtin-modules";
 
