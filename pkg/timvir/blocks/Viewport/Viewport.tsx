@@ -197,7 +197,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
                   onLoad={(ev) => {
                     const document = ev.currentTarget.contentDocument;
                     if (!document) {
-                      console.warn(`Viewport: iframe has no contentDocument`);
+                      console.warn("Viewport: iframe has no contentDocument");
                       return;
                     }
 

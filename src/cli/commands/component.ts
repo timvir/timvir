@@ -17,7 +17,7 @@ export default async function () {
         type: "text",
         name: "name",
         message: "What's the name of your component?",
-        validate: (value) => (value === "" || value === "?" ? `HELP TEXT HERE` : true),
+        validate: (value) => (value === "" || value === "?" ? "HELP TEXT HERE" : true),
       },
       {
         type: "text",
@@ -40,14 +40,14 @@ export default async function () {
   console.log("");
 
   await mkdirp(baseDir);
-  await write(join(baseDir, `index.ts`), indexT(response));
+  await write(join(baseDir, "index.ts"), indexT(response));
   await write(join(baseDir, `${response.name}.tsx`), componentT(response));
 
-  await mkdirp(join(baseDir, `docs`));
-  await write(join(baseDir, `docs`, `index.mdx`), docsT(response));
+  await mkdirp(join(baseDir, "docs"));
+  await write(join(baseDir, "docs", "index.mdx"), docsT(response));
 
-  await mkdirp(join(baseDir, `samples`));
-  await write(join(baseDir, `samples`, `basic.tsx`), sampleT(response));
+  await mkdirp(join(baseDir, "samples"));
+  await write(join(baseDir, "samples", "basic.tsx"), sampleT(response));
 
   /*
    * If the project uses toc.timvir, update the components index and regenerate the TOC.

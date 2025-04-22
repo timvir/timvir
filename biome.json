@@ -15,7 +15,6 @@
     "rules": {
       "style": {
         "useSelfClosingElements": "off",
-        "noUnusedTemplateLiteral": "off",
         "noNonNullAssertion": "off",
         "useImportType": "off",
         "useTemplate": "off",
