@@ -92,7 +92,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         html,
       }));
     })();
-  }, [children, language]);
+  }, [children, language, highlightedLines]);
 
   return (
     <Root

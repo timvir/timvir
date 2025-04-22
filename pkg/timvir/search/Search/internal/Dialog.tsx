@@ -37,7 +37,7 @@ function Dialog(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
     q(value).then((result) => {
       setResult(result);
     });
-  }, [value, q, setResult]);
+  }, [value, q]);
 
   const items = result?.edges ?? [];
 

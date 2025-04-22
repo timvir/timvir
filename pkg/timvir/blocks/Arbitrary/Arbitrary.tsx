@@ -39,7 +39,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
         body: value.seed,
       });
     }
-  }, [block.bus, value.seed]);
+  }, [props.id, block.bus, value.seed]);
 
   return (
     <Context.Provider value={value}>

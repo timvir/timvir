@@ -30,7 +30,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
         metadata: metadata,
       });
     });
-  }, [url]);
+  }, [unfurl, url]);
 
   const metadata = state.metadata;
   const image = metadata?.open_graph?.images?.[0]?.url;
