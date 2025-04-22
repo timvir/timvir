@@ -10,7 +10,7 @@ async function process(doc) {
     mdastExtensions: [mdxFromMarkdown()],
   });
 
-  await remarkPlugin()(tree, { history: [`test/samples/index.mdx`] });
+  await remarkPlugin()(tree, { history: ["test/samples/index.mdx"] });
 
   return tree;
 }

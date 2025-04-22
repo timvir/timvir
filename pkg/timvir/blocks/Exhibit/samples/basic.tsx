@@ -3,7 +3,7 @@ import { Exhibit } from "..";
 
 export default function Sample() {
   return (
-    <Exhibit caption={`This Exhibit serves to illustrate how the block is structured and how you can use it.`}>
+    <Exhibit caption={"This Exhibit serves to illustrate how the block is structured and how you can use it."}>
       <div
         style={{
           backgroundColor: "#80008020",

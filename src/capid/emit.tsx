@@ -12,7 +12,7 @@ export async function emit({ typeChecker, propsDeclaration, name }: any) {
     // Ignore
   }
 
-  const outFile = path.join(docPathBase, `api.mdx`);
+  const outFile = path.join(docPathBase, "api.mdx");
   await write(
     outFile,
     template({
