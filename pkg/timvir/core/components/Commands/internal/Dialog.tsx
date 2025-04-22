@@ -38,7 +38,7 @@ function Dialog(props: Props) {
         onDispose?.();
       }, 200);
     }
-  }, [open]);
+  }, [open, onDispose]);
 
   React.useEffect(() => {
     (async () => {
@@ -48,7 +48,7 @@ function Dialog(props: Props) {
         commands: edges,
       }));
     })();
-  }, [state.query]);
+  }, [toc, state.query]);
 
   return (
     <div className={classes.root} style={state.style} {...rest}>

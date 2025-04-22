@@ -56,7 +56,7 @@ export function useBlock<P extends { id?: string }>(props: P) {
           }
         })
       ).unsubscribe,
-    [mailbox]
+    [mailbox, state.overrides]
   );
 
   return {

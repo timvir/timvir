@@ -58,7 +58,7 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         clearInterval(intervalId);
       };
     }
-  }, [name, contentRef]);
+  }, [name, contentRef, fontSizeRef]);
 
   return (
     <Root ref={ref} className={cx(className)} {...rest}>

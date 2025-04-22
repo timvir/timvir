@@ -36,7 +36,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
    * The container measures the width of the main column. It is used to initialize
    * the default width.
    */
-  const [containerRef, containerROE] = useResizeObserverEntry();
+  const [containerRef, _containerROE] = useResizeObserverEntry();
 
   /*
    * The SVG spans across the full width. It is used to restrict the max width.
@@ -56,7 +56,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
         setWidth(max);
       }
     }
-  }, [containerROE, svgROE, setWidth, width]);
+  }, [svgROE, width]);
 
   const lock = React.useRef("");
   const iframeRef = React.useRef<HTMLIFrameElement>(null);
