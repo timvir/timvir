@@ -26,7 +26,6 @@
         "useNodejsImportProtocol": "off"
       },
       "correctness": {
-        "noChildrenProp": "off",
         "noEmptyPattern": "off",
         "useJsxKeyInIterable": "off",
         "noUnknownProperty": "off",
