@@ -24,6 +24,15 @@ export default defineConfig<{ formula: string }>({
       },
     },
     {
+      name: "iPad Pro 11",
+      testMatch: /urnerys\/pages.spec.ts/,
+      use: {
+        ...devices["iPad Pro 11"],
+
+        formula: "SFgwaQfRnQC",
+      },
+    },
+    {
       name: "Desktop Chrome / Light",
       testMatch: /urnerys\/pages.spec.ts/,
       use: {
