@@ -1,6 +1,6 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
-export default defineConfig({
+export default defineConfig<{ formula: string }>({
   reporter: [["list"]],
 
   timeout: 5 * 60 * 1000,
@@ -12,4 +12,36 @@ export default defineConfig({
     trace: "on-first-retry",
     screenshot: "only-on-failure",
   },
+
+  projects: [
+    {
+      name: "Desktop Chrome / Light",
+      testMatch: /urnerys\/pages.spec.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+        colorScheme: "light",
+
+        formula: "fN2sPCScM1D",
+      },
+    },
+    {
+      name: "Desktop Chrome / Dark",
+      testMatch: /urnerys\/pages.spec.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+        colorScheme: "dark",
+
+        formula: "XSC5sCuaKA3",
+      },
+    },
+    {
+      name: "Blocks",
+      testMatch: /urnerys\/blocks.spec.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+
+        formula: "EhiYaNwcFei",
+      },
+    },
+  ],
 });
