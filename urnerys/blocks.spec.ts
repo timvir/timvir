@@ -59,7 +59,7 @@ async function waitForImages(page: Page): Promise<void> {
 }
 
 for (const url of urls) {
-  test.extend<{ formula: string }>({})(url, async ({ page }, { title }) => {
+  test.extend<{ formula: string }>({})(url, async ({ page, formula }, { title }) => {
     const imageUploads: Array<Promise<unknown>> = [];
 
     await page.setViewportSize({ width: 1680, height: 1200 });
