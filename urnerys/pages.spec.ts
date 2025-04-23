@@ -50,40 +50,43 @@ async function waitForImages(page: Page): Promise<void> {
 }
 
 for (const url of urls) {
-  test.extend<{ formula: string }>({})(url, async ({ page, formula }, { title }) => {
-    const imageUploads: Array<Promise<unknown>> = [];
+  test.extend<{ formula: string }>({ formula: ["UNKNOWN", { option: true }] })(
+    url,
+    async ({ page, formula }, { title }) => {
+      const imageUploads: Array<Promise<unknown>> = [];
 
-    await page.goto(url, { waitUntil: "domcontentloaded" });
+      await page.goto(url, { waitUntil: "domcontentloaded" });
 
-    const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
-    for (const inputElement of inputElements) {
-      await inputElement.evaluate((element) => {
-        const pasteEvent = new ClipboardEvent("paste", {
-          bubbles: true,
-          cancelable: true,
-          clipboardData: new DataTransfer(),
+      const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
+      for (const inputElement of inputElements) {
+        await inputElement.evaluate((element) => {
+          const pasteEvent = new ClipboardEvent("paste", {
+            bubbles: true,
+            cancelable: true,
+            clipboardData: new DataTransfer(),
+          });
+          pasteEvent.clipboardData!.setData("text/plain", "gGV7y4U6pZVL");
+          element.dispatchEvent(pasteEvent);
         });
-        pasteEvent.clipboardData!.setData("text/plain", "gGV7y4U6pZVL");
-        element.dispatchEvent(pasteEvent);
-      });
+      }
+
+      await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
+
+      await waitForImages(page);
+
+      const buffer = await page.screenshot({ fullPage: true });
+
+      imageUploads.push(
+        uploadImage({
+          build,
+          set: title.substring(1),
+          snapshot: "page",
+          formula,
+          payload: new File([buffer], "screenshot.png", { type: "image/png" }),
+        })
+      );
+
+      await Promise.all(imageUploads);
     }
-
-    await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
-
-    await waitForImages(page);
-
-    const buffer = await page.screenshot({ fullPage: true });
-
-    imageUploads.push(
-      uploadImage({
-        build,
-        set: title.substring(1),
-        snapshot: "page",
-        formula,
-        payload: new File([buffer], "screenshot.png", { type: "image/png" }),
-      })
-    );
-
-    await Promise.all(imageUploads);
-  });
+  );
 }
