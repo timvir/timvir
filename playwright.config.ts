@@ -1,6 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 
-export default defineConfig<{ formula: string }>({
+export default defineConfig({
   reporter: [["list"]],
 
   timeout: 5 * 60 * 1000,
@@ -14,51 +14,50 @@ export default defineConfig<{ formula: string }>({
   },
 
   projects: [
+    /*
+     * Pages
+     */
+
     {
-      name: "iPhone 12",
+      name: "aoH4VEUJdsi",
       testMatch: /urnerys\/pages.spec.ts/,
       use: {
         ...devices["iPhone 12"],
-
-        formula: "aoH4VEUJdsi",
       },
     },
     {
-      name: "iPad Pro 11",
+      name: "SFgwaQfRnQC",
       testMatch: /urnerys\/pages.spec.ts/,
       use: {
         ...devices["iPad Pro 11"],
-
-        formula: "SFgwaQfRnQC",
       },
     },
     {
-      name: "Desktop Chrome / Light",
+      name: "fN2sPCScM1D",
       testMatch: /urnerys\/pages.spec.ts/,
       use: {
         ...devices["Desktop Chrome"],
         colorScheme: "light",
-
-        formula: "fN2sPCScM1D",
       },
     },
     {
-      name: "Desktop Chrome / Dark",
+      name: "XSC5sCuaKA3",
       testMatch: /urnerys\/pages.spec.ts/,
       use: {
         ...devices["Desktop Chrome"],
         colorScheme: "dark",
-
-        formula: "XSC5sCuaKA3",
       },
     },
+
+    /*
+     * Blocks
+     */
+
     {
-      name: "Blocks",
+      name: "EhiYaNwcFei",
       testMatch: /urnerys\/blocks.spec.ts/,
       use: {
         ...devices["Desktop Chrome"],
-
-        formula: "EhiYaNwcFei",
       },
     },
   ],
