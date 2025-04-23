@@ -19,6 +19,7 @@ export default defineConfig<{ formula: string }>({
       testMatch: /urnerys\/pages.spec.ts/,
       use: {
         ...devices["Desktop Chrome"],
+        viewport: { width: 1680, height: 1200 },
         colorScheme: "light",
 
         formula: "fN2sPCScM1D",
@@ -29,6 +30,7 @@ export default defineConfig<{ formula: string }>({
       testMatch: /urnerys\/pages.spec.ts/,
       use: {
         ...devices["Desktop Chrome"],
+        viewport: { width: 1680, height: 1200 },
         colorScheme: "dark",
 
         formula: "XSC5sCuaKA3",
@@ -39,6 +41,7 @@ export default defineConfig<{ formula: string }>({
       testMatch: /urnerys\/blocks.spec.ts/,
       use: {
         ...devices["Desktop Chrome"],
+        viewport: { width: 1680, height: 1200 },
 
         formula: "EhiYaNwcFei",
       },

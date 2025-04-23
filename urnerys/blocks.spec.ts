@@ -62,7 +62,6 @@ for (const url of urls) {
   test.extend<{ formula: string }>({})(url, async ({ page, formula }, { title }) => {
     const imageUploads: Array<Promise<unknown>> = [];
 
-    await page.setViewportSize({ width: 1680, height: 1200 });
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
     const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
