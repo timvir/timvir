@@ -12,15 +12,6 @@ const urls = [
   "/blocks/WebLink",
 ];
 
-function sanitizeTitle(s: string): string {
-  return s
-    .replaceAll(/[\/:*\?"<>|\s\.\(\)]+/g, "-")
-    .replace(/-+$/g, "")
-    .replace(/^-/, "")
-    .replace(/-$/, "")
-    .toLowerCase();
-}
-
 interface UploadImageRequest {
   build: string;
   set: string;
@@ -81,25 +72,17 @@ for (const url of urls) {
 
     await waitForImages(page);
 
-    {
-      const elements = await page.$$(".timvir-b-Exhibit");
-      for (const [index, element] of elements.entries()) {
-        const buffer = await (await element.$(".timvir-b-Exhibit-container"))!.screenshot();
+    const buffer = await page.screenshot({ fullPage: true });
 
-        const childElement = await element.$(".timvir-b-Exhibit-caption");
-        const innerText = (await childElement?.innerText()) ?? `${index}`;
-
-        imageUploads.push(
-          uploadImage({
-            build,
-            set: `${title.substring(1)}/exhibits`,
-            snapshot: sanitizeTitle(innerText),
-            formula: project.name,
-            payload: new File([buffer], "screenshot.png", { type: "image/png" }),
-          })
-        );
-      }
-    }
+    imageUploads.push(
+      uploadImage({
+        build,
+        set: title.substring(1),
+        snapshot: "page",
+        formula: project.name,
+        payload: new File([buffer], "screenshot.png", { type: "image/png" }),
+      })
+    );
 
     await Promise.all(imageUploads);
   });

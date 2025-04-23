@@ -1,4 +1,4 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   reporter: [["list"]],
@@ -12,4 +12,53 @@ export default defineConfig({
     trace: "on-first-retry",
     screenshot: "only-on-failure",
   },
+
+  projects: [
+    /*
+     * Pages
+     */
+
+    {
+      name: "aoH4VEUJdsi",
+      testMatch: /urnerys\/pages.spec.ts/,
+      use: {
+        ...devices["iPhone 12"],
+      },
+    },
+    {
+      name: "SFgwaQfRnQC",
+      testMatch: /urnerys\/pages.spec.ts/,
+      use: {
+        ...devices["iPad Pro 11"],
+      },
+    },
+    {
+      name: "fN2sPCScM1D",
+      testMatch: /urnerys\/pages.spec.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+        colorScheme: "light",
+      },
+    },
+    {
+      name: "XSC5sCuaKA3",
+      testMatch: /urnerys\/pages.spec.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+        colorScheme: "dark",
+      },
+    },
+
+    /*
+     * Blocks
+     */
+
+    {
+      name: "EhiYaNwcFei",
+      testMatch: /urnerys\/blocks.spec.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+      },
+    },
+  ],
 });
