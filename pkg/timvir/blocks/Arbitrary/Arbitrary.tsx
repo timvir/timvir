@@ -65,6 +65,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
           </div>
 
           <button
+            type="button"
             className={classes.button}
             onClick={() => {
               setValue({

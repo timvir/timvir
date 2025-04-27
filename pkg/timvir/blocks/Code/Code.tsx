@@ -121,6 +121,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           }}
         >
           <button
+            type="button"
             onClick={() => {
               navigator.clipboard.writeText(children);
               setState((state) => ({

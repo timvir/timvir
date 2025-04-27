@@ -30,7 +30,6 @@
         "useRegexLiterals": "off"
       },
       "a11y": {
-        "useButtonType": "off",
         "noBlankTarget": "off",
         "useFocusableInteractive": "off",
         "useIframeTitle": "off",
