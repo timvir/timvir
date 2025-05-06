@@ -192,7 +192,7 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       rollup:
-        specifier: ^4.40.1
+        specifier: ^4.40.2
         version: 4.40.2
       rollup-plugin-add-shebang:
         specifier: ^0.3.1
