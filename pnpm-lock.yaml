@@ -78,7 +78,7 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7
       '@types/node':
-        specifier: ^22.15.3
+        specifier: ^22.15.12
         version: 22.15.12
       '@types/prettier':
         specifier: ^2.7.3
