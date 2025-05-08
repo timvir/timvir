@@ -3,7 +3,8 @@ export default {
     /*
      * Exports
      *
-     * These are the main entry points of the library.
+     * These are the main entry points of the library. Keep this in sync with
+     * the 'exports' field in package.json.
      */
     "blocks/index.ts",
     "blocks/*/index.ts",
