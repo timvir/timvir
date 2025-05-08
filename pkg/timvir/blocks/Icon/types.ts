@@ -1,6 +1,6 @@
-export type Size = "responsive" | number;
+type Size = "responsive" | number;
 
-export interface Instance {
+interface Instance {
   size: Size;
   Component: React.ElementType;
 }
