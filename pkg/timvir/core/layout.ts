@@ -1,6 +1,6 @@
 import { css, cx } from "@linaria/core";
 
-export const noLayout: string = css``;
+const noLayout: string = css``;
 
 export const grid: string = css`
   display: grid;
