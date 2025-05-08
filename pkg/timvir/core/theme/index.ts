@@ -1,5 +1,4 @@
 import { css } from "@linaria/core";
-import { color } from "d3-color";
 import * as colors from "./colors";
 
 const themes = {
@@ -8,6 +7,8 @@ const themes = {
     textColor: colors.text.main,
     secondaryTextColor: colors.text.light,
     secondaryBackgroundColor: "#f9f8f9",
+
+    sidebarHighlightColor: "rgb(237, 237, 237)",
 
     borderColor: "#e9e8ea",
 
@@ -18,6 +19,8 @@ const themes = {
     textColor: "rgba(255 255 255 / 0.86)",
     secondaryTextColor: "rgba(255 255 255 / 0.56)",
     secondaryBackgroundColor: "#161618",
+
+    sidebarHighlightColor: "rgb(41, 43, 47)",
 
     borderColor: "#27292f",
 
@@ -76,16 +79,8 @@ function mkTheme(config: (typeof themes)[keyof typeof themes]) {
 
     --timvir-border-color: ${config.borderColor};
 
-    --timvir-sidebar-highlight-color: ${tweakColor(config.backgroundColor)};
+    --timvir-sidebar-highlight-color: ${config.sidebarHighlightColor};
 
     --timvir-accent-color: ${config.accentColor};
   `;
 }
-
-const tweakColor = (input: string): string => {
-  const c = color(input)!.rgb();
-  const v = luminance([c.r, c.g, c.b]);
-  return v < 127 ? c.brighter(0.8).toString() : c.darker(0.2).toString();
-};
-
-const luminance = ([r, g, b]: [number, number, number]) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
