@@ -32,7 +32,11 @@ export default {
     "core/components/*/samples/*.tsx",
     "search/*/samples/*.tsx",
 
-    // FIXME: An entry point, but not exported.
+    /*
+     * FIXME: An entry point, but not exported (thus unreachable to users of
+     * this library). Figure out if the theme detector is still needed and
+     * expose properly, or delete.
+     */
     "core/theme/detector.ts",
   ],
 
