@@ -34,7 +34,7 @@
     "@types/prettier": "^2.7.3",
     "@types/prompts": "^2.4.9",
     "@types/react": "^19.1.4",
-    "@types/react-dom": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
     "@typescript-eslint/eslint-plugin": "^8.32.0",
     "@typescript-eslint/parser": "^8.32.0",
     "@wyw-in-js/babel-preset": "^0.6.0",
