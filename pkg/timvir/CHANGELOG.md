@@ -1,5 +1,11 @@
 # timvir
 
+## 0.2.39
+
+### Patch Changes
+
+- **Fix dark mode styles** ([#3197](https://github.com/timvir/timvir/pull/3197)) - During the recent Linaria v5 -> v6 (and corresponding stylis v3 -> v4) upgrade, the dark mode styles were slightly broken. This patch restores the dark mode styles.
+
 ## 0.2.38
 
 ## 0.2.37
