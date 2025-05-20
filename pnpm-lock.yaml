@@ -183,8 +183,8 @@ importers:
         specifier: ^2.0.10
         version: 2.0.10(react@19.1.0)
       react-hotkeys-hook:
-        specifier: ^5.0.1
-        version: 5.0.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^5.1.0
+        version: 5.1.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       rollup:
         specifier: ^4.40.2
         version: 4.40.2
@@ -292,7 +292,7 @@ importers:
         version: 2.0.10(react@19.1.0)
       react-hotkeys-hook:
         specifier: ^4 || ^5
-        version: 5.0.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 5.1.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       shiki:
         specifier: ^1 || ^2 || ^3
         version: 3.4.0
@@ -3496,8 +3496,8 @@ packages:
     peerDependencies:
       react: '>=16.8.6'
 
-  react-hotkeys-hook@5.0.1:
-    resolution: {integrity: sha512-TysTwXrUSj6QclMZIEoxCfvy/6EsoZcrfE970aUVa9fO3c3vcms+IVjv3ljbhUPM/oY1iEoun7O2W8v8INl5hw==}
+  react-hotkeys-hook@5.1.0:
+    resolution: {integrity: sha512-GCNGXjBzV9buOS3REoQFmSmE4WTvBhYQ0YrAeeMZI83bhXg3dRWsLHXDutcVDdEjwJqJCxk5iewWYX5LtFUd7g==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -8027,7 +8027,7 @@ snapshots:
       prop-types: 15.8.1
       react: 19.1.0
 
-  react-hotkeys-hook@5.0.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  react-hotkeys-hook@5.1.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
