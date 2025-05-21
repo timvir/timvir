@@ -90,10 +90,10 @@ importers:
         specifier: ^19.1.5
         version: 19.1.5(@types/react@19.1.4)
       '@typescript-eslint/eslint-plugin':
-        specifier: ^8.32.0
+        specifier: ^8.32.1
         version: 8.32.1(@typescript-eslint/parser@8.32.1(eslint@9.27.0)(typescript@5.8.3))(eslint@9.27.0)(typescript@5.8.3)
       '@typescript-eslint/parser':
-        specifier: ^8.32.0
+        specifier: ^8.32.1
         version: 8.32.1(eslint@9.27.0)(typescript@5.8.3)
       '@wyw-in-js/babel-preset':
         specifier: ^0.6.0
