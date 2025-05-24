@@ -67,7 +67,7 @@
     "react-dom": "^19.1.0",
     "react-feather": "^2.0.10",
     "react-hotkeys-hook": "^5.1.0",
-    "rollup": "^4.40.2",
+    "rollup": "^4.41.1",
     "rollup-plugin-add-shebang": "^0.3.1",
     "rollup-plugin-css-only": "^4.5.2",
     "rollup-preserve-directives": "^1.1.3",
