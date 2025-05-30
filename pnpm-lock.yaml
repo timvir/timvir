@@ -120,7 +120,7 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       caniuse-lite:
-        specifier: ^1.0.30001718
+        specifier: ^1.0.30001720
         version: 1.0.30001720
       chroma-js:
         specifier: ^3.1.2
