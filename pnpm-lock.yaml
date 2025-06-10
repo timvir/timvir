@@ -76,7 +76,7 @@ importers:
         version: 1.0.8
       '@types/node':
         specifier: ^22.15.29
-        version: 22.15.30
+        version: 22.15.31
       '@types/prettier':
         specifier: ^2.7.3
         version: 2.7.3
@@ -1482,8 +1482,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@22.15.30':
-    resolution: {integrity: sha512-6Q7lr06bEHdlfplU6YRbgG1SFBdlsfNC4/lX+SkhiTs0cpJkOElmWls8PxDFv4yY/xKb8Y6SO0OmSX4wgqTZbA==}
+  '@types/node@22.15.31':
+    resolution: {integrity: sha512-jnVe5ULKl6tijxUhvQeNbQG/84fHfg+yMak02cT8QVhBx/F05rAVxCGBYYTh2EKz22D6JF5ktXuNwdx7b9iEGw==}
 
   '@types/parse-json@4.0.0':
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -3749,8 +3749,8 @@ packages:
       uglify-js:
         optional: true
 
-  terser@5.41.0:
-    resolution: {integrity: sha512-H406eLPXpZbAX14+B8psIuvIr8+3c+2hkuYzpMkoE0ij+NdsVATbA78vb8neA/eqrj7rywa2pIkdmWRsXW6wmw==}
+  terser@5.42.0:
+    resolution: {integrity: sha512-UYCvU9YQW2f/Vwl+P0GfhxJxbUGLwd+5QrrGgLajzWAtC/23AX0vcise32kkP7Eu0Wu9VlzzHAXkLObgjQfFlQ==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -5237,7 +5237,7 @@ snapshots:
     dependencies:
       serialize-javascript: 6.0.2
       smob: 1.0.0
-      terser: 5.41.0
+      terser: 5.42.0
     optionalDependencies:
       rollup: 4.42.0
 
@@ -5379,7 +5379,7 @@ snapshots:
 
   '@types/cors@2.8.18':
     dependencies:
-      '@types/node': 22.15.30
+      '@types/node': 22.15.31
 
   '@types/debug@4.1.7':
     dependencies:
@@ -5421,7 +5421,7 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@22.15.30':
+  '@types/node@22.15.31':
     dependencies:
       undici-types: 6.21.0
 
@@ -5431,7 +5431,7 @@ snapshots:
 
   '@types/prompts@2.4.9':
     dependencies:
-      '@types/node': 22.15.30
+      '@types/node': 22.15.31
       kleur: 3.0.3
 
   '@types/react-dom@19.1.6(@types/react@19.1.6)':
@@ -6987,7 +6987,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.15.30
+      '@types/node': 22.15.31
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -8179,10 +8179,10 @@ snapshots:
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
-      terser: 5.41.0
+      terser: 5.42.0
       webpack: 5.99.5
 
-  terser@5.41.0:
+  terser@5.42.0:
     dependencies:
       '@jridgewell/source-map': 0.3.6
       acorn: 8.15.0
