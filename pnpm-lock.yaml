@@ -75,8 +75,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.8
       '@types/node':
-        specifier: ^22.15.29
-        version: 22.15.31
+        specifier: ^22.15.33
+        version: 22.15.33
       '@types/prettier':
         specifier: ^2.7.3
         version: 2.7.3
@@ -1482,8 +1482,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@22.15.31':
-    resolution: {integrity: sha512-jnVe5ULKl6tijxUhvQeNbQG/84fHfg+yMak02cT8QVhBx/F05rAVxCGBYYTh2EKz22D6JF5ktXuNwdx7b9iEGw==}
+  '@types/node@22.15.33':
+    resolution: {integrity: sha512-wzoocdnnpSxZ+6CjW4ADCK1jVmd1S/J3ArNWfn8FDDQtRm8dkDg7TA+mvek2wNrfCgwuZxqEOiB9B1XCJ6+dbw==}
 
   '@types/parse-json@4.0.0':
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -5379,7 +5379,7 @@ snapshots:
 
   '@types/cors@2.8.19':
     dependencies:
-      '@types/node': 22.15.31
+      '@types/node': 22.15.33
 
   '@types/debug@4.1.7':
     dependencies:
@@ -5421,7 +5421,7 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@22.15.31':
+  '@types/node@22.15.33':
     dependencies:
       undici-types: 6.21.0
 
@@ -5431,7 +5431,7 @@ snapshots:
 
   '@types/prompts@2.4.9':
     dependencies:
-      '@types/node': 22.15.31
+      '@types/node': 22.15.33
       kleur: 3.0.3
 
   '@types/react-dom@19.1.6(@types/react@19.1.6)':
@@ -6987,7 +6987,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.15.31
+      '@types/node': 22.15.33
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
