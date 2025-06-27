@@ -1,9 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
-import * as builtins from "timvir/builtins";
 import * as React from "react";
 import * as Icons from "react-feather";
 import { Code } from "timvir/blocks";
-import { useContext } from "timvir/context";
+import { useMDXComponents } from "timvir/core";
 
 interface Props {
   src: string;
@@ -11,7 +10,7 @@ interface Props {
 }
 
 function Caption(props: Props) {
-  const components = { ...builtins, ...useContext().mdxComponents };
+  const components = useMDXComponents();
 
   const { src, code } = props;
 

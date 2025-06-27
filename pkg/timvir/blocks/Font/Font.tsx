@@ -1,8 +1,7 @@
-import * as builtins from "timvir/builtins";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 import * as Icons from "react-feather";
-import { useContext } from "timvir/context";
+import { useMDXComponents } from "timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -28,7 +27,7 @@ const classes = {
 };
 
 function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const components = { ...builtins, ...useContext().mdxComponents };
+  const components = useMDXComponents();
 
   const { name, font, info, className, children, ...rest } = props;
 

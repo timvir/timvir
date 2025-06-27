@@ -3,6 +3,7 @@ import { Message } from "timvir/bus";
 import { useContext } from "timvir/context";
 import { filter, pipe, Source, subscribe } from "wonka";
 
+import * as builtins from "timvir/builtins";
 export { useContext } from "timvir/context";
 export * from "./components/Footer";
 export * from "./components/Page";
@@ -69,4 +70,8 @@ export function useBlock<P extends { id?: string }>(props: P) {
       });
     },
   };
+}
+
+export function useMDXComponents() {
+  return { ...builtins, ...useContext().mdxComponents };
 }
