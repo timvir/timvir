@@ -80,6 +80,10 @@ export function useBlock<P extends { id?: string }>(props: P) {
  *
  * The set of components includes all the built-in components, as well as
  * any overrides and additions you have provided to the '<Page>' component.
+ *
+ * The name 'useMDXComponents' is a bit of a misnomer. You may use the
+ * components in your custom Timvir blocks. The name was chosen so that
+ * the hook can be used by '@mdx-js/loader' 'providerImportSource'.
  */
 export function useMDXComponents() {
   return { ...builtins, ...useContext().mdxComponents };
