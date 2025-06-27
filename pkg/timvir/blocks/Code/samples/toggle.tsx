@@ -1,5 +1,5 @@
 import * as builtins from "timvir/builtins";
-import { useContext } from "timvir/core";
+import { useContext } from "timvir/context";
 import { send } from "timvir/bus";
 import * as React from "react";
 

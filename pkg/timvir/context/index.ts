@@ -35,3 +35,7 @@ export function useContext(): Value {
 
   return value;
 }
+
+export function useMDXComponents() {
+  return useContext().mdxComponents;
+}

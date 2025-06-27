@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cx, css } from "@linaria/core";
-import { useContext } from "timvir/core";
+import { useContext } from "timvir/context";
 
 /**
  * The underlying DOM element which is rendered by this component.

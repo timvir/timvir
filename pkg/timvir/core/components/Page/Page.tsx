@@ -42,7 +42,9 @@ interface Props extends React.ComponentProps<typeof Root> {
    * highlighting. If you want to enable syntax highlighting in code blocks, use the
    * '<Code>' component from 'timvir/blocks'.
    */
-  mdxComponents?: React.ComponentPropsWithoutRef<typeof MDXProvider>["components"];
+  mdxComponents?: {
+    [Key in keyof JSX.IntrinsicElements]?: React.Component<JSX.IntrinsicElements[Key]> | keyof JSX.IntrinsicElements;
+  };
 
   /**
    * Search Configuration. When provided, then the Search menu will appear in the sidebar.
@@ -101,7 +103,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
       blocks,
       toc,
     }),
-    [bus, location, Link, blocks, toc]
+    [bus, mdxComponents, location, Link, blocks, toc]
   );
 
   useHotkeys(
