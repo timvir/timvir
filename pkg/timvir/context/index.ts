@@ -5,6 +5,10 @@ import { Node } from "../core/components/Page/types";
 export interface Value {
   bus: Bus;
 
+  mdxComponents: {
+    [Key in keyof JSX.IntrinsicElements]?: React.Component<JSX.IntrinsicElements[Key]> | keyof JSX.IntrinsicElements;
+  };
+
   location: { asPath: string; push: (path: string) => void };
   Link: React.ComponentType<React.ComponentProps<"a"> & { href: string }>;
 

@@ -1,11 +1,12 @@
 "use client";
 
 import { cx } from "@linaria/core";
-import { MDXProvider } from "@mdx-js/react";
 import * as stylex from "@stylexjs/stylex";
+import { MDXProvider } from "@mdx-js/react";
 import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import * as mdxComponentsBase from "timvir/builtins";
+import * as builtins from "timvir/builtins";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
 import { grid } from "../../layout";
@@ -91,6 +92,10 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   const context = React.useMemo<Value>(
     () => ({
       bus,
+      mdxComponents: {
+        ...builtins,
+        ...mdxComponents,
+      },
       location,
       Link,
       blocks,
