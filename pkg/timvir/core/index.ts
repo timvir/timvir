@@ -70,7 +70,3 @@ export function useBlock<P extends { id?: string }>(props: P) {
     },
   };
 }
-
-export function useMDXComponents() {
-  return useContext().mdxComponents;
-}

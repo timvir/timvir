@@ -22,7 +22,7 @@ export default withLinaria({ cacheDirectory: "./.next/cache/linaria" })({
         {
           loader: "@mdx-js/loader",
           options: {
-            providerImportSource: "timvir/core",
+            providerImportSource: "timvir/context",
             remarkPlugins: [remarkPlugin],
           },
         },
