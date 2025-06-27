@@ -1,12 +1,11 @@
-import { filter, pipe, Source, subscribe } from "wonka";
+import * as React from "react";
 import { Message } from "timvir/bus";
 import { useContext } from "timvir/context";
-import * as React from "react";
-
-export * from "./components/Footer";
-export * from "./components/Page";
+import { filter, pipe, Source, subscribe } from "wonka";
 
 export { useContext } from "timvir/context";
+export * from "./components/Footer";
+export * from "./components/Page";
 export { extendedWidth, fullWidth, grid } from "./layout";
 export { theme } from "./theme";
 
@@ -70,4 +69,8 @@ export function useBlock<P extends { id?: string }>(props: P) {
       });
     },
   };
+}
+
+export function useMDXComponents() {
+  return useContext().mdxComponents;
 }

@@ -1,16 +1,15 @@
 "use client";
 
 import { css, cx } from "@linaria/core";
-import { MDXProvider } from "@mdx-js/react";
 import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
+import * as builtins from "timvir/builtins";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
 import { grid } from "../../layout";
 import { theme } from "../../theme";
 import { Commands } from "../Commands";
 import { NavigationFooter } from "../NavigationFooter";
-import * as mdxComponentsBase from "timvir/builtins";
 import { Sidebar } from "./internal";
 import { Node } from "./types";
 
@@ -83,6 +82,10 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   const context = React.useMemo<Value>(
     () => ({
       bus,
+      mdxComponents: {
+        ...builtins,
+        ...mdxComponents,
+      },
       location,
       Link,
       blocks,
@@ -180,9 +183,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
             grid-area: content;
           `}
         >
-          <div className={grid}>
-            <MDXProvider components={{ ...(mdxComponentsBase as any), ...mdxComponents }}>{children}</MDXProvider>
-          </div>
+          <div className={grid}>{children}</div>
 
           <div
             className={css`
