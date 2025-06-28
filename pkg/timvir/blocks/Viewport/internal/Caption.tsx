@@ -1,9 +1,8 @@
 import { css, cx } from "@linaria/core";
-import { useMDXComponents } from "@mdx-js/react";
-import * as builtins from "timvir/builtins";
-import { Code } from "timvir/blocks";
 import * as React from "react";
 import * as Icons from "react-feather";
+import { Code } from "timvir/blocks";
+import { useMDXComponents } from "timvir/core";
 
 interface Props {
   src: string;
@@ -11,7 +10,7 @@ interface Props {
 }
 
 function Caption(props: Props) {
-  const components = { ...builtins, ...useMDXComponents() };
+  const components = useMDXComponents();
 
   const { src, code } = props;
 
