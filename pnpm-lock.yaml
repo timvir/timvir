@@ -167,6 +167,9 @@ importers:
       next:
         specifier: ^15.3.4
         version: 15.3.4(@babel/core@7.27.7)(@playwright/test@1.53.1)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next-with-linaria:
+        specifier: ^1.2.0
+        version: 1.2.0(@babel/runtime@7.27.0)(@wyw-in-js/babel-preset@0.6.0)(@wyw-in-js/transform@0.6.0)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
@@ -3099,6 +3102,13 @@ packages:
 
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
+  next-with-linaria@1.2.0:
+    resolution: {integrity: sha512-hOgWnUTUFa7xVIXMewdUGzsOnSYAV5awp3OfBo0gOVl51BNv+WkY8b46FzM05J3l99W9UyiAq2hbtEFe4F0Ugw==}
+    peerDependencies:
+      '@babel/runtime': 7.x
+      '@wyw-in-js/babel-preset': 0.x
+      '@wyw-in-js/transform': 0.x
 
   next@15.3.4:
     resolution: {integrity: sha512-mHKd50C+mCjam/gcnwqL1T1vPx/XQNFlXqFIVdgQdVAFY9iIQtY0IfaVflEYzKiqjeA7B0cYYMaCrmAYFjs4rA==}
@@ -7442,6 +7452,12 @@ snapshots:
   natural-compare@1.4.0: {}
 
   neo-async@2.6.2: {}
+
+  next-with-linaria@1.2.0(@babel/runtime@7.27.0)(@wyw-in-js/babel-preset@0.6.0)(@wyw-in-js/transform@0.6.0):
+    dependencies:
+      '@babel/runtime': 7.27.0
+      '@wyw-in-js/babel-preset': 0.6.0
+      '@wyw-in-js/transform': 0.6.0
 
   next@15.3.4(@babel/core@7.27.7)(@playwright/test@1.53.1)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
