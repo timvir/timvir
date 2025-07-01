@@ -1,16 +1,15 @@
 "use client";
 
 import { css, cx } from "@linaria/core";
-import { MDXProvider } from "@mdx-js/react";
 import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
+import * as builtins from "timvir/builtins";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
 import { grid } from "../../layout";
 import { theme } from "../../theme";
 import { Commands } from "../Commands";
 import { NavigationFooter } from "../NavigationFooter";
-import * as mdxComponentsBase from "timvir/builtins";
 import { Sidebar } from "./internal";
 import { Node } from "./types";
 
@@ -33,7 +32,9 @@ interface Props extends React.ComponentProps<typeof Root> {
    * highlighting. If you want to enable syntax highlighting in code blocks, use the
    * '<Code>' component from 'timvir/blocks'.
    */
-  mdxComponents?: React.ComponentPropsWithoutRef<typeof MDXProvider>["components"];
+  mdxComponents?: {
+    [Key in keyof JSX.IntrinsicElements]?: React.Component<JSX.IntrinsicElements[Key]> | keyof JSX.IntrinsicElements;
+  };
 
   /**
    * Search Configuration. When provided, then the Search menu will appear in the sidebar.
@@ -83,12 +84,16 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   const context = React.useMemo<Value>(
     () => ({
       bus,
+      mdxComponents: {
+        ...builtins,
+        ...mdxComponents,
+      },
       location,
       Link,
       blocks,
       toc,
     }),
-    [bus, location, Link, blocks, toc]
+    [bus, mdxComponents, location, Link, blocks, toc]
   );
 
   useHotkeys(
@@ -180,9 +185,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
             grid-area: content;
           `}
         >
-          <div className={grid}>
-            <MDXProvider components={{ ...(mdxComponentsBase as any), ...mdxComponents }}>{children}</MDXProvider>
-          </div>
+          <div className={grid}>{children}</div>
 
           <div
             className={css`

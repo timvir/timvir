@@ -1,12 +1,12 @@
-import { filter, pipe, Source, subscribe } from "wonka";
+import * as React from "react";
 import { Message } from "timvir/bus";
 import { useContext } from "timvir/context";
-import * as React from "react";
+import { filter, pipe, Source, subscribe } from "wonka";
 
+import * as builtins from "timvir/builtins";
+export { useContext } from "timvir/context";
 export * from "./components/Footer";
 export * from "./components/Page";
-
-export { useContext } from "timvir/context";
 export { extendedWidth, fullWidth, grid } from "./layout";
 export { theme } from "./theme";
 
@@ -70,4 +70,21 @@ export function useBlock<P extends { id?: string }>(props: P) {
       });
     },
   };
+}
+
+/**
+ * This React hook returns a set of components that meant for use within a
+ * Timvir page or custom block. The components are styled so that they fit
+ * within the Timvir design system. You should use them to make the page
+ * appear styled consistently.
+ *
+ * The set of components includes all the built-in components, as well as
+ * any overrides and additions you have provided to the '<Page>' component.
+ *
+ * The name 'useMDXComponents' is a bit of a misnomer. You may use the
+ * components in your custom Timvir blocks. The name was chosen so that
+ * the hook can be used by '@mdx-js/loader' 'providerImportSource'.
+ */
+export function useMDXComponents() {
+  return { ...builtins, ...useContext().mdxComponents };
 }

@@ -38,9 +38,6 @@ importers:
       '@mdx-js/loader':
         specifier: ^3.1.0
         version: 3.1.0(webpack@5.99.5)
-      '@mdx-js/react':
-        specifier: ^3.1.0
-        version: 3.1.0(@types/react@19.1.8)(react@19.1.0)
       '@playwright/test':
         specifier: ^1.53.1
         version: 1.53.1
@@ -272,9 +269,6 @@ importers:
 
   pkg/timvir:
     dependencies:
-      '@mdx-js/react':
-        specifier: ^2 || ^3
-        version: 3.1.0(@types/react@19.1.8)(react@19.1.0)
       bytestring:
         specifier: ^1
         version: 1.0.1
@@ -1154,12 +1148,6 @@ packages:
 
   '@mdx-js/mdx@3.0.0':
     resolution: {integrity: sha512-Icm0TBKBLYqroYbNW3BPnzMGn+7mwpQOK310aZ7+fkCtiU3aqv2cdcX+nd0Ydo3wI5Rx8bX2Z2QmGb/XcAClCw==}
-
-  '@mdx-js/react@3.1.0':
-    resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
-    peerDependencies:
-      '@types/react': '>=16'
-      react: '>=16'
 
   '@next/env@15.3.4':
     resolution: {integrity: sha512-ZkdYzBseS6UjYzz6ylVKPOK+//zLWvD6Ta+vpoye8cW11AjiQjGYVibF0xuvT4L0iJfAPfZLFidaEzAOywyOAQ==}
@@ -5138,12 +5126,6 @@ snapshots:
       vfile: 6.0.3
     transitivePeerDependencies:
       - supports-color
-
-  '@mdx-js/react@3.1.0(@types/react@19.1.8)(react@19.1.0)':
-    dependencies:
-      '@types/mdx': 2.0.1
-      '@types/react': 19.1.8
-      react: 19.1.0
 
   '@next/env@15.3.4': {}
 
