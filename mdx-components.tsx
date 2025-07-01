@@ -3,6 +3,11 @@ import { Code } from "timvir/blocks";
 import * as builtins from "timvir/builtins";
 
 const mdxComponents = {
+  /**
+   * The default style of a `pre` block in Timvir is… unstyled. We override
+   * the component with the `Code` component from `timvir/blocks`, to
+   * enable syntax highlighting and other features.
+   */
   pre: function pre(props: any) {
     const [, language = "markdown"] =
       (props.className ?? props.children?.props?.className ?? "").match(/^language-(.*)$/) || [];
