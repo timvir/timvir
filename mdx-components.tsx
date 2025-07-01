@@ -12,11 +12,12 @@ const mdxComponents = {
 };
 
 /**
- * This function defines the set of MDX components that are made available to *.mdx files
- * that are loaded by Next.js.
+ * This function defines the set of MDX components that are made available
+ * to *.mdx files that are loaded by Next.js.
  *
- * Despite its name, this function is not a React Hook. It can be used from React Server
- * Components (which we currently don't use, but may in the near future).
+ * Despite its name, this function (in its current form) is not a React
+ * Hook. It can be used from React Server Components (which we currently
+ * don't use, but may in the near future).
  */
 export function useMDXComponents() {
   return {
