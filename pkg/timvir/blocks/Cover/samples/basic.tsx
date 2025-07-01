@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Cover } from "..";
 
 import image from "../../../../../assets/daniel-leone-v7daTKlZzaw-unsplash.jpg";
