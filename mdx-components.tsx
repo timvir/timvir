@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Code } from "timvir/blocks";
 import * as builtins from "timvir/builtins";
 

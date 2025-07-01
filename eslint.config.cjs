@@ -15,7 +15,9 @@ module.exports = {
   files: ["**/*.js", "**/*.ts", "**/*.tsx"],
   rules: {
     ...require("@typescript-eslint/eslint-plugin").configs.recommended.rules,
+
     ...require("eslint-plugin-react").configs.recommended.rules,
+    ...require("eslint-plugin-react").configs["jsx-runtime"].rules,
 
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-empty-function": 0,

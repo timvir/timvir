@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Search } from "..";
 import { defaultSearch } from "../Search";
 

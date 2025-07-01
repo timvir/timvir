@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Exhibit } from "..";
 
 declare const YourReactComponent: any

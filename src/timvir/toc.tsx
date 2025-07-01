@@ -1,4 +1,3 @@
-import * as React from "react";
 import * as Icons from "react-feather";
 
 export default [

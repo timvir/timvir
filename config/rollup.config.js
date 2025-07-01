@@ -1,21 +1,23 @@
-import linaria from "@wyw-in-js/rollup";
+import * as fs from "node:fs";
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import terser from "@rollup/plugin-terser";
+import linaria from "@wyw-in-js/rollup";
+import builtinModules from "builtin-modules";
 import shebang from "rollup-plugin-add-shebang";
 import css from "rollup-plugin-css-only";
 import preserveDirectives from "rollup-preserve-directives";
 
-import * as fs from "node:fs";
-
-import builtinModules from "builtin-modules";
-
 function externalFor(pkg) {
   const packageJson = JSON.parse(fs.readFileSync(`pkg/${pkg}/package.json`, "utf8"));
 
-  return [...Object.keys(packageJson.dependencies || {}), ...Object.keys(packageJson.peerDependencies || {})];
+  return [
+    "react/jsx-runtime",
+    ...Object.keys(packageJson.dependencies || {}),
+    ...Object.keys(packageJson.peerDependencies || {}),
+  ];
 }
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
@@ -44,7 +46,7 @@ function block(name) {
         babel({
           configFile: false,
           extensions,
-          presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+          presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", useSpread: true }]],
           plugins: [["babel-plugin-macros"]],
           babelHelpers: "bundled",
         }),
@@ -73,7 +75,7 @@ function module(name) {
         presets: [
           ["@babel/preset-typescript"],
           ["@babel/preset-env", { targets: { node } }],
-          ["@babel/preset-react", { useSpread: true }],
+          ["@babel/preset-react", { runtime: "automatic", useSpread: true }],
         ],
         babelHelpers: "bundled",
       }),
@@ -122,7 +124,7 @@ export default [
       babel({
         configFile: false,
         extensions,
-        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", useSpread: true }]],
         plugins: [["babel-plugin-macros"]],
         babelHelpers: "bundled",
       }),
@@ -146,7 +148,7 @@ export default [
       babel({
         configFile: false,
         extensions,
-        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { useSpread: true }]],
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", useSpread: true }]],
         plugins: [["babel-plugin-macros"]],
         babelHelpers: "bundled",
       }),
@@ -172,7 +174,7 @@ export default [
         presets: [
           ["@babel/preset-typescript"],
           ["@babel/preset-env", { targets: { node } }],
-          ["@babel/preset-react", { useSpread: true }],
+          ["@babel/preset-react", { runtime: "automatic", useSpread: true }],
         ],
         babelHelpers: "bundled",
       }),

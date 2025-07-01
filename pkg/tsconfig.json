@@ -4,7 +4,7 @@
     "strict": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "emitDeclarationOnly": true,
