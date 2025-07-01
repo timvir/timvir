@@ -1,7 +1,7 @@
+import { useMDXComponents } from "mdx-components";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { Code } from "timvir/blocks";
 import { Page } from "timvir/core";
 import { defaultSearch, Search } from "timvir/search";
 import routes from "./routes";
@@ -13,15 +13,6 @@ const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
   },
 };
 
-const mdxComponents = {
-  pre: function pre(props: any) {
-    const [, language = "markdown"] =
-      (props.className ?? props.children?.props?.className ?? "").match(/^language-(.*)$/) || [];
-
-    return <Code language={language}>{props.children?.props?.children ?? props.children ?? ""}</Code>;
-  },
-};
-
 export default function Wrapper({ children }: { children?: React.ReactNode }) {
   const router = useRouter();
   if (router.isFallback) {
@@ -29,7 +20,7 @@ export default function Wrapper({ children }: { children?: React.ReactNode }) {
   }
 
   return (
-    <Page location={router} Link={Link_ as any} toc={toc} search={search} mdxComponents={mdxComponents}>
+    <Page location={router} Link={Link_ as any} toc={toc} search={search} mdxComponents={useMDXComponents()}>
       {children}
     </Page>
   );
