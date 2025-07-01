@@ -1,5 +1,12 @@
 # timvir
 
+## 0.2.39
+
+### Patch Changes
+
+- **Use the New JSX Transform** ([#3323](https://github.com/timvir/timvir/pull/3323)) - The New JSX Transform was released as part of React 17. This transform reduces bundle sizes and improves performance. For more details, see the announcement on the React blog: [Introducing the New JSX Transform](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html). As Timvir already requires React 17 or later, this should not have any impact to users.
+- **Fix dark mode styles** ([#3197](https://github.com/timvir/timvir/pull/3197)) - During the recent Linaria v5 -> v6 (and corresponding stylis v3 -> v4) upgrade, the dark mode styles were slightly broken. This patch restores the dark mode styles.
+
 ## 0.2.38
 
 ## 0.2.37
