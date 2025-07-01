@@ -1,4 +1,3 @@
-import * as React from "react";
 import Wrapper from "../../../timvir/wrapper";
 import Content from "../../../../pkg/timvir/blocks/ColorBar/docs/index.mdx"
 

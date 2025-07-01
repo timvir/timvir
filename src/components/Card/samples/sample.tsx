@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Card } from "..";
 import Sample from "../../../../pkg/timvir/blocks/Swatch/samples/basic";
 import { Exhibit } from "timvir/blocks";

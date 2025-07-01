@@ -1,5 +1,4 @@
 import { css } from "@linaria/core";
-import * as React from "react";
 
 interface Props {
   containerWidth?: number;

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ColorBar } from "timvir/blocks";
 
 export default function Sample() {
