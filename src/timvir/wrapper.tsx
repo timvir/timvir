@@ -1,7 +1,7 @@
+import { useMDXComponents } from "mdx-components";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { Code } from "timvir/blocks";
 import { Page } from "timvir/core";
 import { defaultSearch, Search } from "timvir/search";
 import routes from "./routes";
@@ -13,14 +13,11 @@ const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
   },
 };
 
-const mdxComponents = {
-  pre: function pre(props: any) {
-    const [, language = "markdown"] =
-      (props.className ?? props.children?.props?.className ?? "").match(/^language-(.*)$/) || [];
-
-    return <Code language={language}>{props.children?.props?.children ?? props.children ?? ""}</Code>;
-  },
-};
+/*
+ * Despite its name, 'useMDXComponents' is not a React Hook, it's a pure
+ * function.
+ */
+const mdxComponents = useMDXComponents();
 
 export default function Wrapper({ children }: { children?: React.ReactNode }) {
   const router = useRouter();
