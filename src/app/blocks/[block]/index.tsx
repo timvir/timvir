@@ -1,4 +1,6 @@
-import Wrapper from "@/timvir/wrapper";
+"use client";
+
+import Wrapper from "@/timvir/app-page-wrapper";
 import { GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -9,7 +11,7 @@ interface Query extends ParsedUrlQuery {
 }
 
 interface Props {
-    block: string;
+  block: string;
 }
 
 export default function Page({ block }: Props) {
@@ -21,7 +23,7 @@ export default function Page({ block }: Props) {
   const Component = (() => {
     if (block === "Page" || block === "Footer" || block === "NavigationFooter") {
       return dynamic(() => import(`../../../../pkg/timvir/core/components/${block}/docs/index.mdx`));
-    }  else {
+    } else {
       return dynamic(() => import(`../../../components/${block}/docs/index.mdx`));
     }
   })();
