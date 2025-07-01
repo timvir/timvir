@@ -19,7 +19,7 @@
     "@linaria/react": "^6.3.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@playwright/test": "^1.53.1",
+    "@playwright/test": "^1.53.2",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
