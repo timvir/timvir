@@ -99,8 +99,8 @@ importers:
         specifier: ^0.6.0
         version: 0.6.0
       '@wyw-in-js/rollup':
-        specifier: ^0.6.0
-        version: 0.6.0(rollup@4.44.0)
+        specifier: ^0.7.0
+        version: 0.7.0(rollup@4.44.0)
       '@wyw-in-js/webpack-loader':
         specifier: ^0.6.0
         version: 0.6.0(webpack@5.99.5)
@@ -1628,8 +1628,12 @@ packages:
     resolution: {integrity: sha512-5YAZMUmF+S2HaqheKfew6ybbYBMnF10PjIgI7ieyuFxCohyqJNF4xdo6oHftv2z5Z4vCQ0OZHtDOQyDImBYwmg==}
     engines: {node: '>=16.0.0'}
 
-  '@wyw-in-js/rollup@0.6.0':
-    resolution: {integrity: sha512-BC1f6oEHTxVjKY6p1L5SVcSSAfjB/f7CQtvZFWEjFtmMBYWUB2jTfITTlwJTrW0cUF6XBHBRRPShT39XjqZQSA==}
+  '@wyw-in-js/processor-utils@0.7.0':
+    resolution: {integrity: sha512-mQokCsSa1KcCnPoyCNaQ4fBkI3/owsqUiu0rpaNKx6Hu4co0GE62fvOTQrPWoto+7JJMdg+WP1jm6PPovoTXOA==}
+    engines: {node: '>=16.0.0'}
+
+  '@wyw-in-js/rollup@0.7.0':
+    resolution: {integrity: sha512-174rJhAqFQKSjDfwrhVF6n2nc/LezeGUPiUiUCj1YbjXzj0NkRhJ3fIsBdGSiZStovgpPXIh37vDVujT9JjZtA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       rollup: 1.20.0||^2.0.0||^3.0.0
@@ -1638,8 +1642,16 @@ packages:
     resolution: {integrity: sha512-BozBos29AuMWOvjjKf+bYYN+Vku0Nar6+y5oxrJXIZzUEKiWTVnIxO256vi8cUBGfo/DH44o+qZTkkdSN2pPXw==}
     engines: {node: '>=16.0.0'}
 
+  '@wyw-in-js/shared@0.7.0':
+    resolution: {integrity: sha512-gDgtGMkYDZAdjOcXMIDF1ncqRAx0IvkGmCteoCNSQNa+qmoJDs20wXMbpRa3Zs/wo2Mr409IX0EWRI541wBrKA==}
+    engines: {node: '>=16.0.0'}
+
   '@wyw-in-js/transform@0.6.0':
     resolution: {integrity: sha512-/Rxw8e3KcmSjnqWs/6flmpcNTa4jLw8NViIyNwqem498AfSWXrPnYf3RyjWed9zDVL72q7Xjei6TcRqMupl3Eg==}
+    engines: {node: '>=16.0.0'}
+
+  '@wyw-in-js/transform@0.7.0':
+    resolution: {integrity: sha512-HqsHTS2HjueB3/6ELWDkmWFstWD92Yw62fsGeUtS6tj+GQkLjqRjvShLwt941cxBLnBfWQz6t1fn3yjgpclucA==}
     engines: {node: '>=16.0.0'}
 
   '@wyw-in-js/webpack-loader@0.6.0':
@@ -5646,16 +5658,31 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@wyw-in-js/rollup@0.6.0(rollup@4.44.0)':
+  '@wyw-in-js/processor-utils@0.7.0':
+    dependencies:
+      '@babel/generator': 7.27.5
+      '@wyw-in-js/shared': 0.7.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@wyw-in-js/rollup@0.7.0(rollup@4.44.0)':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.44.0)
-      '@wyw-in-js/shared': 0.6.0
-      '@wyw-in-js/transform': 0.6.0
+      '@wyw-in-js/shared': 0.7.0
+      '@wyw-in-js/transform': 0.7.0
       rollup: 4.44.0
     transitivePeerDependencies:
       - supports-color
 
   '@wyw-in-js/shared@0.6.0':
+    dependencies:
+      debug: 4.4.1
+      find-up: 5.0.0
+      minimatch: 9.0.5
+    transitivePeerDependencies:
+      - supports-color
+
+  '@wyw-in-js/shared@0.7.0':
     dependencies:
       debug: 4.4.1
       find-up: 5.0.0
@@ -5674,6 +5701,26 @@ snapshots:
       '@babel/types': 7.27.7
       '@wyw-in-js/processor-utils': 0.6.0
       '@wyw-in-js/shared': 0.6.0
+      babel-merge: 3.0.0(@babel/core@7.27.7)
+      cosmiconfig: 8.1.0
+      happy-dom: 15.11.7
+      source-map: 0.7.4
+      stylis: 4.3.6
+      ts-invariant: 0.10.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@wyw-in-js/transform@0.7.0':
+    dependencies:
+      '@babel/core': 7.27.7
+      '@babel/generator': 7.27.5
+      '@babel/helper-module-imports': 7.27.1
+      '@babel/plugin-transform-modules-commonjs': 7.27.1(@babel/core@7.27.7)
+      '@babel/template': 7.27.2
+      '@babel/traverse': 7.27.7
+      '@babel/types': 7.27.7
+      '@wyw-in-js/processor-utils': 0.7.0
+      '@wyw-in-js/shared': 0.7.0
       babel-merge: 3.0.0(@babel/core@7.27.7)
       cosmiconfig: 8.1.0
       happy-dom: 15.11.7
