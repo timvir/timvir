@@ -13,6 +13,12 @@ const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
   },
 };
 
+/*
+ * Despite its name, 'useMDXComponents' is not a React Hook, its a pure
+ * function.
+ */
+const mdxComponents = useMDXComponents();
+
 export default function Wrapper({ children }: { children?: React.ReactNode }) {
   const router = useRouter();
   if (router.isFallback) {
@@ -20,7 +26,7 @@ export default function Wrapper({ children }: { children?: React.ReactNode }) {
   }
 
   return (
-    <Page location={router} Link={Link_ as any} toc={toc} search={search} mdxComponents={useMDXComponents()}>
+    <Page location={router} Link={Link_ as any} toc={toc} search={search} mdxComponents={mdxComponents}>
       {children}
     </Page>
   );

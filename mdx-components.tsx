@@ -2,7 +2,7 @@ import * as React from "react";
 import { Code } from "timvir/blocks";
 import * as builtins from "timvir/builtins";
 
-const mdxComponents = {
+const overrides = {
   /**
    * The default style of a `pre` block in Timvir is… unstyled. We override
    * the component with the `Code` component from `timvir/blocks`, to
@@ -27,6 +27,6 @@ const mdxComponents = {
 export function useMDXComponents() {
   return {
     ...builtins,
-    ...mdxComponents,
+    ...overrides,
   };
 }
