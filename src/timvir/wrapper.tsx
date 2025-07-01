@@ -14,7 +14,7 @@ const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
 };
 
 /*
- * Despite its name, 'useMDXComponents' is not a React Hook, its a pure
+ * Despite its name, 'useMDXComponents' is not a React Hook, it's a pure
  * function.
  */
 const mdxComponents = useMDXComponents();
