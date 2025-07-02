@@ -1,5 +1,7 @@
+"use client";
+
+import { css, cx } from "@linaria/core";
 import * as React from "react";
-import { cx, css } from "@linaria/core";
 import * as Icons from "react-feather";
 
 /**
