@@ -1,4 +1,5 @@
 import { cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { fullWidth } from "timvir/core";
 
@@ -22,14 +23,19 @@ function Cover(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof R
         {sources.map((p, i) => (
           <source key={i} {...p} />
         ))}
-        <img
-          {...metadata}
-          {...img}
-          style={{ display: "block", maxWidth: "100%", height: "35vh", objectFit: "cover" }}
-        />
+        <img {...metadata} {...img} {...stylex.props(styles.img)} />
       </picture>
     </Root>
   );
 }
 
 export default React.forwardRef(Cover);
+
+const styles = stylex.create({
+  img: {
+    display: "block",
+    maxWidth: "100%",
+    height: "35vh",
+    objectFit: "cover",
+  },
+});
