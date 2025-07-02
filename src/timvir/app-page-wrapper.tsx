@@ -1,12 +1,11 @@
 "use client";
 
 import { useMDXComponents } from "mdx-components";
-import Link, { LinkProps } from "next/link";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import * as React from "react";
 import { Page } from "timvir/core";
 import { defaultSearch, Search } from "timvir/search";
-import routes from "./routes";
 import toc from "./toc";
 
 const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
@@ -30,7 +29,7 @@ export default function Wrapper(props: Props) {
   return (
     <Page
       location={{ asPath: pathname!, push: router.push }}
-      Link={Link_ as any}
+      Link={Link}
       toc={toc}
       search={search}
       mdxComponents={mdxComponents}
@@ -38,31 +37,4 @@ export default function Wrapper(props: Props) {
       {children}
     </Page>
   );
-}
-
-const getHref = (to: string) => {
-  if (to in routes) {
-    return to;
-  } else {
-    for (const [pathname, re] of Object.entries(routes)) {
-      const match = to.match(re);
-      if (match) {
-        return { pathname, query: { ...match.groups } };
-      }
-    }
-  }
-
-  return "#";
-};
-
-/*
- * This may not be necessary anymore. Test the link behavior when more pages have
- * been ported to App Router.
- */
-function Link_(props: LinkProps) {
-  if (typeof props.href === "string") {
-    return <Link {...props} href={getHref(props.href)} as={props.href} />;
-  } else {
-    return <Link {...props} />;
-  }
 }

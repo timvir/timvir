@@ -23,7 +23,14 @@ interface Props extends React.ComponentProps<typeof Root> {
   toc: readonly Node[];
 
   location: { asPath: string; push: (path: string) => void };
-  Link: React.ComponentType<React.ComponentProps<"a">>;
+
+  /**
+   * This component is used to render links between pages.
+   *
+   * Timvir will always pass the 'href' prop to this component. That is unlike
+   * the standard anchor element, which does not require it.
+   */
+  Link: React.ComponentType<React.ComponentProps<"a"> & { href: string }>;
 
   /**
    * Overrides the built-in MDX component implementations.
