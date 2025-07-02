@@ -21,9 +21,11 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export default function Wrapper({ children }: Props) {
+export default function Wrapper(props: Props) {
   const router = useRouter();
   const pathname = usePathname();
+
+  const { children } = props;
 
   return (
     <Page
