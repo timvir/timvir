@@ -1,11 +1,11 @@
-import Wrapper from "../../timvir/wrapper";
+import Wrapper from "../../../timvir/wrapper2";
 export default Wrapper;
 
 # Component Samples
 
 A _Component Sample_ is a standalone JavaScript module (ESM), with a default export that is a React component.
 
-```
+```tsx
 import * as React from "react";
 
 export default () => <div>This is a Component Sample</div>
@@ -36,7 +36,7 @@ For that purpose the sample may consume optional props and tweak itself accordin
 For example, if you have a checkbox-like component and want to show it as checked, unchecked, disabled in the documentation
 page.
 
-```
+```tsx
 import * as React from "react";
 import { Checkbox } from "..";
 
@@ -62,7 +62,7 @@ export default ({ initialState, disabled, label }: Props) => {
 
 Such an example you can use multiple times inside the documentation page:
 
-```
+```tsx
 import Basic from "../samples/basic"
 import { Grid, Exhibit } from "timvir/blocks";
 
