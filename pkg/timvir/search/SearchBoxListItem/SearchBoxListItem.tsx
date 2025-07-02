@@ -1,5 +1,5 @@
-import * as React from "react";
 import { css } from "@linaria/core";
+import * as React from "react";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -7,7 +7,8 @@ import { css } from "@linaria/core";
 const Root = "a";
 
 interface Props extends React.ComponentProps<typeof Root> {
-  as?: React.ComponentType<React.ComponentProps<typeof Root>>;
+  href: string;
+  as?: React.ComponentType<React.ComponentProps<typeof Root> & { href: string }>;
   icon?: React.ReactNode;
   label: React.ReactNode;
   context?: React.ReactNode;
