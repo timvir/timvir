@@ -1,0 +1,47 @@
+import Wrapper from "@/timvir/app-page-wrapper";
+export default Wrapper;
+
+# Search
+
+Timvir provides hooks for integrating site-wide search functionality. It comes with
+a builtin search based on the Table Of Contents. To use more advanced search providers,
+such as [Algolia], you'll have to write the integration yourself.
+
+To open the search, either:
+
+- Click on the «Quick Find» button in the sidebar, or
+- Press «CMD + P» anywhere on the page.
+
+## Builtin Search Provider
+
+The builtin search provider uses the _Table Of Contents_ as the search index. Because
+of that it is rather limited: you'll only be able search the page URLs and titles,
+but not within the page content.
+
+First install the dependency:
+
+```shell
+npm i @timvir/search
+```
+
+Then pass the `search` prop to the `<Page>` component:
+
+```typescript
+import { defaultSearch, Search } from "@timvir/search";
+import toc from "./toc";
+
+export default function Wrapper({ children }) {
+  return (
+    <Page
+      …
+      search={{
+        Component: (props) => (
+          <Search {...props} {...defaultSearch(toc)} />
+        ),
+      }}
+    />
+  );
+}
+```
+
+[Algolia]: https://www.algolia.com/
