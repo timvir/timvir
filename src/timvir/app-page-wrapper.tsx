@@ -55,6 +55,10 @@ const getHref = (to: string) => {
   return "#";
 };
 
+/*
+ * This may not be necessary anymore. Test the link behavior when more pages have
+ * been ported to App Router.
+ */
 function Link_(props: LinkProps) {
   if (typeof props.href === "string") {
     return <Link {...props} href={getHref(props.href)} as={props.href} />;
