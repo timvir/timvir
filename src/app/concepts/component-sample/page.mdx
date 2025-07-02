@@ -1,4 +1,4 @@
-import Wrapper from "../../../timvir/app-page-wrapper";
+import Wrapper from "@/timvir/app-page-wrapper";
 export default Wrapper;
 
 # Component Samples
@@ -8,7 +8,7 @@ A _Component Sample_ is a standalone JavaScript module (ESM), with a default exp
 ```tsx
 import * as React from "react";
 
-export default () => <div>This is a Component Sample</div>
+export default () => <div>This is a Component Sample</div>;
 ```
 
 The Component Sample Module can be used in the following ways:
@@ -50,12 +50,7 @@ export default ({ initialState, disabled, label }: Props) => {
   const [checked, setChecked] = React.useState(!!initialState);
 
   return (
-    <Checkbox
-      label={label || "LABEL"}
-      disabled={disabled}
-      state={checked}
-      onChange={() => setChecked(!checked)}
-    />
+    <Checkbox label={label || "LABEL"} disabled={disabled} state={checked} onChange={() => setChecked(!checked)} />
   );
 };
 ```
@@ -63,7 +58,7 @@ export default ({ initialState, disabled, label }: Props) => {
 Such an example you can use multiple times inside the documentation page:
 
 ```tsx
-import Basic from "../samples/basic"
+import Basic from "../samples/basic";
 import { Grid, Exhibit } from "timvir/blocks";
 
 <Grid>
@@ -79,5 +74,5 @@ import { Grid, Exhibit } from "timvir/blocks";
   <Exhibit caption="Suuuuuper looooong label">
     <Basic label="Queen Daenerys Stormborn of the House Targaryen" />
   </Exhibit>
-</Grid>
+</Grid>;
 ```
