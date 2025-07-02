@@ -1,7 +1,9 @@
-import { css, cx } from "@linaria/core";
+"use client";
+
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import { useContext } from "timvir/context";
 import * as Icons from "react-feather";
+import { useContext } from "timvir/context";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -24,86 +26,25 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { Link } = useContext();
 
-  const { prev, next, className, ...rest } = props;
+  const { prev, next, ...rest } = props;
 
   return (
-    <Root ref={ref} {...rest} className={cx(className, classes.root)}>
-      <div
-        className={css`
-          display: flex;
-          flex-direction: column-reverse;
-          gap: 1rem;
-
-          font-size: 0.875rem;
-          line-height: 1.5;
-
-          @media (min-width: 48rem) {
-            flex-direction: row;
-          }
-        `}
-      >
+    <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
+      <div {...stylex.props(styles.container)}>
         {prev && (
-          <Link
-            href={prev.href}
-            className={css`
-              width: 100%;
-              display: flex;
-              gap: 4px;
-              flex-direction: column;
-              align-items: flex-start;
-              justify-content: flex-end;
-              text-align: left;
-              border-radius: 8px;
-              border: 1px solid var(--timvir-border-color);
-              padding: 16px;
-
-              color: inherit;
-              text-decoration: none;
-
-              min-width: 0;
-
-              &:hover {
-                background-color: var(--timvir-secondary-background-color);
-              }
-            `}
-          >
-            <Context>
-              <Icons.ChevronLeft /> Previous
-            </Context>
-            <Label>{prev.label}</Label>
+          <Link href={prev.href} {...stylex.props(styles.link, styles.prev)}>
+            <div {...stylex.props(styles.context)}>
+              <Icons.ChevronLeft {...stylex.props(styles.icon)} /> Previous
+            </div>
+            <div {...stylex.props(styles.label)}>{prev.label}</div>
           </Link>
         )}
         {next && (
-          <Link
-            href={next.href}
-            className={css`
-              width: 100%;
-              display: flex;
-              flex-direction: column;
-              gap: 4px;
-              align-items: flex-end;
-              justify-content: flex-start;
-              text-align: right;
-              border-radius: 8px;
-              border: 1px solid var(--timvir-border-color);
-              padding: 16px;
-
-              color: inherit;
-              text-decoration: none;
-
-              min-width: 0;
-
-              &:hover {
-                background-color: var(--timvir-secondary-background-color);
-              }
-            `}
-          >
-            <>
-              <Context>
-                Next <Icons.ChevronRight />
-              </Context>
-              <Label>{next.label}</Label>
-            </>
+          <Link href={next.href} {...stylex.props(styles.link, styles.next)}>
+            <div {...stylex.props(styles.context)}>
+              Next <Icons.ChevronRight {...stylex.props(styles.icon)} />
+            </div>
+            <div {...stylex.props(styles.label)}>{next.label}</div>
           </Link>
         )}
       </div>
@@ -113,65 +54,76 @@ function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ComponentR
 
 export default React.forwardRef(NavigationFooter);
 
-function Label(props: { children: React.ReactNode }) {
-  return (
-    <div
-      className={css`
-        font-weight: 500;
+const styles = stylex.create({
+  root: {
+    padding: "50px 0 80px",
 
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
-      `}
-      {...props}
-    />
-  );
-}
-
-function Context(props: { children?: React.ReactNode }) {
-  return (
-    <div
-      className={css`
-        color: var(--timvir-secondary-text-color);
-        display: flex;
-        align-items: center;
-        margin-inline: -0.2em;
-
-        svg {
-          height: 1.2em;
-          width: 1.2em;
-        }
-      `}
-      {...props}
-    />
-  );
-}
-
-const classes = {
-  root: css`
-    padding: 50px 0 80px;
-
-    display: grid;
-
-    grid-auto-rows: min-content;
-    grid-template-columns: [le] var(--timvir-page-margin) [lex lc] 1fr [rc rex] var(--timvir-page-margin) [re];
-
-    @media (min-width: 48rem) {
-      grid-template-columns:
-        [le] var(--timvir-page-margin) [lex] 1fr [lc] minmax(0, 48rem) [rc] 1fr [rex] var(--timvir-page-margin)
-        [re];
-    }
-
-    @media (min-width: 72rem) {
-      grid-template-columns:
-        [le] 1fr var(--timvir-page-margin) [lex] minmax(0, 12rem) [lc] 48rem [rc] minmax(0, 12rem) [rex] var(
-          --timvir-page-margin
-        )
-        1fr [re];
-    }
-
-    & > * {
-      grid-column: lc / rc;
-    }
-  `,
-};
+    /*
+     * This grid layout replicates the layout of the main content area.
+     */
+    display: "grid",
+    gridAutoRows: "min-content",
+    gridTemplateColumns: "[le] var(--timvir-page-margin) [lex lc] 1fr [rc rex] var(--timvir-page-margin) [re]",
+    "@media (min-width: 48rem)": {
+      gridTemplateColumns:
+        "[le] var(--timvir-page-margin) [lex] 1fr [lc] minmax(0, 48rem) [rc] 1fr [rex] var(--timvir-page-margin) [re]",
+    },
+    "@media (min-width: 72rem)": {
+      gridTemplateColumns:
+        "[le] 1fr var(--timvir-page-margin) [lex] minmax(0, 12rem) [lc] 48rem [rc] minmax(0, 12rem) [rex] var(--timvir-page-margin) 1fr [re]",
+    },
+  },
+  container: {
+    gridColumn: "lc / rc",
+    display: "flex",
+    flexDirection: "column-reverse",
+    gap: "1rem",
+    fontSize: "0.875rem",
+    lineHeight: 1.5,
+    "@media (min-width: 48rem)": {
+      flexDirection: "row",
+    },
+  },
+  link: {
+    width: "100%",
+    display: "flex",
+    gap: "4px",
+    borderRadius: "8px",
+    border: "1px solid var(--timvir-border-color)",
+    padding: "16px",
+    color: "inherit",
+    textDecoration: "none",
+    minWidth: 0,
+    ":hover": {
+      backgroundColor: "var(--timvir-secondary-background-color)",
+    },
+  },
+  prev: {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "flex-end",
+    textAlign: "left",
+  },
+  next: {
+    flexDirection: "column",
+    alignItems: "flex-end",
+    justifyContent: "flex-start",
+    textAlign: "right",
+  },
+  label: {
+    fontWeight: 500,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: "100%",
+  },
+  context: {
+    color: "var(--timvir-secondary-text-color)",
+    display: "flex",
+    alignItems: "center",
+    marginInline: "-0.2em",
+  },
+  icon: {
+    height: "1.2em",
+    width: "1.2em",
+  },
+});
