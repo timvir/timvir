@@ -1,5 +1,0 @@
-blocks timvir/blocks
-cli @timvir/cli
-core timvir/core
-macro @timvir/macro
-search @timvir/search
