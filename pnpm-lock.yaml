@@ -60,8 +60,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.44.0)
       '@stylexjs/stylex':
-        specifier: ^0.12.0
-        version: 0.12.0
+        specifier: ^0.14.1
+        version: 0.14.1
       '@stylexswc/nextjs-plugin':
         specifier: ^0.7.1
         version: 0.7.1(next@15.3.4(@babel/core@7.27.7)(@playwright/test@1.53.2)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
@@ -1436,15 +1436,20 @@ packages:
 
   '@stylexjs/shared@0.11.1':
     resolution: {integrity: sha512-siBoO0yg6KbhHbtkwWGhZWu0pH61gEAsdSYYv+vQRkaX3iSADByrqFuhD/KQku8AfKq78u5dWGc3FDA0H90VEw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@stylexjs/shared@0.12.0':
     resolution: {integrity: sha512-R698EHDuMo6OJCxcNg/tlA7ZCDQlrHeHaV7as78hDZ9WgP/IPhcg5HWmlF0H0kJ5WcC3jMEPGtsWWRxdWolZ1w==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@stylexjs/stylex@0.11.1':
     resolution: {integrity: sha512-1OofsiCP2DYV+Cw/iIuHYTAJRy34TtxQt0FDuQGTnNH915hb6NkPmX6iPa++9t4KP3HWR9oVRmAHkpP58BIYbw==}
 
   '@stylexjs/stylex@0.12.0':
     resolution: {integrity: sha512-gvazVsoTNRTnXldvmV/IIa1bB6UStoWMmRpoH/O+/f05IWnq5xES5foWxaPKm0uZD1vQ2Ue5e820lwT5+YqnrQ==}
+
+  '@stylexjs/stylex@0.14.1':
+    resolution: {integrity: sha512-UlAGhGUHTqZoMThHdpLUFhO0fjWxJ3VDFRsGK0mNwCD4IEe2EPkIjtZTjHZepidDAbUcNoXlTQoK/y1fcd5f/w==}
 
   '@stylexswc/nextjs-plugin@0.7.1':
     resolution: {integrity: sha512-D0VfM6eKzqkR0AFjiiakY+fUIVC4FpqBOb0OPYQ5Ukv8j8ZK0gNv32sjM3qAgcvvdid4Pzezkzqv/VTbZQlCVQ==}
@@ -5583,6 +5588,12 @@ snapshots:
       styleq: 0.2.1
 
   '@stylexjs/stylex@0.12.0':
+    dependencies:
+      css-mediaquery: 0.1.2
+      invariant: 2.2.4
+      styleq: 0.2.1
+
+  '@stylexjs/stylex@0.14.1':
     dependencies:
       css-mediaquery: 0.1.2
       invariant: 2.2.4
