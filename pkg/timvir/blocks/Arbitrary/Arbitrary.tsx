@@ -52,7 +52,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
         {...rest}
         {...rootStyleProps}
         className={cx("timvir-b-Arbitrary", rootStyleProps.className, className)}
-        style={{ ...rootStyleProps.style, ...rest.style }}
+        style={{ margin: "1em 0", ...rootStyleProps.style, ...rest.style }}
       >
         <div {...stylex.props(styles.controls)}>
           <div {...stylex.props(styles.textField)}>
