@@ -1,6 +1,4 @@
-"use client";
-
-import { css, cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
 
@@ -14,57 +12,35 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Message(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const { variant, className, children, ...rest } = props;
+  const { variant, children, ...rest } = props;
 
   return (
-    <Root
-      ref={ref}
-      className={cx(
-        className,
-        css`
-          position: relative;
-          background: var(--c-p-0);
-          color: black;
-          border-radius: 3px;
-          padding: 16px 24px 16px 24px;
-          box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2);
+    <Root ref={ref} {...stylex.props(styles.root, variant && styles[variant])} {...rest}>
+      {variant &&
+        {
+          info: <Icons.ChevronsRight {...stylex.props(styles.icon, styles.iconInfo)} />,
+          warning: <Icons.AlertCircle {...stylex.props(styles.icon, styles.iconWarning)} />,
+          alert: <Icons.XOctagon {...stylex.props(styles.icon, styles.iconAlert)} />,
+        }[variant]}
+      <div>
+        {React.Children.toArray(children).map((child, index, array) => {
+          if (React.isValidElement(child)) {
+            const style: React.CSSProperties = {
+              marginTop: index === 0 ? 0 : undefined,
+              marginBottom: index === array.length - 1 ? 0 : undefined,
+            };
 
-          display: flex;
-          align-items: flex-start;
+            if (Object.keys(style).length > 0) {
+              const props: any = child.props;
+              return React.cloneElement(child, {
+                style: { ...props?.style, ...style },
+              } as any);
+            }
 
-          font-size: 0.875rem;
-          line-height: 1.5;
-        `,
-        variant !== undefined && variantStyles[variant]
-      )}
-      {...rest}
-    >
-      {variant && (
-        <div className={icon}>
-          {
-            {
-              info: <Icons.ChevronsRight size={"1.5em"} />,
-              warning: <Icons.AlertCircle size={"1.5em"} />,
-              alert: <Icons.XOctagon size={"1.5em"} />,
-            }[variant]
+            return child;
           }
-        </div>
-      )}
-      <div
-        className={css`
-          & > *:first-child {
-            margin-top: 0;
-          }
-          & > *:last-child {
-            margin-bottom: 0;
-          }
-
-          & > h3:before {
-            display: none;
-          }
-        `}
-      >
-        {children}
+          return child;
+        })}
       </div>
     </Root>
   );
@@ -72,39 +48,50 @@ function Message(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
 
 export default React.forwardRef(Message);
 
-const icon = css`
-  position: relative;
-  top: 3px;
-  margin: -2px 12px 0 -4px;
+const styles = stylex.create({
+  root: {
+    position: "relative",
+    backgroundColor: "var(--c-p-0)",
+    color: "black",
+    borderRadius: 3,
+    padding: "16px 24px",
+    boxShadow: "inset 0 0 0 1px rgba(16, 22, 26, 0.2)",
+    display: "flex",
+    alignItems: "flex-start",
+    fontSize: "0.875rem",
+    lineHeight: 1.5,
+  },
 
-  & > svg {
-    display: block;
-  }
-`;
+  icon: {
+    flex: "0 0 auto",
+    display: "block",
+    position: "relative",
+    top: 3,
+    margin: "-2px 12px 0 -4px",
+    width: "1.5em",
+    height: "1.5em",
+  },
 
-const variantStyles = {
-  info: css`
-    background: #f0f2fc;
-    color: black;
+  info: {
+    backgroundColor: "#f0f2fc",
+    color: "black",
+  },
+  warning: {
+    backgroundColor: "#fcf9f0",
+    color: "black",
+  },
+  alert: {
+    backgroundColor: "#fcf0f0",
+    color: "black",
+  },
 
-    .${icon} {
-      color: #2a47d5;
-    }
-  `,
-  warning: css`
-    background: #fcf9f0;
-    color: black;
-
-    .${icon} {
-      color: #a68521;
-    }
-  `,
-  alert: css`
-    background: #fcf0f0;
-    color: black;
-
-    .${icon} {
-      color: #da4444;
-    }
-  `,
-} as const;
+  iconInfo: {
+    color: "#2a47d5",
+  },
+  iconWarning: {
+    color: "#a68521",
+  },
+  iconAlert: {
+    color: "#da4444",
+  },
+});
