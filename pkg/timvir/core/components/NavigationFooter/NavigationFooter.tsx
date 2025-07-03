@@ -23,11 +23,11 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   };
 }
 
-function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function NavigationFooter(props: Props) {
   const { Link, prev, next, ...rest } = props;
 
   return (
-    <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
+    <Root {...rest} {...stylex.props(styles.root)}>
       <div {...stylex.props(styles.container)}>
         {prev && (
           <Link href={prev.href} {...stylex.props(styles.link, styles.prev)}>
@@ -50,7 +50,7 @@ function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ComponentR
   );
 }
 
-export default React.forwardRef(NavigationFooter);
+export default NavigationFooter;
 
 const styles = stylex.create({
   root: {
