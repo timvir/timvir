@@ -1,9 +1,7 @@
-"use client";
-
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
-import { useContext } from "timvir/context";
+import { Value } from "timvir/context";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -11,6 +9,8 @@ import { useContext } from "timvir/context";
 const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+  Link: Value["Link"];
+
   prev?: {
     href: string;
     label: React.ReactNode;
@@ -24,9 +24,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function NavigationFooter(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const { Link } = useContext();
-
-  const { prev, next, ...rest } = props;
+  const { Link, prev, next, ...rest } = props;
 
   return (
     <Root ref={ref} {...rest} {...stylex.props(styles.root)}>

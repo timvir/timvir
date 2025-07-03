@@ -238,7 +238,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
                     padding-top: 80px;
                   `}
                 >
-                  <NavigationFooter prev={toLink(index - 1)} next={toLink(index + 1)} />
+                  <NavigationFooter Link={Link} prev={toLink(index - 1)} next={toLink(index + 1)} />
                 </div>
               );
             })()}
