@@ -1,16 +1,17 @@
 "use client";
 
-import { css, cx } from "@linaria/core";
+import { cx } from "@linaria/core";
 import { MDXProvider } from "@mdx-js/react";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
+import * as mdxComponentsBase from "timvir/builtins";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
 import { grid } from "../../layout";
 import { theme } from "../../theme";
 import { Commands } from "../Commands";
 import { NavigationFooter } from "../NavigationFooter";
-import * as mdxComponentsBase from "timvir/builtins";
 import { Sidebar } from "./internal";
 import { Node } from "./types";
 
@@ -78,7 +79,7 @@ interface Props extends React.ComponentProps<typeof Root> {
 }
 
 function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const { location, toc, Link, className, search, mdxComponents, Footer, blocks, children, ...rest } = props;
+  const { location, toc, Link, search, mdxComponents, Footer, blocks, children, ...rest } = props;
 
   const [state, setState] = React.useState({
     search: {
@@ -123,48 +124,19 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     { enableOnFormTags: true }
   );
 
+  const rootStyleProps = stylex.props(styles.root);
+
   return (
     <Provider value={context}>
       <Root
         ref={ref}
         {...rest}
-        className={cx(
-          className,
-          theme,
-          css`
-            min-height: 100vh;
-
-            --timvir-page-margin: 16px;
-
-            display: grid;
-            grid-template-areas: "navigation" "content";
-
-            @media (min-width: 48rem) {
-              --timvir-page-margin: 24px;
-              grid-template-areas: "navigation content";
-              grid-template-columns: [l] 300px [m] 1fr [r];
-            }
-          `
-        )}
+        {...rootStyleProps}
+        className={cx(rest.className, theme, rootStyleProps.className)}
+        style={{ ...rest.style, ...rootStyleProps.style }}
       >
         <Sidebar
-          className={css`
-            grid-area: navigation;
-            z-index: 80;
-            background-color: var(--timvir-background-color);
-            position: sticky;
-            top: 0;
-
-            @media (min-width: 48rem) {
-              position: fixed;
-              top: 0;
-              bottom: 0;
-              left: 0;
-              width: 300px;
-
-              border-right: 1px solid var(--timvir-border-color);
-            }
-          `}
+          {...stylex.props(styles.sidebar)}
           toc={toc}
           search={
             search && {
@@ -180,22 +152,12 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           }
         />
 
-        <div
-          className={css`
-            display: flex;
-            flex-direction: column;
-            grid-area: content;
-          `}
-        >
+        <div {...stylex.props(styles.contentContainer)}>
           <div className={grid}>
             <MDXProvider components={{ ...(mdxComponentsBase as any), ...mdxComponents }}>{children}</MDXProvider>
           </div>
 
-          <div
-            className={css`
-              margin-top: auto;
-            `}
-          >
+          <div {...stylex.props(styles.marginTopAuto)}>
             {(() => {
               function flatten(n: Node, parents: Node[]): Array<{ parents: Node[]; label: string; path: string }> {
                 let ret: Array<{ parents: Node[]; label: string; path: string }> = [];
@@ -232,12 +194,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
               }
 
               return (
-                <div
-                  className={css`
-                    margin-top: auto;
-                    padding-top: 80px;
-                  `}
-                >
+                <div {...stylex.props(styles.footerContainer)}>
                   <NavigationFooter Link={Link} prev={toLink(index - 1)} next={toLink(index + 1)} />
                 </div>
               );
@@ -267,3 +224,46 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 }
 
 export default React.forwardRef(Page);
+
+const styles = stylex.create({
+  root: {
+    minHeight: "100vh",
+    "--timvir-page-margin": "16px",
+    display: "grid",
+    gridTemplateAreas: `"navigation" "content"`,
+
+    "@media (min-width: 48rem)": {
+      "--timvir-page-margin": "24px",
+      gridTemplateAreas: `"navigation content"`,
+      gridTemplateColumns: "[l] 300px [m] 1fr [r]",
+    },
+  },
+  sidebar: {
+    gridArea: "navigation",
+    zIndex: 80,
+    backgroundColor: "var(--timvir-background-color)",
+    position: "sticky",
+    top: 0,
+
+    "@media (min-width: 48rem)": {
+      position: "fixed",
+      top: 0,
+      bottom: 0,
+      left: 0,
+      width: 300,
+      borderRight: "1px solid var(--timvir-border-color)",
+    },
+  },
+  marginTopAuto: {
+    marginTop: "auto",
+  },
+  contentContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gridArea: "content",
+  },
+  footerContainer: {
+    marginTop: "auto",
+    paddingTop: 80,
+  },
+});
