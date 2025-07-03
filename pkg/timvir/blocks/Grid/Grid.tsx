@@ -1,4 +1,5 @@
-import { css, cx } from "@linaria/core";
+import { cx } from "@linaria/core";
+import stylex from "@stylexjs/stylex";
 import * as React from "react";
 
 /**
@@ -11,8 +12,16 @@ interface Props extends React.ComponentProps<typeof Root> {}
 function Grid(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { children, className, ...rest } = props;
 
+  const rootStyleProps = stylex.props(styles.root);
+
   return (
-    <Root ref={ref} className={cx(className, classes.root)} {...rest}>
+    <Root
+      ref={ref}
+      {...rest}
+      {...rootStyleProps}
+      style={{ ...rootStyleProps.style, ...rest.style }}
+      className={cx(className, rootStyleProps.className)}
+    >
       {children}
     </Root>
   );
@@ -20,12 +29,11 @@ function Grid(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
 export default React.forwardRef(Grid);
 
-const classes = {
-  root: css`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--timvir-page-margin, 24px);
-
-    --timvir-margin: calc(var(--timvir-page-margin, 24px) * 0.5);
-  `,
-};
+const styles = stylex.create({
+  root: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: "var(--timvir-page-margin, 24px)",
+    "--timvir-margin": "calc(var(--timvir-page-margin, 24px) * 0.5)",
+  },
+});
