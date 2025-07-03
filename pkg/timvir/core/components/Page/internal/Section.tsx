@@ -1,4 +1,3 @@
-import { css } from "@linaria/core";
 import * as React from "react";
 import { useContext } from "timvir/context";
 import { Node } from "../types";
@@ -30,7 +29,7 @@ function Section(props: Props) {
   }, [path, location.asPath]);
 
   return (
-    <section className={classes.root}>
+    <section>
       <SidebarItem {...props} active={active} setActive={setActive} />
 
       {active && children.length > 0 && (
@@ -45,7 +44,3 @@ function Section(props: Props) {
 }
 
 export default Section;
-
-const classes = {
-  root: css``,
-};
