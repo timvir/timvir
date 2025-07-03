@@ -1,8 +1,9 @@
 "use client";
 
-import { css, cx } from "@linaria/core";
-import { useBlock } from "timvir/core";
+import { cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
+import { useBlock } from "timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -30,63 +31,80 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
   return (
     <Root
       ref={ref}
-      className={cx("timvir-b-Exhibit", className, classes.root)}
-      style={{
-        ...style,
-        [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : undefined,
-      }}
+      {...mergeStyleXProps(styles.root, {
+        className: cx("timvir-b-Exhibit", className),
+        style: {
+          ...style,
+          ["--timvir-b-Exhibit-bleed"]: typeof bleed === "number" ? `${bleed}px` : undefined,
+        },
+      })}
       {...rest}
     >
       <div
-        className={cx("timvir-b-Exhibit-container", classes.container)}
         {...BackdropProps}
-        style={{
-          border: bleed === 0 ? "none" : `1px solid var(${cssVariables.borderColor})`,
-          ...BackdropProps?.style,
-        }}
+        {...mergeStyleXProps(styles.container, {
+          className: cx("timvir-b-Exhibit-container", BackdropProps?.className),
+          style: {
+            border: bleed === 0 ? "none" : `1px solid var(--timvir-b-Exhibit-borderColor)`,
+            ...BackdropProps?.style,
+          },
+        })}
       >
         {children}
       </div>
 
-      {caption && <div className={cx("timvir-b-Exhibit-caption", classes.caption)}>{caption}</div>}
+      {caption && (
+        <div
+          {...mergeStyleXProps(styles.caption, {
+            className: "timvir-b-Exhibit-caption",
+          })}
+        >
+          {caption}
+        </div>
+      )}
     </Root>
   );
 }
 
 export default React.forwardRef(Exhibit);
 
-const cssVariables = {
-  bleed: "--timvir-b-Exhibit-bleed",
-  borderColor: "--timvir-b-Exhibit-borderColor",
-  background: "--timvir-b-Exhibit-background",
-};
+function mergeStyleXProps(styles: any, { className, style }: any = {}) {
+  const stylexProps = stylex.props(styles);
+  return {
+    ...stylexProps,
+    className: cx(stylexProps.className, className),
+    style: { ...stylexProps.style, ...style },
+  };
+}
 
-const classes = {
-  root: css`
-    ${cssVariables.bleed}: calc(var(--timvir-margin, 0px) * 0.6666);
+const styles = stylex.create({
+  root: {
+    "--timvir-b-Exhibit-bleed": "calc(var(--timvir-margin, 0px) * 0.6666)",
+    "--timvir-b-Exhibit-borderColor": "var(--timvir-border-color)",
 
-    ${cssVariables.borderColor}: var(--timvir-border-color);
-    ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==);
+    "--timvir-b-Exhibit-background":
+      "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==)",
 
-    :root[data-timvir-theme="dark"] & {
-      ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
-    }
-  `,
+    ":root[data-timvir-theme='dark']": {
+      "--timvir-b-Exhibit-background":
+        "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==)",
+    },
+  },
 
-  container: css`
-    display: flow-root;
-    background: var(${cssVariables.background});
+  container: {
+    display: "flow-root",
+    background: `var(--timvir-b-Exhibit-background)`,
 
-    margin: 0 calc(-1 * var(${cssVariables.bleed}));
-    padding: var(${cssVariables.bleed});
+    margin: `0 calc(-1 * var(--timvir-b-Exhibit-bleed))`,
+    padding: `var(--timvir-b-Exhibit-bleed)`,
 
-    border-radius: 5px;
-  `,
+    borderRadius: "5px",
+  },
 
-  caption: css`
-    font-size: 0.8125rem;
-    line-height: 1.1875;
-    color: var(--timvir-secondary-text-color);
-    margin-top: 0.3em;
-  `,
-};
+  caption: {
+    fontSize: "0.8125rem",
+    lineHeight: 1.1875,
+    color: "var(--timvir-secondary-text-color)",
+    marginTop: "0.3em",
+  },
+});
