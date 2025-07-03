@@ -1,10 +1,11 @@
 "use client";
 
-import { css, cx } from "@linaria/core";
-import { Exhibit } from "timvir/blocks";
-import { useBlock } from "timvir/core";
+import { cx } from "@linaria/core";
+import stylex from "@stylexjs/stylex";
 import * as base58 from "bytestring/base58";
 import * as React from "react";
+import { Exhibit } from "timvir/blocks";
+import { useBlock } from "timvir/core";
 import { Context } from "./context";
 
 /**
@@ -41,14 +42,25 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
     }
   }, [props.id, block.bus, value.seed]);
 
+  const rootStyleProps = stylex.props(styles.root);
+  const inputStyleProps = stylex.props(styles.input);
+
   return (
     <Context.Provider value={value}>
-      <Root ref={ref} className={cx("timvir-b-Arbitrary", classes.root, className)} {...rest}>
-        <div className={classes.controls}>
-          <div className={classes.textField}>
-            <span className={classes.startAdornment}>Seed:</span>
+      <Root
+        ref={ref}
+        {...rest}
+        {...rootStyleProps}
+        className={cx("timvir-b-Arbitrary", rootStyleProps.className, className)}
+        style={{ margin: "1em 0", ...rootStyleProps.style, ...rest.style }}
+      >
+        <div {...stylex.props(styles.controls)}>
+          <div {...stylex.props(styles.textField)}>
+            <span {...stylex.props(styles.startAdornment)}>Seed:</span>
             <input
-              className={cx("timvir-b-Arbitrary-seed", classes.input)}
+              {...inputStyleProps}
+              className={cx("timvir-b-Arbitrary-seed", inputStyleProps.className)}
+              style={{ ...inputStyleProps.style }}
               placeholder="Seed"
               value={base58.encode(new TextEncoder().encode(`${value.seed}`))}
               readOnly
@@ -66,7 +78,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
 
           <button
             type="button"
-            className={classes.button}
+            {...stylex.props(styles.button)}
             onClick={() => {
               setValue({
                 seed: crypto.getRandomValues(new Uint32Array(1))[0],
@@ -85,79 +97,78 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
 
 export default React.forwardRef(Arbitrary);
 
-const classes = {
-  root: css`
-    margin: 1em 0;
-  `,
+const styles = stylex.create({
+  root: {
+    margin: "1em 0",
+  },
 
-  controls: css`
-    display: grid;
-    grid-gap: 8px;
-    grid-template-columns: 1fr 100px;
-    margin-bottom: 8px;
-  `,
+  controls: {
+    display: "grid",
+    gridGap: "8px",
+    gridTemplateColumns: "1fr 100px",
+    marginBottom: "8px",
+  },
 
-  textField: css`
-    display: flex;
-    align-items: center;
-    padding: 0 0 0 10px;
-    min-height: 36px;
-    position: relative;
-    background: var(--timvir-secondary-background-color);
+  textField: {
+    display: "flex",
+    alignItems: "center",
+    padding: "0 0 0 10px",
+    minHeight: "36px",
+    position: "relative",
+    background: "var(--timvir-secondary-background-color)",
 
-    &::after {
-      display: block;
-      position: absolute;
-      content: "";
-      inset: 0;
-      pointer-events: none;
-      border: 1px solid var(--timvir-border-color);
-      border-radius: 2px;
-    }
+    ":after": {
+      display: "block",
+      position: "absolute",
+      content: "",
+      inset: 0,
+      pointerEvents: "none",
+      border: "1px solid var(--timvir-border-color)",
+      borderRadius: "2px",
+    },
 
-    &:hover::after {
-      border-color: var(--timvir-text-color);
-    }
+    ":hover:after": {
+      borderColor: "var(--timvir-text-color)",
+    },
 
-    &:focus-within::after {
-      border-color: var(--timvir-text-color);
-    }
-  `,
+    ":focus-within:after": {
+      borderColor: "var(--timvir-text-color)",
+    },
+  },
 
-  startAdornment: css`
-    display: inline-block;
-    color: var(--timvir-secondary-text-color);
-    margin-right: 6px;
-  `,
+  startAdornment: {
+    display: "inline-block",
+    color: "var(--timvir-secondary-text-color)",
+    marginRight: "6px",
+  },
 
-  input: css`
-    border: none;
-    outline: none;
-    font: inherit;
-    background: transparent;
-    align-self: stretch;
-    padding: 0;
-    width: 100%;
-    color: inherit;
-  `,
+  input: {
+    border: "none",
+    outline: "none",
+    font: "inherit",
+    background: "transparent",
+    alignSelf: "stretch",
+    padding: 0,
+    width: "100%",
+    color: "inherit",
+  },
 
-  button: css`
-    border: none;
-    outline: none;
-    min-height: 36px;
-    border: 1px solid var(--timvir-border-color);
-    border-radius: 2px;
-    background: var(--timvir-secondary-background-color);
-    color: var(--timvir-text-color);
-    font: inherit;
+  button: {
+    outline: "none",
+    minHeight: "36px",
+    border: "1px solid var(--timvir-border-color)",
+    borderRadius: "2px",
+    background: "var(--timvir-secondary-background-color)",
+    color: "var(--timvir-text-color)",
+    font: "inherit",
 
-    &:hover {
-      border-color: var(--timvir-text-color);
-      background: var(--timvir-sidebar-highlight-color);
-    }
-    &:active {
-      border-color: var(--timvir-text-color);
-      background: var(--timvir-sidebar-highlight-color);
-    }
-  `,
-};
+    ":hover": {
+      borderColor: "var(--timvir-text-color)",
+      background: "var(--timvir-sidebar-highlight-color)",
+    },
+    ":active": {
+      borderColor: "var(--timvir-text-color)",
+      background: "var(--timvir-sidebar-highlight-color)",
+    },
+  },
+});
