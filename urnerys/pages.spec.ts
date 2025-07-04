@@ -53,7 +53,7 @@ for (const url of urls) {
   test(url, async ({ page }, { title, project }) => {
     const imageUploads: Array<Promise<unknown>> = [];
 
-    await page.goto(url);
+    await page.goto(url, { waitUntil: "load" });
 
     const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
     for (const inputElement of inputElements) {
