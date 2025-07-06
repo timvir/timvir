@@ -1,6 +1,6 @@
 "use client";
 
-import { css, cx } from "@linaria/core";
+import { cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { fullWidth, useBlock } from "timvir/core";
