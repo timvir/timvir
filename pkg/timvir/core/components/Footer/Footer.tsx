@@ -1,5 +1,4 @@
-import { grid } from "../../layout";
-import { css, cx } from "@linaria/core";
+import stylex from "@stylexjs/stylex";
 import * as React from "react";
 
 /**
@@ -15,19 +14,19 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 }
 
 function Footer(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const { className, links, ...rest } = props;
+  const { links, ...rest } = props;
 
   return (
-    <Root ref={ref} className={cx(className, classes.root)} {...rest}>
+    <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
       {links && (
-        <div className={grid}>
-          <div className={classes.linkGroups}>
+        <div {...stylex.props(styles.grid)}>
+          <div {...stylex.props(styles.center, styles.linkGroups)}>
             {links.map(({ group, items }, i) => (
               <div key={i}>
-                <div className={classes.linkGroupTitle}>{group}</div>
+                <div {...stylex.props(styles.linkGroupTitle)}>{group}</div>
                 <div>
                   {items.map(({ label, href }, j) => (
-                    <a key={j} href={href} className={classes.link}>
+                    <a key={j} href={href} {...stylex.props(styles.link)}>
                       {label}
                     </a>
                   ))}
@@ -38,9 +37,12 @@ function Footer(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
         </div>
       )}
 
-      <div className={cx(grid, classes.meta)}>
-        <div style={{ marginBottom: 0 }}>
-          Built with <a href="https://timvir.vercel.app">Timvir</a>
+      <div {...stylex.props(styles.grid, styles.meta)}>
+        <div {...stylex.props(styles.center)}>
+          Built with{" "}
+          <a href="https://timvir.vercel.app" {...stylex.props(styles.metaLink)}>
+            Timvir
+          </a>
         </div>
       </div>
     </Root>
@@ -49,50 +51,72 @@ function Footer(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
 
 export default React.forwardRef(Footer);
 
-const classes = {
-  root: css`
-    padding: 50px 0 30px;
+const styles = stylex.create({
+  root: {
+    padding: "50px 0 30px",
+    display: "grid",
+    gap: 50,
+    borderTop: "1px solid var(--timvir-border-color)",
+  },
 
-    display: grid;
-    gap: 50px;
+  grid: {
+    display: "grid",
+    "--timvir-page-margin": "16px",
+    "--timvir-margin": "var(--timvir-page-margin)",
+    gridAutoRows: "min-content",
+    gridTemplateColumns: "[le] var(--timvir-page-margin) [lex lc] 1fr [rc rex] var(--timvir-page-margin) [re]",
 
-    border-top: 1px solid var(--timvir-border-color);
-  `,
+    "@media (min-width: 48rem)": {
+      "--timvir-page-margin": "24px",
+      gridTemplateColumns:
+        "[le] var(--timvir-page-margin) [lex] 1fr [lc] minmax(0, 48rem) [rc] 1fr [rex] var(--timvir-page-margin) [re]",
+    },
 
-  linkGroups: css`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(234px, 1fr));
-    grid-gap: 32px;
-  `,
+    "@media (min-width: 72rem)": {
+      gridTemplateColumns:
+        "[le] 1fr var(--timvir-page-margin) [lex] minmax(0, 12rem) [lc] 48rem [rc] minmax(0, 12rem) [rex] var(--timvir-page-margin) 1fr [re]",
+    },
+  },
 
-  linkGroupTitle: css`
-    font-weight: 600;
-    margin-bottom: 12px;
-  `,
+  center: {
+    gridColumn: "lc / rc",
+    minWidth: 0,
+  },
 
-  link: css`
-    display: block;
-    color: inherit;
-    text-decoration: none;
-    &:hover {
-      color: var(--c-p-4);
-    }
-  `,
+  linkGroups: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(234px, 1fr))",
+    gap: 32,
+  },
 
-  meta: css`
-    color: var(--timvir-secondary-text-color);
+  linkGroupTitle: {
+    fontWeight: 600,
+    marginBottom: 12,
+  },
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
-      background-position: bottom;
-      background-size: 100% 6px;
-      background-repeat: repeat-x;
+  link: {
+    display: "block",
+    color: "inherit",
+    textDecoration: "none",
+    ":hover": {
+      color: "var(--c-p-4)",
+    },
+  },
 
-      &:hover {
-        background-image: linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a);
-      }
-    }
-  `,
-};
+  meta: {
+    color: "var(--timvir-secondary-text-color)",
+  },
+
+  metaLink: {
+    color: "inherit",
+    textDecoration: "none",
+    backgroundImage: "linear-gradient(transparent, transparent 5px, #383838 5px, #383838)",
+    backgroundPosition: "bottom",
+    backgroundSize: "100% 6px",
+    backgroundRepeat: "repeat-x",
+
+    ":hover": {
+      backgroundImage: "linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a)",
+    },
+  },
+});
