@@ -1,5 +1,5 @@
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import { css, cx } from "@linaria/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -18,67 +18,34 @@ interface Chapter {
 }
 
 function ColorBook(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const { chapters, selectedChapter, onSelectChapter, className, ...rest } = props;
+  const { chapters, selectedChapter, onSelectChapter, ...rest } = props;
+
   return (
-    <Root
-      ref={ref}
-      {...rest}
-      className={cx(
-        className,
-        css`
-          display: grid;
-          grid-gap: 16px;
-          grid-auto-columns: 1fr;
-          align-items: start;
-          width: 100%;
-        `
-      )}
-    >
+    <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
       {chapters.map(({ name, values }, i) => (
         <div key={i} style={{ gridColumn: i + 1 }}>
           <div
-            className={cx(chapter, i === selectedChapter && activeChapter)}
+            {...stylex.props(styles.chapter, i === selectedChapter && styles.activeChapter)}
             onClick={() => {
               if (onSelectChapter) {
                 onSelectChapter(i);
               }
             }}
           >
-            {values.map((value) => (
+            {values.map((value, i) => (
               <div
                 key={value}
                 style={{ background: value }}
-                className={css`
-                  flex-grow: 1;
-
-                  &:first-child {
-                    border-radius: 3px 3px 0 0;
-                  }
-                  &:last-child {
-                    border-radius: 0 0 3px 3px;
-                  }
-                `}
+                {...stylex.props(
+                  styles.colorValue,
+                  i === 0 && styles.colorValueFirst,
+                  i === values.length - 1 && styles.colorValueLast
+                )}
               />
             ))}
           </div>
           {name && (
-            <div
-              className={cx(
-                css`
-                  text-align: center;
-                  font-size: 0.75rem;
-                  color: var(--timvir-secondary-text-color);
-                  margin-top: 0.8em;
-                  line-height: 1;
-                `,
-                i === selectedChapter &&
-                  css`
-                    color: var(--timvir-text-color);
-                  `
-              )}
-            >
-              {name}
-            </div>
+            <div {...stylex.props(styles.chapterName, i === selectedChapter && styles.activeChapterName)}>{name}</div>
           )}
         </div>
       ))}
@@ -88,37 +55,70 @@ function ColorBook(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
 
 export default React.forwardRef(ColorBook);
 
-const chapter = css`
-  position: relative;
-  cursor: pointer;
+const styles = stylex.create({
+  root: {
+    display: "grid",
+    gridGap: "16px",
+    gridAutoColumns: "1fr",
+    alignItems: "start",
+    width: "100%",
+  },
+  chapter: {
+    position: "relative",
+    cursor: "pointer",
+    display: "flex",
+    flexDirection: "column",
+    height: "200px",
+    "::before": {
+      position: "absolute",
+      top: "-2px",
+      right: "-2px",
+      bottom: "-2px",
+      left: "-2px",
+      borderRadius: "4px",
+      boxShadow: "0 0 0 0 rgba(19, 124, 189, 0)",
+      content: "",
+      transition: "all 0.16s cubic-bezier(0.4, 1, 0.75, 0.9)",
+    },
+    ":hover::before": {
+      boxShadow: "0 0 0 2px #00000040",
+      opacity: 1,
+    },
+  },
+  activeChapter: {
+    ":hover::before": {
+      boxShadow: "0 0 0 2px var(--c-p-5)",
+      opacity: 1,
+    },
+    "::before": {
+      boxShadow: "0 0 0 2px var(--c-p-5)",
+      opacity: 1,
+    },
+  },
+  colorValue: {
+    flexGrow: 1,
+  },
+  colorValueFirst: {
+    borderTopLeftRadius: "3px",
+    borderTopRightRadius: "3px",
+    borderBottomLeftRadius: "0",
+    borderBottomRightRadius: "0",
+  },
+  colorValueLast: {
+    borderTopLeftRadius: "0",
+    borderTopRightRadius: "0",
+    borderBottomLeftRadius: "3px",
+    borderBottomRightRadius: "3px",
+  },
 
-  display: flex;
-  flex-direction: column;
-
-  height: 200px;
-
-  &::before {
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    bottom: -2px;
-    left: -2px;
-    border-radius: 4px;
-    box-shadow: 0 0 0 0 rgba(19, 124, 189, 0);
-    content: "";
-    transition: all 0.16s cubic-bezier(0.4, 1, 0.75, 0.9);
-  }
-
-  &:hover::before {
-    box-shadow: 0 0 0 2px #00000040;
-    opacity: 1;
-  }
-`;
-
-const activeChapter = css`
-  &:hover::before,
-  &::before {
-    box-shadow: 0 0 0 2px var(--c-p-5);
-    opacity: 1;
-  }
-`;
+  chapterName: {
+    textAlign: "center",
+    fontSize: "0.75rem",
+    color: "var(--timvir-secondary-text-color)",
+    marginTop: "0.8em",
+    lineHeight: "1",
+  },
+  activeChapterName: {
+    color: "var(--timvir-text-color)",
+  },
+});
