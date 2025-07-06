@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 
 interface Props {
@@ -13,29 +13,7 @@ function Handle(props: Props) {
 
   return (
     <div
-      className={css`
-        grid-row: 1 / span 3;
-        cursor: pointer;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        opacity: 0.5;
-        color: var(--timvir-text-color);
-
-        border-radius: 2px;
-        transition: all 0.2s cubic-bezier(0.4, 1, 0.75, 0.9);
-
-        &:hover {
-          opacity: 1;
-          box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2), 0 8px 24px rgba(16, 22, 26, 0.2);
-        }
-
-        &:active {
-          box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgba(16, 22, 26, 0), 0 1px 1px rgba(16, 22, 26, 0.2);
-        }
-      `}
+      {...stylex.props(styles.handle)}
       onMouseDown={() => {
         lock.current = edge;
         if (iframeRef.current) {
@@ -53,3 +31,24 @@ function Handle(props: Props) {
 }
 
 export default React.memo(Handle);
+
+const styles = stylex.create({
+  handle: {
+    gridRow: "1 / span 3",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    opacity: 0.5,
+    color: "var(--timvir-text-color)",
+    borderRadius: "2px",
+    transition: "all 0.2s cubic-bezier(0.4, 1, 0.75, 0.9)",
+    ":hover": {
+      opacity: 1,
+      boxShadow: "0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2), 0 8px 24px rgba(16, 22, 26, 0.2)",
+    },
+    ":active": {
+      boxShadow: "0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgba(16, 22, 26, 0), 0 1px 1px rgba(16, 22, 26, 0.2)",
+    },
+  },
+});

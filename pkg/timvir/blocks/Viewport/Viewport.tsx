@@ -1,10 +1,17 @@
 "use client";
 
 import { css, cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
+import * as React from "react";
 import { fullWidth, useBlock } from "timvir/core";
 import { useResizeObserver, useResizeObserverEntry } from "timvir/hooks";
-import * as React from "react";
 import { Caption, Handle, Ruler } from "./internal";
+
+const shimmer = stylex.keyframes({
+  "0%": { backgroundPosition: "-60vw 0" },
+  "40%": { backgroundPosition: "85vw 0" },
+  "100%": { backgroundPosition: "85vw 0" },
+});
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -92,6 +99,8 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
     setMaxHeight(Math.max(height, maxHeight ?? 0));
   });
 
+  const rootStyleProps = stylex.props(styles.root);
+
   return (
     <>
       <Root
@@ -102,85 +111,19 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
           !state.settled && "timvir-unsettled",
           className,
           fullWidth,
-          css`
-            contain: layout;
-            margin-bottom: 0;
-          `
+          rootStyleProps.className
         )}
+        style={{ ...rootStyleProps.style, ...rest.style }}
       >
-        <div
-          ref={svgRef}
-          className={css`
-            position: relative;
-          `}
-        >
+        <div ref={svgRef} {...stylex.props(styles.svgContainer)}>
           <Ruler containerWidth={svgROE?.contentRect.width} viewportWidth={width} />
-          <div
-            className={css`
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              font-variant-numeric: tabular-nums;
-            `}
-          >
-            {width}px
-          </div>
+          <div {...stylex.props(styles.widthDisplay)}>{width}px</div>
         </div>
-        <div
-          className={css`
-            display: flex;
-            align-items: stretch;
-            justify-content: center;
-          `}
-        >
+        <div {...stylex.props(styles.flexContainer)}>
           <div>
-            <div
-              className={css`
-                border-radius: 3px;
-                display: grid;
-                grid-template-columns: 56px auto 56px;
-                grid-template-rows: 0 auto 0;
-                grid-column-gap: 8px;
-              `}
-            >
+            <div {...stylex.props(styles.gridContainer)}>
               <div
-                className={cx(
-                  css`
-                    grid-column: 2 / span 1;
-                    grid-row: 2 / span 1;
-                    position: relative;
-                    flex: 1;
-                    height: 100px;
-                    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=);
-                    transition: height 0.16s;
-                    overflow: hidden;
-                  `,
-                  height === undefined &&
-                    css`
-                      animation-duration: 2s;
-                      animation-fill-mode: forwards;
-                      animation-iteration-count: infinite;
-                      animation-name: shimmer;
-                      animation-timing-function: linear;
-                      background-size: 150vw 100px;
-                      background-image: linear-gradient(to right, #fafafa 0%, #f4f4f4 25%, #fafafa 40%);
-                      box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2);
-                      border-radius: 1px;
-
-                      @keyframes shimmer {
-                        0% {
-                          background-position: -60vw 0;
-                        }
-                        40% {
-                          background-position: 85vw 0;
-                        }
-                        100% {
-                          background-position: 85vw 0;
-                        }
-                      }
-                    `
-                )}
+                {...stylex.props(styles.iframeWrapperBase, height === undefined && styles.iframeWrapperShimmer)}
                 style={{ width, height }}
               >
                 <iframe
@@ -250,15 +193,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
 
                     initializeDocument();
                   }}
-                  className={css`
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    transition: opacity 0.2s;
-                  `}
+                  {...stylex.props(styles.iframe)}
                   style={{
                     opacity: height === undefined ? 0 : 1,
                     pointerEvents: height === undefined ? "none" : undefined,
@@ -283,3 +218,63 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
 }
 
 export default React.forwardRef(Viewport);
+
+const styles = stylex.create({
+  root: {
+    contain: "layout",
+    marginBottom: 0,
+  },
+  svgContainer: {
+    position: "relative",
+  },
+  widthDisplay: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    fontVariantNumeric: "tabular-nums",
+  },
+  flexContainer: {
+    display: "flex",
+    alignItems: "stretch",
+    justifyContent: "center",
+  },
+  gridContainer: {
+    borderRadius: 3,
+    display: "grid",
+    gridTemplateColumns: "56px auto 56px",
+    gridTemplateRows: "0 auto 0",
+    gridColumnGap: 8,
+  },
+  iframeWrapperBase: {
+    gridColumn: "2 / span 1",
+    gridRow: "2 / span 1",
+    position: "relative",
+    flex: 1,
+    height: 100,
+    background:
+      "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=)",
+    transition: "height 0.16s",
+    overflow: "hidden",
+  },
+  iframeWrapperShimmer: {
+    animationDuration: "2s",
+    animationFillMode: "forwards",
+    animationIterationCount: "infinite",
+    animationName: shimmer,
+    animationTimingFunction: "linear",
+    backgroundSize: "150vw 100px",
+    backgroundImage: "linear-gradient(to right, #fafafa 0%, #f4f4f4 25%, #fafafa 40%)",
+    boxShadow: "inset 0 0 0 1px rgba(16, 22, 26, 0.2)",
+    borderRadius: 1,
+  },
+  iframe: {
+    display: "block",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    transition: "opacity 0.2s",
+  },
+});
