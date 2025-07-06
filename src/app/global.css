@@ -11,3 +11,11 @@ body {
 *:after {
   box-sizing: inherit;
 }
+
+/*
+ * Set the color for the overflow areas. This avoids the white areas
+ * at the top or bottom when the user scrolls past the ends.
+ */
+body {
+  background-color: var(--timvir-background-color);
+}
