@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 
 interface Props {
   containerWidth?: number;
@@ -11,15 +11,7 @@ function Ruler(props: Props) {
   const { containerWidth = 0, viewportWidth = 0 } = props;
 
   return (
-    <svg
-      viewBox={`-${containerWidth / 2} ${-height / 2} ${containerWidth} ${height}`}
-      className={css`
-        width: 100%;
-        display: block;
-        height: ${height}px;
-        margin: 8px 0;
-      `}
-    >
+    <svg viewBox={`-${containerWidth / 2} ${-height / 2} ${containerWidth} ${height}`} {...stylex.props(styles.svg)}>
       <rect
         x={-containerWidth / 2}
         y={-height / 2}
@@ -49,3 +41,12 @@ function Ruler(props: Props) {
 }
 
 export default Ruler;
+
+const styles = stylex.create({
+  svg: {
+    width: "100%",
+    display: "block",
+    height: `${height}px`,
+    margin: "8px 0",
+  },
+});

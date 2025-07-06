@@ -1,9 +1,9 @@
-import { css, cx } from "@linaria/core";
 import { useMDXComponents } from "@mdx-js/react";
-import * as builtins from "timvir/builtins";
-import { Code } from "timvir/blocks";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
+import { Code } from "timvir/blocks";
+import * as builtins from "timvir/builtins";
 
 interface Props {
   src: string;
@@ -19,18 +19,7 @@ function Caption(props: Props) {
 
   return (
     <>
-      <figcaption
-        className={css`
-          font-size: 0.8125rem;
-          line-height: 1.1875;
-          color: var(--timvir-secondary-text-color);
-          white-space: nowrap;
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        `}
-      >
+      <figcaption {...stylex.props(styles.figcaption)}>
         <div>
           Source:{" "}
           <components.a href={src} target="_blank">
@@ -40,17 +29,7 @@ function Caption(props: Props) {
 
         {code && (
           <div
-            className={css`
-              cursor: pointer;
-              &:hover {
-                color: var(--c-p-4);
-                opacity: 1;
-              }
-
-              & > svg {
-                display: block;
-              }
-            `}
+            {...stylex.props(styles.codeToggle)}
             onClick={() => {
               if (codeRef) {
                 const infoParent = codeRef.parentElement!;
@@ -65,29 +44,14 @@ function Caption(props: Props) {
               }
             }}
           >
-            <Icons.Code size={"1.6em"} />
+            <Icons.Code size={"1.6em"} {...stylex.props(styles.codeIcon)} />
           </div>
         )}
       </figcaption>
 
       {code && (
-        <div
-          className={cx(
-            css`
-              overflow: hidden;
-              transition: height 0.2s, opacity 0.2s 0.1s;
-            `
-          )}
-          style={{ height: 0, opacity: 0 }}
-        >
-          <div
-            ref={setCodeRef}
-            className={cx(
-              css`
-                margin-top: 12px;
-              `
-            )}
-          >
+        <div {...stylex.props(styles.codeContainer)}>
+          <div ref={setCodeRef} {...stylex.props(styles.codeRefWrapper)}>
             <Code language="jsx">{code}</Code>
           </div>
         </div>
@@ -97,3 +61,34 @@ function Caption(props: Props) {
 }
 
 export default React.memo(Caption);
+
+const styles = stylex.create({
+  figcaption: {
+    fontSize: "0.8125rem",
+    lineHeight: 1.1875,
+    color: "var(--timvir-secondary-text-color)",
+    whiteSpace: "nowrap",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  codeToggle: {
+    cursor: "pointer",
+    ":hover": {
+      color: "var(--c-p-4)",
+      opacity: 1,
+    },
+  },
+  codeIcon: {
+    display: "block",
+  },
+  codeContainer: {
+    overflow: "hidden",
+    transition: "height 0.2s, opacity 0.2s 0.1s",
+    height: 0,
+    opacity: 0,
+  },
+  codeRefWrapper: {
+    marginTop: "12px",
+  },
+});
