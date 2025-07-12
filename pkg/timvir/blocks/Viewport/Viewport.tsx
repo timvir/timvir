@@ -252,7 +252,7 @@ const styles = stylex.create({
     position: "relative",
     flex: 1,
     height: 100,
-    background:
+    backgroundImage:
       "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAF0lEQVQI12P4BAI/QICBFCaYBPNJYQIAkUZftTbC4sIAAAAASUVORK5CYII=)",
     transition: "height 0.16s",
     overflow: "hidden",
