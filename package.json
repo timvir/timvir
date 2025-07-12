@@ -44,7 +44,7 @@
     "@wyw-in-js/rollup": "^0.6.0",
     "@wyw-in-js/webpack-loader": "^0.6.0",
     "@zhif/macro": "^0.0.17",
-    "ava": "^6.4.0",
+    "ava": "^6.4.1",
     "babel-plugin-macros": "^3.1.0",
     "builtin-modules": "^5.0.0",
     "bytestring": "^1.0.1",
