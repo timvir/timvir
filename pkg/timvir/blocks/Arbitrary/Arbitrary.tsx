@@ -115,7 +115,7 @@ const styles = stylex.create({
     padding: "0 0 0 10px",
     minHeight: "36px",
     position: "relative",
-    background: "var(--timvir-secondary-background-color)",
+    backgroundColor: "var(--timvir-secondary-background-color)",
 
     ":after": {
       display: "block",
@@ -123,7 +123,9 @@ const styles = stylex.create({
       content: "",
       inset: 0,
       pointerEvents: "none",
-      border: "1px solid var(--timvir-border-color)",
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: "var(--timvir-border-color)",
       borderRadius: "2px",
     },
 
@@ -143,10 +145,10 @@ const styles = stylex.create({
   },
 
   input: {
-    border: "none",
+    borderWidth: 0,
     outline: "none",
     font: "inherit",
-    background: "transparent",
+    backgroundColor: "transparent",
     alignSelf: "stretch",
     padding: 0,
     width: "100%",
@@ -156,19 +158,21 @@ const styles = stylex.create({
   button: {
     outline: "none",
     minHeight: "36px",
-    border: "1px solid var(--timvir-border-color)",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "var(--timvir-border-color)",
     borderRadius: "2px",
-    background: "var(--timvir-secondary-background-color)",
+    backgroundColor: "var(--timvir-secondary-background-color)",
     color: "var(--timvir-text-color)",
     font: "inherit",
 
     ":hover": {
       borderColor: "var(--timvir-text-color)",
-      background: "var(--timvir-sidebar-highlight-color)",
+      backgroundColor: "var(--timvir-sidebar-highlight-color)",
     },
     ":active": {
       borderColor: "var(--timvir-text-color)",
-      background: "var(--timvir-sidebar-highlight-color)",
+      backgroundColor: "var(--timvir-sidebar-highlight-color)",
     },
   },
 });
