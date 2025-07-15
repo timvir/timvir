@@ -60,8 +60,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.44.0)
       '@stylexjs/stylex':
-        specifier: ^0.14.1
-        version: 0.14.1
+        specifier: ^0.14.2
+        version: 0.14.2
       '@stylexswc/nextjs-plugin':
         specifier: ^0.10.0
         version: 0.10.0(next@15.3.5(@babel/core@7.27.7)(@playwright/test@1.54.1)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
@@ -1439,6 +1439,9 @@ packages:
 
   '@stylexjs/stylex@0.14.1':
     resolution: {integrity: sha512-UlAGhGUHTqZoMThHdpLUFhO0fjWxJ3VDFRsGK0mNwCD4IEe2EPkIjtZTjHZepidDAbUcNoXlTQoK/y1fcd5f/w==}
+
+  '@stylexjs/stylex@0.14.2':
+    resolution: {integrity: sha512-BauuzsbiGRPrtzWJxX9EfTZjYwWJJyJjw9HoaPOTAtoShqGC5K+0ApjOTUDkeNlUjbTTF5AyPQ/g+uuiFO1ngw==}
 
   '@stylexswc/nextjs-plugin@0.10.0':
     resolution: {integrity: sha512-BqxhkQJleA7LA4Cav8DxdKOs1lgfEVRhjSYlhQT5YeOo9opt/N606166ZiwCabS1PrfF8zWfIyKQRsDdTrG0ew==}
@@ -5516,6 +5519,12 @@ snapshots:
       - supports-color
 
   '@stylexjs/stylex@0.14.1':
+    dependencies:
+      css-mediaquery: 0.1.2
+      invariant: 2.2.4
+      styleq: 0.2.1
+
+  '@stylexjs/stylex@0.14.2':
     dependencies:
       css-mediaquery: 0.1.2
       invariant: 2.2.4
