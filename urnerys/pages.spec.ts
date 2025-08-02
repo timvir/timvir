@@ -80,7 +80,7 @@ for (const url of urls) {
         set: title.substring(1),
         snapshot: "page",
         formula: project.name,
-        payload: new File([buffer], "screenshot.png", { type: "image/png" }),
+        payload: new File([new Uint8Array(buffer)], "screenshot.png", { type: "image/png" }),
       })
     );
 
