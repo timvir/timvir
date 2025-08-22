@@ -85,7 +85,7 @@ importers:
         version: 1.0.8
       '@types/node':
         specifier: ^22.17.1
-        version: 22.17.1
+        version: 22.17.2
       '@types/prettier':
         specifier: ^2.7.3
         version: 2.7.3
@@ -210,8 +210,8 @@ importers:
         specifier: ^0.34.3
         version: 0.34.3
       shiki:
-        specifier: ^3.9.2
-        version: 3.9.2
+        specifier: ^3.11.0
+        version: 3.11.0
       stylis:
         specifier: ^4.3.6
         version: 4.3.6
@@ -304,7 +304,7 @@ importers:
         version: 5.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       shiki:
         specifier: ^1 || ^2 || ^3
-        version: 3.9.2
+        version: 3.11.0
       wonka:
         specifier: ^6
         version: 6.3.5
@@ -1144,11 +1144,11 @@ packages:
   '@jridgewell/source-map@0.3.6':
     resolution: {integrity: sha512-1ZJTZebgqllO79ue2bm3rIGud/bOe0pP5BjSRCRxxYkEZS8STV7zN84UBbiYu7jy+eCKSnVIUgoWWE/tt+shMQ==}
 
-  '@jridgewell/sourcemap-codec@1.5.4':
-    resolution: {integrity: sha512-VT2+G1VQs/9oz078bLrYbecdZKs912zQlkelYpuf+SXF+QvZDYJlbx/LSx+meSAwdDFnF8FVXW92AVjjkVmgFw==}
+  '@jridgewell/sourcemap-codec@1.5.5':
+    resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
-  '@jridgewell/trace-mapping@0.3.29':
-    resolution: {integrity: sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ==}
+  '@jridgewell/trace-mapping@0.3.30':
+    resolution: {integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q==}
 
   '@linaria/core@6.3.0':
     resolution: {integrity: sha512-fs1aQyX4DmJpeGMyobuSznAo/Y02+Q8vhm+c/jr2WHDmqKHEJpCqH2Mhu1End+SdiUvZIUgb4MNiZryWtZLD5g==}
@@ -1418,23 +1418,23 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@shikijs/core@3.9.2':
-    resolution: {integrity: sha512-3q/mzmw09B2B6PgFNeiaN8pkNOixWS726IHmJEpjDAcneDPMQmUg2cweT9cWXY4XcyQS3i6mOOUgQz9RRUP6HA==}
+  '@shikijs/core@3.11.0':
+    resolution: {integrity: sha512-oJwU+DxGqp6lUZpvtQgVOXNZcVsirN76tihOLBmwILkKuRuwHteApP8oTXmL4tF5vS5FbOY0+8seXmiCoslk4g==}
 
-  '@shikijs/engine-javascript@3.9.2':
-    resolution: {integrity: sha512-kUTRVKPsB/28H5Ko6qEsyudBiWEDLst+Sfi+hwr59E0GLHV0h8RfgbQU7fdN5Lt9A8R1ulRiZyTvAizkROjwDA==}
+  '@shikijs/engine-javascript@3.11.0':
+    resolution: {integrity: sha512-6/ov6pxrSvew13k9ztIOnSBOytXeKs5kfIR7vbhdtVRg+KPzvp2HctYGeWkqv7V6YIoLicnig/QF3iajqyElZA==}
 
-  '@shikijs/engine-oniguruma@3.9.2':
-    resolution: {integrity: sha512-Vn/w5oyQ6TUgTVDIC/BrpXwIlfK6V6kGWDVVz2eRkF2v13YoENUvaNwxMsQU/t6oCuZKzqp9vqtEtEzKl9VegA==}
+  '@shikijs/engine-oniguruma@3.11.0':
+    resolution: {integrity: sha512-4DwIjIgETK04VneKbfOE4WNm4Q7WC1wo95wv82PoHKdqX4/9qLRUwrfKlmhf0gAuvT6GHy0uc7t9cailk6Tbhw==}
 
-  '@shikijs/langs@3.9.2':
-    resolution: {integrity: sha512-X1Q6wRRQXY7HqAuX3I8WjMscjeGjqXCg/Sve7J2GWFORXkSrXud23UECqTBIdCSNKJioFtmUGJQNKtlMMZMn0w==}
+  '@shikijs/langs@3.11.0':
+    resolution: {integrity: sha512-Njg/nFL4HDcf/ObxcK2VeyidIq61EeLmocrwTHGGpOQx0BzrPWM1j55XtKQ1LvvDWH15cjQy7rg96aJ1/l63uw==}
 
-  '@shikijs/themes@3.9.2':
-    resolution: {integrity: sha512-6z5lBPBMRfLyyEsgf6uJDHPa6NAGVzFJqH4EAZ+03+7sedYir2yJBRu2uPZOKmj43GyhVHWHvyduLDAwJQfDjA==}
+  '@shikijs/themes@3.11.0':
+    resolution: {integrity: sha512-BhhWRzCTEk2CtWt4S4bgsOqPJRkapvxdsifAwqP+6mk5uxboAQchc0etiJ0iIasxnMsb764qGD24DK9albcU9Q==}
 
-  '@shikijs/types@3.9.2':
-    resolution: {integrity: sha512-/M5L0Uc2ljyn2jKvj4Yiah7ow/W+DJSglVafvWAJ/b8AZDeeRAdMu3c2riDzB7N42VD+jSnWxeP9AKtd4TfYVw==}
+  '@shikijs/types@3.11.0':
+    resolution: {integrity: sha512-RB7IMo2E7NZHyfkqAuaf4CofyY8bPzjWPjJRzn6SEak3b46fIQyG6Vx5fG/obqkfppQ+g8vEsiD7Uc6lqQt32Q==}
 
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
@@ -1563,8 +1563,8 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@22.17.1':
-    resolution: {integrity: sha512-y3tBaz+rjspDTylNjAX37jEC3TETEFGNJL6uQDxwF9/8GLLIjW1rvVHlynyuUKMnMr1Roq8jOv3vkopBjC4/VA==}
+  '@types/node@22.17.2':
+    resolution: {integrity: sha512-gL6z5N9Jm9mhY+U2KXZpteb+09zyffliRkZyZOHODGATyC5B1Jt/7TzuuiLkFsSUMLbS1OLmlj/E+/3KF4Q/4w==}
 
   '@types/parse-json@4.0.0':
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -3702,8 +3702,8 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shiki@3.9.2:
-    resolution: {integrity: sha512-t6NKl5e/zGTvw/IyftLcumolgOczhuroqwXngDeMqJ3h3EQiTY/7wmfgPlsmloD8oYfqkEDqxiaH37Pjm1zUhQ==}
+  shiki@3.11.0:
+    resolution: {integrity: sha512-VgKumh/ib38I1i3QkMn6mAQA6XjjQubqaAYhfge71glAll0/4xnt8L2oSuC45Qcr/G5Kbskj4RliMQddGmy/Og==}
 
   side-channel-list@1.0.0:
     resolution: {integrity: sha512-FCLHtRD/gnpCiCHEiJLOwdmFP+wzCmDEkc9y7NsYxeF4u7Btsn1ZuwgwJGxImImHicJArLP4R0yX4c2KCrMrTA==}
@@ -4153,7 +4153,7 @@ snapshots:
   '@ampproject/remapping@2.2.0':
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
-      '@jridgewell/trace-mapping': 0.3.29
+      '@jridgewell/trace-mapping': 0.3.30
 
   '@babel/code-frame@7.27.1':
     dependencies:
@@ -4188,7 +4188,7 @@ snapshots:
       '@babel/parser': 7.28.0
       '@babel/types': 7.28.2
       '@jridgewell/gen-mapping': 0.3.12
-      '@jridgewell/trace-mapping': 0.3.29
+      '@jridgewell/trace-mapping': 0.3.30
       jsesc: 3.1.0
 
   '@babel/helper-annotate-as-pure@7.27.3':
@@ -5205,12 +5205,12 @@ snapshots:
   '@jridgewell/gen-mapping@0.1.1':
     dependencies:
       '@jridgewell/set-array': 1.2.1
-      '@jridgewell/sourcemap-codec': 1.5.4
+      '@jridgewell/sourcemap-codec': 1.5.5
 
   '@jridgewell/gen-mapping@0.3.12':
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.4
-      '@jridgewell/trace-mapping': 0.3.29
+      '@jridgewell/sourcemap-codec': 1.5.5
+      '@jridgewell/trace-mapping': 0.3.30
 
   '@jridgewell/resolve-uri@3.1.2': {}
 
@@ -5219,14 +5219,14 @@ snapshots:
   '@jridgewell/source-map@0.3.6':
     dependencies:
       '@jridgewell/gen-mapping': 0.3.12
-      '@jridgewell/trace-mapping': 0.3.29
+      '@jridgewell/trace-mapping': 0.3.30
 
-  '@jridgewell/sourcemap-codec@1.5.4': {}
+  '@jridgewell/sourcemap-codec@1.5.5': {}
 
-  '@jridgewell/trace-mapping@0.3.29':
+  '@jridgewell/trace-mapping@0.3.30':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.5.4
+      '@jridgewell/sourcemap-codec': 1.5.5
 
   '@linaria/core@6.3.0':
     dependencies:
@@ -5481,33 +5481,33 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.46.2':
     optional: true
 
-  '@shikijs/core@3.9.2':
+  '@shikijs/core@3.11.0':
     dependencies:
-      '@shikijs/types': 3.9.2
+      '@shikijs/types': 3.11.0
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.5
 
-  '@shikijs/engine-javascript@3.9.2':
+  '@shikijs/engine-javascript@3.11.0':
     dependencies:
-      '@shikijs/types': 3.9.2
+      '@shikijs/types': 3.11.0
       '@shikijs/vscode-textmate': 10.0.2
       oniguruma-to-es: 4.3.3
 
-  '@shikijs/engine-oniguruma@3.9.2':
+  '@shikijs/engine-oniguruma@3.11.0':
     dependencies:
-      '@shikijs/types': 3.9.2
+      '@shikijs/types': 3.11.0
       '@shikijs/vscode-textmate': 10.0.2
 
-  '@shikijs/langs@3.9.2':
+  '@shikijs/langs@3.11.0':
     dependencies:
-      '@shikijs/types': 3.9.2
+      '@shikijs/types': 3.11.0
 
-  '@shikijs/themes@3.9.2':
+  '@shikijs/themes@3.11.0':
     dependencies:
-      '@shikijs/types': 3.9.2
+      '@shikijs/types': 3.11.0
 
-  '@shikijs/types@3.9.2':
+  '@shikijs/types@3.11.0':
     dependencies:
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
@@ -5624,7 +5624,7 @@ snapshots:
 
   '@types/cors@2.8.19':
     dependencies:
-      '@types/node': 22.17.1
+      '@types/node': 22.17.2
 
   '@types/debug@4.1.7':
     dependencies:
@@ -5664,7 +5664,7 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@22.17.1':
+  '@types/node@22.17.2':
     dependencies:
       undici-types: 6.21.0
 
@@ -5674,7 +5674,7 @@ snapshots:
 
   '@types/prompts@2.4.9':
     dependencies:
-      '@types/node': 22.17.1
+      '@types/node': 22.17.2
       kleur: 3.0.3
 
   '@types/react-dom@19.1.7(@types/react@19.1.9)':
@@ -7231,7 +7231,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.17.1
+      '@types/node': 22.17.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -7373,7 +7373,7 @@ snapshots:
 
   magic-string@0.30.5:
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.4
+      '@jridgewell/sourcemap-codec': 1.5.5
 
   markdown-extensions@2.0.0: {}
 
@@ -8254,14 +8254,14 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shiki@3.9.2:
+  shiki@3.11.0:
     dependencies:
-      '@shikijs/core': 3.9.2
-      '@shikijs/engine-javascript': 3.9.2
-      '@shikijs/engine-oniguruma': 3.9.2
-      '@shikijs/langs': 3.9.2
-      '@shikijs/themes': 3.9.2
-      '@shikijs/types': 3.9.2
+      '@shikijs/core': 3.11.0
+      '@shikijs/engine-javascript': 3.11.0
+      '@shikijs/engine-oniguruma': 3.11.0
+      '@shikijs/langs': 3.11.0
+      '@shikijs/themes': 3.11.0
+      '@shikijs/types': 3.11.0
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
 
@@ -8467,7 +8467,7 @@ snapshots:
 
   terser-webpack-plugin@5.3.14(webpack@5.99.5):
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.29
+      '@jridgewell/trace-mapping': 0.3.30
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
