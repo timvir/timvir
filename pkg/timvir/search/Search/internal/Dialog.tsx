@@ -1,4 +1,4 @@
-import { useContext } from "timvir/context";
+import { useContext } from "timvir/core";
 import { useCombobox } from "downshift";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
