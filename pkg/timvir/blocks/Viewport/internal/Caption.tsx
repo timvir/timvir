@@ -1,4 +1,4 @@
-import { useMDXComponents } from "timvir/core";
+import { useArticleComponents } from "timvir/core";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Caption(props: Props) {
-  const components = useMDXComponents();
+  const components = useArticleComponents();
 
   const { src, code } = props;
 

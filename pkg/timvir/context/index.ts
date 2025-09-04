@@ -5,7 +5,7 @@ import { Node } from "../core/components/Page/types";
 export interface Value {
   bus: Bus;
 
-  mdxComponents: {
+  articleComponents: {
     [Key in keyof JSX.IntrinsicElements]?: React.Component<JSX.IntrinsicElements[Key]> | keyof JSX.IntrinsicElements;
   };
 

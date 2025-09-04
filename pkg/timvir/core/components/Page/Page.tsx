@@ -92,7 +92,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   const context = React.useMemo<Value>(
     () => ({
       bus,
-      mdxComponents: {
+      articleComponents: {
         ...builtins,
         ...mdxComponents,
       },

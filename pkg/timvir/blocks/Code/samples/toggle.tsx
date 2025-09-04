@@ -1,10 +1,10 @@
-import { useMDXComponents, useContext } from "timvir/core";
+import { useArticleComponents, useContext } from "timvir/core";
 import { send } from "timvir/bus";
 import * as React from "react";
 
 export default function Sample({ language, children }: any) {
   const context = useContext();
-  const components = useMDXComponents();
+  const components = useArticleComponents();
 
   return (
     <components.a
