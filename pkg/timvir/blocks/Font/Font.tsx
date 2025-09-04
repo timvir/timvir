@@ -1,7 +1,7 @@
+import { useMDXComponents } from "timvir/core";
 import { css, cx } from "@linaria/core";
 import * as React from "react";
 import * as Icons from "react-feather";
-import { useMDXComponents } from "timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.

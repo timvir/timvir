@@ -1,5 +1,4 @@
-import { useContext } from "timvir/context";
-import { useMDXComponents } from "timvir/core";
+import { useMDXComponents, useContext } from "timvir/core";
 import { send } from "timvir/bus";
 import * as React from "react";
 

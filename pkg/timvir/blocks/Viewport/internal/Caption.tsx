@@ -1,8 +1,8 @@
+import { useMDXComponents } from "timvir/core";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
 import { Code } from "timvir/blocks";
-import { useMDXComponents } from "timvir/core";
 
 interface Props {
   src: string;
