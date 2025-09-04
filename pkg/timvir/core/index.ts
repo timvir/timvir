@@ -1,12 +1,13 @@
-import * as React from "react";
+import { filter, pipe, Source, subscribe } from "wonka";
 import { Message } from "timvir/bus";
 import { useContext } from "timvir/context";
-import { filter, pipe, Source, subscribe } from "wonka";
+import * as React from "react";
 
 import * as builtins from "timvir/builtins";
 export { useContext } from "timvir/context";
 export * from "./components/Footer";
 export * from "./components/Page";
+
 export { extendedWidth, fullWidth, grid } from "./layout";
 export { theme } from "./theme";
 
