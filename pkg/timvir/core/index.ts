@@ -3,6 +3,7 @@ import { Message } from "timvir/bus";
 import { useContext } from "timvir/context";
 import * as React from "react";
 
+import * as builtins from "timvir/builtins";
 export * from "./components/Footer";
 export * from "./components/Page";
 
@@ -70,4 +71,17 @@ export function useBlock<P extends { id?: string }>(props: P) {
       });
     },
   };
+}
+
+/**
+ * This React hook returns a set of components that meant for use within a
+ * Timvir page or custom block. The components are styled so that they fit
+ * within the Timvir design system. You should use them to make the page
+ * appear styled consistently.
+ *
+ * The set of components includes all the built-in components, as well as
+ * any overrides and additions you have provided to the '<Page>' component.
+ */
+export function useArticleComponents() {
+  return { ...builtins, ...useContext().articleComponents };
 }

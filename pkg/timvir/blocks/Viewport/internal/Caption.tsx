@@ -1,9 +1,8 @@
-import { useMDXComponents } from "@mdx-js/react";
+import { useArticleComponents } from "timvir/core";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
 import { Code } from "timvir/blocks";
-import * as builtins from "timvir/builtins";
 
 interface Props {
   src: string;
@@ -11,7 +10,7 @@ interface Props {
 }
 
 function Caption(props: Props) {
-  const components = { ...builtins, ...useMDXComponents() };
+  const components = useArticleComponents();
 
   const { src, code } = props;
 
