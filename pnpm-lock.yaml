@@ -60,11 +60,11 @@ importers:
         specifier: ^0.15.3
         version: 0.15.3
       '@stylexswc/nextjs-plugin':
-        specifier: ^0.10.5
-        version: 0.10.5(next@15.5.2(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
+        specifier: ^0.10.6
+        version: 0.10.6(next@15.5.2(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
       '@stylexswc/rollup-plugin':
-        specifier: ^0.10.5
-        version: 0.10.5
+        specifier: ^0.10.6
+        version: 0.10.6
       '@types/babel__core':
         specifier: ^7.20.5
         version: 7.20.5
@@ -1449,56 +1449,62 @@ packages:
   '@stylexjs/stylex@0.15.3':
     resolution: {integrity: sha512-lBYb7NnfwQ4nVSNOxfz0Znb+yIxMFJWQuaSozNtfLZFjRwlIAadquv1Xmu5DpjzPID1wOhLaz91fZQYg3ZWngA==}
 
-  '@stylexswc/nextjs-plugin@0.10.5':
-    resolution: {integrity: sha512-nOuLtjErFAjArGRhZORZuJt3QDam606z3U+JN8eTGOqqrzilv+zBTfc1cNOc6rwQXB5l1CaW9UqMFaFzcuodfg==}
+  '@stylexswc/nextjs-plugin@0.10.6':
+    resolution: {integrity: sha512-PKUUcmJTC2NHq7f8xcFs57alKG1zwC5QjaN0Nxpk0lq2GnizcL/1AUmWE/FAhTPV0mn3fOk1o0QbGjhApCGokQ==}
     peerDependencies:
       next: '>=15.0.0'
 
-  '@stylexswc/rollup-plugin@0.10.5':
-    resolution: {integrity: sha512-UyuYPJVQ9MASzVy/R7L4iCWADnk2bqy878Jcu0h39WpW3tqVFlUwfSqZb72OMAIsLELXjc+AJ2PcI4PVj2wcyg==}
+  '@stylexswc/rollup-plugin@0.10.6':
+    resolution: {integrity: sha512-pEXiW+LxcYWBtO4/VknteM5e4BHIA71Gkxw220aZAUn3pVVsT2qEKNo/DgS0sASIxRF9OhNcMGy90kIjYs4mtA==}
 
-  '@stylexswc/rs-compiler-darwin-arm64@0.10.5':
-    resolution: {integrity: sha512-GFz6XXo8TuuG2BNuK8hMyqquRj/tSoiyxj+17+UTwQOJ4WQ+nxeRW8Z8bWbBjpt4r6lX/NTjTfPT0SzcZSOVuA==}
+  '@stylexswc/rs-compiler-darwin-arm64@0.10.6':
+    resolution: {integrity: sha512-ceQQjwP0tD8/AvlSdH7qIe1t7seGoi3zWX25pdpfFAuSDlLpGAd/nNAaLz9DJxakLAwRkzX90ZTBk+VNGRpWMw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@stylexswc/rs-compiler-darwin-x64@0.10.5':
-    resolution: {integrity: sha512-ACeY7IQvnNX9fBbK4KK44ZRO25lY3IzTP/V8wqrMGZaY60Ma3AJ5z3d+ypXIsznZaRrP+nNOyz2A2vM7+HvlIw==}
+  '@stylexswc/rs-compiler-darwin-x64@0.10.6':
+    resolution: {integrity: sha512-IlPWpuT6ujInZxZi6F8ub27YYNYJsfU/WWcmDz+mD/QjGXhlVOBhzePN2w9C/Hz1f6BNfYCFPKbNmlMxG7JamQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@stylexswc/rs-compiler-linux-arm64-gnu@0.10.5':
-    resolution: {integrity: sha512-D22g1EGPJjibOs17eS1iNp/lhcRV7iAjZDbY7kD939LXdrhO+jiyTCLYHX0Ubl21irVcSW6LT4qLo2h2d5MKPg==}
+  '@stylexswc/rs-compiler-linux-arm64-gnu@0.10.6':
+    resolution: {integrity: sha512-nBjV2Q+HMj0uffiWRaCcvowfoZI1+tHXqcI6Z475pHV5V9ZaPq1t3F4HuM+yYnlkcEbkjnjVl0ULtHt1iuBMsg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@stylexswc/rs-compiler-linux-x64-gnu@0.10.5':
-    resolution: {integrity: sha512-TwAVYJuxEK8wvYcSy2tc0iggA1iDrc89UoisSoaEWst4l78A64iOmTlhtkW+0hXmnjJKk1N5A7cvQOP4I1IIvg==}
+  '@stylexswc/rs-compiler-linux-x64-gnu@0.10.6':
+    resolution: {integrity: sha512-nC0idpYvjqqNx0Da8vWd6IBLE5sXSyheZozFAENoiay4nMXTBA8JWdXgWAwngd/GxwitAIleD5yn0+ND5QbfiA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@stylexswc/rs-compiler-linux-x64-musl@0.10.5':
-    resolution: {integrity: sha512-nU78eRo1MgNcVw8opE0ON/mTl1g2jCfFBjZbuR6oPbIJf1tpgCYh+o4TvYS0Om17P5yAuKvyiYtTjApYl8Hmhg==}
+  '@stylexswc/rs-compiler-linux-x64-musl@0.10.6':
+    resolution: {integrity: sha512-3VkibIEwYJoa+wvlFpCUP3ceja8hyH0Qdt+uTvUrkRxgkMidnWC9yWEfWkg5ZfBickrCLkfAuabaj8uhGLeXRg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@stylexswc/rs-compiler-win32-x64-msvc@0.10.5':
-    resolution: {integrity: sha512-WP2gc6nU0czWOykc+P6K2O4bNAn/TiNQxoHrLBTgwG9pXBYaLyHg/HJoIJBuJEXal8w4Gvu9SxXL+MLayPu/vw==}
+  '@stylexswc/rs-compiler-win32-arm64-msvc@0.10.6':
+    resolution: {integrity: sha512-kK4A12NbBZ3fgoGJ9cTHTyqhgZC8dOumq1WXQ+lsSnAnpgdtzSpJNXc/JVUmqHLPmO+63PVVnOb+gW4lrJ0fJg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@stylexswc/rs-compiler-win32-x64-msvc@0.10.6':
+    resolution: {integrity: sha512-ju53pSnnmNoYcCf3CRiaCD/vI+uOHWAKTqDzCE8Z0Flc+bCjod+Y7gw+yXG+b1zv6Oj6W8Cr3moMau6Brt+Ptg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
 
-  '@stylexswc/rs-compiler@0.10.5':
-    resolution: {integrity: sha512-7alrLay+ef39Kn1BUmGiNZuVnOs/KkDfZ4ZXbRTsRwkXz5uptRPOw6LcR7GXPT8eN/UEhlhpNDy8ut1JlsZQRA==}
+  '@stylexswc/rs-compiler@0.10.6':
+    resolution: {integrity: sha512-gdBlJwY6u4K0KoZmaiZ8+PWwEIxeTh6dGJdfOxKmvADc4yJrBAhIf6o9bG2X1iTVaj/aOeg6WdOO5JDpM+7kUQ==}
     engines: {node: '>= 18'}
 
-  '@stylexswc/webpack-plugin@0.10.5':
-    resolution: {integrity: sha512-bP2WBcR2fdbIlRdCINp0UCJomtlFWC2d3/3qYrHqwAmqymGDyzl8wyq0IEGqIG2yDXC5BwQZpKc0PxMg8cYcAw==}
+  '@stylexswc/webpack-plugin@0.10.6':
+    resolution: {integrity: sha512-jOF8CZPw2FW/0tkIC7+icza8bYwkCZIhzeI9Vy3ubHSDjfv02ouA08Ul58C+I+A6YxOmQNcKY/uKRfdc7xOUCA==}
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -5532,53 +5538,57 @@ snapshots:
       invariant: 2.2.4
       styleq: 0.2.1
 
-  '@stylexswc/nextjs-plugin@0.10.5(next@15.5.2(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))':
+  '@stylexswc/nextjs-plugin@0.10.6(next@15.5.2(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))':
     dependencies:
-      '@stylexswc/rs-compiler': 0.10.5
-      '@stylexswc/webpack-plugin': 0.10.5
+      '@stylexswc/rs-compiler': 0.10.6
+      '@stylexswc/webpack-plugin': 0.10.6
       next: 15.5.2(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@stylexswc/rollup-plugin@0.10.5':
+  '@stylexswc/rollup-plugin@0.10.6':
     dependencies:
       '@stylexjs/babel-plugin': 0.14.1
-      '@stylexswc/rs-compiler': 0.10.5
+      '@stylexswc/rs-compiler': 0.10.6
       lightningcss: 1.30.1
     transitivePeerDependencies:
       - supports-color
 
-  '@stylexswc/rs-compiler-darwin-arm64@0.10.5':
+  '@stylexswc/rs-compiler-darwin-arm64@0.10.6':
     optional: true
 
-  '@stylexswc/rs-compiler-darwin-x64@0.10.5':
+  '@stylexswc/rs-compiler-darwin-x64@0.10.6':
     optional: true
 
-  '@stylexswc/rs-compiler-linux-arm64-gnu@0.10.5':
+  '@stylexswc/rs-compiler-linux-arm64-gnu@0.10.6':
     optional: true
 
-  '@stylexswc/rs-compiler-linux-x64-gnu@0.10.5':
+  '@stylexswc/rs-compiler-linux-x64-gnu@0.10.6':
     optional: true
 
-  '@stylexswc/rs-compiler-linux-x64-musl@0.10.5':
+  '@stylexswc/rs-compiler-linux-x64-musl@0.10.6':
     optional: true
 
-  '@stylexswc/rs-compiler-win32-x64-msvc@0.10.5':
+  '@stylexswc/rs-compiler-win32-arm64-msvc@0.10.6':
     optional: true
 
-  '@stylexswc/rs-compiler@0.10.5':
+  '@stylexswc/rs-compiler-win32-x64-msvc@0.10.6':
+    optional: true
+
+  '@stylexswc/rs-compiler@0.10.6':
     optionalDependencies:
-      '@stylexswc/rs-compiler-darwin-arm64': 0.10.5
-      '@stylexswc/rs-compiler-darwin-x64': 0.10.5
-      '@stylexswc/rs-compiler-linux-arm64-gnu': 0.10.5
-      '@stylexswc/rs-compiler-linux-x64-gnu': 0.10.5
-      '@stylexswc/rs-compiler-linux-x64-musl': 0.10.5
-      '@stylexswc/rs-compiler-win32-x64-msvc': 0.10.5
+      '@stylexswc/rs-compiler-darwin-arm64': 0.10.6
+      '@stylexswc/rs-compiler-darwin-x64': 0.10.6
+      '@stylexswc/rs-compiler-linux-arm64-gnu': 0.10.6
+      '@stylexswc/rs-compiler-linux-x64-gnu': 0.10.6
+      '@stylexswc/rs-compiler-linux-x64-musl': 0.10.6
+      '@stylexswc/rs-compiler-win32-arm64-msvc': 0.10.6
+      '@stylexswc/rs-compiler-win32-x64-msvc': 0.10.6
 
-  '@stylexswc/webpack-plugin@0.10.5':
+  '@stylexswc/webpack-plugin@0.10.6':
     dependencies:
       '@stylexjs/babel-plugin': 0.14.1
-      '@stylexswc/rs-compiler': 0.10.5
+      '@stylexswc/rs-compiler': 0.10.6
       loader-utils: 3.3.1
     transitivePeerDependencies:
       - supports-color
