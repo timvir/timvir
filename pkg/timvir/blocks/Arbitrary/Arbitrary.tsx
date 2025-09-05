@@ -116,6 +116,7 @@ const styles = stylex.create({
     minHeight: "36px",
     position: "relative",
     backgroundColor: "var(--timvir-secondary-background-color)",
+    wordBreak: "initial",
 
     ":after": {
       display: "block",
