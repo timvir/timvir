@@ -158,7 +158,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         />
 
         <div {...stylex.props(styles.contentContainer)}>
-          <div className={grid}>{children}</div>
+          <div className={cx(grid, stylex.props(styles.content).className)}>{children}</div>
 
           <div {...stylex.props(styles.marginTopAuto)}>
             {(() => {
@@ -264,6 +264,9 @@ const styles = stylex.create({
     display: "flex",
     flexDirection: "column",
     gridArea: "content",
+  },
+  content: {
+    wordBreak: "break-word",
   },
   footerContainer: {
     marginTop: "auto",
