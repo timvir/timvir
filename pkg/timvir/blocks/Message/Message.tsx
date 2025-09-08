@@ -25,9 +25,14 @@ function Message(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
       <div>
         {React.Children.toArray(children).map((child, index, array) => {
           if (React.isValidElement(child)) {
+            /*
+             * TIMVIR-18
+             *
+             * Clean up !important after StyleX migration has been completed.
+             */
             const style: React.CSSProperties = {
-              marginTop: index === 0 ? 0 : undefined,
-              marginBottom: index === array.length - 1 ? 0 : undefined,
+              marginTop: index === 0 ? "0 !important" : undefined,
+              marginBottom: index === array.length - 1 ? "0 !important" : undefined,
             };
 
             if (Object.keys(style).length > 0) {
