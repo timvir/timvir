@@ -5,6 +5,8 @@
   "prHourlyLimit": 0,
   "postUpdateOptions": ["pnpmDedupe"],
   "dependencyDashboardApproval": true,
+  "minimumReleaseAge": "9 days",
+  "internalChecksFilter": "strict",
   "packageRules": [
     {
       "matchFileNames": [
