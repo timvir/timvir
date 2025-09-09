@@ -41,7 +41,9 @@ interface Props extends React.ComponentProps<typeof Root> {
    * '<Code>' component from 'timvir/blocks'.
    */
   mdxComponents?: {
-    [Key in keyof JSX.IntrinsicElements]?: React.Component<JSX.IntrinsicElements[Key]> | keyof JSX.IntrinsicElements;
+    [Key in keyof React.JSX.IntrinsicElements]?:
+      | React.FunctionComponent<React.JSX.IntrinsicElements[Key]>
+      | keyof React.JSX.IntrinsicElements;
   };
 
   /**
