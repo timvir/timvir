@@ -10,6 +10,9 @@ const urls = [
   "/blocks/Message",
   "/blocks/Swatch",
   "/blocks/WebLink",
+
+  "/md/heading",
+  "/md/link",
 ];
 
 interface UploadImageRequest {
