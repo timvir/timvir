@@ -1,5 +1,12 @@
-import { css } from "@linaria/core";
-import { styled } from "@linaria/react";
+/*
+ * TIMVIR-18
+ *
+ * All the !important overrides on margins are needed because of
+ * CSS descendant selectors in Page. These override can be removed
+ * once we fully migrate to StyleX.
+ */
+
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
 
@@ -14,174 +21,234 @@ const anchorize = (children?: React.ReactNode): undefined | string => {
   }
 };
 
+const headingStyles = stylex.create({
+  a: {
+    color: "inherit",
+    textDecoration: "none",
+
+    ":hover": {
+      "--link-icon-opacity": 1,
+      "--link-icon-transform": "none",
+      "--link-icon-visibility": "visible",
+      "--link-icon-visibility-delay": "0s",
+    },
+  },
+  linkIcon: {
+    display: "inline-block",
+    marginLeft: "6px",
+    color: "var(--timvir-secondary-text-color)",
+    height: "0.9rem",
+    width: "0.9rem",
+    verticalAlign: "middle",
+    transition: "opacity 0.2s, transform 0.2s, visibility 0s var(--link-icon-visibility-delay, 0.2s)",
+    opacity: "var(--link-icon-opacity, 0)",
+    visibility: "var(--link-icon-visibility, hidden)",
+    transform: "var(--link-icon-transform, translateX(-50%))",
+  },
+});
+
 function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>>) {
   return function Heading(props: React.HTMLAttributes<HTMLHeadingElement>) {
-    const id = anchorize(props.children);
+    const { children, ...rest } = props;
+
+    const id = anchorize(children);
 
     return (
-      <Component id={id} {...props}>
-        <a
-          className={css`
-            color: inherit;
-            text-decoration: none;
-
-            &:hover svg {
-              opacity: 1;
-              transform: none;
-              visibility: visible;
-              --visibility-delay: 0s;
-            }
-          `}
-          href={id && `#${id}`}
-        >
-          {props.children}
-          <Icons.Link
-            className={css`
-              display: inline-block;
-              margin-left: 6px;
-              color: var(--timvir-secondary-text-color);
-              height: 0.9rem;
-              width: 0.9rem;
-              vertical-align: middle;
-
-              transition: opacity 0.2s, transform 0.2s, visibility 0s var(--visibility-delay, 0.2s);
-              opacity: 0;
-              visibility: hidden;
-              transform: translateX(-50%);
-            `}
-          />
+      <Component {...rest} id={id}>
+        <a {...stylex.props(headingStyles.a)} href={id && `#${id}`}>
+          {children}
+          <Icons.Link {...stylex.props(headingStyles.linkIcon)} />
         </a>
       </Component>
     );
   };
 }
 
-export const h1: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = styled.h1`
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  line-height: 1.125;
-  font-weight: 590;
-  text-indent: -0.05em;
-`;
-
-export const h2: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading(
-  styled.h2`
-    position: relative;
-    margin: 2.5rem 0 1rem;
-    font-size: 1.5rem;
-    line-height: 1.1666;
-    font-weight: 590;
-  `
+export const h1: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = (props) => (
+  <h1 {...stylex.props(styles.h1)} {...props} />
 );
 
-export const h3: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading(
-  styled.h3`
-    position: relative;
-    margin: 1rem 0 1rem;
-    font-size: 1.0625rem;
-    line-height: 1.4705882353;
-    font-weight: 590;
-  `
+export const h2: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading((props) => (
+  <h2 {...stylex.props(styles.h2)} {...props} />
+));
+
+export const h3: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading((props) => (
+  <h3 {...stylex.props(styles.h3)} {...props} />
+));
+
+export const h4: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading((props) => (
+  <h4 {...stylex.props(styles.h4)} {...props} />
+));
+
+export const blockquote: React.FunctionComponent<React.BlockquoteHTMLAttributes<HTMLQuoteElement>> = (props) => {
+  const { children, ...rest } = props;
+
+  return (
+    <blockquote {...rest} {...stylex.props(styles.blockquote)}>
+      {React.Children.toArray(children)
+        .filter((x) => x !== "\n")
+        .map((child, index, self) => {
+          if (!React.isValidElement(child)) {
+            return child;
+          }
+
+          const style: React.CSSProperties = {
+            marginTop: index === 0 ? "0 !important" : undefined,
+            marginBottom: index === self.length - 1 ? "0 !important" : undefined,
+          };
+
+          return React.cloneElement<any>(child, { style });
+        })}
+    </blockquote>
+  );
+};
+
+export const hr: React.FunctionComponent<React.HTMLAttributes<HTMLHRElement>> = (props) => (
+  <hr {...stylex.props(styles.hr)} {...props} />
 );
 
-export const h4: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading(
-  styled.h4`
-    position: relative;
-    margin: 1rem 0 1rem;
-    font-size: 0.9375rem;
-    line-height: 1.4375;
-    font-weight: 590;
-  `
+export const table: React.FunctionComponent<React.TableHTMLAttributes<HTMLTableElement>> = (props) => (
+  <table {...stylex.props(styles.table)} {...props} />
 );
 
-export const blockquote: React.FunctionComponent<React.BlockquoteHTMLAttributes<HTMLQuoteElement>> = styled.blockquote`
-  margin-left: 0;
-  font-size: 1.1rem;
+export const thead: React.FunctionComponent<React.HTMLAttributes<HTMLTableSectionElement>> = (props) => (
+  <thead {...props} />
+);
 
-  & > *:first-child {
-    margin-top: 0;
-  }
-  & > *:last-child {
-    margin-bottom: 0;
-  }
-`;
+export const tbody: React.FunctionComponent<React.HTMLAttributes<HTMLTableSectionElement>> = (props) => (
+  <tbody {...props} />
+);
 
-export const hr: React.FunctionComponent<React.HTMLAttributes<HTMLHRElement>> = styled.hr`
-  display: block;
-  border: none;
-  height: 1px;
-  width: 100%;
-  background: currentColor;
-  opacity: 0.25;
-`;
+export const tr: React.FunctionComponent<React.HTMLAttributes<HTMLTableRowElement>> = (props) => (
+  <tr {...stylex.props(styles.tr)} {...props} />
+);
 
-export const table: React.FunctionComponent<React.TableHTMLAttributes<HTMLTableElement>> = styled.table`
-  border-spacing: 0;
-  border-collapse: collapse;
+export const th: React.FunctionComponent<React.ThHTMLAttributes<HTMLTableCellElement>> = (props) => {
+  const { align, ...rest } = props;
 
-  width: 100%;
-  overflow: auto;
-`;
+  const style: React.CSSProperties = {
+    textAlign: (align || "center") as any,
+  };
 
-export const thead: React.FunctionComponent<React.HTMLAttributes<HTMLTableSectionElement>> = styled.thead``;
+  return <th {...stylex.props(styles.tableCell)} style={style} {...rest} />;
+};
 
-export const tbody: React.FunctionComponent<React.HTMLAttributes<HTMLTableSectionElement>> = styled.tbody``;
+export const td: React.FunctionComponent<React.TdHTMLAttributes<HTMLTableCellElement>> = (props) => {
+  const { align, ...rest } = props;
 
-export const tr: React.FunctionComponent<React.HTMLAttributes<HTMLTableRowElement>> = styled.tr`
-  background-color: #fff;
-  border-top: 1px solid var(--c-p-2);
+  const style: React.CSSProperties = {
+    textAlign: (align || "left") as any,
+  };
 
-  &:nth-child(2n) {
-    background-color: var(--c-p-0);
-  }
-`;
+  return <td {...stylex.props(styles.tableCell)} style={style} {...rest} />;
+};
 
-export const th: React.FunctionComponent<React.ThHTMLAttributes<HTMLTableHeaderCellElement>> = styled.th`
-  text-align: ${(props) => props.align || "center"};
+export const code: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => (
+  <code {...stylex.props(styles.code)} {...props} />
+);
 
-  padding: 6px 13px;
-  border: 1px solid var(--c-p-2);
-`;
+export const a: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => (
+  <a {...stylex.props(styles.a)} {...props} />
+);
 
-export const td: React.FunctionComponent<React.TdHTMLAttributes<HTMLTableDataCellElement>> = styled.td`
-  text-align: ${(props) => props.align || "left"};
+export const p: React.FunctionComponent<React.HTMLAttributes<HTMLParagraphElement>> = (props) => <p {...props} />;
 
-  padding: 6px 13px;
-  border: 1px solid var(--c-p-2);
-`;
+export const ul: React.FunctionComponent<React.HTMLAttributes<HTMLUListElement>> = (props) => <ul {...props} />;
 
-export const code: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = styled.code`
-  border-radius: 5px;
-  padding: 4px 6px 3px;
-  font-size: 0.8em;
-  background: var(--timvir-secondary-background-color);
-  border: 1px solid var(--timvir-border-color);
-`;
+export const ol: React.FunctionComponent<React.HTMLAttributes<HTMLOListElement>> = (props) => <ol {...props} />;
 
-export const a: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement>> = styled.a`
-  color: currentColor;
-  text-decoration: none;
-  background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
-  background-position: bottom;
-  background-size: 100% 6px;
-  background-repeat: repeat-x;
+const styles = stylex.create({
+  h1: {
+    marginTop: "3rem !important",
+    marginBottom: "1rem !important",
+    fontSize: "2rem",
+    lineHeight: 1.125,
+    fontWeight: 590,
+    textIndent: "-0.05em",
+  },
+  h2: {
+    position: "relative",
+    margin: "2.5rem 0 1rem !important",
+    fontSize: "1.5rem",
+    lineHeight: 1.1666,
+    fontWeight: 590,
+  },
+  h3: {
+    position: "relative",
+    margin: "1rem 0 1rem !important",
+    fontSize: "1.0625rem",
+    lineHeight: 1.4705882353,
+    fontWeight: 590,
+  },
+  h4: {
+    position: "relative",
+    margin: "1rem 0 1rem !important",
+    fontSize: "0.9375rem",
+    lineHeight: 1.4375,
+    fontWeight: 590,
+  },
+  hr: {
+    display: "block",
+    borderStyle: "none",
+    height: "1px",
+    width: "100%",
+    backgroundColor: "currentColor",
+    opacity: 0.25,
+  },
+  table: {
+    borderSpacing: 0,
+    borderCollapse: "collapse",
+    width: "100%",
+    overflow: "auto",
+  },
+  tr: {
+    backgroundColor: "#fff",
+    borderTopWidth: "1px",
+    borderTopStyle: "solid",
+    borderTopColor: "var(--c-p-2)",
 
-  &:hover {
-    background-image: linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a);
-  }
+    ":nth-child(2n)": {
+      backgroundColor: "var(--c-p-0)",
+    },
+  },
+  blockquote: {
+    marginLeft: "0 !important",
 
-  &:hover ${code as any} {
-    box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.5), inset 0 1px 4px rgba(16, 22, 26, 0.2);
-  }
-  &:active ${code as any} {
-    box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.7), inset 0 1px 4px rgba(16, 22, 26, 0.4);
-    background: var(--c-p-2);
-  }
-`;
+    fontSize: "1.1rem",
+  },
+  tableCell: {
+    padding: "6px 13px",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--c-p-2)",
+  },
+  code: {
+    borderRadius: "5px",
+    padding: "4px 6px 3px",
+    fontSize: "0.8em",
+    backgroundColor: "var(--code-background, var(--timvir-secondary-background-color))",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--timvir-border-color)",
+    boxShadow: "var(--code-box-shadow, none)",
+  },
+  a: {
+    color: "currentColor",
+    textDecoration: "none",
+    backgroundImage: "linear-gradient(transparent, transparent 5px, #383838 5px, #383838)",
+    backgroundPosition: "bottom",
+    backgroundSize: "100% 6px",
+    backgroundRepeat: "repeat-x",
 
-export const p: React.FunctionComponent<React.HTMLAttributes<HTMLParagraphElement>> = styled.p``;
+    ":hover": {
+      backgroundImage: "linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a)",
+      "--code-box-shadow": "inset 0 0 0 1px rgba(16, 22, 26, 0.5), inset 0 1px 4px rgba(16, 22, 26, 0.2)",
+    },
 
-export const ul: React.FunctionComponent<React.HTMLAttributes<HTMLUListElement>> = styled.ul``;
-
-export const ol: React.FunctionComponent<React.HTMLAttributes<HTMLOListElement>> = styled.ol``;
+    ":active": {
+      backgroundImage: "linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a)",
+      "--code-box-shadow": "inset 0 0 0 1px rgba(16, 22, 26, 0.7), inset 0 1px 4px rgba(16, 22, 26, 0.4)",
+      "--code-background": "var(--c-p-2)",
+    },
+  },
+});
