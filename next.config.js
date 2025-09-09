@@ -2,6 +2,7 @@ import * as path from "node:path";
 import { withLinaria } from "./next/withLinaria.js";
 import { remarkPlugin } from "./pkg/mdx/index.js";
 import stylexPlugin from "@stylexswc/nextjs-plugin";
+import remarkGfm from "remark-gfm";
 
 const rootDir = new URL(".", import.meta.url).pathname;
 
@@ -53,7 +54,7 @@ export default withPlugins(plugins, {
           loader: "@mdx-js/loader",
           options: {
             providerImportSource: "mdx-components",
-            remarkPlugins: [remarkPlugin],
+            remarkPlugins: [remarkPlugin, remarkGfm],
           },
         },
       ],
