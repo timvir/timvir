@@ -11,6 +11,7 @@ const urls = [
   "/blocks/Swatch",
   "/blocks/WebLink",
 
+  "/md/heading",
   "/md/link",
 ];
 
