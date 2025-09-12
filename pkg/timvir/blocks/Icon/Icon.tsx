@@ -31,7 +31,6 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           &:hover .${classes.name} {
             opacity: 1;
             bottom: -26px;
-            color: var(--timvir-text-color);
           }
         `
       )}
@@ -64,7 +63,7 @@ const classes = {
     opacity: 0;
     transition: all 0.16s;
     z-index: -1;
-    color: var(--timvir-secondary-text-color);
+    color: var(--timvir-text-color);
     text-align: center;
     user-select: none;
     pointer-events: none;
