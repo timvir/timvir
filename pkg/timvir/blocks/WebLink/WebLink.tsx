@@ -144,12 +144,12 @@ const styles = stylex.create({
   image: {
     display: "block",
     objectFit: "cover",
-    borderRadius: "0 3px 3px 0",
-    width: "calc(100% - 2px)",
-    height: "calc(100% - 2px)",
+    borderRadius: "0 2px 2px 0",
+    width: "100%",
+    height: "100%",
     position: "absolute",
-    top: "1px",
-    left: "1px",
+    top: 0,
+    left: 0,
   },
 });
 
