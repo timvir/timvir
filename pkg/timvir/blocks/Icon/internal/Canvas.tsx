@@ -73,10 +73,11 @@ const styles = stylex.create({
     display: "grid",
     placeItems: "center",
     cursor: "pointer",
+
+    "--timvir-b-Icon-hover": 0,
     ":hover": {
       "--timvir-b-Icon-hover": 1,
     },
-    "--timvir-b-Icon-hover": 0,
   },
   backdrop: {
     gridColumn: 1,
