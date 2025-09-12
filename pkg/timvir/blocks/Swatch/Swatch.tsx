@@ -57,6 +57,7 @@ function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
     <Root
       role="button"
       ref={ref}
+      {...rest}
       {...rootStyleProps}
       className={cx(rootStyleProps.className, className)}
       style={{ ...style, ...rootStyleProps.style, height: ancestry ? 48 : 36 }}
