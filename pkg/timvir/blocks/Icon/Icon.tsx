@@ -13,25 +13,6 @@ interface Props extends React.ComponentProps<typeof Root> {
   descriptor: Descriptor;
 }
 
-const classes = {
-  name: css`
-    margin-top: 6px;
-    white-space: nowrap;
-    font-size: 0.75rem;
-    opacity: 0;
-    transition: all 0.16s;
-    z-index: -1;
-    color: var(--timvir-secondary-text-color);
-    text-align: center;
-    user-select: none;
-    pointer-events: none;
-    position: absolute;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-  `,
-};
-
 function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { descriptor, className, ...rest } = props;
 
@@ -81,3 +62,22 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 }
 
 export default React.forwardRef(Icon);
+
+const classes = {
+  name: css`
+    margin-top: 6px;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: all 0.16s;
+    z-index: -1;
+    color: var(--timvir-secondary-text-color);
+    text-align: center;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+  `,
+};
