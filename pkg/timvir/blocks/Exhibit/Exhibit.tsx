@@ -1,6 +1,7 @@
 "use client";
 
-import { css, cx } from "@linaria/core";
+import { cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import { useBlock } from "timvir/core";
 import * as React from "react";
 
@@ -27,20 +28,31 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
 
   const { caption, bleed, BackdropProps, children, className, style, ...rest } = block.props;
 
+  const rootStyleProps = stylex.props(styles.root);
+  const containerStyleProps = stylex.props(styles.container, bleed === 0 && styles.bleedZero);
+  const captionStyleProps = stylex.props(styles.caption);
+
   return (
     <Root
       ref={ref}
-      className={cx("timvir-b-Exhibit", className, classes.root)}
-      style={{
-        ...style,
-        [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : undefined,
-      }}
       {...rest}
+      {...rootStyleProps}
+      className={cx("timvir-b-Exhibit", className, rootStyleProps.className)}
+      style={{
+        ...rootStyleProps.style,
+        ...style,
+
+        [cssVariables.bleed]: typeof bleed === "number" ? `${bleed}px` : "calc(var(--timvir-margin, 0px) * 0.6666)",
+        [cssVariables.borderColor]: "var(--timvir-border-color)",
+        [cssVariables.background]: "var(--timvir-background-pattern)",
+      }}
     >
       <div
-        className={cx("timvir-b-Exhibit-container", classes.container)}
         {...BackdropProps}
+        {...containerStyleProps}
+        className={cx("timvir-b-Exhibit-container", containerStyleProps.className, BackdropProps?.className)}
         style={{
+          ...containerStyleProps.style,
           border: bleed === 0 ? "none" : `1px solid var(${cssVariables.borderColor})`,
           ...BackdropProps?.style,
         }}
@@ -48,7 +60,11 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
         {children}
       </div>
 
-      {caption && <div className={cx("timvir-b-Exhibit-caption", classes.caption)}>{caption}</div>}
+      {caption && (
+        <div {...captionStyleProps} className={cx("timvir-b-Exhibit-caption", captionStyleProps.className)}>
+          {caption}
+        </div>
+      )}
     </Root>
   );
 }
@@ -61,32 +77,27 @@ const cssVariables = {
   background: "--timvir-b-Exhibit-background",
 };
 
-const classes = {
-  root: css`
-    ${cssVariables.bleed}: calc(var(--timvir-margin, 0px) * 0.6666);
-
-    ${cssVariables.borderColor}: var(--timvir-border-color);
-    ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==);
-
-    :root[data-timvir-theme="dark"] & {
-      ${cssVariables.background}: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
-    }
-  `,
-
-  container: css`
-    display: flow-root;
-    background: var(${cssVariables.background});
-
-    margin: 0 calc(-1 * var(${cssVariables.bleed}));
-    padding: var(${cssVariables.bleed});
-
-    border-radius: 5px;
-  `,
-
-  caption: css`
-    font-size: 0.8125rem;
-    line-height: 1.1875;
-    color: var(--timvir-secondary-text-color);
-    margin-top: 0.3em;
-  `,
-};
+const styles = stylex.create({
+  root: {},
+  container: {
+    display: "flow-root",
+    backgroundImage: `var(${cssVariables.background})`,
+    marginInline: `calc(-1 * var(${cssVariables.bleed}))`,
+    padding: `var(${cssVariables.bleed})`,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: `var(${cssVariables.borderColor})`,
+  },
+  bleedZero: {
+    borderStyle: "none",
+    marginInline: 0,
+    padding: 0,
+  },
+  caption: {
+    fontSize: "0.8125rem",
+    lineHeight: 1.1875,
+    color: "var(--timvir-secondary-text-color)",
+    marginTop: "0.3em",
+  },
+});
