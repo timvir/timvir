@@ -37,7 +37,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
       ref={ref}
       {...rest}
       {...rootStyleProps}
-      className={cx("timvir-b-Exibit", className, rootStyleProps.className)}
+      className={cx("timvir-b-Exhibit", className, rootStyleProps.className)}
       style={{
         ...rootStyleProps.style,
         ...style,
