@@ -1,6 +1,6 @@
 "use client";
 
-import { css, cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import { useBlock } from "timvir/core";
 import * as React from "react";
 
@@ -42,20 +42,22 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const block = useBlock(props);
 
-  const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, ...rest } = block.props;
+  const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, style, ...rest } = block.props;
 
   const [label, setLabel] = React.useState(name);
   React.useEffect(() => {
     setLabel(name);
   }, [name]);
 
+  const rootStyleProps = stylex.props(styles.root);
+  const innerStyleProps = stylex.props(styles.inner);
+
   return (
     <Root
       role="button"
       ref={ref}
-      {...rest}
-      style={{ height: ancestry ? 48 : 36 }}
-      className={cx(className, classes.root)}
+      {...rootStyleProps}
+      style={{ ...style, ...rootStyleProps.style, height: ancestry ? 48 : 36 }}
       onClick={(ev) => {
         navigator.clipboard.writeText(value);
         setLabel("Copied to clipboard");
@@ -66,12 +68,12 @@ function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
         onMouseLeave?.(ev);
       }}
     >
-      <div className={classes.inner} style={{ background: value, color: contrastValue }}>
-        <div className={classes.labelWrapper}>
+      <div {...innerStyleProps} style={{ ...innerStyleProps.style, background: value, color: contrastValue }}>
+        <div {...stylex.props(styles.labelWrapper)}>
           {label && <div>{label}</div>}
           {label === name && <div>{value}</div>}
         </div>
-        {ancestry && <div className={classes.ancestry}>{ancestry}</div>}
+        {ancestry && <div {...stylex.props(styles.ancestry)}>{ancestry}</div>}
       </div>
     </Root>
   );
@@ -79,37 +81,37 @@ function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
 
 export default React.forwardRef(Swatch);
 
-const classes = {
-  root: css`
-    position: relative;
-  `,
+const styles = stylex.create({
+  root: {
+    position: "relative",
+  },
 
-  inner: css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transition: all 0.16s;
-    padding: 0px 12px;
-    cursor: pointer;
-    border-radius: 2px;
-  `,
+  inner: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    transition: "all 0.16s",
+    padding: "0px 12px",
+    cursor: "pointer",
+    borderRadius: 2,
+  },
 
-  labelWrapper: css`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    line-height: 1;
-  `,
+  labelWrapper: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    lineHeight: 1,
+  },
 
-  ancestry: css`
-    padding-top: 6px;
-    opacity: 0.5;
-    font-size: 0.8em;
-    line-height: 1;
-  `,
-};
+  ancestry: {
+    paddingTop: 6,
+    opacity: 0.5,
+    fontSize: "0.8em",
+    lineHeight: 1,
+  },
+});
