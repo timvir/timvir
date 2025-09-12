@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 
 const Root = "div";
@@ -15,9 +15,9 @@ function Canvas(props: Props) {
   const { width, height, size, Component } = props;
 
   return (
-    <Root className={classes.root} style={{ width, height }}>
-      <div className={classes.backdrop} />
-      <Grid className={classes.grid} size={size} />
+    <Root {...stylex.props(styles.root)} style={{ width, height }}>
+      <div {...stylex.props(styles.backdrop)} />
+      <Grid {...stylex.props(styles.grid)} size={size} />
       <div style={{ gridColumn: 1, gridRow: 1, fontSize: `${size}px`, zIndex: 1 }}>
         <Component />
       </div>
@@ -68,37 +68,31 @@ function Grid({ size, ...rest }: { size: number } & React.ComponentProps<"svg">)
   );
 }
 
-const classes = {
-  root: css`
-    display: grid;
-    place-items: center;
-
-    cursor: pointer;
-
-    --timvir-b-Icon-hover: 0;
-    &:hover {
-      --timvir-b-Icon-hover: 1;
-    }
-  `,
-
-  backdrop: css`
-    grid-column: 1;
-    grid-row: 1;
-
-    background: white;
-    place-self: stretch;
-    border-radius: 2px;
-    transition: all 0.16s;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
-  `,
-
-  grid: css`
-    grid-column: 1;
-    grid-row: 1;
-
-    display: block;
-    opacity: var(--timvir-b-Icon-hover);
-    transition: all 0.16s;
-    pointer-events: none;
-  `,
-};
+const styles = stylex.create({
+  root: {
+    display: "grid",
+    placeItems: "center",
+    cursor: "pointer",
+    ":hover": {
+      "--timvir-b-Icon-hover": 1,
+    },
+    "--timvir-b-Icon-hover": 0,
+  },
+  backdrop: {
+    gridColumn: 1,
+    gridRow: 1,
+    backgroundColor: "white",
+    placeSelf: "stretch",
+    borderRadius: 2,
+    transition: "all 0.16s",
+    boxShadow: "0 0 0 0 rgba(0, 0, 0, 0.1)",
+  },
+  grid: {
+    gridColumn: 1,
+    gridRow: 1,
+    display: "block",
+    opacity: "var(--timvir-b-Icon-hover)",
+    transition: "all 0.16s",
+    pointerEvents: "none",
+  },
+});
