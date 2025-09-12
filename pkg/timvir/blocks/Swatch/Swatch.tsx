@@ -1,5 +1,6 @@
 "use client";
 
+import { cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
 import { useBlock } from "timvir/core";
 import * as React from "react";
@@ -57,6 +58,7 @@ function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
       role="button"
       ref={ref}
       {...rootStyleProps}
+      className={cx(rootStyleProps.className, className)}
       style={{ ...style, ...rootStyleProps.style, height: ancestry ? 48 : 36 }}
       onClick={(ev) => {
         navigator.clipboard.writeText(value);
