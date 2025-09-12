@@ -50,28 +50,13 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   return (
     <Root ref={ref} className={cx(className)} {...rest}>
       <div className={classes.meta}>
-        <components.h3
-          className={css`
-            margin: 0 auto 0 0;
-          `}
-        >
+        <components.h3 className={classes.h3}>
           <span ref={setFontSizeRef}>{name}</span>
         </components.h3>
 
         {info && (
           <div
-            className={css`
-              cursor: pointer;
-              &:hover {
-                color: var(--c-p-4);
-                opacity: 1;
-              }
-
-              & > svg {
-                position: relative;
-                top: 2px;
-              }
-            `}
+            className={classes.infoIcon}
             onClick={() => {
               if (infoRef && contentRef) {
                 // const contentParent = contentRef.parentElement;
@@ -97,50 +82,20 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           </div>
         )}
       </div>
-      <div
-        className={css`
-          display: flex;
-          flex-direction: column;
-        `}
-      >
+      <div className={classes.contentWrapper}>
         {info && (
-          <div
-            className={css`
-              overflow: hidden;
-              transition: height 0.2s, opacity 0.2s 0.1s;
-            `}
-            style={{ height: 0, opacity: 0 }}
-          >
-            <div
-              ref={setInfoRef}
-              className={css`
-                padding: 0 0 16px;
-              `}
-            >
+          <div className={classes.collapsibleContainer} style={{ height: 0, opacity: 0 }}>
+            <div ref={setInfoRef} className={classes.infoContent}>
               {info}
             </div>
           </div>
         )}
-        <div
-          className={css`
-            overflow: hidden;
-            transition: height 0.2s, opacity 0.2s 0.1s;
-          `}
-          style={{ height: "auto", opacity: 1 }}
-        >
+        <div className={classes.collapsibleContainer} style={{ height: "auto", opacity: 1 }}>
           <div
             ref={setContentRef}
             contentEditable
             spellCheck="false"
-            className={cx(
-              font.className,
-              css`
-                outline: none;
-                user-select: text;
-                white-space: pre-wrap;
-                overflow-wrap: break-word;
-              `
-            )}
+            className={cx(font.className, classes.fontSample)}
             style={font.style}
           >
             {children || "The quick brown fox jumps over the lazy dog"}
@@ -162,5 +117,43 @@ const classes = {
     font-weight: bold;
 
     transition: all 0.2s;
+  `,
+
+  h3: css`
+    margin: 0 auto 0 0;
+  `,
+
+  infoIcon: css`
+    cursor: pointer;
+    &:hover {
+      color: var(--c-p-4);
+      opacity: 1;
+    }
+
+    & > svg {
+      position: relative;
+      top: 2px;
+    }
+  `,
+
+  contentWrapper: css`
+    display: flex;
+    flex-direction: column;
+  `,
+
+  collapsibleContainer: css`
+    overflow: hidden;
+    transition: height 0.2s, opacity 0.2s 0.1s;
+  `,
+
+  infoContent: css`
+    padding: 0 0 16px;
+  `,
+
+  fontSample: css`
+    outline: none;
+    user-select: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
   `,
 };
