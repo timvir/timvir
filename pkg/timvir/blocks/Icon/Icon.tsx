@@ -1,4 +1,7 @@
-import { css, cx } from "@linaria/core";
+"use client";
+
+import { cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import { useResizeObserverEntry } from "timvir/hooks";
 import * as React from "react";
 import { Canvas } from "./internal";
@@ -13,55 +16,21 @@ interface Props extends React.ComponentProps<typeof Root> {
   descriptor: Descriptor;
 }
 
-const classes = {
-  name: css`
-    margin-top: 6px;
-    white-space: nowrap;
-    font-size: 0.75rem;
-    opacity: 0;
-    transition: all 0.16s;
-    z-index: -1;
-    color: var(--timvir-secondary-text-color);
-    text-align: center;
-    user-select: none;
-    pointer-events: none;
-    position: absolute;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-  `,
-};
-
 function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const { descriptor, className, ...rest } = props;
+  const { descriptor, ...rest } = props;
 
   const [roRef, roe] = useResizeObserverEntry();
   const width = roe?.contentRect.width;
 
+  const rootStyleProps = stylex.props(styles.root);
+
   return (
     <Root
       ref={ref}
-      className={cx(
-        className,
-        css`
-          position: relative;
-          z-index: 1;
-
-          svg {
-            display: block;
-          }
-
-          &:hover .${classes.name} {
-            opacity: 1;
-            bottom: -26px;
-            color: var(--timvir-text-color);
-          }
-          &:active .${classes.name} {
-            bottom: -24px;
-          }
-        `
-      )}
       {...rest}
+      {...rootStyleProps}
+      className={cx(rest.className, rootStyleProps.className)}
+      style={{ ...rootStyleProps.style, ...rest.style }}
     >
       <div ref={roRef}>
         {width !== undefined && (
@@ -72,7 +41,7 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
               size={32 /*descriptor.instances[0].size as number */}
               Component={descriptor.instances[0].Component}
             />
-            <div className={classes.name}>{descriptor.name}</div>
+            <div {...stylex.props(styles.name)}>{descriptor.name}</div>
           </>
         )}
       </div>
@@ -81,3 +50,31 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 }
 
 export default React.forwardRef(Icon);
+
+const styles = stylex.create({
+  root: {
+    position: "relative",
+    zIndex: 1,
+
+    "--timvir-b-Icon-hover": "0",
+    ":hover": {
+      "--timvir-b-Icon-hover": "1",
+    },
+  },
+  name: {
+    marginTop: 0,
+    whiteSpace: "nowrap",
+    fontSize: "0.75rem",
+    opacity: "var(--timvir-b-Icon-hover)",
+    transition: "all 0.16s",
+    zIndex: -1,
+    color: "var(--timvir-text-color)",
+    textAlign: "center",
+    userSelect: "none",
+    pointerEvents: "none",
+    position: "absolute",
+    left: "50%",
+    bottom: "-20px",
+    transform: "translate(-50%, 0)",
+  },
+});

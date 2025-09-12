@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 
 const Root = "div";
@@ -11,56 +11,14 @@ interface Props {
   Component: React.ElementType;
 }
 
-const classes = {
-  backdrop: css`
-    background: white;
-    place-self: stretch;
-    border-radius: 2px;
-    transition: all 0.2s;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
-  `,
-  grid: css`
-    opacity: 0;
-    transition: all 0.2s;
-    pointer-events: none;
-  `,
-};
-
 function Canvas(props: Props) {
   const { width, height, size, Component } = props;
 
   return (
-    <Root
-      className={css`
-        display: grid;
-        place-items: center;
-
-        cursor: pointer;
-
-        & > * {
-          grid-column: 1;
-          grid-row: 1;
-        }
-
-        &:hover .${classes.backdrop} {
-          box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
-            0 8px 24px rgba(16, 22, 26, 0.2);
-        }
-
-        &:active .${classes.backdrop} {
-          margin: 1px;
-          box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
-        }
-
-        &:hover .${classes.grid} {
-          opacity: 1;
-        }
-      `}
-      style={{ width, height }}
-    >
-      <div className={classes.backdrop} />
-      <Grid className={classes.grid} size={size} />
-      <div style={{ fontSize: `${size}px`, zIndex: 1 }}>
+    <Root {...stylex.props(styles.root)} style={{ width, height }}>
+      <div {...stylex.props(styles.backdrop)} />
+      <Grid {...stylex.props(styles.grid)} size={size} />
+      <div style={{ gridColumn: 1, gridRow: 1, fontSize: `${size}px`, zIndex: 1 }}>
         <Component />
       </div>
     </Root>
@@ -109,3 +67,33 @@ function Grid({ size, ...rest }: { size: number } & React.ComponentProps<"svg">)
     </svg>
   );
 }
+
+const styles = stylex.create({
+  root: {
+    display: "grid",
+    placeItems: "center",
+    cursor: "pointer",
+
+    "--timvir-b-Icon-hover": 0,
+    ":hover": {
+      "--timvir-b-Icon-hover": 1,
+    },
+  },
+  backdrop: {
+    gridColumn: 1,
+    gridRow: 1,
+    backgroundColor: "white",
+    placeSelf: "stretch",
+    borderRadius: 2,
+    transition: "all 0.16s",
+    boxShadow: "0 0 0 0 rgba(0, 0, 0, 0.1)",
+  },
+  grid: {
+    gridColumn: 1,
+    gridRow: 1,
+    display: "block",
+    opacity: "var(--timvir-b-Icon-hover)",
+    transition: "all 0.16s",
+    pointerEvents: "none",
+  },
+});
