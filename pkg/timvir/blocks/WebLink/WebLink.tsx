@@ -47,7 +47,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
       {...rest}
       {...rootStyleProps}
       className={cx("timvir-b-WebLink", !state.settled && "timvir-unsettled", className, rootStyleProps.className)}
-      style={{ margin: "1em 0", ...rootStyleProps.style, ...rest.style }}
+      style={{ ...rootStyleProps.style, ...rest.style }}
     >
       <div {...stylex.props(styles.text)}>
         <div {...stylex.props(styles.title)}>{metadata?.open_graph?.title ?? metadata?.title ?? <>&nbsp;</>}</div>
