@@ -17,7 +17,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const components = useArticleComponents();
 
-  const { name, font, info, className, children, ...rest } = props;
+  const { name, font, info, children, ...rest } = props;
 
   const [contentRef, setContentRef] = React.useState<null | HTMLDivElement>(null);
   const [fontSizeRef, setFontSizeRef] = React.useState<null | HTMLSpanElement>(null);
@@ -48,7 +48,7 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   }, [name, contentRef, fontSizeRef]);
 
   return (
-    <Root ref={ref} className={cx(className)} {...rest}>
+    <Root ref={ref} {...rest}>
       <div className={classes.meta}>
         <components.h3 className={classes.h3}>
           <span ref={setFontSizeRef}>{name}</span>
@@ -56,7 +56,7 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
         {info && (
           <div
-            className={classes.infoIcon}
+            className={classes.infoButton}
             onClick={() => {
               if (infoRef && contentRef) {
                 // const contentParent = contentRef.parentElement;
@@ -78,7 +78,7 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
               }
             }}
           >
-            <Icons.Info size={"1.1em"} />
+            <Icons.Info size={"1.1em"} className={classes.infoButtonIcon} />
           </div>
         )}
       </div>
@@ -123,17 +123,18 @@ const classes = {
     margin: 0 auto 0 0;
   `,
 
-  infoIcon: css`
+  infoButton: css`
     cursor: pointer;
+
     &:hover {
       color: var(--c-p-4);
       opacity: 1;
     }
+  `,
 
-    & > svg {
-      position: relative;
-      top: 2px;
-    }
+  infoButtonIcon: css`
+    position: relative;
+    top: 2px;
   `,
 
   contentWrapper: css`
