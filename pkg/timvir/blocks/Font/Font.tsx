@@ -14,18 +14,6 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   info?: React.ReactNode;
 }
 
-const classes = {
-  meta: css`
-    display: flex;
-    align-items: baseline;
-
-    font-size: 0.9rem;
-    font-weight: bold;
-
-    transition: all 0.2s;
-  `,
-};
-
 function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const components = useArticleComponents();
 
@@ -164,3 +152,15 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 }
 
 export default React.forwardRef(Font);
+
+const classes = {
+  meta: css`
+    display: flex;
+    align-items: baseline;
+
+    font-size: 0.9rem;
+    font-weight: bold;
+
+    transition: all 0.2s;
+  `,
+};
