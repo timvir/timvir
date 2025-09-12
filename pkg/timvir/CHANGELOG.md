@@ -1,5 +1,13 @@
 # timvir
 
+## 0.2.40
+
+### Patch Changes
+
+- **Remove peer dependency on @mdx-js/react** ([#3315](https://github.com/timvir/timvir/pull/3315)) - Timvir no longer wraps the page content with `<MDXProvider>`. Instead, Timvir provides a custom hook – `useArticleComponents` – for use in client components. If you're building server components though, you should prefer importing your custom components directly, and import Timvir builtins from the `timvir/builtins` module.
+- **Improve word wrapping behavior in article pages** ([#3429](https://github.com/timvir/timvir/pull/3429)) - Long words (for example long identifiers used in certain programming languages) no longer extend beyond the layout box. Instead, the browser will break the words when needed. Note that this change only applies inside the article page content. In other parts of the interface (eg. sidebar or navigation footer) Timvir continues to use text truncation with ellipsis for long words.
+- **Improve type of Page Link prop** ([#3330](https://github.com/timvir/timvir/pull/3330)) - The `Link` prop on the `<Page>` component is now type-compatible with the `<Link>` component from Next.js. This is not a breaking change, not at runtime anyways. There is a small chance that TypeScript will raise a type error. But it's more likely that you can remove a `as any` type cast if you currently use one.
+
 ## 0.2.39
 
 ### Patch Changes
