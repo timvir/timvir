@@ -28,17 +28,10 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           position: relative;
           z-index: 1;
 
-          svg {
-            display: block;
-          }
-
           &:hover .${classes.name} {
             opacity: 1;
             bottom: -26px;
             color: var(--timvir-text-color);
-          }
-          &:active .${classes.name} {
-            bottom: -24px;
           }
         `
       )}

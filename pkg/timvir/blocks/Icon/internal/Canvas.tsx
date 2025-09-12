@@ -11,21 +11,6 @@ interface Props {
   Component: React.ElementType;
 }
 
-const classes = {
-  backdrop: css`
-    background: white;
-    place-self: stretch;
-    border-radius: 2px;
-    transition: all 0.2s;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
-  `,
-  grid: css`
-    opacity: 0;
-    transition: all 0.2s;
-    pointer-events: none;
-  `,
-};
-
 function Canvas(props: Props) {
   const { width, height, size, Component } = props;
 
@@ -109,3 +94,19 @@ function Grid({ size, ...rest }: { size: number } & React.ComponentProps<"svg">)
     </svg>
   );
 }
+
+const classes = {
+  backdrop: css`
+    background: white;
+    place-self: stretch;
+    border-radius: 2px;
+    transition: all 0.2s;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+  `,
+  grid: css`
+    display: block;
+    opacity: 0;
+    transition: all 0.2s;
+    pointer-events: none;
+  `,
+};
