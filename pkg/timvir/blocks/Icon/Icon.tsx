@@ -74,7 +74,7 @@ const styles = stylex.create({
     pointerEvents: "none",
     position: "absolute",
     left: "50%",
-    bottom: "-14px",
-    transform: "translate(-50%, calc(var(--timvir-b-Icon-hover) * 6px))",
+    bottom: "-20px",
+    transform: "translate(-50%, 0)",
   },
 });

@@ -22,11 +22,6 @@ function Canvas(props: Props) {
 
         cursor: pointer;
 
-        & > * {
-          grid-column: 1;
-          grid-row: 1;
-        }
-
         &:hover .${classes.backdrop} {
           box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
             0 8px 24px rgba(16, 22, 26, 0.2);
@@ -45,7 +40,7 @@ function Canvas(props: Props) {
     >
       <div className={classes.backdrop} />
       <Grid className={classes.grid} size={size} />
-      <div style={{ fontSize: `${size}px`, zIndex: 1 }}>
+      <div style={{ gridColumn: 1, gridRow: 1, fontSize: `${size}px`, zIndex: 1 }}>
         <Component />
       </div>
     </Root>
@@ -97,13 +92,20 @@ function Grid({ size, ...rest }: { size: number } & React.ComponentProps<"svg">)
 
 const classes = {
   backdrop: css`
+    grid-column: 1;
+    grid-row: 1;
+
     background: white;
     place-self: stretch;
     border-radius: 2px;
     transition: all 0.2s;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
   `,
+
   grid: css`
+    grid-column: 1;
+    grid-row: 1;
+
     display: block;
     opacity: 0;
     transition: all 0.2s;
