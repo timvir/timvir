@@ -28,9 +28,9 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           position: relative;
           z-index: 1;
 
-          &:hover .${classes.name} {
-            opacity: 1;
-            bottom: -26px;
+          --timvir-b-Icon-hover: 0;
+          &:hover {
+            --timvir-b-Icon-hover: 1;
           }
         `
       )}
@@ -57,10 +57,10 @@ export default React.forwardRef(Icon);
 
 const classes = {
   name: css`
-    margin-top: 6px;
+    margin-top: 0;
     white-space: nowrap;
     font-size: 0.75rem;
-    opacity: 0;
+    opacity: var(--timvir-b-Icon-hover);
     transition: all 0.16s;
     z-index: -1;
     color: var(--timvir-text-color);
@@ -69,7 +69,7 @@ const classes = {
     pointer-events: none;
     position: absolute;
     left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
+    bottom: -14px;
+    transform: translate(-50%, calc(var(--timvir-b-Icon-hover) * 6px));
   `,
 };
