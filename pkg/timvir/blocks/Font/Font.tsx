@@ -1,5 +1,8 @@
+"use client";
+
+import { cx } from "@linaria/core";
 import { useArticleComponents } from "timvir/core";
-import { css, cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
 
@@ -14,22 +17,10 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   info?: React.ReactNode;
 }
 
-const classes = {
-  meta: css`
-    display: flex;
-    align-items: baseline;
-
-    font-size: 0.9rem;
-    font-weight: bold;
-
-    transition: all 0.2s;
-  `,
-};
-
 function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const components = useArticleComponents();
 
-  const { name, font, info, className, children, ...rest } = props;
+  const { name, font, info, children, ...rest } = props;
 
   const [contentRef, setContentRef] = React.useState<null | HTMLDivElement>(null);
   const [fontSizeRef, setFontSizeRef] = React.useState<null | HTMLSpanElement>(null);
@@ -59,31 +50,18 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     }
   }, [name, contentRef, fontSizeRef]);
 
+  const fontStyleProps = stylex.props(styles.fontSample);
+
   return (
-    <Root ref={ref} className={cx(className)} {...rest}>
-      <div className={classes.meta}>
-        <components.h3
-          className={css`
-            margin: 0 auto 0 0;
-          `}
-        >
+    <Root ref={ref} {...rest}>
+      <div {...stylex.props(styles.meta)}>
+        <components.h3 {...stylex.props(styles.h3)}>
           <span ref={setFontSizeRef}>{name}</span>
         </components.h3>
 
         {info && (
           <div
-            className={css`
-              cursor: pointer;
-              &:hover {
-                color: var(--c-p-4);
-                opacity: 1;
-              }
-
-              & > svg {
-                position: relative;
-                top: 2px;
-              }
-            `}
+            {...stylex.props(styles.infoButton)}
             onClick={() => {
               if (infoRef && contentRef) {
                 // const contentParent = contentRef.parentElement;
@@ -105,55 +83,26 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
               }
             }}
           >
-            <Icons.Info size={"1.1em"} />
+            <Icons.Info size={"1.1em"} {...stylex.props(styles.infoButtonIcon)} />
           </div>
         )}
       </div>
-      <div
-        className={css`
-          display: flex;
-          flex-direction: column;
-        `}
-      >
+      <div {...stylex.props(styles.contentWrapper)}>
         {info && (
-          <div
-            className={css`
-              overflow: hidden;
-              transition: height 0.2s, opacity 0.2s 0.1s;
-            `}
-            style={{ height: 0, opacity: 0 }}
-          >
-            <div
-              ref={setInfoRef}
-              className={css`
-                padding: 0 0 16px;
-              `}
-            >
+          <div {...stylex.props(styles.collapsibleContainer)} style={{ height: 0, opacity: 0 }}>
+            <div ref={setInfoRef} {...stylex.props(styles.infoContent)}>
               {info}
             </div>
           </div>
         )}
-        <div
-          className={css`
-            overflow: hidden;
-            transition: height 0.2s, opacity 0.2s 0.1s;
-          `}
-          style={{ height: "auto", opacity: 1 }}
-        >
+        <div {...stylex.props(styles.collapsibleContainer)} style={{ height: "auto", opacity: 1 }}>
           <div
             ref={setContentRef}
             contentEditable
             spellCheck="false"
-            className={cx(
-              font.className,
-              css`
-                outline: none;
-                user-select: text;
-                white-space: pre-wrap;
-                overflow-wrap: break-word;
-              `
-            )}
-            style={font.style}
+            {...fontStyleProps}
+            className={cx(fontStyleProps.className, font.className)}
+            style={{ ...fontStyleProps.style, ...font.style }}
           >
             {children || "The quick brown fox jumps over the lazy dog"}
           </div>
@@ -164,3 +113,54 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 }
 
 export default React.forwardRef(Font);
+
+const styles = stylex.create({
+  meta: {
+    display: "flex",
+    alignItems: "baseline",
+
+    fontSize: "0.9rem",
+    fontWeight: "bold",
+
+    transition: "all 0.2s",
+  },
+
+  h3: {
+    margin: "0 auto 0 0",
+  },
+
+  infoButton: {
+    cursor: "pointer",
+
+    ":hover": {
+      color: "var(--c-p-4)",
+      opacity: 1,
+    },
+  },
+
+  infoButtonIcon: {
+    position: "relative",
+    top: 2,
+  },
+
+  contentWrapper: {
+    display: "flex",
+    flexDirection: "column",
+  },
+
+  collapsibleContainer: {
+    overflow: "hidden",
+    transition: "height 0.2s, opacity 0.2s 0.1s",
+  },
+
+  infoContent: {
+    padding: "0 0 16px",
+  },
+
+  fontSample: {
+    outline: "none",
+    userSelect: "text",
+    whiteSpace: "pre-wrap",
+    overflowWrap: "break-word",
+  },
+});
