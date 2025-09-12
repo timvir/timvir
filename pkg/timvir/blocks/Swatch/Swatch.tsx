@@ -82,31 +82,6 @@ export default React.forwardRef(Swatch);
 const classes = {
   root: css`
     position: relative;
-
-    & > div {
-      border-radius: 2px;
-    }
-
-    &:hover > div {
-      top: -4px;
-      right: -4px;
-      bottom: -4px;
-      left: -4px;
-      box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
-        0 8px 24px rgba(16, 22, 26, 0.2);
-      padding: 0px 16px;
-      z-index: 2;
-    }
-
-    &:active > div {
-      top: -2px;
-      right: -2px;
-      bottom: -2px;
-      left: -2px;
-      box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
-      padding: 0px 14px;
-      z-index: 2;
-    }
   `,
 
   inner: css`
@@ -121,6 +96,7 @@ const classes = {
     transition: all 0.16s;
     padding: 0px 12px;
     cursor: pointer;
+    border-radius: 2px;
   `,
 
   labelWrapper: css`
