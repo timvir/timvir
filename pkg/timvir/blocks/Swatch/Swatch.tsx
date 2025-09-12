@@ -1,6 +1,7 @@
 "use client";
 
-import { css, cx } from "@linaria/core";
+import { cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import { useBlock } from "timvir/core";
 import * as React from "react";
 
@@ -42,50 +43,24 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const block = useBlock(props);
 
-  const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, ...rest } = block.props;
+  const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, style, ...rest } = block.props;
 
   const [label, setLabel] = React.useState(name);
   React.useEffect(() => {
     setLabel(name);
   }, [name]);
 
+  const rootStyleProps = stylex.props(styles.root);
+  const innerStyleProps = stylex.props(styles.inner);
+
   return (
     <Root
       role="button"
       ref={ref}
       {...rest}
-      style={{ height: ancestry ? 48 : 36 }}
-      className={cx(
-        className,
-        css`
-          position: relative;
-
-          & > div {
-            border-radius: 2px;
-          }
-
-          &:hover > div {
-            top: -4px;
-            right: -4px;
-            bottom: -4px;
-            left: -4px;
-            box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
-              0 8px 24px rgba(16, 22, 26, 0.2);
-            padding: 0px 16px;
-            z-index: 2;
-          }
-
-          &:active > div {
-            top: -2px;
-            right: -2px;
-            bottom: -2px;
-            left: -2px;
-            box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
-            padding: 0px 14px;
-            z-index: 2;
-          }
-        `
-      )}
+      {...rootStyleProps}
+      className={cx(rootStyleProps.className, className)}
+      style={{ ...style, ...rootStyleProps.style, height: ancestry ? 48 : 36 }}
       onClick={(ev) => {
         navigator.clipboard.writeText(value);
         setLabel("Copied to clipboard");
@@ -96,48 +71,50 @@ function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
         onMouseLeave?.(ev);
       }}
     >
-      <div
-        className={css`
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          transition: all 0.16s;
-          padding: 0px 12px;
-          cursor: pointer;
-        `}
-        style={{ background: value, color: contrastValue }}
-      >
-        <div
-          className={css`
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            line-height: 1;
-          `}
-        >
+      <div {...innerStyleProps} style={{ ...innerStyleProps.style, background: value, color: contrastValue }}>
+        <div {...stylex.props(styles.labelWrapper)}>
           {label && <div>{label}</div>}
           {label === name && <div>{value}</div>}
         </div>
-        {ancestry && (
-          <div
-            className={css`
-              padding-top: 6px;
-              opacity: 0.5;
-              font-size: 0.8em;
-              line-height: 1;
-            `}
-          >
-            {ancestry}
-          </div>
-        )}
+        {ancestry && <div {...stylex.props(styles.ancestry)}>{ancestry}</div>}
       </div>
     </Root>
   );
 }
 
 export default React.forwardRef(Swatch);
+
+const styles = stylex.create({
+  root: {
+    position: "relative",
+  },
+
+  inner: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    transition: "all 0.16s",
+    padding: "0px 12px",
+    cursor: "pointer",
+    borderRadius: 2,
+  },
+
+  labelWrapper: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    lineHeight: 1,
+  },
+
+  ancestry: {
+    paddingTop: 6,
+    opacity: 0.5,
+    fontSize: "0.8em",
+    lineHeight: 1,
+  },
+});
