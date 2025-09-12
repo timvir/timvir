@@ -15,20 +15,7 @@ function Canvas(props: Props) {
   const { width, height, size, Component } = props;
 
   return (
-    <Root
-      className={css`
-        display: grid;
-        place-items: center;
-
-        cursor: pointer;
-
-        --timvir-b-Icon-hover: 0;
-        &:hover {
-          --timvir-b-Icon-hover: 1;
-        }
-      `}
-      style={{ width, height }}
-    >
+    <Root className={classes.root} style={{ width, height }}>
       <div className={classes.backdrop} />
       <Grid className={classes.grid} size={size} />
       <div style={{ gridColumn: 1, gridRow: 1, fontSize: `${size}px`, zIndex: 1 }}>
@@ -82,6 +69,18 @@ function Grid({ size, ...rest }: { size: number } & React.ComponentProps<"svg">)
 }
 
 const classes = {
+  root: css`
+    display: grid;
+    place-items: center;
+
+    cursor: pointer;
+
+    --timvir-b-Icon-hover: 0;
+    &:hover {
+      --timvir-b-Icon-hover: 1;
+    }
+  `,
+
   backdrop: css`
     grid-column: 1;
     grid-row: 1;
