@@ -16,6 +16,7 @@ const themes = {
 
     backgroundPattern:
       "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==)",
+    highlightBackgroundColor: "#ffe10044",
   },
   dark: {
     backgroundColor: "#1f2023",
@@ -31,6 +32,7 @@ const themes = {
 
     backgroundPattern:
       "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==)",
+    highlightBackgroundColor: "rgba(174, 124, 20, 0.15)",
   },
 } as const;
 
@@ -90,5 +92,6 @@ function mkTheme(config: (typeof themes)[keyof typeof themes]) {
     --timvir-accent-color: ${config.accentColor};
 
     --timvir-background-pattern: ${config.backgroundPattern};
+    --timvir-highlight-background-color:  ${config.highlightBackgroundColor};
   `;
 }
