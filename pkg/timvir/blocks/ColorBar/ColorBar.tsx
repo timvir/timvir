@@ -37,6 +37,7 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
             />
           </div>
         ))}
+        <div className={classes.barOverlay} />
       </div>
 
       <div className={classes.overlay}>
@@ -68,24 +69,26 @@ const classes = {
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     transition: all 0.16s;
 
-    &::before {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      display: block;
-      z-index: 2;
-      border-radius: 2px;
-      box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.15);
-      content: "";
-      pointer-events: none;
-      user-select: none;
-      transition: all 0.16s;
+    --timvir-b-ColorBar-bar-opacity: 1;
+    &:hover {
+      --timvir-b-ColorBar-bar-opacity: 0;
     }
-    &:hover::before {
-      opacity: 0;
-    }
+  `,
+
+  barOverlay: css`
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    z-index: 2;
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.15);
+    pointer-events: none;
+    user-select: none;
+    transition: all 0.16s;
+    opacity: var(--timvir-b-ColorBar-bar-opacity);
   `,
 
   value: css`
