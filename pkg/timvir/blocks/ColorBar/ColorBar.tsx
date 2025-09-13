@@ -27,9 +27,10 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
   return (
     <Root ref={ref} className={cx(className, classes.root, selected && tweaks.selected)} {...rest}>
       <div className={classes.bar} style={{ opacity: selected ? 0 : 1 }}>
-        {values.map((value, i) => (
+        {values.map((value, i, self) => (
           <div key={i} className={classes.value}>
             <div
+              className={cx(i === 0 && classes.firstChild, i === self.length - 1 && classes.lastChild)}
               style={{ background: typeof value === "string" ? value : value.value }}
               onClick={() => {
                 setSelected(value);
@@ -37,7 +38,6 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
             />
           </div>
         ))}
-        <div className={classes.barOverlay} />
       </div>
 
       <div className={classes.overlay}>
@@ -68,27 +68,6 @@ const classes = {
     grid-auto-flow: row;
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     transition: all 0.16s;
-
-    --timvir-b-ColorBar-bar-opacity: 1;
-    &:hover {
-      --timvir-b-ColorBar-bar-opacity: 0;
-    }
-  `,
-
-  barOverlay: css`
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: block;
-    z-index: 2;
-    border-radius: 2px;
-    box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.15);
-    pointer-events: none;
-    user-select: none;
-    transition: all 0.16s;
-    opacity: var(--timvir-b-ColorBar-bar-opacity);
   `,
 
   value: css`
@@ -98,26 +77,14 @@ const classes = {
     display: grid;
     place-items: stretch;
 
-    & > div {
-      transition: all 0.16s;
-      cursor: pointer;
-    }
-    &:first-child > div {
-      border-radius: 2px 0 0 2px;
-    }
-    &:last-child > div {
-      border-radius: 0 2px 2px 0;
-    }
+    cursor: pointer;
+  `,
 
-    &:hover {
-      z-index: 3;
-    }
-    &:hover > div {
-      border-radius: 2px;
-      margin: -3px 1px;
-      box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1),
-        0 8px 24px rgba(16, 22, 26, 0.2);
-    }
+  firstChild: css`
+    border-radius: 2px 0 0 2px;
+  `,
+  lastChild: css`
+    border-radius: 0 2px 2px 0;
   `,
 
   overlay: css`
