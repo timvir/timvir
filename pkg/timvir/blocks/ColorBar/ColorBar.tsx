@@ -40,14 +40,16 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
         ))}
       </div>
 
-      <div className={classes.overlay}>
-        <Swatch
-          {...(typeof selected === "string" ? { value: selected } : { value: selected?.value ?? "" })}
-          onMouseLeave={() => {
-            setSelected(undefined);
-          }}
-        />
-      </div>
+      {selected !== undefined && (
+        <div className={classes.overlay}>
+          <Swatch
+            {...(typeof selected === "string" ? { value: selected } : { value: selected.value })}
+            onMouseLeave={() => {
+              setSelected(undefined);
+            }}
+          />
+        </div>
+      )}
     </Root>
   );
 }
@@ -93,14 +95,6 @@ const classes = {
     right: 0px;
     left: 0px;
     transform: translateY(-50%);
-    pointer-events: none;
-    opacity: 0;
     z-index: 4;
-    transition: opacity 0.16s;
-
-    .${tweaks.selected} & {
-      pointer-events: all;
-      opacity: 1;
-    }
   `,
 };
