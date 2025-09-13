@@ -39,7 +39,11 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
         {values.map((value, i, self) => (
           <div key={i} {...stylex.props(styles.value)}>
             <div
-              {...stylex.props(i === 0 && styles.firstChild, i === self.length - 1 && styles.lastChild)}
+              {...stylex.props(
+                i === 0 && styles.firstChild,
+                i === self.length - 1 && styles.lastChild,
+                styles.valueInner
+              )}
               style={{ background: typeof value === "string" ? value : value.value }}
               onClick={() => {
                 setSelected(value);
@@ -84,13 +88,32 @@ const styles = stylex.create({
     placeItems: "stretch",
 
     cursor: "pointer",
+    zIndex: 3,
+
+    "--timvir-b-ColorBar-value-margin": "0px",
+
+    ":hover": {
+      "--timvir-b-ColorBar-value-borderRadius": "2px",
+      "--timvir-b-ColorBar-value-margin": "-3px 1px",
+    },
   },
 
+  valueInner: {
+    transition: "all 0.16s",
+
+    borderRadius: "var(--timvir-b-ColorBar-value-borderRadius, var(--timvir-b-ColorBar-value-borderRadiusDefault))",
+    margin: "var(--timvir-b-ColorBar-value-margin)",
+
+    ":hover": {
+      boxShadow:
+        "inset 0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.1), 0 8px 24px rgba(16, 22, 26, 0.2)",
+    },
+  },
   firstChild: {
-    borderRadius: "2px 0 0 2px",
+    "--timvir-b-ColorBar-value-borderRadiusDefault": "2px 0 0 2px",
   },
   lastChild: {
-    borderRadius: "0 2px 2px 0",
+    "--timvir-b-ColorBar-value-borderRadiusDefault": "0 2px 2px 0",
   },
 
   overlay: {
