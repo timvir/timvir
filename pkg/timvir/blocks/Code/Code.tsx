@@ -117,7 +117,6 @@ const classes = {
     background-color: var(--timvir-secondary-background-color);
 
     :root[data-timvir-theme="dark"] & {
-      .shiki,
       .shiki span {
         color: var(--shiki-dark) !important;
         font-style: var(--shiki-dark-font-style) !important;
@@ -126,13 +125,13 @@ const classes = {
       }
     }
 
-    & pre {
+    & .shiki {
       margin: 0;
       padding: 16px 0;
       background-color: var(--timvir-secondary-background-color) !important;
     }
 
-    & pre .line {
+    & .shiki .line {
       display: inline-block;
       width: 100%;
       padding-inline: var(--timvir-b-Code-inlinePadding);
