@@ -8,7 +8,6 @@ import { css, cx } from "@linaria/core";
 import { useBlock } from "timvir/core";
 import { codeToHtml } from "shiki";
 import * as React from "react";
-import * as Icons from "react-feather";
 import theme from "./theme";
 
 /**
@@ -45,9 +44,6 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   const [state, setState] = React.useState({
     settled: false,
-
-    mouseOver: false,
-    copiedToClipboard: false,
 
     /*
      * Prevent layout shift during (asynchronous) highlighting of the markup by
@@ -94,97 +90,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
             display: grid;
             grid-template-columns: 1fr;
           `}
-          onMouseEnter={() => {
-            setState((state) => ({
-              ...state,
-              mouseOver: true,
-            }));
-          }}
-          onMouseLeave={() => {
-            setState((state) => ({
-              ...state,
-              mouseOver: false,
-              copiedToClipboard: false,
-            }));
-          }}
         >
-          <button
-            type="button"
-            onClick={() => {
-              navigator.clipboard.writeText(children);
-              setState((state) => ({
-                ...state,
-                copiedToClipboard: true,
-              }));
-            }}
-            className={cx(
-              css`
-                --size: 48px;
-
-                z-index: 1;
-                position: absolute;
-                top: 0;
-                right: 0;
-                overflow: hidden;
-
-                width: var(--size);
-                height: var(--size);
-
-                display: flex;
-                align-items: flex-start;
-                justify-content: flex-end;
-
-                outline: none;
-                border: none;
-                padding: 6px;
-                background: transparent;
-
-                transition: all 0.2s;
-
-                cursor: pointer;
-
-                &:hover {
-                  color: white;
-                }
-                &:hover svg:first-child {
-                  transform: translate(0, 0);
-                }
-                &:active svg:first-child {
-                  transform: translate(2px, -2px);
-                }
-
-                pointer-events: none;
-                opacity: 0;
-              `,
-              state.mouseOver &&
-                css`
-                  pointer-events: all;
-                  opacity: 1;
-                `
-            )}
-          >
-            <svg
-              width={48}
-              height={48}
-              viewBox="0 0 48 48"
-              className={css`
-                position: absolute;
-                z-index: -1;
-                top: 0;
-                right: 0;
-                path {
-                  fill: var(--c-p-4);
-                }
-
-                transition: all 0.2s;
-                transform: translate(48px, -48px);
-              `}
-            >
-              <path d="M0 0 H48 V48 Z" />
-            </svg>
-            {state.copiedToClipboard ? <Icons.Clipboard size={"16px"} /> : <Icons.Copy size={"16px"} />}
-          </button>
-
           <div dangerouslySetInnerHTML={{ __html: state.html }} />
         </div>
       </div>
