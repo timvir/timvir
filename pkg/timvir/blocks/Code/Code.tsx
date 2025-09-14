@@ -8,7 +8,6 @@ import { css, cx } from "@linaria/core";
 import { useBlock } from "timvir/core";
 import { codeToHtml } from "shiki";
 import * as React from "react";
-import theme from "./theme";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -84,7 +83,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   return (
     <Root ref={ref} className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", classes.root)} {...rest}>
-      <div className={cx("timvir-b-Code-container", className, theme, classes.code)}>
+      <div className={cx("timvir-b-Code-container", className, classes.code)}>
         <div
           className={css`
             display: grid;
