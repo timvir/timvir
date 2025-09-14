@@ -120,7 +120,6 @@ const classes = {
       .shiki,
       .shiki span {
         color: var(--shiki-dark) !important;
-        background-color: var(--timvir-secondary-background-color) !important;
         font-style: var(--shiki-dark-font-style) !important;
         font-weight: var(--shiki-dark-font-weight) !important;
         text-decoration: var(--shiki-dark-text-decoration) !important;
@@ -130,6 +129,7 @@ const classes = {
     & pre {
       margin: 0;
       padding: 16px 0;
+      background-color: var(--timvir-secondary-background-color) !important;
     }
 
     & pre .line {
