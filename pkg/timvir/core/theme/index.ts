@@ -16,6 +16,7 @@ const themes = {
 
     backgroundPattern:
       "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==)",
+    highlightBackgroundColor: "#ffe10044",
   },
   dark: {
     backgroundColor: "#1f2023",
@@ -31,6 +32,7 @@ const themes = {
 
     backgroundPattern:
       "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==)",
+    highlightBackgroundColor: "rgba(174, 124, 20, 0.15)",
   },
 } as const;
 
@@ -55,6 +57,28 @@ export const theme: string = css`
 
     :root[data-timvir-theme="dark"] {
       ${mkTheme(themes.dark)};
+    }
+  }
+
+  /*
+   * Temporary kludge to enable light/dark support in Code blocks. To be
+   * removed once theming is implemented properly.
+   */
+  :global() {
+    .timvir-b-Code .shiki span {
+      color: var(--timvir-b-Code-shiki-light);
+      font-style: var(--timvir-b-Code-shiki-light-font-style);
+      font-weight: var(--timvir-b-Code-shiki-light-font-weight);
+      text-decoration: var(--timvir-b-Code-shiki-light-text-decoration);
+    }
+
+    :root[data-timvir-theme="dark"] {
+      .timvir-b-Code .shiki span {
+        color: var(--timvir-b-Code-shiki-dark);
+        font-style: var(--timvir-b-Code-shiki-dark-font-style);
+        font-weight: var(--timvir-b-Code-shiki-dark-font-weight);
+        text-decoration: var(--timvir-b-Code-shiki-dark-text-decoration);
+      }
     }
   }
 
@@ -90,5 +114,6 @@ function mkTheme(config: (typeof themes)[keyof typeof themes]) {
     --timvir-accent-color: ${config.accentColor};
 
     --timvir-background-pattern: ${config.backgroundPattern};
+    --timvir-highlight-background-color: ${config.highlightBackgroundColor};
   `;
 }

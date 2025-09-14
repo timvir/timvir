@@ -4,9 +4,10 @@
  * This is documentation for the Code component.
  */
 
-import { css, cx } from "@linaria/core";
+import { cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import { useBlock } from "timvir/core";
-import { codeToHtml } from "shiki";
+import { codeToHtml, ShikiTransformer } from "shiki";
 import * as React from "react";
 
 /**
@@ -46,10 +47,10 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
     /*
      * Prevent layout shift during (asynchronous) highlighting of the markup by
-     * initializing the html witha  pre/code block with the expected number of
+     * initializing the html with a pre/code block with the expected number of
      * lines.
      */
-    html: `<pre><code>${children
+    html: `<pre class="${stylex.props(styles.pre).className}"><code>${children
       .trim()
       .split("\n")
       .map(() => "\n")
@@ -58,6 +59,22 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   React.useEffect(() => {
     (async () => {
+      const stylexTransformer: ShikiTransformer = {
+        name: "stylex",
+
+        pre(node) {
+          this.addClassToHast(node, stylex.props(styles.pre).className!);
+        },
+
+        line(node, index) {
+          this.addClassToHast(node, stylex.props(styles.line).className!);
+
+          if (highlightedLines?.includes(index)) {
+            this.addClassToHast(node, stylex.props(styles.highlightedLine).className!);
+          }
+        },
+      };
+
       const html = await codeToHtml(children.trim(), {
         lang: language ?? "text",
 
@@ -65,12 +82,10 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           light: "github-light",
           dark: "github-dark",
         },
+        defaultColor: false,
+        cssVariablePrefix: "--timvir-b-Code-shiki-",
 
-        decorations: (highlightedLines ?? []).map((line) => ({
-          start: { line: line - 1, character: 0 },
-          end: { line: line, character: 0 },
-          properties: { class: classes.highlightedLine },
-        })),
+        transformers: [stylexTransformer],
       });
 
       setState((state) => ({
@@ -81,98 +96,69 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     })();
   }, [children, language, highlightedLines]);
 
-  return (
-    <Root ref={ref} className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", classes.root)} {...rest}>
-      <div className={cx("timvir-b-Code-container", className, classes.code)}>
-        <div
-          className={css`
-            display: grid;
-            grid-template-columns: 1fr;
-          `}
-        >
-          <div dangerouslySetInnerHTML={{ __html: state.html }} />
-        </div>
-      </div>
+  const codeStyleProps = stylex.props(styles.code);
+  const captionStyleProps = stylex.props(styles.caption);
 
-      {caption && <div className={cx("timvir-b-Code-caption", classes.caption)}>{caption}</div>}
+  return (
+    <Root ref={ref} className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", className)} {...rest}>
+      <div
+        {...codeStyleProps}
+        className={cx("timvir-b-Code-container", codeStyleProps.className)}
+        dangerouslySetInnerHTML={{ __html: state.html }}
+      />
+
+      {caption && (
+        <div {...captionStyleProps} className={cx("timvir-b-Code-caption", captionStyleProps.className)}>
+          {caption}
+        </div>
+      )}
     </Root>
   );
 }
 
 export default React.forwardRef(Code);
 
-const classes = {
-  root: css`
-    :root[data-timvir-theme="dark"] & {
-      .shiki,
-      .shiki span {
-        color: var(--shiki-dark) !important;
-        font-style: var(--shiki-dark-font-style) !important;
-        font-weight: var(--shiki-dark-font-weight) !important;
-        text-decoration: var(--shiki-dark-text-decoration) !important;
-      }
-    }
-  `,
+const styles = stylex.create({
+  code: {
+    overflowX: "auto",
+    contain: "content",
+    fontSize: "0.8em",
+    borderRadius: "5px",
 
-  code: css`
-    overflow-x: auto;
-    contain: content;
-    font-size: 0.8em;
+    "--timvir-b-Code-bleed": "calc(var(--timvir-margin, 0px) * 0.6666)",
+    "--timvir-b-Code-inlinePadding": "max(var(--timvir-b-Code-bleed), 8px)",
 
-    border-radius: 5px;
+    padding: 0,
+    margin: "0 calc(-1 * var(--timvir-b-Code-bleed))",
 
-    --timvir-b-Code-bleed: calc(var(--timvir-margin, 0px) * 0.6666);
-    --timvir-b-Code-inlinePadding: max(var(--timvir-b-Code-bleed), 8px);
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "var(--timvir-border-color)",
 
-    padding: 0;
-    margin: 0 calc(-1 * var(--timvir-b-Code-bleed));
+    backgroundColor: "var(--timvir-secondary-background-color)",
+  },
 
-    border: 1px solid var(--timvir-border-color);
+  pre: {
+    display: "block",
+    margin: 0,
+    padding: "16px 0",
+    backgroundColor: "var(--timvir-secondary-background-color)",
+  },
 
-    & pre {
-      margin: 0;
-      padding: 16px 0;
+  line: {
+    display: "inline-block",
+    width: "100%",
+    paddingInline: "var(--timvir-b-Code-inlinePadding)",
+  },
 
-      background-color: var(--timvir-secondary-background-color) !important;
-    }
+  highlightedLine: {
+    backgroundColor: "var(--timvir-highlight-background-color)",
+  },
 
-    & pre code {
-      display: block;
-    }
-    & pre code .line {
-      display: inline-block;
-      position: relative;
-      width: 100%;
-    }
-
-    & pre .line {
-      padding-inline: var(--timvir-b-Code-inlinePadding);
-    }
-  `,
-
-  line: css`
-    padding-inline: var(--timvir-b-Code-inlinePadding);
-  `,
-  highlightedLine: css`
-    background-color: #ffe10044;
-
-    :root[data-timvir-theme="dark"] & {
-      background-color: rgba(174, 124, 20, 0.15);
-    }
-  `,
-
-  lineNumber: css`
-    display: inline-block;
-    width: var(--timvir-b-Code-bleed);
-    color: var(--timvir-secondary-text-color);
-    text-align: right;
-    padding-inline: 4px;
-  `,
-
-  caption: css`
-    font-size: 0.8125rem;
-    line-height: 1.1875;
-    color: var(--timvir-secondary-text-color);
-    margin-top: 0.3em;
-  `,
-};
+  caption: {
+    fontSize: "0.8125rem",
+    lineHeight: 1.1875,
+    color: "var(--timvir-secondary-text-color)",
+    marginTop: "0.3em",
+  },
+});
