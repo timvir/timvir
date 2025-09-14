@@ -67,6 +67,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           dark: "github-dark",
         },
         defaultColor: false,
+        cssVariablePrefix: "--timvir-b-Code-shiki-",
 
         decorations: (highlightedLines ?? []).map((line) => ({
           start: { line: line - 1, character: 0 },
@@ -131,18 +132,18 @@ const classes = {
     }
 
     & .shiki span {
-      color: var(--shiki-light) !important;
-      font-style: var(--shiki-light-font-style) !important;
-      font-weight: var(--shiki-light-font-weight) !important;
-      text-decoration: var(--shiki-light-text-decoration) !important;
+      color: var(--timvir-b-Code-shiki-light) !important;
+      font-style: var(--timvir-b-Code-shiki-light-font-style) !important;
+      font-weight: var(--timvir-b-Code-shiki-light-font-weight) !important;
+      text-decoration: var(--timvir-b-Code-shiki-light-text-decoration) !important;
     }
 
     :root[data-timvir-theme="dark"] & {
       .shiki span {
-        color: var(--shiki-dark) !important;
-        font-style: var(--shiki-dark-font-style) !important;
-        font-weight: var(--shiki-dark-font-weight) !important;
-        text-decoration: var(--shiki-dark-text-decoration) !important;
+        color: var(--timvir-b-Code-shiki-dark) !important;
+        font-style: var(--timvir-b-Code-shiki-dark-font-style) !important;
+        font-weight: var(--timvir-b-Code-shiki-dark-font-weight) !important;
+        text-decoration: var(--timvir-b-Code-shiki-dark-text-decoration) !important;
       }
     }
   `,
