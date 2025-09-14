@@ -142,7 +142,7 @@ const styles = stylex.create({
     display: "block",
     margin: 0,
     padding: "16px 0",
-    backgroundColor: "var(--timvir-secondary-background-color) !important",
+    backgroundColor: "var(--timvir-secondary-background-color)",
   },
 
   line: {
