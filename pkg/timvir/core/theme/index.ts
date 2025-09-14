@@ -60,6 +60,28 @@ export const theme: string = css`
     }
   }
 
+  /*
+   * Temporary kludge to enable light/dark support in Code blocks. To be
+   * removed once theming is implemented properly.
+   */
+  :global() {
+    .timvir-b-Code .shiki span {
+      color: var(--timvir-b-Code-shiki-light);
+      font-style: var(--timvir-b-Code-shiki-light-font-style);
+      font-weight: var(--timvir-b-Code-shiki-light-font-weight);
+      text-decoration: var(--timvir-b-Code-shiki-light-text-decoration);
+    }
+
+    :root[data-timvir-theme="dark"] {
+      .timvir-b-Code .shiki span {
+        color: var(--timvir-b-Code-shiki-dark);
+        font-style: var(--timvir-b-Code-shiki-dark-font-style);
+        font-weight: var(--timvir-b-Code-shiki-dark-font-weight);
+        text-decoration: var(--timvir-b-Code-shiki-dark-text-decoration);
+      }
+    }
+  }
+
   font-family: system-ui, sans-serif;
   font-feature-settings: "liga", "kern";
   text-rendering: optimizelegibility;

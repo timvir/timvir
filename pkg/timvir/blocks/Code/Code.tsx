@@ -4,7 +4,7 @@
  * This is documentation for the Code component.
  */
 
-import { css, cx } from "@linaria/core";
+import { cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
 import { useBlock } from "timvir/core";
 import { codeToHtml, ShikiTransformer } from "shiki";
@@ -50,7 +50,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
      * initializing the html with a pre/code block with the expected number of
      * lines.
      */
-    html: `<pre><code>${children
+    html: `<pre class="${stylex.props(styles.pre).className}"><code>${children
       .trim()
       .split("\n")
       .map(() => "\n")
@@ -66,8 +66,12 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           this.addClassToHast(node, stylex.props(styles.pre).className!);
         },
 
-        line(node) {
+        line(node, index) {
           this.addClassToHast(node, stylex.props(styles.line).className!);
+
+          if (highlightedLines?.includes(index)) {
+            this.addClassToHast(node, stylex.props(styles.highlightedLine).className!);
+          }
         },
       };
 
@@ -81,12 +85,6 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         defaultColor: false,
         cssVariablePrefix: "--timvir-b-Code-shiki-",
 
-        decorations: (highlightedLines ?? []).map((line) => ({
-          start: { line: line - 1, character: 0 },
-          end: { line: line, character: 0 },
-          properties: { class: classes.highlightedLine },
-        })),
-
         transformers: [stylexTransformer],
       });
 
@@ -98,11 +96,16 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     })();
   }, [children, language, highlightedLines]);
 
+  const codeStyleProps = stylex.props(styles.code);
   const captionStyleProps = stylex.props(styles.caption);
 
   return (
     <Root ref={ref} className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", className)} {...rest}>
-      <div className={cx("timvir-b-Code-container", classes.code)} dangerouslySetInnerHTML={{ __html: state.html }} />
+      <div
+        {...codeStyleProps}
+        className={cx("timvir-b-Code-container", codeStyleProps.className)}
+        dangerouslySetInnerHTML={{ __html: state.html }}
+      />
 
       {caption && (
         <div {...captionStyleProps} className={cx("timvir-b-Code-caption", captionStyleProps.className)}>
@@ -115,46 +118,26 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
 export default React.forwardRef(Code);
 
-const classes = {
-  code: css`
-    overflow-x: auto;
-    contain: content;
-    font-size: 0.8em;
-
-    border-radius: 5px;
-
-    --timvir-b-Code-bleed: calc(var(--timvir-margin, 0px) * 0.6666);
-    --timvir-b-Code-inlinePadding: max(var(--timvir-b-Code-bleed), 8px);
-
-    padding: 0;
-    margin: 0 calc(-1 * var(--timvir-b-Code-bleed));
-
-    border: 1px solid var(--timvir-border-color);
-    background-color: var(--timvir-secondary-background-color);
-
-    & .shiki span {
-      color: var(--timvir-b-Code-shiki-light);
-      font-style: var(--timvir-b-Code-shiki-light-font-style);
-      font-weight: var(--timvir-b-Code-shiki-light-font-weight);
-      text-decoration: var(--timvir-b-Code-shiki-light-text-decoration);
-    }
-
-    :root[data-timvir-theme="dark"] & {
-      .shiki span {
-        color: var(--timvir-b-Code-shiki-dark);
-        font-style: var(--timvir-b-Code-shiki-dark-font-style);
-        font-weight: var(--timvir-b-Code-shiki-dark-font-weight);
-        text-decoration: var(--timvir-b-Code-shiki-dark-text-decoration);
-      }
-    }
-  `,
-
-  highlightedLine: css`
-    background-color: var(--timvir-highlight-background-color);
-  `,
-};
-
 const styles = stylex.create({
+  code: {
+    overflowX: "auto",
+    contain: "content",
+    fontSize: "0.8em",
+    borderRadius: "5px",
+
+    "--timvir-b-Code-bleed": "calc(var(--timvir-margin, 0px) * 0.6666)",
+    "--timvir-b-Code-inlinePadding": "max(var(--timvir-b-Code-bleed), 8px)",
+
+    padding: 0,
+    margin: "0 calc(-1 * var(--timvir-b-Code-bleed))",
+
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "var(--timvir-border-color)",
+
+    backgroundColor: "var(--timvir-secondary-background-color)",
+  },
+
   pre: {
     display: "block",
     margin: 0,
@@ -166,6 +149,10 @@ const styles = stylex.create({
     display: "inline-block",
     width: "100%",
     paddingInline: "var(--timvir-b-Code-inlinePadding)",
+  },
+
+  highlightedLine: {
+    backgroundColor: "var(--timvir-highlight-background-color)",
   },
 
   caption: {
