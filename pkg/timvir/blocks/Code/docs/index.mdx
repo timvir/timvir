@@ -26,14 +26,3 @@ which are supported by [shiki](https://shiki.style/themes).
 <Code language="javascript" caption="The Hitchhiker's Guide to the Galaxy">
   {'const answer = 42;'}
 </Code>
-
-## Full-width
-
-Full-width code blocks provide more space for the code. They are not constrained to the center column.
-
-<Code language="javascript" fullWidth>
-  {`(defun csg-intersection-intersect-all (obj-a obj-b)
-   (lambda (ray)
-     (flet ((inside-p (obj) (lambda (d) (inside-p obj (ray-point ray d)))))
-       (merge 'fvector (remove-if-not (inside-p obj-b) (intersect-all obj-a ray)) (remove-if-not (inside-p obj-a) (intersect-all obj-b ray)) #'<))))`}
-</Code>

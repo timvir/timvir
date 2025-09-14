@@ -5,7 +5,6 @@
  */
 
 import { css, cx } from "@linaria/core";
-import * as Page from "timvir/core";
 import { useBlock } from "timvir/core";
 import { codeToHtml } from "shiki";
 import * as React from "react";
@@ -31,13 +30,6 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   language?: string;
 
   /**
-   * When set, the code block spans the full width. Note that the text itself
-   * is still aligned with the main column. Use this when you expect the text
-   * to be wider than the center column.
-   */
-  fullWidth?: boolean;
-
-  /**
    * The numbering starts at 1, ie. `highlightedLines={[1, 2]}` will highlight
    * the first two lines.
    */
@@ -49,7 +41,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const block = useBlock(props);
 
-  const { children, language, fullWidth, highlightedLines, caption, className, ...rest } = block.props;
+  const { children, language, highlightedLines, caption, className, ...rest } = block.props;
 
   const [state, setState] = React.useState({
     settled: false,
@@ -95,12 +87,8 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   }, [children, language, highlightedLines]);
 
   return (
-    <Root
-      ref={ref}
-      className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", classes.root, fullWidth && Page.fullWidth)}
-      {...rest}
-    >
-      <div className={cx("timvir-b-Code-container", className, theme, classes.code, fullWidth && classes.fullWidth)}>
+    <Root ref={ref} className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", classes.root)} {...rest}>
+      <div className={cx("timvir-b-Code-container", className, theme, classes.code)}>
         <div
           className={css`
             display: grid;
@@ -197,16 +185,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
             {state.copiedToClipboard ? <Icons.Clipboard size={"16px"} /> : <Icons.Copy size={"16px"} />}
           </button>
 
-          <div
-            className={cx(
-              fullWidth
-                ? css`
-                    padding: 16px 24px 16px 0;
-                  `
-                : css``
-            )}
-            dangerouslySetInnerHTML={{ __html: state.html }}
-          />
+          <div dangerouslySetInnerHTML={{ __html: state.html }} />
         </div>
       </div>
 
@@ -263,32 +242,6 @@ const classes = {
 
     & pre .line {
       padding-inline: var(--timvir-b-Code-inlinePadding);
-    }
-  `,
-
-  fullWidth: css`
-    display: grid;
-
-    border-radius: 0;
-    box-shadow: none;
-
-    margin-inline: 0;
-
-    grid-auto-rows: min-content;
-    grid-template-columns: [le] 0 [lc] 1fr [rc] 0 [re];
-    grid-column-gap: 16px;
-
-    &:hover {
-      box-shadow: none;
-    }
-
-    @media (min-width: 60rem) {
-      grid-template-columns: [le] 1fr [lc] minmax(0, 48rem) [rc] 1fr [re];
-      grid-column-gap: 24px;
-    }
-
-    & > * {
-      grid-column: lc / re;
     }
   `,
 
