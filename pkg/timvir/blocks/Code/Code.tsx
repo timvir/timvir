@@ -7,7 +7,7 @@
 import { css, cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
 import { useBlock } from "timvir/core";
-import { codeToHtml } from "shiki";
+import { codeToHtml, ShikiTransformer } from "shiki";
 import * as React from "react";
 
 /**
@@ -59,6 +59,18 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   React.useEffect(() => {
     (async () => {
+      const stylexTransformer: ShikiTransformer = {
+        name: "stylex",
+
+        pre(node) {
+          this.addClassToHast(node, stylex.props(styles.pre).className!);
+        },
+
+        line(node) {
+          this.addClassToHast(node, stylex.props(styles.line).className!);
+        },
+      };
+
       const html = await codeToHtml(children.trim(), {
         lang: language ?? "text",
 
@@ -74,6 +86,8 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           end: { line: line, character: 0 },
           properties: { class: classes.highlightedLine },
         })),
+
+        transformers: [stylexTransformer],
       });
 
       setState((state) => ({
@@ -118,19 +132,6 @@ const classes = {
     border: 1px solid var(--timvir-border-color);
     background-color: var(--timvir-secondary-background-color);
 
-    & pre {
-      display: block;
-      margin: 0;
-      padding: 16px 0;
-      background-color: var(--timvir-secondary-background-color) !important;
-    }
-
-    & .shiki .line {
-      display: inline-block;
-      width: 100%;
-      padding-inline: var(--timvir-b-Code-inlinePadding);
-    }
-
     & .shiki span {
       color: var(--timvir-b-Code-shiki-light) !important;
       font-style: var(--timvir-b-Code-shiki-light-font-style) !important;
@@ -154,6 +155,19 @@ const classes = {
 };
 
 const styles = stylex.create({
+  pre: {
+    display: "block",
+    margin: 0,
+    padding: "16px 0",
+    backgroundColor: "var(--timvir-secondary-background-color) !important",
+  },
+
+  line: {
+    display: "inline-block",
+    width: "100%",
+    paddingInline: "var(--timvir-b-Code-inlinePadding)",
+  },
+
   caption: {
     fontSize: "0.8125rem",
     lineHeight: 1.1875,
