@@ -117,7 +117,8 @@ const classes = {
     border: 1px solid var(--timvir-border-color);
     background-color: var(--timvir-secondary-background-color);
 
-    & .shiki {
+    & pre {
+      display: block;
       margin: 0;
       padding: 16px 0;
       background-color: var(--timvir-secondary-background-color) !important;
