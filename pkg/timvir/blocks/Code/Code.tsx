@@ -114,11 +114,13 @@ const classes = {
     margin: 0 calc(-1 * var(--timvir-b-Code-bleed));
 
     border: 1px solid var(--timvir-border-color);
+    background-color: var(--timvir-secondary-background-color);
 
     :root[data-timvir-theme="dark"] & {
       .shiki,
       .shiki span {
         color: var(--shiki-dark) !important;
+        background-color: var(--timvir-secondary-background-color) !important;
         font-style: var(--shiki-dark-font-style) !important;
         font-weight: var(--shiki-dark-font-weight) !important;
         text-decoration: var(--shiki-dark-text-decoration) !important;
@@ -128,17 +130,11 @@ const classes = {
     & pre {
       margin: 0;
       padding: 16px 0;
-
-      background-color: var(--timvir-secondary-background-color) !important;
-    }
-
-    & pre code .line {
-      display: inline-block;
-      position: relative;
-      width: 100%;
     }
 
     & pre .line {
+      display: inline-block;
+      width: 100%;
       padding-inline: var(--timvir-b-Code-inlinePadding);
     }
   `,
