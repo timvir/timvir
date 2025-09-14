@@ -114,6 +114,6 @@ function mkTheme(config: (typeof themes)[keyof typeof themes]) {
     --timvir-accent-color: ${config.accentColor};
 
     --timvir-background-pattern: ${config.backgroundPattern};
-    --timvir-highlight-background-color:  ${config.highlightBackgroundColor};
+    --timvir-highlight-background-color: ${config.highlightBackgroundColor};
   `;
 }
