@@ -133,18 +133,18 @@ const classes = {
     background-color: var(--timvir-secondary-background-color);
 
     & .shiki span {
-      color: var(--timvir-b-Code-shiki-light) !important;
-      font-style: var(--timvir-b-Code-shiki-light-font-style) !important;
-      font-weight: var(--timvir-b-Code-shiki-light-font-weight) !important;
-      text-decoration: var(--timvir-b-Code-shiki-light-text-decoration) !important;
+      color: var(--timvir-b-Code-shiki-light);
+      font-style: var(--timvir-b-Code-shiki-light-font-style);
+      font-weight: var(--timvir-b-Code-shiki-light-font-weight);
+      text-decoration: var(--timvir-b-Code-shiki-light-text-decoration);
     }
 
     :root[data-timvir-theme="dark"] & {
       .shiki span {
-        color: var(--timvir-b-Code-shiki-dark) !important;
-        font-style: var(--timvir-b-Code-shiki-dark-font-style) !important;
-        font-weight: var(--timvir-b-Code-shiki-dark-font-weight) !important;
-        text-decoration: var(--timvir-b-Code-shiki-dark-text-decoration) !important;
+        color: var(--timvir-b-Code-shiki-dark);
+        font-style: var(--timvir-b-Code-shiki-dark-font-style);
+        font-weight: var(--timvir-b-Code-shiki-dark-font-weight);
+        text-decoration: var(--timvir-b-Code-shiki-dark-text-decoration);
       }
     }
   `,
