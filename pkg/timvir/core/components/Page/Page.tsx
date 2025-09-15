@@ -224,19 +224,6 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
             {Footer && <Footer />}
           </div>
         </div>
-
-        {search && (
-          <search.Component
-            {...state.search}
-            onClose={() => {
-              setState({
-                search: {
-                  open: false,
-                },
-              });
-            }}
-          />
-        )}
       </Root>
 
       <Commands
