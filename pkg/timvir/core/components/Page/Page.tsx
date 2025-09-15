@@ -8,7 +8,6 @@ import * as builtins from "timvir/builtins";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
 import { layoutStyles } from "../../layout";
-import { theme } from "../../theme";
 import { Commands } from "../Commands";
 import { NavigationFooter } from "../NavigationFooter";
 import { Sidebar } from "./internal";
@@ -155,7 +154,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         ref={ref}
         {...rest}
         {...rootStyleProps}
-        className={cx(rest.className, theme, rootStyleProps.className)}
+        className={cx(rest.className, rootStyleProps.className)}
         style={{ ...rest.style, ...rootStyleProps.style }}
       >
         <Sidebar

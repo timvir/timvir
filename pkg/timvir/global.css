@@ -1,0 +1,79 @@
+:root {
+  box-sizing: border-box;
+  scroll-padding-top: 20px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+:root {
+  --timvir-background-color: #ffffff;
+  --timvir-text-color: #000000c9;
+  --timvir-secondary-text-color: #00000066;
+  --timvir-secondary-background-color: #f9f8f9;
+
+  --timvir-border-color: #e9e8ea;
+
+  --timvir-sidebar-highlight-color: rgb(237, 237, 237);
+
+  --timvir-accent-color: #38a585;
+
+  --timvir-background-pattern: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==);
+  --timvir-highlight-background-color: #ffe10044;
+}
+
+:root[data-timvir-theme="dark"] {
+  --timvir-background-color: #1f2023;
+  --timvir-text-color: rgba(255 255 255 / 0.86);
+  --timvir-secondary-text-color: rgba(255 255 255 / 0.56);
+  --timvir-secondary-background-color: #161618;
+
+  --timvir-border-color: #27292f;
+
+  --timvir-sidebar-highlight-color: rgb(41, 43, 47);
+
+  --timvir-accent-color: #38a585;
+
+  --timvir-background-pattern: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
+  --timvir-highlight-background-color: rgba(174, 124, 20, 0.15);
+}
+
+/*
+ * Temporary kludge to enable light/dark support in Code blocks. To be
+ * removed once theming is implemented properly.
+ */
+.timvir-b-Code .shiki span {
+  color: var(--timvir-b-Code-shiki-light);
+  font-style: var(--timvir-b-Code-shiki-light-font-style);
+  font-weight: var(--timvir-b-Code-shiki-light-font-weight);
+  text-decoration: var(--timvir-b-Code-shiki-light-text-decoration);
+}
+
+:root[data-timvir-theme="dark"] .timvir-b-Code .shiki span {
+  color: var(--timvir-b-Code-shiki-dark);
+  font-style: var(--timvir-b-Code-shiki-dark-font-style);
+  font-weight: var(--timvir-b-Code-shiki-dark-font-weight);
+  text-decoration: var(--timvir-b-Code-shiki-dark-text-decoration);
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  font-feature-settings: "liga", "kern";
+  text-rendering: optimizelegibility;
+
+  font-size: 0.9375rem;
+  line-height: 1.7333;
+
+  background-color: var(--timvir-background-color);
+  color: var(--timvir-text-color);
+
+  --c-p-0: #f0fcf6;
+  --c-p-1: #d1f6e4;
+  --c-p-2: #a0dbc1;
+  --c-p-3: #61c19f;
+  --c-p-4: #38a585;
+  --c-p-5: #1b896b;
+}

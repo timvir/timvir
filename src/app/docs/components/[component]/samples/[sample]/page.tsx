@@ -1,7 +1,5 @@
 "use client";
 
-import { theme } from "timvir/core";
-
 interface Props {
   params: Promise<{
     component: string;
@@ -21,7 +19,7 @@ export default async function Page(props: Props) {
   })().then((mod) => mod.default || mod);
 
   return (
-    <div className={theme}>
+    <div>
       <Component />
     </div>
   );
