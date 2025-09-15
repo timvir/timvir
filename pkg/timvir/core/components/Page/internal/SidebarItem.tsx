@@ -26,15 +26,26 @@ function SidebarItem(props: Props) {
     );
 
   return (
-    <div className={classes.root} data-active={location.asPath.replace(/#.*$/, "") === path}>
+    <div className={classes.root}>
       {path ? (
-        <Link href={path} style={{ marginLeft: depth * 16 }}>
+        <Link
+          href={path}
+          className={classes.link}
+          style={{ marginLeft: depth * 16 }}
+          data-active={location.asPath.replace(/#.*$/, "") === path}
+        >
           {props.icon ? React.cloneElement(props.icon, { className: classes.icn }) : null}
           <span className={classes.label}>{label}</span>
           {icon}
         </Link>
       ) : (
-        <a style={{ marginLeft: depth * 16 }} href="#" onClick={() => setActive((x) => !x)}>
+        <a
+          href="#"
+          className={classes.link}
+          style={{ marginLeft: depth * 16 }}
+          onClick={() => setActive((x) => !x)}
+          data-active={location.asPath.replace(/#.*$/, "") === path}
+        >
           {props.icon ? React.cloneElement(props.icon, { className: classes.icn }) : null}
           <span className={classes.label}>{label}</span>
           {icon}
@@ -58,32 +69,32 @@ const classes = {
     @media (min-width: 48rem) {
       font-size: 0.8125rem;
     }
+  `,
+
+  link: css`
+    min-width: 0;
+    transition: background 0.16s;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    color: var(--timvir-text-color);
+    font-weight: 500;
+    background: none;
+    text-decoration: none;
+    width: 100%;
+    padding: 0 8px;
+    opacity: 0.7;
 
     @media (any-pointer: coarse) {
-      & > a {
-        min-height: 44px;
-      }
+      min-height: 44px;
     }
 
-    & > a {
-      min-width: 0;
-      transition: background 0.16s;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      color: var(--timvir-text-color);
-      font-weight: 500;
-      background: none;
-      text-decoration: none;
-      width: 100%;
-      padding: 0 8px;
-      opacity: 0.7;
-    }
-    &:hover a {
+    &:hover {
       background-color: var(--timvir-sidebar-highlight-color);
       opacity: 1;
     }
-    &[data-active="true"] a {
+
+    &[data-active="true"] {
       background-color: var(--timvir-sidebar-highlight-color);
       opacity: 1;
     }
