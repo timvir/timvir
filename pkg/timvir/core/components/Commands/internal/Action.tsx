@@ -1,4 +1,5 @@
-import { css } from "@linaria/core";
+import { cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 
 const Root = "div";
@@ -10,10 +11,18 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
 function Action(props: Props) {
   const { label, ...rest } = props;
 
+  const rootStyleProps = stylex.props(styles.root);
+
   return (
-    <Root className={classes.root} {...rest}>
-      <div className={classes.icon}>
+    <Root
+      {...rest}
+      {...rootStyleProps}
+      className={cx(rest.className, rootStyleProps.className)}
+      style={{ ...rootStyleProps.style, ...rest.style }}
+    >
+      <div {...stylex.props(styles.icon)}>
         <svg
+          {...stylex.props(styles.svg)}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -25,57 +34,49 @@ function Action(props: Props) {
           <polyline points="12 5 19 12 12 19" />
         </svg>
       </div>
-      <div className={classes.label}>{label}</div>
+      <div {...stylex.props(styles.label)}>{label}</div>
     </Root>
   );
 }
 
 export default Action;
 
-const classes = {
-  root: css`
-    background-color: transparent;
-    color: rgb(214, 214, 214);
-    white-space: nowrap;
-    display: flex;
-    flex: 0 0 100%;
-    align-items: center;
+const styles = stylex.create({
+  root: {
+    backgroundColor: "transparent",
+    color: "rgb(214, 214, 214)",
+    whiteSpace: "nowrap",
+    display: "flex",
+    alignItems: "center",
+    transition: "color 0.1s",
+    height: 46,
+    flexDirection: "row",
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "auto",
+    overflow: "hidden",
+    paddingInline: 14,
+    borderLeft: "none",
+    cursor: "default",
 
-    transition: color 0.1s;
+    ":hover": {
+      backgroundColor: "rgb(55, 55, 60)",
+    },
+  },
 
-    height: 46px;
+  icon: {
+    marginRight: 12,
+    width: 16,
+  },
 
-    display: flex;
-    flex-shrink: initial;
-    flex-basis: initial;
-    flex-direction: row;
-    flex-grow: 1;
-    overflow: hidden;
+  svg: {
+    display: "block",
+    width: 16,
+    height: 16,
+  },
 
-    align-items: center;
-    padding-inline: 14px;
-    border-left: none;
-
-    cursor: default;
-
-    &:hover {
-      background-color: rgb(55, 55, 60);
-    }
-  `,
-
-  icon: css`
-    margin-right: 12px;
-    width: 16px;
-
-    & > svg {
-      display: block;
-      width: 16px;
-      height: 16px;
-    }
-  `,
-
-  label: css`
-    font-size: 0.8125rem;
-    color: rgb(247, 248, 248);
-  `,
-};
+  label: {
+    fontSize: "0.8125rem",
+    color: "rgb(247, 248, 248)",
+  },
+});
