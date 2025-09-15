@@ -5,7 +5,6 @@ import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import terser from "@rollup/plugin-terser";
 import stylexPlugin0 from "@stylexswc/rollup-plugin";
-import linaria from "@wyw-in-js/rollup";
 import builtinModules from "builtin-modules";
 import shebang from "rollup-plugin-add-shebang";
 import css from "rollup-plugin-css-only";
@@ -44,7 +43,6 @@ function block(name) {
         resolve({ extensions }),
         commonjs({}),
         replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
-        linaria(),
         css({ output: "styles.css" }),
         stylexPlugin({
           useCSSLayers: true,
@@ -77,7 +75,6 @@ function module(name) {
     plugins: [
       resolve({ extensions }),
       commonjs(),
-      linaria(),
       css({ output: "styles.css" }),
       stylexPlugin({
         useCSSLayers: true,
@@ -136,7 +133,6 @@ export default [
       resolve({ extensions }),
       commonjs({}),
       replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
-      linaria(),
       css({ output: "styles.css" }),
       stylexPlugin({
         useCSSLayers: true,
