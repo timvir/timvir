@@ -1,9 +1,9 @@
 "use client";
 
 import { cx } from "@linaria/core";
-import stylex from "@stylexjs/stylex";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import { useContext } from "timvir/core";
+import { layoutStyles, useContext } from "timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -36,7 +36,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
   const metadata = state.metadata;
   const image = metadata?.open_graph?.images?.[0]?.url;
 
-  const rootStyleProps = stylex.props(styles.root);
+  const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
 
   return (
     <Root
