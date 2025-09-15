@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Node } from "timvir/core";
-import { Dialog } from "./internal";
 
 interface Props extends React.ComponentPropsWithoutRef<"div"> {
   open?: boolean;
@@ -12,14 +11,8 @@ interface Props extends React.ComponentPropsWithoutRef<"div"> {
   }>;
 }
 
-function Search(props: Props, ref: React.ForwardedRef<React.ComponentRef<"div">>) {
-  const { open, ...rest } = props;
-
-  if (!open) {
-    return null;
-  } else {
-    return <Dialog ref={ref} {...rest} />;
-  }
+function Search(_props: Props, _ref: React.ForwardedRef<React.ComponentRef<"div">>) {
+  return null;
 }
 
 export default React.forwardRef(Search);

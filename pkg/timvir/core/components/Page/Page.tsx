@@ -120,13 +120,29 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   );
 
   useHotkeys(
-    "escape",
-    () => {
+    "meta+k",
+    (ev) => {
+      ev.preventDefault();
       setState({
         search: {
-          open: false,
+          open: !state.search.open,
         },
       });
+    },
+    { enableOnFormTags: ["INPUT"] }
+  );
+
+  useHotkeys(
+    "escape",
+    (ev) => {
+      if (state.search.open) {
+        ev.preventDefault();
+        setState({
+          search: {
+            open: false,
+          },
+        });
+      }
     },
     { enableOnFormTags: true }
   );
@@ -208,22 +224,18 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
             {Footer && <Footer />}
           </div>
         </div>
-
-        {search && (
-          <search.Component
-            {...state.search}
-            onClose={() => {
-              setState({
-                search: {
-                  open: false,
-                },
-              });
-            }}
-          />
-        )}
       </Root>
 
-      <Commands />
+      <Commands
+        open={state.search.open}
+        onClose={() => {
+          setState({
+            search: {
+              open: false,
+            },
+          });
+        }}
+      />
     </Provider>
   );
 }

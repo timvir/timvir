@@ -1,17 +1,17 @@
 import { css } from "@linaria/core";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { useHotkeys } from "react-hotkeys-hook";
 import { Dialog } from "./internal";
 
-function Commands() {
-  const [state, setState] = React.useState({
-    /**
-     * Whether the command palette should be open or not. The command palette is
-     * opened by cmd+k, and closed by escape or clicking outside of the dialog.
-     */
-    open: false,
+interface Props {
+  open: boolean;
+  onClose: () => void;
+}
 
+function Commands(props: Props) {
+  const { open: _open, onClose: _onClose } = props;
+
+  const [state, setState] = React.useState({
     /**
      * If the dialog is visible (even during the closing transition), this
      * object contains both the container element (a div appended to the end of
@@ -25,7 +25,6 @@ function Commands() {
 
   function open() {
     setState({
-      open: true,
       dialog: (() => {
         if (!state.dialog) {
           const containerElement = document.createElement("div");
@@ -36,11 +35,11 @@ function Commands() {
               className={classes.root}
               onClick={(ev) => {
                 if (ev.target === ev.currentTarget) {
-                  close();
+                  _onClose();
                 }
               }}
             >
-              <Dialog open onClose={close} />
+              <Dialog open onClose={_onClose} />
             </div>,
             containerElement
           );
@@ -54,11 +53,11 @@ function Commands() {
                 className={classes.root}
                 onClick={(ev) => {
                   if (ev.target === ev.currentTarget) {
-                    close();
+                    _onClose();
                   }
                 }}
               >
-                <Dialog open onClose={close} />
+                <Dialog open onClose={_onClose} />
               </div>,
               state.dialog.containerElement
             ),
@@ -70,7 +69,6 @@ function Commands() {
 
   function close() {
     setState({
-      open: false,
       dialog: (() => {
         if (state.dialog) {
           return {
@@ -80,9 +78,8 @@ function Commands() {
                 <Dialog
                   onDispose={() => {
                     setState({
-                      open: state.open,
                       dialog: (() => {
-                        if (!state.open && state.dialog) {
+                        if (!_open && state.dialog) {
                           document.body.removeChild(state.dialog.containerElement);
                           return null;
                         } else {
@@ -103,40 +100,23 @@ function Commands() {
     });
   }
 
-  useHotkeys(
-    "meta+k",
-    (ev) => {
-      ev.preventDefault();
-
-      if (!state.open) {
-        open();
-      } else {
-        close();
-      }
-    },
-    { enableOnFormTags: ["INPUT"] }
-  );
-
-  useHotkeys(
-    "escape",
-    () => {
-      close();
-    },
-    { enableOnFormTags: ["INPUT"] }
-  );
-
   /*
    * Crude body scroll lock when the dialog is open.
    */
+  // biome-ignore lint/correctness/useExhaustiveDependencies: TODO
   React.useEffect(() => {
-    if (state.open) {
+    if (_open) {
       document.body.style.overflow = "hidden";
+
+      open();
 
       return () => {
         document.body.style.overflow = "";
       };
+    } else {
+      close();
     }
-  }, [state.open]);
+  }, [_open]);
 
   return state.dialog?.reactPortal ?? null;
 }
