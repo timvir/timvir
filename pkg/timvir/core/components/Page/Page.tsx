@@ -134,12 +134,15 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   useHotkeys(
     "escape",
-    () => {
-      setState({
-        search: {
-          open: false,
-        },
-      });
+    (ev) => {
+      if (state.search.open) {
+        ev.preventDefault();
+        setState({
+          search: {
+            open: false,
+          },
+        });
+      }
     },
     { enableOnFormTags: true }
   );
