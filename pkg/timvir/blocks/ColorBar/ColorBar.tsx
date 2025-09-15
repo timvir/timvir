@@ -72,6 +72,14 @@ export default React.forwardRef(ColorBar);
 const styles = stylex.create({
   root: {
     position: "relative",
+
+    /*
+     * FIXME: This is a copy of layoutStyles.block. However, importing layoutStyles
+     * makes the build crash. Need to investigate why.
+     */
+    gridColumn: "lc / rc",
+    minWidth: 0,
+    margin: "0 0 2rem",
   },
 
   bar: {

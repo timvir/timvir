@@ -35,5 +35,13 @@ const styles = stylex.create({
     gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
     gap: "var(--timvir-page-margin, 24px)",
     "--timvir-margin": "calc(var(--timvir-page-margin, 24px) * 0.5)",
+
+    /*
+     * FIXME: This is a copy of layoutStyles.block. However, importing layoutStyles
+     * makes the build crash. Need to investigate why.
+     */
+    gridColumn: "lc / rc",
+    minWidth: 0,
+    margin: "0 0 2rem",
   },
 });

@@ -89,7 +89,9 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
           </button>
         </div>
 
-        <Exhibit {...ExhibitProps}>{children}</Exhibit>
+        <Exhibit {...ExhibitProps} style={{ margin: 0 }}>
+          {children}
+        </Exhibit>
       </Root>
     </Context.Provider>
   );
