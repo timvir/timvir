@@ -78,9 +78,8 @@ function Commands(props: Props) {
                 <Dialog
                   onDispose={() => {
                     setState({
-                      open: state.open,
                       dialog: (() => {
-                        if (!state.open && state.dialog) {
+                        if (!_open && state.dialog) {
                           document.body.removeChild(state.dialog.containerElement);
                           return null;
                         } else {
