@@ -2,7 +2,7 @@
 
 import { cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
-import { useBlock } from "timvir/core";
+import { layoutStyles, useBlock } from "timvir/core";
 import * as React from "react";
 
 /**
@@ -28,7 +28,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
 
   const { caption, bleed, BackdropProps, children, className, style, ...rest } = block.props;
 
-  const rootStyleProps = stylex.props(styles.root);
+  const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
   const containerStyleProps = stylex.props(styles.container, bleed === 0 && styles.bleedZero);
   const captionStyleProps = stylex.props(styles.caption);
 

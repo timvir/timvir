@@ -6,7 +6,7 @@
 
 import { cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
-import { useBlock } from "timvir/core";
+import { layoutStyles, useBlock } from "timvir/core";
 import { codeToHtml, ShikiTransformer } from "shiki";
 import * as React from "react";
 
@@ -96,7 +96,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     })();
   }, [children, language, highlightedLines]);
 
-  const codeStyleProps = stylex.props(styles.code);
+  const codeStyleProps = stylex.props(layoutStyles.block, styles.code);
   const captionStyleProps = stylex.props(styles.caption);
 
   return (
