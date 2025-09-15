@@ -2,7 +2,7 @@
 
 import { cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
-import { useBlock } from "timvir/core";
+import { layoutStyles, useBlock } from "timvir/core";
 import * as React from "react";
 
 /**
@@ -50,7 +50,7 @@ function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
     setLabel(name);
   }, [name]);
 
-  const rootStyleProps = stylex.props(styles.root);
+  const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
   const innerStyleProps = stylex.props(styles.inner);
 
   return (

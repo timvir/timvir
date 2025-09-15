@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
+import { layoutStyles } from "timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -15,7 +16,7 @@ function Message(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
   const { variant, children, ...rest } = props;
 
   return (
-    <Root ref={ref} {...stylex.props(styles.root, variant && styles[variant])} {...rest}>
+    <Root ref={ref} {...stylex.props(layoutStyles.block, styles.root, variant && styles[variant])} {...rest}>
       {variant &&
         {
           info: <Icons.ChevronsRight {...stylex.props(styles.icon, styles.iconInfo)} />,
