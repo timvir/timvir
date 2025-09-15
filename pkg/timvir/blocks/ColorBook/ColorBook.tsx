@@ -64,7 +64,9 @@ const styles = stylex.create({
     width: "100%",
 
     /*
-     * FIXME: This is a copy of layoutStyles.block. However, importing layoutStyles
+     * TIMVIR-30
+     *
+     * This is a copy of layoutStyles.block. However, importing layoutStyles
      * makes the build crash. Need to investigate why.
      */
     gridColumn: "lc / rc",
