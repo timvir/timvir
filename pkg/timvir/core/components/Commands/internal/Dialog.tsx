@@ -56,6 +56,7 @@ function Dialog(props: Props) {
 
       <div className={classes.prompt}>
         <input
+          className={classes.input}
           autoFocus
           placeholder="Type a command or search…"
           value={state.query}
@@ -140,21 +141,21 @@ const classes = {
     position: relative;
     flex-shrink: 0;
     height: 62px;
+  `,
 
-    & > input {
-      padding: 20px;
-      grid-area: 1 / 1 / auto / auto;
-      margin: 0px;
-      border: none;
-      appearance: none;
-      font-size: inherit;
-      height: 62px;
-      background: transparent;
-      color: rgb(214, 214, 214);
-      caret-color: rgb(110, 94, 210);
-      outline: none;
-      width: 100%;
-    }
+  input: css`
+    padding: 20px;
+    grid-area: 1 / 1 / auto / auto;
+    margin: 0px;
+    border: none;
+    appearance: none;
+    font-size: inherit;
+    height: 62px;
+    background: transparent;
+    color: rgb(214, 214, 214);
+    caret-color: rgb(110, 94, 210);
+    outline: none;
+    width: 100%;
   `,
 
   subheader: css`
