@@ -9,6 +9,7 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
+import { layoutStyles } from "timvir/core";
 
 const anchorize = (children?: React.ReactNode): undefined | string => {
   if (typeof children === "string") {
@@ -65,26 +66,26 @@ function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHea
 }
 
 export const h1: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = (props) => (
-  <h1 {...stylex.props(styles.h1)} {...props} />
+  <h1 {...stylex.props(layoutStyles.block, styles.h1)} {...props} />
 );
 
 export const h2: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading((props) => (
-  <h2 {...stylex.props(styles.h2)} {...props} />
+  <h2 {...stylex.props(layoutStyles.block, styles.h2)} {...props} />
 ));
 
 export const h3: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading((props) => (
-  <h3 {...stylex.props(styles.h3)} {...props} />
+  <h3 {...stylex.props(layoutStyles.block, styles.h3)} {...props} />
 ));
 
 export const h4: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading((props) => (
-  <h4 {...stylex.props(styles.h4)} {...props} />
+  <h4 {...stylex.props(layoutStyles.block, styles.h4)} {...props} />
 ));
 
 export const blockquote: React.FunctionComponent<React.BlockquoteHTMLAttributes<HTMLQuoteElement>> = (props) => {
   const { children, ...rest } = props;
 
   return (
-    <blockquote {...rest} {...stylex.props(styles.blockquote)}>
+    <blockquote {...rest} {...stylex.props(layoutStyles.block, styles.blockquote)}>
       {React.Children.toArray(children)
         .filter((x) => x !== "\n")
         .map((child, index, self) => {
@@ -104,11 +105,11 @@ export const blockquote: React.FunctionComponent<React.BlockquoteHTMLAttributes<
 };
 
 export const hr: React.FunctionComponent<React.HTMLAttributes<HTMLHRElement>> = (props) => (
-  <hr {...stylex.props(styles.hr)} {...props} />
+  <hr {...stylex.props(layoutStyles.block, styles.hr)} {...props} />
 );
 
 export const table: React.FunctionComponent<React.TableHTMLAttributes<HTMLTableElement>> = (props) => (
-  <table {...stylex.props(styles.table)} {...props} />
+  <table {...stylex.props(layoutStyles.block, styles.table)} {...props} />
 );
 
 export const thead: React.FunctionComponent<React.HTMLAttributes<HTMLTableSectionElement>> = (props) => (
@@ -151,11 +152,17 @@ export const a: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorEle
   <a {...stylex.props(styles.a)} {...props} />
 );
 
-export const p: React.FunctionComponent<React.HTMLAttributes<HTMLParagraphElement>> = (props) => <p {...props} />;
+export const p: React.FunctionComponent<React.HTMLAttributes<HTMLParagraphElement>> = (props) => (
+  <p {...stylex.props(layoutStyles.block)} {...props} />
+);
 
-export const ul: React.FunctionComponent<React.HTMLAttributes<HTMLUListElement>> = (props) => <ul {...props} />;
+export const ul: React.FunctionComponent<React.HTMLAttributes<HTMLUListElement>> = (props) => (
+  <ul {...stylex.props(layoutStyles.block)} {...props} />
+);
 
-export const ol: React.FunctionComponent<React.HTMLAttributes<HTMLOListElement>> = (props) => <ol {...props} />;
+export const ol: React.FunctionComponent<React.HTMLAttributes<HTMLOListElement>> = (props) => (
+  <ol {...stylex.props(layoutStyles.block)} {...props} />
+);
 
 const styles = stylex.create({
   h1: {

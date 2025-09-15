@@ -7,7 +7,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import * as builtins from "timvir/builtins";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
-import { grid } from "../../layout";
+import { layoutStyles, grid } from "../../layout";
 import { theme } from "../../theme";
 import { Commands } from "../Commands";
 import { NavigationFooter } from "../NavigationFooter";
@@ -176,7 +176,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         />
 
         <div {...stylex.props(styles.contentContainer)}>
-          <div className={cx(grid, stylex.props(styles.content).className)}>{children}</div>
+          <div className={cx(grid, stylex.props(styles.content, layoutStyles.grid).className)}>{children}</div>
 
           <div {...stylex.props(styles.marginTopAuto)}>
             {(() => {
