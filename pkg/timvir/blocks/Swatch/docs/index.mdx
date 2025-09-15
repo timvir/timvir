@@ -5,35 +5,35 @@ import { Grid } from "../../Grid";
 # Swatch
 
 <Exhibit caption="Plain color" style={{ marginBottom: 24 }}>
-  <Swatch value="#FF00FF" />
+  <Swatch value="#FF00FF" style={{ margin: 0 }} />
 </Exhibit>
 
 <Exhibit caption="Give the color a meaningful name" style={{ marginBottom: 24 }}>
-  <Swatch value="#FF00FF" name="Primary" />
+  <Swatch value="#FF00FF" name="Primary" style={{ margin: 0 }} />
 </Exhibit>
 
 <Exhibit caption="Add a note about its ancenstry (how or where from it was derived)" style={{ marginBottom: 24 }}>
-  <Swatch value="#FF00FF" name="Primary" ancestry="Red 700" />
+  <Swatch value="#FF00FF" name="Primary" ancestry="Red 700" style={{ margin: 0 }} />
 </Exhibit>
 
 ## In a Grid
 
 <Grid style={{ gridGap: 6 }}>
-  <Swatch value="#0E5A8A" contrastValue="#FFFFFF" name="@blue1" />
-  <Swatch value="#106BA3" contrastValue="#FFFFFF" name="@blue2" />
-  <Swatch value="#137CBD" contrastValue="#FFFFFF" name="@blue3" />
-  <Swatch value="#2B95D6" contrastValue="#000000" name="@blue4" />
-  <Swatch value="#48AFF0" contrastValue="#000000" name="@blue5" />
+  <Swatch value="#0E5A8A" contrastValue="#FFFFFF" name="@blue1" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#106BA3" contrastValue="#FFFFFF" name="@blue2" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#137CBD" contrastValue="#FFFFFF" name="@blue3" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#2B95D6" contrastValue="#000000" name="@blue4" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#48AFF0" contrastValue="#000000" name="@blue5" style={{ margin: 0, gridColumn: "initial" }} />
 </Grid>
 
 ## Another example
 
-<div style={{display: "grid", gridGap: 6 }}>
-  <Swatch value="#F58221" name="Access" ancestry="Orange 300" />
-  <Swatch value="#D9418D" name="Use" ancestry="Red 500" />
-  <Swatch value="#B87AF2" name="Innovation" ancestry="Violett 500" />
-  <Swatch value="#4188D9" name="Jobs" ancestry="Blue 500" />
-  <Swatch value="#4AE6CC" name="Society" ancestry="…" />
-  <Swatch value="#1FD35B" name="Trust" ancestry="Green 400" />
-  <Swatch value="#C4D534" name="Market Openness" ancestry="…" />
+<div style={{ display: "grid", gridGap: 6 }}>
+  <Swatch value="#F58221" name="Access" ancestry="Orange 300" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#D9418D" name="Use" ancestry="Red 500" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#B87AF2" name="Innovation" ancestry="Violett 500" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#4188D9" name="Jobs" ancestry="Blue 500" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#4AE6CC" name="Society" ancestry="…" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#1FD35B" name="Trust" ancestry="Green 400" style={{ margin: 0, gridColumn: "initial" }} />
+  <Swatch value="#C4D534" name="Market Openness" ancestry="…" style={{ margin: 0, gridColumn: "initial" }} />
 </div>
