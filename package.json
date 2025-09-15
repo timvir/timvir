@@ -41,7 +41,7 @@
     "babel-plugin-macros": "^3.1.0",
     "builtin-modules": "^5.0.0",
     "bytestring": "^1.0.1",
-    "caniuse-lite": "^1.0.30001734",
+    "caniuse-lite": "^1.0.30001741",
     "chroma-js": "^3.1.2",
     "commander": "^14.0.0",
     "core-js": "^3.45.0",
