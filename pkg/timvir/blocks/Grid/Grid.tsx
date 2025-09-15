@@ -1,6 +1,7 @@
 import { cx } from "../../internal/cx";
-import stylex from "@stylexjs/stylex";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
+import { layoutStyles } from "timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -12,7 +13,7 @@ interface Props extends React.ComponentProps<typeof Root> {}
 function Grid(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { children, className, ...rest } = props;
 
-  const rootStyleProps = stylex.props(styles.root);
+  const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
 
   return (
     <Root
@@ -35,15 +36,5 @@ const styles = stylex.create({
     gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
     gap: "var(--timvir-page-margin, 24px)",
     "--timvir-margin": "calc(var(--timvir-page-margin, 24px) * 0.5)",
-
-    /*
-     * TIMVIR-30
-     *
-     * This is a copy of layoutStyles.block. However, importing layoutStyles
-     * makes the build crash. Need to investigate why.
-     */
-    gridColumn: "lc / rc",
-    minWidth: 0,
-    margin: "0 0 2rem",
   },
 });

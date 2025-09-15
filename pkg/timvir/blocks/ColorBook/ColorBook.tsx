@@ -1,5 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
+import { layoutStyles } from "timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -21,7 +22,7 @@ function ColorBook(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
   const { chapters, selectedChapter, onSelectChapter, ...rest } = props;
 
   return (
-    <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
+    <Root ref={ref} {...rest} {...stylex.props(layoutStyles.block, styles.root)}>
       {chapters.map(({ name, values }, i) => (
         <div key={i} style={{ gridColumn: i + 1 }}>
           <div
@@ -38,8 +39,8 @@ function ColorBook(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
                 style={{ background: value }}
                 {...stylex.props(
                   styles.colorValue,
-                  i === 0 && styles.colorValueFirst,
-                  i === values.length - 1 && styles.colorValueLast
+                  i === 0 ? styles.colorValueFirst : null,
+                  i === values.length - 1 ? styles.colorValueLast : null
                 )}
               />
             ))}
@@ -62,16 +63,6 @@ const styles = stylex.create({
     gridAutoColumns: "1fr",
     alignItems: "start",
     width: "100%",
-
-    /*
-     * TIMVIR-30
-     *
-     * This is a copy of layoutStyles.block. However, importing layoutStyles
-     * makes the build crash. Need to investigate why.
-     */
-    gridColumn: "lc / rc",
-    minWidth: 0,
-    margin: "0 0 2rem",
   },
   chapter: {
     position: "relative",

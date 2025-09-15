@@ -3,7 +3,7 @@
 import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
 import { Swatch } from "timvir/blocks";
-import { useBlock } from "timvir/core";
+import { layoutStyles, useBlock } from "timvir/core";
 import * as React from "react";
 
 /**
@@ -25,7 +25,7 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
 
   const [selected, setSelected] = React.useState<undefined | Props["values"][number]>(undefined);
 
-  const rootStyleProps = stylex.props(styles.root);
+  const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
 
   return (
     <Root
@@ -40,8 +40,8 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
           <div key={i} {...stylex.props(styles.value)}>
             <div
               {...stylex.props(
-                i === 0 && styles.firstChild,
-                i === self.length - 1 && styles.lastChild,
+                i === 0 ? styles.firstChild : null,
+                i === self.length - 1 ? styles.lastChild : null,
                 styles.valueInner
               )}
               style={{ background: typeof value === "string" ? value : value.value }}
@@ -57,6 +57,7 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
         <div {...stylex.props(styles.overlay)}>
           <Swatch
             {...(typeof selected === "string" ? { value: selected } : { value: selected.value })}
+            style={{ margin: 0 }}
             onMouseLeave={() => {
               setSelected(undefined);
             }}
@@ -72,16 +73,6 @@ export default React.forwardRef(ColorBar);
 const styles = stylex.create({
   root: {
     position: "relative",
-
-    /*
-     * TIMVIR-30
-     *
-     * This is a copy of layoutStyles.block. However, importing layoutStyles
-     * makes the build crash. Need to investigate why.
-     */
-    gridColumn: "lc / rc",
-    minWidth: 0,
-    margin: "0 0 2rem",
   },
 
   bar: {
