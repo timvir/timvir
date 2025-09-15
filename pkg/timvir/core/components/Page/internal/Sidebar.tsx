@@ -241,7 +241,7 @@ const styles = stylex.create({
     padding: "0 12px",
     borderWidth: 1,
     borderStyle: "solid",
-    borderClor: "var(--timvir-border-color)",
+    borderColor: "var(--timvir-border-color)",
     backgroundColor: "var(--timvir-secondary-background-color)",
     display: "flex",
     alignItems: "center",
