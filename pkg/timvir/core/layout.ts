@@ -1,53 +1,58 @@
-import { css, cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 
-const noLayout: string = css``;
+export const layoutStyles = stylex.create({
+  grid: {
+    display: "grid",
 
-export const grid: string = css`
-  display: grid;
+    "--timvir-page-margin": "16px",
+    "--timvir-margin": "var(--timvir-page-margin)",
 
-  --timvir-page-margin: 16px;
-  --timvir-margin: var(--timvir-page-margin);
+    gridAutoRows: "min-content",
+    gridTemplateColumns: "[le] var(--timvir-page-margin) [lex lc] 1fr [rc rex] var(--timvir-page-margin) [re]",
 
-  grid-auto-rows: min-content;
-  grid-template-columns: [le] var(--timvir-page-margin) [lex lc] 1fr [rc rex] var(--timvir-page-margin) [re];
+    "@media (min-width: 48rem)": {
+      "--timvir-page-margin": "24px",
+      gridTemplateColumns:
+        "[le] var(--timvir-page-margin) [lex] 1fr [lc] minmax(0, 48rem) [rc] 1fr [rex] var(--timvir-page-margin) [re]",
+    },
 
-  @media (min-width: 48rem) {
-    --timvir-page-margin: 24px;
-    grid-template-columns: [le] var(--timvir-page-margin) [lex] 1fr [lc] minmax(0, 48rem) [rc] 1fr [rex] var(
-        --timvir-page-margin
-      ) [re];
-  }
+    "@media (min-width: 72rem)": {
+      gridTemplateColumns:
+        "[le] 1fr var(--timvir-page-margin) [lex] minmax(0, 12rem) [lc] 48rem [rc] minmax(0, 12rem) [rex] var(--timvir-page-margin) 1fr [re]",
+    },
+  },
 
-  @media (min-width: 72rem) {
-    grid-template-columns: [le] 1fr var(--timvir-page-margin) [lex] minmax(0, 12rem) [lc] 48rem [rc] minmax(0, 12rem) [rex] var(
-        --timvir-page-margin
-      ) 1fr [re];
-  }
+  block: {
+    gridColumn: "lc / rc",
+    minWidth: 0,
 
-  & > *:not(.${noLayout}) {
-    grid-column: lc / rc;
-    min-width: 0;
-  }
+    margin: "0 0 2rem",
+  },
 
-  & > * {
-    margin: 0 0 2rem;
-  }
+  extendedWidth: {
+    gridColumn: "lex / rex",
+  },
+  fullWidth: {
+    gridColumn: "le / re",
+  },
+});
 
-  & > p + ul {
-    margin-top: -1.25rem;
-  }
-`;
+/**
+ * @deprecated
+ */
+export const noLayout: string = "";
 
-export const extendedWidth: string = cx(
-  noLayout,
-  css`
-    grid-column: lex / rex;
-  `
-);
+/**
+ * @deprecated
+ */
+export const grid: string = "";
 
-export const fullWidth: string = cx(
-  noLayout,
-  css`
-    grid-column: le / re;
-  `
-);
+/**
+ * @deprecated
+ */
+export const extendedWidth: string = "";
+
+/**
+ * @deprecated
+ */
+export const fullWidth: string = "";

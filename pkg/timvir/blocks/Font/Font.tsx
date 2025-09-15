@@ -1,7 +1,7 @@
 "use client";
 
 import { cx } from "@linaria/core";
-import { useArticleComponents } from "timvir/core";
+import { layoutStyles, useArticleComponents } from "timvir/core";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -50,10 +50,17 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     }
   }, [name, contentRef, fontSizeRef]);
 
+  const rootStyleProps = stylex.props(layoutStyles.block);
   const fontStyleProps = stylex.props(styles.fontSample);
 
   return (
-    <Root ref={ref} {...rest}>
+    <Root
+      ref={ref}
+      {...rest}
+      {...rootStyleProps}
+      className={cx(rest.className, rootStyleProps.className)}
+      style={{ ...rootStyleProps.style, ...rest.style }}
+    >
       <div {...stylex.props(styles.meta)}>
         <components.h3 {...stylex.props(styles.h3)}>
           <span ref={setFontSizeRef}>{name}</span>

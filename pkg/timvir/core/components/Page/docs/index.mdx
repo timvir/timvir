@@ -1,4 +1,4 @@
-import { Page, extendedWidth, fullWidth } from "timvir/core";
+import { Page } from "timvir/core";
 
 # Page
 
@@ -7,10 +7,10 @@ that the page MDX elements are correctly styled.
 
 The layout is currently based on CSS grid. The content can be placed into the following columns:
 
- * A center column for the main content. It has a maximum width (up to 48rem) that is suited for regular text.
- * An extended colum that is slightly wider than the main content (up to 72rem), giving a reasonable amount of space for text next to another block.
-   TODO: Document how to subdivide this space.
- * A full-width column which spans across the whole page.
+- A center column for the main content. It has a maximum width (up to 48rem) that is suited for regular text.
+- An extended colum that is slightly wider than the main content (up to 72rem), giving a reasonable amount of space for text next to another block.
+  TODO: Document how to subdivide this space.
+- A full-width column which spans across the whole page.
 
 Content placed into the full-width column extends to the very edges of the content area. Content placed into the center or extended column always has an appropriate amount of margin to the edges.
 
@@ -24,14 +24,47 @@ import { extendedWidth, fullWidth } from "timvir/page"
 </div>
 ```
 
-<div style={{ marginTop: 20, display: "flex", alignItems: "center", justifyContent: "center", height: 40, background: "teal", color: "white" }}>
-  default
+<div
+  style={{
+    gridColumn: "lc / rc",
+    marginTop: 20,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 40,
+    background: "teal",
+    color: "white",
+  }}
+>
+  {'default'}
 </div>
 
-<div className={extendedWidth} style={{ marginTop: 20, display: "flex", alignItems: "center", justifyContent: "center", height: 40, background: "teal", color: "white" }}>
-  extendedWidth
+<div
+  style={{
+    gridColumn: "lex / rex",
+    marginTop: 20,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 40,
+    background: "teal",
+    color: "white",
+  }}
+>
+  {'extendedWidth'}
 </div>
 
-<div className={fullWidth} style={{ marginTop: 20, display: "flex", alignItems: "center", justifyContent: "center", height: 40, background: "teal", color: "white" }}>
-  fullWidth
+<div
+  style={{
+    gridColumn: "le / re",
+    marginTop: 20,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 40,
+    background: "teal",
+    color: "white",
+  }}
+>
+  {'fullWidth'}
 </div>

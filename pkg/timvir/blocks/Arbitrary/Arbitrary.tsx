@@ -1,11 +1,11 @@
 "use client";
 
 import { cx } from "@linaria/core";
-import stylex from "@stylexjs/stylex";
+import * as stylex from "@stylexjs/stylex";
 import * as base58 from "bytestring/base58";
 import * as React from "react";
 import { Exhibit } from "timvir/blocks";
-import { useBlock } from "timvir/core";
+import { layoutStyles, useBlock } from "timvir/core";
 import { Context } from "./context";
 
 /**
@@ -42,7 +42,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
     }
   }, [props.id, block.bus, value.seed]);
 
-  const rootStyleProps = stylex.props(styles.root);
+  const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
   const inputStyleProps = stylex.props(styles.input);
 
   return (
@@ -89,7 +89,9 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
           </button>
         </div>
 
-        <Exhibit {...ExhibitProps}>{children}</Exhibit>
+        <Exhibit {...ExhibitProps} style={{ margin: 0 }}>
+          {children}
+        </Exhibit>
       </Root>
     </Context.Provider>
   );
