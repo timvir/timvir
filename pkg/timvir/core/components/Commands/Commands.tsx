@@ -115,7 +115,7 @@ function Commands(props: Props) {
     } else {
       close();
     }
-  }, [_open]);
+  }, [_open, open, close]);
 
   return state.dialog?.reactPortal ?? null;
 }
