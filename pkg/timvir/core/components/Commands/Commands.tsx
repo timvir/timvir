@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Dialog } from "./internal";
@@ -32,7 +32,7 @@ function Commands(props: Props) {
 
           const reactPortal = ReactDOM.createPortal(
             <div
-              className={classes.root}
+              {...stylex.props(styles.root)}
               onClick={(ev) => {
                 if (ev.target === ev.currentTarget) {
                   _onClose();
@@ -50,7 +50,7 @@ function Commands(props: Props) {
             containerElement: state.dialog.containerElement,
             reactPortal: ReactDOM.createPortal(
               <div
-                className={classes.root}
+                {...stylex.props(styles.root)}
                 onClick={(ev) => {
                   if (ev.target === ev.currentTarget) {
                     _onClose();
@@ -74,7 +74,7 @@ function Commands(props: Props) {
           return {
             containerElement: state.dialog.containerElement,
             reactPortal: ReactDOM.createPortal(
-              <div className={classes.root}>
+              <div {...stylex.props(styles.root)}>
                 <Dialog
                   onDispose={() => {
                     setState({
@@ -123,21 +123,21 @@ function Commands(props: Props) {
 
 export default Commands;
 
-const classes = {
-  root: css`
-    position: fixed;
-    inset: 0px;
-    display: flex;
-    z-index: 900;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 13vh 16px 16px;
+const styles = stylex.create({
+  root: {
+    position: "fixed",
+    inset: "0px",
+    display: "flex",
+    zIndex: 900,
+    alignItems: "flex-start",
+    justifyContent: "center",
+    padding: "13vh 16px 16px",
 
-    font-family: system-ui, sans-serif;
-    font-feature-settings: "liga", "kern";
-    text-rendering: optimizelegibility;
+    fontFamily: "system-ui, sans-serif",
+    fontFeatureSettings: '"liga", "kern"',
+    textRendering: "optimizelegibility",
 
-    font-size: 16px;
-    line-height: 1.725;
-  `,
-};
+    fontSize: "16px",
+    lineHeight: 1.725,
+  },
+});
