@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@babel/core": "^7.28.3",
-    "@babel/plugin-transform-unicode-regex": "^7.27.1",
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
