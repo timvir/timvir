@@ -8,7 +8,7 @@ export * from "./components/Footer";
 export * from "./components/Page";
 
 export { useContext } from "timvir/context";
-export { layoutStyles, extendedWidth, fullWidth, grid } from "./layout";
+export { layoutStyles, noLayout, extendedWidth, fullWidth, grid } from "./layout";
 export { theme } from "./theme";
 
 /**

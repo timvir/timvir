@@ -38,7 +38,7 @@ export const layoutStyles = stylex.create({
   },
 });
 
-const noLayout: string = css``;
+export const noLayout: string = css``;
 
 export const grid: string = css`
   & > *:not(.${noLayout}) {
