@@ -40,108 +40,35 @@ function Sidebar(props: Props) {
 
   return (
     <nav className={cx(className, classes.root)} {...rest}>
-      <header
-        className={css`
-          padding: 0 var(--timvir-page-margin);
-          height: 3rem;
-          display: flex;
-          align-items: center;
-
-          @media (min-width: 48rem) {
-            padding-top: 24px;
-            display: block;
-            height: auto;
-          }
-        `}
-      >
-        <div
-          className={css`
-            font-size: 0.875rem;
-            line-height: 1.3125;
-
-            display: flex;
-            gap: 16px;
-          `}
-        >
-          <div
-            className={css`
-              font-weight: 590;
-            `}
-          >
-            Timvir
-          </div>
-          <div
-            className={css`
-              background-color: var(--timvir-border-color);
-              width: 1px;
-              height: 1.25rem;
-            `}
-          />
+      <header className={classes.header}>
+        <div className={classes.headerInner}>
+          <div className={classes.headerTitle}>Timvir</div>
+          <div className={classes.separator} />
           <div>Docs</div>
         </div>
 
         {search && (
-          <div
-            className={cx(
-              css`
-                flex-shrink: 0;
-                transition: all 0.16s;
-                margin-top: 16px;
-                display: none;
-
-                @media (min-width: 48rem) {
-                  display: block;
-                }
-              `
-            )}
-          >
+          <div className={classes.searchContainer}>
             <Search {...search} />
           </div>
         )}
       </header>
 
-      <label
-        htmlFor="menu"
-        className={css`
-          border-bottom: 1px solid var(--timvir-border-color);
-          padding: 0 var(--timvir-page-margin);
-          height: 3rem;
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-
-          @media (min-width: 48rem) {
-            display: none;
-          }
-        `}
-      >
+      <label htmlFor="menu" className={classes.menuLabel}>
         {node?.icon
           ? React.cloneElement(node.icon, {
-              className: css`
-                display: block;
-                width: 1.3em;
-                height: 1.3em;
-                margin-right: 8px;
-                min-width: 1.3em;
-              `,
+              className: classes.menuIcon,
             })
           : null}
         <span>{node?.label ?? "Menu"}</span>
 
-        <Icons.Menu
-          size={16}
-          className={css`
-            margin-left: auto;
-          `}
-        />
+        <Icons.Menu size={16} className={classes.menuCaret} />
       </label>
 
       <input
         type="checkbox"
         id="menu"
-        className={css`
-          display: none;
-        `}
+        className={classes.menuCheckbox}
         onChange={(ev) => {
           document.body.classList.toggle(classes.scrollLock, ev.currentTarget.checked);
         }}
@@ -181,6 +108,77 @@ const classes = {
     @media (min-width: 48rem) {
       height: 100%;
     }
+  `,
+
+  header: css`
+    padding: 0 var(--timvir-page-margin);
+    height: 3rem;
+    display: flex;
+    align-items: center;
+
+    @media (min-width: 48rem) {
+      padding-top: 24px;
+      display: block;
+      height: auto;
+    }
+  `,
+
+  headerInner: css`
+    font-size: 0.875rem;
+    line-height: 1.3125;
+
+    display: flex;
+    gap: 16px;
+  `,
+
+  headerTitle: css`
+    font-weight: 590;
+  `,
+
+  separator: css`
+    background-color: var(--timvir-border-color);
+    width: 1px;
+    height: 1.25rem;
+  `,
+
+  searchContainer: css`
+    flex-shrink: 0;
+    transition: all 0.16s;
+    margin-top: 16px;
+    display: none;
+
+    @media (min-width: 48rem) {
+      display: block;
+    }
+  `,
+
+  menuLabel: css`
+    border-bottom: 1px solid var(--timvir-border-color);
+    padding: 0 var(--timvir-page-margin);
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    @media (min-width: 48rem) {
+      display: none;
+    }
+  `,
+
+  menuIcon: css`
+    display: block;
+    width: 1.3em;
+    height: 1.3em;
+    margin-right: 8px;
+    min-width: 1.3em;
+  `,
+
+  menuCaret: css`
+    margin-left: auto;
+  `,
+
+  menuCheckbox: css`
+    display: none;
   `,
 
   content: css`
@@ -224,9 +222,41 @@ const classes = {
 
   nav: css`
     padding-inline: calc(var(--timvir-page-margin) - 8px);
+
     @media (min-width: 48rem) {
       padding-inline: var(--timvir-page-margin);
     }
+  `,
+
+  searchRoot: css`
+    font-family: system-ui;
+  `,
+
+  searchButton: css`
+    color: var(--timvir-text-color);
+    font-size: 0.8125rem;
+    line-height: 2.2;
+    font-weight: 400;
+    cursor: pointer;
+    min-height: 36px;
+    border-radius: 8px;
+    padding: 0 12px;
+    border: 1px solid var(--timvir-border-color);
+    background: var(--timvir-secondary-background-color);
+
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background: var(--timvir-sidebar-highlight-color);
+    }
+  `,
+
+  searchButtonIcon: css`
+    display: block;
+    margin-right: 8px;
+    width: 0.75rem;
+    height: 0.75rem;
   `,
 };
 
@@ -234,42 +264,9 @@ function Search(props: NonNullable<Props["search"]>) {
   const { open, label } = props;
 
   return (
-    <div
-      className={css`
-        font-family: system-ui;
-      `}
-    >
-      <div
-        role="button"
-        className={css`
-          color: var(--timvir-text-color);
-          font-size: 0.8125rem;
-          line-height: 2.2;
-          font-weight: 400;
-          cursor: pointer;
-          min-height: 36px;
-          border-radius: 8px;
-          padding: 0 12px;
-          border: 1px solid var(--timvir-border-color);
-          background: var(--timvir-secondary-background-color);
-
-          display: flex;
-          align-items: center;
-
-          &:hover {
-            background: var(--timvir-sidebar-highlight-color);
-          }
-
-          & > svg {
-            display: block;
-            margin-right: 8px;
-            width: 0.75rem;
-            height: 0.75rem;
-          }
-        `}
-        onClick={open}
-      >
-        <svg x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12">
+    <div className={classes.searchRoot}>
+      <div role="button" className={classes.searchButton} onClick={open}>
+        <svg x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" className={classes.searchButtonIcon}>
           <path
             d="M11.707 10.293l-2.54-2.54a5.015 5.015 0 10-1.414 1.414l2.54 2.54a1 1 0 001.414-1.414zM2 5a3 3 0 113 3 3 3 0 01-3-3z"
             fill="currentColor"
