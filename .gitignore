@@ -5,7 +5,6 @@ tsconfig.tsbuildinfo
 
 /node_modules/
 /.next/
-/.linaria-cache/
 /public/images/
 
 /pkg/*/node_modules/

@@ -33,7 +33,6 @@ module.exports = {
   },
   ignores: [
     "eslint.config.cjs",
-    ".linaria-cache/**/*",
     ".next/**/*",
     "node_modules/**",
     "config/rollup.config.js",
