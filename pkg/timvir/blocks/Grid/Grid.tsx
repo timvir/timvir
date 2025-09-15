@@ -1,4 +1,4 @@
-import { cx } from "@linaria/core";
+import { cx } from "../../internal/cx";
 import stylex from "@stylexjs/stylex";
 import * as React from "react";
 

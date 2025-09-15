@@ -1,6 +1,6 @@
 "use client";
 
-import { cx } from "@linaria/core";
+import { cx } from "../../internal/cx";
 import { layoutStyles, useArticleComponents } from "timvir/core";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";

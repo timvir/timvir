@@ -1,6 +1,6 @@
 "use client";
 
-import { cx } from "@linaria/core";
+import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
 import { useResizeObserverEntry } from "timvir/hooks";
 import * as React from "react";
