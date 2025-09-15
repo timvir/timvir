@@ -96,11 +96,18 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     })();
   }, [children, language, highlightedLines]);
 
-  const codeStyleProps = stylex.props(layoutStyles.block, styles.code);
+  const rootStyleProps = stylex.props(layoutStyles.block);
+  const codeStyleProps = stylex.props(styles.code);
   const captionStyleProps = stylex.props(styles.caption);
 
   return (
-    <Root ref={ref} className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", className)} {...rest}>
+    <Root
+      ref={ref}
+      {...rest}
+      {...rootStyleProps}
+      className={cx("timvir-b-Code", !state.settled && "timvir-unsettled", className, rootStyleProps.className)}
+      style={{ ...rootStyleProps.style, ...rest.style }}
+    >
       <div
         {...codeStyleProps}
         className={cx("timvir-b-Code-container", codeStyleProps.className)}
