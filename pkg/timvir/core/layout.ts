@@ -1,4 +1,3 @@
-import { css, cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
 
 export const layoutStyles = stylex.create({
@@ -38,33 +37,22 @@ export const layoutStyles = stylex.create({
   },
 });
 
-export const noLayout: string = css``;
+/**
+ * @deprecated
+ */
+export const noLayout: string = "";
 
-export const grid: string = css`
-  & > *:not(.${noLayout}) {
-    grid-column: lc / rc;
-    min-width: 0;
-  }
+/**
+ * @deprecated
+ */
+export const grid: string = "";
 
-  & > * {
-    margin: 0 0 2rem;
-  }
+/**
+ * @deprecated
+ */
+export const extendedWidth: string = "";
 
-  & > p + ul {
-    margin-top: -1.25rem;
-  }
-`;
-
-export const extendedWidth: string = cx(
-  noLayout,
-  css`
-    grid-column: lex / rex;
-  `
-);
-
-export const fullWidth: string = cx(
-  noLayout,
-  css`
-    grid-column: le / re;
-  `
-);
+/**
+ * @deprecated
+ */
+export const fullWidth: string = "";
