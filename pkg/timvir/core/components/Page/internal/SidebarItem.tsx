@@ -1,4 +1,4 @@
-import { css } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useContext } from "timvir/context";
 import { Node } from "../types";
@@ -16,27 +16,30 @@ function SidebarItem(props: Props) {
 
   const { location, Link } = useContext();
 
+  const iconStylexProps = stylex.props(styles.icon);
+  const iconStyle = { ...iconStylexProps.style, transform: active ? "rotate(90deg)" : "rotate(0deg)" };
+
   const icon =
     children.length === 0 ? null : (
-      <Icons.ChevronRight
-        className={classes.icon}
-        style={{ transform: active ? "rotate(90deg)" : "rotate(0deg)" }}
-        size={16}
-      />
+      <Icons.ChevronRight className={iconStylexProps.className} style={iconStyle} size={16} />
     );
 
+  const isActive = location.asPath.replace(/#.*$/, "") === path;
+  const linkStylexProps = stylex.props(styles.link, isActive && styles.linkActive);
+  const linkStyle = { ...linkStylexProps.style, marginLeft: depth * 16 };
+
   return (
-    <div className={classes.root} data-active={location.asPath.replace(/#.*$/, "") === path}>
+    <div {...stylex.props(styles.root)}>
       {path ? (
-        <Link href={path} style={{ marginLeft: depth * 16 }}>
-          {props.icon ? React.cloneElement(props.icon, { className: classes.icn }) : null}
-          <span className={classes.label}>{label}</span>
+        <Link href={path} className={linkStylexProps.className} style={linkStyle}>
+          {props.icon ? React.cloneElement(props.icon, { ...stylex.props(styles.icn) }) : null}
+          <span {...stylex.props(styles.label)}>{label}</span>
           {icon}
         </Link>
       ) : (
-        <a style={{ marginLeft: depth * 16 }} href="#" onClick={() => setActive((x) => !x)}>
-          {props.icon ? React.cloneElement(props.icon, { className: classes.icn }) : null}
-          <span className={classes.label}>{label}</span>
+        <a href="#" className={linkStylexProps.className} style={linkStyle} onClick={() => setActive((x) => !x)}>
+          {props.icon ? React.cloneElement(props.icon, { ...stylex.props(styles.icn) }) : null}
+          <span {...stylex.props(styles.label)}>{label}</span>
           {icon}
         </a>
       )}
@@ -46,72 +49,72 @@ function SidebarItem(props: Props) {
 
 export default SidebarItem;
 
-const classes = {
-  root: css`
-    display: flex;
-    align-items: center;
-    margin: 1px 0;
+const styles = stylex.create({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    margin: "1px 0",
 
-    font-size: 0.9375rem;
-    line-height: 2.2;
+    fontSize: "0.9375rem",
+    lineHeight: 2.2,
 
-    @media (min-width: 48rem) {
-      font-size: 0.8125rem;
-    }
+    "@media (min-width: 48rem)": {
+      fontSize: "0.8125rem",
+    },
+  },
 
-    @media (any-pointer: coarse) {
-      & > a {
-        min-height: 44px;
-      }
-    }
+  link: {
+    minWidth: 0,
+    transition: "background 0.16s",
+    borderRadius: "4px",
+    display: "flex",
+    alignItems: "center",
+    color: "var(--timvir-text-color)",
+    fontWeight: 500,
+    backgroundColor: "none",
+    textDecoration: "none",
+    width: "100%",
+    padding: "0 8px",
+    opacity: 0.7,
 
-    & > a {
-      min-width: 0;
-      transition: background 0.16s;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      color: var(--timvir-text-color);
-      font-weight: 500;
-      background: none;
-      text-decoration: none;
-      width: 100%;
-      padding: 0 8px;
-      opacity: 0.7;
-    }
-    &:hover a {
-      background-color: var(--timvir-sidebar-highlight-color);
-      opacity: 1;
-    }
-    &[data-active="true"] a {
-      background-color: var(--timvir-sidebar-highlight-color);
-      opacity: 1;
-    }
-  `,
+    "@media (any-pointer: coarse)": {
+      minHeight: "44px",
+    },
 
-  icn: css`
-    display: block;
-    width: 1.3em;
-    height: 1.3em;
-    margin-right: 8px;
-    min-width: 1.3em;
-  `,
+    ":hover": {
+      backgroundColor: "var(--timvir-sidebar-highlight-color)",
+      opacity: 1,
+    },
+  },
 
-  label: css`
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-right: auto;
-  `,
+  linkActive: {
+    backgroundColor: "var(--timvir-sidebar-highlight-color)",
+    opacity: 1,
+  },
 
-  icon: css`
-    margin-left: 4px;
-    transition: transform 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transform-origin: center center;
+  icn: {
+    display: "block",
+    width: "1.3em",
+    height: "1.3em",
+    marginRight: "8px",
+    minWidth: "1.3em",
+  },
 
-    width: 1rem;
-    height: 1rem;
+  label: {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    marginRight: "auto",
+  },
 
-    flex: 0 0 1rem;
-  `,
-};
+  icon: {
+    marginLeft: "4px",
+    transition: "transform 0.12s cubic-bezier(0.455, 0.03, 0.515, 0.955)",
+    transformOrigin: "center center",
+
+    width: "1rem",
+    height: "1rem",
+
+    flex: "0 0 1rem",
+  },
+});
