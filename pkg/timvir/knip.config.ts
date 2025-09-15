@@ -41,5 +41,5 @@ export default {
     "core/theme/detector.ts",
   ],
 
-  ignoreDependencies: ["@linaria/*", "@stylexjs/stylex", "next", "downshift"],
+  ignoreDependencies: ["@stylexjs/stylex", "next", "downshift"],
 };
