@@ -1,9 +1,10 @@
-import { css, cx } from "@linaria/core";
+import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { Node } from "../types";
 import Section from "./Section";
 import * as Icons from "react-feather";
 import { useContext } from "timvir/context";
+import { cx } from "@linaria/core";
 
 interface Props extends React.ComponentPropsWithoutRef<"nav"> {
   toc: readonly Node[];
@@ -21,7 +22,22 @@ interface Props extends React.ComponentPropsWithoutRef<"nav"> {
 function Sidebar(props: Props) {
   const { location } = useContext();
 
-  const { toc, search, className, ...rest } = props;
+  const [isMenuOpen, setMenuOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const scrollLockClassList = stylex.props(styles.scrollLock).className!.split(" ");
+    for (const className of scrollLockClassList) {
+      document.body.classList.toggle(className, isMenuOpen);
+    }
+
+    return () => {
+      for (const className of scrollLockClassList) {
+        document.body.classList.remove(className);
+      }
+    };
+  }, [isMenuOpen]);
+
+  const { toc, search, ...rest } = props;
 
   const node = (function find(nodes: readonly Node[]): undefined | Node {
     for (const node of nodes) {
@@ -38,120 +54,41 @@ function Sidebar(props: Props) {
     }
   })(toc);
 
+  const rootStyleProps = stylex.props(styles.root);
+
   return (
-    <nav className={cx(className, classes.root)} {...rest}>
-      <header
-        className={css`
-          padding: 0 var(--timvir-page-margin);
-          height: 3rem;
-          display: flex;
-          align-items: center;
-
-          @media (min-width: 48rem) {
-            padding-top: 24px;
-            display: block;
-            height: auto;
-          }
-        `}
-      >
-        <div
-          className={css`
-            font-size: 0.875rem;
-            line-height: 1.3125;
-
-            display: flex;
-            gap: 16px;
-          `}
-        >
-          <div
-            className={css`
-              font-weight: 590;
-            `}
-          >
-            Timvir
-          </div>
-          <div
-            className={css`
-              background-color: var(--timvir-border-color);
-              width: 1px;
-              height: 1.25rem;
-            `}
-          />
+    <nav {...rest} {...rootStyleProps} className={cx(rest.className, rootStyleProps.className)}>
+      <header {...stylex.props(styles.header)}>
+        <div {...stylex.props(styles.headerInner)}>
+          <div {...stylex.props(styles.headerTitle)}>Timvir</div>
+          <div {...stylex.props(styles.separator)} />
           <div>Docs</div>
         </div>
 
         {search && (
-          <div
-            className={cx(
-              css`
-                flex-shrink: 0;
-                transition: all 0.16s;
-                margin-top: 16px;
-                display: none;
-
-                @media (min-width: 48rem) {
-                  display: block;
-                }
-              `
-            )}
-          >
+          <div {...stylex.props(styles.searchContainer)}>
             <Search {...search} />
           </div>
         )}
       </header>
 
-      <label
-        htmlFor="menu"
-        className={css`
-          border-bottom: 1px solid var(--timvir-border-color);
-          padding: 0 var(--timvir-page-margin);
-          height: 3rem;
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-
-          @media (min-width: 48rem) {
-            display: none;
-          }
-        `}
-      >
+      <div role="button" onClick={() => setMenuOpen(!isMenuOpen)} {...stylex.props(styles.menuLabel)}>
         {node?.icon
           ? React.cloneElement(node.icon, {
-              className: css`
-                display: block;
-                width: 1.3em;
-                height: 1.3em;
-                margin-right: 8px;
-                min-width: 1.3em;
-              `,
+              ...stylex.props(styles.menuIcon),
             })
           : null}
         <span>{node?.label ?? "Menu"}</span>
 
-        <Icons.Menu
-          size={16}
-          className={css`
-            margin-left: auto;
-          `}
-        />
-      </label>
+        <Icons.Menu size={16} {...stylex.props(styles.menuCaret)} />
+      </div>
 
-      <input
-        type="checkbox"
-        id="menu"
-        className={css`
-          display: none;
-        `}
-        onChange={(ev) => {
-          document.body.classList.toggle(classes.scrollLock, ev.currentTarget.checked);
-        }}
-      />
-      <div className={classes.content}>
-        <div className={classes.sections}>
+      <div {...stylex.props(styles.content, isMenuOpen && styles.menuOpen)}>
+        <div {...stylex.props(styles.sections)}>
           <div
-            className={classes.nav}
+            {...stylex.props(styles.nav)}
             onClick={() => {
-              document.body.classList.remove(classes.scrollLock);
+              setMenuOpen(false);
             }}
           >
             {toc.map((c, i) => (
@@ -166,110 +103,169 @@ function Sidebar(props: Props) {
 
 export default Sidebar;
 
-const classes = {
-  scrollLock: css`
-    overflow-y: scroll;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-  `,
+const styles = stylex.create({
+  scrollLock: {
+    overflowY: "scroll",
+    position: "fixed",
+    top: "0px",
+    width: "100%",
+  },
 
-  root: css`
-    display: flex;
-    flex-direction: column;
+  root: {
+    display: "flex",
+    flexDirection: "column",
 
-    @media (min-width: 48rem) {
-      height: 100%;
-    }
-  `,
+    "@media (min-width: 48rem)": {
+      height: "100%",
+    },
+  },
 
-  content: css`
-    display: none;
-    background-color: var(--timvir-background-color);
+  header: {
+    padding: "0 var(--timvir-page-margin)",
+    height: "3rem",
+    display: "flex",
+    alignItems: "center",
 
-    #menu:checked ~ & {
-      display: flex;
-      position: fixed;
-      top: 6rem;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
+    "@media (min-width: 48rem)": {
+      paddingTop: "24px",
+      display: "block",
+      height: "auto",
+    },
+  },
 
-    @media (min-width: 48rem) {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      position: static;
-      overflow: hidden;
-    }
-  `,
-  sections: css`
-    padding: 24px 0;
-    overflow-y: auto;
-    flex-grow: 1;
-    overscroll-behavior: auto;
+  headerInner: {
+    fontSize: "0.875rem",
+    lineHeight: 1.3125,
+    display: "flex",
+    gap: "16px",
+  },
 
-    scroll-padding-block: 24px;
-    mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(0, 0, 0, 0.2) 12px,
-      #000 24px,
-      #000 calc(100% - 24px),
-      rgba(0, 0, 0, 0.2) calc(100% - 12px),
-      transparent 100%
-    );
-  `,
+  headerTitle: {
+    fontWeight: 590,
+  },
 
-  nav: css`
-    padding-inline: calc(var(--timvir-page-margin) - 8px);
-    @media (min-width: 48rem) {
-      padding-inline: var(--timvir-page-margin);
-    }
-  `,
-};
+  separator: {
+    backgroundColor: "var(--timvir-border-color)",
+    width: "1px",
+    height: "1.25rem",
+  },
+
+  searchContainer: {
+    flexShrink: 0,
+    transition: "all 0.16s",
+    marginTop: "16px",
+    display: "none",
+
+    "@media (min-width: 48rem)": {
+      display: "block",
+    },
+  },
+
+  menuLabel: {
+    borderBottom: "1px solid var(--timvir-border-color)",
+    padding: "0 var(--timvir-page-margin)",
+    height: "3rem",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+
+    "@media (min-width: 48rem)": {
+      display: "none",
+    },
+  },
+
+  menuIcon: {
+    display: "block",
+    width: "1.3em",
+    height: "1.3em",
+    marginRight: "8px",
+    minWidth: "1.3em",
+  },
+
+  menuCaret: {
+    marginLeft: "auto",
+  },
+
+  content: {
+    display: "none",
+    backgroundColor: "var(--timvir-background-color)",
+
+    "@media (min-width: 48rem)": {
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+      position: "static",
+      overflow: "hidden",
+    },
+  },
+
+  menuOpen: {
+    display: "flex",
+    position: "fixed",
+    top: "6rem",
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+
+  sections: {
+    padding: "24px 0",
+    overflowY: "auto",
+    flexGrow: 1,
+    overscrollBehavior: "auto",
+    scrollPaddingBlock: "24px",
+    maskImage:
+      "linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 12px, #000 24px, #000 calc(100% - 24px), rgba(0, 0, 0, 0.2) calc(100% - 12px), transparent 100%)",
+  },
+
+  nav: {
+    paddingInline: "calc(var(--timvir-page-margin) - 8px)",
+
+    "@media (min-width: 48rem)": {
+      paddingInline: "var(--timvir-page-margin)",
+    },
+  },
+
+  searchRoot: {
+    fontFamily: "system-ui",
+  },
+
+  searchButton: {
+    color: "var(--timvir-text-color)",
+    fontSize: "0.8125rem",
+    lineHeight: 2.2,
+    fontWeight: 400,
+    cursor: "pointer",
+    minHeight: "36px",
+    borderRadius: "8px",
+    padding: "0 12px",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "var(--timvir-border-color)",
+    backgroundColor: "var(--timvir-secondary-background-color)",
+    display: "flex",
+    alignItems: "center",
+
+    ":hover": {
+      backgroundColor: "var(--timvir-sidebar-highlight-color)",
+    },
+  },
+
+  searchButtonIcon: {
+    display: "block",
+    marginRight: "8px",
+    width: "0.75rem",
+    height: "0.75rem",
+  },
+});
 
 function Search(props: NonNullable<Props["search"]>) {
   const { open, label } = props;
 
   return (
-    <div
-      className={css`
-        font-family: system-ui;
-      `}
-    >
-      <div
-        role="button"
-        className={css`
-          color: var(--timvir-text-color);
-          font-size: 0.8125rem;
-          line-height: 2.2;
-          font-weight: 400;
-          cursor: pointer;
-          min-height: 36px;
-          border-radius: 8px;
-          padding: 0 12px;
-          border: 1px solid var(--timvir-border-color);
-          background: var(--timvir-secondary-background-color);
-
-          display: flex;
-          align-items: center;
-
-          &:hover {
-            background: var(--timvir-sidebar-highlight-color);
-          }
-
-          & > svg {
-            display: block;
-            margin-right: 8px;
-            width: 0.75rem;
-            height: 0.75rem;
-          }
-        `}
-        onClick={open}
-      >
-        <svg x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12">
+    <div {...stylex.props(styles.searchRoot)}>
+      <div role="button" {...stylex.props(styles.searchButton)} onClick={open}>
+        <svg x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" {...stylex.props(styles.searchButtonIcon)}>
           <path
             d="M11.707 10.293l-2.54-2.54a5.015 5.015 0 10-1.414 1.414l2.54 2.54a1 1 0 001.414-1.414zM2 5a3 3 0 113 3 3 3 0 01-3-3z"
             fill="currentColor"
