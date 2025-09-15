@@ -4,7 +4,7 @@ import { Node } from "../types";
 import Section from "./Section";
 import * as Icons from "react-feather";
 import { useContext } from "timvir/context";
-import { cx } from "@linaria/core";
+import { cx } from "../../../../internal/cx";
 
 interface Props extends React.ComponentPropsWithoutRef<"nav"> {
   toc: readonly Node[];

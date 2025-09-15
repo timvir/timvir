@@ -4,7 +4,7 @@
  * This is documentation for the Code component.
  */
 
-import { cx } from "@linaria/core";
+import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
 import { layoutStyles, useBlock } from "timvir/core";
 import { codeToHtml, ShikiTransformer } from "shiki";
