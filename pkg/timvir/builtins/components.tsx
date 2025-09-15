@@ -1,11 +1,3 @@
-/*
- * TIMVIR-18
- *
- * All the !important overrides on margins are needed because of
- * CSS descendant selectors in Page. These override can be removed
- * once we fully migrate to StyleX.
- */
-
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -94,8 +86,8 @@ export const blockquote: React.FunctionComponent<React.BlockquoteHTMLAttributes<
           }
 
           const style: React.CSSProperties = {
-            marginTop: index === 0 ? "0 !important" : undefined,
-            marginBottom: index === self.length - 1 ? "0 !important" : undefined,
+            marginTop: index === 0 ? "0" : undefined,
+            marginBottom: index === self.length - 1 ? "0" : undefined,
           };
 
           return React.cloneElement<any>(child, { style });
@@ -166,8 +158,8 @@ export const ol: React.FunctionComponent<React.HTMLAttributes<HTMLOListElement>>
 
 const styles = stylex.create({
   h1: {
-    marginTop: "3rem !important",
-    marginBottom: "1rem !important",
+    marginTop: "3rem",
+    marginBottom: "1rem",
     fontSize: "2rem",
     lineHeight: 1.125,
     fontWeight: 590,
@@ -175,21 +167,21 @@ const styles = stylex.create({
   },
   h2: {
     position: "relative",
-    margin: "2.5rem 0 1rem !important",
+    margin: "2.5rem 0 1rem",
     fontSize: "1.5rem",
     lineHeight: 1.1666,
     fontWeight: 590,
   },
   h3: {
     position: "relative",
-    margin: "1rem 0 1rem !important",
+    margin: "1rem 0 1rem",
     fontSize: "1.0625rem",
     lineHeight: 1.4705882353,
     fontWeight: 590,
   },
   h4: {
     position: "relative",
-    margin: "1rem 0 1rem !important",
+    margin: "1rem 0 1rem",
     fontSize: "0.9375rem",
     lineHeight: 1.4375,
     fontWeight: 590,
@@ -219,7 +211,7 @@ const styles = stylex.create({
     },
   },
   blockquote: {
-    marginLeft: "0 !important",
+    marginLeft: "0",
 
     fontSize: "1.1rem",
   },
