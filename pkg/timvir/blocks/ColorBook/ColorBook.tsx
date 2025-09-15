@@ -1,5 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
+import { layoutStyles } from "timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -21,7 +22,7 @@ function ColorBook(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
   const { chapters, selectedChapter, onSelectChapter, ...rest } = props;
 
   return (
-    <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
+    <Root ref={ref} {...rest} {...stylex.props(layoutStyles.block, styles.root)}>
       {chapters.map(({ name, values }, i) => (
         <div key={i} style={{ gridColumn: i + 1 }}>
           <div
@@ -38,8 +39,8 @@ function ColorBook(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
                 style={{ background: value }}
                 {...stylex.props(
                   styles.colorValue,
-                  i === 0 && styles.colorValueFirst,
-                  i === values.length - 1 && styles.colorValueLast
+                  i === 0 ? styles.colorValueFirst : null,
+                  i === values.length - 1 ? styles.colorValueLast : null
                 )}
               />
             ))}
