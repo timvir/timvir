@@ -21,6 +21,15 @@ interface Props extends React.ComponentPropsWithoutRef<"nav"> {
 function Sidebar(props: Props) {
   const { location } = useContext();
 
+  const [isMenuOpen, setMenuOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    document.body.classList.toggle(classes.scrollLock, isMenuOpen);
+    return () => {
+      document.body.classList.remove(classes.scrollLock);
+    };
+  }, [isMenuOpen]);
+
   const { toc, search, className, ...rest } = props;
 
   const node = (function find(nodes: readonly Node[]): undefined | Node {
@@ -54,7 +63,7 @@ function Sidebar(props: Props) {
         )}
       </header>
 
-      <label htmlFor="menu" className={classes.menuLabel}>
+      <div role="button" onClick={() => setMenuOpen(!isMenuOpen)} className={classes.menuLabel}>
         {node?.icon
           ? React.cloneElement(node.icon, {
               className: classes.menuIcon,
@@ -63,22 +72,14 @@ function Sidebar(props: Props) {
         <span>{node?.label ?? "Menu"}</span>
 
         <Icons.Menu size={16} className={classes.menuCaret} />
-      </label>
+      </div>
 
-      <input
-        type="checkbox"
-        id="menu"
-        className={classes.menuCheckbox}
-        onChange={(ev) => {
-          document.body.classList.toggle(classes.scrollLock, ev.currentTarget.checked);
-        }}
-      />
-      <div className={classes.content}>
+      <div className={cx(classes.content, isMenuOpen && classes.menuOpen)}>
         <div className={classes.sections}>
           <div
             className={classes.nav}
             onClick={() => {
-              document.body.classList.remove(classes.scrollLock);
+              setMenuOpen(false);
             }}
           >
             {toc.map((c, i) => (
@@ -185,15 +186,6 @@ const classes = {
     display: none;
     background-color: var(--timvir-background-color);
 
-    #menu:checked ~ & {
-      display: flex;
-      position: fixed;
-      top: 6rem;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-
     @media (min-width: 48rem) {
       display: flex;
       flex-direction: column;
@@ -202,6 +194,16 @@ const classes = {
       overflow: hidden;
     }
   `,
+
+  menuOpen: css`
+    display: flex;
+    position: fixed;
+    top: 6rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  `,
+
   sections: css`
     padding: 24px 0;
     overflow-y: auto;
