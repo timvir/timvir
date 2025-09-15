@@ -1,7 +1,7 @@
 import { cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import { layoutStyles, noLayout } from "timvir/core";
+import { layoutStyles } from "timvir/core";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -20,7 +20,7 @@ function Cover(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof R
   const rootStyleProps = stylex.props(layoutStyles.block, layoutStyles.fullWidth);
 
   return (
-    <Root ref={ref} {...rest} {...rootStyleProps} className={cx(noLayout, rest.className, rootStyleProps.className)}>
+    <Root ref={ref} {...rest} {...rootStyleProps} className={cx(rest.className, rootStyleProps.className)}>
       <picture>
         {sources.map((p, i) => (
           <source key={i} {...p} />

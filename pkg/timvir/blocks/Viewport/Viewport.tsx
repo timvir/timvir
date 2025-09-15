@@ -3,7 +3,7 @@
 import { cx } from "@linaria/core";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import { layoutStyles, noLayout, useBlock } from "timvir/core";
+import { layoutStyles, useBlock } from "timvir/core";
 import { useResizeObserver, useResizeObserverEntry } from "timvir/hooks";
 import { Caption, Handle, Ruler } from "./internal";
 
@@ -106,13 +106,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
       <Root
         ref={ref}
         {...rest}
-        className={cx(
-          "timvir-b-Viewport",
-          !state.settled && "timvir-unsettled",
-          className,
-          noLayout,
-          rootStyleProps.className
-        )}
+        className={cx("timvir-b-Viewport", !state.settled && "timvir-unsettled", className, rootStyleProps.className)}
         style={{ ...rootStyleProps.style, ...rest.style }}
       >
         <div ref={svgRef} {...stylex.props(styles.svgContainer)}>
