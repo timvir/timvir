@@ -1,5 +1,4 @@
 import * as path from "node:path";
-import { withLinaria } from "./next/withLinaria.js";
 import { remarkPlugin } from "./pkg/mdx/index.js";
 import stylexPlugin from "@stylexswc/nextjs-plugin";
 
@@ -10,7 +9,6 @@ function withPlugins(plugins, config) {
 }
 
 const plugins = [
-  withLinaria({ cacheDirectory: "./.next/cache/linaria" }),
   stylexPlugin({
     /*
      * CSS Cascade Layers are widely available across major browsers.
