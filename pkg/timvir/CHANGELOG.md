@@ -1,5 +1,11 @@
 # timvir
 
+## 0.2.41
+
+### Patch Changes
+
+- **Fix broken release** ([#3471](https://github.com/timvir/timvir/pull/3471)) - No code changes.
+
 ## 0.2.40
 
 ### Patch Changes
