@@ -31,7 +31,7 @@ jobs:
       - run: ./node_modules/.bin/tsc --build tsconfig.build.json
       - run: ./node_modules/.bin/rollup -c config/rollup.config.js
       - run: cat pkg/timvir/blocks/*/styles.css > pkg/timvir/blocks/styles.css
-      - run: cat pkg/timvir/global.css pkg/timvir/{core,builtins,blocks,search}/styles.css > pkg/timvir/styles.css
+      - run: cat pkg/timvir/global.css pkg/timvir/{core,builtins,blocks}/styles.css > pkg/timvir/styles.css
       - run: ./scripts/publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
