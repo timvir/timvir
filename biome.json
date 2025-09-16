@@ -1,14 +1,18 @@
 {
   "files": {
-    "ignore": [".direnv", ".next", "node_modules"]
+    "includes": ["**", "!**/.direnv", "!**/.next", "!**/node_modules"]
   },
 
   "formatter": {
     "enabled": false
   },
 
-  "organizeImports": {
-    "enabled": false
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
   },
 
   "linter": {
@@ -16,22 +20,37 @@
       "style": {
         "noNonNullAssertion": "off",
         "useImportType": "off",
-        "noUselessElse": "off"
+        "noUselessElse": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error"
       },
       "security": {
         "noGlobalEval": "off",
-        "noDangerouslySetInnerHtml": "off"
+        "noDangerouslySetInnerHtml": "off",
+        "noBlankTarget": "off"
       },
       "suspicious": {
         "noArrayIndexKey": "off",
         "noExplicitAny": "off"
       },
       "complexity": {
-        "useRegexLiterals": "off"
+        "useRegexLiterals": "off",
+        "noUselessEscapeInRegex": "off"
+      },
+      "correctness": {
+        "useHookAtTopLevel": "off",
+        "noNestedComponentDefinitions": "off"
       },
       "a11y": {
-        "noBlankTarget": "off",
         "useFocusableInteractive": "off",
+        "noStaticElementInteractions": "off",
         "useIframeTitle": "off",
         "useSemanticElements": "off",
         "noAutofocus": "off",
