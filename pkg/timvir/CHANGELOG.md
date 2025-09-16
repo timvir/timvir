@@ -1,5 +1,11 @@
 # timvir
 
+## 0.2.43
+
+### Patch Changes
+
+- **Avoid cyclic dependencies between Timvir modules** ([#3482](https://github.com/timvir/timvir/pull/3482)) - Cyclic dependencies were causing broken styles at best, and a crash at worst.
+
 ## 0.2.42
 
 ### Patch Changes
