@@ -19,7 +19,7 @@
     },
     {
       "automerge": true,
-      "matchPackageNames": ["/^@types//", "/^eslint/", "/^@typescript-eslint//"]
+      "matchPackageNames": ["/^@types//"]
     }
   ]
 }
