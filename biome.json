@@ -20,16 +20,7 @@
       "style": {
         "noNonNullAssertion": "off",
         "useImportType": "off",
-        "noUselessElse": "off",
-        "noParameterAssign": "error",
-        "useAsConstAssertion": "error",
-        "useDefaultParameterLast": "error",
-        "useEnumInitializers": "error",
-        "useSelfClosingElements": "error",
-        "useSingleVarDeclarator": "error",
-        "noUnusedTemplateLiteral": "error",
-        "useNumberNamespace": "error",
-        "noInferrableTypes": "error"
+        "noUselessElse": "off"
       },
       "security": {
         "noGlobalEval": "off",
