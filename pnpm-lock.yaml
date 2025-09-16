@@ -117,8 +117,8 @@ importers:
         specifier: ^14.0.0
         version: 14.0.0
       core-js:
-        specifier: ^3.45.0
-        version: 3.45.0
+        specifier: ^3.45.1
+        version: 3.45.1
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -2034,8 +2034,8 @@ packages:
   core-js-compat@3.45.0:
     resolution: {integrity: sha512-gRoVMBawZg0OnxaVv3zpqLLxaHmsubEGyTnqdpI/CEBvX4JadI1dMSHxagThprYRtSVbuQxvi6iUatdPxohHpA==}
 
-  core-js@3.45.0:
-    resolution: {integrity: sha512-c2KZL9lP4DjkN3hk/an4pWn5b5ZefhRJnAc42n6LJ19kSnbeRbdQZE5dSeE2LBol1OwJD3X1BQvFTAsa8ReeDA==}
+  core-js@3.45.1:
+    resolution: {integrity: sha512-L4NPsJlCfZsPeXukyzHFlg/i7IIVwHSItR0wg0FLNqYClJ4MQYTYLbC7EkjKYRLZF2iof2MUgN0EGy7MdQFChg==}
 
   cors@2.8.5:
     resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
@@ -6154,7 +6154,7 @@ snapshots:
     dependencies:
       browserslist: 4.25.2
 
-  core-js@3.45.0: {}
+  core-js@3.45.1: {}
 
   cors@2.8.5:
     dependencies:
