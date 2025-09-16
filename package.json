@@ -21,7 +21,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.4",
-    "@stylexjs/stylex": "^0.15.3",
+    "@stylexjs/stylex": "^0.15.4",
     "@stylexswc/nextjs-plugin": "^0.10.6",
     "@stylexswc/rollup-plugin": "^0.10.6",
     "@types/babel__core": "^7.20.5",
