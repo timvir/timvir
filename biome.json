@@ -1,14 +1,18 @@
 {
   "files": {
-    "ignore": [".direnv", ".next", "node_modules"]
+    "includes": ["**", "!**/.direnv", "!**/.next", "!**/node_modules"]
   },
 
   "formatter": {
     "enabled": false
   },
 
-  "organizeImports": {
-    "enabled": false
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
   },
 
   "linter": {
@@ -20,18 +24,24 @@
       },
       "security": {
         "noGlobalEval": "off",
-        "noDangerouslySetInnerHtml": "off"
+        "noDangerouslySetInnerHtml": "off",
+        "noBlankTarget": "off"
       },
       "suspicious": {
         "noArrayIndexKey": "off",
         "noExplicitAny": "off"
       },
       "complexity": {
-        "useRegexLiterals": "off"
+        "useRegexLiterals": "off",
+        "noUselessEscapeInRegex": "off"
+      },
+      "correctness": {
+        "useHookAtTopLevel": "off",
+        "noNestedComponentDefinitions": "off"
       },
       "a11y": {
-        "noBlankTarget": "off",
         "useFocusableInteractive": "off",
+        "noStaticElementInteractions": "off",
         "useIframeTitle": "off",
         "useSemanticElements": "off",
         "noAutofocus": "off",
