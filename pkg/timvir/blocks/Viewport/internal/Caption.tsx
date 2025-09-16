@@ -1,4 +1,5 @@
 import { useArticleComponents } from "timvir/core";
+import { layoutStyles } from "../../../core/layout";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as Icons from "react-feather";
@@ -18,7 +19,7 @@ function Caption(props: Props) {
 
   return (
     <>
-      <figcaption {...stylex.props(styles.figcaption)}>
+      <figcaption {...stylex.props(layoutStyles.block, styles.figcaption)}>
         <div>
           Source:{" "}
           <components.a href={src} target="_blank">
