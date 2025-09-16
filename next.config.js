@@ -36,10 +36,6 @@ export default withPlugins(plugins, {
     ignoreBuildErrors: true,
   },
 
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 
   webpack(config, options) {
