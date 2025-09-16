@@ -7,7 +7,6 @@ import terser from "@rollup/plugin-terser";
 import stylexPlugin0 from "@stylexswc/rollup-plugin";
 import builtinModules from "builtin-modules";
 import shebang from "rollup-plugin-add-shebang";
-import css from "rollup-plugin-css-only";
 import preserveDirectives from "rollup-preserve-directives";
 
 const stylexPlugin = stylexPlugin0.default
@@ -43,10 +42,9 @@ function block(name) {
         resolve({ extensions }),
         commonjs({}),
         replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
-        css({ output: "styles.css" }),
         stylexPlugin({
           useCSSLayers: true,
-          fileName: "stylex.css",
+          fileName: "styles.css",
           rsOptions: {
             classNamePrefix: "timvir-s-",
           },
@@ -55,7 +53,6 @@ function block(name) {
           configFile: false,
           extensions,
           presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", useSpread: true }]],
-          plugins: [["babel-plugin-macros"]],
           babelHelpers: "bundled",
         }),
         preserveDirectives(),
@@ -75,10 +72,9 @@ function module(name) {
     plugins: [
       resolve({ extensions }),
       commonjs(),
-      css({ output: "styles.css" }),
       stylexPlugin({
         useCSSLayers: true,
-        fileName: "stylex.css",
+        fileName: "styles.css",
         rsOptions: {
           classNamePrefix: "timvir-s-",
         },
@@ -133,10 +129,9 @@ export default [
       resolve({ extensions }),
       commonjs({}),
       replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
-      css({ output: "styles.css" }),
       stylexPlugin({
         useCSSLayers: true,
-        fileName: "stylex.css",
+        fileName: "styles.css",
         rsOptions: {
           classNamePrefix: "timvir-s-",
         },
@@ -145,7 +140,6 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", useSpread: true }]],
-        plugins: [["babel-plugin-macros"]],
         babelHelpers: "bundled",
       }),
     ],
@@ -169,7 +163,6 @@ export default [
         configFile: false,
         extensions,
         presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", useSpread: true }]],
-        plugins: [["babel-plugin-macros"]],
         babelHelpers: "bundled",
       }),
     ],
