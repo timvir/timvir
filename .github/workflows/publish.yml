@@ -26,6 +26,12 @@ jobs:
         with:
           version: 10.15.1
 
+      # Need to install latest 'npm' because the version included in Node.js v22
+      # does not support trusted publishing.
+      #
+      # This can likely be removed once we start using Node.js v24.
+      - run: npm install -g npm@latest
+
       - run: pnpm install
 
       - run: ./node_modules/.bin/tsc --build tsconfig.build.json
