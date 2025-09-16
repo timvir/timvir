@@ -5,7 +5,8 @@ import * as stylex from "@stylexjs/stylex";
 import * as base58 from "bytestring/base58";
 import * as React from "react";
 import { Exhibit } from "timvir/blocks";
-import { layoutStyles, useBlock } from "timvir/core";
+import { useBlock } from "timvir/core";
+import { layoutStyles } from "../../core/layout";
 import { Context } from "./context";
 
 /**
