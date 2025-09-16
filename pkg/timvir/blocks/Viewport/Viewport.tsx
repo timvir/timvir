@@ -3,7 +3,8 @@
 import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import { layoutStyles, useBlock } from "timvir/core";
+import { useBlock } from "timvir/core";
+import { layoutStyles } from "../../core/layout";
 import { useResizeObserver, useResizeObserverEntry } from "timvir/hooks";
 import { Caption, Handle, Ruler } from "./internal";
 

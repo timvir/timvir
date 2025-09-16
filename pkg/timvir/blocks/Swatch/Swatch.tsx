@@ -2,7 +2,8 @@
 
 import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
-import { layoutStyles, useBlock } from "timvir/core";
+import { useBlock } from "timvir/core";
+import { layoutStyles } from "../../core/layout";
 import * as React from "react";
 
 /**

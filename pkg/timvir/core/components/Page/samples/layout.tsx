@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { layoutStyles } from "timvir/core";
+import { layoutStyles } from "../../../layout";
 import Link from "next/link";
 import { Page } from "..";
 
