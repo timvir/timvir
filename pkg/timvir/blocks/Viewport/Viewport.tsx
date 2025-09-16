@@ -207,7 +207,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
 
       <Caption src={src} code={code} />
 
-      <div style={{ height: (maxHeight ?? 0) - (height ?? 0), transition: "height 0.16s" }} />
+      <div style={{ gridColumn: "1 / -1", height: (maxHeight ?? 0) - (height ?? 0), transition: "height 0.16s" }} />
     </>
   );
 }
