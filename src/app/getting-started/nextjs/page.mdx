@@ -2,3 +2,47 @@ import Wrapper from "@/timvir/app-page-wrapper";
 export default Wrapper;
 
 # Next.js
+
+Timvir assumes a very specific setup of your Next.js project. In particular:
+
+- Source must be placed into the `src/` folder, and consequently, pages are placed in `src/pages/`.
+- Your components are placed into `src/components/`.
+- Timvir assumes management of the `src/pages/docs/components/` folder.
+- Timvir specific integration code is placed into `src/timvir/` (eg. `src/timvir/toc.ts`).
+
+If you Next.js project has a compatible setup, follow these steps:
+
+1.  Add [mdxjs](https://mdxjs.com/getting-started/next) support into your project.
+2.  Create a page wrapper. Copy the following code into `src/timvir/wrapper.tsx`:
+
+```
+import Link from "next/link";
+import { useRouter } from "next/router";
+import * as React from "react";
+import { Page } from "timvir/core";
+
+export default ({ children }: { children?: React.ReactNode }) => (
+  <Page location={useRouter()} Link={Link} toc={[]}>
+    {children}
+  </Page>
+);
+```
+
+3.  Create (or update) your `_app.tsx` file to load the Timvir CSS:
+
+```
+import App from "next/app";
+import "timvir/core/styles.css";
+export default App;
+```
+
+4.  Create your first Timvir page. Place the following code into `src/pages/docs/index.mdx`:
+
+```
+import Wrapper from "@/timvir/app-page-wrapper";
+export default Wrapper
+
+# My First Timvir Page
+```
+
+5.  Open http://localhost:3000/docs/ to view the page you just created.

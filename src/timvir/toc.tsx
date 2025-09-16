@@ -5,10 +5,11 @@ export default [
   {
     label: "Getting Started",
     path: "/getting-started",
-    children: [{ label: "Next.js", path: "/getting-started/nextjs", icon: <Icons.Search /> }],
+    children: [{ label: "Next.js", path: "/getting-started/nextjs" }],
   },
   {
     label: "Blocks",
+    path: "/blocks",
     children: [
       { label: "Arbitrary", path: "/blocks/Arbitrary", icon: <Icons.Codepen /> },
       { label: "Code", path: "/blocks/Code", icon: <Icons.Codepen /> },
