@@ -59,15 +59,9 @@ importers:
       '@types/babel__core':
         specifier: ^7.20.5
         version: 7.20.5
-      '@types/chroma-js':
-        specifier: ^3.1.1
-        version: 3.1.1
       '@types/cors':
         specifier: ^2.8.19
         version: 2.8.19
-      '@types/dot':
-        specifier: ^1.1.7
-        version: 1.1.7
       '@types/estree':
         specifier: ^1.0.8
         version: 1.0.8
@@ -77,9 +71,6 @@ importers:
       '@types/prettier':
         specifier: ^2.7.3
         version: 2.7.3
-      '@types/prompts':
-        specifier: ^2.4.9
-        version: 2.4.9
       '@types/react':
         specifier: ^19.1.13
         version: 19.1.13
@@ -104,45 +95,27 @@ importers:
       caniuse-lite:
         specifier: ^1.0.30001741
         version: 1.0.30001741
-      chroma-js:
-        specifier: ^3.1.2
-        version: 3.1.2
-      commander:
-        specifier: ^14.0.1
-        version: 14.0.1
       core-js:
         specifier: ^3.45.1
         version: 3.45.1
       cors:
         specifier: ^2.8.5
         version: 2.8.5
-      dot:
-        specifier: ^1.1.3
-        version: 1.1.3
       globby:
         specifier: ^14.1.0
         version: 14.1.0
-      kleur:
-        specifier: ^4.1.5
-        version: 4.1.5
       mdast-util-from-markdown:
         specifier: ^2.0.2
         version: 2.0.2
       mdast-util-mdx:
         specifier: ^3.0.0
         version: 3.0.0
-      mkdirp:
-        specifier: ^3.0.1
-        version: 3.0.1
       next:
         specifier: ^15.5.3
         version: 15.5.3(@babel/core@7.28.4)(@playwright/test@1.55.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
-      prompts:
-        specifier: ^2.4.2
-        version: 2.4.2
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -158,9 +131,6 @@ importers:
       rollup:
         specifier: ^4.50.0
         version: 4.50.2
-      rollup-plugin-add-shebang:
-        specifier: ^0.3.1
-        version: 0.3.1
       rollup-preserve-directives:
         specifier: ^1.1.3
         version: 1.1.3(rollup@4.50.2)
@@ -170,9 +140,6 @@ importers:
       shiki:
         specifier: ^3.12.2
         version: 3.12.2
-      stylis:
-        specifier: ^4.3.6
-        version: 4.3.6
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
@@ -185,15 +152,6 @@ importers:
       wonka:
         specifier: ^6.3.5
         version: 6.3.5
-
-  pkg/cli:
-    dependencies:
-      prettier:
-        specifier: ^2
-        version: 2.8.8
-      typescript:
-        specifier: ^5
-        version: 5.9.2
 
   pkg/macro:
     dependencies:
@@ -1400,17 +1358,11 @@ packages:
   '@types/babel__traverse@7.0.15':
     resolution: {integrity: sha512-Pzh9O3sTK8V6I1olsXpCfj2k/ygO2q1X0vhhnDrEQyYLHZesWz+zMZMVcwXLCYf0U36EtmyYaFGPfXlTtDHe3A==}
 
-  '@types/chroma-js@3.1.1':
-    resolution: {integrity: sha512-SFCr4edNkZ1bGaLzGz7rgR1bRzVX4MmMxwsIa3/Bh6ose8v+hRpneoizHv0KChdjxaXyjRtaMq7sCuZSzPomQA==}
-
   '@types/cors@2.8.19':
     resolution: {integrity: sha512-mFNylyeyqN93lfe/9CSxOGREz8cpzAhH+E93xJ4xWQf62V8sQ/24reV2nyzUWM6H6Xji+GGHpkbLe7pVoUEskg==}
 
   '@types/debug@4.1.7':
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
-
-  '@types/dot@1.1.7':
-    resolution: {integrity: sha512-RhMcnI18Y+401Nceh2pW5gTGgsdfZdvg9g0P/5HIBJ0jmZEv5KlkYvfQiHhw4/Vnb8NdePi/4UCs92ITExLxuQ==}
 
   '@types/eslint-scope@3.7.7':
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
@@ -1450,9 +1402,6 @@ packages:
 
   '@types/prettier@2.7.3':
     resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
-
-  '@types/prompts@2.4.9':
-    resolution: {integrity: sha512-qTxFi6Buiu8+50/+3DGIWLHM6QuWsEKugJnnP6iv2Mc4ncxE4A/OJkjuVOA+5X0X1S/nq5VJRa8Lu+nwcvbrKA==}
 
   '@types/react-dom@19.1.9':
     resolution: {integrity: sha512-qXRuZaOsAdXKFyOhRBg6Lqqc0yay13vN7KrIg4L7N4aaHN68ma9OK3NE1BoDFgFOTfM7zg+3/8+2n8rLUH3OKQ==}
@@ -1738,9 +1687,6 @@ packages:
     resolution: {integrity: sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g==}
     engines: {node: '>=18'}
 
-  chroma-js@3.1.2:
-    resolution: {integrity: sha512-IJnETTalXbsLx1eKEgx19d5L6SRM7cH4vINw/99p/M11HCuXGRWL+6YmCm7FWFGIo6dtWuQoQi1dc5yQ7ESIHg==}
-
   chrome-trace-event@1.0.4:
     resolution: {integrity: sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==}
     engines: {node: '>=6.0'}
@@ -1793,10 +1739,6 @@ packages:
 
   comma-separated-tokens@2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}
-
-  commander@14.0.1:
-    resolution: {integrity: sha512-2JkV3gUZUVrbNA+1sjBOYLsMZ5cEEl8GTFP2a4AVz5hvasAMCQ1D2l2le/cX+pV4N6ZU17zjUahLpIXRrnWL8A==}
-    engines: {node: '>=20'}
 
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -1913,11 +1855,6 @@ packages:
   domutils@3.0.1:
     resolution: {integrity: sha512-z08c1l761iKhDFtfXO04C7kTdPBLi41zwOZl00WS8b5eiaebNpY00HKbztwBq+e3vyqWNwWF3mP9YLUeqIrF+Q==}
 
-  dot@1.1.3:
-    resolution: {integrity: sha512-/nt74Rm+PcfnirXGEdhZleTwGC2LMnuKTeeTIlI82xb5loBBoXNYzr2ezCroPSMtilK8EZIfcNZwOcHN+ib1Lg==}
-    engines: {'0': node >=0.2.6}
-    hasBin: true
-
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
@@ -2010,9 +1947,6 @@ packages:
 
   estree-util-visit@2.0.0:
     resolution: {integrity: sha512-m5KgiH85xAhhW8Wta0vShLcUvOsh3LLPI2YVwcbio1l7E09NTLL1EyMZFM1OyWowoH0skScNbhOPl4kcBgzTww==}
-
-  estree-walker@0.6.1:
-    resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==}
 
   estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
@@ -2335,14 +2269,6 @@ packages:
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
 
-  kleur@3.0.3:
-    resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
-    engines: {node: '>=6'}
-
-  kleur@4.1.5:
-    resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
-    engines: {node: '>=6'}
-
   lightningcss-darwin-arm64@1.30.1:
     resolution: {integrity: sha512-c8JK7hyE65X1MHMN+Viq9n11RRC7hgin3HhYKhrMyaXflk5GVplZ60IxyoVtzILeKr+xAJwg6zK6sjTBJ0FKYQ==}
     engines: {node: '>= 12.0.0'}
@@ -2447,9 +2373,6 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
-
-  magic-string@0.25.9:
-    resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
 
   magic-string@0.30.5:
     resolution: {integrity: sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==}
@@ -2816,10 +2739,6 @@ packages:
     resolution: {integrity: sha512-4yf0QO/sllf/1zbZWYnvWw3NxCQwLXKzIj0G849LSufP15BXKM0rbD2Z3wVnkMfjdn/CB0Dpp444gYAACdsplg==}
     engines: {node: '>=18'}
 
-  prompts@2.4.2:
-    resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
-    engines: {node: '>= 6'}
-
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
 
@@ -2933,12 +2852,6 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
-  rollup-plugin-add-shebang@0.3.1:
-    resolution: {integrity: sha512-tKONSgKoVw9Om1cp1CnAlPQ9nsHBzu8fInKObX3zT5KZVoAJtslD1aBL84lJuKLeh+L28dB26CBBeYT+doTMLg==}
-
-  rollup-pluginutils@2.8.2:
-    resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
-
   rollup-preserve-directives@1.1.3:
     resolution: {integrity: sha512-oXqxd6ZzkoQej8Qt0k+S/yvO2+S4CEVEVv2g85oL15o0cjAKTKEuo2MzyA8FcsBBXbtytBzBMFAbhvQg4YyPUQ==}
     peerDependencies:
@@ -3003,9 +2916,6 @@ packages:
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
 
-  sisteransi@1.0.5:
-    resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
-
   slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
@@ -3035,10 +2945,6 @@ packages:
   source-map@0.7.4:
     resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
     engines: {node: '>= 8'}
-
-  sourcemap-codec@1.4.8:
-    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
-    deprecated: Please use @jridgewell/sourcemap-codec instead
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
@@ -3098,9 +3004,6 @@ packages:
 
   styleq@0.2.1:
     resolution: {integrity: sha512-L0TR0NQb+X4/ktDEKmjWyp27gla+LUYi/by5k5SjKXf6/pvZP7wbwEB5J+tqxdFVPgzbsuz+d4RTScO/QZquBw==}
-
-  stylis@4.3.6:
-    resolution: {integrity: sha512-yQ3rwFWRfwNUY7H5vpU0wfdkNSnvnJinhF9830Swlaxl03zsOjCfmX0ugac+3LtK0lYSgwL/KXc8oYL3mG4YFQ==}
 
   supertap@3.0.1:
     resolution: {integrity: sha512-u1ZpIBCawJnO+0QePsEiOknOfCRq0yERxiAchT0i4li0WHNUJbf0evXXSXOcCAR4M8iMDoajXYmstm/qO81Isw==}
@@ -4717,8 +4620,6 @@ snapshots:
     dependencies:
       '@babel/types': 7.28.4
 
-  '@types/chroma-js@3.1.1': {}
-
   '@types/cors@2.8.19':
     dependencies:
       '@types/node': 22.18.4
@@ -4726,8 +4627,6 @@ snapshots:
   '@types/debug@4.1.7':
     dependencies:
       '@types/ms': 0.7.31
-
-  '@types/dot@1.1.7': {}
 
   '@types/eslint-scope@3.7.7':
     dependencies:
@@ -4771,11 +4670,6 @@ snapshots:
   '@types/parse-json@4.0.0': {}
 
   '@types/prettier@2.7.3': {}
-
-  '@types/prompts@2.4.9':
-    dependencies:
-      '@types/node': 22.18.4
-      kleur: 3.0.3
 
   '@types/react-dom@19.1.9(@types/react@19.1.13)':
     dependencies:
@@ -5121,8 +5015,6 @@ snapshots:
 
   chownr@3.0.0: {}
 
-  chroma-js@3.1.2: {}
-
   chrome-trace-event@1.0.4:
     optional: true
 
@@ -5170,8 +5062,6 @@ snapshots:
       color-string: 1.9.0
 
   comma-separated-tokens@2.0.3: {}
-
-  commander@14.0.1: {}
 
   commander@2.20.3: {}
 
@@ -5281,8 +5171,6 @@ snapshots:
       domelementtype: 2.3.0
       domhandler: 5.0.3
 
-  dot@1.1.3: {}
-
   eastasianwidth@0.2.0: {}
 
   electron-to-chromium@1.5.218: {}
@@ -5371,8 +5259,6 @@ snapshots:
     dependencies:
       '@types/estree-jsx': 1.0.0
       '@types/unist': 3.0.3
-
-  estree-walker@0.6.1: {}
 
   estree-walker@2.0.2: {}
 
@@ -5700,10 +5586,6 @@ snapshots:
     optionalDependencies:
       graceful-fs: 4.2.11
 
-  kleur@3.0.3: {}
-
-  kleur@4.1.5: {}
-
   lightningcss-darwin-arm64@1.30.1:
     optional: true
 
@@ -5779,10 +5661,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  magic-string@0.25.9:
-    dependencies:
-      sourcemap-codec: 1.4.8
 
   magic-string@0.30.5:
     dependencies:
@@ -6305,11 +6183,6 @@ snapshots:
     dependencies:
       parse-ms: 4.0.0
 
-  prompts@2.4.2:
-    dependencies:
-      kleur: 3.0.3
-      sisteransi: 1.0.5
-
   prop-types@15.8.1:
     dependencies:
       loose-envify: 1.4.0
@@ -6432,15 +6305,6 @@ snapshots:
 
   reusify@1.0.4: {}
 
-  rollup-plugin-add-shebang@0.3.1:
-    dependencies:
-      magic-string: 0.25.9
-      rollup-pluginutils: 2.8.2
-
-  rollup-pluginutils@2.8.2:
-    dependencies:
-      estree-walker: 0.6.1
-
   rollup-preserve-directives@1.1.3(rollup@4.50.2):
     dependencies:
       magic-string: 0.30.5
@@ -6555,8 +6419,6 @@ snapshots:
     dependencies:
       is-arrayish: 0.3.2
 
-  sisteransi@1.0.5: {}
-
   slash@3.0.0: {}
 
   slash@5.1.0: {}
@@ -6578,8 +6440,6 @@ snapshots:
   source-map@0.6.1: {}
 
   source-map@0.7.4: {}
-
-  sourcemap-codec@1.4.8: {}
 
   space-separated-tokens@2.0.2: {}
 
@@ -6640,8 +6500,6 @@ snapshots:
       babel-plugin-macros: 3.1.0
 
   styleq@0.2.1: {}
-
-  stylis@4.3.6: {}
 
   supertap@3.0.1:
     dependencies:
