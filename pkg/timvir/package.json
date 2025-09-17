@@ -13,7 +13,8 @@
     "./context": "./context/index.js",
     "./core": "./core/index.js",
     "./hooks": "./hooks/index.js",
-    "./search": "./search/index.js"
+    "./search": "./search/index.js",
+    "./stylex": "./stylex/index.js"
   },
   "dependencies": {
     "bytestring": "^1",
