@@ -19,4 +19,6 @@ jobs:
       - run: tsc --build tsconfig.json
       - run: tsc --build tsconfig.build.json
       - run: rollup -c config/rollup.config.js
-      - run: ava
+
+      - run: node --test
+        working-directory: pkg/mdx

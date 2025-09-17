@@ -1,4 +1,3 @@
 export default {
-  entry: ["index.{js,d.ts,spec.js}"],
-  ignoreDependencies: ["ava"],
+  entry: ["index.{js,d.ts,test.js}"],
 };

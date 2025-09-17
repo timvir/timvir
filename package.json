@@ -2,7 +2,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "ava",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
@@ -31,7 +30,6 @@
     "@types/prettier": "^2.7.3",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
-    "ava": "^6.4.1",
     "babel-plugin-macros": "^3.1.0",
     "builtin-modules": "^5.0.0",
     "bytestring": "^1.0.1",
