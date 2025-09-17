@@ -39,6 +39,13 @@ export default {
      * expose properly, or delete.
      */
     "core/theme/detector.ts",
+
+    /*
+     * The index file references more than what's actually used in the timvir
+     * modules. The referenced icons are bundled into the Timvir modules, any
+     * additional exports do not contribute to the Timvir bundle size.
+     */
+    "icons/index.ts",
   ],
 
   ignoreDependencies: ["@stylexjs/stylex", "next"],
