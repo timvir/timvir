@@ -8,7 +8,7 @@ import stylexPlugin0 from "@stylexswc/rollup-plugin";
 import builtinModules from "builtin-modules";
 import preserveDirectives from "rollup-preserve-directives";
 
-const stylexPlugin = stylexPlugin0.default
+const stylexPlugin = stylexPlugin0.default;
 
 function externalFor(pkg) {
   const packageJson = JSON.parse(fs.readFileSync(`pkg/${pkg}/package.json`, "utf8"));
@@ -27,50 +27,36 @@ const extensions = [".js", ".jsx", ".ts", ".tsx"];
  */
 const node = "18";
 
-function block(name) {
-  return [
-    {
-      input: `pkg/timvir/blocks/${name}/index.ts`,
-      output: [
-        {
-          file: `pkg/timvir/blocks/${name}/index.js`,
-          format: "esm",
-        },
-      ],
-      plugins: [
-        resolve({ extensions }),
-        commonjs({}),
-        replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
-        stylexPlugin({
-          useCSSLayers: true,
-          fileName: "styles.css",
-          rsOptions: {
-            classNamePrefix: "timvir-s-",
-          },
-        }),
-        babel({
-          configFile: false,
-          extensions,
-          presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", useSpread: true }]],
-          babelHelpers: "bundled",
-        }),
-        preserveDirectives(),
-      ],
-      external: [...externalFor("timvir"), /^timvir\//],
-    },
-  ];
-}
-
-function module(name) {
-  return {
-    input: `pkg/timvir/${name}/index.ts`,
-    output: {
-      file: `pkg/timvir/${name}/index.js`,
-      format: "esm",
-    },
+export default [
+  {
+    input: [
+      "pkg/timvir/blocks/index.ts",
+      ...fs.readdirSync("pkg/timvir/blocks").flatMap((dirent) => {
+        if (dirent.match(/^[A-Z]/)) {
+          return [`pkg/timvir/blocks/${dirent}/index.ts`];
+        } else {
+          return [];
+        }
+      }),
+      "pkg/timvir/builtins/index.ts",
+      "pkg/timvir/bus/index.ts",
+      "pkg/timvir/context/index.ts",
+      "pkg/timvir/core/index.ts",
+      "pkg/timvir/hooks/index.ts",
+      "pkg/timvir/search/index.ts",
+    ],
+    output: [
+      {
+        format: "esm",
+        dir: "pkg/timvir",
+        preserveModules: true,
+        preserveModulesRoot: "pkg/timvir",
+      },
+    ],
     plugins: [
       resolve({ extensions }),
-      commonjs(),
+      commonjs({}),
+      replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
       stylexPlugin({
         useCSSLayers: true,
         fileName: "styles.css",
@@ -90,58 +76,7 @@ function module(name) {
       }),
       preserveDirectives(),
     ],
-    external: [...builtinModules, ...externalFor("timvir"), /^timvir\//],
-  };
-}
-
-export default [
-  /*
-   * timvir
-   */
-  module("bus"),
-  module("context"),
-  module("core"),
-  module("builtins"),
-  module("hooks"),
-  module("search"),
-
-  /*
-   * timvir/blocks/*
-   */
-  ...fs.readdirSync("pkg/timvir/blocks").flatMap((file) => {
-    if (file.match(/^[A-Z]/)) {
-      return block(file);
-    } else {
-      return [];
-    }
-  }),
-  {
-    input: "pkg/timvir/blocks/index.ts",
-    output: [
-      {
-        file: "pkg/timvir/blocks/index.js",
-        format: "esm",
-      },
-    ],
-    plugins: [
-      resolve({ extensions }),
-      commonjs({}),
-      replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
-      stylexPlugin({
-        useCSSLayers: true,
-        fileName: "styles.css",
-        rsOptions: {
-          classNamePrefix: "timvir-s-",
-        },
-      }),
-      babel({
-        configFile: false,
-        extensions,
-        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", useSpread: true }]],
-        babelHelpers: "bundled",
-      }),
-    ],
-    external: [...builtinModules, ...externalFor("timvir"), /^timvir\//],
+    external: [...builtinModules, ...externalFor("timvir"), /^bytestring\//, /^timvir\//],
   },
 
   /*
