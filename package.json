@@ -43,7 +43,6 @@
     "prettier": "^2.8.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-feather": "^2.0.10",
     "react-hotkeys-hook": "^5.1.0",
     "rollup": "^4.50.0",
     "rollup-preserve-directives": "^1.1.3",

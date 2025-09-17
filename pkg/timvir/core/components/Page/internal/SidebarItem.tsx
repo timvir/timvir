@@ -2,7 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useContext } from "timvir/context";
 import { Node } from "../types";
-import * as Icons from "react-feather";
+import * as Icons from "../../../../icons";
 
 interface Props extends Node {
   depth: number;
@@ -21,7 +21,7 @@ function SidebarItem(props: Props) {
 
   const icon =
     children.length === 0 ? null : (
-      <Icons.ChevronRight className={iconStylexProps.className} style={iconStyle} size={16} />
+      <Icons.ChevronRight className={iconStylexProps.className} style={iconStyle} width={16} height={16} />
     );
 
   const isActive = location.asPath.replace(/#.*$/, "") === path;

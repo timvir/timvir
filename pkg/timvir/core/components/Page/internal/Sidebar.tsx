@@ -2,7 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { Node } from "../types";
 import Section from "./Section";
-import * as Icons from "react-feather";
+import * as Icons from "../../../../icons";
 import { useContext } from "timvir/context";
 import { cx } from "../../../../internal/cx";
 
@@ -80,7 +80,7 @@ function Sidebar(props: Props) {
           : null}
         <span>{node?.label ?? "Menu"}</span>
 
-        <Icons.Menu size={16} {...stylex.props(styles.menuCaret)} />
+        <Icons.Menu width={16} height={16} {...stylex.props(styles.menuCaret)} />
       </div>
 
       <div {...stylex.props(styles.content, isMenuOpen && styles.menuOpen)}>
