@@ -29,6 +29,14 @@ const node = "18";
 
 export default [
   {
+    input: "pkg/timvir/stylex/index.ts",
+    plugins: [resolve({ extensions })],
+    output: {
+      file: "pkg/timvir/stylex/index.js",
+      format: "esm",
+    },
+  },
+  {
     input: [
       "pkg/timvir/blocks/index.ts",
       ...fs.readdirSync("pkg/timvir/blocks").flatMap((dirent) => {
@@ -51,6 +59,9 @@ export default [
         dir: "pkg/timvir",
         preserveModules: true,
         preserveModulesRoot: "pkg/timvir",
+        paths: {
+          "@stylexjs/stylex": "timvir/stylex",
+        },
       },
     ],
     plugins: [
@@ -76,7 +87,7 @@ export default [
       }),
       preserveDirectives(),
     ],
-    external: [...builtinModules, ...externalFor("timvir"), /^bytestring\//, /^timvir\//],
+    external: [...builtinModules, ...externalFor("timvir"), /^bytestring\//, "@stylexjs/stylex", /^timvir\//],
   },
 
   /*
