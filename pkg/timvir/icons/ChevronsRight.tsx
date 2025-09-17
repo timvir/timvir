@@ -9,6 +9,7 @@ const SvgChevronsRight = (props: SVGProps<SVGSVGElement>) => (
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth={2}
+    viewBox="0 0 24 24"
     {...props}
   >
     <path d="m13 17 5-5-5-5M6 17l5-5-5-5" />

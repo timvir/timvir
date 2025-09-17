@@ -9,6 +9,7 @@ const SvgCodepen = (props: SVGProps<SVGSVGElement>) => (
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth={2}
+    viewBox="0 0 24 24"
     {...props}
   >
     <path d="m12 2 10 6.5v7L12 22 2 15.5v-7zM12 22v-6.5" />

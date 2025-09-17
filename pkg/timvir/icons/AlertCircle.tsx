@@ -9,6 +9,7 @@ const SvgAlertCircle = (props: SVGProps<SVGSVGElement>) => (
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth={2}
+    viewBox="0 0 24 24"
     {...props}
   >
     <circle cx={12} cy={12} r={10} />

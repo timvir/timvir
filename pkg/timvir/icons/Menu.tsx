@@ -9,6 +9,7 @@ const SvgMenu = (props: SVGProps<SVGSVGElement>) => (
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth={2}
+    viewBox="0 0 24 24"
     {...props}
   >
     <path d="M3 12h18M3 6h18M3 18h18" />
