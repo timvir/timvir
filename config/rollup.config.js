@@ -167,32 +167,4 @@ export default [
       }),
     ],
   },
-
-  /*
-   * @timvir/cli
-   */
-  {
-    input: "src/cli/index.ts",
-    output: {
-      file: "pkg/cli/bin.js",
-      format: "commonjs",
-    },
-    plugins: [
-      resolve({ extensions }),
-      commonjs(),
-      // terser(),
-      babel({
-        configFile: false,
-        extensions,
-        presets: [
-          ["@babel/preset-typescript"],
-          ["@babel/preset-env", { targets: { node } }],
-          ["@babel/preset-react", { runtime: "automatic", useSpread: true }],
-        ],
-        babelHelpers: "bundled",
-      }),
-      shebang(),
-    ],
-    external: [...builtinModules, ...externalFor("cli")],
-  },
 ];
