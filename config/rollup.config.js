@@ -70,7 +70,7 @@ export default [
       replace({ preventAssignment: true, "process.env.NODE_ENV": `"production"` }),
       stylexPlugin({
         useCSSLayers: true,
-        fileName: "styles.css",
+        fileName: "stylex.css",
         rsOptions: {
           classNamePrefix: "timvir-s-",
         },
