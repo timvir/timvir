@@ -1,5 +1,12 @@
 # timvir
 
+## 0.2.44
+
+### Patch Changes
+
+- **Fix Viewport caption placement** ([#3484](https://github.com/timvir/timvir/pull/3484)) - During the migration to StyleX the layout of the Viewport caption got broken. Now the caption is once again in its correct place.
+- **Trim dependencies** ([#3497](https://github.com/timvir/timvir/pull/3497)) - Removed `downshift` (because unused) and vendored the few icons from `react-feathers`. These dependencies are either unmaintained, contain legacy code, or make Timvir depend on such through their transitive dependencies. These changes improve the security posture of the Timvir package.
+
 ## 0.2.43
 
 ### Patch Changes
