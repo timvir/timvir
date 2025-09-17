@@ -1,4 +1,4 @@
-import * as Icons from "react-feather";
+import * as Icons from "timvir/icons";
 
 export default [
   { label: "Home", path: "/" },

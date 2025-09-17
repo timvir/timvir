@@ -2,7 +2,7 @@ import { useArticleComponents } from "timvir/core";
 import { layoutStyles } from "../../../core/layout";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import * as Icons from "react-feather";
+import * as Icons from "../../../icons";
 import { Code } from "timvir/blocks";
 
 interface Props {
@@ -44,7 +44,7 @@ function Caption(props: Props) {
               }
             }}
           >
-            <Icons.Code size={"1.6em"} {...stylex.props(styles.codeIcon)} />
+            <Icons.Code width={"1.6em"} height={"1.6em"} {...stylex.props(styles.codeIcon)} />
           </div>
         )}
       </figcaption>

@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import * as Icons from "react-feather";
+import * as Icons from "../../icons";
 import { layoutStyles } from "../../core/layout";
 
 /**

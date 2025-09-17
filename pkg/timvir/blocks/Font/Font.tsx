@@ -5,7 +5,7 @@ import { useArticleComponents } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import * as Icons from "react-feather";
+import * as Icons from "../../icons";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -91,7 +91,7 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
               }
             }}
           >
-            <Icons.Info size={"1.1em"} {...stylex.props(styles.infoButtonIcon)} />
+            <Icons.Info width={"1.1em"} height={"1.1em"} {...stylex.props(styles.infoButtonIcon)} />
           </div>
         )}
       </div>
