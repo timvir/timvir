@@ -6,7 +6,6 @@ import replace from "@rollup/plugin-replace";
 import terser from "@rollup/plugin-terser";
 import stylexPlugin0 from "@stylexswc/rollup-plugin";
 import builtinModules from "builtin-modules";
-import shebang from "rollup-plugin-add-shebang";
 import preserveDirectives from "rollup-preserve-directives";
 
 const stylexPlugin = stylexPlugin0.default
@@ -89,7 +88,6 @@ function module(name) {
         ],
         babelHelpers: "bundled",
       }),
-      shebang(),
       preserveDirectives(),
     ],
     external: [...builtinModules, ...externalFor("timvir"), /^timvir\//],
