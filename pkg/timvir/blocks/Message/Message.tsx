@@ -23,7 +23,7 @@ function Message(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
           warning: <Icons.AlertCircle {...stylex.props(styles.icon, styles.iconWarning)} />,
           alert: <Icons.XOctagon {...stylex.props(styles.icon, styles.iconAlert)} />,
         }[variant]}
-      <div>
+      <div {...stylex.props(styles.content)}>
         {React.Children.toArray(children).map((child, index, array) => {
           if (React.isValidElement(child)) {
             const style: React.CSSProperties = {
@@ -94,5 +94,10 @@ const styles = stylex.create({
   },
   iconAlert: {
     color: "#da4444",
+  },
+
+  content: {
+    flexGrow: 1,
+    minWidth: 0,
   },
 });

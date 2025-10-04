@@ -5,130 +5,45 @@ import { Code, Exhibit } from "timvir/blocks";
 
 A `ColorBar` is a horizontal arrangement of swatches.
 
-<Exhibit>
-  <ColorBar
-    values={[
-      "#D6CCFF",
-      "#C8BCF5",
-      "#BAACEB",
-      "#AC9CE1",
-      "#9E8CD7",
-      "#907DCD",
-      "#826EC3",
-      "#745FBA",
-      "#6550B0",
-      "#5642A6",
-    ]}
-    style={{ margin: 0 }}
-  />
-</Exhibit>
+<Sample variant="basic" />
 
-<Exhibit>
-  <ColorBar values={["#a0dbc2", "#60c19f", "#1a896b", "#0e6d54"]} style={{ margin: 0 }} />
-</Exhibit>
+Pass the colors as an array of CSS color values.
 
-<Code language="jsx" caption="Pass an array of color values to the component." highlightedLines={[4]}>
+<Code language="jsx" highlightedLines={[4]}>
   <Sample variant="basic" as="source" />
 </Code>
 
-The ColorBar works comfortably with as few as two colors and as many as 20
+The ColorBar works comfortably with as few as two colors and as many as 20.
+If you specify more colors than that, each individual swatch becomes tiny, especially on smaller viewports.
 
-<Exhibit caption="Two colors in a ColorBar">
-  <ColorBar
-    values={[
-      { value: "#FFE4A0", name: "Yellow Submarine", ancestry: "Yellow 001" },
-      { value: "#A67908", name: "Yellow Spaceship", ancestry: "Yellow 999", contrastValue: "white" },
-    ]}
-    style={{ margin: 0 }}
-  />
-</Exhibit>
+<ColorBar
+  values={[
+    { value: "#FFE4A0", name: "Yellow Submarine", ancestry: "Yellow 001" },
+    { value: "#A67908", name: "Yellow Spaceship", ancestry: "Yellow 999", contrastValue: "white" },
+  ]}
+/>
 
-<Exhibit caption="20 colors in a ColorBar">
-  <ColorBar
-    values={[
-      "#FFE4A0",
-      "#FBDE98",
-      "#F6D891",
-      "#F2D28A",
-      "#EDCC82",
-      "#E8C77B",
-      "#E4C173",
-      "#DFBB6C",
-      "#DBB565",
-      "#D6B05D",
-      "#D1AA56",
-      "#CDA54F",
-      "#C89F47",
-      "#C39940",
-      "#BE9438",
-      "#BA8E30",
-      "#B58928",
-      "#B0841F",
-      "#AB7E15",
-      "#A67908",
-    ]}
-    style={{ margin: 0 }}
-  />
-</Exhibit>
-
-## Text Colors
-
-These are the main text colors that are used in our website. We have a **textPrimary** color for
-headings and body text, **textSecondary** for captions and meta lines, and a third (yet unamed)
-text color for card descriptions.
-
-All text colors are taken from the **Gray** palette.
-
-<Exhibit caption="Text Colors" style={{ margin: "10px 0 20px 0" }}>
-  <ColorBar
-    values={[
-      { value: "rgba(0, 0, 13, 0.89)", name: "textPrimary", ancestry: "Gray 01", contrastValue: "white" },
-      { value: "rgba(0, 0, 13, 0.69)", name: "???? (unnamed)", ancestry: "Gray 03", contrastValue: "white" },
-      { value: "rgba(0, 0, 13, 0.49)", name: "textSecondary", ancestry: "Gray 05" },
-    ]}
-    style={{ margin: 0 }}
-  />
-</Exhibit>
-<Exhibit caption="Gray Color Palette (00 – 09)" style={{ margin: "-12px 0 20px 0" }}>
-  <ColorBar
-    values={[
-      { value: "rgba(0, 0, 13, 0.99)", name: "Gray 00", contrastValue: "white" },
-      { value: "rgba(0, 0, 13, 0.89)", name: "Gray 01", contrastValue: "white" },
-      { value: "rgba(0, 0, 13, 0.79)", name: "Gray 02", contrastValue: "white" },
-      { value: "rgba(0, 0, 13, 0.69)", name: "Gray 03", contrastValue: "white" },
-      { value: "rgba(0, 0, 13, 0.59)", name: "Gray 04", contrastValue: "white" },
-      { value: "rgba(0, 0, 13, 0.49)", name: "Gray 05", contrastValue: "black" },
-      { value: "rgba(0, 0, 13, 0.39)", name: "Gray 06", contrastValue: "black" },
-      { value: "rgba(0, 0, 13, 0.29)", name: "Gray 07", contrastValue: "black" },
-      { value: "rgba(0, 0, 13, 0.19)", name: "Gray 08", contrastValue: "black" },
-      { value: "rgba(0, 0, 13, 0.09)", name: "Gray 09", contrastValue: "black" },
-    ]}
-    style={{ margin: 0 }}
-  />
-</Exhibit>
-
-Wrap a `<ColorBar>` in a `<Exhibit>` to add a caption to it. The caption can even include links!
-
-<Exhibit
-  caption={
-    <>
-      Source: <a href="https://hihayk.github.io/scale/#2/7/50/90/0/0/0/-0/1190D7/17/144/215">hihayk.github.io/scale</a>
-    </>
-  }
->
-  <ColorBar
-    values={[
-      "#E7F4FB",
-      "#C9E6F6",
-      "#AAD7F1",
-      "#8BC9EC",
-      "#6DBBE6",
-      "#4EADE1",
-      "#309EDC",
-      "#1190D7",
-      "#0D6CA1",
-      "#09486C",
-    ]}
-    style={{ margin: 0 }}
-  />
-</Exhibit>
+<ColorBar
+  values={[
+    "#FFE4A0",
+    "#FBDE98",
+    "#F6D891",
+    "#F2D28A",
+    "#EDCC82",
+    "#E8C77B",
+    "#E4C173",
+    "#DFBB6C",
+    "#DBB565",
+    "#D6B05D",
+    "#D1AA56",
+    "#CDA54F",
+    "#C89F47",
+    "#C39940",
+    "#BE9438",
+    "#BA8E30",
+    "#B58928",
+    "#B0841F",
+    "#AB7E15",
+    "#A67908",
+  ]}
+/>

@@ -23,7 +23,22 @@ function Grid(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
       style={{ ...rootStyleProps.style, ...rest.style }}
       className={cx(className, rootStyleProps.className)}
     >
-      {children}
+      {React.Children.map(children, (child) => {
+        if (!React.isValidElement(child)) {
+          return child;
+        }
+
+        const { style, ...props } = child.props as { style?: React.CSSProperties };
+
+        return React.createElement(child.type, {
+          ...props,
+          style: {
+            margin: 0,
+            gridColumn: "initial",
+            ...style,
+          },
+        });
+      })}
     </Root>
   );
 }
