@@ -1,5 +1,5 @@
 import { ColorBar } from "timvir/blocks";
 
 export default function Sample() {
-  return <ColorBar values={["#97F3EB", "#78D5CC", "#58B8AE", "#369C91", "#008075"]} />;
+  return <ColorBar values={["#a0dbc2", "#60c19f", "#1a896b", "#0e6d54"]} />;
 }

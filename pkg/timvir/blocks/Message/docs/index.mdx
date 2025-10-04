@@ -1,48 +1,57 @@
-import { Exhibit } from "../../Exhibit";
-import { Grid } from "../../Grid";
 import { Swatch } from "../../Swatch";
 import { Code } from "../../Code";
 
 # Message
 
-<Exhibit>
-  <Sample variant="basic" />
-</Exhibit>
+The `<Message>` component is a simple container for messages.
 
-<Code language="jsx">
-  <Sample variant="basic" as="source" />
-</Code>
+<Sample variant="basic" />
 
 ## Variants
 
-<Grid>
-  <Exhibit caption="info" style={{ margin: 0, gridColumn: "initial" }}>
-    <Sample variant="basic" props={{ variant: "info" }} />
-  </Exhibit>
-  <Exhibit caption="warning" style={{ margin: 0, gridColumn: "initial" }}>
-    <Sample variant="basic" props={{ variant: "warning" }} />
-  </Exhibit>
-  <Exhibit caption="alert" style={{ margin: 0, gridColumn: "initial" }}>
-    <Sample variant="basic" props={{ variant: "alert" }} />
-  </Exhibit>
-</Grid>
+The Message block comes in four variants: **plain**, **info**, **warning**, and **alert**.
+Each variant uses a different color and icon.
+Below are examples in which situations to use the variants.
+
+<Sample variant="basic">
+This is the **plain** variant. Use it for simple notes, neutral remarks, or secondary information that doesn’t require emphasis.
+
+_Example:_ This component is defined in src/components/Message.tsx.
+
+</Sample>
+
+<Sample variant="basic" props={{ variant: "info" }}>
+This is the **info** variant. Use it to share helpful or contextual information about the code or component.
+
+_Example:_ This hook is useful for managing form state.
+
+</Sample>
+
+<Sample variant="basic" props={{ variant: "warning" }}>
+  This is the **warning** variant. Use it to call attention to potential pitfalls, limitations, or special cases to consider when using the code.
+
+_Example:_ This component has not been tested with server-side rendering.
+
+</Sample>
+
+<Sample variant="basic" props={{ variant: "alert" }}>
+This is the **alert** variant. Use it for strict requirements, do-nots, or critical caveats that must be followed when using the code.
+
+_Example:_ You must not use this component inside a React Suspense boundary.
+
+</Sample>
 
 ## Content
 
-Make the title bold and place it before the message, or use a level 3 heading. You can use arbitrary markdown inside the message.
+You can use arbitrary markdown inside the message, or even blocks.
+Note that not all combinations have been exhaustively tested.
+If you come across markup that doesn't render well, please raise an issue in the Timvir project.
 
-<Grid>
-<Exhibit caption="Inline title" style={{ margin: 0, gridColumn: "initial" }}>
-  <Sample variant="basic">
+<Sample variant="basic">
+  **Short Messages** should place the title in front of the message and make it stand out.
+</Sample>
 
-**Short Messages** should place the title in front of the message and make it stand out.
-
-  </Sample>
-</Exhibit>
-
-<Exhibit caption="Title as a separate block elment" style={{ margin: 0, gridColumn: "initial" }}>
-  <Sample variant="basic">
-
+<Sample variant="basic">
 ### Longer Messages
 
 Longer messages should make the title a separate block element. This body uses [links](#) and _italic_ text.
@@ -50,10 +59,7 @@ Longer messages should make the title a separate block element. This body uses [
 And multiple paragraphs. And even a component:
 
 <Swatch value="#FF00FF" />
-
-  </Sample>
-</Exhibit>
-</Grid>
+</Sample>
 
 ## References
 
