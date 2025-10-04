@@ -28,7 +28,7 @@ function Grid(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
           return child;
         }
 
-        const { style, ...props } = child.props as { style?: any };
+        const { style, ...props } = child.props as { style?: React.CSSProperties };
 
         return React.createElement(child.type, {
           ...props,
