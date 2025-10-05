@@ -64,7 +64,7 @@ for (const url of urls) {
 
     await page.goto(url, { waitUntil: "load" });
 
-    const inputElements = await page.$$("[data-timvir-b-Arbitrary-seed]");
+    const inputElements = await page.$$("[data-timvir-b-arbitrary-seed]");
     for (const inputElement of inputElements) {
       await inputElement.evaluate((element) => {
         const pasteEvent = new ClipboardEvent("paste", {
@@ -82,11 +82,11 @@ for (const url of urls) {
     await waitForImages(page);
 
     {
-      const elements = await page.$$("[data-timvir-b-Exhibit]");
+      const elements = await page.$$("[data-timvir-b-exhibit]");
       for (const [index, element] of elements.entries()) {
-        const buffer = await (await element.$("[data-timvir-b-Exhibit-container]"))!.screenshot();
+        const buffer = await (await element.$("[data-timvir-b-exhibit-container]"))!.screenshot();
 
-        const childElement = await element.$("[data-timvir-b-Exhibit-caption]");
+        const childElement = await element.$("[data-timvir-b-exhibit-caption]");
         const innerText = (await childElement?.innerText()) ?? `${index}`;
 
         imageUploads.push(

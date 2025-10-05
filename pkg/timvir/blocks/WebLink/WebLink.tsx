@@ -42,7 +42,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
   return (
     <Root
       ref={ref}
-      data-timvir-b-WebLink
+      data-timvir-b-weblink
       href={url}
       target="_blank"
       rel="noopener noreferrer"

@@ -35,7 +35,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
   return (
     <Root
       ref={ref}
-      data-timvir-b-Exhibit
+      data-timvir-b-exhibit
       {...rest}
       {...rootStyleProps}
       className={cx(className, rootStyleProps.className)}
@@ -49,7 +49,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
       }}
     >
       <div
-        data-timvir-b-Exhibit-container
+        data-timvir-b-exhibit-container
         {...BackdropProps}
         {...containerStyleProps}
         className={cx(containerStyleProps.className, BackdropProps?.className)}
@@ -63,7 +63,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
       </div>
 
       {caption && (
-        <div data-timvir-b-Exhibit-caption {...stylex.props(styles.caption)}>
+        <div data-timvir-b-exhibit-caption {...stylex.props(styles.caption)}>
           {caption}
         </div>
       )}
