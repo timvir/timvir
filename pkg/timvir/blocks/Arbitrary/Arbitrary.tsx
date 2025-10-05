@@ -49,7 +49,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
     <Context.Provider value={value}>
       <Root
         ref={ref}
-        data-timvir-b-Arbitrary
+        data-timvir-b-arbitrary
         {...rest}
         {...rootStyleProps}
         className={cx(rootStyleProps.className, className)}
@@ -59,7 +59,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
           <div {...stylex.props(styles.textField)}>
             <span {...stylex.props(styles.startAdornment)}>Seed:</span>
             <input
-              data-timvir-b-Arbitrary-seed
+              data-timvir-b-arbitrary-seed
               {...stylex.props(styles.input)}
               placeholder="Seed"
               value={base58.encode(new TextEncoder().encode(`${value.seed}`))}

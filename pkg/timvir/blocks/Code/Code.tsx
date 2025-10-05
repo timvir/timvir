@@ -102,20 +102,20 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   return (
     <Root
       ref={ref}
-      data-timvir-b-Code
+      data-timvir-b-code
       {...rest}
       {...rootStyleProps}
       className={cx(!state.settled && "timvir-unsettled", className, rootStyleProps.className)}
       style={{ ...rootStyleProps.style, ...rest.style }}
     >
       <div
-        data-timvir-b-Code-container
+        data-timvir-b-code-container
         {...stylex.props(styles.code)}
         dangerouslySetInnerHTML={{ __html: state.html }}
       />
 
       {caption && (
-        <div data-timvir-b-Code-caption {...stylex.props(styles.caption)}>
+        <div data-timvir-b-code-caption {...stylex.props(styles.caption)}>
           {caption}
         </div>
       )}

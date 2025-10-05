@@ -106,7 +106,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
     <>
       <Root
         ref={ref}
-        data-timvir-b-Viewport
+        data-timvir-b-viewport
         {...rest}
         className={cx(!state.settled && "timvir-unsettled", className, rootStyleProps.className)}
         style={{ ...rootStyleProps.style, ...rest.style }}
