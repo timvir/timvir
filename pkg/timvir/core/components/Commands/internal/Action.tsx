@@ -1,25 +1,17 @@
-import { cx } from "../../../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends Omit<React.ComponentPropsWithoutRef<typeof Root>, "className" | "style"> {
   label?: React.ReactNode;
 }
 
 function Action(props: Props) {
   const { label, ...rest } = props;
 
-  const rootStyleProps = stylex.props(styles.root);
-
   return (
-    <Root
-      {...rest}
-      {...rootStyleProps}
-      className={cx(rest.className, rootStyleProps.className)}
-      style={{ ...rootStyleProps.style, ...rest.style }}
-    >
+    <Root {...rest} {...stylex.props(styles.root)}>
       <div {...stylex.props(styles.icon)}>
         <svg
           {...stylex.props(styles.svg)}
