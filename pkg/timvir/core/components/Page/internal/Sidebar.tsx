@@ -4,9 +4,10 @@ import { Node } from "../types";
 import Section from "./Section";
 import * as Icons from "../../../../icons";
 import { useContext } from "timvir/context";
-import { cx } from "../../../../internal/cx";
 
-interface Props extends React.ComponentPropsWithoutRef<"nav"> {
+interface Props extends Omit<React.ComponentPropsWithoutRef<"nav">, "className" | "style"> {
+  sx: stylex.StyleXStyles;
+
   toc: readonly Node[];
 
   search?: {
@@ -54,10 +55,8 @@ function Sidebar(props: Props) {
     }
   })(toc);
 
-  const rootStyleProps = stylex.props(styles.root);
-
   return (
-    <nav {...rest} {...rootStyleProps} className={cx(rest.className, rootStyleProps.className)}>
+    <nav {...rest} {...stylex.props(props.sx, styles.root)}>
       <header {...stylex.props(styles.header)}>
         <div {...stylex.props(styles.headerInner)}>
           <div {...stylex.props(styles.headerTitle)}>Timvir</div>

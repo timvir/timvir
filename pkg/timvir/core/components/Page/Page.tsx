@@ -1,6 +1,5 @@
 "use client";
 
-import { cx } from "../../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useHotkeys } from "react-hotkeys-hook";
@@ -18,7 +17,7 @@ import { Node } from "./types";
  */
 const Root = "div";
 
-interface Props extends React.ComponentProps<typeof Root> {
+interface Props extends Omit<React.ComponentProps<typeof Root>, "className" | "style"> {
   toc: readonly Node[];
 
   location: { asPath: string; push: (path: string) => void };
@@ -146,19 +145,11 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     { enableOnFormTags: true }
   );
 
-  const rootStyleProps = stylex.props(styles.root);
-
   return (
     <Provider value={context}>
-      <Root
-        ref={ref}
-        {...rest}
-        {...rootStyleProps}
-        className={cx(rest.className, rootStyleProps.className)}
-        style={{ ...rest.style, ...rootStyleProps.style }}
-      >
+      <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
         <Sidebar
-          {...stylex.props(styles.sidebar)}
+          sx={styles.sidebar}
           toc={toc}
           search={
             search && {
