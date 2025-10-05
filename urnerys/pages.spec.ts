@@ -58,7 +58,7 @@ for (const url of urls) {
 
     await page.goto(url, { waitUntil: "load" });
 
-    const inputElements = await page.$$(".timvir-b-Arbitrary-seed");
+    const inputElements = await page.$$("[data-timvir-b-Arbitrary-seed]");
     for (const inputElement of inputElements) {
       await inputElement.evaluate((element) => {
         const pasteEvent = new ClipboardEvent("paste", {

@@ -31,14 +31,14 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
 
   const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
   const containerStyleProps = stylex.props(styles.container, bleed === 0 && styles.bleedZero);
-  const captionStyleProps = stylex.props(styles.caption);
 
   return (
     <Root
       ref={ref}
+      data-timvir-b-Exhibit
       {...rest}
       {...rootStyleProps}
-      className={cx("timvir-b-Exhibit", className, rootStyleProps.className)}
+      className={cx(className, rootStyleProps.className)}
       style={{
         ...rootStyleProps.style,
         ...style,
@@ -49,9 +49,10 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
       }}
     >
       <div
+        data-timvir-b-Exhibit-container
         {...BackdropProps}
         {...containerStyleProps}
-        className={cx("timvir-b-Exhibit-container", containerStyleProps.className, BackdropProps?.className)}
+        className={cx(containerStyleProps.className, BackdropProps?.className)}
         style={{
           ...containerStyleProps.style,
           border: bleed === 0 ? "none" : `1px solid var(${cssVariables.borderColor})`,
@@ -62,7 +63,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
       </div>
 
       {caption && (
-        <div {...captionStyleProps} className={cx("timvir-b-Exhibit-caption", captionStyleProps.className)}>
+        <div data-timvir-b-Exhibit-caption {...stylex.props(styles.caption)}>
           {caption}
         </div>
       )}
