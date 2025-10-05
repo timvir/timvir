@@ -149,7 +149,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
     <Provider value={context}>
       <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
         <Sidebar
-          {...stylex.props(styles.sidebar)}
+          sx={styles.sidebar}
           toc={toc}
           search={
             search && {

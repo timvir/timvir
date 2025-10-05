@@ -6,6 +6,8 @@ import * as Icons from "../../../../icons";
 import { useContext } from "timvir/context";
 
 interface Props extends Omit<React.ComponentPropsWithoutRef<"nav">, "className" | "style"> {
+  sx: stylex.StyleXStyles;
+
   toc: readonly Node[];
 
   search?: {
@@ -54,7 +56,7 @@ function Sidebar(props: Props) {
   })(toc);
 
   return (
-    <nav {...rest} {...stylex.props(styles.root)}>
+    <nav {...rest} {...stylex.props(props.sx, styles.root)}>
       <header {...stylex.props(styles.header)}>
         <div {...stylex.props(styles.headerInner)}>
           <div {...stylex.props(styles.headerTitle)}>Timvir</div>
