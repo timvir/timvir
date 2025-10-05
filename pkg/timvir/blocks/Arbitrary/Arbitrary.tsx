@@ -44,24 +44,23 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
   }, [props.id, block.bus, value.seed]);
 
   const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
-  const inputStyleProps = stylex.props(styles.input);
 
   return (
     <Context.Provider value={value}>
       <Root
         ref={ref}
+        data-timvir-b-Arbitrary
         {...rest}
         {...rootStyleProps}
-        className={cx("timvir-b-Arbitrary", rootStyleProps.className, className)}
+        className={cx(rootStyleProps.className, className)}
         style={{ margin: "1em 0", ...rootStyleProps.style, ...rest.style }}
       >
         <div {...stylex.props(styles.controls)}>
           <div {...stylex.props(styles.textField)}>
             <span {...stylex.props(styles.startAdornment)}>Seed:</span>
             <input
-              {...inputStyleProps}
-              className={cx("timvir-b-Arbitrary-seed", inputStyleProps.className)}
-              style={{ ...inputStyleProps.style }}
+              data-timvir-b-Arbitrary-seed
+              {...stylex.props(styles.input)}
               placeholder="Seed"
               value={base58.encode(new TextEncoder().encode(`${value.seed}`))}
               readOnly

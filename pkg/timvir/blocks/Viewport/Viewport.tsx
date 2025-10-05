@@ -106,8 +106,9 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
     <>
       <Root
         ref={ref}
+        data-timvir-b-Viewport
         {...rest}
-        className={cx("timvir-b-Viewport", !state.settled && "timvir-unsettled", className, rootStyleProps.className)}
+        className={cx(!state.settled && "timvir-unsettled", className, rootStyleProps.className)}
         style={{ ...rootStyleProps.style, ...rest.style }}
       >
         <div ref={svgRef} {...stylex.props(styles.svgContainer)}>

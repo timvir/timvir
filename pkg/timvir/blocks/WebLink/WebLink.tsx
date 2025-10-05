@@ -42,12 +42,13 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
   return (
     <Root
       ref={ref}
+      data-timvir-b-WebLink
       href={url}
       target="_blank"
       rel="noopener noreferrer"
       {...rest}
       {...rootStyleProps}
-      className={cx("timvir-b-WebLink", !state.settled && "timvir-unsettled", className, rootStyleProps.className)}
+      className={cx(!state.settled && "timvir-unsettled", className, rootStyleProps.className)}
       style={{ ...rootStyleProps.style, ...rest.style }}
     >
       <div {...stylex.props(styles.text)}>
