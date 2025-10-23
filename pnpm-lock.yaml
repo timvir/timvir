@@ -33,8 +33,8 @@ importers:
         specifier: ^1.56.0
         version: 1.56.1
       '@rollup/plugin-babel':
-        specifier: ^6.0.4
-        version: 6.0.4(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.5)
+        specifier: ^6.1.0
+        version: 6.1.0(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.5)
       '@rollup/plugin-commonjs':
         specifier: ^28.0.6
         version: 28.0.6(rollup@4.52.5)
@@ -1054,8 +1054,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@rollup/plugin-babel@6.0.4':
-    resolution: {integrity: sha512-YF7Y52kFdFT/xVSuVdjkV5ZdX/3YtmX0QulG+x0taQOtJdHYzVU61aSSkAgVJ7NOv6qPkIYiJSgSWWN/DM5sGw==}
+  '@rollup/plugin-babel@6.1.0':
+    resolution: {integrity: sha512-dFZNuFD2YRcoomP4oYf+DvQNSUA9ih+A3vUqopQx5EdtPGo3WBnQcI/S8pwpz91UsGfL0HsMSOlaMld8HrbubA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -3881,7 +3881,7 @@ snapshots:
     dependencies:
       playwright: 1.56.1
 
-  '@rollup/plugin-babel@6.0.4(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.5)':
+  '@rollup/plugin-babel@6.1.0(@babel/core@7.28.4)(@types/babel__core@7.20.5)(rollup@4.52.5)':
     dependencies:
       '@babel/core': 7.28.4
       '@babel/helper-module-imports': 7.27.1
