@@ -54,31 +54,6 @@ export function useResizeObserverEntry<T extends Element>() {
 
 const last = <T>(a: ReadonlyArray<T>): undefined | T => a[a.length - 1];
 
-interface ResizeObserver {
-  observe(target: Element): void;
-  unobserve(target: Element): void;
-  disconnect(): void;
-}
-
-interface ResizeObserverSize {
-  inlineSize: number;
-  blockSize: number;
-}
-
-interface ResizeObserverEntry {
-  readonly target: Element;
-  readonly contentRect: DOMRectReadOnly;
-  readonly borderBoxSize: ResizeObserverSize;
-  readonly contentBoxSize: ResizeObserverSize;
-}
-
-type ResizeObserverCallback = (entries: ReadonlyArray<ResizeObserverEntry>, observer: ResizeObserver) => void;
-
-declare const ResizeObserver: {
-  prototype: ResizeObserver;
-  new (callback: ResizeObserverCallback): ResizeObserver;
-};
-
 const nopResizeObserver: ResizeObserver = {
   observe() {},
   unobserve() {},
