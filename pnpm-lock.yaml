@@ -48,7 +48,7 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.52.5)
       '@stylexjs/stylex':
-        specifier: ^0.16.2
+        specifier: ^0.16.3
         version: 0.16.3
       '@stylexswc/nextjs-plugin':
         specifier: ^0.12.0
