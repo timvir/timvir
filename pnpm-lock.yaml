@@ -87,7 +87,7 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       caniuse-lite:
-        specifier: ^1.0.30001743
+        specifier: ^1.0.30001754
         version: 1.0.30001755
       core-js:
         specifier: ^3.45.1
