@@ -165,7 +165,7 @@ importers:
         specifier: ^7
         version: 7.28.5
       espree:
-        specifier: ^11.0.0
+        specifier: ^9 || ^10 || ^11
         version: 11.0.0
       mdast-util-from-markdown:
         specifier: ^1 || ^2
