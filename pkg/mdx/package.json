@@ -5,7 +5,8 @@
   "license": "MIT",
   "sideEffects": false,
   "exports": {
-    ".": "./index.js"
+    ".": "./index.js",
+    "./remarkPlugin": "./remarkPlugin.js"
   },
   "dependencies": {
     "@babel/generator": "^7",
