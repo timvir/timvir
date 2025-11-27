@@ -34,7 +34,7 @@ export function remarkPlugin() {
         /*
          * The module which holds the sample.
          */
-        const module = path.join(path.dirname(filename), component, "samples", variant);
+        const module = path.join(component, "samples", variant);
 
         function loadSource() {
           if (fs.existsSync(module)) {
