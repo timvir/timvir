@@ -37,7 +37,7 @@ export function remarkPlugin() {
         const module = path.join(component, "samples", variant);
 
         function loadSource() {
-          const absoluteModulePath = path.join(path.dirname(filename), module)
+          const absoluteModulePath = path.join(path.dirname(filename), module);
 
           if (fs.existsSync(absoluteModulePath)) {
             return fs.readFileSync(absoluteModulePath, "utf8");
