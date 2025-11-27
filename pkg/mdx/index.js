@@ -34,13 +34,15 @@ export function remarkPlugin() {
         /*
          * The module which holds the sample.
          */
-        const module = path.join(path.dirname(filename), component, "samples", variant);
+        const module = path.join(component, "samples", variant);
 
         function loadSource() {
-          if (fs.existsSync(module)) {
-            return fs.readFileSync(module, "utf8");
+          const absoluteModulePath = path.join(path.dirname(filename), module);
+
+          if (fs.existsSync(absoluteModulePath)) {
+            return fs.readFileSync(absoluteModulePath, "utf8");
           } else {
-            return fs.readFileSync(`${module}.tsx`, "utf8");
+            return fs.readFileSync(`${absoluteModulePath}.tsx`, "utf8");
           }
         }
 
