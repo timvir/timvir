@@ -34,7 +34,7 @@
     "builtin-modules": "^5.0.0",
     "bytestring": "^1.0.1",
     "caniuse-lite": "^1.0.30001755",
-    "core-js": "^3.46.0",
+    "core-js": "^3.47.0",
     "cors": "^2.8.5",
     "globby": "^16.0.0",
     "mdast-util-from-markdown": "^2.0.2",
