@@ -90,7 +90,7 @@ importers:
         specifier: ^1.0.30001755
         version: 1.0.30001755
       core-js:
-        specifier: ^3.46.0
+        specifier: ^3.47.0
         version: 3.47.0
       cors:
         specifier: ^2.8.5
