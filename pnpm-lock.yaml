@@ -120,7 +120,7 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       rollup:
-        specifier: ^4.53.2
+        specifier: ^4.53.3
         version: 4.53.3
       rollup-preserve-directives:
         specifier: ^1.1.3
