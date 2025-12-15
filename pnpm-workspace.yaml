@@ -1,3 +1,4 @@
-minimumReleaseAge: 12960
 packages:
   - pkg/*
+
+# minimumReleaseAge: 12960
