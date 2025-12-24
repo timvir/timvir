@@ -18,6 +18,15 @@ export interface Value {
    * Configuration for blocks.
    */
   blocks?: {
+    Exhibit?: {
+      /**
+       * If provided, Exhibit blocks will use this theme by default (unless overridden locally).
+       *
+       * If not set, default is to honor the prefers-color-scheme media feature.
+       */
+      theme?: "light" | "dark";
+    };
+
     WebLink?: {
       unfurl: (url: string) => Promise<any>;
     };

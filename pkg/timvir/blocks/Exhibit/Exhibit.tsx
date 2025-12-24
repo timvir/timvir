@@ -2,7 +2,7 @@
 
 import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
-import { useBlock } from "timvir/core";
+import { useBlock, useContext } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
 import * as React from "react";
 
@@ -24,13 +24,16 @@ interface Props extends React.ComponentProps<typeof Root> {
   BackdropProps?: React.ComponentPropsWithoutRef<"div">;
 
   /**
-   *
+   * Override the theme used for the background pattern. If not provided, the
+   * Exhibit component will use the default from the context. If that is also
+   * not provided, it will honor the prefers-color-scheme media feature.
    */
   theme?: "light" | "dark";
 }
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const block = useBlock(props);
+  const { theme: defaultTheme } = useContext().blocks?.Exhibit ?? {};
+  const block = useBlock({ ...props, theme: props.theme ?? defaultTheme });
 
   const { caption, bleed, BackdropProps, theme, children, className, style, ...rest } = block.props;
 
