@@ -28,21 +28,17 @@ interface Props extends React.ComponentProps<typeof Root> {
    * Exhibit component will use the default from the context. If that is also
    * not provided, it will honor the prefers-color-scheme media feature.
    */
-  theme?: "light" | "dark";
+  theme?: "system" | "light" | "dark";
 }
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
   const { theme: defaultTheme } = useContext().blocks?.Exhibit ?? {};
   const block = useBlock({ ...props, theme: props.theme ?? defaultTheme });
 
-  const { caption, bleed, BackdropProps, theme, children, className, style, ...rest } = block.props;
+  const { caption, bleed, BackdropProps, theme = "system", children, className, style, ...rest } = block.props;
 
   const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
-  const containerStyleProps = stylex.props(
-    styles.container,
-    bleed === 0 && styles.bleedZero,
-    theme && styles[`${theme}Theme`]
-  );
+  const containerStyleProps = stylex.props(styles.container, bleed === 0 && styles.bleedZero, styles[`${theme}Theme`]);
 
   return (
     <Root
@@ -109,6 +105,9 @@ const styles = stylex.create({
     padding: 0,
   },
 
+  systemTheme: {
+    backgroundImage: `var(${cssVariables.background})`,
+  },
   lightTheme: {
     backgroundImage: `url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==)`,
   },

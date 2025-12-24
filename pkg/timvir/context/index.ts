@@ -24,7 +24,7 @@ export interface Value {
        *
        * If not set, default is to honor the prefers-color-scheme media feature.
        */
-      theme?: "light" | "dark";
+      theme?: "system" | "light" | "dark";
     };
 
     WebLink?: {

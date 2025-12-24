@@ -13,7 +13,7 @@ export default function Sample(props: Props) {
       caption={`Theme: ${props.theme}`}
       BackdropProps={{
         style: {
-          color: { light: "black", dark: "white" }[props.theme],
+          color: { system: "inherit", light: "black", dark: "white" }[props.theme],
         },
       }}
     >
