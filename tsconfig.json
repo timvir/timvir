@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": ".",
     "paths": {
@@ -28,5 +28,5 @@
     ]
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", "ambient.d.ts", "next-env.d.ts", ".next/types/**/*.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "ambient.d.ts", "next-env.d.ts", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"]
 }
