@@ -19,3 +19,6 @@ body {
 body {
   background-color: var(--timvir-background-color);
 }
+
+/* biome-ignore lint/suspicious/noUnknownAtRules: StyleX */
+@stylex;

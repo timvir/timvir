@@ -29,6 +29,9 @@ importers:
       '@mdx-js/loader':
         specifier: ^3.1.1
         version: 3.1.1(webpack@5.99.5(@swc/core@1.15.3))
+      '@next/mdx':
+        specifier: ^16.0.10
+        version: 16.0.10(@mdx-js/loader@3.1.1(webpack@5.99.5(@swc/core@1.15.3)))
       '@playwright/test':
         specifier: ^1.56.1
         version: 1.56.1
@@ -53,6 +56,9 @@ importers:
       '@stylexswc/nextjs-plugin':
         specifier: ^0.13.1
         version: 0.13.1(@swc/core@1.15.3)(next@16.0.10(@babel/core@7.28.5)(@playwright/test@1.56.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
+      '@stylexswc/postcss-plugin':
+        specifier: 0.13.1
+        version: 0.13.1(@swc/core@1.15.3)
       '@stylexswc/rollup-plugin':
         specifier: ^0.13.1
         version: 0.13.1(@swc/core@1.15.3)
@@ -1020,6 +1026,17 @@ packages:
   '@next/env@16.0.10':
     resolution: {integrity: sha512-8tuaQkyDVgeONQ1MeT9Mkk8pQmZapMKFh5B+OrFUlG3rVmYTXcXlBetBgTurKXGaIZvkoqRT9JL5K3phXcgang==}
 
+  '@next/mdx@16.0.10':
+    resolution: {integrity: sha512-i2DXv8Ga+BXvo7XlHhgutnguH9a5Txix3j760RlKctZ22yXHhYhXsie1UCouEff4mxY04nVS+Bz6Jbaq9N+w0g==}
+    peerDependencies:
+      '@mdx-js/loader': '>=0.15.0'
+      '@mdx-js/react': '>=0.15.0'
+    peerDependenciesMeta:
+      '@mdx-js/loader':
+        optional: true
+      '@mdx-js/react':
+        optional: true
+
   '@next/swc-darwin-arm64@16.0.10':
     resolution: {integrity: sha512-4XgdKtdVsaflErz+B5XeG0T5PeXKDdruDf3CRpnhN+8UebNa5N2H58+3GDgpn/9GBurrQ1uWW768FfscwYkJRg==}
     engines: {node: '>= 10'}
@@ -1306,6 +1323,9 @@ packages:
     resolution: {integrity: sha512-6pmJmbCkL81s/HbnesCA0eiSt5yOmS3oUzSw+sBMtJR+e1Ybu4qbIvTh1+9NrMAmUlCS/icIvP3IFohZDjJnqQ==}
     peerDependencies:
       next: '>=15.0.0'
+
+  '@stylexswc/postcss-plugin@0.13.1':
+    resolution: {integrity: sha512-IuhW/evVzumK/qv9aWK1kHPmp+u9b1RVVk9BoUVYndaasdRf0huUapugT+Lp3crtMx6R6cpnDIXlIVbwEbHXMw==}
 
   '@stylexswc/rollup-plugin@0.13.1':
     resolution: {integrity: sha512-yP515zDvK/Ky3D+Cf7e3721fDniKZ45OApMzV4XS6W20ISwJ8+Dew6qc3C78iPlJn5mqBF3BpUrQEqnks/7Wqw==}
@@ -1955,6 +1975,10 @@ packages:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
 
+  glob-parent@6.0.2:
+    resolution: {integrity: sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==}
+    engines: {node: '>=10.13.0'}
+
   glob-to-regexp@0.4.1:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
 
@@ -2509,6 +2533,10 @@ packages:
 
   postcss@8.4.31:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
+    engines: {node: ^10 || ^12 || >=14}
+
+  postcss@8.5.6:
+    resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
 
   prettier@2.8.8:
@@ -3975,6 +4003,12 @@ snapshots:
 
   '@next/env@16.0.10': {}
 
+  '@next/mdx@16.0.10(@mdx-js/loader@3.1.1(webpack@5.99.5(@swc/core@1.15.3)))':
+    dependencies:
+      source-map: 0.7.4
+    optionalDependencies:
+      '@mdx-js/loader': 3.1.1(webpack@5.99.5(@swc/core@1.15.3))
+
   '@next/swc-darwin-arm64@16.0.10':
     optional: true
 
@@ -4202,6 +4236,18 @@ snapshots:
       '@stylexswc/turbopack-plugin': 0.13.1(@swc/core@1.15.3)
       '@stylexswc/webpack-plugin': 0.13.1(@swc/core@1.15.3)
       next: 16.0.10(@babel/core@7.28.5)(@playwright/test@1.56.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+    transitivePeerDependencies:
+      - '@swc/core'
+      - supports-color
+
+  '@stylexswc/postcss-plugin@0.13.1(@swc/core@1.15.3)':
+    dependencies:
+      '@stylexjs/babel-plugin': 0.16.3
+      '@stylexswc/rs-compiler': 0.13.1(@swc/core@1.15.3)
+      fast-glob: 3.3.3
+      glob-parent: 6.0.2
+      is-glob: 4.0.3
+      postcss: 8.5.6
     transitivePeerDependencies:
       - '@swc/core'
       - supports-color
@@ -4856,6 +4902,10 @@ snapshots:
   gensync@1.0.0-beta.2: {}
 
   glob-parent@5.1.2:
+    dependencies:
+      is-glob: 4.0.3
+
+  glob-parent@6.0.2:
     dependencies:
       is-glob: 4.0.3
 
@@ -5580,6 +5630,12 @@ snapshots:
   postcss-value-parser@4.2.0: {}
 
   postcss@8.4.31:
+    dependencies:
+      nanoid: 3.3.11
+      picocolors: 1.1.1
+      source-map-js: 1.2.1
+
+  postcss@8.5.6:
     dependencies:
       nanoid: 3.3.11
       picocolors: 1.1.1
