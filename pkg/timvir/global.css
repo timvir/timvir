@@ -23,6 +23,20 @@
 
   --timvir-background-pattern: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==);
   --timvir-highlight-background-color: #ffe10044;
+
+  /* Message component colors - light mode */
+  --timvir-message-text-color: #000000;
+  --timvir-message-bg-color: #f0fcf6;
+  --timvir-message-border-color: rgba(16, 22, 26, 0.2);
+  --timvir-message-info-bg: #f0f2fc;
+  --timvir-message-info-text: #000000;
+  --timvir-message-info-icon: #2a47d5;
+  --timvir-message-warning-bg: #fcf9f0;
+  --timvir-message-warning-text: #000000;
+  --timvir-message-warning-icon: #a68521;
+  --timvir-message-alert-bg: #fcf0f0;
+  --timvir-message-alert-text: #000000;
+  --timvir-message-alert-icon: #da4444;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,6 +54,20 @@
 
     --timvir-background-pattern: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
     --timvir-highlight-background-color: rgba(174, 124, 20, 0.15);
+
+    /* Message component colors - dark mode */
+    --timvir-message-text-color: rgba(255, 255, 255, 0.86);
+    --timvir-message-bg-color: #2a2d31;
+    --timvir-message-border-color: rgba(255, 255, 255, 0.15);
+    --timvir-message-info-bg: #1e2233;
+    --timvir-message-info-text: rgba(255, 255, 255, 0.86);
+    --timvir-message-info-icon: #5b7fff;
+    --timvir-message-warning-bg: #33301e;
+    --timvir-message-warning-text: rgba(255, 255, 255, 0.86);
+    --timvir-message-warning-icon: #d4b55c;
+    --timvir-message-alert-bg: #331e1e;
+    --timvir-message-alert-text: rgba(255, 255, 255, 0.86);
+    --timvir-message-alert-icon: #ff6b6b;
   }
 }
 
@@ -80,36 +108,4 @@ body {
   --c-p-3: #61c19f;
   --c-p-4: #38a585;
   --c-p-5: #1b896b;
-
-  /* Message component colors - light mode */
-  --timvir-message-text-color: #000000;
-  --timvir-message-bg-color: var(--c-p-0);
-  --timvir-message-border-color: rgba(16, 22, 26, 0.2);
-  --timvir-message-info-bg: #f0f2fc;
-  --timvir-message-info-text: #000000;
-  --timvir-message-info-icon: #2a47d5;
-  --timvir-message-warning-bg: #fcf9f0;
-  --timvir-message-warning-text: #000000;
-  --timvir-message-warning-icon: #a68521;
-  --timvir-message-alert-bg: #fcf0f0;
-  --timvir-message-alert-text: #000000;
-  --timvir-message-alert-icon: #da4444;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    /* Message component colors - dark mode */
-    --timvir-message-text-color: rgba(255, 255, 255, 0.86);
-    --timvir-message-bg-color: #2a2d31;
-    --timvir-message-border-color: rgba(255, 255, 255, 0.15);
-    --timvir-message-info-bg: #1e2233;
-    --timvir-message-info-text: rgba(255, 255, 255, 0.86);
-    --timvir-message-info-icon: #5b7fff;
-    --timvir-message-warning-bg: #33301e;
-    --timvir-message-warning-text: rgba(255, 255, 255, 0.86);
-    --timvir-message-warning-icon: #d4b55c;
-    --timvir-message-alert-bg: #331e1e;
-    --timvir-message-alert-text: rgba(255, 255, 255, 0.86);
-    --timvir-message-alert-icon: #ff6b6b;
-  }
 }
