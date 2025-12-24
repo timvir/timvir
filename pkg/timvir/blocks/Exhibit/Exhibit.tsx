@@ -2,7 +2,7 @@
 
 import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
-import { useBlock } from "timvir/core";
+import { useBlock, useContext } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
 import * as React from "react";
 
@@ -22,15 +22,23 @@ interface Props extends React.ComponentProps<typeof Root> {
   bleed?: string | number;
 
   BackdropProps?: React.ComponentPropsWithoutRef<"div">;
+
+  /**
+   * Override the theme used for the background pattern. If not provided, the
+   * Exhibit component will use the default from the context. If that is also
+   * not provided, it will honor the prefers-color-scheme media feature.
+   */
+  theme?: "system" | "light" | "dark";
 }
 
 function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
-  const block = useBlock(props);
+  const { theme: defaultTheme } = useContext().blocks?.Exhibit ?? {};
+  const block = useBlock({ ...props, theme: props.theme ?? defaultTheme });
 
-  const { caption, bleed, BackdropProps, children, className, style, ...rest } = block.props;
+  const { caption, bleed, BackdropProps, theme = "system", children, className, style, ...rest } = block.props;
 
   const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
-  const containerStyleProps = stylex.props(styles.container, bleed === 0 && styles.bleedZero);
+  const containerStyleProps = stylex.props(styles.container, bleed === 0 && styles.bleedZero, styles[`${theme}Theme`]);
 
   return (
     <Root
@@ -96,6 +104,17 @@ const styles = stylex.create({
     marginInline: 0,
     padding: 0,
   },
+
+  systemTheme: {
+    backgroundImage: `var(${cssVariables.background})`,
+  },
+  lightTheme: {
+    backgroundImage: `url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==)`,
+  },
+  darkTheme: {
+    backgroundImage: `url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==)`,
+  },
+
   caption: {
     fontSize: "0.8125rem",
     lineHeight: 1.1875,

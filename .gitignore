@@ -14,6 +14,7 @@ next-env.d.ts
 /pkg/timvir/**/*.cjs
 /pkg/timvir/**/*.d.ts
 /pkg/timvir/**/*.css
+!/pkg/timvir/global.css
 
 /pkg/core/**/*.js
 /pkg/core/**/*.cjs

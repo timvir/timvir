@@ -1,4 +1,4 @@
-import { Code } from "timvir/blocks";
+import { Code, Grid } from "timvir/blocks";
 
 # Exhibit
 
@@ -39,3 +39,19 @@ To entirely remove any bleed and checkered background, render your element direc
 <Sample variant="bleed" props={{ bleed: 8 }} />
 <Sample variant="bleed" props={{ bleed: 16 }} />
 <Sample variant="bleed" />
+
+## Theme
+
+Timvir itself respects the `prefers-color-scheme` media feature.
+Its UI automatically adjusts based on that user preference.
+However, sometimes the elements shown in an `<Exhibit>` need to be shown on a light or dark background.
+In those cases, you can force a light or dark theme with the `theme` prop.
+
+<Grid>
+  <div>
+    <Sample variant="theme" props={{ theme: "light" }} />
+  </div>
+  <div>
+    <Sample variant="theme" props={{ theme: "dark" }} />
+  </div>
+</Grid>

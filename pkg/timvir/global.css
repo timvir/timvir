@@ -25,20 +25,22 @@
   --timvir-highlight-background-color: #ffe10044;
 }
 
-:root[data-timvir-theme="dark"] {
-  --timvir-background-color: #1f2023;
-  --timvir-text-color: rgba(255 255 255 / 0.86);
-  --timvir-secondary-text-color: rgba(255 255 255 / 0.56);
-  --timvir-secondary-background-color: #161618;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --timvir-background-color: #1f2023;
+    --timvir-text-color: rgba(255 255 255 / 0.86);
+    --timvir-secondary-text-color: rgba(255 255 255 / 0.56);
+    --timvir-secondary-background-color: #161618;
 
-  --timvir-border-color: #27292f;
+    --timvir-border-color: #27292f;
 
-  --timvir-sidebar-highlight-color: rgb(41, 43, 47);
+    --timvir-sidebar-highlight-color: rgb(41, 43, 47);
 
-  --timvir-accent-color: #38a585;
+    --timvir-accent-color: #38a585;
 
-  --timvir-background-pattern: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
-  --timvir-highlight-background-color: rgba(174, 124, 20, 0.15);
+    --timvir-background-pattern: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==);
+    --timvir-highlight-background-color: rgba(174, 124, 20, 0.15);
+  }
 }
 
 /*
@@ -52,11 +54,13 @@
   text-decoration: var(--timvir-b-Code-shiki-light-text-decoration);
 }
 
-:root[data-timvir-theme="dark"] [data-timvir-b-Code] .shiki span {
-  color: var(--timvir-b-Code-shiki-dark);
-  font-style: var(--timvir-b-Code-shiki-dark-font-style);
-  font-weight: var(--timvir-b-Code-shiki-dark-font-weight);
-  text-decoration: var(--timvir-b-Code-shiki-dark-text-decoration);
+@media (prefers-color-scheme: dark) {
+  [data-timvir-b-Code] .shiki span {
+    color: var(--timvir-b-Code-shiki-dark);
+    font-style: var(--timvir-b-Code-shiki-dark-font-style);
+    font-weight: var(--timvir-b-Code-shiki-dark-font-weight);
+    text-decoration: var(--timvir-b-Code-shiki-dark-text-decoration);
+  }
 }
 
 body {
