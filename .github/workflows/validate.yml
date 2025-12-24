@@ -16,6 +16,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@c5a866b6ab867e88becbed4467b93592bce69f8a # v21
       - run: nix run github:nicknovitski/nix-develop .#workflow
 
+      - run: ./node_modules/.bin/next typegen
       - run: tsc --build tsconfig.json
       - run: tsc --build tsconfig.build.json
       - run: rollup -c config/rollup.config.js
