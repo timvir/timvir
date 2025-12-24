@@ -10,4 +10,4 @@ For cases where you have a component in an Exhibit that requires a light or dark
 
 The theme detector module remains present to not break builds, but became obsolete.
 It will print a warning into the console when used.
-We will completely removed it in a future version.
+We will completely remove it in a future version.
