@@ -120,7 +120,7 @@ const styles = stylex.create({
     backgroundColor: "var(--timvir-secondary-background-color)",
     wordBreak: "initial",
 
-    ":after": {
+    "::after": {
       display: "block",
       position: "absolute",
       content: "",
@@ -132,11 +132,11 @@ const styles = stylex.create({
       borderRadius: "2px",
     },
 
-    ":hover:after": {
+    ":hover::after": {
       borderColor: "var(--timvir-text-color)",
     },
 
-    ":focus-within:after": {
+    ":focus-within::after": {
       borderColor: "var(--timvir-text-color)",
     },
   },
