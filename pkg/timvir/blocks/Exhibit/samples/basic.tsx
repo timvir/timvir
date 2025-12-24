@@ -1,8 +1,13 @@
 import { Exhibit } from "..";
 
-export default function Sample() {
+type Props = Partial<React.ComponentPropsWithoutRef<typeof Exhibit>>;
+
+export default function Sample(props: Props) {
   return (
-    <Exhibit caption={"This Exhibit serves to illustrate how the block is structured and how you can use it."}>
+    <Exhibit
+      caption={"This Exhibit serves to illustrate how the block is structured and how you can use it."}
+      {...props}
+    >
       <div
         style={{
           backgroundColor: "#80008020",
