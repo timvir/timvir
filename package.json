@@ -28,7 +28,7 @@
     "@types/babel__core": "^7.20.5",
     "@types/cors": "^2.8.19",
     "@types/estree": "^1.0.8",
-    "@types/node": "^24.10.1",
+    "@types/node": "^24.10.4",
     "@types/prettier": "^2.7.3",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
