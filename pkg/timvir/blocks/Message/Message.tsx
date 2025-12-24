@@ -52,11 +52,11 @@ export default React.forwardRef(Message);
 const styles = stylex.create({
   root: {
     position: "relative",
-    backgroundColor: "var(--c-p-0)",
-    color: "black",
+    backgroundColor: "var(--timvir-message-bg-color)",
+    color: "var(--timvir-message-text-color)",
     borderRadius: 3,
     padding: "16px 24px",
-    boxShadow: "inset 0 0 0 1px rgba(16, 22, 26, 0.2)",
+    boxShadow: "inset 0 0 0 1px var(--timvir-message-border-color)",
     display: "flex",
     alignItems: "flex-start",
     fontSize: "0.875rem",
@@ -74,26 +74,26 @@ const styles = stylex.create({
   },
 
   info: {
-    backgroundColor: "#f0f2fc",
-    color: "black",
+    backgroundColor: "var(--timvir-message-info-bg)",
+    color: "var(--timvir-message-info-text)",
   },
   warning: {
-    backgroundColor: "#fcf9f0",
-    color: "black",
+    backgroundColor: "var(--timvir-message-warning-bg)",
+    color: "var(--timvir-message-warning-text)",
   },
   alert: {
-    backgroundColor: "#fcf0f0",
-    color: "black",
+    backgroundColor: "var(--timvir-message-alert-bg)",
+    color: "var(--timvir-message-alert-text)",
   },
 
   iconInfo: {
-    color: "#2a47d5",
+    color: "var(--timvir-message-info-icon)",
   },
   iconWarning: {
-    color: "#a68521",
+    color: "var(--timvir-message-warning-icon)",
   },
   iconAlert: {
-    color: "#da4444",
+    color: "var(--timvir-message-alert-icon)",
   },
 
   content: {
