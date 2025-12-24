@@ -22,7 +22,7 @@
           tools = {
             dev = pkgs.writeShellScriptBin "dev" ''
               clear
-              ./node_modules/.bin/next dev --webpack
+              ./node_modules/.bin/next dev
             '';
           };
         in {
