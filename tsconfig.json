@@ -13,12 +13,20 @@
     "isolatedModules": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@/timvir/*": ["src/timvir/*"],
-      "timvir/*": ["pkg/timvir/*"]
+      "@/timvir/*": [
+        "src/timvir/*"
+      ],
+      "timvir/*": [
+        "pkg/timvir/*"
+      ]
     },
     "incremental": true,
     "plugins": [
@@ -27,6 +35,15 @@
       }
     ]
   },
-  "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", "ambient.d.ts", "next-env.d.ts", ".next/types/**/*.ts"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "ambient.d.ts",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ]
 }
