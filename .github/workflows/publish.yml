@@ -34,6 +34,7 @@ jobs:
 
       - run: pnpm install
 
+      - run: ./node_modules/.bin/next typegen
       - run: ./node_modules/.bin/tsc --build tsconfig.build.json
       - run: ./node_modules/.bin/rollup -c config/rollup.config.js
       - run: cat pkg/timvir/blocks/*/styles.css > pkg/timvir/blocks/styles.css
