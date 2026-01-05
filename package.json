@@ -35,7 +35,7 @@
     "babel-plugin-macros": "^3.1.0",
     "builtin-modules": "^5.0.0",
     "bytestring": "^1.0.1",
-    "caniuse-lite": "^1.0.30001760",
+    "caniuse-lite": "^1.0.30001761",
     "core-js": "^3.47.0",
     "cors": "^2.8.5",
     "globby": "^16.1.0",
