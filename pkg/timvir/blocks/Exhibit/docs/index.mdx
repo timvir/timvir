@@ -1,4 +1,4 @@
-import { Code, Grid } from "timvir/blocks";
+import { Grid } from "timvir/blocks";
 
 # Exhibit
 
@@ -21,9 +21,11 @@ Think of the `<Exhibit>` block as a `<figure>` + `<figcaption>` for React compon
 
 Import `Exhibit` from the `timvir/blocks` module, then use in a Timvir mdx page like so:
 
-<Code language="jsx">
-  <Sample variant="usage" as="source/markup" />
-</Code>
+```jsx
+<Exhibit caption="Here goes your caption">
+  <YourReactComponent />
+</Exhibit>
+```
 
 ## Bleed
 

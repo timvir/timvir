@@ -2,9 +2,7 @@ const { join, dirname } = require("node:path");
 const fs = require("node:fs");
 const crypto = require("node:crypto");
 const { createMacro } = require("babel-plugin-macros");
-const { parse } = require("@babel/parser");
 const generate = require("@babel/generator");
-const prettier = require("prettier");
 
 let counter = 0;
 
@@ -103,36 +101,6 @@ module.exports = createMacro(({ references, babel, state }) => {
 
       const string = {
         module: () => source,
-        component: () => {
-          const file = parse(source, {
-            sourceType: "module",
-            plugins: ["jsx", "typescript"],
-          });
-
-          const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
-          const { declaration } = exportDefaultDeclaration;
-          const { code } = generate.default(declaration);
-          return prettier.format(code, {
-            parser: "typescript",
-            printWidth: 80,
-          });
-        },
-        markup: () => {
-          const file = parse(source, {
-            sourceType: "module",
-            plugins: ["jsx", "typescript"],
-          });
-
-          const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
-          const { declaration } = exportDefaultDeclaration;
-          const body = declaration.body.body;
-          const returnStatement = body.find((node) => t.isReturnStatement(node));
-          const { code } = generate.default(returnStatement.argument);
-          return prettier.format(code, {
-            parser: "typescript",
-            printWidth: 80,
-          });
-        },
       }[as]();
 
       referencePath.parentPath.parentPath.replaceWith(t.stringLiteral(string));

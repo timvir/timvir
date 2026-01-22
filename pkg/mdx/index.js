@@ -1,6 +1,3 @@
-import generate from "@babel/generator";
-import { parse } from "@babel/parser";
-import * as t from "@babel/types";
 import * as crypto from "node:crypto";
 import * as espree from "espree";
 import * as fs from "node:fs";
@@ -8,7 +5,6 @@ import { fromMarkdown } from "mdast-util-from-markdown";
 import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
 import * as path from "node:path";
-import prettier from "prettier";
 import { visit } from "unist-util-visit";
 
 export function remarkPlugin() {
@@ -105,72 +101,6 @@ export function remarkPlugin() {
           },
           source: () => {
             const source = loadSource();
-
-            const { children } = fromMarkdown(`{${JSON.stringify(source)}}`, {
-              extensions: [mdxjs()],
-              mdastExtensions: [mdxFromMarkdown()],
-            });
-
-            for (const [k] of Object.keys(node)) {
-              delete node[k];
-            }
-
-            for (const [k, v] of Object.entries(children[0])) {
-              node[k] = v;
-            }
-          },
-          "source/component": () => {
-            const source = (() => {
-              const file = parse(loadSource(), {
-                sourceType: "module",
-                plugins: ["jsx", "typescript"],
-              });
-
-              const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
-              const { declaration } = exportDefaultDeclaration;
-              const { code } = generate.default(declaration);
-              return prettier
-                .format(code, {
-                  parser: "typescript",
-                  printWidth: 80,
-                })
-                .trim()
-                .slice(0, -1);
-            })();
-
-            const { children } = fromMarkdown(`{${JSON.stringify(source)}}`, {
-              extensions: [mdxjs()],
-              mdastExtensions: [mdxFromMarkdown()],
-            });
-
-            for (const [k] of Object.keys(node)) {
-              delete node[k];
-            }
-
-            for (const [k, v] of Object.entries(children[0])) {
-              node[k] = v;
-            }
-          },
-          "source/markup": () => {
-            const source = (() => {
-              const file = parse(loadSource(), {
-                sourceType: "module",
-                plugins: ["jsx", "typescript"],
-              });
-
-              const exportDefaultDeclaration = file.program.body.find((node) => t.isExportDefaultDeclaration(node));
-              const { declaration } = exportDefaultDeclaration;
-              const body = declaration.body.body;
-              const returnStatement = body.find((node) => t.isReturnStatement(node));
-              const { code } = generate.default(returnStatement.argument);
-              return prettier
-                .format(code, {
-                  parser: "typescript",
-                  printWidth: 80,
-                })
-                .trim()
-                .slice(0, -1);
-            })();
 
             const { children } = fromMarkdown(`{${JSON.stringify(source)}}`, {
               extensions: [mdxjs()],
