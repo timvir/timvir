@@ -8,7 +8,7 @@ Drop dependency on Prettier
 
 Prettier was used in the `@timvir/macro` and `@timvir/mdx` packages to format source code that's injected into MDX files.
 
-When Prettier released major version 3, they dropped the synchrous API so we were not able to keep up to date.
+When Prettier released major version 3, they dropped the synchronous API so we were not able to keep up to date.
 Many projects are starting to adopt alternative formatters (oxc, biome).
 Using Prettier introduces divergence between code in files and code that appears in the documentation.
 Reformatting code makes line highlighting unpredictable.
