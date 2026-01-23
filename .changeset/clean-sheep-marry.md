@@ -1,5 +1,4 @@
 ---
-"timvir": patch
 "@timvir/macro": patch
 "@timvir/mdx": patch
 ---
