@@ -313,9 +313,13 @@ function useHotkeys(
         return;
       }
 
-      for (const modifier of trigger.modifiers ?? []) {
-        if (!event[`${modifier}Key`]) {
-          return;
+      {
+        const allModifiers: Array<"alt" | "ctrl" | "meta" | "shift"> = ["alt", "ctrl", "meta", "shift"];
+        const expectedModifiers = trigger.modifiers ?? [];
+        for (const modifier of allModifiers) {
+          if (event[`${modifier}Key`] && !expectedModifiers.includes(modifier)) {
+            return;
+          }
         }
       }
 
