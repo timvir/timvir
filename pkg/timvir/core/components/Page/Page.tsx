@@ -2,7 +2,6 @@
 
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import { useHotkeys } from "react-hotkeys-hook";
 import * as builtins from "timvir/builtins";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
@@ -101,11 +100,11 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
       blocks,
       toc,
     }),
-    [bus, mdxComponents, location, Link, blocks, toc]
+    [bus, mdxComponents, location, Link, blocks, toc],
   );
 
   useHotkeys(
-    "meta+p",
+    { modifiers: ["meta"], key: "p" },
     (ev) => {
       ev.preventDefault();
       setState({
@@ -114,11 +113,11 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         },
       });
     },
-    { enableOnFormTags: true }
+    { enableOnFormTags: true },
   );
 
   useHotkeys(
-    "meta+k",
+    { modifiers: ["meta"], key: "k" },
     (ev) => {
       ev.preventDefault();
       setState({
@@ -127,11 +126,11 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         },
       });
     },
-    { enableOnFormTags: ["INPUT"] }
+    { enableOnFormTags: ["INPUT"] },
   );
 
   useHotkeys(
-    "escape",
+    { key: "escape" },
     (ev) => {
       if (state.search.open) {
         ev.preventDefault();
@@ -142,7 +141,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         });
       }
     },
-    { enableOnFormTags: true }
+    { enableOnFormTags: true },
   );
 
   return (
@@ -277,3 +276,59 @@ const styles = stylex.create({
     paddingTop: 80,
   },
 });
+
+function useHotkeys(
+  trigger: {
+    modifiers?: Array<"meta" | "ctrl" | "alt" | "shift">;
+    key: string;
+  },
+
+  callback: (event: KeyboardEvent) => void,
+
+  options: {
+    enableOnFormTags?: boolean | string[];
+  } = {},
+) {
+  const { enableOnFormTags = false } = options;
+
+  const handleKeyDown = React.useCallback(
+    (event: KeyboardEvent) => {
+      const target = event.target;
+
+      if (target instanceof HTMLElement) {
+        const isInput = ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName);
+
+        if (isInput) {
+          if (enableOnFormTags === false) {
+            return;
+          }
+
+          if (Array.isArray(enableOnFormTags) && !enableOnFormTags.includes(target.tagName)) {
+            return;
+          }
+        }
+      }
+
+      if (trigger.key.toLowerCase() !== event.key.toLowerCase()) {
+        return;
+      }
+
+      for (const modifier of trigger.modifiers ?? []) {
+        if (!event[`${modifier}Key`]) {
+          return;
+        }
+      }
+
+      callback(event);
+    },
+    [trigger, callback, enableOnFormTags],
+  );
+
+  React.useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]);
+}
