@@ -289,15 +289,20 @@ function useHotkeys(
   },
   callback: (event: KeyboardEvent) => void,
 ) {
-  const handleKeyDown = React.useCallback(
-    (event: KeyboardEvent) => {
-      if (trigger.key.toLowerCase() !== event.key.toLowerCase()) {
+  const ref = React.useRef({ trigger, callback });
+  React.useLayoutEffect(() => {
+    ref.current = { trigger, callback };
+  });
+
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (ref.current.trigger.key.toLowerCase() !== event.key.toLowerCase()) {
         return;
       }
 
       {
         const allModifiers: Array<"alt" | "ctrl" | "meta" | "shift"> = ["alt", "ctrl", "meta", "shift"];
-        const expectedModifiers = trigger.modifiers ?? [];
+        const expectedModifiers = ref.current.trigger.modifiers ?? [];
         for (const modifier of allModifiers) {
           if (event[`${modifier}Key`] !== expectedModifiers.includes(modifier)) {
             return;
@@ -305,16 +310,13 @@ function useHotkeys(
         }
       }
 
-      callback(event);
-    },
-    [trigger, callback],
-  );
+      ref.current.callback(event);
+    };
 
-  React.useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [handleKeyDown]);
+  }, []);
 }
