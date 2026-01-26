@@ -296,9 +296,11 @@ function useHotkeys(
       const target = event.target;
 
       if (target instanceof HTMLElement) {
-        const isInput = ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName);
+        if (target.isContentEditable) {
+          return;
+        }
 
-        if (isInput) {
+        if (["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName)) {
           if (enableOnFormTags === false) {
             return;
           }
