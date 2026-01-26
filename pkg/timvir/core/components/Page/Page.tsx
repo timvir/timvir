@@ -104,7 +104,10 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   );
 
   useHotkeys(
-    { modifiers: ["meta"], key: "p" },
+    {
+      modifiers: ["meta"],
+      key: "p",
+    },
     (ev) => {
       ev.preventDefault();
       setState({
@@ -113,11 +116,13 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         },
       });
     },
-    { enableOnFormTags: true },
   );
 
   useHotkeys(
-    { modifiers: ["meta"], key: "k" },
+    {
+      modifiers: ["meta"],
+      key: "k",
+    },
     (ev) => {
       ev.preventDefault();
       setState({
@@ -126,11 +131,12 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         },
       });
     },
-    { enableOnFormTags: ["INPUT"] },
   );
 
   useHotkeys(
-    { key: "escape" },
+    {
+      key: "escape",
+    },
     (ev) => {
       if (state.search.open) {
         ev.preventDefault();
@@ -141,7 +147,6 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         });
       }
     },
-    { enableOnFormTags: true },
   );
 
   return (
@@ -282,35 +287,10 @@ function useHotkeys(
     modifiers?: Array<"meta" | "ctrl" | "alt" | "shift">;
     key: string;
   },
-
   callback: (event: KeyboardEvent) => void,
-
-  options: {
-    enableOnFormTags?: boolean | string[];
-  } = {},
 ) {
-  const { enableOnFormTags = false } = options;
-
   const handleKeyDown = React.useCallback(
     (event: KeyboardEvent) => {
-      const target = event.target;
-
-      if (target instanceof HTMLElement) {
-        if (target.isContentEditable) {
-          return;
-        }
-
-        if (["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName)) {
-          if (enableOnFormTags === false) {
-            return;
-          }
-
-          if (Array.isArray(enableOnFormTags) && !enableOnFormTags.includes(target.tagName)) {
-            return;
-          }
-        }
-      }
-
       if (trigger.key.toLowerCase() !== event.key.toLowerCase()) {
         return;
       }
@@ -319,7 +299,7 @@ function useHotkeys(
         const allModifiers: Array<"alt" | "ctrl" | "meta" | "shift"> = ["alt", "ctrl", "meta", "shift"];
         const expectedModifiers = trigger.modifiers ?? [];
         for (const modifier of allModifiers) {
-          if (event[`${modifier}Key`] && !expectedModifiers.includes(modifier)) {
+          if (event[`${modifier}Key`] !== expectedModifiers.includes(modifier)) {
             return;
           }
         }
@@ -327,7 +307,7 @@ function useHotkeys(
 
       callback(event);
     },
-    [trigger, callback, enableOnFormTags],
+    [trigger, callback],
   );
 
   React.useEffect(() => {
