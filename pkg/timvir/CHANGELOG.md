@@ -1,5 +1,11 @@
 # timvir
 
+## 0.2.49
+
+### Patch Changes
+
+- **Remove dependency on react-hotkeys-hook** ([#3660](https://github.com/timvir/timvir/pull/3660)) - Timvir has only relied on a small part of the full capability of react-hotkeys-hook. It was easy enough to re-implement the necessary functionality and drop the dependency.
+
 ## 0.2.48
 
 ## 0.2.47
