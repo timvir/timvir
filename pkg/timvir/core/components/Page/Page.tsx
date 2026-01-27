@@ -2,7 +2,6 @@
 
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import { useHotkeys } from "react-hotkeys-hook";
 import * as builtins from "timvir/builtins";
 import { makeBus } from "timvir/bus";
 import { Provider, Value } from "timvir/context";
@@ -101,11 +100,14 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
       blocks,
       toc,
     }),
-    [bus, mdxComponents, location, Link, blocks, toc]
+    [bus, mdxComponents, location, Link, blocks, toc],
   );
 
   useHotkeys(
-    "meta+p",
+    {
+      modifiers: ["meta"],
+      key: "p",
+    },
     (ev) => {
       ev.preventDefault();
       setState({
@@ -114,11 +116,13 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         },
       });
     },
-    { enableOnFormTags: true }
   );
 
   useHotkeys(
-    "meta+k",
+    {
+      modifiers: ["meta"],
+      key: "k",
+    },
     (ev) => {
       ev.preventDefault();
       setState({
@@ -127,11 +131,12 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         },
       });
     },
-    { enableOnFormTags: ["INPUT"] }
   );
 
   useHotkeys(
-    "escape",
+    {
+      key: "escape",
+    },
     (ev) => {
       if (state.search.open) {
         ev.preventDefault();
@@ -142,7 +147,6 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         });
       }
     },
-    { enableOnFormTags: true }
   );
 
   return (
@@ -277,3 +281,42 @@ const styles = stylex.create({
     paddingTop: 80,
   },
 });
+
+function useHotkeys(
+  trigger: {
+    modifiers?: Array<"meta" | "ctrl" | "alt" | "shift">;
+    key: string;
+  },
+  callback: (event: KeyboardEvent) => void,
+) {
+  const ref = React.useRef({ trigger, callback });
+  React.useLayoutEffect(() => {
+    ref.current = { trigger, callback };
+  });
+
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (ref.current.trigger.key.toLowerCase() !== event.key.toLowerCase()) {
+        return;
+      }
+
+      {
+        const allModifiers: Array<"alt" | "ctrl" | "meta" | "shift"> = ["alt", "ctrl", "meta", "shift"];
+        const expectedModifiers = ref.current.trigger.modifiers ?? [];
+        for (const modifier of allModifiers) {
+          if (event[`${modifier}Key`] !== expectedModifiers.includes(modifier)) {
+            return;
+          }
+        }
+      }
+
+      ref.current.callback(event);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+}
