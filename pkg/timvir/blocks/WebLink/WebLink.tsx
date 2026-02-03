@@ -156,5 +156,5 @@ const styles = stylex.create({
 });
 
 async function defaultUnfurl(url: string) {
-  return fetch(`https://timvir.vercel.app/api/unfurl?url=${encodeURIComponent(url)}`).then((res) => res.json());
+  return fetch(`https://timvir.dev/api/unfurl?url=${encodeURIComponent(url)}`).then((res) => res.json());
 }

@@ -40,7 +40,7 @@ function Footer(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
       <div {...stylex.props(styles.grid, styles.meta)}>
         <div {...stylex.props(styles.center)}>
           Built with{" "}
-          <a href="https://timvir.vercel.app" {...stylex.props(styles.metaLink)}>
+          <a href="https://timvir.dev" {...stylex.props(styles.metaLink)}>
             Timvir
           </a>
         </div>
