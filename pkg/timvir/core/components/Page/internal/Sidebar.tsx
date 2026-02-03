@@ -26,7 +26,12 @@ function Sidebar(props: Props) {
   const [isMenuOpen, setMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
-    const scrollLockClassList = stylex.props(styles.scrollLock).className!.split(" ");
+    const className = stylex.props(styles.scrollLock).className;
+    if (!className) {
+      return;
+    }
+
+    const scrollLockClassList = className.split(" ");
     for (const className of scrollLockClassList) {
       document.body.classList.toggle(className, isMenuOpen);
     }

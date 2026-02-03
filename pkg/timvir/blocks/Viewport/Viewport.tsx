@@ -69,15 +69,19 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
         ev.preventDefault();
         const max = svgROE.contentRect.width - 2 * (56 + 8 + 8);
         setWidth((width) =>
-          Math.min(max, Math.max(320, (width ?? 0) + 2 * ev.movementX * ({ left: -1, right: 1 }[lock.current] ?? 1)))
+          Math.min(max, Math.max(320, (width ?? 0) + 2 * ev.movementX * ({ left: -1, right: 1 }[lock.current] ?? 1))),
         );
       }
     };
 
     const onMouseUp = () => {
       lock.current = "";
-      iframeRef.current!.style.userSelect = "";
-      iframeRef.current!.style.pointerEvents = "";
+
+      const iframeElement = iframeRef.current;
+      if (iframeElement) {
+        iframeElement.style.userSelect = "";
+        iframeElement.style.pointerEvents = "";
+      }
 
       setHeight((height) => {
         setMaxHeight(height);

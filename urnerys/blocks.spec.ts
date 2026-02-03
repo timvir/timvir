@@ -67,12 +67,15 @@ for (const url of urls) {
     const inputElements = await page.$$("[data-timvir-b-arbitrary-seed]");
     for (const inputElement of inputElements) {
       await inputElement.evaluate((element) => {
+        const clipboardData = new DataTransfer();
+        clipboardData.setData("text/plain", "gGV7y4U6pZVL");
+
         const pasteEvent = new ClipboardEvent("paste", {
           bubbles: true,
           cancelable: true,
-          clipboardData: new DataTransfer(),
+          clipboardData,
         });
-        pasteEvent.clipboardData!.setData("text/plain", "gGV7y4U6pZVL");
+
         element.dispatchEvent(pasteEvent);
       });
     }
@@ -84,7 +87,12 @@ for (const url of urls) {
     {
       const elements = await page.$$("[data-timvir-b-exhibit]");
       for (const [index, element] of elements.entries()) {
-        const buffer = await (await element.$("[data-timvir-b-exhibit-container]"))!.screenshot();
+        const screenshotElement = await element.$("[data-timvir-b-exhibit-container]");
+        if (!screenshotElement) {
+          continue;
+        }
+
+        const buffer = await screenshotElement.screenshot();
 
         const childElement = await element.$("[data-timvir-b-exhibit-caption]");
         const innerText = (await childElement?.innerText()) ?? `${index}`;

@@ -73,7 +73,10 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
             onClick={() => {
               if (infoRef && contentRef) {
                 // const contentParent = contentRef.parentElement;
-                const infoParent = infoRef.parentElement!;
+                const infoParent = infoRef.parentElement;
+                if (!infoParent) {
+                  return;
+                }
 
                 if (infoParent.style.height === "0px") {
                   infoParent.style.height = `${infoRef.getBoundingClientRect().height}px`;

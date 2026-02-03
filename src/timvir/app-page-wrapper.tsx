@@ -26,7 +26,7 @@ export default function Wrapper(props: Props) {
 
   return (
     <Page
-      location={{ asPath: pathname!, push: router.push }}
+      location={{ asPath: pathname ?? "/", push: router.push }}
       Link={Link}
       toc={toc}
       search={search}
