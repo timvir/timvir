@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "timvir/context";
-import { Node } from "../types";
+import type { Node } from "../types";
 import SidebarItem from "./SidebarItem";
 
 interface Props extends Node {

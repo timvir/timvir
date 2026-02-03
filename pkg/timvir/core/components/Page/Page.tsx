@@ -4,12 +4,12 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as builtins from "timvir/builtins";
 import { makeBus } from "timvir/bus";
-import { Provider, Value } from "timvir/context";
+import { Provider, type Value } from "timvir/context";
 import { layoutStyles } from "../../layout";
 import { Commands } from "../Commands";
 import { NavigationFooter } from "../NavigationFooter";
 import { Sidebar } from "./internal";
-import { Node } from "./types";
+import type { Node } from "./types";
 
 /**
  * The underlying DOM element which is rendered by this component.

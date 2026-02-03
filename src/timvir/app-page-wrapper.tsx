@@ -3,7 +3,7 @@
 import { useMDXComponents } from "mdx-components";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import * as React from "react";
+import type * as React from "react";
 import { Page } from "timvir/core";
 import { defaultSearch, Search } from "timvir/search";
 import toc from "./toc";

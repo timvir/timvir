@@ -1,5 +1,5 @@
-import { makeSubject, Subject } from "wonka";
-import { Message } from "./messages";
+import { makeSubject, type Subject } from "wonka";
+import type { Message } from "./messages";
 
 export * from "./messages";
 

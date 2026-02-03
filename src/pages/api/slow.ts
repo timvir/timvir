@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async (_req: NextApiRequest, res: NextApiResponse) => {
   await new Promise((resolve) => setTimeout(resolve, 5000));

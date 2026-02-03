@@ -1,5 +1,5 @@
 import type { Viewport } from "next";
-import * as React from "react";
+import type * as React from "react";
 
 import "./global.css";
 import "timvir/global.css";

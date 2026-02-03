@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Node } from "timvir/core";
+import type { Node } from "timvir/core";
 
 interface Props extends React.ComponentPropsWithoutRef<"div"> {
   open?: boolean;

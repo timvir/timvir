@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useContext } from "timvir/context";
-import { Node } from "../types";
+import type { Node } from "../types";
 import * as Icons from "../../../../icons";
 
 interface Props extends Node {

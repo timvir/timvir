@@ -1,5 +1,5 @@
-import { filter, pipe, Source, subscribe } from "wonka";
-import { Message } from "timvir/bus";
+import { filter, pipe, type Source, subscribe } from "wonka";
+import type { Message } from "timvir/bus";
 import { useContext } from "timvir/context";
 import * as React from "react";
 
