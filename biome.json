@@ -18,30 +18,25 @@
   "linter": {
     "rules": {
       "style": {
-        "noNonNullAssertion": "off",
-        "noUselessElse": "off"
+        "noNonNullAssertion": "off"
       },
       "security": {
         "noGlobalEval": "off",
-        "noDangerouslySetInnerHtml": "off",
-        "noBlankTarget": "off"
+        "noDangerouslySetInnerHtml": "off"
       },
       "suspicious": {
         "noArrayIndexKey": "off",
         "noExplicitAny": "off"
       },
       "complexity": {
-        "useRegexLiterals": "off",
-        "noUselessEscapeInRegex": "off"
+        "useRegexLiterals": "off"
       },
       "correctness": {
-        "useHookAtTopLevel": "off",
-        "noNestedComponentDefinitions": "off"
+        "useHookAtTopLevel": "off"
       },
       "a11y": {
         "useFocusableInteractive": "off",
         "noStaticElementInteractions": "off",
-        "useIframeTitle": "off",
         "useSemanticElements": "off",
         "noAutofocus": "off",
         "useKeyWithClickEvents": "off",

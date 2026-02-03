@@ -14,7 +14,7 @@ const urls = [
 
 function sanitizeTitle(s: string): string {
   return s
-    .replaceAll(/[\/:*\?"<>|\s\.\(\)]+/g, "-")
+    .replaceAll(/[/:*?"<>|\s.()]+/g, "-")
     .replace(/-+$/g, "")
     .replace(/^-/, "")
     .replace(/-$/, "")
@@ -96,7 +96,7 @@ for (const url of urls) {
             snapshot: sanitizeTitle(innerText),
             formula: project.name,
             payload: new File([new Uint8Array(buffer)], "screenshot.png", { type: "image/png" }),
-          })
+          }),
         );
       }
     }
