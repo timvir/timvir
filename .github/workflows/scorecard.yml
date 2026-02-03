@@ -4,9 +4,9 @@ on:
   schedule:
     - cron: "21 23 * * 6"
   pull_request:
-    branches: [master]
+    branches: [main]
   push:
-    branches: [master]
+    branches: [main]
 
 permissions: read-all
 
