@@ -28,9 +28,6 @@
         "noArrayIndexKey": "off",
         "noExplicitAny": "off"
       },
-      "correctness": {
-        "useHookAtTopLevel": "off"
-      },
       "a11y": {
         "useFocusableInteractive": "off",
         "noStaticElementInteractions": "off",

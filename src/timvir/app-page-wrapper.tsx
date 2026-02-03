@@ -14,8 +14,6 @@ const search: React.ComponentPropsWithoutRef<typeof Page>["search"] = {
   },
 };
 
-const mdxComponents = useMDXComponents();
-
 interface Props {
   children?: React.ReactNode;
 }
@@ -32,7 +30,7 @@ export default function Wrapper(props: Props) {
       Link={Link}
       toc={toc}
       search={search}
-      mdxComponents={mdxComponents}
+      mdxComponents={useMDXComponents()}
     >
       {children}
     </Page>

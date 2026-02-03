@@ -15,6 +15,11 @@ const overrides = {
   },
 };
 
+const mdxComponents = {
+  ...builtins,
+  ...overrides,
+};
+
 /**
  * This function defines the set of MDX components that are made available
  * to *.mdx files that are loaded by Next.js.
@@ -24,8 +29,5 @@ const overrides = {
  * don't use, but may in the near future).
  */
 export function useMDXComponents() {
-  return {
-    ...builtins,
-    ...overrides,
-  };
+  return mdxComponents;
 }
