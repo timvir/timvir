@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import { Node } from "../types";
+import type { Node } from "../types";
 import Section from "./Section";
 import * as Icons from "../../../../icons";
 import { useContext } from "timvir/context";

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import * as React from "react";
+import type * as React from "react";
 import { Page } from "../../Page";
 import { NavigationFooter } from "..";
 

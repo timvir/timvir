@@ -19,7 +19,6 @@
     "rules": {
       "style": {
         "noNonNullAssertion": "off",
-        "useImportType": "off",
         "noUselessElse": "off"
       },
       "security": {

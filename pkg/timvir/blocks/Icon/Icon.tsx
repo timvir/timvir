@@ -5,7 +5,7 @@ import * as stylex from "@stylexjs/stylex";
 import { useResizeObserverEntry } from "timvir/hooks";
 import * as React from "react";
 import { Canvas } from "./internal";
-import { Descriptor } from "./types";
+import type { Descriptor } from "./types";
 
 /**
  * The underlying DOM element which is rendered by this component.
