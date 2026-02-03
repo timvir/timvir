@@ -28,9 +28,6 @@
         "noArrayIndexKey": "off",
         "noExplicitAny": "off"
       },
-      "complexity": {
-        "useRegexLiterals": "off"
-      },
       "correctness": {
         "useHookAtTopLevel": "off"
       },
