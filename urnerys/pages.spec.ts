@@ -61,12 +61,15 @@ for (const url of urls) {
     const inputElements = await page.$$("[data-timvir-b-arbitrary-seed]");
     for (const inputElement of inputElements) {
       await inputElement.evaluate((element) => {
+        const clipboardData = new DataTransfer();
+        clipboardData.setData("text/plain", "gGV7y4U6pZVL");
+
         const pasteEvent = new ClipboardEvent("paste", {
           bubbles: true,
           cancelable: true,
-          clipboardData: new DataTransfer(),
+          clipboardData,
         });
-        pasteEvent.clipboardData!.setData("text/plain", "gGV7y4U6pZVL");
+
         element.dispatchEvent(pasteEvent);
       });
     }
@@ -84,7 +87,7 @@ for (const url of urls) {
         snapshot: "page",
         formula: project.name,
         payload: new File([new Uint8Array(buffer)], "screenshot.png", { type: "image/png" }),
-      })
+      }),
     );
 
     await Promise.all(imageUploads);

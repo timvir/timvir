@@ -32,7 +32,10 @@ function Caption(props: Props) {
             {...stylex.props(styles.codeToggle)}
             onClick={() => {
               if (codeRef) {
-                const infoParent = codeRef.parentElement!;
+                const infoParent = codeRef.parentElement;
+                if (!infoParent) {
+                  return;
+                }
 
                 if (infoParent.style.height === "0px") {
                   infoParent.style.height = `${codeRef.getBoundingClientRect().height}px`;

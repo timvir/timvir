@@ -17,9 +17,6 @@
 
   "linter": {
     "rules": {
-      "style": {
-        "noNonNullAssertion": "off"
-      },
       "security": {
         "noGlobalEval": "off",
         "noDangerouslySetInnerHtml": "off"

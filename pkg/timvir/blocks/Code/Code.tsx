@@ -51,7 +51,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
      * initializing the html with a pre/code block with the expected number of
      * lines.
      */
-    html: `<pre class="${stylex.props(styles.pre).className}"><code>${children
+    html: `<pre class="${stylex.props(styles.pre).className ?? ""}"><code>${children
       .trim()
       .split("\n")
       .map(() => "\n")
@@ -64,14 +64,23 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
         name: "stylex",
 
         pre(node) {
-          this.addClassToHast(node, stylex.props(styles.pre).className!);
+          const { className } = stylex.props(styles.pre);
+          if (className) {
+            this.addClassToHast(node, className);
+          }
         },
 
         line(node, index) {
-          this.addClassToHast(node, stylex.props(styles.line).className!);
+          const { className } = stylex.props(styles.line);
+          if (className) {
+            this.addClassToHast(node, className);
+          }
 
           if (highlightedLines?.includes(index)) {
-            this.addClassToHast(node, stylex.props(styles.highlightedLine).className!);
+            const { className } = stylex.props(styles.highlightedLine);
+            if (className) {
+              this.addClassToHast(node, className);
+            }
           }
         },
       };
