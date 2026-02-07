@@ -36,7 +36,7 @@
     "bytestring": "^1.0.1",
     "caniuse-lite": "^1.0.30001764",
     "core-js": "^3.47.0",
-    "cors": "^2.8.5",
+    "cors": "^2.8.6",
     "globby": "^16.1.0",
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-mdx": "^3.0.0",
