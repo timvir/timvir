@@ -2,6 +2,3 @@ packages:
   - pkg/*
 
 minimumReleaseAge: 20160
-minimumReleaseAgeExclude:
-  # Renovate security update: next@16.1.5
-  - next@16.1.5
