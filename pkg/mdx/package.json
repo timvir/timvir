@@ -5,7 +5,10 @@
   "license": "MIT",
   "sideEffects": false,
   "exports": {
-    ".": "./index.js"
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    }
   },
   "dependencies": {
     "espree": "^9 || ^10 || ^11",

@@ -6,14 +6,38 @@
   "sideEffects": false,
   "exports": {
     "./styles.css": "./styles.css",
-    "./blocks": "./blocks/index.js",
-    "./blocks/*": "./blocks/*/index.js",
-    "./builtins": "./builtins/index.js",
-    "./bus": "./bus/index.js",
-    "./context": "./context/index.js",
-    "./core": "./core/index.js",
-    "./hooks": "./hooks/index.js",
-    "./search": "./search/index.js"
+    "./blocks": {
+      "types": "./blocks/index.d.ts",
+      "import": "./blocks/index.js"
+    },
+    "./blocks/*": {
+      "types": "./blocks/*/index.d.ts",
+      "import": "./blocks/*/index.js"
+    },
+    "./builtins": {
+      "types": "./builtins/index.d.ts",
+      "import": "./builtins/index.js"
+    },
+    "./bus": {
+      "types": "./bus/index.d.ts",
+      "import": "./bus/index.js"
+    },
+    "./context": {
+      "types": "./context/index.d.ts",
+      "import": "./context/index.js"
+    },
+    "./core": {
+      "types": "./core/index.d.ts",
+      "import": "./core/index.js"
+    },
+    "./hooks": {
+      "types": "./hooks/index.d.ts",
+      "import": "./hooks/index.js"
+    },
+    "./search": {
+      "types": "./search/index.d.ts",
+      "import": "./search/index.js"
+    }
   },
   "dependencies": {
     "bytestring": "^1",
