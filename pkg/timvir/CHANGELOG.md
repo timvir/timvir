@@ -1,5 +1,11 @@
 # timvir
 
+## 0.2.50
+
+### Patch Changes
+
+- **Add explicit types and import conditions to exports** ([#3708](https://github.com/timvir/timvir/pull/3708)) - This improves TypeScript IntelliSense and module resolution for modern build tools.
+
 ## 0.2.49
 
 ### Patch Changes
