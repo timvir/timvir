@@ -3,6 +3,12 @@
   "version": "0.2.49",
   "license": "MIT",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.js"
+    }
+  },
   "dependencies": {
     "@babel/generator": "^7"
   },
