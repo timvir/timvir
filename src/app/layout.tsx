@@ -9,6 +9,12 @@ export const viewport: Viewport = {
   initialScale: 1,
   minimumScale: 1,
   userScalable: false,
+
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fff" },
+    { media: "(prefers-color-scheme: dark)", color: "#1f2023" },
+  ],
 };
 
 interface Props {
