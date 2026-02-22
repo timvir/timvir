@@ -18,7 +18,7 @@ jobs:
 
       - run: npm run build
 
-      - uses: niquis/action@f054653b611f40e7388d0e0ee53c52d97136db07 # master
+      - uses: niquis/action@ebea86af751e3807ab59167a16b15b4629739214 # master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NIQUIS_TOKEN: ${{ secrets.NIQUIS_TOKEN }}
