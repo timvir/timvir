@@ -1,6 +1,6 @@
 import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
-import * as React from "react";
+import type * as React from "react";
 import { layoutStyles } from "../../core/layout";
 
 /**
