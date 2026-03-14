@@ -16,7 +16,7 @@ import * as React from "react";
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   /**
    * The code that should be highlighted.
    */
@@ -38,7 +38,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   caption?: React.ReactNode;
 }
 
-function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Code(props: Props) {
   const block = useBlock(props);
 
   const { children, language, highlightedLines, caption, className, ...rest } = block.props;
@@ -110,7 +110,6 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   return (
     <Root
-      ref={ref}
       data-timvir-b-code
       {...rest}
       {...rootStyleProps}
@@ -132,7 +131,7 @@ function Code(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   );
 }
 
-export default React.forwardRef(Code);
+export default Code;
 
 const styles = stylex.create({
   code: {

@@ -78,7 +78,7 @@ interface Props extends Omit<React.ComponentProps<typeof Root>, "className" | "s
   blocks?: Value["blocks"];
 }
 
-function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Page(props: Props) {
   const { location, toc, Link, search, mdxComponents, Footer, blocks, children, ...rest } = props;
 
   const [state, setState] = React.useState({
@@ -151,7 +151,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   return (
     <Provider value={context}>
-      <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
+      <Root {...rest} {...stylex.props(styles.root)}>
         <Sidebar
           sx={styles.sidebar}
           toc={toc}
@@ -234,7 +234,7 @@ function Page(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   );
 }
 
-export default React.forwardRef(Page);
+export default Page;
 
 const styles = stylex.create({
   root: {

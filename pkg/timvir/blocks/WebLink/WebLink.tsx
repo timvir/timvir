@@ -11,11 +11,11 @@ import { layoutStyles } from "../../core/layout";
  */
 const Root = "a";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   url: string;
 }
 
-function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function WebLink(props: Props) {
   const { url, className, ...rest } = props;
 
   const [state, setState] = React.useState({
@@ -41,7 +41,6 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
 
   return (
     <Root
-      ref={ref}
       data-timvir-b-weblink
       href={url}
       target="_blank"
@@ -72,7 +71,7 @@ function WebLink(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
   );
 }
 
-export default React.forwardRef(WebLink);
+export default WebLink;
 
 const styles = stylex.create({
   root: {

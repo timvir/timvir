@@ -8,15 +8,15 @@ import { layoutStyles } from "../../core/layout";
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   variant?: "info" | "warning" | "alert";
 }
 
-function Message(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Message(props: Props) {
   const { variant, children, ...rest } = props;
 
   return (
-    <Root ref={ref} {...stylex.props(layoutStyles.block, styles.root, variant && styles[variant])} {...rest}>
+    <Root {...stylex.props(layoutStyles.block, styles.root, variant && styles[variant])} {...rest}>
       {variant &&
         {
           info: <Icons.ChevronsRight {...stylex.props(styles.icon, styles.iconInfo)} />,
@@ -47,7 +47,7 @@ function Message(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
   );
 }
 
-export default React.forwardRef(Message);
+export default Message;
 
 const styles = stylex.create({
   root: {

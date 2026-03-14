@@ -10,14 +10,13 @@ const Root = "div";
 
 interface Props extends React.ComponentProps<typeof Root> {}
 
-function Grid(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Grid(props: Props) {
   const { children, className, ...rest } = props;
 
   const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
 
   return (
     <Root
-      ref={ref}
       {...rest}
       {...rootStyleProps}
       style={{ ...rootStyleProps.style, ...rest.style }}
@@ -43,7 +42,7 @@ function Grid(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   );
 }
 
-export default React.forwardRef(Grid);
+export default Grid;
 
 const styles = stylex.create({
   root: {

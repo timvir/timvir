@@ -12,14 +12,14 @@ import * as React from "react";
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   /**
    * Array of CSS Color values.
    */
   values: Array<string | { value: string; contrastValue?: string; name?: string; ancestry?: string }>;
 }
 
-function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function ColorBar(props: Props) {
   const block = useBlock(props);
 
   const { values, ...rest } = block.props;
@@ -30,7 +30,6 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
 
   return (
     <Root
-      ref={ref}
       {...rest}
       {...rootStyleProps}
       className={cx(rest.className, rootStyleProps.className)}
@@ -69,7 +68,7 @@ function ColorBar(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
   );
 }
 
-export default React.forwardRef(ColorBar);
+export default ColorBar;
 
 const styles = stylex.create({
   root: {

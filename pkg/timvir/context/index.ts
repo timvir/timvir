@@ -36,7 +36,7 @@ export interface Value {
 }
 
 const Context = React.createContext<undefined | Value>(undefined);
-export const Provider = Context.Provider;
+export const Provider = Context;
 
 export function useContext(): Value {
   const value = React.useContext(Context);

@@ -12,13 +12,13 @@ import * as Icons from "../../icons";
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   name: string;
   font: { style?: React.CSSProperties; className?: string };
   info?: React.ReactNode;
 }
 
-function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Font(props: Props) {
   const components = useArticleComponents();
 
   const { name, font, info, children, ...rest } = props;
@@ -56,7 +56,6 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   return (
     <Root
-      ref={ref}
       {...rest}
       {...rootStyleProps}
       className={cx(rest.className, rootStyleProps.className)}
@@ -123,7 +122,7 @@ function Font(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   );
 }
 
-export default React.forwardRef(Font);
+export default Font;
 
 const styles = stylex.create({
   meta: {
