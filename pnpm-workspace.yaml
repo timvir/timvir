@@ -2,6 +2,3 @@ packages:
   - pkg/*
 
 minimumReleaseAge: 20160
-minimumReleaseAgeExclude:
-  # Renovate security update: rollup@4.59.0
-  - rollup@4.59.0
