@@ -46,7 +46,7 @@ function Arbitrary(props: Props) {
   const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
 
   return (
-    <Context.Provider value={value}>
+    <Context value={value}>
       <Root
         data-timvir-b-arbitrary
         {...rest}
@@ -92,7 +92,7 @@ function Arbitrary(props: Props) {
           {children}
         </Exhibit>
       </Root>
-    </Context.Provider>
+    </Context>
   );
 }
 
