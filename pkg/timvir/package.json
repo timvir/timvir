@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "bytestring": "^1",
-    "shiki": "^1 || ^2 || ^3",
+    "shiki": "^4.0.0",
     "wonka": "^6"
   },
   "peerDependencies": {
