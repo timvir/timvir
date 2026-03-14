@@ -171,7 +171,7 @@ importers:
         specifier: ^19
         version: 19.2.4(react@19.2.4)
       shiki:
-        specifier: ^4.0.0
+        specifier: ^1 || ^2 || ^3 || ^4
         version: 4.0.0
       wonka:
         specifier: ^6
