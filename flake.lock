@@ -58,7 +58,23 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nix-develop": "nix-develop",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "shell-brief": "shell-brief"
+      }
+    },
+    "shell-brief": {
+      "locked": {
+        "lastModified": 1771922598,
+        "narHash": "sha256-fU41X1moTHQUV1VT9OoulJ34qJklaDD0WsqlQMqj9ec=",
+        "owner": "wereHamster",
+        "repo": "shell-brief",
+        "rev": "70882b416cbb869e1dd300917dba201d3430790e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wereHamster",
+        "repo": "shell-brief",
+        "type": "github"
       }
     },
     "systems": {

@@ -6,61 +6,94 @@
 
     nix-develop.url = "github:nicknovitski/nix-develop";
     nix-develop.inputs.nixpkgs.follows = "nixpkgs";
+
+    shell-brief.url = "github:wereHamster/shell-brief";
   };
 
-  outputs = { nixpkgs, flake-utils, nix-develop, ... }:
-    flake-utils.lib.eachDefaultSystem
-      (system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-          };
+  outputs =
+    {
+      nixpkgs,
+      flake-utils,
+      nix-develop,
+      shell-brief,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+        };
 
-          banner = pkgs.writeShellScriptBin "banner" ''
-            clear
+        brief = shell-brief.lib.mkShellBrief {
+          inherit pkgs;
 
+          banner = ''
             ${pkgs.figlet}/bin/figlet timvir
             echo "     [timˈvir] n. book"
           '';
 
-          tools = {
-            dev = pkgs.writeShellScriptBin "dev" ''
-              clear
-              ./node_modules/.bin/next dev
-            '';
-          };
-        in {
-          packages.nix-develop = nix-develop.packages.${system}.default;
+          setup = [
+            {
+              name = "Dependencies";
+              condition = "[[ -d node_modules && node_modules -nt pnpm-lock.yaml ]]";
+              suggestion = "Run 'pnpm install'";
+            }
+          ];
 
-          devShells.default = pkgs.mkShell {
-            buildInputs = [
-              pkgs.nodejs
-              pkgs.pnpm
-              pkgs.biome
+          commands = [
+            {
+              name = "pnpm";
+              help = "Manage Node.js dependencies";
+            }
+            {
+              name = "dev";
+              help = "Start the Next.js development server";
+            }
+          ];
+        };
 
-              pkgs.jq
+        tools = {
+          dev = pkgs.writeShellScriptBin "dev" ''
+            clear
+            ./node_modules/.bin/next dev
+          '';
+        };
+      in
+      {
+        packages.nix-develop = nix-develop.packages.${system}.default;
 
-              tools.dev
-            ];
+        devShells.default = pkgs.mkShell {
+          buildInputs = [
+            pkgs.nodejs
+            pkgs.pnpm
+            pkgs.biome
 
-            shellHook = ''
-              ${banner}/bin/banner
-              export PATH=$PWD/node_modules/.bin:$PATH
-            '';
-          };
+            brief
 
-          devShells.workflow = pkgs.mkShell {
-            buildInputs = [
-              pkgs.nodejs
-              pkgs.pnpm
-              pkgs.biome
-            ];
+            pkgs.jq
 
-            shellHook = ''
-              pnpm install >/dev/null 2>&1
-              export PATH=$PWD/node_modules/.bin:$PATH
-            '';
-          };
-        }
-      );
+            tools.dev
+          ];
+
+          shellHook = ''
+            ${brief}/bin/brief
+            export PATH=$PWD/node_modules/.bin:$PATH
+          '';
+        };
+
+        devShells.workflow = pkgs.mkShell {
+          buildInputs = [
+            pkgs.nodejs
+            pkgs.pnpm
+            pkgs.biome
+          ];
+
+          shellHook = ''
+            pnpm install >/dev/null 2>&1
+            export PATH=$PWD/node_modules/.bin:$PATH
+          '';
+        };
+      }
+    );
 }
