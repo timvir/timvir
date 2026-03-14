@@ -1,7 +1,7 @@
-import * as React from "react";
+import type * as React from "react";
 import type { Node } from "timvir/core";
 
-interface Props extends React.ComponentPropsWithoutRef<"div"> {
+interface Props extends React.ComponentPropsWithRef<"div"> {
   open?: boolean;
   onClose?: (ev: React.SyntheticEvent<HTMLElement>) => void;
 
@@ -11,11 +11,11 @@ interface Props extends React.ComponentPropsWithoutRef<"div"> {
   }>;
 }
 
-function Search(_props: Props, _ref: React.ForwardedRef<React.ComponentRef<"div">>) {
+function Search(_props: Props) {
   return null;
 }
 
-export default React.forwardRef(Search);
+export default Search;
 
 export function defaultSearch(toc: readonly Node[]) {
   return {

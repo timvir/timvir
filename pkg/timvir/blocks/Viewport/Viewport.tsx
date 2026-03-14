@@ -19,7 +19,7 @@ const shimmer = stylex.keyframes({
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   /**
    * URL that should be loaded in the viewport. Can be absolute or relative.
    */
@@ -31,7 +31,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   code?: string;
 }
 
-function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Viewport(props: Props) {
   const block = useBlock(props);
 
   const { src, code, className, ...rest } = block.props;
@@ -109,7 +109,6 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
   return (
     <>
       <Root
-        ref={ref}
         data-timvir-b-viewport
         {...rest}
         className={cx(!state.settled && "timvir-unsettled", className, rootStyleProps.className)}
@@ -217,7 +216,7 @@ function Viewport(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeo
   );
 }
 
-export default React.forwardRef(Viewport);
+export default Viewport;
 
 const styles = stylex.create({
   root: {

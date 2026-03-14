@@ -18,7 +18,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   ExhibitProps?: React.ComponentPropsWithRef<typeof Exhibit>;
 }
 
-function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Arbitrary(props: Props) {
   const block = useBlock(props);
 
   const { ExhibitProps, className, children, ...rest } = block.props;
@@ -48,7 +48,6 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
   return (
     <Context.Provider value={value}>
       <Root
-        ref={ref}
         data-timvir-b-arbitrary
         {...rest}
         {...rootStyleProps}
@@ -97,7 +96,7 @@ function Arbitrary(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
   );
 }
 
-export default React.forwardRef(Arbitrary);
+export default Arbitrary;
 
 const styles = stylex.create({
   root: {

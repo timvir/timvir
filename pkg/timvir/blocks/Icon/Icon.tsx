@@ -16,7 +16,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   descriptor: Descriptor;
 }
 
-function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Icon(props: Props) {
   const { descriptor, ...rest } = props;
 
   const [roRef, roe] = useResizeObserverEntry();
@@ -26,7 +26,6 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
 
   return (
     <Root
-      ref={ref}
       {...rest}
       {...rootStyleProps}
       className={cx(rest.className, rootStyleProps.className)}
@@ -49,7 +48,7 @@ function Icon(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Ro
   );
 }
 
-export default React.forwardRef(Icon);
+export default Icon;
 
 const styles = stylex.create({
   root: {

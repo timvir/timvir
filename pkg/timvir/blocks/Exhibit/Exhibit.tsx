@@ -21,7 +21,7 @@ interface Props extends React.ComponentProps<typeof Root> {
    */
   bleed?: string | number;
 
-  BackdropProps?: React.ComponentPropsWithoutRef<"div">;
+  BackdropProps?: React.ComponentPropsWithRef<"div">;
 
   /**
    * Override the theme used for the background pattern. If not provided, the
@@ -31,7 +31,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   theme?: "system" | "light" | "dark";
 }
 
-function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Exhibit(props: Props) {
   const { theme: defaultTheme } = useContext().blocks?.Exhibit ?? {};
   const block = useBlock({ ...props, theme: props.theme ?? defaultTheme });
 
@@ -42,7 +42,6 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
 
   return (
     <Root
-      ref={ref}
       data-timvir-b-exhibit
       {...rest}
       {...rootStyleProps}
@@ -79,7 +78,7 @@ function Exhibit(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof
   );
 }
 
-export default React.forwardRef(Exhibit);
+export default Exhibit;
 
 const cssVariables = {
   bleed: "--timvir-b-Exhibit-bleed",

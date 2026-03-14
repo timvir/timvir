@@ -6,18 +6,18 @@ import * as React from "react";
  */
 const Root = "footer";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   links?: Array<{
     group: React.ReactNode;
     items: Array<{ label: string; href: string }>;
   }>;
 }
 
-function Footer(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Footer(props: Props) {
   const { links, ...rest } = props;
 
   return (
-    <Root ref={ref} {...rest} {...stylex.props(styles.root)}>
+    <Root {...rest} {...stylex.props(styles.root)}>
       {links && (
         <div {...stylex.props(styles.grid)}>
           <div {...stylex.props(styles.center, styles.linkGroups)}>
@@ -49,7 +49,7 @@ function Footer(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
   );
 }
 
-export default React.forwardRef(Footer);
+export default Footer;
 
 const styles = stylex.create({
   root: {

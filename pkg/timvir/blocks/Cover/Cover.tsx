@@ -8,19 +8,19 @@ import { layoutStyles } from "../../core/layout";
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   metadata: { width: number; height: number };
   img: { src: string };
   sources: Array<{ srcSet: string; type: string }>;
 }
 
-function Cover(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Cover(props: Props) {
   const { metadata, img, sources, ...rest } = props;
 
   const rootStyleProps = stylex.props(layoutStyles.block, layoutStyles.fullWidth);
 
   return (
-    <Root ref={ref} {...rest} {...rootStyleProps} className={cx(rest.className, rootStyleProps.className)}>
+    <Root {...rest} {...rootStyleProps} className={cx(rest.className, rootStyleProps.className)}>
       <picture>
         {sources.map((p, i) => (
           <source key={i} {...p} />
@@ -31,7 +31,7 @@ function Cover(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof R
   );
 }
 
-export default React.forwardRef(Cover);
+export default Cover;
 
 const styles = stylex.create({
   img: {

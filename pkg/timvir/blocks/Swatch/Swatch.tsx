@@ -11,7 +11,7 @@ import * as React from "react";
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   /**
    * The CSS Color value of the swatch. Any CSS color definition is accepted.
    *
@@ -41,7 +41,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   ancestry?: string;
 }
 
-function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function Swatch(props: Props) {
   const block = useBlock(props);
 
   const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, style, ...rest } = block.props;
@@ -57,7 +57,6 @@ function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
   return (
     <Root
       role="button"
-      ref={ref}
       {...rest}
       {...rootStyleProps}
       className={cx(rootStyleProps.className, className)}
@@ -83,7 +82,7 @@ function Swatch(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof 
   );
 }
 
-export default React.forwardRef(Swatch);
+export default Swatch;
 
 const styles = stylex.create({
   root: {

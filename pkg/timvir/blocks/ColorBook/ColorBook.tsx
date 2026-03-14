@@ -7,7 +7,7 @@ import { layoutStyles } from "../../core/layout";
  */
 const Root = "div";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
+interface Props extends React.ComponentPropsWithRef<typeof Root> {
   chapters: Array<Chapter>;
   selectedChapter?: number;
   onSelectChapter?: (i: number) => void;
@@ -18,11 +18,11 @@ interface Chapter {
   values: Array<string>;
 }
 
-function ColorBook(props: Props, ref: React.ForwardedRef<React.ComponentRef<typeof Root>>) {
+function ColorBook(props: Props) {
   const { chapters, selectedChapter, onSelectChapter, ...rest } = props;
 
   return (
-    <Root ref={ref} {...rest} {...stylex.props(layoutStyles.block, styles.root)}>
+    <Root {...rest} {...stylex.props(layoutStyles.block, styles.root)}>
       {chapters.map(({ name, values }, i) => (
         <div key={i} style={{ gridColumn: i + 1 }}>
           <div
@@ -54,7 +54,7 @@ function ColorBook(props: Props, ref: React.ForwardedRef<React.ComponentRef<type
   );
 }
 
-export default React.forwardRef(ColorBook);
+export default ColorBook;
 
 const styles = stylex.create({
   root: {
