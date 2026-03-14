@@ -1,5 +1,7 @@
 # @timvir/mdx
 
+## 0.2.51
+
 ## 0.2.50
 
 ### Patch Changes
