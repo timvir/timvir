@@ -1,5 +1,4 @@
 packages:
   - pkg/*
 
-trustPolicy: no-downgrade
 minimumReleaseAge: 20160
