@@ -18,7 +18,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   info?: React.ReactNode;
 }
 
-function Font(props: Props) {
+export function Font(props: Props) {
   const components = useArticleComponents();
 
   const { name, font, info, children, ...rest } = props;
@@ -122,7 +122,7 @@ function Font(props: Props) {
   );
 }
 
-export default Font;
+
 
 const styles = stylex.create({
   meta: {

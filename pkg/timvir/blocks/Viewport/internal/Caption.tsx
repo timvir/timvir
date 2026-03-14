@@ -10,7 +10,7 @@ interface Props {
   code?: string;
 }
 
-function Caption(props: Props) {
+export function Caption(props: Props) {
   const components = useArticleComponents();
 
   const { src, code } = props;
@@ -63,7 +63,7 @@ function Caption(props: Props) {
   );
 }
 
-export default React.memo(Caption);
+
 
 const styles = stylex.create({
   figcaption: {

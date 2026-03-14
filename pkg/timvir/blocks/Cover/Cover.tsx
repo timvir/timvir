@@ -14,7 +14,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   sources: Array<{ srcSet: string; type: string }>;
 }
 
-function Cover(props: Props) {
+export function Cover(props: Props) {
   const { metadata, img, sources, ...rest } = props;
 
   const rootStyleProps = stylex.props(layoutStyles.block, layoutStyles.fullWidth);
@@ -31,7 +31,7 @@ function Cover(props: Props) {
   );
 }
 
-export default Cover;
+
 
 const styles = stylex.create({
   img: {

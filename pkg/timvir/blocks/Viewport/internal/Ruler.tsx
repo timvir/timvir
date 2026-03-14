@@ -7,7 +7,7 @@ interface Props {
 
 const height = 16;
 
-function Ruler(props: Props) {
+export function Ruler(props: Props) {
   const { containerWidth = 0, viewportWidth = 0 } = props;
 
   return (
@@ -40,7 +40,7 @@ function Ruler(props: Props) {
   );
 }
 
-export default Ruler;
+
 
 const styles = stylex.create({
   svg: {

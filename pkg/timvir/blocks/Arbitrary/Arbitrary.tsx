@@ -18,7 +18,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   ExhibitProps?: React.ComponentPropsWithRef<typeof Exhibit>;
 }
 
-function Arbitrary(props: Props) {
+export function Arbitrary(props: Props) {
   const block = useBlock(props);
 
   const { ExhibitProps, className, children, ...rest } = block.props;
@@ -96,7 +96,7 @@ function Arbitrary(props: Props) {
   );
 }
 
-export default Arbitrary;
+
 
 const styles = stylex.create({
   root: {

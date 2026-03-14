@@ -1,1 +1,1 @@
-export { default as ColorBook } from "./ColorBook";
+export { ColorBook } from "./ColorBook";

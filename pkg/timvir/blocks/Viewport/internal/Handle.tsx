@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import * as React from "react";
+import type * as React from "react";
 
 interface Props {
   gridColumn: string;
@@ -8,7 +8,7 @@ interface Props {
   iframeRef: React.RefObject<null | HTMLIFrameElement>;
 }
 
-function Handle(props: Props) {
+export function Handle(props: Props) {
   const { gridColumn, lock, edge, iframeRef } = props;
 
   return (
@@ -30,7 +30,7 @@ function Handle(props: Props) {
   );
 }
 
-export default React.memo(Handle);
+
 
 const styles = stylex.create({
   handle: {

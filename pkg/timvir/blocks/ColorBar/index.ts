@@ -1,1 +1,1 @@
-export { default as ColorBar } from "./ColorBar";
+export { ColorBar } from "./ColorBar";

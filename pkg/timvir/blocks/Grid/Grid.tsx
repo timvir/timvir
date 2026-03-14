@@ -10,7 +10,7 @@ const Root = "div";
 
 interface Props extends React.ComponentProps<typeof Root> {}
 
-function Grid(props: Props) {
+export function Grid(props: Props) {
   const { children, className, ...rest } = props;
 
   const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
@@ -42,7 +42,7 @@ function Grid(props: Props) {
   );
 }
 
-export default Grid;
+
 
 const styles = stylex.create({
   root: {

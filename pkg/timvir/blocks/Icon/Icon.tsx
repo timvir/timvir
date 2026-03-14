@@ -16,7 +16,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   descriptor: Descriptor;
 }
 
-function Icon(props: Props) {
+export function Icon(props: Props) {
   const { descriptor, ...rest } = props;
 
   const [roRef, roe] = useResizeObserverEntry();
@@ -48,7 +48,7 @@ function Icon(props: Props) {
   );
 }
 
-export default Icon;
+
 
 const styles = stylex.create({
   root: {

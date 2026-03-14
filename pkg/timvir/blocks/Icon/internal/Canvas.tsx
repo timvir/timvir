@@ -11,7 +11,7 @@ interface Props {
   Component: React.ElementType;
 }
 
-function Canvas(props: Props) {
+export function Canvas(props: Props) {
   const { width, height, size, Component } = props;
 
   return (
@@ -25,7 +25,7 @@ function Canvas(props: Props) {
   );
 }
 
-export default Canvas;
+
 
 function Grid({ size, ...rest }: { size: number } & React.ComponentProps<"svg">) {
   const halfSize = size / 2;
