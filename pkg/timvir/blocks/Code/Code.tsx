@@ -38,7 +38,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   caption?: React.ReactNode;
 }
 
-function Code(props: Props) {
+export function Code(props: Props) {
   const block = useBlock(props);
 
   const { children, language, highlightedLines, caption, className, ...rest } = block.props;
@@ -131,7 +131,7 @@ function Code(props: Props) {
   );
 }
 
-export default Code;
+
 
 const styles = stylex.create({
   code: {

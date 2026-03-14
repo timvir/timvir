@@ -12,7 +12,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   variant?: "info" | "warning" | "alert";
 }
 
-function Message(props: Props) {
+export function Message(props: Props) {
   const { variant, children, ...rest } = props;
 
   return (
@@ -47,7 +47,7 @@ function Message(props: Props) {
   );
 }
 
-export default Message;
+
 
 const styles = stylex.create({
   root: {

@@ -15,7 +15,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   url: string;
 }
 
-function WebLink(props: Props) {
+export function WebLink(props: Props) {
   const { url, className, ...rest } = props;
 
   const [state, setState] = React.useState({
@@ -71,7 +71,7 @@ function WebLink(props: Props) {
   );
 }
 
-export default WebLink;
+
 
 const styles = stylex.create({
   root: {

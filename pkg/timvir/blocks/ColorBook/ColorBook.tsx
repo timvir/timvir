@@ -18,7 +18,7 @@ interface Chapter {
   values: Array<string>;
 }
 
-function ColorBook(props: Props) {
+export function ColorBook(props: Props) {
   const { chapters, selectedChapter, onSelectChapter, ...rest } = props;
 
   return (
@@ -54,7 +54,7 @@ function ColorBook(props: Props) {
   );
 }
 
-export default ColorBook;
+
 
 const styles = stylex.create({
   root: {

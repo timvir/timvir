@@ -31,7 +31,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   code?: string;
 }
 
-function Viewport(props: Props) {
+export function Viewport(props: Props) {
   const block = useBlock(props);
 
   const { src, code, className, ...rest } = block.props;
@@ -216,7 +216,7 @@ function Viewport(props: Props) {
   );
 }
 
-export default Viewport;
+
 
 const styles = stylex.create({
   root: {

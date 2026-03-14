@@ -19,7 +19,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   values: Array<string | { value: string; contrastValue?: string; name?: string; ancestry?: string }>;
 }
 
-function ColorBar(props: Props) {
+export function ColorBar(props: Props) {
   const block = useBlock(props);
 
   const { values, ...rest } = block.props;
@@ -68,7 +68,7 @@ function ColorBar(props: Props) {
   );
 }
 
-export default ColorBar;
+
 
 const styles = stylex.create({
   root: {

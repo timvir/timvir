@@ -31,7 +31,7 @@ interface Props extends React.ComponentProps<typeof Root> {
   theme?: "system" | "light" | "dark";
 }
 
-function Exhibit(props: Props) {
+export function Exhibit(props: Props) {
   const { theme: defaultTheme } = useContext().blocks?.Exhibit ?? {};
   const block = useBlock({ ...props, theme: props.theme ?? defaultTheme });
 
@@ -78,7 +78,7 @@ function Exhibit(props: Props) {
   );
 }
 
-export default Exhibit;
+
 
 const cssVariables = {
   bleed: "--timvir-b-Exhibit-bleed",

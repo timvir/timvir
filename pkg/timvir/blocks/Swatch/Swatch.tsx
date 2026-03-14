@@ -41,7 +41,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   ancestry?: string;
 }
 
-function Swatch(props: Props) {
+export function Swatch(props: Props) {
   const block = useBlock(props);
 
   const { value, contrastValue, name, ancestry, onClick, onMouseLeave, className, style, ...rest } = block.props;
@@ -82,7 +82,7 @@ function Swatch(props: Props) {
   );
 }
 
-export default Swatch;
+
 
 const styles = stylex.create({
   root: {
