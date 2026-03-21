@@ -2,20 +2,17 @@ import { Grid } from "timvir/blocks";
 
 # Exhibit
 
-The `<Exhibit>` is a block which presents something–usually a React component–in a nice way.
+> Presents a component on a checkered background with optional caption and controls.
 
-The presented element is placed on top of a checkered background.
-This helps illustrating which parts of the element are transparent, or if the element comes with a specific background color.
+<Sample variant="basic" />
 
-A bit of padding is included all around the presented element.
-Together with the checkered background, it makes the `<Exhibit>` block stand out next plain text or other blocks.
+The presented element is placed on a checkered background with padding all around.
+The checkered pattern makes transparency and background colors immediately visible, while the padding helps the block stand out from surrounding text or other blocks.
 You can tweak the bleed size, or disable the bleed altogether if you want to draw attention to the exact box size of the presented element itself.
 
 The caption, if provided, is placed below the block.
 Use it to explain what is being presented, or provide contex around it.
 Think of the `<Exhibit>` block as a `<figure>` + `<figcaption>` for React components.
-
-<Sample variant="basic" />
 
 ## Usage
 
