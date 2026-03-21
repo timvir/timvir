@@ -1,7 +1,8 @@
-import stylexPlugin from "@stylexswc/nextjs-plugin/turbopack";
 import createMDX from "@next/mdx";
+import stylexPlugin from "@stylexswc/nextjs-plugin/turbopack";
+import type { NextConfig } from "next";
 
-function withPlugins(plugins: Array<any>, config: any) {
+function withPlugins(plugins: Array<(config: NextConfig) => NextConfig>, config: NextConfig) {
   return plugins.reduce((a, f) => f(a), config);
 }
 
@@ -19,12 +20,16 @@ const plugins = [
   }),
 ];
 
-export default withPlugins(plugins, {
+const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
+  reactCompiler: true,
+  reactStrictMode: true,
 
   typescript: {
     ignoreBuildErrors: true,
   },
 
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-});
+};
+
+export default withPlugins(plugins, nextConfig);
