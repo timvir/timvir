@@ -1,4 +1,4 @@
-import { Grid } from "timvir/blocks";
+import { Code, Grid } from "timvir/blocks";
 
 # Exhibit
 
@@ -54,3 +54,9 @@ In those cases, you can force a light or dark theme with the `theme` prop.
     <Sample variant="theme" props={{ theme: "dark" }} />
   </div>
 </Grid>
+
+<Code language="jsx" caption="Use the theme prop to force a light or dark background, regardless of the user's color scheme preference.">
+  {`<Exhibit theme="light">
+  This component requires a light background.
+</Exhibit>`}
+</Code>
