@@ -23,11 +23,12 @@ export function Arbitrary(props: Props) {
 
   const { ExhibitProps, className, children, ...rest } = block.props;
 
-  const [value, setValue] = React.useState({ seed: 0 });
+  const [value, setValue] = React.useState({ seed: 0, settled: false });
 
   React.useEffect(() => {
     setValue({
       seed: crypto.getRandomValues(new Uint32Array(1))[0],
+      settled: true,
     });
   }, []);
 
@@ -51,7 +52,7 @@ export function Arbitrary(props: Props) {
         data-timvir-b-arbitrary
         {...rest}
         {...rootStyleProps}
-        className={cx(rootStyleProps.className, className)}
+        className={cx(!value.settled && "timvir-unsettled", rootStyleProps.className, className)}
         style={{ margin: "1em 0", ...rootStyleProps.style, ...rest.style }}
       >
         <div {...stylex.props(styles.controls)}>
@@ -67,6 +68,7 @@ export function Arbitrary(props: Props) {
                 const v = ev.clipboardData.getData("text/plain");
                 setValue({
                   seed: +new TextDecoder().decode(base58.decode(v)),
+                  settled: true,
                 });
               }}
               onFocus={(ev) => {
@@ -81,6 +83,7 @@ export function Arbitrary(props: Props) {
             onClick={() => {
               setValue({
                 seed: crypto.getRandomValues(new Uint32Array(1))[0],
+                settled: true,
               });
             }}
           >

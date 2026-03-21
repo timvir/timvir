@@ -64,6 +64,8 @@ for (const url of urls) {
 
     await page.goto(url, { waitUntil: "load" });
 
+    await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
+
     const inputElements = await page.$$("[data-timvir-b-arbitrary-seed]");
     for (const inputElement of inputElements) {
       await inputElement.evaluate((element) => {
