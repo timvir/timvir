@@ -1,0 +1,5 @@
+import Content from "../../../../../pkg/timvir/blocks/Grid/docs/index.mdx";
+
+export default function Page() {
+  return <Content />;
+}

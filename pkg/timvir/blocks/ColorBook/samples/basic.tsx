@@ -1,3 +1,5 @@
+"use client";
+
 import { Swatch, ColorBar, Exhibit, ColorBook } from "timvir/blocks";
 import * as React from "react";
 

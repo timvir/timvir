@@ -1,3 +1,5 @@
+"use client";
+
 import { useArticleComponents, useContext } from "timvir/core";
 import { send } from "timvir/bus";
 import type * as React from "react";
