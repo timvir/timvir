@@ -23,13 +23,19 @@ export function Arbitrary(props: Props) {
 
   const { ExhibitProps, className, children, ...rest } = block.props;
 
-  const [value, setValue] = React.useState({ seed: 0 });
+  const [value, setValue] = React.useState({
+    settled: false,
+    seed: 0,
+  });
 
-  React.useEffect(() => {
+  const refreshSeed = React.useCallback(() => {
     setValue({
+      settled: true,
       seed: crypto.getRandomValues(new Uint32Array(1))[0],
     });
   }, []);
+
+  React.useEffect(refreshSeed, [refreshSeed]);
 
   React.useEffect(() => {
     if (props.id) {
@@ -46,12 +52,12 @@ export function Arbitrary(props: Props) {
   const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
 
   return (
-    <Context value={value}>
+    <Context value={React.useMemo(() => ({ seed: value.seed }), [value.seed])}>
       <Root
         data-timvir-b-arbitrary
         {...rest}
         {...rootStyleProps}
-        className={cx(rootStyleProps.className, className)}
+        className={cx(!value.settled && "timvir-unsettled", rootStyleProps.className, className)}
         style={{ margin: "1em 0", ...rootStyleProps.style, ...rest.style }}
       >
         <div {...stylex.props(styles.controls)}>
@@ -66,6 +72,7 @@ export function Arbitrary(props: Props) {
               onPaste={(ev) => {
                 const v = ev.clipboardData.getData("text/plain");
                 setValue({
+                  settled: true,
                   seed: +new TextDecoder().decode(base58.decode(v)),
                 });
               }}
@@ -75,15 +82,7 @@ export function Arbitrary(props: Props) {
             />
           </div>
 
-          <button
-            type="button"
-            {...stylex.props(styles.button)}
-            onClick={() => {
-              setValue({
-                seed: crypto.getRandomValues(new Uint32Array(1))[0],
-              });
-            }}
-          >
+          <button type="button" {...stylex.props(styles.button)} onClick={refreshSeed}>
             Refresh
           </button>
         </div>
@@ -95,8 +94,6 @@ export function Arbitrary(props: Props) {
     </Context>
   );
 }
-
-
 
 const styles = stylex.create({
   root: {

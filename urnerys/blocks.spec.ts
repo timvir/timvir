@@ -64,6 +64,8 @@ for (const url of urls) {
 
     await page.goto(url, { waitUntil: "load" });
 
+    await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
+
     const inputElements = await page.$$("[data-timvir-b-arbitrary-seed]");
     for (const inputElement of inputElements) {
       await inputElement.evaluate((element) => {
@@ -78,9 +80,9 @@ for (const url of urls) {
 
         element.dispatchEvent(pasteEvent);
       });
-    }
 
-    await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
+      await inputElement.waitForSelector(":scope[value='gGV7y4U6pZVL']");
+    }
 
     await waitForImages(page);
 
