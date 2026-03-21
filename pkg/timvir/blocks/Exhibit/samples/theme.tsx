@@ -16,6 +16,9 @@ export default function Sample(props: Props) {
           color: { system: "inherit", light: "black", dark: "white" }[props.theme],
         },
       }}
+      style={{
+        marginBottom: 0,
+      }}
     >
       <div
         style={{
