@@ -7,6 +7,14 @@ import { Exhibit } from "timvir/blocks";
 
 <Sample variant="basic" />
 
+Use `<Arbitrary>` when you want to feed randomly generated props into a component.
+This is particularly useful for exploring edge cases or stress-testing a component's appearance without hand-authoring every combination.
+The block exposes a numeric seed via React context, so children can produce a stable, reproducible set of inputs for any given seed value.
+
+Libraries like [fast-check](https://fast-check.dev) provide composable random value generators.
+They provide generators for all basic types such as strings, numbers, arrays, and objects.
+You can combine those builtin generators to produce random values for your own types.
+
 ## Features
 
 The seed is displayed in an input field where users can copy it or set a specific value.
@@ -19,7 +27,7 @@ Given a component-under-test:
 ```jsx
 import { useContext } from "timvir/blocks/Arbitrary";
 
-function Component() {
+function Sample() {
   const { seed } = useContext();
   return <div>{seed}</div>;
 }
@@ -27,11 +35,49 @@ function Component() {
 
 We can take it and display it inside an `<Arbitrary>` in a timvir doc page:
 
-```jsx
+```mdx
 import { Arbitrary } from "timvir/blocks";
-import { Component } from "..";
+import { Component } from "../Component";
 
 <Arbitrary>
   <Component />
 </Arbitrary>
+```
+
+## fast-check
+
+Let's assume you have a component that takes this Props shape.
+
+```ts
+interface Props {
+  enabled: boolean;
+  label: string;
+}
+
+export function Component(props: Props) {
+  // React component implementation
+}
+```
+
+First define a generator that produces values of that type.
+Then use the seed from the Arbitrary context to generate props for your component.
+
+```tsx
+import fc from "fast-check";
+import { useContext } from "timvir/blocks/Arbitrary";
+import { Component } from "../Component";
+
+const arbProps = fc.object({
+  enabled: fc.boolean(),
+  label: fc.string(),
+});
+
+function Sample() {
+  const { seed } = useContext();
+
+  const engine = new fc.Random(fc.xoroshiro128plus(seed));
+  const props = arbProps.generate(engine, undefined);
+
+  return <Component {...props} />;
+}
 ```
