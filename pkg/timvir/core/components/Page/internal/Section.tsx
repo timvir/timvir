@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { useContext } from "timvir/context";
 import type { Node } from "../types";
