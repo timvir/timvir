@@ -3,20 +3,21 @@ import { Exhibit } from "timvir/blocks";
 
 # Arbitrary
 
-The `<Arbitrary>` component manages a React context that contains a seed. This seed is displayed
-in an input field where users can copy it from.
-
-The component renders its children in an `<Exhibit>`. The children can make use of the seed in the
-React context to render themselves in a predictable way.
+> Renders children with a controllable random seed exposed via React context.
 
 <Sample variant="basic" />
+
+## Features
+
+The seed is displayed in an input field where users can copy it or set a specific value.
+Children can consume it to render themselves in a predictable, reproducible way.
 
 ## Usage
 
 Given a component-under-test:
 
 ```jsx
-import { useContext } from "timvir/blocks/Arbitrary"
+import { useContext } from "timvir/blocks/Arbitrary";
 
 function Component() {
   const { seed } = useContext();
@@ -27,8 +28,8 @@ function Component() {
 We can take it and display it inside an `<Arbitrary>` in a timvir doc page:
 
 ```jsx
-import { Arbitrary } from "timvir/blocks"
-import { Component } from ".."
+import { Arbitrary } from "timvir/blocks";
+import { Component } from "..";
 
 <Arbitrary>
   <Component />
