@@ -1,3 +1,5 @@
+"use client";
+
 import { useArticleComponents } from "timvir/core";
 import { layoutStyles } from "../../../core/layout";
 import * as stylex from "@stylexjs/stylex";
