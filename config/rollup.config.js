@@ -15,8 +15,8 @@ function externalFor(pkg) {
 
   return [
     "react/jsx-runtime",
-    ...Object.keys(packageJson.dependencies || {}),
-    ...Object.keys(packageJson.peerDependencies || {}),
+    ...Object.keys(packageJson.dependencies || {}).map((dep) => new RegExp(`^${dep}(?:/.*)?$`)),
+    ...Object.keys(packageJson.peerDependencies || {}).map((dep) => new RegExp(`^${dep}(?:/.*)?$`)),
   ];
 }
 
