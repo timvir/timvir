@@ -3,6 +3,7 @@
 .npmrc
 tsconfig.tsbuildinfo
 next-env.d.ts
+knip.config.d.ts
 
 /node_modules/
 /.next/
