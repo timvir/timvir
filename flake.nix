@@ -36,7 +36,7 @@
           setup = [
             {
               name = "Dependencies";
-              condition = "[[ -d node_modules && node_modules -nt pnpm-lock.yaml ]]";
+              condition = "[[ -f package.json && -f pnpm-lock.yaml && -f node_modules/.modules.yaml && node_modules/.modules.yaml -nt pnpm-lock.yaml && node_modules/.modules.yaml -nt package.json ]]";
               suggestion = "Run 'pnpm install'";
             }
           ];
