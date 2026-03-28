@@ -27,7 +27,7 @@ export default function Layout(props: Props) {
   return (
     <Page
       location={{ asPath: pathname ?? "/", push: router.push }}
-      Link={Link}
+      Link={(props) => <Link {...props} prefetch={false} />}
       toc={toc}
       search={search}
       mdxComponents={useMDXComponents()}
