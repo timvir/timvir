@@ -15,10 +15,10 @@
     "noUnusedParameters": true,
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "baseUrl": ".",
     "paths": {
-      "@/timvir/*": ["src/timvir/*"],
-      "timvir/*": ["pkg/timvir/*"]
+      "@/timvir/*": ["./src/timvir/*"],
+      "timvir/*": ["./pkg/timvir/*"],
+      "mdx-components": ["./mdx-components"]
     },
     "incremental": true,
     "plugins": [
