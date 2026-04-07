@@ -10,9 +10,9 @@
     "emitDeclarationOnly": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "baseUrl": ".",
     "paths": {
-      "timvir": ["timvir"]
+      "timvir": ["./timvir"],
+      "timvir/*": ["./timvir/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "../next-env.d.ts"]
