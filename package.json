@@ -34,7 +34,7 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "builtin-modules": "^5.0.0",
     "bytestring": "^1.0.1",
-    "caniuse-lite": "^1.0.30001780",
+    "caniuse-lite": "^1.0.30001781",
     "core-js": "^3.49.0",
     "cors": "^2.8.6",
     "globby": "^16.1.1",
