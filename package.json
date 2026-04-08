@@ -49,6 +49,6 @@
     "typescript": "^6.0.2",
     "unfurl.js": "^6.4.0",
     "unist-util-visit": "^5.1.0",
-    "wonka": "^6.3.5"
+    "wonka": "^6.3.6"
   }
 }
