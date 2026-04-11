@@ -54,7 +54,7 @@ importers:
         specifier: ^0.15.1
         version: 0.15.1(@swc/core@1.15.3)(next@16.2.1(@babel/core@7.29.0)(@playwright/test@1.58.2)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       '@stylexswc/postcss-plugin':
-        specifier: 0.15.1
+        specifier: ^0.15.1
         version: 0.15.1(@swc/core@1.15.3)
       '@stylexswc/rollup-plugin':
         specifier: ^0.15.1

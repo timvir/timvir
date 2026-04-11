@@ -22,7 +22,7 @@
     "@rollup/plugin-terser": "^1.0.0",
     "@stylexjs/stylex": "^0.18.1",
     "@stylexswc/nextjs-plugin": "^0.15.1",
-    "@stylexswc/postcss-plugin": "0.15.1",
+    "@stylexswc/postcss-plugin": "^0.15.1",
     "@stylexswc/rollup-plugin": "^0.15.1",
     "@types/babel__core": "^7.20.5",
     "@types/cors": "^2.8.19",
