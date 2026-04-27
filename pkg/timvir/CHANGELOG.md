@@ -1,5 +1,11 @@
 # timvir
 
+## 0.2.52
+
+### Patch Changes
+
+- **Mark sub-path imports of dependencies as external** ([#3783](https://github.com/timvir/timvir/pull/3783)) - Due to a mistake in our Rollup config, we were inlining the `bytestring` package into our code. The `bytestring` package is declared as dependency and should be kept external. This change slightly decreases the bundle size of the `timvir/blocks/Arbitrary` module.
+
 ## 0.2.51
 
 ### Patch Changes
