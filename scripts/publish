@@ -3,19 +3,8 @@ set -euo pipefail
 
 cd pkg
 
-git tag --points-at HEAD | while read tag; do
-  re="^v(.+)$"
-  if [[ $tag =~ $re ]]; then
-    VERSION=${BASH_REMATCH[1]}
-    echo Publish ${VERSION}
-
-    for PACKAGE in *; do
-      if test -f "$PACKAGE/package.json"; then
-        cat "$PACKAGE/package.json" | jq --arg version "$VERSION" '.version = $version' > tmp;
-        mv tmp "$PACKAGE/package.json"
-
-        pushd "$PACKAGE"; npm publish . --provenance --access public; popd
-      fi
-    done
+for PACKAGE in *; do
+  if test -f "$PACKAGE/package.json"; then
+    pushd "$PACKAGE"; pnpm publish --registry https://registry.npmjs.org --access public --no-git-checks; popd
   fi
 done

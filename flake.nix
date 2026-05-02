@@ -88,11 +88,6 @@
             pkgs.pnpm
             pkgs.biome
           ];
-
-          shellHook = ''
-            pnpm install >/dev/null 2>&1
-            export PATH=$PWD/node_modules/.bin:$PATH
-          '';
         };
       }
     );
