@@ -24,7 +24,7 @@ export function Caption(props: Props) {
       <figcaption {...stylex.props(layoutStyles.block, styles.figcaption)}>
         <div>
           Source:{" "}
-          <components.a href={src} target="_blank">
+          <components.a href={src} target="_blank" rel="noopener">
             {src}
           </components.a>
         </div>
