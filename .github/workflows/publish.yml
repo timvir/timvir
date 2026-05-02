@@ -17,20 +17,23 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
-        with:
-          node-version: 24.14.0
-          registry-url: https://registry.npmjs.org
+      # ---------------------------------------------------------------------
+      # Setup
 
-      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v5.0.0
-        with:
-          version: 10.32.1
-
+      - uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
+      - run: nix run .#nix-develop .#workflow
       - run: pnpm install
+
+      # ---------------------------------------------------------------------
+      # Build
 
       - run: ./node_modules/.bin/next typegen
       - run: ./node_modules/.bin/tsc --build tsconfig.build.json
       - run: ./node_modules/.bin/rollup -c config/rollup.config.js
       - run: cat pkg/timvir/blocks/*/styles.css > pkg/timvir/blocks/styles.css
       - run: cat pkg/timvir/global.css pkg/timvir/{core,builtins,blocks}/styles.css > pkg/timvir/styles.css
+
+      # ---------------------------------------------------------------------
+      # Publish
+
       - run: ./scripts/publish
