@@ -1,4 +1,9 @@
 packages:
   - pkg/*
 
+allowBuilds:
+  "@swc/core": false
+  core-js: false
+  sharp: false
+
 minimumReleaseAge: 21600
