@@ -3,7 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   reporter: [["list"]],
 
-  timeout: 5 * 60 * 1000,
+  timeout: 8 * 1000,
 
   fullyParallel: true,
 
