@@ -27,7 +27,7 @@
     "@stylexswc/rollup-plugin": "^0.15.5",
     "@types/babel__core": "^7.20.5",
     "@types/cors": "^2.8.19",
-    "@types/estree": "^1.0.8",
+    "@types/estree": "^1.0.9",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
