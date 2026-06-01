@@ -14,10 +14,12 @@ jobs:
     name: Visual Smoke Test
     if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
-    steps:
-      - run: |
-          curl -sf -X POST -H "Content-Type: application/json" -d '{ "id": "'"$BUILD"'", "build": { "origin": { "commit": "${{ github.sha }}" } } }' "https://$URNERYS/api/v1/projects/timvir/builds"
 
+    permissions:
+      contents: "read"
+      id-token: "write"
+
+    steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
@@ -35,13 +37,4 @@ jobs:
         working-directory: vst
         env:
           URL: ${{ github.event.deployment_status.target_url }}
-
-      - run: |
-          case "${{ github.event.deployment_status.environment }}" in
-            Production)
-              curl -sf -X PATCH -H "Content-Type: application/json" -d '{ "baseline": { "build": "'"$BUILD"'" } }' "https://$URNERYS/api/v1/projects/timvir/baselines/production"
-              ;;
-            *)
-              curl -sf -X POST -H "Content-Type: application/json" -d '{ "check": { "baseline": "production" } }' "https://$URNERYS/api/v1/projects/timvir/builds/$BUILD/checks"
-              ;;
-          esac
+          DEPLOYMENT_ENVIRONMENT: ${{ github.event.deployment_status.environment }}

@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  reporter: [["list"]],
+  reporter: [["list"], ["./src/reporter.ts", { project: "timvir" }]],
 
   retries: 3,
   timeout: 8 * 1000,

@@ -1,7 +1,5 @@
 import { type Page, test } from "@playwright/test";
 
-const build = process.env.BUILD ?? "head";
-
 const urls = [
   "/blocks/Arbitrary",
   "/blocks/Code",
@@ -22,29 +20,17 @@ function sanitizeTitle(s: string): string {
 }
 
 interface UploadImageRequest {
-  build: string;
   set: string;
   snapshot: string;
   formula: string;
-  payload: File;
+  payload: Buffer;
 }
 
-async function uploadImage({ build, set, snapshot, formula, payload }: UploadImageRequest) {
-  const body = new FormData();
-  body.set("collection", set);
-  body.set("snapshot", snapshot);
-  body.set("formula", formula);
-  body.set("payload", payload);
-
-  const res = await fetch(`https://${process.env.URNERYS}/api/v1/projects/timvir/builds/${build}/images`, {
-    method: "POST",
-    body,
+async function uploadImage({ set, snapshot, formula, payload }: UploadImageRequest) {
+  await test.info().attach(`urnerys|${set}|${snapshot}|${formula}`, {
+    body: payload,
+    contentType: "image/png",
   });
-
-  if (!res.ok) {
-    console.log(res.statusText);
-    throw res;
-  }
 }
 
 async function waitForImages(page: Page): Promise<void> {
@@ -101,11 +87,10 @@ for (const url of urls) {
 
         imageUploads.push(
           uploadImage({
-            build,
             set: `${title.substring(1)}/exhibits`,
             snapshot: sanitizeTitle(innerText),
             formula: project.name,
-            payload: new File([new Uint8Array(buffer)], "screenshot.png", { type: "image/png" }),
+            payload: buffer,
           }),
         );
       }
