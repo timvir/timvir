@@ -3,6 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   reporter: [["list"]],
 
+  retries: 3,
   timeout: 8 * 1000,
 
   fullyParallel: true,
@@ -24,21 +25,21 @@ export default defineConfig({
 
     {
       name: "aoH4VEUJdsi",
-      testMatch: /urnerys\/pages.spec.ts/,
+      testMatch: /tests\/pages.spec.ts/,
       use: {
         ...devices["iPhone 12"],
       },
     },
     {
       name: "SFgwaQfRnQC",
-      testMatch: /urnerys\/pages.spec.ts/,
+      testMatch: /tests\/pages.spec.ts/,
       use: {
         ...devices["iPad Pro 11"],
       },
     },
     {
       name: "fN2sPCScM1D",
-      testMatch: /urnerys\/pages.spec.ts/,
+      testMatch: /tests\/pages.spec.ts/,
       use: {
         ...devices["Desktop Chrome"],
         colorScheme: "light",
@@ -46,7 +47,7 @@ export default defineConfig({
     },
     {
       name: "XSC5sCuaKA3",
-      testMatch: /urnerys\/pages.spec.ts/,
+      testMatch: /tests\/pages.spec.ts/,
       use: {
         ...devices["Desktop Chrome"],
         colorScheme: "dark",
@@ -59,7 +60,7 @@ export default defineConfig({
 
     {
       name: "EhiYaNwcFei",
-      testMatch: /urnerys\/blocks.spec.ts/,
+      testMatch: /tests\/blocks.spec.ts/,
       use: {
         ...devices["Desktop Chrome"],
       },

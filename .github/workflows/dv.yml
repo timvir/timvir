@@ -1,4 +1,4 @@
-name: Urnerys
+name: Deployment Verification
 
 on: deployment_status
 
@@ -10,8 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  urnerys:
-    name: Urnerys
+  vst:
+    name: Visual Smoke Test
     if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
@@ -31,7 +31,8 @@ jobs:
       - run: pnpm install
       - run: ./node_modules/.bin/playwright install --with-deps chromium webkit
 
-      - run: ./node_modules/.bin/playwright test --retries 3 ./urnerys/*.spec.ts
+      - run: ../node_modules/.bin/playwright test
+        working-directory: vst
         env:
           URL: ${{ github.event.deployment_status.target_url }}
 
