@@ -1,5 +1,11 @@
 # @timvir/mdx
 
+## 0.2.53
+
+### Patch Changes
+
+- **Expose `@timvir/mdx/remark` as the module-name MDX remark plugin entrypoint.** ([#3867](https://github.com/timvir/timvir/pull/3867)) - This adds a default-exported subpath entrypoint so environments that resolve MDX plugins by module name (such as Turbopack config) can load the plugin directly. If you configure MDX plugins using strings, use `@timvir/mdx/remark`. Existing `remarkPlugin` imports from `@timvir/mdx` remain supported.
+
 ## 0.2.52
 
 ## 0.2.51
