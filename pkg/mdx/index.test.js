@@ -4,7 +4,7 @@ import { fromMarkdown } from "mdast-util-from-markdown";
 import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
 import { remarkPlugin } from "./index.js";
-import { remarkPlugin as remarkPluginSubpath } from "./remark.js";
+import remarkPluginSubpath from "./remark.js";
 
 async function process(doc) {
   const tree = fromMarkdown(doc, {
@@ -28,7 +28,7 @@ test("Sample variant=basic", async () => {
   assert.strictEqual(tree.children.at(1).name, "CIBEfJwpOCZBzAhgVmaaNZUkovAEFETME");
 });
 
-test("index export re-exports subpath export", () => {
+test("index export re-exports subpath default export", () => {
   assert.strictEqual(remarkPlugin, remarkPluginSubpath);
 });
 

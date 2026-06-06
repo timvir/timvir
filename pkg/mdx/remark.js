@@ -7,7 +7,7 @@ import { mdxjs } from "micromark-extension-mdxjs";
 import * as path from "node:path";
 import { visit } from "unist-util-visit";
 
-export function remarkPlugin() {
+function remarkPlugin() {
   let counter = 0;
 
   return async (tree, file) => {
@@ -40,6 +40,7 @@ export function remarkPlugin() {
           } else {
             return fs.readFileSync(`${absoluteModulePath}.tsx`, "utf8");
           }
+
         }
 
         ({
@@ -148,3 +149,6 @@ const genName = (...buffers) => {
   }
   return ret.toString("utf8");
 };
+
+export { remarkPlugin };
+export default remarkPlugin;
