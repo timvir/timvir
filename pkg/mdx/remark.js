@@ -45,7 +45,7 @@ export function remarkPlugin() {
         ({
           component: () => {
             /*
-             * Genrate a unique name that will be used to hold the reference
+             * Generate a unique name that will be used to hold the reference
              * to the sample component.
              */
             const name = `C${genName(filename, component, variant, `${counter}`)}`;
@@ -107,7 +107,7 @@ export function remarkPlugin() {
               mdastExtensions: [mdxFromMarkdown()],
             });
 
-            for (const [k] of Object.keys(node)) {
+            for (const k of Object.keys(node)) {
               delete node[k];
             }
 

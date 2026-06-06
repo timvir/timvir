@@ -1,1 +1,1 @@
-export function remarkPlugin(options: any): (tree: any, file: any) => Promise<any>;
+export function remarkPlugin(): (tree: any, file: any) => Promise<any>;
