@@ -150,5 +150,4 @@ const genName = (...buffers) => {
   return ret.toString("utf8");
 };
 
-export { remarkPlugin };
 export default remarkPlugin;

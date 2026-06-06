@@ -1,1 +1,1 @@
-export { remarkPlugin } from "./remark";
+export { default as remarkPlugin } from "./remark";
