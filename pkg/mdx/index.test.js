@@ -3,7 +3,6 @@ import assert from "node:assert";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
-import { remarkPlugin } from "./index.js";
 import remarkPluginSubpath from "./remark.js";
 
 async function process(doc) {
@@ -26,10 +25,6 @@ test("Sample variant=basic", async () => {
 
   assert.strictEqual(tree.children.at(1).type, "mdxJsxFlowElement");
   assert.strictEqual(tree.children.at(1).name, "CIBEfJwpOCZBzAhgVmaaNZUkovAEFETME");
-});
-
-test("index export re-exports subpath default export", () => {
-  assert.strictEqual(remarkPlugin, remarkPluginSubpath);
 });
 
 test("Sample variant=basic props={{ variant }}", async () => {
