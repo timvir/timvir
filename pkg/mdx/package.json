@@ -8,6 +8,10 @@
     ".": {
       "types": "./index.d.ts",
       "import": "./index.js"
+    },
+    "./remark": {
+      "types": "./remark.d.ts",
+      "import": "./remark.js"
     }
   },
   "dependencies": {

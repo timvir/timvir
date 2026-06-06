@@ -3,7 +3,7 @@ import assert from "node:assert";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
-import { remarkPlugin } from "./index.js";
+import remarkPlugin from "./remark.js";
 
 async function process(doc) {
   const tree = fromMarkdown(doc, {
