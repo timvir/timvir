@@ -53,7 +53,7 @@ function Dialog(props: Props) {
   }, [toc, state.query]);
 
   return (
-    <div {...stylex.props(styles.root)} style={state.style} {...rest}>
+    <dialog {...stylex.props(styles.root)} style={state.style} {...rest}>
       <div {...stylex.props(styles.context)}>Context</div>
 
       <div {...stylex.props(styles.prompt)}>
@@ -88,7 +88,7 @@ function Dialog(props: Props) {
           ))}
         </div>
       </div>
-    </div>
+    </dialog>
   );
 }
 
@@ -111,6 +111,9 @@ const styles = stylex.create({
     color: "rgb(214, 214, 214)",
     overflow: "hidden",
     transition: "opacity 0.2s, transform 0.2s",
+    padding: 0,
+    borderWidth: 0,
+    margin: "0 auto",
   },
 
   context: {
