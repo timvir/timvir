@@ -31,8 +31,7 @@
         "noStaticElementInteractions": "off",
         "useKeyWithClickEvents": "off",
         "noSvgWithoutTitle": "off",
-        "useValidAnchor": "off",
-        "useAltText": "off"
+        "useValidAnchor": "off"
       }
     }
   }

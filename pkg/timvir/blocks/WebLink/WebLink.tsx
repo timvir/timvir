@@ -58,20 +58,19 @@ export function WebLink(props: Props) {
             {...stylex.props(styles.favicon)}
             style={{ opacity: metadata?.favicon ? 1 : 0 }}
             src={metadata?.favicon}
+            alt=""
           />
           <div>{metadata ? url : null}</div>
         </div>
       </div>
       {image && (
         <div {...stylex.props(styles.imageContainer)}>
-          <img {...stylex.props(styles.image)} src={image} />
+          <img {...stylex.props(styles.image)} src={image} alt="" />
         </div>
       )}
     </Root>
   );
 }
-
-
 
 const styles = stylex.create({
   root: {

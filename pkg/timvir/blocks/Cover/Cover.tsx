@@ -25,13 +25,11 @@ export function Cover(props: Props) {
         {sources.map((p, i) => (
           <source key={i} {...p} />
         ))}
-        <img {...metadata} {...img} {...stylex.props(styles.img)} />
+        <img {...metadata} {...img} alt="" {...stylex.props(styles.img)} />
       </picture>
     </Root>
   );
 }
-
-
 
 const styles = stylex.create({
   img: {
