@@ -15,7 +15,7 @@ const plugins = [
   createMDX({
     options: {
       providerImportSource: "mdx-components",
-      remarkPlugins: [require.resolve("./timvir-remark-plugin.js")],
+      remarkPlugins: [require.resolve("./pkg/mdx/remark.js")],
     },
   }),
 ];
