@@ -28,7 +28,6 @@
         "noExplicitAny": "off"
       },
       "a11y": {
-        "useFocusableInteractive": "off",
         "noStaticElementInteractions": "off",
         "useKeyWithClickEvents": "off",
         "noSvgWithoutTitle": "off",
