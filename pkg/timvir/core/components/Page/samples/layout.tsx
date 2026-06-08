@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
-import { layoutStyles } from "../../../layout";
 import Link from "next/link";
+import { layoutStyles } from "../../../layout";
 import { Page } from "..";
 
 export default function Sample() {

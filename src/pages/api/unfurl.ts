@@ -1,6 +1,6 @@
+import Cors from "cors";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { unfurl } from "unfurl.js";
-import Cors from "cors";
 
 const cors = Cors({
   methods: ["GET", "HEAD"],

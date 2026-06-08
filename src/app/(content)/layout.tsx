@@ -1,9 +1,9 @@
 "use client";
 
-import type * as React from "react";
 import { useMDXComponents } from "mdx-components";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import type * as React from "react";
 import { Page } from "timvir/core";
 import { defaultSearch, Search } from "timvir/search";
 import toc from "../../timvir/toc";

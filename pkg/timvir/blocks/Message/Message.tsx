@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import * as Icons from "../../icons";
 import { layoutStyles } from "../../core/layout";
+import * as Icons from "../../icons";
 
 /**
  * The underlying DOM element which is rendered by this component.

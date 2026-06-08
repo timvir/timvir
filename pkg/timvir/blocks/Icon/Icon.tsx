@@ -1,9 +1,9 @@
 "use client";
 
-import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
-import { useResizeObserverEntry } from "timvir/hooks";
 import type * as React from "react";
+import { useResizeObserverEntry } from "timvir/hooks";
+import { cx } from "../../internal/cx";
 import { Canvas } from "./internal";
 import type { Descriptor } from "./types";
 

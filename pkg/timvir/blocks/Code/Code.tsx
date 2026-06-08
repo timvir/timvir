@@ -4,12 +4,12 @@
  * This is documentation for the Code component.
  */
 
-import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
+import * as React from "react";
+import { codeToHtml, type ShikiTransformer } from "shiki";
 import { useBlock } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
-import { codeToHtml, type ShikiTransformer } from "shiki";
-import * as React from "react";
+import { cx } from "../../internal/cx";
 
 /**
  * The underlying DOM element which is rendered by this component.

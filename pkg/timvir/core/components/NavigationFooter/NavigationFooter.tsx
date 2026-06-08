@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import type * as React from "react";
-import * as Icons from "../../../icons";
 import type { Value } from "timvir/context";
+import * as Icons from "../../../icons";
 
 /**
  * The underlying DOM element which is rendered by this component.

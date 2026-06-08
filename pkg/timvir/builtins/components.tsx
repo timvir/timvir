@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import * as Icons from "../icons";
 import { layoutStyles } from "../core/layout";
+import * as Icons from "../icons";
 
 const anchorize = (children?: React.ReactNode): undefined | string => {
   if (typeof children === "string") {

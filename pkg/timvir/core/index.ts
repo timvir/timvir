@@ -1,14 +1,13 @@
-import { filter, pipe, type Source, subscribe } from "wonka";
+import * as React from "react";
+import * as builtins from "timvir/builtins";
 import type { Message } from "timvir/bus";
 import { useContext } from "timvir/context";
-import * as React from "react";
-
-import * as builtins from "timvir/builtins";
-export * from "./components/Footer";
-export * from "./components/Page";
+import { filter, pipe, type Source, subscribe } from "wonka";
 
 export { useContext } from "timvir/context";
-export { layoutStyles, noLayout, extendedWidth, fullWidth, grid } from "./layout";
+export * from "./components/Footer";
+export * from "./components/Page";
+export { extendedWidth, fullWidth, grid, layoutStyles, noLayout } from "./layout";
 
 /**
  * A mailbox is a wonka source which receives messages for one specific block (identified by its id).

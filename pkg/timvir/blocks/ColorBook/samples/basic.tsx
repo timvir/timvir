@@ -1,7 +1,7 @@
 "use client";
 
-import { Swatch, ColorBar, Exhibit, ColorBook } from "timvir/blocks";
 import * as React from "react";
+import { ColorBar, ColorBook, Exhibit, Swatch } from "timvir/blocks";
 
 export default function Sample() {
   const [selectedChapter, onSelectChapter] = React.useState<undefined | number>(0);
