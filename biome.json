@@ -30,7 +30,6 @@
       "a11y": {
         "useFocusableInteractive": "off",
         "noStaticElementInteractions": "off",
-        "useSemanticElements": "off",
         "noAutofocus": "off",
         "useKeyWithClickEvents": "off",
         "noSvgWithoutTitle": "off",

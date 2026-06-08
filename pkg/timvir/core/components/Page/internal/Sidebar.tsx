@@ -78,7 +78,11 @@ function Sidebar(props: Props) {
         )}
       </header>
 
-      <div role="button" onClick={() => setMenuOpen(!isMenuOpen)} {...stylex.props(styles.menuLabel)}>
+      <button
+        type="button"
+        onClick={() => setMenuOpen(!isMenuOpen)}
+        {...stylex.props(styles.buttonReset, styles.menuLabel)}
+      >
         {node?.icon
           ? React.cloneElement(node.icon, {
               ...stylex.props(styles.menuIcon),
@@ -87,7 +91,7 @@ function Sidebar(props: Props) {
         <span>{node?.label ?? "Menu"}</span>
 
         <Icons.Menu width={16} height={16} {...stylex.props(styles.menuCaret)} />
-      </div>
+      </button>
 
       <div {...stylex.props(styles.content, isMenuOpen && styles.menuOpen)}>
         <div {...stylex.props(styles.sections)}>
@@ -110,6 +114,17 @@ function Sidebar(props: Props) {
 export default Sidebar;
 
 const styles = stylex.create({
+  buttonReset: {
+    border: "none",
+    backgroundColor: "transparent",
+    padding: 0,
+    font: "inherit",
+    color: "inherit",
+    cursor: "pointer",
+    display: "block",
+    width: "100%",
+  },
+
   scrollLock: {
     overflowY: "scroll",
     position: "fixed",
@@ -168,6 +183,9 @@ const styles = stylex.create({
   },
 
   menuLabel: {
+    borderTop: "none",
+    borderLeft: "none",
+    borderRight: "none",
     borderBottom: "1px solid var(--timvir-border-color)",
     padding: "0 var(--timvir-page-margin)",
     height: "3rem",
@@ -270,7 +288,7 @@ function Search(props: NonNullable<Props["search"]>) {
 
   return (
     <div {...stylex.props(styles.searchRoot)}>
-      <div role="button" {...stylex.props(styles.searchButton)} onClick={open}>
+      <button type="button" {...stylex.props(styles.buttonReset, styles.searchButton)} onClick={open}>
         <svg x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" {...stylex.props(styles.searchButtonIcon)}>
           <path
             d="M11.707 10.293l-2.54-2.54a5.015 5.015 0 10-1.414 1.414l2.54 2.54a1 1 0 001.414-1.414zM2 5a3 3 0 113 3 3 3 0 01-3-3z"
@@ -278,7 +296,7 @@ function Search(props: NonNullable<Props["search"]>) {
           />
         </svg>
         {label || "Search docs"}
-      </div>
+      </button>
     </div>
   );
 }
