@@ -95,8 +95,8 @@ function Sidebar(props: Props) {
 
       <div {...stylex.props(styles.content, isMenuOpen && styles.menuOpen)}>
         <div {...stylex.props(styles.sections)}>
-          <div
-            {...stylex.props(styles.nav)}
+          <button
+            {...stylex.props(styles.buttonReset, styles.nav)}
             onClick={() => {
               setMenuOpen(false);
             }}
@@ -104,7 +104,7 @@ function Sidebar(props: Props) {
             {toc.map((c, i) => (
               <Section key={i} depth={0} {...c} />
             ))}
-          </div>
+          </button>
         </div>
       </div>
     </nav>
@@ -115,7 +115,7 @@ export default Sidebar;
 
 const styles = stylex.create({
   buttonReset: {
-    border: "none",
+    borderWidth: 0,
     backgroundColor: "transparent",
     padding: 0,
     font: "inherit",
@@ -186,7 +186,9 @@ const styles = stylex.create({
     borderTop: "none",
     borderLeft: "none",
     borderRight: "none",
-    borderBottom: "1px solid var(--timvir-border-color)",
+    borderBottomWidth: 1,
+    borderBottomStyle: "solid",
+    borderBottomColor: "var(--timvir-border-color)",
     padding: "0 var(--timvir-page-margin)",
     height: "3rem",
     display: "flex",
