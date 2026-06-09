@@ -1,7 +1,7 @@
-import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
 import type * as React from "react";
 import { layoutStyles } from "../../core/layout";
+import { cx } from "../../internal/cx";
 
 /**
  * The underlying DOM element which is rendered by this component.

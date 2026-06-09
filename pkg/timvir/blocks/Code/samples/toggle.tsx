@@ -1,8 +1,8 @@
 "use client";
 
-import { useArticleComponents, useContext } from "timvir/core";
-import { send } from "timvir/bus";
 import type * as React from "react";
+import { send } from "timvir/bus";
+import { useArticleComponents, useContext } from "timvir/core";
 
 export default function Sample({ language, children }: any) {
   const context = useContext();

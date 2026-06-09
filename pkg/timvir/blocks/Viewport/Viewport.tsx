@@ -1,11 +1,11 @@
 "use client";
 
-import { cx } from "../../internal/cx";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useBlock } from "timvir/core";
-import { layoutStyles } from "../../core/layout";
 import { useResizeObserver, useResizeObserverEntry } from "timvir/hooks";
+import { layoutStyles } from "../../core/layout";
+import { cx } from "../../internal/cx";
 import { Caption, Handle, Ruler } from "./internal";
 
 const shimmer = stylex.keyframes({

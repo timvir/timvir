@@ -1,10 +1,10 @@
 import * as crypto from "node:crypto";
-import * as espree from "espree";
 import * as fs from "node:fs";
+import * as path from "node:path";
+import * as espree from "espree";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";
-import * as path from "node:path";
 import { visit } from "unist-util-visit";
 
 function remarkPlugin() {

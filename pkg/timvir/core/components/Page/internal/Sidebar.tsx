@@ -2,10 +2,10 @@
 
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
+import { useContext } from "timvir/context";
+import * as Icons from "../../../../icons";
 import type { Node } from "../types";
 import Section from "./Section";
-import * as Icons from "../../../../icons";
-import { useContext } from "timvir/context";
 
 interface Props extends Omit<React.ComponentPropsWithoutRef<"nav">, "className" | "style"> {
   sx: stylex.StyleXStyles;

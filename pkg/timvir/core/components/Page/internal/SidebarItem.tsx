@@ -3,8 +3,8 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useContext } from "timvir/context";
-import type { Node } from "../types";
 import * as Icons from "../../../../icons";
+import type { Node } from "../types";
 
 interface Props extends Node {
   depth: number;

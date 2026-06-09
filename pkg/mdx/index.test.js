@@ -1,5 +1,5 @@
-import { test } from "node:test";
 import assert from "node:assert";
+import { test } from "node:test";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { mdxFromMarkdown } from "mdast-util-mdx";
 import { mdxjs } from "micromark-extension-mdxjs";

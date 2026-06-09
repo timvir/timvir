@@ -1,11 +1,11 @@
 "use client";
 
-import { useArticleComponents } from "timvir/core";
-import { layoutStyles } from "../../../core/layout";
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
-import * as Icons from "../../../icons";
 import { Code } from "timvir/blocks";
+import { useArticleComponents } from "timvir/core";
+import { layoutStyles } from "../../../core/layout";
+import * as Icons from "../../../icons";
 
 interface Props {
   src: string;
