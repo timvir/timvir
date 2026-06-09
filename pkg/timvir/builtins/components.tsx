@@ -156,6 +156,10 @@ export const ol: React.FunctionComponent<React.HTMLAttributes<HTMLOListElement>>
   <ol {...stylex.props(layoutStyles.block)} {...props} />
 );
 
+export const button: React.FunctionComponent<React.ButtonHTMLAttributes<HTMLButtonElement>> = (props) => (
+  <button {...stylex.props(styles.button)} {...props} />
+);
+
 const styles = stylex.create({
   h1: {
     marginTop: "3rem",
@@ -248,6 +252,29 @@ const styles = stylex.create({
       backgroundImage: "linear-gradient(transparent, transparent 3px, #2bbc8a 3px, #2bbc8a)",
       "--code-box-shadow": "inset 0 0 0 1px rgba(16, 22, 26, 0.7), inset 0 1px 4px rgba(16, 22, 26, 0.4)",
       "--code-background": "var(--c-p-2)",
+    },
+  },
+  button: {
+    outline: "none",
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "var(--timvir-border-color)",
+    borderRadius: "2px",
+    backgroundColor: "var(--timvir-secondary-background-color)",
+    color: "var(--timvir-text-color)",
+    font: "inherit",
+    lineHeight: 1,
+
+    padding: "4px 6px",
+    marginBlock: -4,
+
+    ":hover": {
+      borderColor: "var(--timvir-text-color)",
+      backgroundColor: "var(--timvir-sidebar-highlight-color)",
+    },
+    ":active": {
+      borderColor: "var(--timvir-text-color)",
+      backgroundColor: "var(--timvir-sidebar-highlight-color)",
     },
   },
 });
