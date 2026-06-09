@@ -39,11 +39,16 @@ function SidebarItem(props: Props) {
           {icon}
         </Link>
       ) : (
-        <a href="#" className={linkStylexProps.className} style={linkStyle} onClick={() => setActive((x) => !x)}>
+        <button
+          type="button"
+          className={linkStylexProps.className}
+          style={linkStyle}
+          onClick={() => setActive((x) => !x)}
+        >
           {props.icon ? React.cloneElement(props.icon, { ...stylex.props(styles.icn) }) : null}
           <span {...stylex.props(styles.label)}>{label}</span>
           {icon}
-        </a>
+        </button>
       )}
     </div>
   );
@@ -56,13 +61,6 @@ const styles = stylex.create({
     display: "flex",
     alignItems: "center",
     margin: "1px 0",
-
-    fontSize: "0.9375rem",
-    lineHeight: 2.2,
-
-    "@media (min-width: 48rem)": {
-      fontSize: "0.8125rem",
-    },
   },
 
   link: {
@@ -73,11 +71,22 @@ const styles = stylex.create({
     alignItems: "center",
     color: "var(--timvir-text-color)",
     fontWeight: 500,
-    backgroundColor: "none",
+    backgroundColor: "transparent",
     textDecoration: "none",
     width: "100%",
     padding: "0 8px",
     opacity: 0.7,
+    borderWidth: 0,
+    textAlign: "left",
+    cursor: "pointer",
+    fontFamily: "inherit",
+
+    fontSize: "0.9375rem",
+    lineHeight: 2.2,
+
+    "@media (min-width: 48rem)": {
+      fontSize: "0.8125rem",
+    },
 
     "@media (any-pointer: coarse)": {
       minHeight: "44px",
