@@ -12,8 +12,7 @@
   "linter": {
     "rules": {
       "security": {
-        "noGlobalEval": "off",
-        "noDangerouslySetInnerHtml": "off"
+        "noGlobalEval": "off"
       },
       "suspicious": {
         "noArrayIndexKey": "off",
