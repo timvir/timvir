@@ -9,8 +9,7 @@ export default function Sample({ language, children }: any) {
   const components = useArticleComponents();
 
   return (
-    <components.a
-      href="#"
+    <components.button
       role="button"
       onClick={(ev: React.SyntheticEvent) => {
         ev.preventDefault();
@@ -23,7 +22,7 @@ export default function Sample({ language, children }: any) {
       }}
     >
       {children}
-    </components.a>
+    </components.button>
   );
 }
 
