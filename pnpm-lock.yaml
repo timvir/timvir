@@ -183,7 +183,7 @@ importers:
         specifier: ^1 || ^2 || ^3 || ^4
         version: 4.0.2
       wonka:
-        specifier: ^6.3.6
+        specifier: ^6
         version: 6.3.6
 
 packages:
