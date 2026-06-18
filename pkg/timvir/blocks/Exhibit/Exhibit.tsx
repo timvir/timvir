@@ -109,9 +109,11 @@ const styles = stylex.create({
   },
   lightTheme: {
     backgroundImage: `url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAAHElEQVR4AWP4/u07Mvr75y8yGlBpND6a6oGUBgAxMSSkDKa/pQAAAABJRU5ErkJggg==)`,
+    color: "#000000c9",
   },
   darkTheme: {
     backgroundImage: `url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAAAAACoWZBhAAAAFklEQVQI12NQBQF2EGAghQkmwXxSmADZJQiZ2ZZ46gAAAABJRU5ErkJggg==)`,
+    color: "rgba(255 255 255 / 0.86)",
   },
 
   caption: {
