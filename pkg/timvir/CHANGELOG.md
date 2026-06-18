@@ -1,5 +1,12 @@
 # timvir
 
+## 0.2.55
+
+### Patch Changes
+
+- **Relax peer dependency version requirement** ([#3894](https://github.com/timvir/timvir/pull/3894)) - A recent change bumped peer dependency requirement for react from ^19 to ^19.2.7. Relax the requirement back to ^19, timvir does not depend on any specific feature added in 19.2.7.
+- **Override text color when forcing light or dark theme** ([#3895](https://github.com/timvir/timvir/pull/3895)) - Forcing a theme now sets both the background image (checkered background) and also text color. This ensures that elements that rely on currentColor remain readable.
+
 ## 0.2.54
 
 ### Patch Changes
