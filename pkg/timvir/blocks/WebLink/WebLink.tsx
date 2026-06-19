@@ -26,12 +26,20 @@ export function WebLink(props: Props) {
   const { unfurl = defaultUnfurl } = useContext().blocks?.WebLink ?? {};
 
   React.useEffect(() => {
-    unfurl(url).then((metadata) => {
-      setState({
-        settled: true,
-        metadata: metadata,
-      });
-    });
+    unfurl(url).then(
+      (metadata) => {
+        setState({
+          settled: true,
+          metadata: metadata,
+        });
+      },
+      () => {
+        setState({
+          settled: true,
+          metadata: undefined,
+        });
+      },
+    );
   }, [unfurl, url]);
 
   const metadata = state.metadata;
