@@ -10,7 +10,7 @@
     }
   },
   "dependencies": {
-    "@babel/generator": "^7"
+    "@babel/generator": "^8.0.0"
   },
   "repository": {
     "type": "git",
