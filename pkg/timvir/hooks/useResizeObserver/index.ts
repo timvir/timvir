@@ -52,7 +52,7 @@ export function useResizeObserverEntry<T extends Element>() {
   return [ref, last(entries)] as const;
 }
 
-const last = <T>(a: ReadonlyArray<T>): undefined | T => a[a.length - 1];
+const last = <T,>(a: ReadonlyArray<T>): undefined | T => a[a.length - 1];
 
 const nopResizeObserver: ResizeObserver = {
   observe() {},

@@ -7,10 +7,10 @@
     "start": "next start"
   },
   "dependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
-    "@babel/preset-typescript": "^7.29.7",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "@babel/preset-react": "^8.0.1",
+    "@babel/preset-typescript": "^8.0.1",
     "@changesets/cli": "^2.31.0",
     "@changesets/get-github-info": "^0.8.0",
     "@mdx-js/loader": "^3.1.1",
