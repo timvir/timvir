@@ -42,8 +42,6 @@ export function Grid(props: Props) {
   );
 }
 
-
-
 const styles = stylex.create({
   root: {
     display: "grid",

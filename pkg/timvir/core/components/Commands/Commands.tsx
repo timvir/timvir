@@ -43,7 +43,7 @@ export function Commands(props: Props) {
             >
               <Dialog open onClose={_onClose} />
             </div>,
-            containerElement
+            containerElement,
           );
 
           return { containerElement, reactPortal };
@@ -61,7 +61,7 @@ export function Commands(props: Props) {
               >
                 <Dialog open onClose={_onClose} />
               </div>,
-              state.dialog.containerElement
+              state.dialog.containerElement,
             ),
           };
         }
@@ -92,7 +92,7 @@ export function Commands(props: Props) {
                   }}
                 />
               </div>,
-              state.dialog.containerElement
+              state.dialog.containerElement,
             ),
           };
         } else {

@@ -19,9 +19,9 @@ export function useMailbox(id?: string): Source<Message> {
     () =>
       pipe(
         bus.source,
-        filter((x) => (id ? x.path === `/dev/timvir/block/${id}` : false))
+        filter((x) => (id ? x.path === `/dev/timvir/block/${id}` : false)),
       ),
-    [bus, id]
+    [bus, id],
   );
 }
 
@@ -53,9 +53,9 @@ export function useBlock<P extends { id?: string }>(props: P) {
               });
             }
           }
-        })
+        }),
       ).unsubscribe,
-    [mailbox, state.overrides]
+    [mailbox, state.overrides],
   );
 
   return {

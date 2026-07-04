@@ -65,8 +65,6 @@ export function Caption(props: Props) {
   );
 }
 
-
-
 const styles = stylex.create({
   figcaption: {
     fontSize: "0.8125rem",

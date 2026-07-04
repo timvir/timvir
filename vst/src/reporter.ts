@@ -129,7 +129,11 @@ class UrnerysReporter implements Reporter {
       const [, collection, snapshot, formula] = attachment.name.split("|");
       const body = attachment.body;
 
-      this.uploads.push(this.tokenPromise.then((token) => uploadOne(this.config.project, token, this.build, collection, snapshot, formula, body)));
+      this.uploads.push(
+        this.tokenPromise.then((token) =>
+          uploadOne(this.config.project, token, this.build, collection, snapshot, formula, body),
+        ),
+      );
     }
   }
 
@@ -156,14 +160,17 @@ class UrnerysReporter implements Reporter {
         console.warn(`[urnerys] Failed to update baseline: ${response.status}`);
       }
     } else {
-      const response = await fetch(`https://${urnerys}/api/v1/projects/${this.config.project}/builds/${this.build}/checks`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const response = await fetch(
+        `https://${urnerys}/api/v1/projects/${this.config.project}/builds/${this.build}/checks`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ check: { baseline: "production" } }),
         },
-        body: JSON.stringify({ check: { baseline: "production" } }),
-      });
+      );
       if (!response.ok) {
         console.warn(`[urnerys] Failed to create check: ${response.status}`);
       }

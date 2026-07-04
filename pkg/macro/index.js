@@ -24,7 +24,7 @@ module.exports = createMacro(({ references, babel, state }) => {
         const props = findAttrExpression(attrs, "props") || t.objectExpression([]);
 
         const otherAttributes = attrs.filter(
-          ({ name }) => name.type === "JSXIdentifier" && !(name.name in { component: 1, variant: 1, as: 1, props: 1 })
+          ({ name }) => name.type === "JSXIdentifier" && !(name.name in { component: 1, variant: 1, as: 1, props: 1 }),
         );
 
         /*
@@ -42,7 +42,7 @@ module.exports = createMacro(({ references, babel, state }) => {
             counter = counter + 1;
 
             state.file.path.node.body.unshift(
-              t.importDeclaration([t.importDefaultSpecifier(t.identifier(name))], t.stringLiteral(module))
+              t.importDeclaration([t.importDefaultSpecifier(t.identifier(name))], t.stringLiteral(module)),
             );
 
             parentPath.parentPath.replaceWith(
@@ -50,8 +50,8 @@ module.exports = createMacro(({ references, babel, state }) => {
                 t.jsxOpeningElement(t.jsxIdentifier(name), [...otherAttributes, t.jsxSpreadAttribute(props)], true),
                 null,
                 parentPath.parentPath.node.children,
-                true
-              )
+                true,
+              ),
             );
           },
           source: () => {
@@ -64,10 +64,10 @@ module.exports = createMacro(({ references, babel, state }) => {
             })();
 
             parentPath.parentPath.replaceWith(
-              t.jsxExpressionContainer(t.templateLiteral([t.templateElement({ raw: source, cooked: source })], []))
+              t.jsxExpressionContainer(t.templateLiteral([t.templateElement({ raw: source, cooked: source })], [])),
             );
           },
-        }[as]());
+        })[as]();
 
         return;
       }

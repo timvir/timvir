@@ -122,8 +122,6 @@ export function Font(props: Props) {
   );
 }
 
-
-
 const styles = stylex.create({
   meta: {
     display: "flex",

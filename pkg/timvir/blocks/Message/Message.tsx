@@ -47,8 +47,6 @@ export function Message(props: Props) {
   );
 }
 
-
-
 const styles = stylex.create({
   root: {
     position: "relative",

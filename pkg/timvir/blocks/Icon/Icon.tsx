@@ -48,8 +48,6 @@ export function Icon(props: Props) {
   );
 }
 
-
-
 const styles = stylex.create({
   root: {
     position: "relative",

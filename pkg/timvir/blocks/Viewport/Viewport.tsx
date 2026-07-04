@@ -216,8 +216,6 @@ export function Viewport(props: Props) {
   );
 }
 
-
-
 const styles = stylex.create({
   root: {
     contain: "layout",

@@ -24,7 +24,7 @@ function remarkPlugin() {
         const props = findAttrValue(attrs, "props");
 
         const otherAttributes = attrs.filter(
-          ({ type, name }) => type === "mdxJsxAttribute" && !(name in { component: 1, variant: 1, as: 1, props: 1 })
+          ({ type, name }) => type === "mdxJsxAttribute" && !(name in { component: 1, variant: 1, as: 1, props: 1 }),
         );
 
         /*
@@ -40,7 +40,6 @@ function remarkPlugin() {
           } else {
             return fs.readFileSync(`${absoluteModulePath}.tsx`, "utf8");
           }
-
         }
 
         ({
@@ -116,7 +115,7 @@ function remarkPlugin() {
               node[k] = v;
             }
           },
-        }[as]());
+        })[as]();
       }
     });
 

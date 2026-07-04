@@ -33,4 +33,3 @@ export const green = {
 export const primary = { main: "#38a585" } as const;
 
 export const text = { main: "#000000d9", light: "#00000066" } as const;
-
