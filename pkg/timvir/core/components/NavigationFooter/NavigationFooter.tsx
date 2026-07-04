@@ -23,7 +23,7 @@ interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
   };
 }
 
-function NavigationFooter(props: Props) {
+export function NavigationFooter(props: Props) {
   const { Link, prev, next, ...rest } = props;
 
   return (
@@ -49,8 +49,6 @@ function NavigationFooter(props: Props) {
     </Root>
   );
 }
-
-export default NavigationFooter;
 
 const styles = stylex.create({
   root: {

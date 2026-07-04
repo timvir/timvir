@@ -10,7 +10,7 @@ interface Props {
   onClose: () => void;
 }
 
-function Commands(props: Props) {
+export function Commands(props: Props) {
   const { open: _open, onClose: _onClose } = props;
 
   const [state, setState] = React.useState({
@@ -122,8 +122,6 @@ function Commands(props: Props) {
 
   return state.dialog?.reactPortal ?? null;
 }
-
-export default Commands;
 
 const styles = stylex.create({
   root: {

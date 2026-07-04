@@ -7,7 +7,7 @@ interface Props extends Omit<React.ComponentPropsWithoutRef<typeof Root>, "class
   label?: React.ReactNode;
 }
 
-function Action(props: Props) {
+export function Action(props: Props) {
   const { label, ...rest } = props;
 
   return (
@@ -30,8 +30,6 @@ function Action(props: Props) {
     </Root>
   );
 }
-
-export default Action;
 
 const styles = stylex.create({
   root: {

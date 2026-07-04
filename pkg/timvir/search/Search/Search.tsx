@@ -11,11 +11,9 @@ interface Props extends React.ComponentPropsWithRef<"div"> {
   }>;
 }
 
-function Search(_props: Props) {
+export function Search(_props: Props) {
   return null;
 }
-
-export default Search;
 
 export function defaultSearch(toc: readonly Node[]) {
   return {

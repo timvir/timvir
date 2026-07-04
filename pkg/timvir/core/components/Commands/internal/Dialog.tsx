@@ -4,7 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useContext } from "timvir/context";
 import { defaultSearch } from "timvir/search";
-import Action from "./Action";
+import { Action } from "./Action";
 
 interface Props {
   open?: boolean;
@@ -12,7 +12,7 @@ interface Props {
   onDispose?: () => void;
 }
 
-function Dialog(props: Props) {
+export function Dialog(props: Props) {
   const { toc } = useContext();
 
   const { open, onClose, onDispose, ...rest } = props;
@@ -91,8 +91,6 @@ function Dialog(props: Props) {
     </dialog>
   );
 }
-
-export default Dialog;
 
 const styles = stylex.create({
   root: {

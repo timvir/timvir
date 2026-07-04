@@ -13,7 +13,7 @@ interface Props extends Node {
   setActive: (f: (active: boolean) => boolean) => void;
 }
 
-function SidebarItem(props: Props) {
+export function SidebarItem(props: Props) {
   const { depth, label, path, children = [], active, setActive } = props;
 
   const { location, Link } = useContext();
@@ -53,8 +53,6 @@ function SidebarItem(props: Props) {
     </div>
   );
 }
-
-export default SidebarItem;
 
 const styles = stylex.create({
   root: {
