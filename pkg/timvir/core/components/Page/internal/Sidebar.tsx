@@ -5,7 +5,7 @@ import * as React from "react";
 import { useContext } from "timvir/context";
 import * as Icons from "../../../../icons";
 import type { Node } from "../types";
-import Section from "./Section";
+import { Section } from "./Section";
 
 interface Props extends Omit<React.ComponentPropsWithoutRef<"nav">, "className" | "style"> {
   sx: stylex.StyleXStyles;
@@ -22,7 +22,7 @@ interface Props extends Omit<React.ComponentPropsWithoutRef<"nav">, "className" 
   };
 }
 
-function Sidebar(props: Props) {
+export function Sidebar(props: Props) {
   const { location } = useContext();
 
   const [isMenuOpen, setMenuOpen] = React.useState(false);
@@ -110,8 +110,6 @@ function Sidebar(props: Props) {
     </nav>
   );
 }
-
-export default Sidebar;
 
 const styles = stylex.create({
   buttonReset: {

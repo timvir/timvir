@@ -13,7 +13,7 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   }>;
 }
 
-function Footer(props: Props) {
+export function Footer(props: Props) {
   const { links, ...rest } = props;
 
   return (
@@ -48,8 +48,6 @@ function Footer(props: Props) {
     </Root>
   );
 }
-
-export default Footer;
 
 const styles = stylex.create({
   root: {

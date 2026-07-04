@@ -1,1 +1,1 @@
-export { default as NavigationFooter } from "./NavigationFooter";
+export { NavigationFooter } from "./NavigationFooter";

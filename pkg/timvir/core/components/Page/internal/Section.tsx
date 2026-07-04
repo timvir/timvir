@@ -3,13 +3,13 @@
 import * as React from "react";
 import { useContext } from "timvir/context";
 import type { Node } from "../types";
-import SidebarItem from "./SidebarItem";
+import { SidebarItem } from "./SidebarItem";
 
 interface Props extends Node {
   depth: number;
 }
 
-function Section(props: Props) {
+export function Section(props: Props) {
   const { depth, path, children = [] } = props;
 
   const { location } = useContext();
@@ -44,5 +44,3 @@ function Section(props: Props) {
     </section>
   );
 }
-
-export default Section;

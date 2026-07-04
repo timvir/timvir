@@ -78,7 +78,7 @@ interface Props extends Omit<React.ComponentProps<typeof Root>, "className" | "s
   blocks?: Value["blocks"];
 }
 
-function Page(props: Props) {
+export function Page(props: Props) {
   const { location, toc, Link, search, mdxComponents, Footer, blocks, children, ...rest } = props;
 
   const [state, setState] = React.useState({
@@ -233,8 +233,6 @@ function Page(props: Props) {
     </Provider>
   );
 }
-
-export default Page;
 
 const styles = stylex.create({
   root: {
