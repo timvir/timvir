@@ -23,6 +23,8 @@ jobs:
       - run: nix run .#nix-develop .#workflow
       - run: pnpm install
 
+      - run: biome migrate --write
+      - run: biome check --write
       - run: npm run build
 
       - id: create-pull-request
