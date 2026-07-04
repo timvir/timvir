@@ -42,7 +42,7 @@ export function ColorBar(props: Props) {
               {...stylex.props(
                 i === 0 ? styles.firstChild : null,
                 i === self.length - 1 ? styles.lastChild : null,
-                styles.valueInner
+                styles.valueInner,
               )}
               style={{ background: typeof value === "string" ? value : value.value }}
               onClick={() => {
@@ -67,8 +67,6 @@ export function ColorBar(props: Props) {
     </Root>
   );
 }
-
-
 
 const styles = stylex.create({
   root: {

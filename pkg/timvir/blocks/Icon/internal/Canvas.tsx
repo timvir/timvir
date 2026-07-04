@@ -25,8 +25,6 @@ export function Canvas(props: Props) {
   );
 }
 
-
-
 function Grid({ size, ...rest }: { size: number } & React.ComponentProps<"svg">) {
   const halfSize = size / 2;
   const center = 60;

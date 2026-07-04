@@ -42,7 +42,7 @@ export function ColorBook(props: Props) {
                 {...stylex.props(
                   styles.colorValue,
                   i === 0 ? styles.colorValueFirst : null,
-                  i === values.length - 1 ? styles.colorValueLast : null
+                  i === values.length - 1 ? styles.colorValueLast : null,
                 )}
               />
             ))}
@@ -55,8 +55,6 @@ export function ColorBook(props: Props) {
     </Root>
   );
 }
-
-
 
 const styles = stylex.create({
   root: {

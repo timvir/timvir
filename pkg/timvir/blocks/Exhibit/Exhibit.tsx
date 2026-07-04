@@ -78,8 +78,6 @@ export function Exhibit(props: Props) {
   );
 }
 
-
-
 const cssVariables = {
   bleed: "--timvir-b-Exhibit-bleed",
   borderColor: "--timvir-b-Exhibit-borderColor",

@@ -40,8 +40,6 @@ export function Ruler(props: Props) {
   );
 }
 
-
-
 const styles = stylex.create({
   svg: {
     width: "100%",

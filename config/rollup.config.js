@@ -8,7 +8,7 @@ import stylexPlugin0 from "@stylexswc/rollup-plugin";
 import builtinModules from "builtin-modules";
 import preserveDirectives from "rollup-preserve-directives";
 
-const stylexPlugin = stylexPlugin0.default
+const stylexPlugin = stylexPlugin0.default;
 
 function externalFor(pkg) {
   const packageJson = JSON.parse(fs.readFileSync(`pkg/${pkg}/package.json`, "utf8"));

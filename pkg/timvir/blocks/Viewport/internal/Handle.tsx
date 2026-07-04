@@ -32,8 +32,6 @@ export function Handle(props: Props) {
   );
 }
 
-
-
 const styles = stylex.create({
   handle: {
     gridRow: "1 / span 3",
