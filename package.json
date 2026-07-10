@@ -41,7 +41,7 @@
     "globby": "^16.2.0",
     "mdast-util-from-markdown": "^2.0.3",
     "mdast-util-mdx": "^3.0.0",
-    "nanoid": "^5.1.11",
+    "nanoid": "^5.1.16",
     "next": "^16.2.9",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
