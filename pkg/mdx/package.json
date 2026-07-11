@@ -7,11 +7,11 @@
   "exports": {
     ".": {
       "types": "./index.d.ts",
-      "import": "./index.js"
+      "default": "./index.js"
     },
     "./remark": {
       "types": "./remark.d.ts",
-      "import": "./remark.js"
+      "default": "./remark.js"
     }
   },
   "dependencies": {
