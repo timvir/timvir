@@ -1,5 +1,11 @@
 # @timvir/mdx
 
+## 0.2.56
+
+### Patch Changes
+
+- **Switch to "default" export condition** ([#3923](https://github.com/timvir/timvir/pull/3923)) - The "import" export condition does not allow the module to be loaded with `require()`. Nor does it allow Node.js to resolve the path to it via `require.resolve()`. This made it impossible to load the remark plugin via `remarkPlugins: ["@timvir/mdx/remark"]`.
+
 ## 0.2.55
 
 ## 0.2.54
