@@ -92,9 +92,6 @@ importers:
       bytestring:
         specifier: ^1.0.1
         version: 1.0.1
-      caniuse-lite:
-        specifier: ^1.0.30001799
-        version: 1.0.30001799
       core-js:
         specifier: ^3.49.0
         version: 3.49.0
