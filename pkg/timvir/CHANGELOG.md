@@ -1,5 +1,11 @@
 # timvir
 
+## 0.2.57
+
+### Patch Changes
+
+- **Explicitly set non-dev React runtime** ([#3939](https://github.com/timvir/timvir/pull/3939)) - Version 0.2.56 was published containing the React DEV runtime instead of PROD (ie. code uses `jsxDEV` instead of `jsx`). Now we explicitly configure React runtime with `development: false` when bundling the package.
+
 ## 0.2.56
 
 ## 0.2.55
