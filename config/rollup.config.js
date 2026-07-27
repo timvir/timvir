@@ -51,7 +51,10 @@ function block(name) {
         babel({
           configFile: false,
           extensions,
-          presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic" }]],
+          presets: [
+            ["@babel/preset-typescript"],
+            ["@babel/preset-react", { runtime: "automatic", development: false }],
+          ],
           babelHelpers: "bundled",
         }),
         preserveDirectives(),
@@ -84,7 +87,7 @@ function module(name) {
         presets: [
           ["@babel/preset-typescript"],
           ["@babel/preset-env", { targets: { node } }],
-          ["@babel/preset-react", { runtime: "automatic" }],
+          ["@babel/preset-react", { runtime: "automatic", development: false }],
         ],
         babelHelpers: "bundled",
       }),
@@ -137,7 +140,7 @@ export default [
       babel({
         configFile: false,
         extensions,
-        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic" }]],
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", development: false }]],
         babelHelpers: "bundled",
       }),
     ],
@@ -160,7 +163,7 @@ export default [
       babel({
         configFile: false,
         extensions,
-        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic" }]],
+        presets: [["@babel/preset-typescript"], ["@babel/preset-react", { runtime: "automatic", development: false }]],
         babelHelpers: "bundled",
       }),
     ],
