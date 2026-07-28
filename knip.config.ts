@@ -1,10 +1,51 @@
 export default {
-  ignoreWorkspaces: ["."],
-
   workspaces: {
+    ".": {
+      entry: [
+        /*
+         * Ad-hoc CLI entry points
+         *
+         * These are invoked directly (e.g. from GitHub Actions workflows)
+         * rather than imported from other source files.
+         */
+        "config/rollup.config.js",
+        "vst/playwright.config.ts",
+        "vst/src/reporter.ts",
+
+        /*
+         * Samples
+         *
+         * Referenced dynamically by the <Sample component="..." variant="..." />
+         * MDX convention, which pkg/mdx/remark.js rewrites into real imports
+         * at MDX-compile time.
+         */
+        "src/**/samples/**/*.mdx",
+      ],
+
+      ignoreDependencies: [
+        /*
+         * Babel presets referenced by string name (not statically imported)
+         * in config/rollup.config.js.
+         */
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-typescript",
+
+        /*
+         * Not used by the root workspace itself, but installed here because
+         * all workspace dependencies are declared in the root package.json.
+         * Actually used in pkg/mdx and pkg/timvir.
+         */
+        "bytestring",
+        "mdast-util-from-markdown",
+        "mdast-util-mdx",
+        "shiki",
+        "unist-util-visit",
+      ],
+    },
+
     "pkg/macro": {
       entry: ["index.{js,d.ts}"],
-      ignoreDependencies: ["babel-plugin-macros"],
     },
 
     "pkg/mdx": {
@@ -60,8 +101,6 @@ export default {
          */
         "icons/index.ts",
       ],
-
-      ignoreDependencies: ["@stylexjs/stylex", "next"],
     },
   },
 };
