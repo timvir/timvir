@@ -37,6 +37,7 @@
     "bytestring": "^1.0.1",
     "core-js": "^3.49.0",
     "cors": "^2.8.6",
+    "knip": "^6.26.0",
     "mdast-util-from-markdown": "^2.0.3",
     "mdast-util-mdx": "^3.0.0",
     "nanoid": "^6.0.0",
