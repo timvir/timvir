@@ -1,4 +1,8 @@
-export default {
+import type { KnipConfig } from "knip";
+
+const config: KnipConfig = {
+  treatConfigHintsAsErrors: true,
+
   workspaces: {
     ".": {
       entry: [
@@ -104,3 +108,5 @@ export default {
     },
   },
 };
+
+export default config;
