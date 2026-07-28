@@ -65,14 +65,7 @@ jobs:
       - run: nix run .#nix-develop .#workflow
       - run: pnpm install
 
-      - run: pnpx knip
-        working-directory: pkg/macro
-
-      - run: pnpx knip
-        working-directory: pkg/mdx
-
-      - run: pnpx knip
-        working-directory: pkg/timvir
+      - run: pnpm exec knip
 
   test:
     runs-on: ubuntu-latest
