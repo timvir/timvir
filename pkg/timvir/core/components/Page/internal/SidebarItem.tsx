@@ -16,7 +16,9 @@ interface Props extends Node {
 export function SidebarItem(props: Props) {
   const { depth, label, path, children = [], active, setActive } = props;
 
-  const { location, Link } = useContext();
+  const { navigation } = useContext();
+  const { Link, usePathname } = navigation;
+  const pathname = usePathname();
 
   const iconStylexProps = stylex.props(styles.icon);
   const iconStyle = { ...iconStylexProps.style, transform: active ? "rotate(90deg)" : "rotate(0deg)" };
@@ -26,7 +28,7 @@ export function SidebarItem(props: Props) {
       <Icons.ChevronRight className={iconStylexProps.className} style={iconStyle} width={16} height={16} />
     );
 
-  const isActive = location.asPath.replace(/#.*$/, "") === path;
+  const isActive = pathname === path;
   const linkStylexProps = stylex.props(styles.link, isActive && styles.linkActive);
   const linkStyle = { ...linkStylexProps.style, marginLeft: depth * 16 };
 

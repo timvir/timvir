@@ -11,8 +11,10 @@ export interface Value {
       | keyof React.JSX.IntrinsicElements;
   };
 
-  location: { asPath: string; push: (path: string) => void };
-  Link: React.ComponentType<React.ComponentProps<"a"> & { href: string }>;
+  navigation: {
+    usePathname: () => string;
+    Link: React.ComponentType<React.ComponentProps<"a"> & { href: string }>;
+  };
 
   /*
    * Configuration for blocks.

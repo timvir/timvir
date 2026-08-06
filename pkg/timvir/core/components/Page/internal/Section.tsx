@@ -12,23 +12,25 @@ interface Props extends Node {
 export function Section(props: Props) {
   const { depth, path, children = [] } = props;
 
-  const { location } = useContext();
+  const { navigation } = useContext();
+  const { usePathname } = navigation;
+  const pathname = usePathname();
 
   const [active, setActive] = React.useState<boolean>(() => {
     if (path) {
-      return location.asPath.startsWith(path);
+      return pathname.startsWith(path);
     } else if (children.length > 0) {
-      return children.some(({ path }) => path && location.asPath.startsWith(path));
+      return children.some(({ path }) => path && pathname.startsWith(path));
     } else {
       return false;
     }
   });
 
   React.useEffect(() => {
-    if (path && location.asPath.startsWith(path)) {
+    if (path && pathname.startsWith(path)) {
       setActive(true);
     }
-  }, [path, location.asPath]);
+  }, [path, pathname]);
 
   return (
     <section>

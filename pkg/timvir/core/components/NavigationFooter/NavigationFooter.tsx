@@ -1,7 +1,10 @@
+"use client";
+
 import * as stylex from "@stylexjs/stylex";
 import type * as React from "react";
 import type { Value } from "timvir/context";
 import * as Icons from "../../../icons";
+import type { Node } from "../Page/types";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -9,22 +12,52 @@ import * as Icons from "../../../icons";
 const Root = "div";
 
 interface Props extends React.ComponentPropsWithoutRef<typeof Root> {
-  Link: Value["Link"];
+  navigation: Value["navigation"];
+  toc: readonly Node[];
+}
 
-  prev?: {
-    href: string;
-    label: React.ReactNode;
-    context: React.ReactNode;
-  };
-  next?: {
-    href: string;
-    label: React.ReactNode;
-    context: React.ReactNode;
-  };
+function flatten(n: Node, parents: Node[]): Array<{ parents: Node[]; label: string; path: string }> {
+  let ret: Array<{ parents: Node[]; label: string; path: string }> = [];
+
+  if (n.path) {
+    ret.push({ parents, label: n.label, path: n.path });
+  }
+
+  if (n.children) {
+    ret = [...ret, ...n.children.flatMap((c) => flatten(c, [...parents, n]))];
+  }
+
+  return ret;
 }
 
 export function NavigationFooter(props: Props) {
-  const { Link, prev, next, ...rest } = props;
+  const { navigation, toc, ...rest } = props;
+
+  const { Link, usePathname } = navigation;
+  const pathname = usePathname();
+
+  const items = toc.flatMap((n) => flatten(n, []));
+  const index = items.findIndex((v) => v.path === pathname);
+
+  if (index === -1) {
+    return null;
+  }
+
+  function toLink(index: number) {
+    const item = items[index];
+    if (item === undefined) {
+      return undefined;
+    } else {
+      return {
+        href: item.path,
+        label: item.label,
+        context: item.parents.map((x) => x.label).join(" / "),
+      };
+    }
+  }
+
+  const prev = toLink(index - 1);
+  const next = toLink(index + 1);
 
   return (
     <Root {...rest} {...stylex.props(styles.root)}>
@@ -52,7 +85,8 @@ export function NavigationFooter(props: Props) {
 
 const styles = stylex.create({
   root: {
-    padding: "50px 0 80px",
+    marginTop: "auto",
+    padding: "130px 0 80px",
 
     /*
      * This grid layout replicates the layout of the main content area.

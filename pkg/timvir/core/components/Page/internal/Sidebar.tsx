@@ -23,7 +23,9 @@ interface Props extends Omit<React.ComponentPropsWithoutRef<"nav">, "className" 
 }
 
 export function Sidebar(props: Props) {
-  const { location } = useContext();
+  const { navigation } = useContext();
+  const { usePathname } = navigation;
+  const pathname = usePathname();
 
   const [isMenuOpen, setMenuOpen] = React.useState(false);
 
@@ -49,7 +51,7 @@ export function Sidebar(props: Props) {
 
   const node = (function find(nodes: readonly Node[]): undefined | Node {
     for (const node of nodes) {
-      if (location.asPath.replace(/#.*$/, "") === node.path) {
+      if (pathname === node.path) {
         return node;
       }
 
