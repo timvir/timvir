@@ -37,6 +37,9 @@
   --timvir-message-alert-bg: #fcf0f0;
   --timvir-message-alert-text: #000000;
   --timvir-message-alert-icon: #da4444;
+
+  --timvir-hover-overlay-color: rgba(0 0 0);
+  --timvir-hover-overlay-strength: 2%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -68,6 +71,9 @@
     --timvir-message-alert-bg: #331e1e;
     --timvir-message-alert-text: rgba(255, 255, 255, 0.86);
     --timvir-message-alert-icon: #ff6b6b;
+
+    --timvir-hover-overlay-color: rgba(255 255 255);
+    --timvir-hover-overlay-strength: 2%;
   }
 }
 
