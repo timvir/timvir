@@ -64,11 +64,11 @@
     },
     "shell-brief": {
       "locked": {
-        "lastModified": 1784021118,
-        "narHash": "sha256-3yFSS0uoSwOIh+O75enMG+oxmmR5VGK7vWRL2aiSp3c=",
+        "lastModified": 1785856570,
+        "narHash": "sha256-l820x4loGwMGQzDm4mpZf+1wQfxdY0yYBTuZyFTbgHs=",
         "owner": "wereHamster",
         "repo": "shell-brief",
-        "rev": "171933fd66706a39508013ed1a73137aae0c807c",
+        "rev": "6c90edb4d95dee9a55971f09f6aeefff73b447d1",
         "type": "github"
       },
       "original": {
