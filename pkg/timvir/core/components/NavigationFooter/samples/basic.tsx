@@ -1,19 +1,26 @@
 import Link from "next/link";
 import type * as React from "react";
+import type { Value } from "timvir/context";
 import { Page } from "../../Page";
 import { NavigationFooter } from "..";
 
 type Props = Partial<React.ComponentPropsWithoutRef<typeof NavigationFooter>>;
 
+const navigation: Value["navigation"] = {
+  usePathname: () => "/current",
+  Link,
+};
+
+const toc = [
+  { label: "Prev Label", path: "/prev" },
+  { label: "Current Label", path: "/current" },
+  { label: "Next Label", path: "/next" },
+];
+
 export default function Sample(props: Props) {
   return (
-    <Page location={{ asPath: "/", push: () => {} }} Link={Link} toc={[]}>
-      <NavigationFooter
-        Link={Link}
-        prev={{ href: "/prev", label: "Prev Label", context: "Context" }}
-        next={{ href: "/next", label: "Next Label", context: "Context" }}
-        {...props}
-      />
+    <Page navigation={navigation} toc={toc}>
+      <NavigationFooter {...props} navigation={props.navigation ?? navigation} toc={props.toc ?? toc} />
     </Page>
   );
 }

@@ -19,15 +19,44 @@ const Root = "div";
 interface Props extends Omit<React.ComponentProps<typeof Root>, "className" | "style"> {
   toc: readonly Node[];
 
-  location: { asPath: string; push: (path: string) => void };
+  /**
+   * @deprecated Use `navigation.usePathname` instead. Will be removed in a future version.
+   */
+  location?: { asPath: string; push: (path: string) => void };
 
   /**
    * This component is used to render links between pages.
    *
    * Timvir will always pass the 'href' prop to this component. That is unlike
    * the standard anchor element, which does not require it.
+   *
+   * @deprecated Use `navigation.Link` instead. Will be removed in a future version.
    */
-  Link: React.ComponentType<React.ComponentProps<"a"> & { href: string }>;
+  Link?: React.ComponentType<React.ComponentProps<"a"> & { href: string }>;
+
+  /**
+   * Framework-agnostic navigation integration. Supersedes `location`/`Link`.
+   *
+   * Exactly one of `navigation` or (`location` and `Link`) must be provided.
+   *
+   * Pass a referentially stable object (a module-level constant, or memoized in your
+   * component).
+   */
+  navigation?: {
+    /**
+     * Returns the current pathname, excluding any query string or hash — matching the
+     * contract of Next.js's own `usePathname()`.
+     */
+    usePathname: () => string;
+
+    /**
+     * This component is used to render links between pages.
+     *
+     * Timvir will always pass the 'href' prop to this component. That is unlike
+     * the standard anchor element, which does not require it.
+     */
+    Link: React.ComponentType<React.ComponentProps<"a"> & { href: string }>;
+  };
 
   /**
    * Overrides the built-in MDX component implementations.
@@ -79,7 +108,32 @@ interface Props extends Omit<React.ComponentProps<typeof Root>, "className" | "s
 }
 
 export function Page(props: Props) {
-  const { location, toc, Link, search, mdxComponents, Footer, blocks, children, ...rest } = props;
+  const {
+    toc,
+    location,
+    Link,
+    navigation: navigationProp,
+    search,
+    mdxComponents,
+    Footer,
+    blocks,
+    children,
+    ...rest
+  } = props;
+
+  let navigation: Value["navigation"];
+  if (navigationProp) {
+    navigation = navigationProp;
+  } else if (location && Link) {
+    navigation = {
+      // Adapter for the deprecated 'location'/'Link' props. Strips both the query string
+      // and the hash, matching the 'usePathname' contract documented above.
+      usePathname: () => new URL(location.asPath, "http://localhost").pathname,
+      Link,
+    };
+  } else {
+    throw new Error("timvir/core: 'Page' requires either the 'navigation' prop, or both 'location' and 'Link'.");
+  }
 
   const [state, setState] = React.useState({
     search: {
@@ -95,12 +149,11 @@ export function Page(props: Props) {
         ...builtins,
         ...mdxComponents,
       },
-      location,
-      Link,
+      navigation,
       blocks,
       toc,
     }),
-    [bus, mdxComponents, location, Link, blocks, toc],
+    [bus, mdxComponents, navigation, blocks, toc],
   );
 
   useHotkeys(
@@ -173,47 +226,7 @@ export function Page(props: Props) {
           <div {...stylex.props(styles.content, layoutStyles.grid)}>{children}</div>
 
           <div {...stylex.props(styles.marginTopAuto)}>
-            {(() => {
-              function flatten(n: Node, parents: Node[]): Array<{ parents: Node[]; label: string; path: string }> {
-                let ret: Array<{ parents: Node[]; label: string; path: string }> = [];
-
-                if (n.path) {
-                  ret.push({ parents, label: n.label, path: n.path });
-                }
-
-                if (n.children) {
-                  ret = [...ret, ...n.children.flatMap((c) => flatten(c, [...parents, n]))];
-                }
-
-                return ret;
-              }
-
-              const items = toc.flatMap((n) => flatten(n, []));
-
-              const index = items.findIndex((v) => v.path === location.asPath.replace(/#.*/, ""));
-              if (index === -1) {
-                return null;
-              }
-
-              function toLink(index: number) {
-                const item = items[index];
-                if (item === undefined) {
-                  return undefined;
-                } else {
-                  return {
-                    href: item.path,
-                    label: item.label,
-                    context: item.parents.map((x) => x.label).join(" / "),
-                  };
-                }
-              }
-
-              return (
-                <div {...stylex.props(styles.footerContainer)}>
-                  <NavigationFooter Link={Link} prev={toLink(index - 1)} next={toLink(index + 1)} />
-                </div>
-              );
-            })()}
+            <NavigationFooter navigation={navigation} toc={toc} />
 
             {Footer && <Footer />}
           </div>
@@ -282,10 +295,6 @@ const styles = stylex.create({
   },
   content: {
     wordBreak: "break-word",
-  },
-  footerContainer: {
-    marginTop: "auto",
-    paddingTop: 80,
   },
 });
 
