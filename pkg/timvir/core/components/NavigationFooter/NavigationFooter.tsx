@@ -122,12 +122,14 @@ const styles = stylex.create({
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: "var(--timvir-border-color)",
+    backgroundColor: "var(--timvir-background-color)",
     padding: "16px",
     color: "inherit",
     textDecoration: "none",
     minWidth: 0,
     ":hover": {
-      backgroundColor: "var(--timvir-secondary-background-color)",
+      backgroundColor:
+        "color-mix(in srgb, var(--timvir-background-color), var(--timvir-hover-overlay-color) var(--timvir-hover-overlay-strength))",
     },
   },
   prev: {
