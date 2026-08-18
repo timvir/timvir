@@ -36,7 +36,7 @@
     "knip": "^6.26.0",
     "mdast-util-from-markdown": "^2.0.3",
     "mdast-util-mdx": "^3.0.0",
-    "nanoid": "^6.0.0",
+    "nanoid": "^6.0.1",
     "next": "^16.2.12",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
