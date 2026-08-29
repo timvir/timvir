@@ -11,7 +11,7 @@
     "@babel/preset-env": "^8.0.2",
     "@babel/preset-react": "^8.0.1",
     "@babel/preset-typescript": "^8.0.1",
-    "@changesets/cli": "^2.31.1",
+    "@changesets/cli": "^3.0.0",
     "@changesets/get-github-info": "^1.0.0",
     "@mdx-js/loader": "^3.1.1",
     "@next/mdx": "^16.3.1",
