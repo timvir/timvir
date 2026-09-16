@@ -54,14 +54,14 @@ importers:
         specifier: ^0.19.0
         version: 0.19.0
       '@stylexswc/nextjs-plugin':
-        specifier: ^0.18.3
-        version: 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))(next@16.3.1(@babel/core@8.0.1)(@playwright/test@1.62.1)(@types/node@24.13.3)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
+        specifier: ^0.18.6
+        version: 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))(next@16.3.1(@babel/core@8.0.1)(@playwright/test@1.62.1)(@types/node@24.13.3)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
       '@stylexswc/postcss-plugin':
-        specifier: ^0.18.3
-        version: 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
+        specifier: ^0.18.6
+        version: 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
       '@stylexswc/rollup-plugin':
-        specifier: ^0.18.3
-        version: 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
+        specifier: ^0.18.6
+        version: 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
       '@types/babel__core':
         specifier: ^7.20.5
         version: 7.20.5
@@ -1633,83 +1633,83 @@ packages:
   '@stylexjs/stylex@0.19.0':
     resolution: {integrity: sha512-CnUFp7YMaDLDeemsWOfJgoC/gKM5P/yBNMcpJaE6ChJmXr7s0DJwSeGTTlHJcqqwN9OW1qGtmARWLFhGZN1pTA==}
 
-  '@stylexswc/nextjs-plugin@0.18.3':
-    resolution: {integrity: sha512-N8oacbd9x5j9nnBVnCbzvm5df6OXTgpkzAcVkSDpdLEceuESN3U57yG3+ppv2/KPrzV9qcNx55GCzJUojhgM2Q==}
+  '@stylexswc/nextjs-plugin@0.18.6':
+    resolution: {integrity: sha512-FS+xRX39Hn6Ug+hnwa2KJ3TM8Fkylw5bcSED3IR1R+5pZWMatgPRa6EVqHL2u9cxRvAG0YVUYdxLg4Z0kajbLQ==}
     peerDependencies:
       next: '>=15.0.0'
-      next-rspack: ^16.2.12
+      next-rspack: ^16.3.0
     peerDependenciesMeta:
       next-rspack:
         optional: true
 
-  '@stylexswc/plugin-shared@0.18.3':
-    resolution: {integrity: sha512-IwWVVB5qEGbwEAsewUFjtDThqQ464EpYlqhECuvNzl/aZ0S9hcvjh+Ws1Nu0WB42bQVlgY0irjTFm4PWYMiqSg==}
+  '@stylexswc/plugin-shared@0.18.6':
+    resolution: {integrity: sha512-WZhnYSofD3sjSFQYjw4pYizhs/gFCBKwPvW5Hir0vK9RfcdRmcznXkp1BN5d6bsQk0Sm2VuIO7cf1x/FLcJKZQ==}
 
-  '@stylexswc/postcss-plugin@0.18.3':
-    resolution: {integrity: sha512-x9OQbaIasHvzzdLG3BJykT6Bhr8YgkUb+70M8ekQrvVWX8S+78L6VvRCWaKB7/4EBRtmZSRBTa+9E58uje29Cg==}
+  '@stylexswc/postcss-plugin@0.18.6':
+    resolution: {integrity: sha512-c0FAqoJGc48TUIeexbO5nivt60BDNmifPEgezDWt65NRsiBKq1bj3jZyDWM7jg6SXmkCUwtANkOUx1XhAi8P0g==}
 
-  '@stylexswc/rollup-plugin@0.18.3':
-    resolution: {integrity: sha512-qiqhgA7TPiCVkljabGSjnI6gBKgSDA1/GZk9kCNT/sob7Sk/oir1z7ZikOJlbe9rh6FGPL+ZAgSdT2ApYREjRQ==}
+  '@stylexswc/rollup-plugin@0.18.6':
+    resolution: {integrity: sha512-CAw0lX4y9bE/3ZDNAISBVGIj8XfVyiJjkis+BWgH1C8E9UVwxljIysO1cHoslo4KAQjetlnA6YGJmAQP+Zq5Mw==}
 
-  '@stylexswc/rs-compiler-darwin-arm64@0.18.3':
-    resolution: {integrity: sha512-ovYs1tYqaX3d7pkUARmyPVxrgiF4dqmd4oX90D1AQbySZdEyXKfLAzvzW3oaKyFh2QjOPUDQEPNPXTxnLSTr6w==}
+  '@stylexswc/rs-compiler-darwin-arm64@0.18.6':
+    resolution: {integrity: sha512-3PhOs/ji02J6ZOP+IY8qeyQzWptBis0ZZbEys/g4PZAMj3P1x//7cRdPxydLD5K6CEnzvHflOAUZBnRcXoHMwg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@stylexswc/rs-compiler-darwin-x64@0.18.3':
-    resolution: {integrity: sha512-HR0e+MFEjiyVHpGcjEEcbU/oviwrmuzlsHhp/r+gGr0NvBxV4qiyCvgz9nHy21IQIi7MPrko+6LklXwdQXi8aw==}
+  '@stylexswc/rs-compiler-darwin-x64@0.18.6':
+    resolution: {integrity: sha512-Gzv9jkST8cGHYJ77K8mX8bBAHWG7V5AXuVjWYHPp+l3ITY7sNZ6uxxHA5Ol7vu8MZ1ToUFPZdR5m+oeyX088Aw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@stylexswc/rs-compiler-linux-arm64-gnu@0.18.3':
-    resolution: {integrity: sha512-uDhgnstv9MK0yOACU52oTFeroO1iX73H70UW3+8Q2P/F7cHlsspKygyS1CeSMVccJ2fT7TxqDNf/kZMekOjjlQ==}
+  '@stylexswc/rs-compiler-linux-arm64-gnu@0.18.6':
+    resolution: {integrity: sha512-yekLLLPcCCbV8OVyS1AMG2qMXBhZ+2biMDIOA0aMggWBC1SmdChjaZacP9Dz3atfYuu1tlenVfh0bwL7heGX9Q==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@stylexswc/rs-compiler-linux-x64-gnu@0.18.3':
-    resolution: {integrity: sha512-9uCj1M9qM+KvNVwViqwn+jb1uAEbcbftnlmMx6P9BdpfzCRTCqeuxzINdnJvFf1qlCYkIkGYwHfARZ7gg2uEnA==}
+  '@stylexswc/rs-compiler-linux-x64-gnu@0.18.6':
+    resolution: {integrity: sha512-kLMTIOFX54Aeme8+7ZMh3nrjH1jWc5mZbhX3Y9IxgSShrAF4D1xtZx5lSA1VLNGSDKVEibPiOiRTdymzfMJ59Q==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@stylexswc/rs-compiler-linux-x64-musl@0.18.3':
-    resolution: {integrity: sha512-PoCDfURu1njOOgCJ1Rdqa/cvXkGrQvwsObo15Q6HAnclTLpQMjvwBTIyF/Z4oFCQN7ZbW8Clno+nI8vh7kUN6A==}
+  '@stylexswc/rs-compiler-linux-x64-musl@0.18.6':
+    resolution: {integrity: sha512-8rV+JmbrWzsgoQC19LIXfs70zoy6V3ctKuCVm+A6OliwJdKD4dhD23iUcCI5f0/EVjwKjNn9PBI4frGvJ1b1BQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
+    libc: [musl]
 
-  '@stylexswc/rs-compiler-win32-arm64-msvc@0.18.3':
-    resolution: {integrity: sha512-2LqzFjP+957S+MPBs6OC17hzBbAX7Z7WrHoOCRpcZcZ6IaVUL25dYUl7LmsVzQ6CU8BcV8pD7y8u/0yW1W2m6A==}
+  '@stylexswc/rs-compiler-win32-arm64-msvc@0.18.6':
+    resolution: {integrity: sha512-GPiBEVyah8Dk3ZcPpyQdEuZo/PkgoZKfFNJAZqAzr2uZMSTulwUu8F9eL5YfXktsQYS2z+zX/NK2urs0dsvGFQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@stylexswc/rs-compiler-win32-x64-msvc@0.18.3':
-    resolution: {integrity: sha512-tKrDXEw5BzTMKtQHXqdxJ5kiUsjZJGMi8IH5UCq0rI4ZQAFf8TQZ82r4E1WcySnfbvFpkwfk2iY85y6AV0elzw==}
+  '@stylexswc/rs-compiler-win32-x64-msvc@0.18.6':
+    resolution: {integrity: sha512-N65Ee9fGkuIOE2dP+Z8kp9a8ASHwwAdYx8lyv7SQIDWGI0so92SMO0IkqM3OPmEnbwRp5va1viB3HMDtcKUpVw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
 
-  '@stylexswc/rs-compiler@0.18.3':
-    resolution: {integrity: sha512-hZzjp806vkrZjirslp+a9m+BcQcMlEhObv9wpVASh1h8wY+g9l4CQ7iU4f0hYfzA9fKtUUjuAwEkDvXxG+NLug==}
+  '@stylexswc/rs-compiler@0.18.6':
+    resolution: {integrity: sha512-ASJ/Xf4RFPpiYOqqMy2OnzwRxe2NOX0Jw+EkNHTLmXHI610bOypcFzqIao2zsHwqwqnGD6K3rLBdZ4So1X6qbQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@swc/core': ^1
 
-  '@stylexswc/rspack-plugin@0.18.3':
-    resolution: {integrity: sha512-7F63NQ3cjIHB8w9UDCaSw42LI6ttWXXFdWjuLvkZDi2/UP9tfInC69Dy9q78m6xkQ4M03ZZvz4wKMkzmkZ7riQ==}
+  '@stylexswc/rspack-plugin@0.18.6':
+    resolution: {integrity: sha512-P1Y+ksqAhq1AJ2xCc3n0tA+XUetlJ/uoPFnhBGD0zQGN25nRLkYw3n1OpZkGnfCTa6qRzl6a3E5MvzFuqbbjmw==}
 
-  '@stylexswc/turbopack-plugin@0.18.3':
-    resolution: {integrity: sha512-7OY3sB+f1MPbqBY7NDXbIYNfkJ99wtqUvxwbgNLItTRrQxV/C1BtLn5/jj+9HCp1rn4DZl5KffwIpwgCLFqPZg==}
+  '@stylexswc/turbopack-plugin@0.18.6':
+    resolution: {integrity: sha512-xlSo+nQRjsTJl8DmBN3vS6/8GbdFSnT7SF1BiOFO9ORIWzKrKoP+paX42WwERAuzPFDH7/Qvn9YAgZyJKHkeIw==}
 
-  '@stylexswc/webpack-plugin@0.18.3':
-    resolution: {integrity: sha512-VS5FO8NCIOpMve5uyhb7uUK3GswRMLfHQAeQvRPsMFTOFR3K8JYR3dQ1Z/58rN5N3brXDoNqaglunEGHUvM9Ww==}
+  '@stylexswc/webpack-plugin@0.18.6':
+    resolution: {integrity: sha512-lGjA73J4j0VWP48XnYuemUQ7J8J5+TojVcUL4KHQ+TagD2WC6oWk7xHrw6S0uq4s2mSHmZjVxjnOxLKLu8GEoQ==}
 
   '@swc/core-darwin-arm64@1.16.0':
     resolution: {integrity: sha512-SJQPl+xG/zB8bNjC/gTg3WOmOvz7EzlQD+VShfCKFYPNr2qvb+vATUY11vYEjnMWCn6wV8H8eAtjQrVflYyX5A==}
@@ -4512,30 +4512,32 @@ snapshots:
       invariant: 2.2.4
       styleq: 0.2.1
 
-  '@stylexswc/nextjs-plugin@0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))(next@16.3.1(@babel/core@8.0.1)(@playwright/test@1.62.1)(@types/node@24.13.3)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))':
+  '@stylexswc/nextjs-plugin@0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))(next@16.3.1(@babel/core@8.0.1)(@playwright/test@1.62.1)(@types/node@24.13.3)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))':
     dependencies:
-      '@stylexswc/rs-compiler': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
-      '@stylexswc/rspack-plugin': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
-      '@stylexswc/turbopack-plugin': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
-      '@stylexswc/webpack-plugin': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/plugin-shared': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/rs-compiler': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/rspack-plugin': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/turbopack-plugin': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/webpack-plugin': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
       next: 16.3.1(@babel/core@8.0.1)(@playwright/test@1.62.1)(@types/node@24.13.3)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     transitivePeerDependencies:
       - '@swc/core'
       - supports-color
 
-  '@stylexswc/plugin-shared@0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))':
+  '@stylexswc/plugin-shared@0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))':
     dependencies:
       '@stylexjs/babel-plugin': 0.19.0
-      '@stylexswc/rs-compiler': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/rs-compiler': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
       loader-utils: 3.3.1
     transitivePeerDependencies:
       - '@swc/core'
       - supports-color
 
-  '@stylexswc/postcss-plugin@0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))':
+  '@stylexswc/postcss-plugin@0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))':
     dependencies:
       '@stylexjs/babel-plugin': 0.19.0
-      '@stylexswc/rs-compiler': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/plugin-shared': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/rs-compiler': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
       fast-glob: 3.3.3
       glob-parent: 6.0.2
       is-glob: 4.0.3
@@ -4544,68 +4546,68 @@ snapshots:
       - '@swc/core'
       - supports-color
 
-  '@stylexswc/rollup-plugin@0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))':
+  '@stylexswc/rollup-plugin@0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))':
     dependencies:
       '@stylexjs/babel-plugin': 0.19.0
-      '@stylexswc/rs-compiler': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/rs-compiler': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
       lightningcss: 1.33.0
     transitivePeerDependencies:
       - '@swc/core'
       - supports-color
 
-  '@stylexswc/rs-compiler-darwin-arm64@0.18.3':
+  '@stylexswc/rs-compiler-darwin-arm64@0.18.6':
     optional: true
 
-  '@stylexswc/rs-compiler-darwin-x64@0.18.3':
+  '@stylexswc/rs-compiler-darwin-x64@0.18.6':
     optional: true
 
-  '@stylexswc/rs-compiler-linux-arm64-gnu@0.18.3':
+  '@stylexswc/rs-compiler-linux-arm64-gnu@0.18.6':
     optional: true
 
-  '@stylexswc/rs-compiler-linux-x64-gnu@0.18.3':
+  '@stylexswc/rs-compiler-linux-x64-gnu@0.18.6':
     optional: true
 
-  '@stylexswc/rs-compiler-linux-x64-musl@0.18.3':
+  '@stylexswc/rs-compiler-linux-x64-musl@0.18.6':
     optional: true
 
-  '@stylexswc/rs-compiler-win32-arm64-msvc@0.18.3':
+  '@stylexswc/rs-compiler-win32-arm64-msvc@0.18.6':
     optional: true
 
-  '@stylexswc/rs-compiler-win32-x64-msvc@0.18.3':
+  '@stylexswc/rs-compiler-win32-x64-msvc@0.18.6':
     optional: true
 
-  '@stylexswc/rs-compiler@0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))':
+  '@stylexswc/rs-compiler@0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))':
     dependencies:
       '@swc/core': 1.16.0(@swc/helpers@0.5.23)
       picomatch: 4.0.5
     optionalDependencies:
-      '@stylexswc/rs-compiler-darwin-arm64': 0.18.3
-      '@stylexswc/rs-compiler-darwin-x64': 0.18.3
-      '@stylexswc/rs-compiler-linux-arm64-gnu': 0.18.3
-      '@stylexswc/rs-compiler-linux-x64-gnu': 0.18.3
-      '@stylexswc/rs-compiler-linux-x64-musl': 0.18.3
-      '@stylexswc/rs-compiler-win32-arm64-msvc': 0.18.3
-      '@stylexswc/rs-compiler-win32-x64-msvc': 0.18.3
+      '@stylexswc/rs-compiler-darwin-arm64': 0.18.6
+      '@stylexswc/rs-compiler-darwin-x64': 0.18.6
+      '@stylexswc/rs-compiler-linux-arm64-gnu': 0.18.6
+      '@stylexswc/rs-compiler-linux-x64-gnu': 0.18.6
+      '@stylexswc/rs-compiler-linux-x64-musl': 0.18.6
+      '@stylexswc/rs-compiler-win32-arm64-msvc': 0.18.6
+      '@stylexswc/rs-compiler-win32-x64-msvc': 0.18.6
 
-  '@stylexswc/rspack-plugin@0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))':
+  '@stylexswc/rspack-plugin@0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))':
     dependencies:
-      '@stylexswc/plugin-shared': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/plugin-shared': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
     transitivePeerDependencies:
       - '@swc/core'
       - supports-color
 
-  '@stylexswc/turbopack-plugin@0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))':
+  '@stylexswc/turbopack-plugin@0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))':
     dependencies:
-      '@stylexswc/plugin-shared': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
-      '@stylexswc/rs-compiler': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/plugin-shared': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/rs-compiler': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
       loader-utils: 3.3.1
     transitivePeerDependencies:
       - '@swc/core'
       - supports-color
 
-  '@stylexswc/webpack-plugin@0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))':
+  '@stylexswc/webpack-plugin@0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))':
     dependencies:
-      '@stylexswc/plugin-shared': 0.18.3(@swc/core@1.16.0(@swc/helpers@0.5.23))
+      '@stylexswc/plugin-shared': 0.18.6(@swc/core@1.16.0(@swc/helpers@0.5.23))
     transitivePeerDependencies:
       - '@swc/core'
       - supports-color
