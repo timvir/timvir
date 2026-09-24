@@ -45,8 +45,8 @@
     "wonka": "^6"
   },
   "peerDependencies": {
-    "react": "^19",
-    "react-dom": "^19"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "repository": {
     "type": "git",
