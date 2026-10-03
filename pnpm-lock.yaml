@@ -129,7 +129,7 @@ importers:
   pkg/macro:
     dependencies:
       '@babel/generator':
-        specifier: ^8.0.6
+        specifier: ^8.0.0
         version: 8.0.6
 
   pkg/mdx:
