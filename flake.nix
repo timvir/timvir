@@ -2,8 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     nix-develop.url = "github:nicknovitski/nix-develop";
     nix-develop.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -13,82 +11,89 @@
   outputs =
     {
       nixpkgs,
-      flake-utils,
       nix-develop,
       shell-brief,
       ...
     }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-        };
+    let
+      forAllSystems =
+        function:
+        nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed (
+          system: function nixpkgs.legacyPackages.${system}
+        );
 
-        brief = shell-brief.lib.mkShellBrief {
-          inherit pkgs;
+    in
+    {
+      packages = forAllSystems (pkgs: {
+        nix-develop = nix-develop.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      });
 
-          banner = ''
-            ${pkgs.figlet}/bin/figlet timvir
-            echo "     [timˈvir] n. book"
-          '';
+      devShells = forAllSystems (
+        pkgs:
+        let
+          brief = shell-brief.lib.mkShellBrief {
+            inherit pkgs;
 
-          setup = [
-            {
-              name = "Dependencies";
-              condition = "[[ -f package.json && -f pnpm-lock.yaml && -f node_modules/.modules.yaml && node_modules/.modules.yaml -nt pnpm-lock.yaml && node_modules/.modules.yaml -nt package.json ]]";
-              suggestion = "Run 'pnpm install'";
-            }
-          ];
+            banner = ''
+              ${pkgs.figlet}/bin/figlet timvir
+              echo "     [timˈvir] n. book"
+            '';
 
-          commands = [
-            {
-              name = "pnpm";
-              help = "Manage Node.js dependencies";
-            }
-            {
-              name = "dev";
-              help = "Start the Next.js development server";
-            }
-          ];
-        };
+            setup = [
+              {
+                name = "Dependencies";
+                condition = "[[ -f package.json && -f pnpm-lock.yaml && -f node_modules/.modules.yaml && node_modules/.modules.yaml -nt pnpm-lock.yaml && node_modules/.modules.yaml -nt package.json ]]";
+                suggestion = "Run 'pnpm install'";
+              }
+            ];
 
-        tools = {
-          dev = pkgs.writeShellScriptBin "dev" ''
-            clear
-            ./node_modules/.bin/next dev
-          '';
-        };
-      in
-      {
-        packages.nix-develop = nix-develop.packages.${system}.default;
+            commands = [
+              {
+                name = "pnpm";
+                help = "Manage Node.js dependencies";
+              }
+              {
+                name = "dev";
+                help = "Start the Next.js development server";
+              }
+            ];
+          };
 
-        devShells.default = pkgs.mkShell {
-          buildInputs = [
-            pkgs.nodejs
-            pkgs.pnpm
-            pkgs.biome
+          tools = {
+            dev = pkgs.writeShellScriptBin "dev" ''
+              clear
+              ./node_modules/.bin/next dev
+            '';
+          };
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = [
+              pkgs.nodejs
+              pkgs.pnpm
+              pkgs.biome
 
-            brief
+              brief
 
-            pkgs.jq
+              pkgs.jq
 
-            tools.dev
-          ];
+              tools.dev
+            ];
 
-          shellHook = ''
-            ${brief}/bin/brief
-            export PATH=$PWD/node_modules/.bin:$PATH
-          '';
-        };
+            shellHook = ''
+              ${brief}/bin/brief
+              export PATH=$PWD/node_modules/.bin:$PATH
+            '';
+          };
 
-        devShells.workflow = pkgs.mkShell {
-          buildInputs = [
-            pkgs.nodejs
-            pkgs.pnpm
-            pkgs.biome
-          ];
-        };
-      }
-    );
+          workflow = pkgs.mkShell {
+            buildInputs = [
+              pkgs.nodejs
+              pkgs.pnpm
+              pkgs.biome
+            ];
+          };
+        }
+      );
+    };
 }
