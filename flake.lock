@@ -45,11 +45,11 @@
     },
     "shell-brief": {
       "locked": {
-        "lastModified": 1790279604,
-        "narHash": "sha256-zSmt0Nrep6HVrSC/cY709rLbuhANbhtTSBI3X6mJnww=",
+        "lastModified": 1791320165,
+        "narHash": "sha256-0cnVSjTNVoWW/XgvnmkhKElB7mlvN8ovfs4HEA25o84=",
         "owner": "wereHamster",
         "repo": "shell-brief",
-        "rev": "96d1b2d8dedc2ecfca2d19a56529879da84d0c74",
+        "rev": "d8dac7ae8ae6155ac42ce69bbfa7971a9d3ed2c3",
         "type": "github"
       },
       "original": {
