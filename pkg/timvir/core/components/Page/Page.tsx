@@ -275,6 +275,7 @@ const styles = stylex.create({
     zIndex: 80,
     position: "sticky",
     top: 0,
+    backgroundColor: "var(--timvir-background-color)",
 
     "@media (min-width: 48rem)": {
       position: "fixed",
