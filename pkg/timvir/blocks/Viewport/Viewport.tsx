@@ -104,6 +104,125 @@ export function Viewport(props: Props) {
     setMaxHeight(Math.max(height, maxHeight ?? 0));
   });
 
+  /*
+   * The document which has been initialized. Both the onLoad callback and the effect below
+   * may try to initialize the same document, this ensures that it's done only once.
+   */
+  const initializedDocument = React.useRef<null | Document>(null);
+
+  /**
+   * Prepare the iframe document once it is complete: inject the style reset, measure and
+   * observe its height, and mark the block as settled.
+   *
+   * Invoked from the iframe onLoad callback, and from the effect below in case the iframe
+   * loaded before React hydrated the component. Safe to call multiple times.
+   */
+  const initialize = React.useCallback(
+    (iframe: HTMLIFrameElement) => {
+      const document = iframe.contentDocument;
+
+      /*
+       * Cross-origin documents are not accessible, there is nothing we can measure. Consider
+       * the block settled so that it doesn't stay unsettled forever.
+       */
+      if (!document) {
+        console.warn("Viewport: iframe has no contentDocument");
+        setState({ settled: true });
+        return;
+      }
+
+      /*
+       * Some browsers (notably Firefox) don't always fully initialize the <iframe>
+       * element (see https://bugzilla.mozilla.org/show_bug.cgi?id=1191683). The
+       * 'head' and 'body' properties in Document (which we access below) may be null
+       * when this onLoad callback runs.
+       *
+       * We use the Document readyState to decide if we can interact and observe the
+       * DOM.
+       */
+
+      const initializeDocument = () => {
+        if (document.readyState === "complete") {
+          if (initializedDocument.current === document) {
+            return;
+          }
+          initializedDocument.current = document;
+
+          /*
+           * Inject a simple style reset into the document.
+           */
+          {
+            const style = document.createElement("style");
+            style.id = "timvir-viewport-style";
+            style.innerHTML = "body { margin: 0 }";
+            document.head.appendChild(style);
+          }
+
+          {
+            const { height } = document.body.getBoundingClientRect();
+            setHeight(height);
+            setMaxHeight(height);
+          }
+
+          /*
+           * The <body> element of the iframe document is the one which we observe and
+           * measure. It should not have any margins (we remove them by injecting a simple
+           * style reset into the iframe document).
+           */
+          iframeRO.observe(document.body);
+
+          /*
+           * 50ms after the iframe document is complete, we consider the Viewport block
+           * settled. This time includes the 16ms CSS transition time, and a tiny bit more
+           * to allow for the content in the iframe itself to finish rendering.
+           *
+           * This time is not quite enough if the iframe loads additional code or needs to
+           * load data from a remote source. But should be enough for statically rendered
+           * content.
+           */
+          setTimeout(() => {
+            setState({ settled: true });
+          }, 50);
+        } else {
+          document.addEventListener("readystatechange", initializeDocument, {
+            once: true,
+          });
+        }
+      };
+
+      initializeDocument();
+    },
+    [iframeRO],
+  );
+
+  /*
+   * When the page is server-rendered, the browser starts loading the <iframe> before React
+   * hydrates the component. If the iframe finishes loading before hydration, React never
+   * sees the load event and the onLoad callback is not called. Initialize the document here
+   * as soon as the iframe has navigated away from its initial 'about:blank' document.
+   *
+   * The document may not be complete yet, even if the load event already fired (see the
+   * Firefox bug mentioned above). That's fine, initialize waits for the document to become
+   * complete, and ignores the onLoad callback if it initialized the document already.
+   *
+   * While the iframe is still on 'about:blank', the load event of the actual document has
+   * not fired yet, and the onLoad callback will take care of it.
+   *
+   * Treat missing document (cross-origin iframe) as settled.
+   */
+  React.useEffect(() => {
+    const iframe = iframeRef.current;
+    if (iframe) {
+      const document = iframe.contentDocument;
+
+      if (!document) {
+        setState({ settled: true });
+      } else if (document.location.href !== "about:blank" || iframe.src === "about:blank") {
+        initialize(iframe);
+      }
+    }
+  }, [initialize]);
+
   const rootStyleProps = stylex.props(layoutStyles.block, layoutStyles.fullWidth, styles.root);
 
   return (
@@ -130,67 +249,7 @@ export function Viewport(props: Props) {
                   frameBorder="0"
                   src={src}
                   onLoad={(ev) => {
-                    const document = ev.currentTarget.contentDocument;
-                    if (!document) {
-                      console.warn("Viewport: iframe has no contentDocument");
-                      return;
-                    }
-
-                    /*
-                     * Some browsers (notably Firefox) don't always fully initialize the <iframe>
-                     * element (see https://bugzilla.mozilla.org/show_bug.cgi?id=1191683). The
-                     * 'head' and 'body' properties in Document (which we access below) may be null
-                     * when this onLoad callback runs.
-                     *
-                     * We use the Document readyState to decide if we can interact and observe the
-                     * DOM.
-                     */
-
-                    const initializeDocument = () => {
-                      if (document.readyState === "complete") {
-                        /*
-                         * Inject a simple style reset into the document.
-                         */
-                        {
-                          const style = document.createElement("style");
-                          style.id = "timvir-viewport-style";
-                          style.innerHTML = "body { margin: 0 }";
-                          document.head.appendChild(style);
-                        }
-
-                        {
-                          const { height } = document.body.getBoundingClientRect();
-                          setHeight(height);
-                          setMaxHeight(height);
-                        }
-
-                        /*
-                         * The <body> element of the iframe document is the one which we observe and
-                         * measure. It should not have any margins (we remove them by injecting a simple
-                         * style reset into the iframe document).
-                         */
-                        iframeRO.observe(document.body);
-
-                        /*
-                         * 50ms after the iframe document is complete, we consider the Viewport block
-                         * settled. This time includes the 16ms CSS transition time, and a tiny bit more
-                         * to allow for the content in the iframe itself to finish rendering.
-                         *
-                         * This time is not quite enough if the iframe loads additional code or needs to
-                         * load data from a remote source. But should be enough for statically rendered
-                         * content.
-                         */
-                        setTimeout(() => {
-                          setState({
-                            settled: true,
-                          });
-                        }, 50);
-                      } else {
-                        document?.addEventListener("readystatechange", initializeDocument, { once: true });
-                      }
-                    };
-
-                    initializeDocument();
+                    initialize(ev.currentTarget);
                   }}
                   {...stylex.props(styles.iframe)}
                   style={{
@@ -211,7 +270,13 @@ export function Viewport(props: Props) {
 
       <Caption src={src} code={code} />
 
-      <div style={{ gridColumn: "1 / -1", height: (maxHeight ?? 0) - (height ?? 0), transition: "height 0.16s" }} />
+      <div
+        style={{
+          gridColumn: "1 / -1",
+          height: (maxHeight ?? 0) - (height ?? 0),
+          transition: "height 0.16s",
+        }}
+      />
     </>
   );
 }
