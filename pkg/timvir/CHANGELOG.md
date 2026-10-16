@@ -1,5 +1,13 @@
 # timvir
 
+## 0.2.58
+
+### Patch Changes
+
+- **Settle Viewport if the iframe loads before React hydrates** ([#4027](https://github.com/timvir/timvir/pull/4027)) - Fix a bug in the `<Viewport>` block which would cause `timvir-unsettled` CSS class to never be removed. This happened when its iframe finished loading before React hydrated, causing the `onLoad` event to be missed. Possible symptoms were timeouts if your code is relying on the `timvir-unsettled` CSS class to disappear from the document.
+- **Fix transparent Page header on small viewports** ([#4028](https://github.com/timvir/timvir/pull/4028)) - The sidebar is sticky on small viewports, and since #3892 it no longer had a background of its own, so content scrolling underneath showed through the header.
+- **Add a `navigation` prop to `Page`, replacing `location`/`Link`** ([#3959](https://github.com/timvir/timvir/pull/3959)) - `Page` previously required a `location` prop (`{ asPath, push }`) and a separate `Link` prop. The `location` prop was a plain value that consuming apps had to reconstruct on every render. That forced `Page`'s entire subtree to re-render on every navigation, even for content that has nothing to do with the current route. `Page` now accepts a `navigation` prop instead: `{ usePathname, Link }`. Instead of resolving the current path once and stuffing it into context, `Page` and its internal components call `navigation.usePathname()` themselves wherever they need it. Therefore only the parts of the UI that actually depend on the current path react to navigation. The old `location` and `Link` props are now optional and deprecated. They continue to work as before, and will be removed in a future version.
+
 ## 0.2.57
 
 ### Patch Changes
