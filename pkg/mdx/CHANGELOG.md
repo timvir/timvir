@@ -1,5 +1,9 @@
 # @timvir/mdx
 
+## 0.2.58
+
+No changes in this release.
+
 ## 0.2.57
 
 ## 0.2.56
