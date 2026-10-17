@@ -14,7 +14,7 @@
     "@changesets/cli": "^3.0.3",
     "@changesets/get-github-info": "^1.0.1",
     "@mdx-js/loader": "^3.1.1",
-    "@next/mdx": "^16.3.6",
+    "@next/mdx": "^16.3.8",
     "@playwright/test": "^1.63.0",
     "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-commonjs": "^29.0.3",

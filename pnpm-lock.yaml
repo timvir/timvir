@@ -30,8 +30,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1
       '@next/mdx':
-        specifier: ^16.3.6
-        version: 16.3.6(@mdx-js/loader@3.1.1)
+        specifier: ^16.3.8
+        version: 16.3.8(@mdx-js/loader@3.1.1)
       '@playwright/test':
         specifier: ^1.63.0
         version: 1.63.0
@@ -1098,8 +1098,8 @@ packages:
   '@next/env@16.3.8':
     resolution: {integrity: sha512-Al9zqHVV7TJv0eFuOU4U7Lvv74PTih4Ch63sk2xCIpSTkE3udFnaOcnzP2lQVymiL7yS9Cj2iClUXlR3EQ5sEw==}
 
-  '@next/mdx@16.3.6':
-    resolution: {integrity: sha512-zyKSWE8aZDEkJ/EIooGCFqcySAhzgmepx+IOoMXFfJYEipoOranQ0r2uYItm9H9kYw1QLdfMJA0Zmio4/DWO1g==}
+  '@next/mdx@16.3.8':
+    resolution: {integrity: sha512-9Es7/Mf5cDo7dL3NEUQerl98SrwWo0QeBguKC06rX/PydHXKxgHIuXjDuxvu56oO4Yty4hn3FPIbXEOx39oQDw==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -4324,7 +4324,7 @@ snapshots:
 
   '@next/env@16.3.8': {}
 
-  '@next/mdx@16.3.6(@mdx-js/loader@3.1.1)':
+  '@next/mdx@16.3.8(@mdx-js/loader@3.1.1)':
     dependencies:
       source-map: 0.7.6
     optionalDependencies:
