@@ -1,7 +1,14 @@
+import os from "node:os";
+
 import type { FullConfig, FullResult, Reporter, TestCase, TestResult } from "@playwright/test/reporter";
 import { nanoid } from "nanoid";
 
 const urnerys = process.env.URNERYS ?? "app.urnerys.dev";
+
+function osType(): string {
+  const platform = os.platform();
+  return platform === "win32" ? "windows" : platform;
+}
 
 async function fetchOIDCToken(): Promise<string> {
   const requestUrl = process.env.ACTIONS_ID_TOKEN_REQUEST_URL;
@@ -94,6 +101,35 @@ async function uploadOne(
   }
 }
 
+async function reportRealization(
+  project: string,
+  token: string | undefined,
+  build: string,
+  formula: string,
+  attributes: Record<string, string | number | undefined>,
+): Promise<void> {
+  if (!token) return;
+
+  try {
+    const response = await fetch(
+      `https://${urnerys}/api/v1/projects/${project}/builds/${build}/realizations/${encodeURIComponent(formula)}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ realization: { attributes } }),
+      },
+    );
+    if (!response.ok) {
+      console.warn(`[urnerys] Realization report failed for ${formula}: ${response.status}`);
+    }
+  } catch (e) {
+    console.warn(`[urnerys] Realization report error for ${formula}:`, (e as Error).message);
+  }
+}
+
 class UrnerysReporter implements Reporter {
   private build: string = (() => {
     if (process.env.GITHUB_RUN_ID && process.env.GITHUB_RUN_ATTEMPT) {
@@ -105,11 +141,17 @@ class UrnerysReporter implements Reporter {
 
   private tokenPromise!: Promise<string | undefined>;
 
+  private version = "";
+
+  private reportedRealizations = new Set<string>();
+
   private uploads: Promise<void>[] = [];
 
   constructor(private config: { project: string }) {}
 
-  onBegin(_config: FullConfig): void {
+  onBegin(config: FullConfig): void {
+    this.version = config.version;
+
     this.tokenPromise = fetchOIDCToken()
       .then(exchangeToken)
       .then(async (token) => {
@@ -124,6 +166,29 @@ class UrnerysReporter implements Reporter {
 
   onTestEnd(_test: TestCase, result: TestResult): void {
     for (const attachment of result.attachments) {
+      if (attachment.name.startsWith("urnerys-realization|") && attachment.body) {
+        const formula = attachment.name.slice("urnerys-realization|".length);
+
+        if (!this.reportedRealizations.has(formula)) {
+          this.reportedRealizations.add(formula);
+
+          const attributes = {
+            ...(JSON.parse(attachment.body.toString()) as Record<string, string | number>),
+            "dev.urnerys.tool.name": "playwright",
+            "dev.urnerys.tool.version": this.version,
+            "dev.urnerys.os.type": osType(),
+            "dev.urnerys.os.version": os.release(),
+            "dev.urnerys.host.arch": os.arch(),
+          };
+
+          this.uploads.push(
+            this.tokenPromise.then((token) =>
+              reportRealization(this.config.project, token, this.build, formula, attributes),
+            ),
+          );
+        }
+      }
+
       if (!attachment.name.startsWith("urnerys|") || !attachment.body) continue;
 
       const [, collection, snapshot, formula] = attachment.name.split("|");
