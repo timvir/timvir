@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "espree": "^9 || ^10 || ^11",
-    "mdast-util-from-markdown": "^1 || ^2",
+    "mdast-util-from-markdown": "^2.1.0",
     "mdast-util-mdx": "^2 || ^3",
     "micromark-extension-mdxjs": "^3",
     "unist-util-visit": "^5"
