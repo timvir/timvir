@@ -82,7 +82,7 @@ jobs:
       - run: ./node_modules/.bin/next typegen
       - run: ./node_modules/.bin/tsc --build tsconfig.json
       - run: ./node_modules/.bin/tsc --build tsconfig.build.json
-      - run: ./node_modules/.bin/rollup -c config/rollup.config.js
+      - run: ./node_modules/.bin/rolldown -c config/rolldown.config.js
 
       - run: node --test
         working-directory: pkg/mdx

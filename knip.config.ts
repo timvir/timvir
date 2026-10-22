@@ -12,7 +12,7 @@ const config: KnipConfig = {
          * These are invoked directly (e.g. from GitHub Actions workflows)
          * rather than imported from other source files.
          */
-        "config/rollup.config.js",
+        "config/rolldown.config.js",
         "vst/playwright.config.ts",
         "vst/src/reporter.ts",
 
@@ -27,14 +27,6 @@ const config: KnipConfig = {
       ],
 
       ignoreDependencies: [
-        /*
-         * Babel presets referenced by string name (not statically imported)
-         * in config/rollup.config.js.
-         */
-        "@babel/preset-env",
-        "@babel/preset-react",
-        "@babel/preset-typescript",
-
         /*
          * Not used by the root workspace itself, but installed here because
          * all workspace dependencies are declared in the root package.json.
