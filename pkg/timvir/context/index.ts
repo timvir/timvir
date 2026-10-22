@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import type { Bus } from "timvir/bus";
 import type { Node } from "../core/components/Page/types";
