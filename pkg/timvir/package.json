@@ -4,6 +4,14 @@
   "version": "0.2.57",
   "license": "MIT",
   "sideEffects": false,
+  "files": [
+    "**/*.js",
+    "**/*.d.ts",
+    "styles.css",
+    "CHANGELOG.md",
+    "!**/docs/**",
+    "!**/samples/**"
+  ],
   "exports": {
     "./styles.css": "./styles.css",
     "./blocks": {
