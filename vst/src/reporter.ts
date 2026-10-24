@@ -19,7 +19,7 @@ async function fetchOIDCToken(): Promise<string> {
   }
 
   const url = new URL(requestUrl);
-  url.searchParams.set("audience", urnerys);
+  url.searchParams.set("audience", `https://${urnerys}`);
 
   const response = await fetch(url.toString(), {
     headers: { Authorization: `Bearer ${requestToken}` },
