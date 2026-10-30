@@ -21,6 +21,7 @@ const plugins = [
 ];
 
 const nextConfig: NextConfig = {
+  agentRules: false,
   productionBrowserSourceMaps: true,
   reactCompiler: true,
   reactStrictMode: true,
