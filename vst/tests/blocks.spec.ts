@@ -1,4 +1,5 @@
-import { type Page, test } from "@playwright/test";
+import { test } from "@playwright/test";
+import { urnerysElementScreenshot } from "@urnerys/playwright";
 
 const urls = [
   "/blocks/Arbitrary",
@@ -19,72 +20,8 @@ function sanitizeTitle(s: string): string {
     .toLowerCase();
 }
 
-interface UploadImageRequest {
-  page: Page;
-  set: string;
-  snapshot: string;
-  formula: string;
-  payload: Buffer;
-}
-
-/*
- * Formulas whose realization attributes have already been attached by this
- * worker. The browser-specific values don't change within a worker, so
- * attaching them once per formula is enough.
- */
-const attachedRealizations = new Set<string>();
-
-/*
- * Attach the values used to render a formula that are only known in the test
- * worker (the browser and the viewport). The reporter combines them with the
- * values it has access to and reports them to Urnerys.
- */
-async function attachRealization(page: Page, formula: string): Promise<void> {
-  if (attachedRealizations.has(formula)) return;
-
-  attachedRealizations.add(formula);
-
-  const browser = page.context().browser();
-  const viewport = page.viewportSize();
-
-  const attributes = {
-    "dev.urnerys.renderer.type": "browser",
-    "dev.urnerys.renderer.name": browser?.browserType().name(),
-    "dev.urnerys.renderer.version": browser?.version(),
-    "dev.urnerys.viewport.width": viewport?.width,
-    "dev.urnerys.viewport.height": viewport?.height,
-  };
-
-  await test.info().attach(`urnerys-realization|${formula}`, {
-    body: JSON.stringify(attributes),
-    contentType: "application/json",
-  });
-}
-
-async function uploadImage({ page, set, snapshot, formula, payload }: UploadImageRequest) {
-  await test.info().attach(`urnerys|${set}|${snapshot}|${formula}`, {
-    body: payload,
-    contentType: "image/png",
-  });
-
-  await attachRealization(page, formula);
-}
-
-async function waitForImages(page: Page): Promise<void> {
-  const viewportSize = page.viewportSize();
-
-  if (viewportSize) {
-    const height = await page.evaluate(() => document.documentElement.scrollHeight).then(Math.ceil);
-    await page.setViewportSize({ width: viewportSize.width, height });
-    await page.waitForLoadState("networkidle");
-    await page.setViewportSize(viewportSize);
-  }
-}
-
 for (const url of urls) {
-  test(url, async ({ page }, { title, project }) => {
-    const imageUploads: Array<Promise<unknown>> = [];
-
+  test(url, async ({ page }, { title }) => {
     await page.goto(url, { waitUntil: "load" });
 
     await page.waitForFunction(() => !document.querySelector(".timvir-unsettled"));
@@ -107,33 +44,22 @@ for (const url of urls) {
       await inputElement.waitForSelector(":scope[value='gGV7y4U6pZVL']");
     }
 
-    await waitForImages(page);
+    const exhibits = page.locator("[data-timvir-b-exhibit]");
+    for (let index = 0; index < (await exhibits.count()); index++) {
+      const exhibit = exhibits.nth(index);
 
-    {
-      const elements = await page.$$("[data-timvir-b-exhibit]");
-      for (const [index, element] of elements.entries()) {
-        const screenshotElement = await element.$("[data-timvir-b-exhibit-container]");
-        if (!screenshotElement) {
-          continue;
-        }
-
-        const buffer = await screenshotElement.screenshot();
-
-        const childElement = await element.$("[data-timvir-b-exhibit-caption]");
-        const innerText = (await childElement?.innerText()) ?? `${index}`;
-
-        imageUploads.push(
-          uploadImage({
-            page,
-            set: `${title.substring(1)}/exhibits`,
-            snapshot: sanitizeTitle(innerText),
-            formula: project.name,
-            payload: buffer,
-          }),
-        );
+      const container = exhibit.locator("[data-timvir-b-exhibit-container]").first();
+      if ((await container.count()) === 0) {
+        continue;
       }
-    }
 
-    await Promise.all(imageUploads);
+      const caption = exhibit.locator("[data-timvir-b-exhibit-caption]").first();
+      const innerText = (await caption.count()) > 0 ? await caption.innerText() : `${index}`;
+
+      await urnerysElementScreenshot(container, {
+        collection: `${title.substring(1)}/exhibits`,
+        title: sanitizeTitle(innerText),
+      });
+    }
   });
 }

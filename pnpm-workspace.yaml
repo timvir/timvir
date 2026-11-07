@@ -7,3 +7,5 @@ allowBuilds:
   sharp: false
 
 minimumReleaseAge: 21600
+minimumReleaseAgeExclude:
+  - '@urnerys/playwright@0.2.0'

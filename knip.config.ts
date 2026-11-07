@@ -14,7 +14,6 @@ const config: KnipConfig = {
          */
         "config/rolldown.config.js",
         "vst/playwright.config.ts",
-        "vst/src/reporter.ts",
 
         /*
          * Samples

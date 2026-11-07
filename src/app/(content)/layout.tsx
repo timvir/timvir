@@ -19,6 +19,16 @@ const navigation: React.ComponentPropsWithoutRef<typeof Page>["navigation"] = {
   Link: (props) => <Link {...props} prefetch={false} />,
 };
 
+const blocks: React.ComponentPropsWithoutRef<typeof Page>["blocks"] = {
+  WebLink: {
+    /*
+     * Use the unfurl API route of this app. The default is the one on
+     * production, which a deployment (or a local server) should not depend on.
+     */
+    unfurl: (url) => fetch(`/api/unfurl?url=${encodeURIComponent(url)}`).then((res) => res.json()),
+  },
+};
+
 interface Props {
   children: React.ReactNode;
 }
@@ -27,7 +37,7 @@ export default function Layout(props: Props) {
   const { children } = props;
 
   return (
-    <Page navigation={navigation} toc={toc} search={search} mdxComponents={useMDXComponents()}>
+    <Page navigation={navigation} toc={toc} search={search} mdxComponents={useMDXComponents()} blocks={blocks}>
       {children}
     </Page>
   );

@@ -1,7 +1,21 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  reporter: [["list"], ["./src/reporter.ts", { project: "timvir" }]],
+  reporter: [
+    ["list"],
+    [
+      "@urnerys/playwright/reporter",
+      {
+        project: "timvir",
+
+        /*
+         * Deployments to production move the baseline, every other
+         * deployment is checked against it.
+         */
+        mode: process.env.DEPLOYMENT_ENVIRONMENT === "Production" ? "promote" : "check",
+      },
+    ],
+  ],
 
   retries: 3,
   timeout: 8 * 1000,

@@ -3,7 +3,7 @@ name: Deployment Verification
 on: deployment_status
 
 env:
-  URNERYS: app.urnerys.dev
+  URNERYS_HOST: app.urnerys.dev
   BUILD: "github-run-${{ github.run_id }}-${{ github.run_attempt }}"
 
 permissions:
