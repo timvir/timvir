@@ -1,5 +1,5 @@
 import { test } from "@playwright/test";
-import { urnerysScreenshot } from "@urnerys/playwright";
+import { urnerysPageScreenshot } from "@urnerys/playwright";
 
 const urls = [
   "/blocks/Arbitrary",
@@ -38,6 +38,6 @@ for (const url of urls) {
       await inputElement.waitForSelector(":scope[value='gGV7y4U6pZVL']");
     }
 
-    await urnerysScreenshot(page, "page", { collection: title.substring(1), fullPage: true });
+    await urnerysPageScreenshot(page, { collection: title.substring(1), title: "page", fullPage: true });
   });
 }

@@ -1,5 +1,5 @@
-import { type Page, test } from "@playwright/test";
-import { urnerysScreenshot } from "@urnerys/playwright";
+import { test } from "@playwright/test";
+import { urnerysElementScreenshot } from "@urnerys/playwright";
 
 const urls = [
   "/blocks/Arbitrary",
@@ -18,20 +18,6 @@ function sanitizeTitle(s: string): string {
     .replace(/^-/, "")
     .replace(/-$/, "")
     .toLowerCase();
-}
-
-/*
- * `urnerysScreenshot` can only screenshot a page, not an element. As a stand-in
- * for an element screenshot, take a full page screenshot clipped to the
- * bounding box of the element (in page coordinates).
- */
-async function elementClip(page: Page, element: NonNullable<Awaited<ReturnType<Page["$"]>>>) {
-  const box = await element.boundingBox();
-  if (!box) return undefined;
-
-  const scroll = await page.evaluate(() => ({ x: window.scrollX, y: window.scrollY }));
-
-  return { x: box.x + scroll.x, y: box.y + scroll.y, width: box.width, height: box.height };
 }
 
 for (const url of urls) {
@@ -58,27 +44,21 @@ for (const url of urls) {
       await inputElement.waitForSelector(":scope[value='gGV7y4U6pZVL']");
     }
 
-    await page.waitForLoadState("networkidle");
+    const exhibits = page.locator("[data-timvir-b-exhibit]");
+    for (let index = 0; index < (await exhibits.count()); index++) {
+      const exhibit = exhibits.nth(index);
 
-    const elements = await page.$$("[data-timvir-b-exhibit]");
-    for (const [index, element] of elements.entries()) {
-      const screenshotElement = await element.$("[data-timvir-b-exhibit-container]");
-      if (!screenshotElement) {
+      const container = exhibit.locator("[data-timvir-b-exhibit-container]").first();
+      if ((await container.count()) === 0) {
         continue;
       }
 
-      const clip = await elementClip(page, screenshotElement);
-      if (!clip) {
-        continue;
-      }
+      const caption = exhibit.locator("[data-timvir-b-exhibit-caption]").first();
+      const innerText = (await caption.count()) > 0 ? await caption.innerText() : `${index}`;
 
-      const childElement = await element.$("[data-timvir-b-exhibit-caption]");
-      const innerText = (await childElement?.innerText()) ?? `${index}`;
-
-      await urnerysScreenshot(page, sanitizeTitle(innerText), {
+      await urnerysElementScreenshot(container, {
         collection: `${title.substring(1)}/exhibits`,
-        fullPage: true,
-        clip,
+        title: sanitizeTitle(innerText),
       });
     }
   });

@@ -8,4 +8,4 @@ allowBuilds:
 
 minimumReleaseAge: 21600
 minimumReleaseAgeExclude:
-  - '@urnerys/playwright@0.1.2'
+  - '@urnerys/playwright@0.2.0'
