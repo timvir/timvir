@@ -1,6 +1,5 @@
+import { test } from "@playwright/test";
 import { urnerysElementScreenshot } from "@urnerys/playwright";
-
-import { test } from "./fixtures";
 
 const urls = [
   "/blocks/Arbitrary",
