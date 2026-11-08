@@ -33,6 +33,6 @@
     "shiki": "^4.5.0",
     "typescript": "^7.0.2",
     "unfurl.js": "^6.4.0",
-    "unist-util-visit": "^5.1.0"
+    "unist-util-visit": "^5.2.0"
   }
 }
