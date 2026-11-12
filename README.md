@@ -24,6 +24,6 @@ The current focus is on:
 
 ## Prior art
 
- - **[Catalog](https://catalog.style)**: Based on plain Markdown, with custom blocks (called specimen).
- - **[Docup](https://docup.now.sh/)**: Similar to Catalog, based on Markdown, limited set of custom blocks.
- - **[Docz](https://www.docz.site/)**: Uses Gatsby + MDX, limited set of custom blocks.
+- **[Catalog](https://catalog.style)**: Based on plain Markdown, with custom blocks (called specimen).
+- **[Docup](https://docup.now.sh/)**: Similar to Catalog, based on Markdown, limited set of custom blocks.
+- **[Docz](https://www.docz.site/)**: Uses Gatsby + MDX, limited set of custom blocks.
