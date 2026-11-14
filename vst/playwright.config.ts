@@ -3,6 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   reporter: [
     ["list"],
+    ["html", { title: "Visual Smoke Test", open: "never" }],
     [
       "@urnerys/playwright/reporter",
       {
@@ -13,6 +14,8 @@ export default defineConfig({
          * deployment is checked against it.
          */
         mode: process.env.DEPLOYMENT_ENVIRONMENT === "Production" ? "promote" : "check",
+
+        report: { name: "visual-smoke-test" },
       },
     ],
   ],
