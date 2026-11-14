@@ -19,7 +19,7 @@
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "@urnerys/playwright": "^0.3.0",
+    "@urnerys/playwright": "^0.4.0",
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "bytestring": "^1.0.1",
