@@ -41,3 +41,6 @@ knip.config.d.ts
 !/pkg/search/package.json
 
 .direnv/
+
+/vst/playwright-report/
+/vst/test-results/
