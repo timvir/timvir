@@ -36,6 +36,8 @@ const config: KnipConfig = {
         "mdast-util-mdx",
         "shiki",
         "unist-util-visit",
+
+        "@stylexswc/turbopack-plugin",
       ],
     },
 
