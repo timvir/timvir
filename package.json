@@ -10,7 +10,7 @@
     "@changesets/cli": "^3.0.3",
     "@changesets/get-github-info": "^1.0.1",
     "@mdx-js/loader": "^3.1.1",
-    "@next/mdx": "^16.4.3",
+    "@next/mdx": "^16.4.5",
     "@playwright/test": "^1.64.1",
     "@stylexjs/stylex": "^0.19.1",
     "@stylexswc/nextjs-plugin": "^0.20.0",
