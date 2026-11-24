@@ -3,6 +3,7 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { typography } from "../../styles";
 import { Dialog } from "./internal";
 
 interface Props {
@@ -34,7 +35,7 @@ export function Commands(props: Props) {
 
           const reactPortal = ReactDOM.createPortal(
             <div
-              {...stylex.props(styles.root)}
+              {...stylex.props(typography.base, styles.root)}
               onClick={(ev) => {
                 if (ev.target === ev.currentTarget) {
                   _onClose();
@@ -52,7 +53,7 @@ export function Commands(props: Props) {
             containerElement: state.dialog.containerElement,
             reactPortal: ReactDOM.createPortal(
               <div
-                {...stylex.props(styles.root)}
+                {...stylex.props(typography.base, styles.root)}
                 onClick={(ev) => {
                   if (ev.target === ev.currentTarget) {
                     _onClose();
@@ -76,7 +77,7 @@ export function Commands(props: Props) {
           return {
             containerElement: state.dialog.containerElement,
             reactPortal: ReactDOM.createPortal(
-              <div {...stylex.props(styles.root)}>
+              <div {...stylex.props(typography.base, styles.root)}>
                 <Dialog
                   onDispose={() => {
                     setState({
@@ -132,10 +133,6 @@ const styles = stylex.create({
     alignItems: "flex-start",
     justifyContent: "center",
     padding: "13vh 16px 16px",
-
-    fontFamily: "system-ui, sans-serif",
-    fontFeatureSettings: '"liga", "kern"',
-    textRendering: "optimizelegibility",
 
     fontSize: "16px",
     lineHeight: 1.725,

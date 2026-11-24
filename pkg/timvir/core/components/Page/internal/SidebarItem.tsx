@@ -4,6 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useContext } from "timvir/context";
 import * as Icons from "../../../../icons";
+import { typography } from "../../../styles";
 import type { Node } from "../types";
 
 interface Props extends Node {
@@ -29,7 +30,7 @@ export function SidebarItem(props: Props) {
     );
 
   const isActive = pathname === path;
-  const linkStylexProps = stylex.props(styles.link, isActive && styles.linkActive);
+  const linkStylexProps = stylex.props(typography.base, styles.link, isActive && styles.linkActive);
   const linkStyle = { ...linkStylexProps.style, marginLeft: depth * 16 };
 
   return (
@@ -79,7 +80,6 @@ const styles = stylex.create({
     borderWidth: 0,
     textAlign: "left",
     cursor: "pointer",
-    fontFamily: "inherit",
 
     fontSize: "0.9375rem",
     lineHeight: 2.2,

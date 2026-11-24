@@ -4,6 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useContext } from "timvir/context";
 import * as Icons from "../../../../icons";
+import { typography } from "../../../styles";
 import type { Node } from "../types";
 import { Section } from "./Section";
 
@@ -65,7 +66,7 @@ export function Sidebar(props: Props) {
   })(toc);
 
   return (
-    <nav {...rest} {...stylex.props(props.sx, styles.root)}>
+    <nav {...rest} {...stylex.props(props.sx, typography.base, styles.root)}>
       <header {...stylex.props(styles.header)}>
         <div {...stylex.props(styles.headerInner)}>
           <div {...stylex.props(styles.headerTitle)}>Timvir</div>
@@ -83,7 +84,7 @@ export function Sidebar(props: Props) {
       <button
         type="button"
         onClick={() => setMenuOpen(!isMenuOpen)}
-        {...stylex.props(styles.buttonReset, styles.menuLabel)}
+        {...stylex.props(typography.base, styles.buttonReset, styles.menuLabel)}
       >
         {node?.icon
           ? React.cloneElement(node.icon, {
@@ -118,7 +119,10 @@ const styles = stylex.create({
     border: "none",
     backgroundColor: "transparent",
     padding: 0,
-    font: "inherit",
+    fontSize: "inherit",
+    fontWeight: "inherit",
+    fontStyle: "inherit",
+    lineHeight: "inherit",
     color: "inherit",
     cursor: "pointer",
     display: "block",
@@ -135,6 +139,8 @@ const styles = stylex.create({
   root: {
     display: "flex",
     flexDirection: "column",
+    fontSize: "0.9375rem",
+    lineHeight: 1.7333,
 
     "@media (min-width: 48rem)": {
       height: "100%",
@@ -250,10 +256,6 @@ const styles = stylex.create({
     },
   },
 
-  searchRoot: {
-    fontFamily: "system-ui",
-  },
-
   searchButton: {
     color: "var(--timvir-text-color)",
     fontSize: "0.8125rem",
@@ -287,8 +289,8 @@ function Search(props: NonNullable<Props["search"]>) {
   const { open, label } = props;
 
   return (
-    <div {...stylex.props(styles.searchRoot)}>
-      <button type="button" {...stylex.props(styles.buttonReset, styles.searchButton)} onClick={open}>
+    <div>
+      <button type="button" {...stylex.props(typography.base, styles.buttonReset, styles.searchButton)} onClick={open}>
         <svg x="0px" y="0px" width="12px" height="12px" viewBox="0 0 12 12" {...stylex.props(styles.searchButtonIcon)}>
           <path
             d="M11.707 10.293l-2.54-2.54a5.015 5.015 0 10-1.414 1.414l2.54 2.54a1 1 0 001.414-1.414zM2 5a3 3 0 113 3 3 3 0 01-3-3z"

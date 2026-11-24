@@ -4,6 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useContext } from "timvir/context";
 import { defaultSearch } from "timvir/search";
+import { typography } from "../../../styles";
 import { Action } from "./Action";
 
 interface Props {
@@ -58,7 +59,7 @@ export function Dialog(props: Props) {
 
       <div {...stylex.props(styles.prompt)}>
         <input
-          {...stylex.props(styles.input)}
+          {...stylex.props(typography.base, styles.input)}
           autoFocus
           placeholder="Type a command or search…"
           value={state.query}

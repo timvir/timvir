@@ -1,5 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import type * as React from "react";
+import { typography } from "../../styles";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -17,7 +18,7 @@ export function Footer(props: Props) {
   const { links, ...rest } = props;
 
   return (
-    <Root {...rest} {...stylex.props(styles.root)}>
+    <Root {...rest} {...stylex.props(typography.base, styles.root)}>
       {links && (
         <div {...stylex.props(styles.grid)}>
           <div {...stylex.props(styles.center, styles.linkGroups)}>
@@ -55,6 +56,8 @@ const styles = stylex.create({
     display: "grid",
     gap: 50,
     borderTop: "1px solid var(--timvir-border-color)",
+    fontSize: "0.9375rem",
+    lineHeight: 1.7333,
   },
 
   grid: {
