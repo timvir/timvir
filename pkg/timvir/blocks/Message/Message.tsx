@@ -29,6 +29,8 @@ export function Message(props: Props) {
             const style: React.CSSProperties = {
               marginTop: index === 0 ? "0" : undefined,
               marginBottom: index === array.length - 1 ? "0" : undefined,
+              fontSize: "inherit",
+              lineHeight: "inherit",
             };
 
             if (Object.keys(style).length > 0) {

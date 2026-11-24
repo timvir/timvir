@@ -89,6 +89,8 @@ export const blockquote: React.FunctionComponent<React.BlockquoteHTMLAttributes<
           const style: React.CSSProperties = {
             marginTop: index === 0 ? "0" : undefined,
             marginBottom: index === self.length - 1 ? "0" : undefined,
+            fontSize: "inherit",
+            lineHeight: "inherit",
           };
 
           return React.cloneElement<any>(child, { style });
@@ -146,15 +148,15 @@ export const a: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorEle
 );
 
 export const p: React.FunctionComponent<React.HTMLAttributes<HTMLParagraphElement>> = (props) => (
-  <p {...stylex.props(layoutStyles.block, typography.base)} {...props} />
+  <p {...stylex.props(layoutStyles.block, typography.base, styles.text)} {...props} />
 );
 
 export const ul: React.FunctionComponent<React.HTMLAttributes<HTMLUListElement>> = (props) => (
-  <ul {...stylex.props(layoutStyles.block, typography.base)} {...props} />
+  <ul {...stylex.props(layoutStyles.block, typography.base, styles.text)} {...props} />
 );
 
 export const ol: React.FunctionComponent<React.HTMLAttributes<HTMLOListElement>> = (props) => (
-  <ol {...stylex.props(layoutStyles.block, typography.base)} {...props} />
+  <ol {...stylex.props(layoutStyles.block, typography.base, styles.text)} {...props} />
 );
 
 export const button: React.FunctionComponent<React.ButtonHTMLAttributes<HTMLButtonElement>> = (props) => (
@@ -191,6 +193,10 @@ const styles = stylex.create({
     lineHeight: 1.4375,
     fontWeight: 590,
   },
+  text: {
+    fontSize: "0.9375rem",
+    lineHeight: 1.7333,
+  },
   hr: {
     display: "block",
     borderStyle: "none",
@@ -219,8 +225,11 @@ const styles = stylex.create({
     marginLeft: "0",
 
     fontSize: "1.1rem",
+    lineHeight: 1.7333,
   },
   tableCell: {
+    fontSize: "0.9375rem",
+    lineHeight: 1.7333,
     padding: "6px 13px",
     borderWidth: "1px",
     borderStyle: "solid",
