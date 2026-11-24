@@ -9,6 +9,7 @@ import * as React from "react";
 import { codeToHtml, type ShikiTransformer } from "shiki";
 import { useBlock } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
+import { typography } from "../../core/styles";
 import { cx } from "../../internal/cx";
 
 /**
@@ -51,7 +52,7 @@ export function Code(props: Props) {
      * initializing the html with a pre/code block with the expected number of
      * lines.
      */
-    html: `<pre class="${stylex.props(styles.pre).className ?? ""}"><code>${children
+    html: `<pre class="${stylex.props(typography.mono, styles.pre).className ?? ""}"><code>${children
       .trim()
       .split("\n")
       .map(() => "\n")
@@ -64,7 +65,7 @@ export function Code(props: Props) {
         name: "stylex",
 
         pre(node) {
-          const { className } = stylex.props(styles.pre);
+          const { className } = stylex.props(typography.mono, styles.pre);
           if (className) {
             this.addClassToHast(node, className);
           }
@@ -124,7 +125,7 @@ export function Code(props: Props) {
       />
 
       {caption && (
-        <div data-timvir-b-code-caption {...stylex.props(styles.caption)}>
+        <div data-timvir-b-code-caption {...stylex.props(typography.base, styles.caption)}>
           {caption}
         </div>
       )}
@@ -136,7 +137,8 @@ const styles = stylex.create({
   code: {
     overflowX: "auto",
     contain: "content",
-    fontSize: "0.8em",
+    fontSize: "0.75rem",
+    lineHeight: 1.7333,
     borderRadius: "5px",
 
     "--timvir-b-Code-bleed": "calc(var(--timvir-margin, 0px) * 0.6666)",

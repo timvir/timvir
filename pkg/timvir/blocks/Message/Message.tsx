@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { layoutStyles } from "../../core/layout";
+import { typography } from "../../core/styles";
 import * as Icons from "../../icons";
 
 /**
@@ -16,7 +17,7 @@ export function Message(props: Props) {
   const { variant, children, ...rest } = props;
 
   return (
-    <Root {...stylex.props(layoutStyles.block, styles.root, variant && styles[variant])} {...rest}>
+    <Root {...stylex.props(layoutStyles.block, typography.base, styles.root, variant && styles[variant])} {...rest}>
       {variant &&
         {
           info: <Icons.ChevronsRight {...stylex.props(styles.icon, styles.iconInfo)} />,
