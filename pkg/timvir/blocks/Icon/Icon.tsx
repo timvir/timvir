@@ -3,6 +3,7 @@
 import * as stylex from "@stylexjs/stylex";
 import type * as React from "react";
 import { useResizeObserverEntry } from "timvir/hooks";
+import { typography } from "../../core/styles";
 import { cx } from "../../internal/cx";
 import { Canvas } from "./internal";
 import type { Descriptor } from "./types";
@@ -40,7 +41,7 @@ export function Icon(props: Props) {
               size={32 /*descriptor.instances[0].size as number */}
               Component={descriptor.instances[0].Component}
             />
-            <div {...stylex.props(styles.name)}>{descriptor.name}</div>
+            <div {...stylex.props(typography.base, styles.name)}>{descriptor.name}</div>
           </>
         )}
       </div>
@@ -62,6 +63,7 @@ const styles = stylex.create({
     marginTop: 0,
     whiteSpace: "nowrap",
     fontSize: "0.75rem",
+    lineHeight: 1.7333,
     opacity: "var(--timvir-b-Icon-hover)",
     transition: "all 0.16s",
     zIndex: -1,

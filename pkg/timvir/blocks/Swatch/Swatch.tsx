@@ -4,6 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useBlock } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
+import { typography } from "../../core/styles";
 import { cx } from "../../internal/cx";
 
 /**
@@ -52,7 +53,7 @@ export function Swatch(props: Props) {
   }, [name]);
 
   const rootStyleProps = stylex.props(layoutStyles.block, styles.root);
-  const innerStyleProps = stylex.props(styles.inner);
+  const innerStyleProps = stylex.props(typography.base, styles.inner);
 
   return (
     <Root
@@ -100,6 +101,7 @@ const styles = stylex.create({
     padding: "0px 12px",
     cursor: "pointer",
     borderRadius: 2,
+    fontSize: "0.9375rem",
   },
 
   labelWrapper: {

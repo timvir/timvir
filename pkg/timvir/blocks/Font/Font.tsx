@@ -4,6 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useArticleComponents } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
+import { typography } from "../../core/styles";
 import * as Icons from "../../icons";
 import { cx } from "../../internal/cx";
 
@@ -61,7 +62,7 @@ export function Font(props: Props) {
       className={cx(rest.className, rootStyleProps.className)}
       style={{ ...rootStyleProps.style, ...rest.style }}
     >
-      <div {...stylex.props(styles.meta)}>
+      <div {...stylex.props(typography.base, styles.meta)}>
         <components.h3 {...stylex.props(styles.h3)}>
           <span ref={setFontSizeRef}>{name}</span>
         </components.h3>
@@ -128,6 +129,7 @@ const styles = stylex.create({
     alignItems: "baseline",
 
     fontSize: "0.9rem",
+    lineHeight: 1.7333,
     fontWeight: "bold",
 
     transition: "all 0.2s",

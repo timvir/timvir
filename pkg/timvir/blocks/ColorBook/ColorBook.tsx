@@ -3,6 +3,7 @@
 import * as stylex from "@stylexjs/stylex";
 import type * as React from "react";
 import { layoutStyles } from "../../core/layout";
+import { typography } from "../../core/styles";
 
 /**
  * The underlying DOM element which is rendered by this component.
@@ -48,7 +49,11 @@ export function ColorBook(props: Props) {
             ))}
           </div>
           {name && (
-            <div {...stylex.props(styles.chapterName, i === selectedChapter && styles.activeChapterName)}>{name}</div>
+            <div
+              {...stylex.props(typography.base, styles.chapterName, i === selectedChapter && styles.activeChapterName)}
+            >
+              {name}
+            </div>
           )}
         </div>
       ))}
