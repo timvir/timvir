@@ -6,6 +6,7 @@ import * as React from "react";
 import { Exhibit } from "timvir/blocks";
 import { useBlock } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
+import { typography } from "../../core/styles";
 import { cx } from "../../internal/cx";
 import { Context } from "./context";
 
@@ -60,12 +61,12 @@ export function Arbitrary(props: Props) {
         className={cx(!value.settled && "timvir-unsettled", rootStyleProps.className, className)}
         style={{ margin: "1em 0", ...rootStyleProps.style, ...rest.style }}
       >
-        <div {...stylex.props(styles.controls)}>
+        <div {...stylex.props(typography.base, styles.controls)}>
           <div {...stylex.props(styles.textField)}>
             <span {...stylex.props(styles.startAdornment)}>Seed:</span>
             <input
               data-timvir-b-arbitrary-seed
-              {...stylex.props(styles.input)}
+              {...stylex.props(typography.base, styles.input)}
               placeholder="Seed"
               value={base58.encode(new TextEncoder().encode(`${value.seed}`))}
               readOnly
@@ -82,7 +83,7 @@ export function Arbitrary(props: Props) {
             />
           </div>
 
-          <button type="button" {...stylex.props(styles.button)} onClick={refreshSeed}>
+          <button type="button" {...stylex.props(typography.base, styles.button)} onClick={refreshSeed}>
             Refresh
           </button>
         </div>
@@ -105,6 +106,8 @@ const styles = stylex.create({
     gridGap: "8px",
     gridTemplateColumns: "1fr 100px",
     marginBottom: "8px",
+    fontSize: "0.9375rem",
+    lineHeight: 1.7333,
   },
 
   textField: {
@@ -146,7 +149,10 @@ const styles = stylex.create({
   input: {
     borderWidth: 0,
     outline: "none",
-    font: "inherit",
+    fontSize: "inherit",
+    fontWeight: "inherit",
+    fontStyle: "inherit",
+    lineHeight: "inherit",
     backgroundColor: "transparent",
     alignSelf: "stretch",
     padding: 0,
@@ -163,7 +169,10 @@ const styles = stylex.create({
     borderRadius: "2px",
     backgroundColor: "var(--timvir-secondary-background-color)",
     color: "var(--timvir-text-color)",
-    font: "inherit",
+    fontSize: "inherit",
+    fontWeight: "inherit",
+    fontStyle: "inherit",
+    lineHeight: "inherit",
 
     ":hover": {
       borderColor: "var(--timvir-text-color)",
