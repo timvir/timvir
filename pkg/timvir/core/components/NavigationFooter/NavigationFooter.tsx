@@ -4,6 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import type * as React from "react";
 import type { Value } from "timvir/context";
 import * as Icons from "../../../icons";
+import { typography } from "../../styles";
 import type { Node } from "../Page/types";
 
 /**
@@ -60,7 +61,7 @@ export function NavigationFooter(props: Props) {
   const next = toLink(index + 1);
 
   return (
-    <Root {...rest} {...stylex.props(styles.root)}>
+    <Root {...rest} {...stylex.props(typography.base, styles.root)}>
       <div {...stylex.props(styles.container)}>
         {prev && (
           <Link href={prev.href} {...stylex.props(styles.link, styles.prev)}>
