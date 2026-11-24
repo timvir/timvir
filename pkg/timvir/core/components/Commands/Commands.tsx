@@ -106,7 +106,6 @@ export function Commands(props: Props) {
   /*
    * Crude body scroll lock when the dialog is open.
    */
-  // biome-ignore lint/correctness/useExhaustiveDependencies: TODO
   React.useEffect(() => {
     if (_open) {
       document.body.style.overflow = "hidden";

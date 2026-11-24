@@ -40,8 +40,8 @@ export function Font(props: Props) {
           const innerText = `${name} – ${Math.round(fontSize)}px / ${
             Math.round((lineHeight / fontSize) * 1000) / 1000
           }`;
-          if (fontSizeRef.innerText !== innerText) {
-            fontSizeRef.innerText = innerText;
+          if (fontSizeRef.textContent !== innerText) {
+            fontSizeRef.textContent = innerText;
           }
         }
       }, 250);
