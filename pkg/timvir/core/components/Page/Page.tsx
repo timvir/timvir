@@ -260,13 +260,6 @@ const styles = stylex.create({
       gridTemplateColumns: "[l] 300px [m] 1fr [r]",
     },
 
-    fontFamily: "system-ui, sans-serif",
-    fontFeatureSettings: '"liga", "kern"',
-    textRendering: "optimizelegibility",
-
-    fontSize: "0.9375rem",
-    lineHeight: 1.7333,
-
     backgroundColor: "var(--timvir-background-color)",
     color: "var(--timvir-text-color)",
   },
