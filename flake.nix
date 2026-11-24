@@ -86,6 +86,20 @@
             '';
           };
 
+          agent = pkgs.mkShell {
+            buildInputs = [
+              pkgs.nodejs
+              pkgs.pnpm
+              pkgs.biome
+
+              (pkgs.writeShellScriptBin "setup" ''
+                set -euo pipefail
+
+                pnpm install --frozen-lockfile
+              '')
+            ];
+          };
+
           workflow = pkgs.mkShell {
             buildInputs = [
               pkgs.nodejs
