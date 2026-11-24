@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { layoutStyles } from "../core/layout";
+import { typography } from "../core/styles";
 import * as Icons from "../icons";
 
 const anchorize = (children?: React.ReactNode): undefined | string => {
@@ -58,26 +59,26 @@ function Heading(Component: React.FunctionComponent<React.HTMLAttributes<HTMLHea
 }
 
 export const h1: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = (props) => (
-  <h1 {...stylex.props(layoutStyles.block, styles.h1)} {...props} />
+  <h1 {...stylex.props(layoutStyles.block, typography.base, styles.h1)} {...props} />
 );
 
 export const h2: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading((props) => (
-  <h2 {...stylex.props(layoutStyles.block, styles.h2)} {...props} />
+  <h2 {...stylex.props(layoutStyles.block, typography.base, styles.h2)} {...props} />
 ));
 
 export const h3: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading((props) => (
-  <h3 {...stylex.props(layoutStyles.block, styles.h3)} {...props} />
+  <h3 {...stylex.props(layoutStyles.block, typography.base, styles.h3)} {...props} />
 ));
 
 export const h4: React.FunctionComponent<React.HTMLAttributes<HTMLHeadingElement>> = Heading((props) => (
-  <h4 {...stylex.props(layoutStyles.block, styles.h4)} {...props} />
+  <h4 {...stylex.props(layoutStyles.block, typography.base, styles.h4)} {...props} />
 ));
 
 export const blockquote: React.FunctionComponent<React.BlockquoteHTMLAttributes<HTMLQuoteElement>> = (props) => {
   const { children, ...rest } = props;
 
   return (
-    <blockquote {...rest} {...stylex.props(layoutStyles.block, styles.blockquote)}>
+    <blockquote {...rest} {...stylex.props(layoutStyles.block, typography.base, styles.blockquote)}>
       {React.Children.toArray(children)
         .filter((x) => x !== "\n")
         .map((child, index, self) => {
@@ -123,7 +124,7 @@ export const th: React.FunctionComponent<React.ThHTMLAttributes<HTMLTableCellEle
     textAlign: (align || "center") as any,
   };
 
-  return <th {...stylex.props(styles.tableCell)} style={style} {...rest} />;
+  return <th {...stylex.props(typography.base, styles.tableCell)} style={style} {...rest} />;
 };
 
 export const td: React.FunctionComponent<React.TdHTMLAttributes<HTMLTableCellElement>> = (props) => {
@@ -133,11 +134,11 @@ export const td: React.FunctionComponent<React.TdHTMLAttributes<HTMLTableCellEle
     textAlign: (align || "left") as any,
   };
 
-  return <td {...stylex.props(styles.tableCell)} style={style} {...rest} />;
+  return <td {...stylex.props(typography.base, styles.tableCell)} style={style} {...rest} />;
 };
 
 export const code: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => (
-  <code {...stylex.props(styles.code)} {...props} />
+  <code {...stylex.props(typography.mono, styles.code)} {...props} />
 );
 
 export const a: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => (
@@ -145,19 +146,19 @@ export const a: React.FunctionComponent<React.AnchorHTMLAttributes<HTMLAnchorEle
 );
 
 export const p: React.FunctionComponent<React.HTMLAttributes<HTMLParagraphElement>> = (props) => (
-  <p {...stylex.props(layoutStyles.block)} {...props} />
+  <p {...stylex.props(layoutStyles.block, typography.base)} {...props} />
 );
 
 export const ul: React.FunctionComponent<React.HTMLAttributes<HTMLUListElement>> = (props) => (
-  <ul {...stylex.props(layoutStyles.block)} {...props} />
+  <ul {...stylex.props(layoutStyles.block, typography.base)} {...props} />
 );
 
 export const ol: React.FunctionComponent<React.HTMLAttributes<HTMLOListElement>> = (props) => (
-  <ol {...stylex.props(layoutStyles.block)} {...props} />
+  <ol {...stylex.props(layoutStyles.block, typography.base)} {...props} />
 );
 
 export const button: React.FunctionComponent<React.ButtonHTMLAttributes<HTMLButtonElement>> = (props) => (
-  <button {...stylex.props(styles.button)} {...props} />
+  <button {...stylex.props(typography.base, styles.button)} {...props} />
 );
 
 const styles = stylex.create({
@@ -262,7 +263,9 @@ const styles = stylex.create({
     borderRadius: "2px",
     backgroundColor: "var(--timvir-secondary-background-color)",
     color: "var(--timvir-text-color)",
-    font: "inherit",
+    fontSize: "inherit",
+    fontWeight: "inherit",
+    fontStyle: "inherit",
     lineHeight: 1,
 
     padding: "4px 6px",
