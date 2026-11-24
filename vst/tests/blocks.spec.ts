@@ -54,6 +54,7 @@ for (const url of urls) {
       }
 
       const caption = exhibit.locator("[data-timvir-b-exhibit-caption]").first();
+      // biome-ignore lint/performance/useDomNodeTextContent: Playwright Locator API, not the DOM property
       const innerText = (await caption.count()) > 0 ? await caption.innerText() : `${index}`;
 
       await urnerysElementScreenshot(container, {
