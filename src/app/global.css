@@ -4,6 +4,12 @@ body {
   overscroll-behavior: none;
   overflow-x: hidden;
   min-width: 0;
+
+  font-family: system-ui, sans-serif;
+  font-feature-settings: "liga", "kern";
+  text-rendering: optimizelegibility;
+  font-size: 0.9375rem;
+  line-height: 1.7333;
 }
 
 *,
