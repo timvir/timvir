@@ -5,6 +5,7 @@ import * as React from "react";
 import { Code } from "timvir/blocks";
 import { useArticleComponents } from "timvir/core";
 import { layoutStyles } from "../../../core/layout";
+import { typography } from "../../../core/styles";
 import * as Icons from "../../../icons";
 
 interface Props {
@@ -21,7 +22,7 @@ export function Caption(props: Props) {
 
   return (
     <>
-      <figcaption {...stylex.props(layoutStyles.block, styles.figcaption)}>
+      <figcaption {...stylex.props(layoutStyles.block, typography.base, styles.figcaption)}>
         <div>
           Source:{" "}
           <components.a href={src} target="_blank" rel="noopener">

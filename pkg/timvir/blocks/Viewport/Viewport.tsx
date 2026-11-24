@@ -5,6 +5,7 @@ import * as React from "react";
 import { useBlock } from "timvir/core";
 import { useResizeObserver, useResizeObserverEntry } from "timvir/hooks";
 import { layoutStyles } from "../../core/layout";
+import { typography } from "../../core/styles";
 import { cx } from "../../internal/cx";
 import { Caption, Handle, Ruler } from "./internal";
 
@@ -235,7 +236,7 @@ export function Viewport(props: Props) {
       >
         <div ref={svgRef} {...stylex.props(styles.svgContainer)}>
           <Ruler containerWidth={svgROE?.contentRect.width} viewportWidth={width} />
-          <div {...stylex.props(styles.widthDisplay)}>{width}px</div>
+          <div {...stylex.props(typography.base, styles.widthDisplay)}>{width}px</div>
         </div>
         <div {...stylex.props(styles.flexContainer)}>
           <div>
@@ -295,6 +296,8 @@ const styles = stylex.create({
     left: "50%",
     transform: "translate(-50%, -50%)",
     fontVariantNumeric: "tabular-nums",
+    fontSize: "0.9375rem",
+    lineHeight: 1.7333,
   },
   flexContainer: {
     display: "flex",

@@ -4,6 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import type * as React from "react";
 import { useBlock, useContext } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
+import { typography } from "../../core/styles";
 import { cx } from "../../internal/cx";
 
 /**
@@ -70,7 +71,7 @@ export function Exhibit(props: Props) {
       </div>
 
       {caption && (
-        <div data-timvir-b-exhibit-caption {...stylex.props(styles.caption)}>
+        <div data-timvir-b-exhibit-caption {...stylex.props(typography.base, styles.caption)}>
           {caption}
         </div>
       )}

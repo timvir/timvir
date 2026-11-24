@@ -4,6 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import * as React from "react";
 import { useContext } from "timvir/core";
 import { layoutStyles } from "../../core/layout";
+import { typography } from "../../core/styles";
 import { cx } from "../../internal/cx";
 
 /**
@@ -58,7 +59,7 @@ export function WebLink(props: Props) {
       className={cx(!state.settled && "timvir-unsettled", className, rootStyleProps.className)}
       style={{ ...rootStyleProps.style, ...rest.style }}
     >
-      <div {...stylex.props(styles.text)}>
+      <div {...stylex.props(typography.base, styles.text)}>
         <div {...stylex.props(styles.title)}>{metadata?.open_graph?.title ?? metadata?.title ?? <>&nbsp;</>}</div>
         <div {...stylex.props(styles.description)}>{metadata?.open_graph?.description ?? metadata?.description}</div>
         <div {...stylex.props(styles.url)}>
@@ -106,6 +107,8 @@ const styles = stylex.create({
     flex: "4 1 180px",
     padding: "12px 14px 14px",
     minWidth: 0,
+    fontSize: "0.9375rem",
+    lineHeight: 1.7333,
   },
 
   title: {
