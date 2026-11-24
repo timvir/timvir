@@ -1,5 +1,11 @@
 # timvir
 
+## 0.3.0
+
+### Minor Changes
+
+- **Stop passing text styles down from `Page` and `body`** ([#4106](https://github.com/timvir/timvir/pull/4106)) - `Page` and the `body` rule in `styles.css` no longer set font family, font size, line height or font features. Timvir components set these themselves, so components rendered inside a page, for example in an `<Exhibit>`, no longer inherit timvir's text styles. To keep the previous look for your own content, set `font-family: system-ui, sans-serif`, `font-size: 0.9375rem` and `line-height: 1.7333` on `body` in your application.
+
 ## 0.2.58
 
 ### Patch Changes
