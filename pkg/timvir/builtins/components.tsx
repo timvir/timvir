@@ -89,8 +89,6 @@ export const blockquote: React.FunctionComponent<React.BlockquoteHTMLAttributes<
           const style: React.CSSProperties = {
             marginTop: index === 0 ? "0" : undefined,
             marginBottom: index === self.length - 1 ? "0" : undefined,
-            fontSize: "inherit",
-            lineHeight: "inherit",
           };
 
           return React.cloneElement<any>(child, { style });
@@ -194,8 +192,8 @@ const styles = stylex.create({
     fontWeight: 590,
   },
   text: {
-    fontSize: "0.9375rem",
-    lineHeight: 1.7333,
+    fontSize: "var(--timvir-text-font-size, 0.9375rem)",
+    lineHeight: "var(--timvir-text-line-height, 1.7333)",
   },
   hr: {
     display: "block",
@@ -225,11 +223,12 @@ const styles = stylex.create({
     marginLeft: "0",
 
     fontSize: "1.1rem",
-    lineHeight: 1.7333,
+    lineHeight: "var(--timvir-text-line-height, 1.7333)",
+    "--timvir-text-font-size": "1.1rem",
   },
   tableCell: {
-    fontSize: "0.9375rem",
-    lineHeight: 1.7333,
+    fontSize: "var(--timvir-text-font-size, 0.9375rem)",
+    lineHeight: "var(--timvir-text-line-height, 1.7333)",
     padding: "6px 13px",
     borderWidth: "1px",
     borderStyle: "solid",

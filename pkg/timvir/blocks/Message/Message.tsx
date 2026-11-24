@@ -29,8 +29,6 @@ export function Message(props: Props) {
             const style: React.CSSProperties = {
               marginTop: index === 0 ? "0" : undefined,
               marginBottom: index === array.length - 1 ? "0" : undefined,
-              fontSize: "inherit",
-              lineHeight: "inherit",
             };
 
             if (Object.keys(style).length > 0) {
@@ -61,6 +59,8 @@ const styles = stylex.create({
     alignItems: "flex-start",
     fontSize: "0.875rem",
     lineHeight: 1.5,
+    "--timvir-text-font-size": "0.875rem",
+    "--timvir-text-line-height": "1.5",
   },
 
   icon: {
