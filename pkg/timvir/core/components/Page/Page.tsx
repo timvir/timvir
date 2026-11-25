@@ -253,10 +253,12 @@ const styles = stylex.create({
     "--timvir-page-margin": "16px",
     display: "grid",
     gridTemplateAreas: `"navigation" "content"`,
+    gridTemplateRows: "auto 1fr",
 
     "@media (min-width: 48rem)": {
       "--timvir-page-margin": "24px",
       gridTemplateAreas: `"navigation content"`,
+      gridTemplateRows: "1fr",
       gridTemplateColumns: "[l] 300px [m] 1fr [r]",
     },
 
