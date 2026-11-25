@@ -12,6 +12,8 @@ const urls = [
 
   "/md/heading",
   "/md/link",
+
+  "/fixtures/short-page",
 ];
 
 for (const url of urls) {
