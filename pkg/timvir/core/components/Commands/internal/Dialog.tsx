@@ -133,7 +133,9 @@ const styles = stylex.create({
   },
 
   prompt: {
-    borderBottom: "1px solid rgb(49, 50, 54)",
+    borderBottomWidth: "1px",
+    borderBottomStyle: "solid",
+    borderBottomColor: "rgb(49, 50, 54)",
     display: "grid",
     gridTemplateColumns: "1fr",
     alignItems: "center",

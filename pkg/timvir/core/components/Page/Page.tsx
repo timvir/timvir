@@ -278,7 +278,9 @@ const styles = stylex.create({
       bottom: 0,
       left: 0,
       width: 300,
-      borderRight: "1px solid var(--timvir-border-color)",
+      borderRightWidth: "1px",
+      borderRightStyle: "solid",
+      borderRightColor: "var(--timvir-border-color)",
     },
   },
   marginTopAuto: {
