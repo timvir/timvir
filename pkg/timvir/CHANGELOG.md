@@ -1,5 +1,12 @@
 # timvir
 
+## 0.3.1
+
+### Patch Changes
+
+- **Restore missing borders in `Page`, `Footer` and the command palette** ([#4112](https://github.com/timvir/timvir/pull/4112)) - The StyleX compiler silently dropped `border` shorthand properties, so the narrow-viewport menu button showed the browser's default button border, and the sidebar, footer and command palette lost their separator lines.
+- **Keep the navigation row of `Page` at its own height on narrow viewports** ([#4111](https://github.com/timvir/timvir/pull/4111)) - On narrow viewports, `Page` stacks the navigation above the content. When the page was shorter than the viewport, the leftover height was split between both rows, which left a gap between the navigation and the content. The content row now takes all the leftover height, so the content starts right below the navigation.
+
 ## 0.3.0
 
 ### Minor Changes
