@@ -46,7 +46,7 @@ const styles = stylex.create({
     flexBasis: "auto",
     overflow: "hidden",
     paddingInline: 14,
-    borderLeft: "none",
+    borderLeftStyle: "none",
     cursor: "default",
 
     ":hover": {

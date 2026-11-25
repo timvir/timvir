@@ -116,7 +116,7 @@ export function Sidebar(props: Props) {
 
 const styles = stylex.create({
   buttonReset: {
-    border: "none",
+    borderStyle: "none",
     backgroundColor: "transparent",
     padding: 0,
     fontSize: "inherit",
@@ -189,10 +189,9 @@ const styles = stylex.create({
   },
 
   menuLabel: {
-    borderTop: "none",
-    borderLeft: "none",
-    borderRight: "none",
-    borderBottom: "1px solid var(--timvir-border-color)",
+    borderBottomWidth: "1px",
+    borderBottomStyle: "solid",
+    borderBottomColor: "var(--timvir-border-color)",
     padding: "0 var(--timvir-page-margin)",
     height: "3rem",
     display: "flex",
