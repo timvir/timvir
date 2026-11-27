@@ -17,14 +17,19 @@ Use the secondary label to add a secondary explanation or reference.
 
 <Swatch value="#FF00FF" name="Primary" ancestry="Red 700" />
 
+The text color is black or white, whichever contrasts better with the swatch color.
+Use `contrastValue` if you need a specific text color.
+
+<Swatch value="#FF00FF" contrastValue="#FFFFFF" name="Primary" ancestry="Red 700" />
+
 ## In a Grid
 
 <Grid style={{ gridGap: 6 }}>
-  <Swatch value="#0E5A8A" contrastValue="#FFFFFF" name="@blue1" />
-  <Swatch value="#106BA3" contrastValue="#FFFFFF" name="@blue2" />
-  <Swatch value="#137CBD" contrastValue="#FFFFFF" name="@blue3" />
-  <Swatch value="#2B95D6" contrastValue="#000000" name="@blue4" />
-  <Swatch value="#48AFF0" contrastValue="#000000" name="@blue5" />
+  <Swatch value="#0E5A8A" name="@blue1" />
+  <Swatch value="#106BA3" name="@blue2" />
+  <Swatch value="#137CBD" name="@blue3" />
+  <Swatch value="#2B95D6" name="@blue4" />
+  <Swatch value="#48AFF0" name="@blue5" />
 </Grid>
 
 ## Another example

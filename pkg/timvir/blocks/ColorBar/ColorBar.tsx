@@ -56,7 +56,7 @@ export function ColorBar(props: Props) {
       {selected !== undefined && (
         <div {...stylex.props(styles.overlay)}>
           <Swatch
-            {...(typeof selected === "string" ? { value: selected } : { value: selected.value })}
+            {...(typeof selected === "string" ? { value: selected } : selected)}
             style={{ margin: 0 }}
             onMouseLeave={() => {
               setSelected(undefined);
