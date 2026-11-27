@@ -21,9 +21,9 @@ interface Props extends React.ComponentPropsWithRef<typeof Root> {
   value: string;
 
   /**
-   * Color of the text that is rendered on top of the swatch. Should be chosen
-   * such that it provides enough contrast. If not provided then the normal text
-   * color from the page will be inherited.
+   * Color of the text that is rendered on top of the swatch. If not provided,
+   * black or white is picked automatically, whichever contrasts better with
+   * `value`.
    */
   contrastValue?: string;
 
@@ -72,7 +72,10 @@ export function Swatch(props: Props) {
         onMouseLeave?.(ev);
       }}
     >
-      <div {...innerStyleProps} style={{ ...innerStyleProps.style, background: value, color: contrastValue }}>
+      <div
+        {...innerStyleProps}
+        style={{ ...innerStyleProps.style, background: value, color: contrastValue ?? autoContrast(value) }}
+      >
         <div {...stylex.props(styles.labelWrapper)}>
           {label && <div>{label}</div>}
           {label === name && <div>{value}</div>}
@@ -118,3 +121,11 @@ const styles = stylex.create({
     lineHeight: 1,
   },
 });
+
+/*
+ * Relative color syntax rather than parsing in JS, so that `var(…)` values work.
+ * L* 50 is roughly where black and white text have equal contrast.
+ */
+function autoContrast(color: string): string {
+  return `lch(from ${color} clamp(0, (50 - l) * 1000, 100) 0 0 / 1)`;
+}
