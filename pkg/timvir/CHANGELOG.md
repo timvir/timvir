@@ -1,5 +1,11 @@
 # timvir
 
+## 0.3.2
+
+### Patch Changes
+
+- **Pick black or white text in `Swatch` automatically, whichever contrasts better with the swatch color. `contrastValue` still overrides it.** ([#4117](https://github.com/timvir/timvir/pull/4117)) -
+
 ## 0.3.1
 
 ### Patch Changes
